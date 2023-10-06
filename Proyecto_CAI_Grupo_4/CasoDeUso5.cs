@@ -43,16 +43,39 @@ namespace Proyecto_CAI_Grupo_4
 
         private void CasoDeUso5_Load(object sender, EventArgs e)
         {
-            foreach (var reserva in reservas)
-            {
-                var row = new ListViewItem(reserva.Codigo);
+            AddReservasToListView(reservas);
+        }
 
-                row.SubItems.Add(reserva.Estado.GetDescription());
-                row.SubItems.Add(reserva.NumeroDeDocumento);
-                row.SubItems.Add(reserva.Precio.ToString());
-                row.SubItems.Add(reserva.Fecha.ToFormDate());
-                row.SubItems.Add(reserva.FechaDesde.ToFormDate());
-                row.SubItems.Add(reserva.FechaHasta.ToFormDate());
+        private void buscarReserva_Click(object sender, EventArgs e)
+        {
+            var codigo = filtroCodigo.Text.Trim();
+
+            var estado = filtroEstado.SelectedIndex;
+
+            var nroDeDoc = filtroNroDeDoc.Text.Trim();
+
+            var filterReservas = reservas
+                .Where(x => (string.IsNullOrEmpty(codigo) || x.Codigo == codigo)
+                            && (estado == -1 || (int)x.Estado == estado)
+                            && (string.IsNullOrEmpty(nroDeDoc) || x.NumeroDeDocumento == nroDeDoc));
+
+            reservasListView.Items.Clear();
+
+            AddReservasToListView(filterReservas);
+        }
+
+        private void AddReservasToListView(IEnumerable<Reserva> list)
+        {
+            foreach (var item in list)
+            {
+                var row = new ListViewItem(item.Codigo);
+
+                row.SubItems.Add(item.Estado.GetDescription());
+                row.SubItems.Add(item.NumeroDeDocumento);
+                row.SubItems.Add(item.Precio.ToString());
+                row.SubItems.Add(item.Fecha.ToFormDate());
+                row.SubItems.Add(item.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.FechaHasta.ToFormDate());
 
                 reservasListView.Items.Add(row);
             }
