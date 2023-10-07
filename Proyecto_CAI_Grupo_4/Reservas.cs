@@ -62,38 +62,16 @@ namespace Proyecto_CAI_Grupo_4
                             && (estado == -1 || (int)x.Estado == estado)
                             && (string.IsNullOrEmpty(nroDeDoc) || x.NumeroDeDocumento == nroDeDoc));
 
-            var validacion = ValidarBuscarReservas(filteredReservas, codigo, nroDeDoc);
-
-            if (validacion)
+            if (filteredReservas.Any())
             {
                 reservasListView.Items.Clear();
 
                 AddReservasToListView(filteredReservas);
             }
-        }
-
-        private bool ValidarBuscarReservas(IEnumerable<Reserva> list, string codigo, string nroDeDoc)
-        {
-            if (list.Any())
+            else
             {
-                return true;
+                MessageBox.Show("No hay reservas disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
             }
-
-            var messages = string.Empty;
-
-            if (!string.IsNullOrEmpty(codigo))
-            {
-                messages += "El código de reserva ingresado es inválido." + Environment.NewLine;
-            }
-
-            if (!string.IsNullOrEmpty(nroDeDoc))
-            {
-                messages += "El número de documento ingresado es inválido." + Environment.NewLine;
-            }
-
-            MessageBox.Show(messages, "Error.", MessageBoxButtons.OK);
-
-            return false;
         }
 
         private void AddReservasToListView(IEnumerable<Reserva> list)

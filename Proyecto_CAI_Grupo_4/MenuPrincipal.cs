@@ -54,7 +54,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void OpenPresupuestoForm()
         {
-            Application.Run(new BuscarPresupuestos());
+            Application.Run(new GenerarPresupuesto());
         }
     }
 }

@@ -35,6 +35,8 @@ namespace Proyecto_CAI_Grupo_4.Models
             FechaHasta = dto.FechaHasta.Date;
         }
 
+        public int? Id { get; set; }
+
         public TipoDeServicioEnum TipoDeServicio { get; set; }
 
         public string NombreDelServicio { get; set; }
