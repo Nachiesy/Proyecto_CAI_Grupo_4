@@ -26,14 +26,28 @@ namespace Proyecto_CAI_Grupo_4
         {
             this.Close();
 
-            Thread thread = new Thread(OpenCasoDeUso5Form);
+            Thread thread = new Thread(OpenReservasForm);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
 
-        private void OpenCasoDeUso5Form()
+        private void OpenReservasForm()
         {
             Application.Run(new Reservas());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Thread thread = new Thread(OpenPresupuestoForm);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenPresupuestoForm()
+        {
+            Application.Run(new Presupuestos());
         }
     }
 }

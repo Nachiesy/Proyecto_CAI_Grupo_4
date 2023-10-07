@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Proyecto_CAI_Grupo_4
+namespace Proyecto_CAI_Grupo_4.Utils
 {
     public static class EnumExtensions
     {
