@@ -12,16 +12,16 @@ using System.Windows.Forms;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class Presupuestos : Form
+    public partial class BuscarPresupuestos : Form
     {
-        public Presupuestos()
+        public BuscarPresupuestos()
         {
             InitializeComponent();
         }
 
         private void buscarPresupuesto_Click(object sender, EventArgs e)
         {
-            var presupuesto = new PresupuestoDto()
+            var presupuestoDto = new PresupuestoDto()
             {
                 TipoDeServicio = tipoDeServicio.SelectedIndex,
                 NombreDelServicio = nombreDelServicio.Text,
@@ -33,12 +33,53 @@ namespace Proyecto_CAI_Grupo_4
                 FechaHasta = fechaHasta.Value,
             };
 
-            var validacion = ValidacionDePresupuesto(presupuesto);
+            var validacion = ValidacionDePresupuesto(presupuestoDto);
 
             if (!string.IsNullOrEmpty(validacion))
             {
                 MessageBox.Show(validacion, "Error", MessageBoxButtons.OK);
             }
+            else
+            {
+            
+                var filter = new Presupuesto(presupuestoDto);
+
+                var searchedPresupuestos = GenerarPresupuesto.presupuestos
+                    .Where(x => x.TipoDeServicio == filter.TipoDeServicio
+                                && (string.IsNullOrEmpty(filter.NombreDelServicio) || x.NombreDelServicio == filter.NombreDelServicio)
+                                && x.CantidadDePasajerosAdultos == filter.CantidadDePasajerosAdultos
+                                && x.CantidadDePasajerosMenores == filter.CantidadDePasajerosMenores
+                                && (!filter.PrecioDesde.HasValue || x.PrecioDesde == filter.PrecioDesde)
+                                && (!filter.PrecioHasta.HasValue || x.PrecioHasta == filter.PrecioHasta)
+                                && filter.FechaDesde == x.FechaDesde
+                                && filter.FechaHasta == x.FechaHasta)
+                    .ToList();
+
+                if (!searchedPresupuestos.Any())
+                {
+                    MessageBox.Show("No hay productos disponibles para los parámetros ingresados.", "Error.", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    GenerarPresupuesto.searchedPresupuestos = searchedPresupuestos;
+
+                    NextForm();
+                }
+            }
+        }
+
+        private void NextForm()
+        {
+            this.Close();
+
+            Thread thread = new Thread(OpenGenerarPresupuestoForm);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenGenerarPresupuestoForm()
+        {
+            Application.Run(new GenerarPresupuesto());
         }
 
         private string ValidacionDePresupuesto(PresupuestoDto presupuesto)
