@@ -191,7 +191,6 @@
             agregarPresupuesto.TabIndex = 47;
             agregarPresupuesto.Text = "Agregar";
             agregarPresupuesto.UseVisualStyleBackColor = true;
-            agregarPresupuesto.Click += agregarPresupuesto_Click;
             // 
             // buscarPresupuesto
             // 
@@ -201,7 +200,6 @@
             buscarPresupuesto.TabIndex = 46;
             buscarPresupuesto.Text = "Buscar";
             buscarPresupuesto.UseVisualStyleBackColor = true;
-            buscarPresupuesto.Click += buscarPresupuesto_Click;
             // 
             // label8
             // 
@@ -341,7 +339,6 @@
             btnVolverMenuGenerarPresupuestos.TabIndex = 52;
             btnVolverMenuGenerarPresupuestos.Text = "Volver al Menu de Generar Presupuestos";
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
-            btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
             // finalizarPresupuesto
             // 
@@ -351,7 +348,6 @@
             finalizarPresupuesto.TabIndex = 51;
             finalizarPresupuesto.Text = "Finalizar Presupuesto";
             finalizarPresupuesto.UseVisualStyleBackColor = true;
-            finalizarPresupuesto.Click += finalizarPresupuesto_Click;
             // 
             // removerPresupuesto
             // 
@@ -361,7 +357,6 @@
             removerPresupuesto.TabIndex = 50;
             removerPresupuesto.Text = "Remover";
             removerPresupuesto.UseVisualStyleBackColor = true;
-            removerPresupuesto.Click += removerPresupuesto_Click;
             // 
             // GenerarPresupuestoCruceros
             // 
@@ -393,7 +388,6 @@
             Controls.Add(pasajerosAdultos);
             Name = "GenerarPresupuestoCruceros";
             Text = "GenerarPresupuestoCruceros";
-            Load += GenerarPresupuesto_Load;
             ResumeLayout(false);
             PerformLayout();
         }

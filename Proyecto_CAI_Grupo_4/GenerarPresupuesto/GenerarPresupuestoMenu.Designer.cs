@@ -33,9 +33,13 @@
             btnMenuCruceros = new Button();
             btnMenuAereos = new Button();
             label2 = new Label();
-            listView1 = new ListView();
             btnFinalizarPresupuesto = new Button();
             btnVolverMenuPrincipal = new Button();
+            presupuestosElegidos = new ListView();
+            ID = new ColumnHeader();
+            Nombre = new ColumnHeader();
+            Precio = new ColumnHeader();
+            TipoDeServicio = new ColumnHeader();
             SuspendLayout();
             // 
             // label1
@@ -87,14 +91,6 @@
             label2.TabIndex = 12;
             label2.Text = "Generar Presupuesto";
             // 
-            // listView1
-            // 
-            listView1.Location = new Point(106, 253);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(1006, 261);
-            listView1.TabIndex = 13;
-            listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // btnFinalizarPresupuesto
             // 
             btnFinalizarPresupuesto.Location = new Point(502, 531);
@@ -115,14 +111,45 @@
             btnVolverMenuPrincipal.UseVisualStyleBackColor = true;
             btnVolverMenuPrincipal.Click += btnVolverMenuPrincipal_Click;
             // 
+            // presupuestosElegidos
+            // 
+            presupuestosElegidos.Columns.AddRange(new ColumnHeader[] { ID, Nombre, Precio, TipoDeServicio });
+            presupuestosElegidos.FullRowSelect = true;
+            presupuestosElegidos.Location = new Point(47, 225);
+            presupuestosElegidos.Name = "presupuestosElegidos";
+            presupuestosElegidos.Size = new Size(1159, 280);
+            presupuestosElegidos.TabIndex = 32;
+            presupuestosElegidos.UseCompatibleStateImageBehavior = false;
+            presupuestosElegidos.View = View.Details;
+            // 
+            // ID
+            // 
+            ID.Text = "ID";
+            ID.Width = 250;
+            // 
+            // Nombre
+            // 
+            Nombre.Text = "Nombre";
+            Nombre.Width = 100;
+            // 
+            // Precio
+            // 
+            Precio.Text = "Precio";
+            Precio.Width = 100;
+            // 
+            // TipoDeServicio
+            // 
+            TipoDeServicio.Text = "Tipo de Servicio";
+            TipoDeServicio.Width = 100;
+            // 
             // GenerarPresupuestoMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1252, 644);
+            Controls.Add(presupuestosElegidos);
             Controls.Add(btnVolverMenuPrincipal);
             Controls.Add(btnFinalizarPresupuesto);
-            Controls.Add(listView1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnMenuHoteles);
@@ -130,6 +157,7 @@
             Controls.Add(btnMenuAereos);
             Name = "GenerarPresupuestoMenu";
             Text = "GenerarPresupuestoMenu";
+            Load += GenerarPresupuestoMenu_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -141,8 +169,12 @@
         private Button btnMenuCruceros;
         private Button btnMenuAereos;
         private Label label2;
-        private ListView listView1;
         private Button btnFinalizarPresupuesto;
         private Button btnVolverMenuPrincipal;
+        private ListView presupuestosElegidos;
+        private ColumnHeader ID;
+        private ColumnHeader Nombre;
+        private ColumnHeader Precio;
+        private ColumnHeader TipoDeServicio;
     }
 }
