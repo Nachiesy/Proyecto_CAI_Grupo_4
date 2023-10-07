@@ -115,7 +115,7 @@
             pnl_BarraFijaSuperior.Name = "pnl_BarraFijaSuperior";
             pnl_BarraFijaSuperior.Size = new Size(997, 100);
             pnl_BarraFijaSuperior.TabIndex = 6;
-            pnl_BarraFijaSuperior.MouseDown += new MouseEventHandler(this.pnl_BarraFijaSuperior_MouseDown);
+            pnl_BarraFijaSuperior.MouseDown += pnl_BarraFijaSuperior_MouseDown;
             // 
             // btn_CerrarApp
             // 
