@@ -17,9 +17,23 @@ namespace Proyecto_CAI_Grupo_4
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
+            Close();
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Thread thread = new Thread(OpenCasoDeUso5Form);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenCasoDeUso5Form()
+        {
+            Application.Run(new Reservas());
         }
     }
 }
