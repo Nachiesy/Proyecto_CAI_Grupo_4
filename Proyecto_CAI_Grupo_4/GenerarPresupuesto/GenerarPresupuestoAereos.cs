@@ -4,7 +4,7 @@ using System.Data;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class GenerarPresupuesto : Form
+    public partial class GenerarPresupuestoAereos : Form
     {
         private static List<Presupuesto> presupuestos = new List<Presupuesto>()
         {
@@ -72,7 +72,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private static List<Presupuesto> presupuestosFinalizar = new List<Presupuesto>();
 
-        public GenerarPresupuesto()
+        public GenerarPresupuestoAereos()
         {
             InitializeComponent();
         }
@@ -328,6 +328,20 @@ namespace Proyecto_CAI_Grupo_4
         private void finalizarPresupuesto_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenMenuGenerarPresupuesto()
+        {
+            Application.Run(new GenerarPresupuestoMenu());
         }
     }
 }

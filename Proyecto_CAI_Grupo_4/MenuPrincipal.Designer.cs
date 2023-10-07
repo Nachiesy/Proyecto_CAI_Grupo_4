@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            button1 = new Button();
+            btnMenuGenerarPresupuesto = new Button();
             button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            btnClose = new Button();
+            btnEstadoDeReservas = new Button();
             button5 = new Button();
             button6 = new Button();
             SuspendLayout();
@@ -46,17 +46,16 @@
             label1.Size = new Size(269, 30);
             label1.TabIndex = 0;
             label1.Text = "Seleccione que desea hacer";
-            label1.Click += label1_Click;
             // 
-            // button1
+            // btnMenuGenerarPresupuesto
             // 
-            button1.Location = new Point(518, 190);
-            button1.Name = "button1";
-            button1.Size = new Size(241, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Generar Presupuesto";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnMenuGenerarPresupuesto.Location = new Point(518, 190);
+            btnMenuGenerarPresupuesto.Name = "btnMenuGenerarPresupuesto";
+            btnMenuGenerarPresupuesto.Size = new Size(241, 23);
+            btnMenuGenerarPresupuesto.TabIndex = 0;
+            btnMenuGenerarPresupuesto.Text = "Generar Presupuesto";
+            btnMenuGenerarPresupuesto.UseVisualStyleBackColor = true;
+            btnMenuGenerarPresupuesto.Click += btnMenuGenerarPresupuesto_Click;
             // 
             // button2
             // 
@@ -67,25 +66,25 @@
             button2.Text = "Generar Reserva";
             button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnClose
             // 
-            button3.Location = new Point(518, 357);
-            button3.Name = "button3";
-            button3.Size = new Size(241, 23);
-            button3.TabIndex = 2;
-            button3.Text = "Salir del Sistema";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnClose.Location = new Point(518, 357);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(241, 23);
+            btnClose.TabIndex = 2;
+            btnClose.Text = "Salir del Sistema";
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
-            // button4
+            // btnEstadoDeReservas
             // 
-            button4.Location = new Point(518, 315);
-            button4.Name = "button4";
-            button4.Size = new Size(241, 23);
-            button4.TabIndex = 3;
-            button4.Text = "Informar Estado de Reservas";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            btnEstadoDeReservas.Location = new Point(518, 315);
+            btnEstadoDeReservas.Name = "btnEstadoDeReservas";
+            btnEstadoDeReservas.Size = new Size(241, 23);
+            btnEstadoDeReservas.TabIndex = 3;
+            btnEstadoDeReservas.Text = "Informar Estado de Reservas";
+            btnEstadoDeReservas.UseVisualStyleBackColor = true;
+            btnEstadoDeReservas.Click += btnEstadoDeReservas_Click;
             // 
             // button5
             // 
@@ -113,10 +112,10 @@
             Controls.Add(label1);
             Controls.Add(button6);
             Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
+            Controls.Add(btnEstadoDeReservas);
+            Controls.Add(btnClose);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnMenuGenerarPresupuesto);
             Name = "MenuPrincipal";
             Text = "Menu Principal";
             ResumeLayout(false);
@@ -128,10 +127,10 @@
         //<<<<<<< HEAD
         private Label label1;
         //=======
-        private Button button1;
+        private Button btnMenuGenerarPresupuesto;
         private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btnClose;
+        private Button btnEstadoDeReservas;
         private Button button5;
         private Button button6;
         //>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3

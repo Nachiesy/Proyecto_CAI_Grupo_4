@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4
 {
-    partial class GenerarPresupuesto
+    partial class GenerarPresupuestoAereos
     {
         /// <summary>
         /// Required designer variable.
@@ -68,6 +68,7 @@
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
+            btnVolverMenuGenerarPresupuestos = new Button();
             SuspendLayout();
             // 
             // pasajerosAdultos
@@ -212,7 +213,7 @@
             // 
             // finalizarPresupuesto
             // 
-            finalizarPresupuesto.Location = new Point(1051, 616);
+            finalizarPresupuesto.Location = new Point(1051, 641);
             finalizarPresupuesto.Name = "finalizarPresupuesto";
             finalizarPresupuesto.Size = new Size(138, 25);
             finalizarPresupuesto.TabIndex = 27;
@@ -222,7 +223,7 @@
             // 
             // removerPresupuesto
             // 
-            removerPresupuesto.Location = new Point(917, 616);
+            removerPresupuesto.Location = new Point(917, 641);
             removerPresupuesto.Name = "removerPresupuesto";
             removerPresupuesto.Size = new Size(107, 25);
             removerPresupuesto.TabIndex = 26;
@@ -232,7 +233,7 @@
             // 
             // agregarPresupuesto
             // 
-            agregarPresupuesto.Location = new Point(1083, 369);
+            agregarPresupuesto.Location = new Point(1083, 383);
             agregarPresupuesto.Name = "agregarPresupuesto";
             agregarPresupuesto.Size = new Size(106, 28);
             agregarPresupuesto.TabIndex = 25;
@@ -244,7 +245,7 @@
             // 
             presupuestosBuscados.Columns.AddRange(new ColumnHeader[] { ID, Tipo, Nombre, Adultos, Menores, PrecioD, PrecioH, FechaD, FechaH });
             presupuestosBuscados.FullRowSelect = true;
-            presupuestosBuscados.Location = new Point(30, 168);
+            presupuestosBuscados.Location = new Point(30, 178);
             presupuestosBuscados.Name = "presupuestosBuscados";
             presupuestosBuscados.Size = new Size(1159, 195);
             presupuestosBuscados.TabIndex = 28;
@@ -300,7 +301,7 @@
             // 
             presupuestosElegidos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9 });
             presupuestosElegidos.FullRowSelect = true;
-            presupuestosElegidos.Location = new Point(30, 415);
+            presupuestosElegidos.Location = new Point(30, 432);
             presupuestosElegidos.Name = "presupuestosElegidos";
             presupuestosElegidos.Size = new Size(1159, 195);
             presupuestosElegidos.TabIndex = 29;
@@ -352,11 +353,22 @@
             columnHeader9.Text = "Fecha Hasta";
             columnHeader9.Width = 100;
             // 
-            // GenerarPresupuesto
+            // btnVolverMenuGenerarPresupuestos
+            // 
+            btnVolverMenuGenerarPresupuestos.Location = new Point(30, 643);
+            btnVolverMenuGenerarPresupuestos.Name = "btnVolverMenuGenerarPresupuestos";
+            btnVolverMenuGenerarPresupuestos.Size = new Size(246, 23);
+            btnVolverMenuGenerarPresupuestos.TabIndex = 30;
+            btnVolverMenuGenerarPresupuestos.Text = "Volver al Menu de Generar Presupuestos";
+            btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
+            btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
+            // 
+            // GenerarPresupuestoAereos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1364, 703);
+            Controls.Add(btnVolverMenuGenerarPresupuestos);
             Controls.Add(presupuestosElegidos);
             Controls.Add(presupuestosBuscados);
             Controls.Add(finalizarPresupuesto);
@@ -379,7 +391,7 @@
             Controls.Add(pasajerosMenores);
             Controls.Add(lbl);
             Controls.Add(pasajerosAdultos);
-            Name = "GenerarPresupuesto";
+            Name = "GenerarPresupuestoAereos";
             Text = "Form2";
             Load += GenerarPresupuesto_Load;
             ResumeLayout(false);
@@ -428,5 +440,6 @@
         private ColumnHeader columnHeader7;
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
+        private Button btnVolverMenuGenerarPresupuestos;
     }
 }
