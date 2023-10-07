@@ -39,5 +39,24 @@
         {
             Close();
         }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGenerarReserva_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Thread thread = new Thread(OpenGenerarReserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+        private void OpenGenerarReserva()
+        {
+            Application.Run(new GenerarReserva());
+        }
+
     }
 }

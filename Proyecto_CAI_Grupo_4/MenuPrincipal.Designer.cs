@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             btnMenuGenerarPresupuesto = new Button();
-            button2 = new Button();
+            btnGenerarReserva = new Button();
             btnClose = new Button();
             btnEstadoDeReservas = new Button();
             button5 = new Button();
@@ -57,14 +57,15 @@
             btnMenuGenerarPresupuesto.UseVisualStyleBackColor = true;
             btnMenuGenerarPresupuesto.Click += btnMenuGenerarPresupuesto_Click;
             // 
-            // button2
+            // btnGenerarReserva
             // 
-            button2.Location = new Point(518, 231);
-            button2.Name = "button2";
-            button2.Size = new Size(241, 23);
-            button2.TabIndex = 1;
-            button2.Text = "Generar Reserva";
-            button2.UseVisualStyleBackColor = true;
+            btnGenerarReserva.Location = new Point(518, 231);
+            btnGenerarReserva.Name = "btnGenerarReserva";
+            btnGenerarReserva.Size = new Size(241, 23);
+            btnGenerarReserva.TabIndex = 1;
+            btnGenerarReserva.Text = "Generar Reserva";
+            btnGenerarReserva.UseVisualStyleBackColor = true;
+            btnGenerarReserva.Click += btnGenerarReserva_Click;
             // 
             // btnClose
             // 
@@ -114,10 +115,11 @@
             Controls.Add(button5);
             Controls.Add(btnEstadoDeReservas);
             Controls.Add(btnClose);
-            Controls.Add(button2);
+            Controls.Add(btnGenerarReserva);
             Controls.Add(btnMenuGenerarPresupuesto);
             Name = "MenuPrincipal";
             Text = "Menu Principal";
+            Load += MenuPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -128,7 +130,7 @@
         private Label label1;
         //=======
         private Button btnMenuGenerarPresupuesto;
-        private Button button2;
+        private Button btnGenerarReserva;
         private Button btnClose;
         private Button btnEstadoDeReservas;
         private Button button5;

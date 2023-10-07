@@ -136,5 +136,10 @@ namespace Proyecto_CAI_Grupo_4
         {
 
         }
+
+        private void pasajerosbox_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
