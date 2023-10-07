@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VistaBase));
             pnl_BarraFijaSuperior = new Panel();
             btn_Salir = new PictureBox();
-            label1 = new Label();
+            lbl_TituloModulo = new Label();
             pnl_BarraFijaSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btn_Salir).BeginInit();
             SuspendLayout();
@@ -40,7 +40,7 @@
             // 
             pnl_BarraFijaSuperior.BackColor = Color.FromArgb(95, 42, 167);
             pnl_BarraFijaSuperior.Controls.Add(btn_Salir);
-            pnl_BarraFijaSuperior.Controls.Add(label1);
+            pnl_BarraFijaSuperior.Controls.Add(lbl_TituloModulo);
             pnl_BarraFijaSuperior.Dock = DockStyle.Top;
             pnl_BarraFijaSuperior.Location = new Point(0, 0);
             pnl_BarraFijaSuperior.Name = "pnl_BarraFijaSuperior";
@@ -59,16 +59,15 @@
             btn_Salir.TabStop = false;
             btn_Salir.Click += btn_Salir_Click;
             // 
-            // label1
+            // lbl_TituloModulo
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft JhengHei UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlLight;
-            label1.Location = new Point(27, 37);
-            label1.Name = "label1";
-            label1.Size = new Size(91, 35);
-            label1.TabIndex = 0;
-            label1.Text = "Menu";
+            lbl_TituloModulo.AutoSize = true;
+            lbl_TituloModulo.Font = new Font("Microsoft JhengHei UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_TituloModulo.ForeColor = SystemColors.ControlLight;
+            lbl_TituloModulo.Location = new Point(27, 37);
+            lbl_TituloModulo.Name = "lbl_TituloModulo";
+            lbl_TituloModulo.Size = new Size(0, 35);
+            lbl_TituloModulo.TabIndex = 0;
             // 
             // VistaBase
             // 
@@ -88,7 +87,7 @@
         #endregion
 
         private Panel pnl_BarraFijaSuperior;
-        private Label label1;
+        private Label lbl_TituloModulo;
         private PictureBox btn_Salir;
     }
 }

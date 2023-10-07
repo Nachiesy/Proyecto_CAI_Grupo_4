@@ -13,9 +13,10 @@ namespace Proyecto_CAI_Grupo_4.Common
 {
     public partial class VistaBase : Form
     {
-        public VistaBase()
+        public VistaBase(string tituloModulo)
         {
             InitializeComponent();
+            lbl_TituloModulo.Text = tituloModulo;
         }
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
