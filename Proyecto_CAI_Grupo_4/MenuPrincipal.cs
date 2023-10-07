@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,36 +19,37 @@ namespace Proyecto_CAI_Grupo_4
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void btnMenuGenerarPresupuesto_Click(object sender, EventArgs e)
         {
             this.Close();
 
-            Thread thread = new Thread(OpenReservasForm);
+            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
 
-        private void OpenReservasForm()
+        private void OpenMenuGenerarPresupuesto()
+        {
+            Application.Run(new GenerarPresupuestoMenu());
+        }
+
+        private void btnEstadoDeReservas_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            Thread thread = new Thread(OpenEstadoDeReservas);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenEstadoDeReservas()
         {
             Application.Run(new Reservas());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-
-            var thread = new Thread(OpenPresupuestoForm);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void OpenPresupuestoForm()
-        {
-            Application.Run(new GenerarPresupuesto());
         }
     }
 }

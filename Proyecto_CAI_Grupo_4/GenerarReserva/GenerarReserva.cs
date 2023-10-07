@@ -131,5 +131,10 @@ namespace Proyecto_CAI_Grupo_4
         {
             throw new NotImplementedException();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
