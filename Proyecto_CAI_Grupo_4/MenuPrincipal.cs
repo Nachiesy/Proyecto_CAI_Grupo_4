@@ -7,21 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_CAI_Grupo_4.Common;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class MenuPrincipal : Form
+    public partial class MenuPrincipal : VistaBase
     {
         public MenuPrincipal()
         {
             InitializeComponent();
         }
 
-        /* <<<<<<< HEAD*/
         private void label1_Click(object sender, EventArgs e)
         {
-
-            /*=======*/
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -40,14 +38,13 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenReservasForm()
         {
             Application.Run(new Reservas());
-            /*>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3*/
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            Thread thread = new Thread(OpenPresupuestoForm);
+            var thread = new Thread(OpenPresupuestoForm);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
@@ -55,6 +52,17 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenPresupuestoForm()
         {
             Application.Run(new GenerarPresupuesto());
+        }
+
+        private void btn_CerrarApp_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pnl_BarraFijaSuperior_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
