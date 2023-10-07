@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4
 {
-    partial class Presupuestos
+    partial class BuscarPresupuestos
     {
         /// <summary>
         /// Required designer variable.
