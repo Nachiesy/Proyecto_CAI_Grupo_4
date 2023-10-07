@@ -134,7 +134,7 @@
             buscarPresupuesto.TabIndex = 22;
             buscarPresupuesto.Text = "Buscar";
             buscarPresupuesto.UseVisualStyleBackColor = true;
-            buscarPresupuesto.Click += buscarPresupuesto_Click;
+            buscarPresupuesto.Click += buscarProductosAereos_Click;
             // 
             // finalizarPresupuesto
             // 
@@ -144,7 +144,7 @@
             finalizarPresupuesto.TabIndex = 27;
             finalizarPresupuesto.Text = "Confirmar";
             finalizarPresupuesto.UseVisualStyleBackColor = true;
-            finalizarPresupuesto.Click += finalizarPresupuesto_Click;
+            finalizarPresupuesto.Click += finalizarPresupuestoAereo_Click;
             // 
             // removerPresupuesto
             // 
@@ -154,7 +154,7 @@
             removerPresupuesto.TabIndex = 26;
             removerPresupuesto.Text = "Quitar";
             removerPresupuesto.UseVisualStyleBackColor = true;
-            removerPresupuesto.Click += removerPresupuesto_Click;
+            removerPresupuesto.Click += removerProductosAereosDeLosElegidos_Click;
             // 
             // agregarPresupuesto
             // 
@@ -164,7 +164,7 @@
             agregarPresupuesto.TabIndex = 25;
             agregarPresupuesto.Text = "Agregar";
             agregarPresupuesto.UseVisualStyleBackColor = true;
-            agregarPresupuesto.Click += agregarPresupuesto_Click;
+            agregarPresupuesto.Click += agregarProductosAereosElegidos_Click;
             // 
             // lstViewProductosAereos
             // 
@@ -301,7 +301,7 @@
             Controls.Add(datePickerFechaSalida);
             Name = "GenerarPresupuestoAereos";
             Text = "Form2";
-            Load += GenerarPresupuesto_Load;
+            Load += GenerarPresupuestoAereos_Load;
             ResumeLayout(false);
             PerformLayout();
         }
