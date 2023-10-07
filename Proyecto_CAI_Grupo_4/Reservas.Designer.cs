@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4
 {
-    partial class CasoDeUso5
+    partial class Reservas
     {
         /// <summary>
         ///  Required designer variable.

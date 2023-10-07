@@ -1,6 +1,6 @@
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class CasoDeUso5 : Form
+    public partial class Reservas : Form
     {
         private List<Reserva> reservas = new List<Reserva>()
         {
@@ -36,7 +36,7 @@ namespace Proyecto_CAI_Grupo_4
             },
         };
 
-        public CasoDeUso5()
+        public Reservas()
         {
             InitializeComponent();
         }

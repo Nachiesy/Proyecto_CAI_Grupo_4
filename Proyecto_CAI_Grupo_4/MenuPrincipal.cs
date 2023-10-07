@@ -33,7 +33,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void OpenCasoDeUso5Form()
         {
-            Application.Run(new CasoDeUso5());
+            Application.Run(new Reservas());
         }
     }
 }
