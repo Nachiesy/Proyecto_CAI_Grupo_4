@@ -17,12 +17,12 @@ namespace Proyecto_CAI_Grupo_4
             InitializeComponent();
         }
 
-/* <<<<<<< HEAD*/
+        /* <<<<<<< HEAD*/
         private void label1_Click(object sender, EventArgs e)
         {
 
             /*=======*/
-            }
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
@@ -40,7 +40,7 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenReservasForm()
         {
             Application.Run(new Reservas());
-/*>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3*/
+            /*>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3*/
         }
 
         private void button1_Click(object sender, EventArgs e)

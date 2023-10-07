@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proyecto_CAI_Grupo_4.Modelos
+namespace Proyecto_CAI_Grupo_4.Models
 {
-    internal class ProductosModel
+    internal class PasajerosModel
     {
     }
 }

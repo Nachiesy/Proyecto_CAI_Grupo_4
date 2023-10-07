@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-//<<<<<<< HEAD
             label1 = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -42,14 +47,6 @@
             label1.TabIndex = 0;
             label1.Text = "Seleccione que desea hacer";
             label1.Click += label1_Click;
-//=======
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            SuspendLayout();
             // 
             // button1
             // 
@@ -107,21 +104,13 @@
             button6.TabIndex = 5;
             button6.Text = "Confirmar Reserva";
             button6.UseVisualStyleBackColor = true;
-//>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3
             // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-//<<<<<<< HEAD
-            ClientSize = new Size(307, 446);
-            Controls.Add(label1);
-            Name = "MenuPrincipal";
-            Text = "Menu Principal";
-            ResumeLayout(false);
-            PerformLayout();
-//=======
             ClientSize = new Size(1251, 487);
+            Controls.Add(label1);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -129,22 +118,22 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "MenuPrincipal";
-            Text = "MenuPrincipal";
+            Text = "Menu Principal";
             ResumeLayout(false);
-//>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3
+            PerformLayout();
         }
 
         #endregion
 
-//<<<<<<< HEAD
+        //<<<<<<< HEAD
         private Label label1;
-//=======
+        //=======
         private Button button1;
         private Button button2;
         private Button button3;
         private Button button4;
         private Button button5;
         private Button button6;
-//>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3
+        //>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3
     }
 }
