@@ -77,7 +77,7 @@ namespace Proyecto_CAI_Grupo_4
             InitializeComponent();
         }
 
-        private void BuscarPresupuestos_Load(object sender, EventArgs e)
+        private void GenerarPresupuesto_Load(object sender, EventArgs e)
         {
             AddPresupuestosToListView(presupuestos, presupuestosBuscados);
         }
@@ -306,7 +306,23 @@ namespace Proyecto_CAI_Grupo_4
 
         private void removerPresupuesto_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Vuelo removido del presupuesto satisfactoriamente.");
+            if (presupuestosElegidos.SelectedItems.Count > 0)
+            {
+                foreach (ListViewItem selectedItem in presupuestosElegidos.SelectedItems)
+                {
+                    var id = int.Parse(selectedItem.Text);
+
+                    var presupuesto = presupuestos.Where(x => x.Id == id).FirstOrDefault();
+
+                    presupuestosElegidos.Items.Remove(selectedItem);
+
+                    presupuestosFinalizar.Remove(presupuesto);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ningun vuelo seleccionado para remover del presupuesto.");
+            }
         }
 
         private void finalizarPresupuesto_Click(object sender, EventArgs e)

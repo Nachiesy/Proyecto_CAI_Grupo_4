@@ -218,6 +218,7 @@
             finalizarPresupuesto.TabIndex = 27;
             finalizarPresupuesto.Text = "Finalizar Presupuesto";
             finalizarPresupuesto.UseVisualStyleBackColor = true;
+            finalizarPresupuesto.Click += finalizarPresupuesto_Click;
             // 
             // removerPresupuesto
             // 
@@ -227,6 +228,7 @@
             removerPresupuesto.TabIndex = 26;
             removerPresupuesto.Text = "Remover";
             removerPresupuesto.UseVisualStyleBackColor = true;
+            removerPresupuesto.Click += removerPresupuesto_Click;
             // 
             // agregarPresupuesto
             // 
@@ -379,7 +381,7 @@
             Controls.Add(pasajerosAdultos);
             Name = "GenerarPresupuesto";
             Text = "Form2";
-            Load += BuscarPresupuestos_Load;
+            Load += GenerarPresupuesto_Load;
             ResumeLayout(false);
             PerformLayout();
         }
