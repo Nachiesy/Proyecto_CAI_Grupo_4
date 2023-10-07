@@ -107,6 +107,7 @@
             Name = "MenuPrincipal";
             Text = "MenuPrincipal";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
