@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class GenerarReserva : Form
+    public partial class IngresarPasajero : Form
     {
-        public GenerarReserva()
+        public IngresarPasajero()
         {
             InitializeComponent();
         }
 
-        private void GenerarReserva_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
