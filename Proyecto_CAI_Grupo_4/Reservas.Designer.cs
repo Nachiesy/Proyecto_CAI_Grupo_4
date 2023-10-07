@@ -55,6 +55,7 @@
             reservasListView.TabIndex = 0;
             reservasListView.UseCompatibleStateImageBehavior = false;
             reservasListView.View = View.Details;
+            reservasListView.SelectedIndexChanged += reservasListView_SelectedIndexChanged;
             // 
             // Codigo
             // 
@@ -161,7 +162,7 @@
             volverAlMenuPrincipal.UseVisualStyleBackColor = true;
             volverAlMenuPrincipal.Click += volverAlMenuPrincipal_Click;
             // 
-            // CasoDeUso5
+            // Reservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -175,7 +176,7 @@
             Controls.Add(filtroCodigo);
             Controls.Add(buscarReserva);
             Controls.Add(reservasListView);
-            Name = "CasoDeUso5";
+            Name = "Reservas";
             Text = "Form1";
             Load += CasoDeUso5_Load;
             ResumeLayout(false);

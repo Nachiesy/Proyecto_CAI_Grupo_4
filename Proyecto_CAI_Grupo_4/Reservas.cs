@@ -104,5 +104,10 @@ namespace Proyecto_CAI_Grupo_4
         {
             Application.Run(new MenuPrincipal());
         }
+
+        private void reservasListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

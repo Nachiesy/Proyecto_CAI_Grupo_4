@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
-            reservaslb = new ListBox();
+            dniClientetxb = new TextBox();
             buscarclientebtn = new Button();
             generarreservabtn = new Button();
+            reservasListView = new ListView();
+            Codigo = new ColumnHeader();
+            Estado = new ColumnHeader();
+            Nrodocumento = new ColumnHeader();
             SuspendLayout();
             // 
             // label1
@@ -45,21 +48,12 @@
             label1.Text = "Ingrese el DNI del Cliente: ";
             label1.Click += label1_Click;
             // 
-            // textBox1
+            // dniClientetxb
             // 
-            textBox1.Location = new Point(163, 16);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 1;
-            // 
-            // reservaslb
-            // 
-            reservaslb.FormattingEnabled = true;
-            reservaslb.ItemHeight = 15;
-            reservaslb.Location = new Point(12, 55);
-            reservaslb.Name = "reservaslb";
-            reservaslb.Size = new Size(440, 79);
-            reservaslb.TabIndex = 2;
+            dniClientetxb.Location = new Point(163, 16);
+            dniClientetxb.Name = "dniClientetxb";
+            dniClientetxb.Size = new Size(100, 23);
+            dniClientetxb.TabIndex = 1;
             // 
             // buscarclientebtn
             // 
@@ -72,25 +66,34 @@
             // 
             // generarreservabtn
             // 
-            generarreservabtn.Location = new Point(334, 140);
+            generarreservabtn.Location = new Point(470, 204);
             generarreservabtn.Name = "generarreservabtn";
             generarreservabtn.Size = new Size(118, 23);
             generarreservabtn.TabIndex = 4;
             generarreservabtn.Text = "Generar reserva";
             generarreservabtn.UseVisualStyleBackColor = true;
             // 
+            // reservasListView
+            // 
+            reservasListView.Columns.AddRange(new ColumnHeader[] { Codigo, Estado, Nrodocumento });
+            reservasListView.Location = new Point(12, 45);
+            reservasListView.Name = "reservasListView";
+            reservasListView.Size = new Size(576, 153);
+            reservasListView.TabIndex = 5;
+            reservasListView.UseCompatibleStateImageBehavior = false;
+            // 
             // GenerarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(464, 189);
+            ClientSize = new Size(600, 265);
+            Controls.Add(reservasListView);
             Controls.Add(generarreservabtn);
             Controls.Add(buscarclientebtn);
-            Controls.Add(reservaslb);
-            Controls.Add(textBox1);
+            Controls.Add(dniClientetxb);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(1, 1, 1, 1);
+            Margin = new Padding(1);
             Name = "GenerarReserva";
             Text = "Generar Reserva";
             Load += GenerarReserva_Load;
@@ -101,9 +104,12 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
-        private ListBox reservaslb;
+        private TextBox dniClientetxb;
         private Button buscarclientebtn;
         private Button generarreservabtn;
+        private ListView reservasListView;
+        private ColumnHeader Codigo;
+        private ColumnHeader Estado;
+        private ColumnHeader Nrodocumento;
     }
 }
