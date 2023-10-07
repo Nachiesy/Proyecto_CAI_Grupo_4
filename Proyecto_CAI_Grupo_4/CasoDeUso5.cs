@@ -54,14 +54,43 @@ namespace Proyecto_CAI_Grupo_4
 
             var nroDeDoc = filtroNroDeDoc.Text.Trim();
 
-            var filterReservas = reservas
+            var filteredReservas = reservas
                 .Where(x => (string.IsNullOrEmpty(codigo) || x.Codigo == codigo)
                             && (estado == -1 || (int)x.Estado == estado)
                             && (string.IsNullOrEmpty(nroDeDoc) || x.NumeroDeDocumento == nroDeDoc));
 
-            reservasListView.Items.Clear();
+            var validacion = ValidarBuscarReservas(filteredReservas, codigo, nroDeDoc);
 
-            AddReservasToListView(filterReservas);
+            if (validacion)
+            {
+                reservasListView.Items.Clear();
+
+                AddReservasToListView(filteredReservas);
+            }
+        }
+
+        private bool ValidarBuscarReservas(IEnumerable<Reserva> list, string codigo, string nroDeDoc)
+        {
+            if (list.Any())
+            {
+                return true;
+            }
+
+            var messages = string.Empty;
+
+            if (!string.IsNullOrEmpty(codigo))
+            {
+                messages += "El código de reserva ingresado es inválido." + Environment.NewLine;
+            }
+
+            if (!string.IsNullOrEmpty(nroDeDoc))
+            {
+                messages += "El número de documento ingresado es inválido." + Environment.NewLine;
+            }
+
+            MessageBox.Show(messages, "Error.", MessageBoxButtons.OK);
+
+            return false;
         }
 
         private void AddReservasToListView(IEnumerable<Reserva> list)
@@ -79,6 +108,20 @@ namespace Proyecto_CAI_Grupo_4
 
                 reservasListView.Items.Add(row);
             }
+        }
+
+        private void volverAlMenuPrincipal_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Thread thread = new Thread(OpenCasoDeUso5Form);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenCasoDeUso5Form()
+        {
+            Application.Run(new MenuPrincipal());
         }
     }
 }

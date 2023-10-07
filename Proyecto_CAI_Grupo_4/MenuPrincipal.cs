@@ -24,7 +24,16 @@ namespace Proyecto_CAI_Grupo_4
 
         private void button4_Click(object sender, EventArgs e)
         {
-            new CasoDeUso5().Show();
+            this.Close();
+
+            Thread thread = new Thread(OpenCasoDeUso5Form);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenCasoDeUso5Form()
+        {
+            Application.Run(new CasoDeUso5());
         }
     }
 }

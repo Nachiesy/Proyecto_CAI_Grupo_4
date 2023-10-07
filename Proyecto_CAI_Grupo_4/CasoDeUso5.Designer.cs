@@ -43,6 +43,7 @@
             filtroNroDeDoc = new TextBox();
             label3 = new Label();
             filtroEstado = new ComboBox();
+            volverAlMenuPrincipal = new Button();
             SuspendLayout();
             // 
             // reservasListView
@@ -150,11 +151,22 @@
             filtroEstado.Size = new Size(121, 23);
             filtroEstado.TabIndex = 9;
             // 
+            // volverAlMenuPrincipal
+            // 
+            volverAlMenuPrincipal.Location = new Point(1015, 450);
+            volverAlMenuPrincipal.Name = "volverAlMenuPrincipal";
+            volverAlMenuPrincipal.Size = new Size(162, 30);
+            volverAlMenuPrincipal.TabIndex = 10;
+            volverAlMenuPrincipal.Text = "Volver al Menu Principal";
+            volverAlMenuPrincipal.UseVisualStyleBackColor = true;
+            volverAlMenuPrincipal.Click += volverAlMenuPrincipal_Click;
+            // 
             // CasoDeUso5
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1263, 509);
+            Controls.Add(volverAlMenuPrincipal);
             Controls.Add(filtroEstado);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -187,5 +199,6 @@
         private TextBox filtroNroDeDoc;
         private Label label3;
         private ComboBox filtroEstado;
+        private Button volverAlMenuPrincipal;
     }
 }
