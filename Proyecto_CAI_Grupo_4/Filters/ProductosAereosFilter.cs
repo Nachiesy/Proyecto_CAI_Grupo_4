@@ -6,9 +6,9 @@
 
         public string Destino { get; set; }
 
-        public DateTime FechaDeSalida { get; set; }
+        public DateTime? FechaDeSalida { get; set; }
 
-        public DateTime FechaDeLlegada { get; set; }
+        public DateTime? FechaDeLlegada { get; set; }
 
         public int TipoDeClaseAerea { get; set; }
     }
@@ -21,9 +21,9 @@
 
             Destino = dto.Destino;
 
-            FechaDeSalida = dto.FechaDeSalida.Date;
+            FechaDeSalida = dto.FechaDeSalida.HasValue ? dto.FechaDeSalida.Value.Date : null;
 
-            FechaDeLlegada = dto.FechaDeLlegada.Date;
+            FechaDeLlegada = dto.FechaDeLlegada.HasValue ? dto.FechaDeLlegada.Value.Date : null;
 
             TipoDeClaseAerea = dto.TipoDeClaseAerea;
         }
@@ -32,9 +32,9 @@
 
         public string Destino { get; set; }
 
-        public DateTime FechaDeSalida { get; set; }
+        public DateTime? FechaDeSalida { get; set; }
 
-        public DateTime FechaDeLlegada { get; set; }
+        public DateTime? FechaDeLlegada { get; set; }
 
         public int TipoDeClaseAerea { get; set; }
     }

@@ -15,6 +15,11 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuesto_Load(object sender, EventArgs e)
         {
+            datePickerFechaSalida.Checked = false;
+            datePickerFechaSalida.Value = DateTime.Now.Date;
+            datePickerFechaLlegada.Checked = false;
+            datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
+
             AddPresupuestosToListView(GenerarPresupuestosManager.productosAereos, lstViewProductosAereos);
 
             AddPresupuestosToListView(GenerarPresupuestosManager.productosAereosElegidos, lstViewProductosAereosElegidos);
@@ -24,10 +29,10 @@ namespace Proyecto_CAI_Grupo_4
         {
             var filterDto = new ProductosAereosFilterDto()
             {
-                PrecioDesde = precioDesde.Text,
-                PrecioHasta = precioHasta.Text,
-                FechaDeSalida = fechaDesde.Value,
-                FechaDeLlegada = fechaHasta.Value,
+                PrecioDesde = txtBoxPrecioDesde.Text,
+                PrecioHasta = txtBoxPrecioHasta.Text,
+                FechaDeSalida = datePickerFechaSalida.Checked ? datePickerFechaSalida.Value : null,
+                FechaDeLlegada = datePickerFechaLlegada.Checked ? datePickerFechaLlegada.Value : null,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -41,11 +46,10 @@ namespace Proyecto_CAI_Grupo_4
                 var filter = new ProductosAereosFilter(filterDto);
 
                 var productos = GenerarPresupuestosManager.productosAereos
-                    .Where(x => x.TipoDeServicio == (int)TipoDeServicioEnum.aereo
-                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
+                    .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && filter.FechaDeSalida == x.FechaDeSalida
-                                && filter.FechaDeLlegada == x.FechaDeLlegada);
+                                && (!filter.FechaDeSalida.HasValue || x.FechaDeSalida == filter.FechaDeSalida)
+                                && (!filter.FechaDeLlegada.HasValue || x.FechaDeLlegada == filter.FechaDeLlegada));
 
                 lstViewProductosAereos.Items.Clear();
 
@@ -64,7 +68,10 @@ namespace Proyecto_CAI_Grupo_4
 
             messages += ValidarPrecios(presupuesto);
 
-            messages += ValidarFechas(presupuesto);
+            if (presupuesto.FechaDeSalida.HasValue && presupuesto.FechaDeLlegada.HasValue)
+            {
+                messages += ValidarFechas(presupuesto);
+            }
 
             return messages;
         }
@@ -104,11 +111,11 @@ namespace Proyecto_CAI_Grupo_4
         {
             var messages = string.Empty;
 
-            if (presupuesto.FechaDeSalida.Date <= DateTime.Now.Date)
+            if (presupuesto.FechaDeSalida.Value.Date < DateTime.Now.Date)
             {
                 messages += "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
             }
-            else if (presupuesto.FechaDeSalida.Date >= presupuesto.FechaDeLlegada.Date)
+            else if (presupuesto.FechaDeSalida.Value.Date >= presupuesto.FechaDeLlegada.Value.Date)
             {
                 messages += "La Fecha Desde debe ser menor a la Fecha Hasta" + Environment.NewLine;
             }
@@ -206,6 +213,18 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenMenuGenerarPresupuesto()
         {
             Application.Run(new GenerarPresupuestoMenu());
+        }
+
+        private void btnLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+            txtBoxPrecioDesde.Clear();
+            txtBoxPrecioHasta.Clear();
+            datePickerFechaSalida.Checked = false;
+            datePickerFechaSalida.Value = DateTime.Now.Date;
+            datePickerFechaLlegada.Checked = false;
+            datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
+
+            buscarPresupuesto_Click(sender, e);
         }
     }
 }

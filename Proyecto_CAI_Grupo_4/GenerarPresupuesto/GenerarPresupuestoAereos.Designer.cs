@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tipoDeServicio = new ComboBox();
-            label3 = new Label();
-            fechaDesde = new DateTimePicker();
+            datePickerFechaSalida = new DateTimePicker();
             label4 = new Label();
             label5 = new Label();
-            fechaHasta = new DateTimePicker();
+            datePickerFechaLlegada = new DateTimePicker();
             label6 = new Label();
-            precioHasta = new TextBox();
+            txtBoxPrecioHasta = new TextBox();
             label7 = new Label();
-            precioDesde = new TextBox();
+            txtBoxPrecioDesde = new TextBox();
             buscarPresupuesto = new Button();
             finalizarPresupuesto = new Button();
             removerPresupuesto = new Button();
@@ -59,95 +57,80 @@
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
+            btnLimpiarFiltro = new Button();
             SuspendLayout();
             // 
-            // tipoDeServicio
+            // datePickerFechaSalida
             // 
-            tipoDeServicio.FormattingEnabled = true;
-            tipoDeServicio.Items.AddRange(new object[] { "Aéreo", "Hotel", "Crucero" });
-            tipoDeServicio.Location = new Point(30, 49);
-            tipoDeServicio.Name = "tipoDeServicio";
-            tipoDeServicio.Size = new Size(126, 23);
-            tipoDeServicio.TabIndex = 10;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(30, 22);
-            label3.Name = "label3";
-            label3.Size = new Size(90, 15);
-            label3.TabIndex = 11;
-            label3.Text = "Tipo de Servicio";
-            // 
-            // fechaDesde
-            // 
-            fechaDesde.Location = new Point(504, 49);
-            fechaDesde.Name = "fechaDesde";
-            fechaDesde.Size = new Size(200, 23);
-            fechaDesde.TabIndex = 12;
+            datePickerFechaSalida.Location = new Point(356, 52);
+            datePickerFechaSalida.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
+            datePickerFechaSalida.Name = "datePickerFechaSalida";
+            datePickerFechaSalida.Size = new Size(200, 23);
+            datePickerFechaSalida.TabIndex = 12;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(504, 22);
+            label4.Location = new Point(356, 25);
             label4.Name = "label4";
-            label4.Size = new Size(73, 15);
+            label4.Size = new Size(72, 15);
             label4.TabIndex = 13;
-            label4.Text = "Fecha Desde";
+            label4.Text = "Fecha Salida";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(748, 22);
+            label5.Location = new Point(600, 25);
             label5.Name = "label5";
-            label5.Size = new Size(71, 15);
+            label5.Size = new Size(82, 15);
             label5.TabIndex = 15;
-            label5.Text = "Fecha Hasta";
+            label5.Text = "Fecha Llegada";
             // 
-            // fechaHasta
+            // datePickerFechaLlegada
             // 
-            fechaHasta.Location = new Point(748, 49);
-            fechaHasta.Name = "fechaHasta";
-            fechaHasta.Size = new Size(200, 23);
-            fechaHasta.TabIndex = 14;
+            datePickerFechaLlegada.Location = new Point(600, 52);
+            datePickerFechaLlegada.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
+            datePickerFechaLlegada.Name = "datePickerFechaLlegada";
+            datePickerFechaLlegada.Size = new Size(200, 23);
+            datePickerFechaLlegada.TabIndex = 14;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(344, 22);
+            label6.Location = new Point(196, 25);
             label6.Name = "label6";
             label6.Size = new Size(73, 15);
             label6.TabIndex = 17;
             label6.Text = "Precio Hasta";
             // 
-            // precioHasta
+            // txtBoxPrecioHasta
             // 
-            precioHasta.Location = new Point(344, 49);
-            precioHasta.Name = "precioHasta";
-            precioHasta.Size = new Size(126, 23);
-            precioHasta.TabIndex = 16;
+            txtBoxPrecioHasta.Location = new Point(196, 52);
+            txtBoxPrecioHasta.Name = "txtBoxPrecioHasta";
+            txtBoxPrecioHasta.Size = new Size(126, 23);
+            txtBoxPrecioHasta.TabIndex = 16;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(180, 22);
+            label7.Location = new Point(32, 25);
             label7.Name = "label7";
             label7.Size = new Size(75, 15);
             label7.TabIndex = 19;
             label7.Text = "Precio Desde";
             // 
-            // precioDesde
+            // txtBoxPrecioDesde
             // 
-            precioDesde.Location = new Point(180, 49);
-            precioDesde.Name = "precioDesde";
-            precioDesde.Size = new Size(126, 23);
-            precioDesde.TabIndex = 18;
+            txtBoxPrecioDesde.Location = new Point(32, 52);
+            txtBoxPrecioDesde.Name = "txtBoxPrecioDesde";
+            txtBoxPrecioDesde.Size = new Size(126, 23);
+            txtBoxPrecioDesde.TabIndex = 18;
             // 
             // buscarPresupuesto
             // 
             buscarPresupuesto.Location = new Point(30, 101);
             buscarPresupuesto.Name = "buscarPresupuesto";
-            buscarPresupuesto.Size = new Size(126, 30);
+            buscarPresupuesto.Size = new Size(128, 30);
             buscarPresupuesto.TabIndex = 22;
             buscarPresupuesto.Text = "Buscar";
             buscarPresupuesto.UseVisualStyleBackColor = true;
@@ -216,7 +199,7 @@
             // 
             // Precio
             // 
-            Precio.Text = "Menores";
+            Precio.Text = "Precio";
             Precio.Width = 100;
             // 
             // FechaSalida
@@ -272,7 +255,7 @@
             // 
             // columnHeader5
             // 
-            columnHeader5.Text = "Menores";
+            columnHeader5.Text = "Precio";
             columnHeader5.Width = 100;
             // 
             // columnHeader6
@@ -285,11 +268,22 @@
             columnHeader7.Text = "Fecha Llegada";
             columnHeader7.Width = 100;
             // 
+            // btnLimpiarFiltro
+            // 
+            btnLimpiarFiltro.Location = new Point(196, 101);
+            btnLimpiarFiltro.Name = "btnLimpiarFiltro";
+            btnLimpiarFiltro.Size = new Size(126, 30);
+            btnLimpiarFiltro.TabIndex = 32;
+            btnLimpiarFiltro.Text = "Limpiar Filtros";
+            btnLimpiarFiltro.UseVisualStyleBackColor = true;
+            btnLimpiarFiltro.Click += btnLimpiarFiltro_Click;
+            // 
             // GenerarPresupuestoAereos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1364, 703);
+            Controls.Add(btnLimpiarFiltro);
             Controls.Add(lstViewProductosAereosElegidos);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
             Controls.Add(lstViewProductosAereos);
@@ -298,15 +292,13 @@
             Controls.Add(agregarPresupuesto);
             Controls.Add(buscarPresupuesto);
             Controls.Add(label7);
-            Controls.Add(precioDesde);
+            Controls.Add(txtBoxPrecioDesde);
             Controls.Add(label6);
-            Controls.Add(precioHasta);
+            Controls.Add(txtBoxPrecioHasta);
             Controls.Add(label5);
-            Controls.Add(fechaHasta);
+            Controls.Add(datePickerFechaLlegada);
             Controls.Add(label4);
-            Controls.Add(fechaDesde);
-            Controls.Add(label3);
-            Controls.Add(tipoDeServicio);
+            Controls.Add(datePickerFechaSalida);
             Name = "GenerarPresupuestoAereos";
             Text = "Form2";
             Load += GenerarPresupuesto_Load;
@@ -315,16 +307,14 @@
         }
 
         #endregion
-        private ComboBox tipoDeServicio;
-        private Label label3;
-        private DateTimePicker fechaDesde;
+        private DateTimePicker datePickerFechaSalida;
         private Label label4;
         private Label label5;
-        private DateTimePicker fechaHasta;
+        private DateTimePicker datePickerFechaLlegada;
         private Label label6;
-        private TextBox precioHasta;
+        private TextBox txtBoxPrecioHasta;
         private Label label7;
-        private TextBox precioDesde;
+        private TextBox txtBoxPrecioDesde;
         private Button buscarPresupuesto;
         private Button finalizarPresupuesto;
         private Button removerPresupuesto;
@@ -346,5 +336,6 @@
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
+        private Button btnLimpiarFiltro;
     }
 }
