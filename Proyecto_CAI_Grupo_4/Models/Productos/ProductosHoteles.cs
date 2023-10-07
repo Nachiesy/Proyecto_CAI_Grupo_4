@@ -2,6 +2,8 @@
 {
     public class ProductosHoteles : Productos
     {
+        public string Ciudad { get; set; }
+
         public string Habitacion { get; set; }
 
         public DateTime FechaDesde { get; set; }

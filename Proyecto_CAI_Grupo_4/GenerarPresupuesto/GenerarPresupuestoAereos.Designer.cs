@@ -300,7 +300,7 @@
             Controls.Add(label4);
             Controls.Add(datePickerFechaSalida);
             Name = "GenerarPresupuestoAereos";
-            Text = "Form2";
+            Text = "Generar Presupuesto - Aéreos";
             Load += GenerarPresupuestoAereos_Load;
             ResumeLayout(false);
             PerformLayout();

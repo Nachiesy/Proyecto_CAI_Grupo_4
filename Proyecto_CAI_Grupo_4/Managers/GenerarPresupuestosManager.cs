@@ -45,5 +45,44 @@ namespace Proyecto_CAI_Grupo_4.Managers
         };
 
         public static List<ProductosAereos> productosAereosElegidos = new List<ProductosAereos>();
+
+        public static List<ProductosHoteles> productosHoteles = new List<ProductosHoteles>()
+        {
+            new ProductosHoteles()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Hilton",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.hotel,
+                Ciudad = "Buenos Aires",
+                Habitacion = "Nro. 200",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+            new ProductosHoteles()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Sheraton",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.hotel,
+                Ciudad = "Montevideo",
+                Habitacion = "Nro. 100",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+            new ProductosHoteles()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Intercontinental",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.hotel,
+                Ciudad = "Madrid",
+                Habitacion = "Nro. 300",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+        };
+
+        public static List<ProductosHoteles> productosHotelesElegidos = new List<ProductosHoteles>();
     }
 }

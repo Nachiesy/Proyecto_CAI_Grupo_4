@@ -13,10 +13,12 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuestoMenu_Load(object sender, EventArgs e)
         {
-            AddPresupuestosToListView(GenerarPresupuestosManager.productosAereosElegidos, presupuestosElegidos);
+            AddProductosToListView(GenerarPresupuestosManager.productosAereosElegidos, productosElegidos);
+
+            AddProductosToListView(GenerarPresupuestosManager.productosHotelesElegidos, productosElegidos);
         }
 
-        private void AddPresupuestosToListView(IEnumerable<ProductosAereos> listToAdd, ListView listView)
+        private void AddProductosToListView(IEnumerable<Productos> listToAdd, ListView listView)
         {
             foreach (var item in listToAdd)
             {

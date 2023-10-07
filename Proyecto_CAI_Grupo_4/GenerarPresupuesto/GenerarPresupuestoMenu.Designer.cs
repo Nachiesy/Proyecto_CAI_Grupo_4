@@ -35,7 +35,7 @@
             label2 = new Label();
             btnFinalizarPresupuesto = new Button();
             btnVolverMenuPrincipal = new Button();
-            presupuestosElegidos = new ListView();
+            productosElegidos = new ListView();
             ID = new ColumnHeader();
             Nombre = new ColumnHeader();
             Precio = new ColumnHeader();
@@ -111,16 +111,16 @@
             btnVolverMenuPrincipal.UseVisualStyleBackColor = true;
             btnVolverMenuPrincipal.Click += btnVolverMenuPrincipal_Click;
             // 
-            // presupuestosElegidos
+            // productosElegidos
             // 
-            presupuestosElegidos.Columns.AddRange(new ColumnHeader[] { ID, Nombre, Precio, TipoDeServicio });
-            presupuestosElegidos.FullRowSelect = true;
-            presupuestosElegidos.Location = new Point(47, 225);
-            presupuestosElegidos.Name = "presupuestosElegidos";
-            presupuestosElegidos.Size = new Size(1159, 280);
-            presupuestosElegidos.TabIndex = 32;
-            presupuestosElegidos.UseCompatibleStateImageBehavior = false;
-            presupuestosElegidos.View = View.Details;
+            productosElegidos.Columns.AddRange(new ColumnHeader[] { ID, Nombre, Precio, TipoDeServicio });
+            productosElegidos.FullRowSelect = true;
+            productosElegidos.Location = new Point(47, 225);
+            productosElegidos.Name = "productosElegidos";
+            productosElegidos.Size = new Size(1159, 280);
+            productosElegidos.TabIndex = 32;
+            productosElegidos.UseCompatibleStateImageBehavior = false;
+            productosElegidos.View = View.Details;
             // 
             // ID
             // 
@@ -147,7 +147,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1252, 644);
-            Controls.Add(presupuestosElegidos);
+            Controls.Add(productosElegidos);
             Controls.Add(btnVolverMenuPrincipal);
             Controls.Add(btnFinalizarPresupuesto);
             Controls.Add(label2);
@@ -156,7 +156,7 @@
             Controls.Add(btnMenuCruceros);
             Controls.Add(btnMenuAereos);
             Name = "GenerarPresupuestoMenu";
-            Text = "GenerarPresupuestoMenu";
+            Text = "Generar Presupuesto";
             Load += GenerarPresupuestoMenu_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -171,7 +171,7 @@
         private Label label2;
         private Button btnFinalizarPresupuesto;
         private Button btnVolverMenuPrincipal;
-        private ListView presupuestosElegidos;
+        private ListView productosElegidos;
         private ColumnHeader ID;
         private ColumnHeader Nombre;
         private ColumnHeader Precio;
