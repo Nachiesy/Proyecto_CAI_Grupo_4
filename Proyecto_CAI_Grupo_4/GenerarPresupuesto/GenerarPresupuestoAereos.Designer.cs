@@ -40,16 +40,18 @@
             finalizarPresupuesto = new Button();
             removerPresupuesto = new Button();
             agregarPresupuesto = new Button();
-            lstViewProductosAereos = new ListView();
-            ID = new ColumnHeader();
-            Origen = new ColumnHeader();
-            Destino = new ColumnHeader();
-            TipoDeClaseAerea = new ColumnHeader();
-            Precio = new ColumnHeader();
-            FechaSalida = new ColumnHeader();
-            FechaLLegada = new ColumnHeader();
             btnVolverMenuGenerarPresupuestos = new Button();
-            lstViewProductosAereosElegidos = new ListView();
+            btnLimpiarFiltro = new Button();
+            lstViewProductos = new ListView();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
+            columnHeader11 = new ColumnHeader();
+            columnHeader12 = new ColumnHeader();
+            columnHeader13 = new ColumnHeader();
+            columnHeader14 = new ColumnHeader();
+            columnHeader15 = new ColumnHeader();
+            lstViewProductosElegidos = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
@@ -57,7 +59,7 @@
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
-            btnLimpiarFiltro = new Button();
+            columnHeader16 = new ColumnHeader();
             SuspendLayout();
             // 
             // datePickerFechaSalida
@@ -166,52 +168,6 @@
             agregarPresupuesto.UseVisualStyleBackColor = true;
             agregarPresupuesto.Click += agregarProductosAereosElegidos_Click;
             // 
-            // lstViewProductosAereos
-            // 
-            lstViewProductosAereos.Columns.AddRange(new ColumnHeader[] { ID, Origen, Destino, TipoDeClaseAerea, Precio, FechaSalida, FechaLLegada });
-            lstViewProductosAereos.FullRowSelect = true;
-            lstViewProductosAereos.Location = new Point(30, 156);
-            lstViewProductosAereos.Name = "lstViewProductosAereos";
-            lstViewProductosAereos.Size = new Size(1159, 195);
-            lstViewProductosAereos.TabIndex = 28;
-            lstViewProductosAereos.UseCompatibleStateImageBehavior = false;
-            lstViewProductosAereos.View = View.Details;
-            // 
-            // ID
-            // 
-            ID.Text = "ID";
-            ID.Width = 250;
-            // 
-            // Origen
-            // 
-            Origen.Text = "Origen";
-            Origen.Width = 100;
-            // 
-            // Destino
-            // 
-            Destino.Text = "Destino";
-            Destino.Width = 100;
-            // 
-            // TipoDeClaseAerea
-            // 
-            TipoDeClaseAerea.Text = "Clase";
-            TipoDeClaseAerea.Width = 100;
-            // 
-            // Precio
-            // 
-            Precio.Text = "Precio";
-            Precio.Width = 100;
-            // 
-            // FechaSalida
-            // 
-            FechaSalida.Text = "Fecha Salida";
-            FechaSalida.Width = 100;
-            // 
-            // FechaLLegada
-            // 
-            FechaLLegada.Text = "Fecha Llegada";
-            FechaLLegada.Width = 100;
-            // 
             // btnVolverMenuGenerarPresupuestos
             // 
             btnVolverMenuGenerarPresupuestos.Location = new Point(30, 643);
@@ -221,52 +177,6 @@
             btnVolverMenuGenerarPresupuestos.Text = "Volver";
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
-            // 
-            // lstViewProductosAereosElegidos
-            // 
-            lstViewProductosAereosElegidos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7 });
-            lstViewProductosAereosElegidos.FullRowSelect = true;
-            lstViewProductosAereosElegidos.Location = new Point(30, 428);
-            lstViewProductosAereosElegidos.Name = "lstViewProductosAereosElegidos";
-            lstViewProductosAereosElegidos.Size = new Size(1159, 195);
-            lstViewProductosAereosElegidos.TabIndex = 31;
-            lstViewProductosAereosElegidos.UseCompatibleStateImageBehavior = false;
-            lstViewProductosAereosElegidos.View = View.Details;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 250;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Origen";
-            columnHeader2.Width = 100;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Destino";
-            columnHeader3.Width = 100;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Clase";
-            columnHeader4.Width = 100;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "Precio";
-            columnHeader5.Width = 100;
-            // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Fecha Salida";
-            columnHeader6.Width = 100;
-            // 
-            // columnHeader7
-            // 
-            columnHeader7.Text = "Fecha Llegada";
-            columnHeader7.Width = 100;
             // 
             // btnLimpiarFiltro
             // 
@@ -278,15 +188,115 @@
             btnLimpiarFiltro.UseVisualStyleBackColor = true;
             btnLimpiarFiltro.Click += btnLimpiarFiltro_Click;
             // 
+            // lstViewProductos
+            // 
+            lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15 });
+            lstViewProductos.Location = new Point(30, 155);
+            lstViewProductos.Name = "lstViewProductos";
+            lstViewProductos.Size = new Size(1159, 194);
+            lstViewProductos.TabIndex = 33;
+            lstViewProductos.UseCompatibleStateImageBehavior = false;
+            lstViewProductos.View = View.Details;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "ID";
+            columnHeader8.Width = 250;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Nombre";
+            columnHeader9.Width = 200;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Origen";
+            columnHeader10.Width = 100;
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "Destino";
+            columnHeader11.Width = 100;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "Clase";
+            columnHeader12.Width = 100;
+            // 
+            // columnHeader13
+            // 
+            columnHeader13.Text = "Precio";
+            columnHeader13.Width = 100;
+            // 
+            // columnHeader14
+            // 
+            columnHeader14.Text = "Fecha Salida";
+            columnHeader14.Width = 100;
+            // 
+            // columnHeader15
+            // 
+            columnHeader15.Text = "Fecha Llegada";
+            columnHeader15.Width = 100;
+            // 
+            // lstViewProductosElegidos
+            // 
+            lstViewProductosElegidos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader16 });
+            lstViewProductosElegidos.Location = new Point(30, 427);
+            lstViewProductosElegidos.Name = "lstViewProductosElegidos";
+            lstViewProductosElegidos.Size = new Size(1159, 194);
+            lstViewProductosElegidos.TabIndex = 34;
+            lstViewProductosElegidos.UseCompatibleStateImageBehavior = false;
+            lstViewProductosElegidos.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "ID";
+            columnHeader1.Width = 250;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Nombre";
+            columnHeader2.Width = 200;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Origen";
+            columnHeader3.Width = 100;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Destino";
+            columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Clase";
+            columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "Precio";
+            columnHeader6.Width = 100;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "Fecha Salida";
+            columnHeader7.Width = 100;
+            // 
+            // columnHeader16
+            // 
+            columnHeader16.Text = "Fecha Llegada";
+            columnHeader16.Width = 100;
+            // 
             // GenerarPresupuestoAereos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1364, 703);
+            Controls.Add(lstViewProductosElegidos);
+            Controls.Add(lstViewProductos);
             Controls.Add(btnLimpiarFiltro);
-            Controls.Add(lstViewProductosAereosElegidos);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
-            Controls.Add(lstViewProductosAereos);
             Controls.Add(finalizarPresupuesto);
             Controls.Add(removerPresupuesto);
             Controls.Add(agregarPresupuesto);
@@ -319,16 +329,18 @@
         private Button finalizarPresupuesto;
         private Button removerPresupuesto;
         private Button agregarPresupuesto;
-        private ListView lstViewProductosAereos;
-        private ColumnHeader ID;
-        private ColumnHeader Origen;
-        private ColumnHeader Destino;
-        private ColumnHeader TipoDeClaseAerea;
-        private ColumnHeader Precio;
-        private ColumnHeader FechaSalida;
-        private ColumnHeader FechaLLegada;
         private Button btnVolverMenuGenerarPresupuestos;
-        private ListView lstViewProductosAereosElegidos;
+        private Button btnLimpiarFiltro;
+        private ListView lstViewProductos;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
+        private ColumnHeader columnHeader13;
+        private ColumnHeader columnHeader14;
+        private ColumnHeader columnHeader15;
+        private ListView lstViewProductosElegidos;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
@@ -336,6 +348,6 @@
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
-        private Button btnLimpiarFiltro;
+        private ColumnHeader columnHeader16;
     }
 }

@@ -31,6 +31,11 @@
             btnLimpiarFiltro = new Button();
             lstViewProductos = new ListView();
             ID = new ColumnHeader();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
             btnAgregarProductos = new Button();
             btnBuscarProducto = new Button();
             label7 = new Label();
@@ -44,18 +49,13 @@
             btnVolverMenuGenerarPresupuestos = new Button();
             btnFinalizarPresupuesto = new Button();
             btnRemoverProductos = new Button();
-            Ciudad = new ColumnHeader();
+            lstViewProductosElegidos = new ListView();
+            columnHeader6 = new ColumnHeader();
+            columnHeader7 = new ColumnHeader();
+            columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
             columnHeader11 = new ColumnHeader();
-            columnHeader12 = new ColumnHeader();
-            lstViewProductosElegidos = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
             SuspendLayout();
             // 
             // btnLimpiarFiltro
@@ -70,7 +70,7 @@
             // 
             // lstViewProductos
             // 
-            lstViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Ciudad, columnHeader9, columnHeader10, columnHeader11, columnHeader12 });
+            lstViewProductos.Columns.AddRange(new ColumnHeader[] { ID, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
             lstViewProductos.FullRowSelect = true;
             lstViewProductos.Location = new Point(23, 157);
             lstViewProductos.Name = "lstViewProductos";
@@ -83,6 +83,31 @@
             // 
             ID.Text = "ID";
             ID.Width = 250;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Nombre";
+            columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Ciudad";
+            columnHeader2.Width = 100;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Precio";
+            columnHeader3.Width = 100;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Fecha Desde";
+            columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Fecha Hasta";
+            columnHeader5.Width = 100;
             // 
             // btnAgregarProductos
             // 
@@ -200,71 +225,46 @@
             btnRemoverProductos.UseVisualStyleBackColor = true;
             btnRemoverProductos.Click += btnRemoverProductos_Click;
             // 
-            // Ciudad
-            // 
-            Ciudad.Text = "Ciudad";
-            Ciudad.Width = 100;
-            // 
-            // columnHeader9
-            // 
-            columnHeader9.Text = "Habitacion";
-            columnHeader9.Width = 100;
-            // 
-            // columnHeader10
-            // 
-            columnHeader10.Text = "Precio";
-            columnHeader10.Width = 100;
-            // 
-            // columnHeader11
-            // 
-            columnHeader11.Text = "Fecha Desde";
-            columnHeader11.Width = 100;
-            // 
-            // columnHeader12
-            // 
-            columnHeader12.Text = "Fecha Hasta";
-            columnHeader12.Width = 100;
-            // 
             // lstViewProductosElegidos
             // 
-            lstViewProductosElegidos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
+            lstViewProductosElegidos.Columns.AddRange(new ColumnHeader[] { columnHeader6, columnHeader7, columnHeader8, columnHeader9, columnHeader10, columnHeader11 });
             lstViewProductosElegidos.FullRowSelect = true;
-            lstViewProductosElegidos.Location = new Point(23, 427);
+            lstViewProductosElegidos.Location = new Point(23, 430);
             lstViewProductosElegidos.Name = "lstViewProductosElegidos";
             lstViewProductosElegidos.Size = new Size(1159, 195);
             lstViewProductosElegidos.TabIndex = 68;
             lstViewProductosElegidos.UseCompatibleStateImageBehavior = false;
             lstViewProductosElegidos.View = View.Details;
             // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 250;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Ciudad";
-            columnHeader2.Width = 100;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Habitacion";
-            columnHeader3.Width = 100;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Precio";
-            columnHeader4.Width = 100;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "Fecha Desde";
-            columnHeader5.Width = 100;
-            // 
             // columnHeader6
             // 
-            columnHeader6.Text = "Fecha Hasta";
-            columnHeader6.Width = 100;
+            columnHeader6.Text = "ID";
+            columnHeader6.Width = 250;
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "Nombre";
+            columnHeader7.Width = 200;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Ciudad";
+            columnHeader8.Width = 100;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Precio";
+            columnHeader9.Width = 100;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Fecha Desde";
+            columnHeader10.Width = 100;
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "Fecha Hasta";
+            columnHeader11.Width = 100;
             // 
             // GenerarPresupuestoHoteles
             // 
@@ -311,17 +311,17 @@
         private Button btnVolverMenuGenerarPresupuestos;
         private Button btnFinalizarPresupuesto;
         private Button btnRemoverProductos;
-        private ColumnHeader Ciudad;
-        private ColumnHeader columnHeader9;
-        private ColumnHeader columnHeader10;
-        private ColumnHeader columnHeader11;
-        private ColumnHeader columnHeader12;
-        private ListView lstViewProductosElegidos;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
+        private ListView lstViewProductosElegidos;
         private ColumnHeader columnHeader6;
+        private ColumnHeader columnHeader7;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
+        private ColumnHeader columnHeader11;
     }
 }

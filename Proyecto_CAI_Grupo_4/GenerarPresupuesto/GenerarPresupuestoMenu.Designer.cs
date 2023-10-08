@@ -130,7 +130,7 @@
             // Nombre
             // 
             Nombre.Text = "Nombre";
-            Nombre.Width = 100;
+            Nombre.Width = 200;
             // 
             // Precio
             // 

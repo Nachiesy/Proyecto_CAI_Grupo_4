@@ -4,9 +4,9 @@ namespace Proyecto_CAI_Grupo_4.Managers
 {
     public class GenerarPresupuestosManager
     {
-        public static List<ProductosAereos> productosAereos = new List<ProductosAereos>()
+        public static List<Aereos> aereos = new List<Aereos>()
         {
-            new ProductosAereos()
+            new Aereos()
             {
                 Id = Guid.NewGuid(),
                 Nombre = "Vuelo 113",
@@ -18,7 +18,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 FechaDeLlegada = DateTime.Now.AddDays(20).Date,
                 TipoDeClaseAerea = TipoDeClaseAereaEnum.turista,
             },
-            new ProductosAereos()
+            new Aereos()
             {
                 Id = Guid.NewGuid(),
                 Nombre = "Vuelo 201",
@@ -30,7 +30,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 FechaDeLlegada = DateTime.Now.AddDays(20).Date,
                 TipoDeClaseAerea = TipoDeClaseAereaEnum.ejecutivo,
             },
-            new ProductosAereos()
+            new Aereos()
             {
                 Id = Guid.NewGuid(),
                 Nombre = "Vuelo 369",
@@ -44,45 +44,92 @@ namespace Proyecto_CAI_Grupo_4.Managers
             },
         };
 
-        public static List<ProductosAereos> productosAereosElegidos = new List<ProductosAereos>();
+        public static List<Aereos> aereosElegidos = new List<Aereos>();
 
-        public static List<ProductosHoteles> productosHoteles = new List<ProductosHoteles>()
+        public static List<Hoteles> hoteles = new List<Hoteles>()
         {
-            new ProductosHoteles()
+            new Hoteles()
             {
                 Id = Guid.NewGuid(),
                 Nombre = "Hilton",
                 Precio = 10,
                 TipoDeServicio = TipoDeServicioEnum.hotel,
                 Ciudad = "Buenos Aires",
-                Habitacion = "Nro. 200",
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
             },
-            new ProductosHoteles()
+            new Hoteles()
             {
                 Id = Guid.NewGuid(),
                 Nombre = "Sheraton",
                 Precio = 10,
                 TipoDeServicio = TipoDeServicioEnum.hotel,
                 Ciudad = "Montevideo",
-                Habitacion = "Nro. 100",
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
             },
-            new ProductosHoteles()
+            new Hoteles()
             {
                 Id = Guid.NewGuid(),
                 Nombre = "Intercontinental",
                 Precio = 10,
                 TipoDeServicio = TipoDeServicioEnum.hotel,
                 Ciudad = "Madrid",
-                Habitacion = "Nro. 300",
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
             },
         };
 
-        public static List<ProductosHoteles> productosHotelesElegidos = new List<ProductosHoteles>();
+        public static List<Hoteles> hotelesElegidos = new List<Hoteles>();
+
+        public static List<Cruceros> cruceros = new List<Cruceros>()
+        {
+            new Cruceros()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Crucero de la Costa",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.crucero,
+                CiudadDePartida = "Buenos Aires",
+                CiudadDeLlegada = "Mar del Plata",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+            new Cruceros()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Crucero dou Brasil",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.crucero,
+                CiudadDePartida = "Montevideo",
+                CiudadDeLlegada = "Rio de Janeiro",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+            new Cruceros()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Crucero del Caribe",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.crucero,
+                CiudadDePartida = "Miami",
+                CiudadDeLlegada = "Cancun",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+            new Cruceros()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Crucero del Mediterraneo",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.crucero,
+                CiudadDePartida = "Atenas",
+                CiudadDeLlegada = "Marruecos",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+        };
+
+        public static List<Cruceros> crucerosElegidos = new List<Cruceros>();
     }
 }

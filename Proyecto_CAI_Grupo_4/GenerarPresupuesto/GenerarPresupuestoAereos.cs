@@ -20,19 +20,19 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
-            AddProductosAereosToListView(GenerarPresupuestosManager.productosAereos, lstViewProductosAereos);
+            AddProductosAereosToListView(GenerarPresupuestosManager.aereos, lstViewProductos);
 
-            AddProductosAereosToListView(GenerarPresupuestosManager.productosAereosElegidos, lstViewProductosAereosElegidos);
+            AddProductosAereosToListView(GenerarPresupuestosManager.aereosElegidos, lstViewProductosElegidos);
         }
 
         private void buscarProductosAereos_Click(object sender, EventArgs e)
         {
-            var filterDto = new ProductosAereosFilterDto()
+            var filterDto = new AereosFilterDto()
             {
                 PrecioDesde = txtBoxPrecioDesde.Text,
                 PrecioHasta = txtBoxPrecioHasta.Text,
-                FechaDeSalida = datePickerFechaSalida.Checked ? datePickerFechaSalida.Value : null,
-                FechaDeLlegada = datePickerFechaLlegada.Checked ? datePickerFechaLlegada.Value : null,
+                FechaDesde = datePickerFechaSalida.Checked ? datePickerFechaSalida.Value : null,
+                FechaHasta = datePickerFechaLlegada.Checked ? datePickerFechaLlegada.Value : null,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -43,17 +43,17 @@ namespace Proyecto_CAI_Grupo_4
             }
             else
             {
-                var filter = new ProductosAereosFilter(filterDto);
+                var filter = new AereosFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.productosAereos
+                var productos = GenerarPresupuestosManager.aereos
                     .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDeSalida.HasValue || x.FechaDeSalida == filter.FechaDeSalida)
-                                && (!filter.FechaDeLlegada.HasValue || x.FechaDeLlegada == filter.FechaDeLlegada));
+                                && (!filter.FechaDesde.HasValue || x.FechaDeSalida == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.FechaDeLlegada == filter.FechaHasta));
 
-                lstViewProductosAereos.Items.Clear();
+                lstViewProductos.Items.Clear();
 
-                AddProductosAereosToListView(productos, lstViewProductosAereos);
+                AddProductosAereosToListView(productos, lstViewProductos);
 
                 if (!productos.Any())
                 {
@@ -62,13 +62,13 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private string ValidacionDeFiltros(ProductosAereosFilterDto presupuesto)
+        private string ValidacionDeFiltros(AereosFilterDto presupuesto)
         {
             var messages = string.Empty;
 
             messages += ValidarPrecios(presupuesto);
 
-            if (presupuesto.FechaDeSalida.HasValue && presupuesto.FechaDeLlegada.HasValue)
+            if (presupuesto.FechaDesde.HasValue && presupuesto.FechaHasta.HasValue)
             {
                 messages += ValidarFechas(presupuesto);
             }
@@ -76,7 +76,7 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private string ValidarPrecios(ProductosAereosFilterDto presupuesto)
+        private string ValidarPrecios(AereosFilterDto presupuesto)
         {
             var messages = string.Empty;
 
@@ -107,15 +107,15 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private string ValidarFechas(ProductosAereosFilterDto presupuesto)
+        private string ValidarFechas(AereosFilterDto presupuesto)
         {
             var messages = string.Empty;
 
-            if (presupuesto.FechaDeSalida.Value.Date < DateTime.Now.Date)
+            if (presupuesto.FechaDesde.Value.Date < DateTime.Now.Date)
             {
                 messages += "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
             }
-            else if (presupuesto.FechaDeSalida.Value.Date >= presupuesto.FechaDeLlegada.Value.Date)
+            else if (presupuesto.FechaDesde.Value.Date >= presupuesto.FechaHasta.Value.Date)
             {
                 messages += "La Fecha Desde debe ser menor a la Fecha Hasta" + Environment.NewLine;
             }
@@ -123,12 +123,13 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosAereosToListView(IEnumerable<ProductosAereos> listToAdd, ListView listView)
+        private void AddProductosAereosToListView(IEnumerable<Aereos> listToAdd, ListView listView)
         {
             foreach (var item in listToAdd)
             {
                 var row = new ListViewItem(item.Id.ToString());
 
+                row.SubItems.Add(item.Nombre);
                 row.SubItems.Add(item.Origen);
                 row.SubItems.Add(item.Destino);
                 row.SubItems.Add(item.TipoDeClaseAerea.GetDescription());
@@ -142,23 +143,23 @@ namespace Proyecto_CAI_Grupo_4
 
         private void agregarProductosAereosElegidos_Click(object sender, EventArgs e)
         {
-            if (lstViewProductosAereos.SelectedItems.Count > 0)
+            if (lstViewProductos.SelectedItems.Count > 0)
             {
-                var productosToAdd = new List<ProductosAereos>();
+                var productosToAdd = new List<Aereos>();
 
-                foreach (ListViewItem selectedItem in lstViewProductosAereos.SelectedItems)
+                foreach (ListViewItem selectedItem in lstViewProductos.SelectedItems)
                 {
                     var id = Guid.Parse(selectedItem.Text);
 
-                    var producto = GenerarPresupuestosManager.productosAereos.Where(x => x.Id == id).SingleOrDefault();
+                    var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
 
-                    if (!GenerarPresupuestosManager.productosAereosElegidos.Any(x => x.Id == producto.Id))
+                    if (!IsProductInSelectedListView(id))
                     {
                         productosToAdd.Add(producto);
                     }
                 }
 
-                AddProductosAereosToListView(productosToAdd, lstViewProductosAereosElegidos);
+                AddProductosAereosToListView(productosToAdd, lstViewProductosElegidos);
             }
             else
             {
@@ -168,11 +169,11 @@ namespace Proyecto_CAI_Grupo_4
 
         private void removerProductosAereosDeLosElegidos_Click(object sender, EventArgs e)
         {
-            if (lstViewProductosAereosElegidos.SelectedItems.Count > 0)
+            if (lstViewProductosElegidos.SelectedItems.Count > 0)
             {
-                foreach (ListViewItem selectedItem in lstViewProductosAereosElegidos.SelectedItems)
+                foreach (ListViewItem selectedItem in lstViewProductosElegidos.SelectedItems)
                 {
-                    lstViewProductosAereosElegidos.Items.Remove(selectedItem);
+                    lstViewProductosElegidos.Items.Remove(selectedItem);
                 }
             }
             else
@@ -183,15 +184,15 @@ namespace Proyecto_CAI_Grupo_4
 
         private void finalizarPresupuestoAereo_Click(object sender, EventArgs e)
         {
-            GenerarPresupuestosManager.productosAereosElegidos.Clear();
+            GenerarPresupuestosManager.aereosElegidos.Clear();
 
-            foreach (ListViewItem selectedItem in lstViewProductosAereosElegidos.Items)
+            foreach (ListViewItem selectedItem in lstViewProductosElegidos.Items)
             {
                 var id = Guid.Parse(selectedItem.Text);
 
-                var producto = GenerarPresupuestosManager.productosAereos.Where(x => x.Id == id).SingleOrDefault();
+                var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
 
-                GenerarPresupuestosManager.productosAereosElegidos.Add(producto);
+                GenerarPresupuestosManager.aereosElegidos.Add(producto);
             }
 
             this.Close();
@@ -225,6 +226,20 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
             buscarProductosAereos_Click(sender, e);
+        }
+
+        private bool IsProductInSelectedListView(Guid id)
+        {
+            var ids = new List<Guid>();
+
+            foreach (ListViewItem selectedItem in lstViewProductosElegidos.Items)
+            {
+                var selectedId = Guid.Parse(selectedItem.Text);
+
+                ids.Add(selectedId);
+            }
+
+            return ids.Any(x => x == id);
         }
     }
 }
