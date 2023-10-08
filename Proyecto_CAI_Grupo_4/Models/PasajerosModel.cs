@@ -16,7 +16,7 @@ namespace Proyecto_CAI_Grupo_4.Models
         public string Nacionalidad { get; set; }
         public DateTime Fecha_Nac { get; set; }
         public int Tipo_Doc { get; set; }
-        public int Doc { get; set; }
+        public string Doc { get; set; }
         public DateTime Fecha_Exp { get; set; }
         public string Pais_emisor { get; set; }
         public string Email { get; set; }

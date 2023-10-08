@@ -15,7 +15,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class IngresarPasajero : Form
     {
-        public Pasajeros pasajero = new Pasajeros();
+        public Pasajeros pasajero { get;private set; }
         public IngresarPasajero()
         {
             InitializeComponent();
@@ -57,20 +57,26 @@ namespace Proyecto_CAI_Grupo_4
 
         private void confirmpasajerobtn_Click(object sender, EventArgs e)
         {
-            string nombre = nombrepasajerotxt.Text;
-            string apellido = apellidopasajerotxt.Text;
-            DateTime fechanachimiento = dtnacmiento.Value;
-            string nacionalidad = nacpasajerocbx.Text;
-            int tipodoc = cbxTipodoc.TabIndex;
-            string documento = dnipasajerotxt.Text;
-            DateTime fechaexpo = exppasajerodgv.Value;
-            string paisemisor = paiscbx.Text;
-            string email = emailpasajerotxt.Text;
-            string telefono = telpasajerotxt.Text;
+
+            pasajero = new Pasajeros();
+            pasajero.Nombre = nombrepasajerotxt.Text;
+            pasajero.Apellido = apellidopasajerotxt.Text;
+            pasajero.Fecha_Nac = dtnacmiento.Value;
+            pasajero.Nacionalidad = nacpasajerocbx.Text;
+            pasajero.Tipo_Doc = cbxTipodoc.TabIndex;
+            pasajero.Doc = dnipasajerotxt.Text;
+            pasajero.Fecha_Exp = exppasajerodgv.Value;
+            pasajero.Pais_emisor = paiscbx.Text;
+            pasajero.Email = emailpasajerotxt.Text;
+            pasajero.Tel_contacto = telpasajerotxt.Text;
 
 
 
-            
+
+            DialogResult = DialogResult.OK;
+            Close();
+
+
         }
         private void IngresarPasajero_Load_1(object sender, EventArgs e)
         {

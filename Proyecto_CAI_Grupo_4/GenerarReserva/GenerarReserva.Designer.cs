@@ -30,7 +30,7 @@
         {
             gbxPasajeros = new GroupBox();
             lblcantpasajeros = new Label();
-            listView1 = new ListView();
+            listPasajeros = new ListView();
             nombre = new ColumnHeader();
             apellido = new ColumnHeader();
             fechadenac = new ColumnHeader();
@@ -70,7 +70,7 @@
             // gbxPasajeros
             // 
             gbxPasajeros.Controls.Add(lblcantpasajeros);
-            gbxPasajeros.Controls.Add(listView1);
+            gbxPasajeros.Controls.Add(listPasajeros);
             gbxPasajeros.Controls.Add(btnQuitpasajero);
             gbxPasajeros.Controls.Add(btnAddpasajero);
             gbxPasajeros.Enabled = false;
@@ -90,15 +90,15 @@
             lblcantpasajeros.TabIndex = 4;
             lblcantpasajeros.Text = "Pasajeros Disponibles ";
             // 
-            // listView1
+            // listPasajeros
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { nombre, apellido, fechadenac, nacionalidad, tipodoc, documento, fechavencimiento, paisemisor, email, telcontacto });
-            listView1.Location = new Point(32, 147);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(1920, 234);
-            listView1.TabIndex = 3;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            listPasajeros.Columns.AddRange(new ColumnHeader[] { nombre, apellido, fechadenac, nacionalidad, tipodoc, documento, fechavencimiento, paisemisor, email, telcontacto });
+            listPasajeros.Location = new Point(32, 147);
+            listPasajeros.Name = "listPasajeros";
+            listPasajeros.Size = new Size(1920, 234);
+            listPasajeros.TabIndex = 3;
+            listPasajeros.UseCompatibleStateImageBehavior = false;
+            listPasajeros.View = View.Details;
             // 
             // nombre
             // 
@@ -371,7 +371,7 @@
         private Button btnSelect;
         private Button btnGenreserva;
         private Button btnCancelar;
-        private ListView listView1;
+        private ListView listPasajeros;
         private ColumnHeader nombre;
         private ColumnHeader apellido;
         private ColumnHeader fechadenac;

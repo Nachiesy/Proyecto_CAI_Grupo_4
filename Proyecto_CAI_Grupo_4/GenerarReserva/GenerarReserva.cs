@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -45,19 +46,38 @@ namespace Proyecto_CAI_Grupo_4
         {
             Application.Run(new MenuPrincipal());
         }
-        public event Action<Pasajeros> DatosPasajeros;
+
+
+        public void RecibirDatosPasajero(Pasajeros SumarPasajero)
+        {
+
+
+            ListViewItem item = new ListViewItem(SumarPasajero.Nombre);
+            item.SubItems.Add(SumarPasajero.Apellido.ToString());
+           item.SubItems.Add(SumarPasajero.Fecha_Nac.ToFormDate());
+            item.SubItems.Add(SumarPasajero.Nacionalidad.ToString());
+            item.SubItems.Add(SumarPasajero.Tipo_Doc.ToString());
+            item.SubItems.Add(SumarPasajero.Doc.ToString());
+            item.SubItems.Add(SumarPasajero.Pais_emisor.ToString());
+            item.SubItems.Add(SumarPasajero.Fecha_Exp.ToFormDate());
+            item.SubItems.Add(SumarPasajero.Email.ToString());
+            item.SubItems.Add(SumarPasajero.Tel_contacto.ToString());
+            listPasajeros.Items.Add(item);
+
+        }
         private void btnAddpasajero_Click(object sender, EventArgs e)
         {
-  
-            Thread thread = new Thread(AgregarPasajero);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            IngresarPasajero Agregar = new IngresarPasajero();
+            DialogResult result = Agregar.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+
+                RecibirDatosPasajero(Agregar.pasajero);
+                MessageBox.Show("Se Agregó el pasajero");
+            }
         }
 
-        private void AgregarPasajero()
-        {
-            Application.Run(new IngresarPasajero());
-        }
 
         private void listPresupuestos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -155,6 +175,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             var codigo = nroPresupuestotxt.Text.Trim();
@@ -186,13 +207,15 @@ namespace Proyecto_CAI_Grupo_4
 
             if (listPresupuestos.SelectedItems.Count > 0)
             {
-                // Reserva ReservaSelecc = listPresupuestos.SelectedItems;
+                ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
+                string cantidad = presupuesto.SubItems[2].Text;
 
                 gbxPasajeros.Enabled = true;
 
-            lblcantpasajeros.Text = "Pasajeros Disponibles " + listPresupuestos.SelectedItems;
+                lblcantpasajeros.Text = "Pasajeros Disponibles " + cantidad;
             }
-            else{
+            else
+            {
                 MessageBox.Show("Seleccione un presupuesto.");
             }
 
