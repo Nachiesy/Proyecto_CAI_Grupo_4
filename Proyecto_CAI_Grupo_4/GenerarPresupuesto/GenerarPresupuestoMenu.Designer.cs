@@ -49,6 +49,9 @@ namespace Proyecto_CAI_Grupo_4
             btnMenuCruceros = new Common.Components.BotonEstilizado();
             btnFinalizarPresupuesto = new Common.Components.BotonEstilizado();
             grp_Estimacion = new GroupBox();
+            grp_Filtros = new GroupBox();
+            textBoxClienteDNI = new TextBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)productosElegidos).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -56,26 +59,25 @@ namespace Proyecto_CAI_Grupo_4
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             grp_Estimacion.SuspendLayout();
+            grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(149, 497);
-            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Location = new Point(80, 233);
             label1.Name = "label1";
-            label1.Size = new Size(0, 57);
+            label1.Size = new Size(0, 30);
             label1.TabIndex = 6;
             // 
             // presupuestoTotal
             // 
             presupuestoTotal.AutoSize = true;
             presupuestoTotal.Font = new Font("Microsoft JhengHei", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            presupuestoTotal.Location = new Point(28, 64);
-            presupuestoTotal.Margin = new Padding(6, 0, 6, 0);
+            presupuestoTotal.Location = new Point(15, 30);
             presupuestoTotal.Name = "presupuestoTotal";
-            presupuestoTotal.Size = new Size(219, 61);
+            presupuestoTotal.Size = new Size(108, 31);
             presupuestoTotal.TabIndex = 34;
             presupuestoTotal.Text = "Total: $-";
             // 
@@ -87,14 +89,12 @@ namespace Proyecto_CAI_Grupo_4
             productosElegidos.BackgroundColor = SystemColors.ControlLight;
             productosElegidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, TipoDeServicio, PrecioUnitario, Cantidad, SubTotal });
-            productosElegidos.Location = new Point(563, 269);
-            productosElegidos.Margin = new Padding(6, 6, 6, 6);
+            productosElegidos.Location = new Point(303, 126);
             productosElegidos.Name = "productosElegidos";
             productosElegidos.RowHeadersWidth = 82;
             productosElegidos.RowTemplate.Height = 25;
-            productosElegidos.Size = new Size(1658, 734);
+            productosElegidos.Size = new Size(893, 443);
             productosElegidos.TabIndex = 36;
-            productosElegidos.CellContentClick += productosElegidos_CellContentClick;
             productosElegidos.CellValueChanged += productosElegidos_CellValueChanged;
             // 
             // ID
@@ -154,11 +154,9 @@ namespace Proyecto_CAI_Grupo_4
             groupBox1.Controls.Add(btnMenuPaquetes);
             groupBox1.Controls.Add(btnMenuHoteles);
             groupBox1.Controls.Add(btnMenuCruceros);
-            groupBox1.Location = new Point(22, 226);
-            groupBox1.Margin = new Padding(6, 6, 6, 6);
+            groupBox1.Location = new Point(12, 106);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(6, 6, 6, 6);
-            groupBox1.Size = new Size(457, 506);
+            groupBox1.Size = new Size(246, 237);
             groupBox1.TabIndex = 37;
             groupBox1.TabStop = false;
             groupBox1.Text = "Agregar productos";
@@ -166,40 +164,36 @@ namespace Proyecto_CAI_Grupo_4
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(28, 393);
-            pictureBox4.Margin = new Padding(6, 6, 6, 6);
+            pictureBox4.Location = new Point(15, 184);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(89, 102);
+            pictureBox4.Size = new Size(48, 48);
             pictureBox4.TabIndex = 8;
             pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(26, 279);
-            pictureBox3.Margin = new Padding(6, 6, 6, 6);
+            pictureBox3.Location = new Point(14, 131);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(89, 102);
+            pictureBox3.Size = new Size(48, 48);
             pictureBox3.TabIndex = 7;
             pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(26, 162);
-            pictureBox2.Margin = new Padding(6, 6, 6, 6);
+            pictureBox2.Location = new Point(14, 76);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(89, 102);
+            pictureBox2.Size = new Size(48, 48);
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(26, 49);
-            pictureBox1.Margin = new Padding(6, 6, 6, 6);
+            pictureBox1.Location = new Point(14, 23);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(89, 102);
+            pictureBox1.Size = new Size(48, 48);
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
@@ -210,10 +204,9 @@ namespace Proyecto_CAI_Grupo_4
             btnMenuAereos.FlatStyle = FlatStyle.Flat;
             btnMenuAereos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuAereos.ForeColor = Color.Black;
-            btnMenuAereos.Location = new Point(126, 49);
-            btnMenuAereos.Margin = new Padding(6, 6, 6, 6);
+            btnMenuAereos.Location = new Point(68, 23);
             btnMenuAereos.Name = "btnMenuAereos";
-            btnMenuAereos.Size = new Size(319, 85);
+            btnMenuAereos.Size = new Size(172, 40);
             btnMenuAereos.TabIndex = 4;
             btnMenuAereos.Text = "Aéreos";
             btnMenuAereos.UseVisualStyleBackColor = false;
@@ -226,13 +219,13 @@ namespace Proyecto_CAI_Grupo_4
             btnMenuPaquetes.FlatStyle = FlatStyle.Flat;
             btnMenuPaquetes.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuPaquetes.ForeColor = Color.Black;
-            btnMenuPaquetes.Location = new Point(126, 399);
-            btnMenuPaquetes.Margin = new Padding(6, 6, 6, 6);
+            btnMenuPaquetes.Location = new Point(68, 187);
             btnMenuPaquetes.Name = "btnMenuPaquetes";
-            btnMenuPaquetes.Size = new Size(319, 85);
+            btnMenuPaquetes.Size = new Size(172, 40);
             btnMenuPaquetes.TabIndex = 4;
             btnMenuPaquetes.Text = "Paquetes";
             btnMenuPaquetes.UseVisualStyleBackColor = false;
+            btnMenuPaquetes.Click += btnMenuPaquetes_Click;
             // 
             // btnMenuHoteles
             // 
@@ -241,10 +234,9 @@ namespace Proyecto_CAI_Grupo_4
             btnMenuHoteles.FlatStyle = FlatStyle.Flat;
             btnMenuHoteles.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuHoteles.ForeColor = Color.Black;
-            btnMenuHoteles.Location = new Point(126, 169);
-            btnMenuHoteles.Margin = new Padding(6, 6, 6, 6);
+            btnMenuHoteles.Location = new Point(68, 79);
             btnMenuHoteles.Name = "btnMenuHoteles";
-            btnMenuHoteles.Size = new Size(319, 85);
+            btnMenuHoteles.Size = new Size(172, 40);
             btnMenuHoteles.TabIndex = 4;
             btnMenuHoteles.Text = "Hoteles";
             btnMenuHoteles.UseVisualStyleBackColor = false;
@@ -257,10 +249,9 @@ namespace Proyecto_CAI_Grupo_4
             btnMenuCruceros.FlatStyle = FlatStyle.Flat;
             btnMenuCruceros.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuCruceros.ForeColor = Color.Black;
-            btnMenuCruceros.Location = new Point(126, 284);
-            btnMenuCruceros.Margin = new Padding(6, 6, 6, 6);
+            btnMenuCruceros.Location = new Point(68, 133);
             btnMenuCruceros.Name = "btnMenuCruceros";
-            btnMenuCruceros.Size = new Size(319, 85);
+            btnMenuCruceros.Size = new Size(172, 40);
             btnMenuCruceros.TabIndex = 4;
             btnMenuCruceros.Text = "Cruceros";
             btnMenuCruceros.UseVisualStyleBackColor = false;
@@ -274,10 +265,9 @@ namespace Proyecto_CAI_Grupo_4
             btnFinalizarPresupuesto.FlatStyle = FlatStyle.Flat;
             btnFinalizarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnFinalizarPresupuesto.ForeColor = Color.Black;
-            btnFinalizarPresupuesto.Location = new Point(22, 917);
-            btnFinalizarPresupuesto.Margin = new Padding(6, 6, 6, 6);
+            btnFinalizarPresupuesto.Location = new Point(12, 529);
             btnFinalizarPresupuesto.Name = "btnFinalizarPresupuesto";
-            btnFinalizarPresupuesto.Size = new Size(457, 85);
+            btnFinalizarPresupuesto.Size = new Size(246, 40);
             btnFinalizarPresupuesto.TabIndex = 4;
             btnFinalizarPresupuesto.Text = "Guardar";
             btnFinalizarPresupuesto.UseVisualStyleBackColor = false;
@@ -286,27 +276,54 @@ namespace Proyecto_CAI_Grupo_4
             // grp_Estimacion
             // 
             grp_Estimacion.Controls.Add(presupuestoTotal);
-            grp_Estimacion.Location = new Point(22, 745);
-            grp_Estimacion.Margin = new Padding(6, 6, 6, 6);
+            grp_Estimacion.Location = new Point(12, 448);
             grp_Estimacion.Name = "grp_Estimacion";
-            grp_Estimacion.Padding = new Padding(6, 6, 6, 6);
-            grp_Estimacion.Size = new Size(457, 160);
+            grp_Estimacion.Size = new Size(246, 75);
             grp_Estimacion.TabIndex = 38;
             grp_Estimacion.TabStop = false;
             grp_Estimacion.Text = "Estimacion";
             // 
+            // grp_Filtros
+            // 
+            grp_Filtros.Controls.Add(textBoxClienteDNI);
+            grp_Filtros.Controls.Add(label2);
+            grp_Filtros.Location = new Point(12, 349);
+            grp_Filtros.Name = "grp_Filtros";
+            grp_Filtros.Size = new Size(246, 87);
+            grp_Filtros.TabIndex = 39;
+            grp_Filtros.TabStop = false;
+            grp_Filtros.Text = "Agregar Cliente";
+            // 
+            // textBoxClienteDNI
+            // 
+            textBoxClienteDNI.Location = new Point(14, 50);
+            textBoxClienteDNI.Name = "textBoxClienteDNI";
+            textBoxClienteDNI.Size = new Size(226, 23);
+            textBoxClienteDNI.TabIndex = 2;
+            textBoxClienteDNI.TextChanged += textBoxClienteDNI_TextChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(15, 28);
+            label2.Name = "label2";
+            label2.Size = new Size(27, 15);
+            label2.TabIndex = 3;
+            label2.Text = "DNI";
+            // 
             // GenerarPresupuestoMenu
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(2245, 1030);
+            ClientSize = new Size(1210, 611);
+            Controls.Add(grp_Filtros);
             Controls.Add(grp_Estimacion);
             Controls.Add(btnFinalizarPresupuesto);
             Controls.Add(groupBox1);
             Controls.Add(productosElegidos);
             Controls.Add(label1);
-            Margin = new Padding(11, 13, 11, 13);
+            Margin = new Padding(6);
             Name = "GenerarPresupuestoMenu";
             Text = "Generar Presupuesto";
             Load += GenerarPresupuestoMenu_Load;
@@ -315,6 +332,7 @@ namespace Proyecto_CAI_Grupo_4
             Controls.SetChildIndex(groupBox1, 0);
             Controls.SetChildIndex(btnFinalizarPresupuesto, 0);
             Controls.SetChildIndex(grp_Estimacion, 0);
+            Controls.SetChildIndex(grp_Filtros, 0);
             ((System.ComponentModel.ISupportInitialize)productosElegidos).EndInit();
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -323,6 +341,8 @@ namespace Proyecto_CAI_Grupo_4
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             grp_Estimacion.ResumeLayout(false);
             grp_Estimacion.PerformLayout();
+            grp_Filtros.ResumeLayout(false);
+            grp_Filtros.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -349,5 +369,8 @@ namespace Proyecto_CAI_Grupo_4
         private PictureBox pictureBox4;
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
+        private GroupBox grp_Filtros;
+        private TextBox textBoxClienteDNI;
+        private Label label2;
     }
 }

@@ -1,8 +1,6 @@
-﻿using Proyecto_CAI_Grupo_4.GenerarPresupuesto;
-using Proyecto_CAI_Grupo_4.Managers;
+﻿using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
@@ -39,7 +37,7 @@ namespace Proyecto_CAI_Grupo_4
             total += cruceros.Sum(x => x.Precio);
             total += paquetesTuristicos.Sum(x => x.Precio);
 
-            btnFinalizarPresupuesto.Enabled = total > 0;
+            btnFinalizarPresupuesto.Enabled = total > 0 && !string.IsNullOrEmpty(textBoxClienteDNI.Text.Trim());
             presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
         }
 
@@ -118,24 +116,26 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
         {
-            if (productosElegidos.RowCount > 0)
+            var dni = textBoxClienteDNI.Text.Trim();
+
+            if (productosElegidos.RowCount > 0 && !string.IsNullOrEmpty(dni))
             {
                 var result = MessageBox.Show("¿Desea generar una Pre Reserva a partir de este Presupuesto?", string.Empty, MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Presupuesto y Pre Reserva generados correctamente.", "Exito", MessageBoxButtons.OK);
+                    MessageBox.Show($"Presupuesto y Pre Reserva generados correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    MessageBox.Show("Presupuesto generado correctamente.", "Exito", MessageBoxButtons.OK);
+                    MessageBox.Show($"Presupuesto generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
                 }
 
                 btnVolverMenuPrincipal_Click(sender, e);
             }
             else
             {
-                MessageBox.Show("Debes elegir productos turisticos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Debes ingresar el DNI del Cliente a generarle el presupuesto y Debes elegir productos turisticos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -206,13 +206,25 @@ namespace Proyecto_CAI_Grupo_4
                 }
             }
 
-            btnFinalizarPresupuesto.Enabled = total > 0;
+            btnFinalizarPresupuesto.Enabled = total > 0 && !string.IsNullOrEmpty(textBoxClienteDNI.Text.Trim());
             presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
         }
 
-        private void productosElegidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void textBoxClienteDNI_TextChanged(object sender, EventArgs e)
         {
+            var subTotalColumnIndex = 5;
 
+            decimal total = 0;
+
+            foreach (DataGridViewRow row in productosElegidos.Rows)
+            {
+                if (decimal.TryParse(row.Cells[subTotalColumnIndex].Value.ToString(), out decimal subTotal))
+                {
+                    total += subTotal;
+                }
+            }
+
+            btnFinalizarPresupuesto.Enabled = total > 0 && !string.IsNullOrEmpty(textBoxClienteDNI.Text.Trim());
         }
     }
 }

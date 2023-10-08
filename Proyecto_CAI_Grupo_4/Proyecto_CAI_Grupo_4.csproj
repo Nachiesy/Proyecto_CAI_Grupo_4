@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="GenerarPresupuesto\GenerarPresupuestoPaquetesTuristicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GenerarPresupuesto\GenerarPresupuestoCruceros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GenerarPresupuesto\GenerarPresupuestoHoteles.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
