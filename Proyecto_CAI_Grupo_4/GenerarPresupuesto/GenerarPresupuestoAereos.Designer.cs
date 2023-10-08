@@ -45,6 +45,8 @@
             btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
             grp_VuelosDisponibles = new GroupBox();
             dataGridViewProductos = new DataGridView();
+            grp_VuelosSeleccionados = new GroupBox();
+            dataGridViewProductosSeleccionados = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             PrecioUnitario = new DataGridViewTextBoxColumn();
@@ -54,8 +56,6 @@
             Origen = new DataGridViewTextBoxColumn();
             Destino = new DataGridViewTextBoxColumn();
             Clase = new DataGridViewTextBoxColumn();
-            grp_VuelosSeleccionados = new GroupBox();
-            dataGridViewProductosSeleccionados = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
@@ -271,6 +271,35 @@
             dataGridViewProductos.Size = new Size(964, 194);
             dataGridViewProductos.TabIndex = 38;
             // 
+            // grp_VuelosSeleccionados
+            // 
+            grp_VuelosSeleccionados.Controls.Add(dataGridViewProductosSeleccionados);
+            grp_VuelosSeleccionados.Controls.Add(btnRemoverProductos);
+            grp_VuelosSeleccionados.Controls.Add(btnConfirmarProductosSeleccionados);
+            grp_VuelosSeleccionados.Location = new Point(376, 422);
+            grp_VuelosSeleccionados.Name = "grp_VuelosSeleccionados";
+            grp_VuelosSeleccionados.Size = new Size(976, 269);
+            grp_VuelosSeleccionados.TabIndex = 37;
+            grp_VuelosSeleccionados.TabStop = false;
+            grp_VuelosSeleccionados.Text = "Vuelos Seleccionados";
+            // 
+            // dataGridViewProductosSeleccionados
+            // 
+            dataGridViewProductosSeleccionados.AllowUserToAddRows = false;
+            dataGridViewProductosSeleccionados.AllowUserToDeleteRows = false;
+            dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
+            dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9 });
+            dataGridViewProductosSeleccionados.Location = new Point(6, 22);
+            dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
+            dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
+            dataGridViewProductosSeleccionados.RowTemplate.Height = 25;
+            dataGridViewProductosSeleccionados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewProductosSeleccionados.Size = new Size(964, 194);
+            dataGridViewProductosSeleccionados.TabIndex = 39;
+            dataGridViewProductosSeleccionados.CellValueChanged += dataGridViewProductosSeleccionados_CellValueChanged;
+            // 
             // ID
             // 
             ID.HeaderText = "ID";
@@ -314,6 +343,7 @@
             FechaHasta.HeaderText = "Fecha Llegada";
             FechaHasta.Name = "FechaHasta";
             FechaHasta.ReadOnly = true;
+            FechaHasta.Width = 200;
             // 
             // Origen
             // 
@@ -332,35 +362,6 @@
             Clase.HeaderText = "Clase";
             Clase.Name = "Clase";
             Clase.ReadOnly = true;
-            // 
-            // grp_VuelosSeleccionados
-            // 
-            grp_VuelosSeleccionados.Controls.Add(dataGridViewProductosSeleccionados);
-            grp_VuelosSeleccionados.Controls.Add(btnRemoverProductos);
-            grp_VuelosSeleccionados.Controls.Add(btnConfirmarProductosSeleccionados);
-            grp_VuelosSeleccionados.Location = new Point(376, 422);
-            grp_VuelosSeleccionados.Name = "grp_VuelosSeleccionados";
-            grp_VuelosSeleccionados.Size = new Size(976, 269);
-            grp_VuelosSeleccionados.TabIndex = 37;
-            grp_VuelosSeleccionados.TabStop = false;
-            grp_VuelosSeleccionados.Text = "Vuelos Seleccionados";
-            // 
-            // dataGridViewProductosSeleccionados
-            // 
-            dataGridViewProductosSeleccionados.AllowUserToAddRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToDeleteRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
-            dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9 });
-            dataGridViewProductosSeleccionados.Location = new Point(6, 22);
-            dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
-            dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
-            dataGridViewProductosSeleccionados.RowTemplate.Height = 25;
-            dataGridViewProductosSeleccionados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductosSeleccionados.Size = new Size(964, 194);
-            dataGridViewProductosSeleccionados.TabIndex = 39;
-            dataGridViewProductosSeleccionados.CellValueChanged += dataGridViewProductosSeleccionados_CellValueChanged;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -418,6 +419,7 @@
             dataGridViewTextBoxColumn6.HeaderText = "Fecha Llegada";
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             dataGridViewTextBoxColumn6.ReadOnly = true;
+            dataGridViewTextBoxColumn6.Width = 200;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -482,6 +484,7 @@
         private GroupBox grp_VuelosDisponibles;
         private GroupBox grp_VuelosSeleccionados;
         private DataGridView dataGridViewProductos;
+        private DataGridView dataGridViewProductosSeleccionados;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn PrecioUnitario;
@@ -491,7 +494,6 @@
         private DataGridViewTextBoxColumn Origen;
         private DataGridViewTextBoxColumn Destino;
         private DataGridViewTextBoxColumn Clase;
-        private DataGridView dataGridViewProductosSeleccionados;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
