@@ -13,10 +13,28 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuestoMenu_Load(object sender, EventArgs e)
         {
-            AddPresupuestosToListView(GenerarPresupuestosManager.productosAereosElegidos, presupuestosElegidos);
+            var aereos = GenerarPresupuestosManager.aereosElegidos;
+
+            AddProductosToListView(aereos, productosElegidos);
+
+            var hoteles = GenerarPresupuestosManager.hotelesElegidos;
+
+            AddProductosToListView(hoteles, productosElegidos);
+
+            var cruceros = GenerarPresupuestosManager.crucerosElegidos;
+
+            AddProductosToListView(cruceros, productosElegidos);
+
+            decimal total = 0;
+
+            total += aereos.Sum(x => x.Precio);
+            total += hoteles.Sum(x => x.Precio);
+            total += cruceros.Sum(x => x.Precio);
+
+            presupuestoTotal.Text = total.ToString();
         }
 
-        private void AddPresupuestosToListView(IEnumerable<ProductosAereos> listToAdd, ListView listView)
+        private void AddProductosToListView(IEnumerable<Productos> listToAdd, ListView listView)
         {
             foreach (var item in listToAdd)
             {
@@ -74,7 +92,25 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
         {
+            if (productosElegidos.Items.Count > 0)
+            {
+                var result = MessageBox.Show("¿Desea generar una Pre Reserva a partir de este Presupuesto?", string.Empty, MessageBoxButtons.YesNo);
 
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show("Presupuesto y Pre Reserva generados correctamente.", "Exito", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Presupuesto generado correctamente.", "Exito", MessageBoxButtons.OK);
+                }
+
+                btnVolverMenuPrincipal_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Debes elegir productos turisticos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void btnVolverMenuPrincipal_Click(object sender, EventArgs e)

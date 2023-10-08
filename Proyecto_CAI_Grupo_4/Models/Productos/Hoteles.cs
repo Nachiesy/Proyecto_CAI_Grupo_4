@@ -1,8 +1,8 @@
 ﻿namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
-    public class ProductosHoteles : Productos
+    public class Hoteles : Productos
     {
-        public string Habitacion { get; set; }
+        public string Ciudad { get; set; }
 
         public DateTime FechaDesde { get; set; }
 

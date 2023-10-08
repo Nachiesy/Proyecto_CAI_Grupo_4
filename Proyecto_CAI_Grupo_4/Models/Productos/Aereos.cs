@@ -2,7 +2,7 @@
 
 namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
-    public class ProductosAereos : Productos
+    public class Aereos : Productos
     {
         public string Origen { get; set; }
 

@@ -1,8 +1,10 @@
 ﻿namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
-    public class ProductosCruceros : Productos
+    public class Cruceros : Productos
     {
-        public string Habitacion { get; set; }
+        public string CiudadDePartida { get; set; }
+
+        public string CiudadDeLlegada { get; set; }
 
         public DateTime FechaDesde { get; set; }
 
