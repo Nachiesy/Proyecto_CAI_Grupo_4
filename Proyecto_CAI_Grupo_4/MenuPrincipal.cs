@@ -1,17 +1,28 @@
-﻿namespace Proyecto_CAI_Grupo_4
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Proyecto_CAI_Grupo_4.Common.Views;
+
+namespace Proyecto_CAI_Grupo_4
 {
-    public partial class MenuPrincipal : Form
+    public partial class MenuPrincipal : VistaBase
     {
-        public MenuPrincipal()
+        public MenuPrincipal() : base(tituloModulo: "Menu Principal")
         {
             InitializeComponent();
         }
 
         private void btnMenuGenerarPresupuesto_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
+            var thread = new Thread(OpenMenuGenerarPresupuesto);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
@@ -23,7 +34,7 @@
 
         private void btnEstadoDeReservas_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
             Thread thread = new Thread(OpenEstadoDeReservas);
             thread.SetApartmentState(ApartmentState.STA);
@@ -34,29 +45,5 @@
         {
             Application.Run(new Reservas());
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void MenuPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGenerarReserva_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Thread thread = new Thread(OpenGenerarReserva);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-        private void OpenGenerarReserva()
-        {
-            Application.Run(new GenerarReserva());
-        }
-
     }
 }

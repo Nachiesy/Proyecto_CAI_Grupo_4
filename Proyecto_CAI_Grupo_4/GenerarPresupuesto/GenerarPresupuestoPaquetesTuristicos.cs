@@ -2,26 +2,27 @@
 using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
+using System.Data;
 
-namespace Proyecto_CAI_Grupo_4
+namespace Proyecto_CAI_Grupo_4.GenerarPresupuesto
 {
-    public partial class GenerarPresupuestoCruceros : Form
+    public partial class GenerarPresupuestoPaquetesTuristicos : Form
     {
-        public GenerarPresupuestoCruceros()
+        public GenerarPresupuestoPaquetesTuristicos()
         {
             InitializeComponent();
         }
 
-        private void GenerarPresupuestoCruceros_Load(object sender, EventArgs e)
+        private void GenerarPresupuestoPaquetesTuristicos_Load(object sender, EventArgs e)
         {
             datePickerFechaSalida.Checked = false;
             datePickerFechaSalida.Value = DateTime.Now.Date;
             datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
-            AddProductosToListView(GenerarPresupuestosManager.cruceros, lstViewProductos);
+            AddProductosToListView(GenerarPresupuestosManager.paquetesTuristicos, lstViewProductos);
 
-            AddProductosToListView(GenerarPresupuestosManager.crucerosElegidos, lstViewProductosElegidos);
+            AddProductosToListView(GenerarPresupuestosManager.paquetesTuristicosElegidos, lstViewProductosElegidos);
         }
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
@@ -44,7 +45,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var filter = new CrucerosFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.cruceros
+                var productos = GenerarPresupuestosManager.paquetesTuristicos
                     .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
                                 && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
@@ -122,15 +123,15 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosToListView(IEnumerable<Cruceros> listToAdd, ListView listView)
+        private void AddProductosToListView(IEnumerable<PaquetesTuristicos> listToAdd, ListView listView)
         {
             foreach (var item in listToAdd)
             {
                 var row = new ListViewItem(item.Id.ToString());
 
                 row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.CiudadDePartida);
-                row.SubItems.Add(item.CiudadDeLlegada);
+                row.SubItems.Add(item.Origen);
+                row.SubItems.Add(item.Destino);
                 row.SubItems.Add(item.Precio.ToString());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
                 row.SubItems.Add(item.FechaHasta.ToFormDate());
@@ -143,13 +144,13 @@ namespace Proyecto_CAI_Grupo_4
         {
             if (lstViewProductos.SelectedItems.Count > 0)
             {
-                var productosToAdd = new List<Cruceros>();
+                var productosToAdd = new List<PaquetesTuristicos>();
 
                 foreach (ListViewItem selectedItem in lstViewProductos.SelectedItems)
                 {
                     var id = Guid.Parse(selectedItem.Text);
 
-                    var producto = GenerarPresupuestosManager.cruceros.Where(x => x.Id == id).SingleOrDefault();
+                    var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
 
                     if (!IsProductInSelectedListView(id))
                     {
@@ -182,15 +183,15 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
         {
-            GenerarPresupuestosManager.crucerosElegidos.Clear();
+            GenerarPresupuestosManager.paquetesTuristicosElegidos.Clear();
 
             foreach (ListViewItem selectedItem in lstViewProductosElegidos.Items)
             {
                 var id = Guid.Parse(selectedItem.Text);
 
-                var producto = GenerarPresupuestosManager.cruceros.Where(x => x.Id == id).SingleOrDefault();
+                var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
 
-                GenerarPresupuestosManager.crucerosElegidos.Add(producto);
+                GenerarPresupuestosManager.paquetesTuristicosElegidos.Add(producto);
             }
 
             this.Close();

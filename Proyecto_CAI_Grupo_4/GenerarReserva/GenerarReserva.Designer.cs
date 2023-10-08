@@ -46,7 +46,6 @@
             label1.Size = new Size(145, 15);
             label1.TabIndex = 0;
             label1.Text = "Ingrese el DNI del Cliente: ";
-            label1.Click += label1_Click;
             // 
             // dniClientetxb
             // 
@@ -96,7 +95,6 @@
             Margin = new Padding(1);
             Name = "GenerarReserva";
             Text = "Generar Reserva";
-            Load += GenerarReserva_Load;
             ResumeLayout(false);
             PerformLayout();
         }

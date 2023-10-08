@@ -28,37 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pasajerosAdultos = new TextBox();
-            lbl = new Label();
-            label2 = new Label();
-            pasajerosMenores = new TextBox();
-            tipoDeServicio = new ComboBox();
-            label3 = new Label();
-            fechaDesde = new DateTimePicker();
+            datePickerFechaSalida = new DateTimePicker();
             label4 = new Label();
             label5 = new Label();
-            fechaHasta = new DateTimePicker();
+            datePickerFechaLlegada = new DateTimePicker();
             label6 = new Label();
-            precioHasta = new TextBox();
+            txtBoxPrecioHasta = new TextBox();
             label7 = new Label();
-            precioDesde = new TextBox();
-            label8 = new Label();
-            nombreDelServicio = new TextBox();
-            buscarPresupuesto = new Button();
-            finalizarPresupuesto = new Button();
-            removerPresupuesto = new Button();
-            agregarPresupuesto = new Button();
-            presupuestosBuscados = new ListView();
-            ID = new ColumnHeader();
-            Tipo = new ColumnHeader();
-            Nombre = new ColumnHeader();
-            Adultos = new ColumnHeader();
-            Menores = new ColumnHeader();
-            PrecioD = new ColumnHeader();
-            PrecioH = new ColumnHeader();
-            FechaD = new ColumnHeader();
-            FechaH = new ColumnHeader();
-            presupuestosElegidos = new ListView();
+            txtBoxPrecioDesde = new TextBox();
+            btnVolverMenuGenerarPresupuestos = new Button();
+            lstViewProductos = new ListView();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
+            columnHeader11 = new ColumnHeader();
+            columnHeader12 = new ColumnHeader();
+            columnHeader13 = new ColumnHeader();
+            columnHeader14 = new ColumnHeader();
+            columnHeader15 = new ColumnHeader();
+            lstViewProductosElegidos = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
@@ -66,271 +54,181 @@
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
-            columnHeader9 = new ColumnHeader();
-            btnVolverMenuGenerarPresupuestos = new Button();
+            columnHeader16 = new ColumnHeader();
+            grp_Filtros = new GroupBox();
+            btnLimpiarFiltro = new Common.Components.BotonEstilizado();
+            buscarPresupuesto = new Common.Components.BotonEstilizado();
+            agregarPresupuesto = new Common.Components.BotonEstilizado();
+            removerPresupuesto = new Common.Components.BotonEstilizado();
+            finalizarPresupuesto = new Common.Components.BotonEstilizado();
+            grp_VuelosDisponibles = new GroupBox();
+            grp_VuelosSeleccionados = new GroupBox();
+            grp_Filtros.SuspendLayout();
+            grp_VuelosDisponibles.SuspendLayout();
+            grp_VuelosSeleccionados.SuspendLayout();
             SuspendLayout();
             // 
-            // pasajerosAdultos
+            // datePickerFechaSalida
             // 
-            pasajerosAdultos.Location = new Point(201, 49);
-            pasajerosAdultos.Name = "pasajerosAdultos";
-            pasajerosAdultos.Size = new Size(126, 23);
-            pasajerosAdultos.TabIndex = 0;
-            // 
-            // lbl
-            // 
-            lbl.AutoSize = true;
-            lbl.Location = new Point(201, 22);
-            lbl.Name = "lbl";
-            lbl.Size = new Size(100, 15);
-            lbl.TabIndex = 1;
-            lbl.Text = "Pasajeros Adultos";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(365, 22);
-            label2.Name = "label2";
-            label2.Size = new Size(105, 15);
-            label2.TabIndex = 3;
-            label2.Text = "Pasajeros Menores";
-            // 
-            // pasajerosMenores
-            // 
-            pasajerosMenores.Location = new Point(365, 49);
-            pasajerosMenores.Name = "pasajerosMenores";
-            pasajerosMenores.Size = new Size(126, 23);
-            pasajerosMenores.TabIndex = 2;
-            // 
-            // tipoDeServicio
-            // 
-            tipoDeServicio.FormattingEnabled = true;
-            tipoDeServicio.Items.AddRange(new object[] { "Aéreo", "Hotel", "Crucero" });
-            tipoDeServicio.Location = new Point(30, 49);
-            tipoDeServicio.Name = "tipoDeServicio";
-            tipoDeServicio.Size = new Size(126, 23);
-            tipoDeServicio.TabIndex = 10;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(30, 22);
-            label3.Name = "label3";
-            label3.Size = new Size(90, 15);
-            label3.TabIndex = 11;
-            label3.Text = "Tipo de Servicio";
-            // 
-            // fechaDesde
-            // 
-            fechaDesde.Location = new Point(538, 49);
-            fechaDesde.Name = "fechaDesde";
-            fechaDesde.Size = new Size(200, 23);
-            fechaDesde.TabIndex = 12;
+            datePickerFechaSalida.Location = new Point(18, 116);
+            datePickerFechaSalida.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
+            datePickerFechaSalida.Name = "datePickerFechaSalida";
+            datePickerFechaSalida.Size = new Size(235, 23);
+            datePickerFechaSalida.TabIndex = 12;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(538, 22);
+            label4.Location = new Point(18, 98);
             label4.Name = "label4";
-            label4.Size = new Size(73, 15);
+            label4.Size = new Size(72, 15);
             label4.TabIndex = 13;
-            label4.Text = "Fecha Desde";
+            label4.Text = "Fecha Salida";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(538, 101);
+            label5.Location = new Point(18, 161);
             label5.Name = "label5";
-            label5.Size = new Size(71, 15);
+            label5.Size = new Size(82, 15);
             label5.TabIndex = 15;
-            label5.Text = "Fecha Hasta";
+            label5.Text = "Fecha Llegada";
             // 
-            // fechaHasta
+            // datePickerFechaLlegada
             // 
-            fechaHasta.Location = new Point(538, 128);
-            fechaHasta.Name = "fechaHasta";
-            fechaHasta.Size = new Size(200, 23);
-            fechaHasta.TabIndex = 14;
+            datePickerFechaLlegada.Location = new Point(18, 179);
+            datePickerFechaLlegada.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
+            datePickerFechaLlegada.Name = "datePickerFechaLlegada";
+            datePickerFechaLlegada.Size = new Size(232, 23);
+            datePickerFechaLlegada.TabIndex = 14;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(365, 101);
+            label6.Location = new Point(163, 38);
             label6.Name = "label6";
             label6.Size = new Size(73, 15);
             label6.TabIndex = 17;
             label6.Text = "Precio Hasta";
             // 
-            // precioHasta
+            // txtBoxPrecioHasta
             // 
-            precioHasta.Location = new Point(365, 128);
-            precioHasta.Name = "precioHasta";
-            precioHasta.Size = new Size(126, 23);
-            precioHasta.TabIndex = 16;
+            txtBoxPrecioHasta.Location = new Point(163, 56);
+            txtBoxPrecioHasta.Name = "txtBoxPrecioHasta";
+            txtBoxPrecioHasta.Size = new Size(126, 23);
+            txtBoxPrecioHasta.TabIndex = 16;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(201, 101);
+            label7.Location = new Point(18, 38);
             label7.Name = "label7";
             label7.Size = new Size(75, 15);
             label7.TabIndex = 19;
             label7.Text = "Precio Desde";
             // 
-            // precioDesde
+            // txtBoxPrecioDesde
             // 
-            precioDesde.Location = new Point(201, 128);
-            precioDesde.Name = "precioDesde";
-            precioDesde.Size = new Size(126, 23);
-            precioDesde.TabIndex = 18;
+            txtBoxPrecioDesde.Location = new Point(18, 56);
+            txtBoxPrecioDesde.Name = "txtBoxPrecioDesde";
+            txtBoxPrecioDesde.Size = new Size(126, 23);
+            txtBoxPrecioDesde.TabIndex = 18;
             // 
-            // label8
+            // btnVolverMenuGenerarPresupuestos
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(30, 101);
-            label8.Name = "label8";
-            label8.Size = new Size(114, 15);
-            label8.TabIndex = 21;
-            label8.Text = "Nombre del Servicio";
+            btnVolverMenuGenerarPresupuestos.Location = new Point(27, 422);
+            btnVolverMenuGenerarPresupuestos.Name = "btnVolverMenuGenerarPresupuestos";
+            btnVolverMenuGenerarPresupuestos.Size = new Size(322, 47);
+            btnVolverMenuGenerarPresupuestos.TabIndex = 30;
+            btnVolverMenuGenerarPresupuestos.Text = "Volver";
+            btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
+            btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
-            // nombreDelServicio
+            // lstViewProductos
             // 
-            nombreDelServicio.Location = new Point(30, 128);
-            nombreDelServicio.Name = "nombreDelServicio";
-            nombreDelServicio.Size = new Size(126, 23);
-            nombreDelServicio.TabIndex = 20;
+            lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15 });
+            lstViewProductos.FullRowSelect = true;
+            lstViewProductos.Location = new Point(27, 22);
+            lstViewProductos.Name = "lstViewProductos";
+            lstViewProductos.Size = new Size(943, 194);
+            lstViewProductos.TabIndex = 33;
+            lstViewProductos.UseCompatibleStateImageBehavior = false;
+            lstViewProductos.View = View.Details;
             // 
-            // buscarPresupuesto
+            // columnHeader8
             // 
-            buscarPresupuesto.Location = new Point(782, 121);
-            buscarPresupuesto.Name = "buscarPresupuesto";
-            buscarPresupuesto.Size = new Size(119, 30);
-            buscarPresupuesto.TabIndex = 22;
-            buscarPresupuesto.Text = "Buscar";
-            buscarPresupuesto.UseVisualStyleBackColor = true;
-            buscarPresupuesto.Click += buscarPresupuesto_Click;
+            columnHeader8.Text = "ID";
+            columnHeader8.Width = 250;
             // 
-            // finalizarPresupuesto
+            // columnHeader9
             // 
-            finalizarPresupuesto.Location = new Point(1051, 641);
-            finalizarPresupuesto.Name = "finalizarPresupuesto";
-            finalizarPresupuesto.Size = new Size(138, 25);
-            finalizarPresupuesto.TabIndex = 27;
-            finalizarPresupuesto.Text = "Finalizar Presupuesto";
-            finalizarPresupuesto.UseVisualStyleBackColor = true;
-            finalizarPresupuesto.Click += finalizarPresupuesto_Click;
+            columnHeader9.Text = "Nombre";
+            columnHeader9.Width = 200;
             // 
-            // removerPresupuesto
+            // columnHeader10
             // 
-            removerPresupuesto.Location = new Point(917, 641);
-            removerPresupuesto.Name = "removerPresupuesto";
-            removerPresupuesto.Size = new Size(107, 25);
-            removerPresupuesto.TabIndex = 26;
-            removerPresupuesto.Text = "Remover";
-            removerPresupuesto.UseVisualStyleBackColor = true;
-            removerPresupuesto.Click += removerPresupuesto_Click;
+            columnHeader10.Text = "Origen";
+            columnHeader10.Width = 100;
             // 
-            // agregarPresupuesto
+            // columnHeader11
             // 
-            agregarPresupuesto.Location = new Point(1083, 383);
-            agregarPresupuesto.Name = "agregarPresupuesto";
-            agregarPresupuesto.Size = new Size(106, 28);
-            agregarPresupuesto.TabIndex = 25;
-            agregarPresupuesto.Text = "Agregar";
-            agregarPresupuesto.UseVisualStyleBackColor = true;
-            agregarPresupuesto.Click += agregarPresupuesto_Click;
+            columnHeader11.Text = "Destino";
+            columnHeader11.Width = 100;
             // 
-            // presupuestosBuscados
+            // columnHeader12
             // 
-            presupuestosBuscados.Columns.AddRange(new ColumnHeader[] { ID, Tipo, Nombre, Adultos, Menores, PrecioD, PrecioH, FechaD, FechaH });
-            presupuestosBuscados.FullRowSelect = true;
-            presupuestosBuscados.Location = new Point(30, 178);
-            presupuestosBuscados.Name = "presupuestosBuscados";
-            presupuestosBuscados.Size = new Size(1159, 195);
-            presupuestosBuscados.TabIndex = 28;
-            presupuestosBuscados.UseCompatibleStateImageBehavior = false;
-            presupuestosBuscados.View = View.Details;
+            columnHeader12.Text = "Clase";
+            columnHeader12.Width = 100;
             // 
-            // ID
+            // columnHeader13
             // 
-            ID.Text = "ID";
-            ID.Width = 100;
+            columnHeader13.Text = "Precio";
+            columnHeader13.Width = 100;
             // 
-            // Tipo
+            // columnHeader14
             // 
-            Tipo.Text = "Tipo de Servicio";
-            Tipo.Width = 100;
+            columnHeader14.Text = "Fecha Salida";
+            columnHeader14.Width = 100;
             // 
-            // Nombre
+            // columnHeader15
             // 
-            Nombre.Text = "Nombre del Servicio";
-            Nombre.Width = 150;
+            columnHeader15.Text = "Fecha Llegada";
+            columnHeader15.Width = 100;
             // 
-            // Adultos
+            // lstViewProductosElegidos
             // 
-            Adultos.Text = "Adultos";
-            Adultos.Width = 100;
-            // 
-            // Menores
-            // 
-            Menores.Text = "Menores";
-            Menores.Width = 100;
-            // 
-            // PrecioD
-            // 
-            PrecioD.Text = "Precio";
-            PrecioD.Width = 100;
-            // 
-            // PrecioH
-            // 
-            PrecioH.Text = "Precio Hasta";
-            PrecioH.Width = 100;
-            // 
-            // FechaD
-            // 
-            FechaD.Text = "Fecha Desde";
-            FechaD.Width = 100;
-            // 
-            // FechaH
-            // 
-            FechaH.Text = "Fecha Hasta";
-            FechaH.Width = 100;
-            // 
-            // presupuestosElegidos
-            // 
-            presupuestosElegidos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9 });
-            presupuestosElegidos.FullRowSelect = true;
-            presupuestosElegidos.Location = new Point(30, 432);
-            presupuestosElegidos.Name = "presupuestosElegidos";
-            presupuestosElegidos.Size = new Size(1159, 195);
-            presupuestosElegidos.TabIndex = 29;
-            presupuestosElegidos.UseCompatibleStateImageBehavior = false;
-            presupuestosElegidos.View = View.Details;
+            lstViewProductosElegidos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader16 });
+            lstViewProductosElegidos.FullRowSelect = true;
+            lstViewProductosElegidos.Location = new Point(6, 22);
+            lstViewProductosElegidos.Name = "lstViewProductosElegidos";
+            lstViewProductosElegidos.Size = new Size(964, 194);
+            lstViewProductosElegidos.TabIndex = 34;
+            lstViewProductosElegidos.UseCompatibleStateImageBehavior = false;
+            lstViewProductosElegidos.View = View.Details;
             // 
             // columnHeader1
             // 
             columnHeader1.Text = "ID";
-            columnHeader1.Width = 100;
+            columnHeader1.Width = 250;
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Tipo de Servicio";
-            columnHeader2.Width = 100;
+            columnHeader2.Text = "Nombre";
+            columnHeader2.Width = 200;
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Nombre del Servicio";
-            columnHeader3.Width = 150;
+            columnHeader3.Text = "Origen";
+            columnHeader3.Width = 100;
             // 
             // columnHeader4
             // 
-            columnHeader4.Text = "Adultos";
+            columnHeader4.Text = "Destino";
             columnHeader4.Width = 100;
             // 
             // columnHeader5
             // 
-            columnHeader5.Text = "Menores";
+            columnHeader5.Text = "Clase";
             columnHeader5.Width = 100;
             // 
             // columnHeader6
@@ -340,97 +238,175 @@
             // 
             // columnHeader7
             // 
-            columnHeader7.Text = "Precio Hasta";
+            columnHeader7.Text = "Fecha Salida";
             columnHeader7.Width = 100;
             // 
-            // columnHeader8
+            // columnHeader16
             // 
-            columnHeader8.Text = "Fecha Desde";
-            columnHeader8.Width = 100;
+            columnHeader16.Text = "Fecha Llegada";
+            columnHeader16.Width = 100;
             // 
-            // columnHeader9
+            // grp_Filtros
             // 
-            columnHeader9.Text = "Fecha Hasta";
-            columnHeader9.Width = 100;
+            grp_Filtros.Controls.Add(btnLimpiarFiltro);
+            grp_Filtros.Controls.Add(label7);
+            grp_Filtros.Controls.Add(buscarPresupuesto);
+            grp_Filtros.Controls.Add(datePickerFechaSalida);
+            grp_Filtros.Controls.Add(label4);
+            grp_Filtros.Controls.Add(datePickerFechaLlegada);
+            grp_Filtros.Controls.Add(label5);
+            grp_Filtros.Controls.Add(txtBoxPrecioHasta);
+            grp_Filtros.Controls.Add(label6);
+            grp_Filtros.Controls.Add(txtBoxPrecioDesde);
+            grp_Filtros.Location = new Point(27, 131);
+            grp_Filtros.Name = "grp_Filtros";
+            grp_Filtros.Size = new Size(322, 278);
+            grp_Filtros.TabIndex = 35;
+            grp_Filtros.TabStop = false;
+            grp_Filtros.Text = "Filtros";
             // 
-            // btnVolverMenuGenerarPresupuestos
+            // btnLimpiarFiltro
             // 
-            btnVolverMenuGenerarPresupuestos.Location = new Point(30, 643);
-            btnVolverMenuGenerarPresupuestos.Name = "btnVolverMenuGenerarPresupuestos";
-            btnVolverMenuGenerarPresupuestos.Size = new Size(246, 23);
-            btnVolverMenuGenerarPresupuestos.TabIndex = 30;
-            btnVolverMenuGenerarPresupuestos.Text = "Volver al Menu de Generar Presupuestos";
-            btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
-            btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
+            btnLimpiarFiltro.BackColor = Color.Transparent;
+            btnLimpiarFiltro.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnLimpiarFiltro.FlatStyle = FlatStyle.Flat;
+            btnLimpiarFiltro.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLimpiarFiltro.ForeColor = Color.Black;
+            btnLimpiarFiltro.Location = new Point(163, 220);
+            btnLimpiarFiltro.Name = "btnLimpiarFiltro";
+            btnLimpiarFiltro.Size = new Size(139, 40);
+            btnLimpiarFiltro.TabIndex = 4;
+            btnLimpiarFiltro.Text = "Limpiar";
+            btnLimpiarFiltro.UseVisualStyleBackColor = false;
+            btnLimpiarFiltro.Click += btnLimpiarFiltro_Click;
+            // 
+            // buscarPresupuesto
+            // 
+            buscarPresupuesto.BackColor = Color.Transparent;
+            buscarPresupuesto.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            buscarPresupuesto.FlatStyle = FlatStyle.Flat;
+            buscarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            buscarPresupuesto.ForeColor = Color.Black;
+            buscarPresupuesto.Location = new Point(18, 220);
+            buscarPresupuesto.Name = "buscarPresupuesto";
+            buscarPresupuesto.Size = new Size(139, 40);
+            buscarPresupuesto.TabIndex = 4;
+            buscarPresupuesto.Text = "Buscar";
+            buscarPresupuesto.UseVisualStyleBackColor = false;
+            buscarPresupuesto.Click += buscarProductosAereos_Click;
+            // 
+            // agregarPresupuesto
+            // 
+            agregarPresupuesto.BackColor = Color.Transparent;
+            agregarPresupuesto.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            agregarPresupuesto.FlatStyle = FlatStyle.Flat;
+            agregarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            agregarPresupuesto.ForeColor = Color.Black;
+            agregarPresupuesto.Location = new Point(27, 222);
+            agregarPresupuesto.Name = "agregarPresupuesto";
+            agregarPresupuesto.Size = new Size(943, 40);
+            agregarPresupuesto.TabIndex = 4;
+            agregarPresupuesto.Text = "Agregar";
+            agregarPresupuesto.UseVisualStyleBackColor = false;
+            agregarPresupuesto.Click += agregarProductosAereosElegidos_Click;
+            // 
+            // removerPresupuesto
+            // 
+            removerPresupuesto.BackColor = Color.Transparent;
+            removerPresupuesto.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            removerPresupuesto.FlatStyle = FlatStyle.Flat;
+            removerPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            removerPresupuesto.ForeColor = Color.Black;
+            removerPresupuesto.Location = new Point(6, 222);
+            removerPresupuesto.Name = "removerPresupuesto";
+            removerPresupuesto.Size = new Size(479, 40);
+            removerPresupuesto.TabIndex = 4;
+            removerPresupuesto.Text = "Quitar";
+            removerPresupuesto.UseVisualStyleBackColor = false;
+            removerPresupuesto.Click += removerProductosAereosDeLosElegidos_Click;
+            // 
+            // finalizarPresupuesto
+            // 
+            finalizarPresupuesto.BackColor = Color.Transparent;
+            finalizarPresupuesto.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            finalizarPresupuesto.FlatStyle = FlatStyle.Flat;
+            finalizarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            finalizarPresupuesto.ForeColor = Color.Black;
+            finalizarPresupuesto.Location = new Point(491, 222);
+            finalizarPresupuesto.Name = "finalizarPresupuesto";
+            finalizarPresupuesto.Size = new Size(479, 40);
+            finalizarPresupuesto.TabIndex = 4;
+            finalizarPresupuesto.Text = "Confirmar";
+            finalizarPresupuesto.UseVisualStyleBackColor = false;
+            finalizarPresupuesto.Click += finalizarPresupuestoAereo_Click;
+            // 
+            // grp_VuelosDisponibles
+            // 
+            grp_VuelosDisponibles.Controls.Add(lstViewProductos);
+            grp_VuelosDisponibles.Controls.Add(agregarPresupuesto);
+            grp_VuelosDisponibles.Location = new Point(376, 131);
+            grp_VuelosDisponibles.Name = "grp_VuelosDisponibles";
+            grp_VuelosDisponibles.Size = new Size(976, 278);
+            grp_VuelosDisponibles.TabIndex = 36;
+            grp_VuelosDisponibles.TabStop = false;
+            grp_VuelosDisponibles.Text = "Vuelos Disponibles";
+            // 
+            // grp_VuelosSeleccionados
+            // 
+            grp_VuelosSeleccionados.Controls.Add(lstViewProductosElegidos);
+            grp_VuelosSeleccionados.Controls.Add(removerPresupuesto);
+            grp_VuelosSeleccionados.Controls.Add(finalizarPresupuesto);
+            grp_VuelosSeleccionados.Location = new Point(376, 422);
+            grp_VuelosSeleccionados.Name = "grp_VuelosSeleccionados";
+            grp_VuelosSeleccionados.Size = new Size(976, 269);
+            grp_VuelosSeleccionados.TabIndex = 37;
+            grp_VuelosSeleccionados.TabStop = false;
+            grp_VuelosSeleccionados.Text = "Vuelos Seleccionados";
             // 
             // GenerarPresupuestoAereos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1364, 703);
+            BackColor = Color.White;
+            ClientSize = new Size(1364, 721);
+            Controls.Add(grp_VuelosSeleccionados);
+            Controls.Add(grp_VuelosDisponibles);
+            Controls.Add(grp_Filtros);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
-            Controls.Add(presupuestosElegidos);
-            Controls.Add(presupuestosBuscados);
-            Controls.Add(finalizarPresupuesto);
-            Controls.Add(removerPresupuesto);
-            Controls.Add(agregarPresupuesto);
-            Controls.Add(buscarPresupuesto);
-            Controls.Add(label8);
-            Controls.Add(nombreDelServicio);
-            Controls.Add(label7);
-            Controls.Add(precioDesde);
-            Controls.Add(label6);
-            Controls.Add(precioHasta);
-            Controls.Add(label5);
-            Controls.Add(fechaHasta);
-            Controls.Add(label4);
-            Controls.Add(fechaDesde);
-            Controls.Add(label3);
-            Controls.Add(tipoDeServicio);
-            Controls.Add(label2);
-            Controls.Add(pasajerosMenores);
-            Controls.Add(lbl);
-            Controls.Add(pasajerosAdultos);
             Name = "GenerarPresupuestoAereos";
-            Text = "Form2";
-            Load += GenerarPresupuesto_Load;
+            Text = "Generar Presupuesto - Aéreos";
+            Load += GenerarPresupuestoAereos_Load;
+            Controls.SetChildIndex(btnVolverMenuGenerarPresupuestos, 0);
+            Controls.SetChildIndex(grp_Filtros, 0);
+            Controls.SetChildIndex(grp_VuelosDisponibles, 0);
+            Controls.SetChildIndex(grp_VuelosSeleccionados, 0);
+            grp_Filtros.ResumeLayout(false);
+            grp_Filtros.PerformLayout();
+            grp_VuelosDisponibles.ResumeLayout(false);
+            grp_VuelosSeleccionados.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox pasajerosAdultos;
-        private Label lbl;
-        private Label label2;
-        private TextBox pasajerosMenores;
-        private ComboBox tipoDeServicio;
-        private Label label3;
-        private DateTimePicker fechaDesde;
+        private DateTimePicker datePickerFechaSalida;
         private Label label4;
         private Label label5;
-        private DateTimePicker fechaHasta;
+        private DateTimePicker datePickerFechaLlegada;
         private Label label6;
-        private TextBox precioHasta;
+        private TextBox txtBoxPrecioHasta;
         private Label label7;
-        private TextBox precioDesde;
-        private Label label8;
-        private TextBox nombreDelServicio;
-        private Button buscarPresupuesto;
-        private Button finalizarPresupuesto;
-        private Button removerPresupuesto;
-        private Button agregarPresupuesto;
-        private ListView presupuestosBuscados;
-        private ColumnHeader ID;
-        private ColumnHeader Tipo;
-        private ColumnHeader Nombre;
-        private ColumnHeader Adultos;
-        private ColumnHeader Menores;
-        private ColumnHeader PrecioD;
-        private ColumnHeader PrecioH;
-        private ColumnHeader FechaD;
-        private ColumnHeader FechaH;
-        private ListView presupuestosElegidos;
+        private TextBox txtBoxPrecioDesde;
+        private Button btnVolverMenuGenerarPresupuestos;
+        private ListView lstViewProductos;
+        private ColumnHeader columnHeader8;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
+        private ColumnHeader columnHeader13;
+        private ColumnHeader columnHeader14;
+        private ColumnHeader columnHeader15;
+        private ListView lstViewProductosElegidos;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
@@ -438,8 +414,14 @@
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
-        private ColumnHeader columnHeader8;
-        private ColumnHeader columnHeader9;
-        private Button btnVolverMenuGenerarPresupuestos;
+        private ColumnHeader columnHeader16;
+        private GroupBox grp_Filtros;
+        private Common.Components.BotonEstilizado btnLimpiarFiltro;
+        private Common.Components.BotonEstilizado buscarPresupuesto;
+        private Common.Components.BotonEstilizado agregarPresupuesto;
+        private Common.Components.BotonEstilizado removerPresupuesto;
+        private Common.Components.BotonEstilizado finalizarPresupuesto;
+        private GroupBox grp_VuelosDisponibles;
+        private GroupBox grp_VuelosSeleccionados;
     }
 }

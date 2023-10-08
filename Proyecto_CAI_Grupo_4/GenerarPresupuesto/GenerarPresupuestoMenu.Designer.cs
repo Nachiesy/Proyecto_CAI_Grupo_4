@@ -1,4 +1,4 @@
-﻿namespace Proyecto_CAI_Grupo_4
+namespace Proyecto_CAI_Grupo_4
 {
     partial class GenerarPresupuestoMenu
     {
@@ -28,108 +28,272 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarPresupuestoMenu));
             label1 = new Label();
-            btnMenuHoteles = new Button();
-            btnMenuCruceros = new Button();
-            btnMenuAereos = new Button();
-            label2 = new Label();
-            listView1 = new ListView();
-            btnFinalizarPresupuesto = new Button();
-            btnVolverMenuPrincipal = new Button();
+            presupuestoTotal = new Label();
+            productosElegidos = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            TipoDeServicio = new DataGridViewTextBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            SubTotal = new DataGridViewTextBoxColumn();
+            groupBox1 = new GroupBox();
+            pictureBox4 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            btnMenuAereos = new Common.Components.BotonEstilizado();
+            btnMenuPaquetes = new Common.Components.BotonEstilizado();
+            btnMenuHoteles = new Common.Components.BotonEstilizado();
+            btnMenuCruceros = new Common.Components.BotonEstilizado();
+            btnFinalizarPresupuesto = new Common.Components.BotonEstilizado();
+            grp_Estimacion = new GroupBox();
+            ((System.ComponentModel.ISupportInitialize)productosElegidos).BeginInit();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            grp_Estimacion.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(553, 23);
+            label1.Location = new Point(80, 233);
             label1.Name = "label1";
             label1.Size = new Size(0, 30);
             label1.TabIndex = 6;
             // 
+            // presupuestoTotal
+            // 
+            presupuestoTotal.AutoSize = true;
+            presupuestoTotal.Font = new Font("Microsoft JhengHei", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            presupuestoTotal.Location = new Point(15, 30);
+            presupuestoTotal.Name = "presupuestoTotal";
+            presupuestoTotal.Size = new Size(108, 31);
+            presupuestoTotal.TabIndex = 34;
+            presupuestoTotal.Text = "Total: $-";
+            // 
+            // productosElegidos
+            // 
+            productosElegidos.AllowUserToAddRows = false;
+            productosElegidos.AllowUserToDeleteRows = false;
+            productosElegidos.AllowUserToOrderColumns = true;
+            productosElegidos.BackgroundColor = SystemColors.ControlLight;
+            productosElegidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, TipoDeServicio, PrecioUnitario, Cantidad, SubTotal });
+            productosElegidos.Location = new Point(303, 126);
+            productosElegidos.Name = "productosElegidos";
+            productosElegidos.RowTemplate.Height = 25;
+            productosElegidos.Size = new Size(893, 344);
+            productosElegidos.TabIndex = 36;
+            productosElegidos.CellValueChanged += productosElegidos_CellValueChanged;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 250;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // TipoDeServicio
+            // 
+            TipoDeServicio.HeaderText = "Tipo de Servicio";
+            TipoDeServicio.Name = "TipoDeServicio";
+            TipoDeServicio.ReadOnly = true;
+            // 
+            // PrecioUnitario
+            // 
+            PrecioUnitario.HeaderText = "Precio Unitario";
+            PrecioUnitario.Name = "PrecioUnitario";
+            PrecioUnitario.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.Name = "Cantidad";
+            // 
+            // SubTotal
+            // 
+            SubTotal.HeaderText = "SubTotal";
+            SubTotal.Name = "SubTotal";
+            SubTotal.ReadOnly = true;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(pictureBox4);
+            groupBox1.Controls.Add(pictureBox3);
+            groupBox1.Controls.Add(pictureBox2);
+            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(btnMenuAereos);
+            groupBox1.Controls.Add(btnMenuPaquetes);
+            groupBox1.Controls.Add(btnMenuHoteles);
+            groupBox1.Controls.Add(btnMenuCruceros);
+            groupBox1.Location = new Point(12, 106);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(246, 237);
+            groupBox1.TabIndex = 37;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Agregar productos";
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(15, 184);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(48, 48);
+            pictureBox4.TabIndex = 8;
+            pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(14, 131);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(48, 48);
+            pictureBox3.TabIndex = 7;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(14, 76);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(48, 48);
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(14, 23);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(48, 48);
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // btnMenuAereos
+            // 
+            btnMenuAereos.BackColor = Color.Transparent;
+            btnMenuAereos.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnMenuAereos.FlatStyle = FlatStyle.Flat;
+            btnMenuAereos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMenuAereos.ForeColor = Color.Black;
+            btnMenuAereos.Location = new Point(68, 23);
+            btnMenuAereos.Name = "btnMenuAereos";
+            btnMenuAereos.Size = new Size(172, 40);
+            btnMenuAereos.TabIndex = 4;
+            btnMenuAereos.Text = "Aéreos";
+            btnMenuAereos.UseVisualStyleBackColor = false;
+            btnMenuAereos.Click += btnMenuAereos_Click;
+            // 
+            // btnMenuPaquetes
+            // 
+            btnMenuPaquetes.BackColor = Color.Transparent;
+            btnMenuPaquetes.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnMenuPaquetes.FlatStyle = FlatStyle.Flat;
+            btnMenuPaquetes.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMenuPaquetes.ForeColor = Color.Black;
+            btnMenuPaquetes.Location = new Point(68, 187);
+            btnMenuPaquetes.Name = "btnMenuPaquetes";
+            btnMenuPaquetes.Size = new Size(172, 40);
+            btnMenuPaquetes.TabIndex = 4;
+            btnMenuPaquetes.Text = "Paquetes";
+            btnMenuPaquetes.UseVisualStyleBackColor = false;
+            // 
             // btnMenuHoteles
             // 
-            btnMenuHoteles.Location = new Point(502, 115);
+            btnMenuHoteles.BackColor = Color.Transparent;
+            btnMenuHoteles.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnMenuHoteles.FlatStyle = FlatStyle.Flat;
+            btnMenuHoteles.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMenuHoteles.ForeColor = Color.Black;
+            btnMenuHoteles.Location = new Point(68, 79);
             btnMenuHoteles.Name = "btnMenuHoteles";
-            btnMenuHoteles.Size = new Size(206, 23);
-            btnMenuHoteles.TabIndex = 11;
-            btnMenuHoteles.Text = "Generar Presupuesto de Hoteles";
-            btnMenuHoteles.UseVisualStyleBackColor = true;
+            btnMenuHoteles.Size = new Size(172, 40);
+            btnMenuHoteles.TabIndex = 4;
+            btnMenuHoteles.Text = "Hoteles";
+            btnMenuHoteles.UseVisualStyleBackColor = false;
             btnMenuHoteles.Click += btnMenuHoteles_Click;
             // 
             // btnMenuCruceros
             // 
-            btnMenuCruceros.Location = new Point(502, 160);
+            btnMenuCruceros.BackColor = Color.Transparent;
+            btnMenuCruceros.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnMenuCruceros.FlatStyle = FlatStyle.Flat;
+            btnMenuCruceros.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMenuCruceros.ForeColor = Color.Black;
+            btnMenuCruceros.Location = new Point(68, 133);
             btnMenuCruceros.Name = "btnMenuCruceros";
-            btnMenuCruceros.Size = new Size(206, 23);
-            btnMenuCruceros.TabIndex = 8;
-            btnMenuCruceros.Text = "Generar Presupuesto de Cruceros";
-            btnMenuCruceros.UseVisualStyleBackColor = true;
+            btnMenuCruceros.Size = new Size(172, 40);
+            btnMenuCruceros.TabIndex = 4;
+            btnMenuCruceros.Text = "Cruceros";
+            btnMenuCruceros.UseVisualStyleBackColor = false;
             btnMenuCruceros.Click += btnMenuCruceros_Click;
-            // 
-            // btnMenuAereos
-            // 
-            btnMenuAereos.Location = new Point(502, 72);
-            btnMenuAereos.Name = "btnMenuAereos";
-            btnMenuAereos.Size = new Size(206, 23);
-            btnMenuAereos.TabIndex = 7;
-            btnMenuAereos.Text = "Generar Presupuesto de Aéreos";
-            btnMenuAereos.UseVisualStyleBackColor = true;
-            btnMenuAereos.Click += btnMenuAereos_Click;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(502, 23);
-            label2.Name = "label2";
-            label2.Size = new Size(206, 30);
-            label2.TabIndex = 12;
-            label2.Text = "Generar Presupuesto";
-            // 
-            // listView1
-            // 
-            listView1.Location = new Point(106, 253);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(1006, 261);
-            listView1.TabIndex = 13;
-            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // btnFinalizarPresupuesto
             // 
-            btnFinalizarPresupuesto.Location = new Point(502, 531);
+            btnFinalizarPresupuesto.BackColor = Color.Transparent;
+            btnFinalizarPresupuesto.Enabled = false;
+            btnFinalizarPresupuesto.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnFinalizarPresupuesto.FlatStyle = FlatStyle.Flat;
+            btnFinalizarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFinalizarPresupuesto.ForeColor = Color.Black;
+            btnFinalizarPresupuesto.Location = new Point(12, 430);
             btnFinalizarPresupuesto.Name = "btnFinalizarPresupuesto";
-            btnFinalizarPresupuesto.Size = new Size(206, 23);
-            btnFinalizarPresupuesto.TabIndex = 14;
-            btnFinalizarPresupuesto.Text = "Finalizar Presupuesto";
-            btnFinalizarPresupuesto.UseVisualStyleBackColor = true;
+            btnFinalizarPresupuesto.Size = new Size(246, 40);
+            btnFinalizarPresupuesto.TabIndex = 4;
+            btnFinalizarPresupuesto.Text = "Guardar";
+            btnFinalizarPresupuesto.UseVisualStyleBackColor = false;
             btnFinalizarPresupuesto.Click += btnFinalizarPresupuesto_Click;
             // 
-            // btnVolverMenuPrincipal
+            // grp_Estimacion
             // 
-            btnVolverMenuPrincipal.Location = new Point(502, 572);
-            btnVolverMenuPrincipal.Name = "btnVolverMenuPrincipal";
-            btnVolverMenuPrincipal.Size = new Size(206, 23);
-            btnVolverMenuPrincipal.TabIndex = 15;
-            btnVolverMenuPrincipal.Text = "Volver al Menu Principal";
-            btnVolverMenuPrincipal.UseVisualStyleBackColor = true;
-            btnVolverMenuPrincipal.Click += btnVolverMenuPrincipal_Click;
+            grp_Estimacion.Controls.Add(presupuestoTotal);
+            grp_Estimacion.Location = new Point(12, 349);
+            grp_Estimacion.Name = "grp_Estimacion";
+            grp_Estimacion.Size = new Size(246, 75);
+            grp_Estimacion.TabIndex = 38;
+            grp_Estimacion.TabStop = false;
+            grp_Estimacion.Text = "Estimacion";
             // 
             // GenerarPresupuestoMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1252, 644);
-            Controls.Add(btnVolverMenuPrincipal);
+            BackColor = Color.White;
+            ClientSize = new Size(1209, 483);
+            Controls.Add(grp_Estimacion);
             Controls.Add(btnFinalizarPresupuesto);
-            Controls.Add(listView1);
-            Controls.Add(label2);
+            Controls.Add(groupBox1);
+            Controls.Add(productosElegidos);
             Controls.Add(label1);
-            Controls.Add(btnMenuHoteles);
-            Controls.Add(btnMenuCruceros);
-            Controls.Add(btnMenuAereos);
             Name = "GenerarPresupuestoMenu";
-            Text = "GenerarPresupuestoMenu";
+            Text = "Generar Presupuesto";
+            Load += GenerarPresupuestoMenu_Load;
+            Controls.SetChildIndex(label1, 0);
+            Controls.SetChildIndex(productosElegidos, 0);
+            Controls.SetChildIndex(groupBox1, 0);
+            Controls.SetChildIndex(btnFinalizarPresupuesto, 0);
+            Controls.SetChildIndex(grp_Estimacion, 0);
+            ((System.ComponentModel.ISupportInitialize)productosElegidos).EndInit();
+            groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            grp_Estimacion.ResumeLayout(false);
+            grp_Estimacion.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -137,12 +301,24 @@
         #endregion
 
         private Label label1;
-        private Button btnMenuHoteles;
-        private Button btnMenuCruceros;
-        private Button btnMenuAereos;
-        private Label label2;
-        private ListView listView1;
-        private Button btnFinalizarPresupuesto;
-        private Button btnVolverMenuPrincipal;
+        private Label presupuestoTotal;
+        private DataGridView productosElegidos;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn TipoDeServicio;
+        private DataGridViewTextBoxColumn PrecioUnitario;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn SubTotal;
+        private GroupBox groupBox1;
+        private Common.Components.BotonEstilizado btnMenuAereos;
+        private Common.Components.BotonEstilizado btnMenuHoteles;
+        private Common.Components.BotonEstilizado btnMenuCruceros;
+        private Common.Components.BotonEstilizado btnMenuPaquetes;
+        private Common.Components.BotonEstilizado btnFinalizarPresupuesto;
+        private GroupBox grp_Estimacion;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox2;
     }
 }

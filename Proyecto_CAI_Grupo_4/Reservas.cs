@@ -1,9 +1,10 @@
+using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Models;
 using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class Reservas : Form
+    public partial class Reservas : VistaBase
     {
         private List<Reserva> reservas = new List<Reserva>()
         {
@@ -39,7 +40,7 @@ namespace Proyecto_CAI_Grupo_4
             },
         };
 
-        public Reservas()
+        public Reservas() : base(tituloModulo: "Consulta de Reservas")
         {
             InitializeComponent();
         }
@@ -108,6 +109,15 @@ namespace Proyecto_CAI_Grupo_4
         private void reservasListView_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void limpiarConsulta_Click(object sender, EventArgs e)
+        {
+            reservasListView.Items.Clear();
+
+            filtroCodigo.Text = string.Empty;
+            filtroEstado.SelectedIndex = -1;
+            filtroNroDeDoc.Text = string.Empty;
         }
     }
 }
