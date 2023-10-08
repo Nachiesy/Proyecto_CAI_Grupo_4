@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +13,9 @@ namespace Proyecto_CAI_Grupo_4.Common.Components
 {
     public partial class BotonEstilizado : Button
     {
-        private Color defaultColor = Color.FromArgb(255, 248, 245, 242); // Color.FromArgb(1, 248, 245, 242); //Color.Transparent;
-        private Color hoverColor = Color.FromArgb(255, 240, 238, 229); //Color.LightGray;
-        private Color textColor = Color.FromArgb(255, 95, 42, 167); //Color.Black;
+        private Color defaultColor = Color.Transparent; //Color.FromArgb(255, 248, 245, 242); // Color.FromArgb(1, 248, 245, 242);
+        private Color hoverColor = Color.LightGray; //Color.FromArgb(255, 240, 238, 229);
+        private Color textColor = Color.Black; //Color.FromArgb(255, 95, 42, 167);
 
         public BotonEstilizado()
         {
