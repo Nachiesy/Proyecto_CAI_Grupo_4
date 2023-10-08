@@ -1,4 +1,4 @@
-﻿namespace Proyecto_CAI_Grupo_4.Common
+﻿namespace Proyecto_CAI_Grupo_4.Common.Views
 {
     partial class VistaBase
     {
@@ -30,15 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VistaBase));
             pnl_BarraFijaSuperior = new Panel();
+            btn_VolverAlMenu = new PictureBox();
             btn_Salir = new PictureBox();
             lbl_TituloModulo = new Label();
             pnl_BarraFijaSuperior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btn_VolverAlMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_Salir).BeginInit();
             SuspendLayout();
             // 
             // pnl_BarraFijaSuperior
             // 
             pnl_BarraFijaSuperior.BackColor = Color.FromArgb(95, 42, 167);
+            pnl_BarraFijaSuperior.Controls.Add(btn_VolverAlMenu);
             pnl_BarraFijaSuperior.Controls.Add(btn_Salir);
             pnl_BarraFijaSuperior.Controls.Add(lbl_TituloModulo);
             pnl_BarraFijaSuperior.Dock = DockStyle.Top;
@@ -48,13 +51,26 @@
             pnl_BarraFijaSuperior.TabIndex = 7;
             pnl_BarraFijaSuperior.MouseDown += pnl_BarraFijaSuperior_MouseDown;
             // 
+            // btn_VolverAlMenu
+            // 
+            btn_VolverAlMenu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            btn_VolverAlMenu.Cursor = Cursors.Hand;
+            btn_VolverAlMenu.Image = (Image)resources.GetObject("btn_VolverAlMenu.Image");
+            btn_VolverAlMenu.Location = new Point(646, 8);
+            btn_VolverAlMenu.Name = "btn_VolverAlMenu";
+            btn_VolverAlMenu.Size = new Size(72, 72);
+            btn_VolverAlMenu.TabIndex = 3;
+            btn_VolverAlMenu.TabStop = false;
+            btn_VolverAlMenu.Click += btn_Volver_Menu;
+            // 
             // btn_Salir
             // 
+            btn_Salir.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             btn_Salir.Cursor = Cursors.Hand;
             btn_Salir.Image = (Image)resources.GetObject("btn_Salir.Image");
-            btn_Salir.Location = new Point(763, 12);
+            btn_Salir.Location = new Point(724, 12);
             btn_Salir.Name = "btn_Salir";
-            btn_Salir.Size = new Size(25, 25);
+            btn_Salir.Size = new Size(64, 64);
             btn_Salir.TabIndex = 2;
             btn_Salir.TabStop = false;
             btn_Salir.Click += btn_Salir_Click;
@@ -77,9 +93,11 @@
             Controls.Add(pnl_BarraFijaSuperior);
             FormBorderStyle = FormBorderStyle.None;
             Name = "VistaBase";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VistaBase";
             pnl_BarraFijaSuperior.ResumeLayout(false);
             pnl_BarraFijaSuperior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btn_VolverAlMenu).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_Salir).EndInit();
             ResumeLayout(false);
         }
@@ -89,5 +107,6 @@
         private Panel pnl_BarraFijaSuperior;
         private Label lbl_TituloModulo;
         private PictureBox btn_Salir;
+        private PictureBox btn_VolverAlMenu;
     }
 }

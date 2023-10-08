@@ -7,23 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Proyecto_CAI_Grupo_4.Common;
+using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class MenuPrincipal : VistaBase
     {
-        private static string tituloModulo = "Menu Principal";
-        public MenuPrincipal() : base(tituloModulo)
+        public MenuPrincipal() : base(tituloModulo: "Menu Principal")
         {
             InitializeComponent();
         }
 
         private void btnMenuGenerarPresupuesto_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
+            var thread = new Thread(OpenMenuGenerarPresupuesto);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
@@ -45,11 +44,6 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenEstadoDeReservas()
         {
             Application.Run(new Reservas());
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }
