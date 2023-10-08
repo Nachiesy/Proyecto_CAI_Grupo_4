@@ -42,6 +42,7 @@
             TipoDeServicio = new ColumnHeader();
             presupuestoTotal = new TextBox();
             label3 = new Label();
+            btnMenuPaquetes = new Button();
             SuspendLayout();
             // 
             // label1
@@ -59,7 +60,7 @@
             btnMenuHoteles.Name = "btnMenuHoteles";
             btnMenuHoteles.Size = new Size(206, 23);
             btnMenuHoteles.TabIndex = 11;
-            btnMenuHoteles.Text = "Generar Presupuesto de Hoteles";
+            btnMenuHoteles.Text = "Hoteles";
             btnMenuHoteles.UseVisualStyleBackColor = true;
             btnMenuHoteles.Click += btnMenuHoteles_Click;
             // 
@@ -69,7 +70,7 @@
             btnMenuCruceros.Name = "btnMenuCruceros";
             btnMenuCruceros.Size = new Size(206, 23);
             btnMenuCruceros.TabIndex = 8;
-            btnMenuCruceros.Text = "Generar Presupuesto de Cruceros";
+            btnMenuCruceros.Text = "Cruceros";
             btnMenuCruceros.UseVisualStyleBackColor = true;
             btnMenuCruceros.Click += btnMenuCruceros_Click;
             // 
@@ -79,7 +80,7 @@
             btnMenuAereos.Name = "btnMenuAereos";
             btnMenuAereos.Size = new Size(206, 23);
             btnMenuAereos.TabIndex = 7;
-            btnMenuAereos.Text = "Generar Presupuesto de Aéreos";
+            btnMenuAereos.Text = "Aéreos";
             btnMenuAereos.UseVisualStyleBackColor = true;
             btnMenuAereos.Click += btnMenuAereos_Click;
             // 
@@ -95,7 +96,7 @@
             // 
             // btnFinalizarPresupuesto
             // 
-            btnFinalizarPresupuesto.Location = new Point(502, 531);
+            btnFinalizarPresupuesto.Location = new Point(502, 557);
             btnFinalizarPresupuesto.Name = "btnFinalizarPresupuesto";
             btnFinalizarPresupuesto.Size = new Size(206, 23);
             btnFinalizarPresupuesto.TabIndex = 14;
@@ -105,7 +106,7 @@
             // 
             // btnVolverMenuPrincipal
             // 
-            btnVolverMenuPrincipal.Location = new Point(502, 572);
+            btnVolverMenuPrincipal.Location = new Point(502, 598);
             btnVolverMenuPrincipal.Name = "btnVolverMenuPrincipal";
             btnVolverMenuPrincipal.Size = new Size(206, 23);
             btnVolverMenuPrincipal.TabIndex = 15;
@@ -117,7 +118,7 @@
             // 
             productosElegidos.Columns.AddRange(new ColumnHeader[] { ID, Nombre, Precio, TipoDeServicio });
             productosElegidos.FullRowSelect = true;
-            productosElegidos.Location = new Point(47, 225);
+            productosElegidos.Location = new Point(47, 251);
             productosElegidos.Name = "productosElegidos";
             productosElegidos.Size = new Size(1159, 280);
             productosElegidos.TabIndex = 32;
@@ -147,7 +148,7 @@
             // presupuestoTotal
             // 
             presupuestoTotal.Enabled = false;
-            presupuestoTotal.Location = new Point(47, 532);
+            presupuestoTotal.Location = new Point(47, 558);
             presupuestoTotal.Name = "presupuestoTotal";
             presupuestoTotal.Size = new Size(101, 23);
             presupuestoTotal.TabIndex = 33;
@@ -155,17 +156,28 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(47, 513);
+            label3.Location = new Point(47, 539);
             label3.Name = "label3";
             label3.Size = new Size(32, 15);
             label3.TabIndex = 34;
             label3.Text = "Total";
+            // 
+            // btnMenuPaquetes
+            // 
+            btnMenuPaquetes.Location = new Point(502, 204);
+            btnMenuPaquetes.Name = "btnMenuPaquetes";
+            btnMenuPaquetes.Size = new Size(206, 23);
+            btnMenuPaquetes.TabIndex = 35;
+            btnMenuPaquetes.Text = "Paquetes";
+            btnMenuPaquetes.UseVisualStyleBackColor = true;
+            btnMenuPaquetes.Click += btnMenuPaquetes_Click;
             // 
             // GenerarPresupuestoMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1252, 644);
+            Controls.Add(btnMenuPaquetes);
             Controls.Add(label3);
             Controls.Add(presupuestoTotal);
             Controls.Add(productosElegidos);
@@ -199,5 +211,6 @@
         private ColumnHeader TipoDeServicio;
         private TextBox presupuestoTotal;
         private Label label3;
+        private Button btnMenuPaquetes;
     }
 }

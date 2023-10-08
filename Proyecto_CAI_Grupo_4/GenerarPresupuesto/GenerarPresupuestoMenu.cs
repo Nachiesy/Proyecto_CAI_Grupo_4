@@ -1,4 +1,5 @@
-﻿using Proyecto_CAI_Grupo_4.Managers;
+﻿using Proyecto_CAI_Grupo_4.GenerarPresupuesto;
+using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
 
@@ -25,11 +26,16 @@ namespace Proyecto_CAI_Grupo_4
 
             AddProductosToListView(cruceros, productosElegidos);
 
+            var paquetesTuristicos = GenerarPresupuestosManager.paquetesTuristicosElegidos;
+
+            AddProductosToListView(paquetesTuristicos, productosElegidos);
+
             decimal total = 0;
 
             total += aereos.Sum(x => x.Precio);
             total += hoteles.Sum(x => x.Precio);
             total += cruceros.Sum(x => x.Precio);
+            total += paquetesTuristicos.Sum(x => x.Precio);
 
             presupuestoTotal.Text = total.ToString();
         }
@@ -88,6 +94,20 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenGenerarPresupuestoCruceros()
         {
             Application.Run(new GenerarPresupuestoCruceros());
+        }
+
+        private void btnMenuPaquetes_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Thread thread = new Thread(OpenGenerarPresupuestoPaquetes);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenGenerarPresupuestoPaquetes()
+        {
+            Application.Run(new GenerarPresupuestoPaquetesTuristicos());
         }
 
         private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
