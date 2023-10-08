@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            SuspendLayout();
+            // 
+            // Ingresar
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Name = "Ingresar";
             Text = "Form1";
+            Load += Ingresar_Load;
+            ResumeLayout(false);
         }
 
         #endregion

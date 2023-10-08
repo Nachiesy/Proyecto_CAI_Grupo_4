@@ -20,10 +20,15 @@ namespace Proyecto_CAI_Grupo_4
         private void ingresarbt(object sender, EventArgs e)
         {
 
-        
 
 
 
+
+
+        }
+
+        private void Ingresar_Load(object sender, EventArgs e)
+        {
 
         }
     }

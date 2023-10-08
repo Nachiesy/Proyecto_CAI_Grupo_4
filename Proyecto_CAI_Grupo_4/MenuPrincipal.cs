@@ -45,5 +45,28 @@ namespace Proyecto_CAI_Grupo_4
         {
             Application.Run(new Reservas());
         }
+
+        private void btnGenerarReserva_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            Thread thread = new Thread(OpenEstadoDeReservas);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void btn_GenerarReserva_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            Thread thread = new Thread(OpenGenerarReserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenGenerarReserva()
+        {
+            Application.Run(new GenerarReserva());
+        }
     }
 }
