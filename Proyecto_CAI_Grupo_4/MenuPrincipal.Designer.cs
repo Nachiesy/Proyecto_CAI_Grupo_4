@@ -106,7 +106,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_EstadoDeReservas.TabIndex = 8;
             btn_EstadoDeReservas.Text = "Consultar Reservas";
             btn_EstadoDeReservas.UseVisualStyleBackColor = false;
-            btn_EstadoDeReservas.Click += btnEstadoDeReservas_Click;
+            btn_EstadoDeReservas.Click += btnConsultarReservas_Click;
             // 
             // MenuPrincipal
             // 

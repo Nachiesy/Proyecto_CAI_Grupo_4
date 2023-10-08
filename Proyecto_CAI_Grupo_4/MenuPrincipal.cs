@@ -32,7 +32,7 @@ namespace Proyecto_CAI_Grupo_4
             Application.Run(new GenerarPresupuestoMenu());
         }
 
-        private void btnEstadoDeReservas_Click(object sender, EventArgs e)
+        private void btnConsultarReservas_Click(object sender, EventArgs e)
         {
             Close();
 
