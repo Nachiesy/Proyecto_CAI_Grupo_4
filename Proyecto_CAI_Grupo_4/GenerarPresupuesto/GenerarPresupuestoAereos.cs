@@ -16,24 +16,24 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuestoAereos_Load(object sender, EventArgs e)
         {
-            datePickerFechaSalida.Checked = false;
-            datePickerFechaSalida.Value = DateTime.Now.Date;
-            datePickerFechaLlegada.Checked = false;
-            datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
+            datePickerFilterFechaDesde.Checked = false;
+            datePickerFilterFechaDesde.Value = DateTime.Now.Date;
+            datePickerFilterFechaHasta.Checked = false;
+            datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            AddProductosToListView(GenerarPresupuestosManager.aereos, lstViewProductos);
+            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.aereos);
 
-            AddProductosToListView(GenerarPresupuestosManager.aereosElegidos, lstViewProductosElegidos);
+            AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.aereosElegidos);
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
         {
             var filterDto = new AereosFilterDto()
             {
-                PrecioDesde = txtBoxPrecioDesde.Text,
-                PrecioHasta = txtBoxPrecioHasta.Text,
-                FechaDesde = datePickerFechaSalida.Checked ? datePickerFechaSalida.Value : null,
-                FechaHasta = datePickerFechaLlegada.Checked ? datePickerFechaLlegada.Value : null,
+                PrecioDesde = txtBoxFiltroPrecioDesde.Text,
+                PrecioHasta = txtBoxFiltroPrecioHasta.Text,
+                FechaDesde = datePickerFilterFechaDesde.Checked ? datePickerFilterFechaDesde.Value : null,
+                FechaHasta = datePickerFilterFechaHasta.Checked ? datePickerFilterFechaHasta.Value : null,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -52,9 +52,9 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.FechaDesde.HasValue || x.FechaDeSalida == filter.FechaDesde)
                                 && (!filter.FechaHasta.HasValue || x.FechaDeLlegada == filter.FechaHasta));
 
-                lstViewProductos.Items.Clear();
+                dataGridViewProductos.Rows.Clear();
 
-                AddProductosToListView(productos, lstViewProductos);
+                AddProductosToDataGridViewProductos(productos);
 
                 if (!productos.Any())
                 {
@@ -124,43 +124,69 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosToListView(IEnumerable<Aereos> listToAdd, ListView listView)
+        private void AddProductosToDataGridViewProductos(IEnumerable<Aereos> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                var row = new ListViewItem(item.Id.ToString());
+                DataGridViewRow row = new DataGridViewRow();
 
-                row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Origen);
-                row.SubItems.Add(item.Destino);
-                row.SubItems.Add(item.TipoDeClaseAerea.GetDescription());
-                row.SubItems.Add(item.Precio.ToString());
-                row.SubItems.Add(item.FechaDeSalida.ToFormDate());
-                row.SubItems.Add(item.FechaDeLlegada.ToFormDate());
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormDate() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormDate() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeClaseAerea.GetDescription() });
 
-                listView.Items.Add(row);
+                dataGridViewProductos.Rows.Add(row);
+            }
+        }
+
+        private void AddProductosSeleccionadosToDataGridView(IEnumerable<Aereos> listToAdd)
+        {
+            foreach (var item in listToAdd)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() }); // Sub Total
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormDate() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormDate() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeClaseAerea.GetDescription() });
+
+                dataGridViewProductosSeleccionados.Rows.Add(row);
             }
         }
 
         private void btnAgregarProductos_Click(object sender, EventArgs e)
         {
-            if (lstViewProductos.SelectedItems.Count > 0)
+            if (dataGridViewProductos.SelectedRows.Count > 0)
             {
                 var productosToAdd = new List<Aereos>();
 
-                foreach (ListViewItem selectedItem in lstViewProductos.SelectedItems)
+                foreach (DataGridViewRow row in dataGridViewProductos.SelectedRows)
                 {
-                    var id = Guid.Parse(selectedItem.Text);
+                    var idCellIndex = 0;
+
+                    var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
 
                     var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
 
-                    if (!IsProductInSelectedListView(id))
+                    if (!IsProductInDataGridViewProductosSeleccionados(id))
                     {
                         productosToAdd.Add(producto);
                     }
                 }
 
-                AddProductosToListView(productosToAdd, lstViewProductosElegidos);
+                AddProductosSeleccionadosToDataGridView(productosToAdd);
             }
             else
             {
@@ -170,11 +196,11 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnRemoverProductos_Click(object sender, EventArgs e)
         {
-            if (lstViewProductosElegidos.SelectedItems.Count > 0)
+            if (dataGridViewProductosSeleccionados.SelectedRows.Count > 0)
             {
-                foreach (ListViewItem selectedItem in lstViewProductosElegidos.SelectedItems)
+                foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.SelectedRows)
                 {
-                    lstViewProductosElegidos.Items.Remove(selectedItem);
+                    dataGridViewProductosSeleccionados.Rows.Remove(row);
                 }
             }
             else
@@ -183,15 +209,22 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
+        private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
             GenerarPresupuestosManager.aereosElegidos.Clear();
 
-            foreach (ListViewItem selectedItem in lstViewProductosElegidos.Items)
+            foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
             {
-                var id = Guid.Parse(selectedItem.Text);
+                var idCellIndex = 0;
+                var cantidadSeleccionadaColumnIndex = 4;
+                var subTotalColumnIndex = 5;
+
+                var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
 
                 var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
+
+                producto.CantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
+                producto.SubTotal = decimal.Parse(row.Cells[subTotalColumnIndex].Value.ToString());
 
                 GenerarPresupuestosManager.aereosElegidos.Add(producto);
             }
@@ -203,7 +236,7 @@ namespace Proyecto_CAI_Grupo_4
             thread.Start();
         }
 
-        private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)
+        private void btnVolverAlMenuGenerarPresupuestos_Click(object sender, EventArgs e)
         {
             this.Close();
 
@@ -219,28 +252,99 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)
         {
-            txtBoxPrecioDesde.Clear();
-            txtBoxPrecioHasta.Clear();
-            datePickerFechaSalida.Checked = false;
-            datePickerFechaSalida.Value = DateTime.Now.Date;
-            datePickerFechaLlegada.Checked = false;
-            datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
+            txtBoxFiltroPrecioDesde.Clear();
+            txtBoxFiltroPrecioHasta.Clear();
+            datePickerFilterFechaDesde.Checked = false;
+            datePickerFilterFechaDesde.Value = DateTime.Now.Date;
+            datePickerFilterFechaHasta.Checked = false;
+            datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
             btnBuscarProductos_Click(sender, e);
         }
 
-        private bool IsProductInSelectedListView(Guid id)
+        private bool IsProductInDataGridViewProductosSeleccionados(Guid id)
         {
-            var ids = new List<Guid>();
+            var idList = new List<Guid>();
 
-            foreach (ListViewItem selectedItem in lstViewProductosElegidos.Items)
+            foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
             {
-                var selectedId = Guid.Parse(selectedItem.Text);
+                var idCellIndex = 0;
 
-                ids.Add(selectedId);
+                var selectedId = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+
+                idList.Add(selectedId);
             }
 
-            return ids.Any(x => x == id);
+            return idList.Any(x => x == id);
+        }
+
+        private void dataGridViewProductosSeleccionados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            var cantidadSeleccionadaColumnIndex = 4;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex == cantidadSeleccionadaColumnIndex)
+            {
+                var dataGridView = sender as DataGridView;
+
+                // ID
+                var idColumnIndex = 0;
+                var idCell = dataGridView.Rows[e.RowIndex].Cells[idColumnIndex];
+                var id = idCell.Value.ToString();
+
+                // Precio
+                var precioColumnIndex = 2;
+                var precioCell = dataGridView.Rows[e.RowIndex].Cells[precioColumnIndex];
+                var precio = decimal.Parse(precioCell.Value.ToString());
+
+                // Cantidad Disponible
+                var cantidadDisponibleColumnIndex = 3;
+                var cantidadDisponibleCell = dataGridView.Rows[e.RowIndex].Cells[cantidadDisponibleColumnIndex];
+                var cantidadDisponible = int.Parse(cantidadDisponibleCell.Value.ToString());
+
+                // Cantidad Seleccionada
+                var cantidadSeleccionadaCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                var isCantidadSeleccionadaValid = int.TryParse(cantidadSeleccionadaCell.Value.ToString(), out int cantidadSeleccionada);
+
+                // SubTotal
+                var subTotalColumnIndex = 5;
+                var subTotalCell = dataGridView.Rows[e.RowIndex].Cells[subTotalColumnIndex];
+
+                var validation = ValidarCantidadSeleccionada(id, isCantidadSeleccionadaValid, cantidadSeleccionada, cantidadDisponible);
+
+                if (string.IsNullOrEmpty(validation))
+                {
+                    subTotalCell.Value = precio * cantidadSeleccionada;
+                }
+                else
+                {
+                    cantidadSeleccionadaCell.Value = 1;
+                    subTotalCell.Value = precioCell.Value;
+
+                    MessageBox.Show(validation, "Error");
+                }
+
+                dataGridView.Refresh();
+            }
+        }
+
+        private string ValidarCantidadSeleccionada(string id, bool isCantidadSeleccionadaValid, int? cantidadSeleccionada, int cantidadDisponible)
+        {
+            if (!isCantidadSeleccionadaValid)
+            {
+                return $"La Cantidad para el Vuelo con ID [{id}] debe ser un numero entero.";
+            }
+
+            if (cantidadDisponible < cantidadSeleccionada)
+            {
+                return $"La Cantidad Seleccionada para el Vuelo con ID [{id}] debe ser un menor o igual a la Cantidad Disponible.";
+            }
+
+            if (cantidadSeleccionada <= 0)
+            {
+                return $"La Cantidad Seleccionada para el Vuelo con ID [{id}] debe ser mayor a 0.";
+            }
+
+            return string.Empty;
         }
     }
 }
