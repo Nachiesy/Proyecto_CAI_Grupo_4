@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4
 {
-    partial class Reservas
+    partial class ConsultarReservas
     {
         /// <summary>
         ///  Required designer variable.
@@ -58,7 +58,6 @@
             reservasListView.TabIndex = 0;
             reservasListView.UseCompatibleStateImageBehavior = false;
             reservasListView.View = View.Details;
-            reservasListView.SelectedIndexChanged += reservasListView_SelectedIndexChanged;
             // 
             // Codigo
             // 
@@ -116,9 +115,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(10, 55);
             label2.Name = "label2";
-            label2.Size = new Size(96, 15);
+            label2.Size = new Size(27, 15);
             label2.TabIndex = 5;
-            label2.Text = "Nro. Documento";
+            label2.Text = "DNI";
             // 
             // filtroNroDeDoc
             // 
@@ -190,7 +189,7 @@
             btn_Limpiar.UseVisualStyleBackColor = false;
             btn_Limpiar.Click += limpiarConsulta_Click;
             // 
-            // Reservas
+            // ConsultarReservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -200,9 +199,9 @@
             Controls.Add(grp_Filtros);
             Controls.Add(btn_BuscarReserva);
             Controls.Add(reservasListView);
-            Name = "Reservas";
+            Name = "ConsultarReservas";
             Text = "Form1";
-            Load += CasoDeUso5_Load;
+            Load += ConsultarReservas_Load;
             Controls.SetChildIndex(reservasListView, 0);
             Controls.SetChildIndex(btn_BuscarReserva, 0);
             Controls.SetChildIndex(grp_Filtros, 0);

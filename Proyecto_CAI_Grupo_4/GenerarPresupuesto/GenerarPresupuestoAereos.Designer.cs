@@ -148,9 +148,9 @@
             // 
             lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15 });
             lstViewProductos.FullRowSelect = true;
-            lstViewProductos.Location = new Point(27, 22);
+            lstViewProductos.Location = new Point(6, 22);
             lstViewProductos.Name = "lstViewProductos";
-            lstViewProductos.Size = new Size(943, 194);
+            lstViewProductos.Size = new Size(964, 194);
             lstViewProductos.TabIndex = 33;
             lstViewProductos.UseCompatibleStateImageBehavior = false;
             lstViewProductos.View = View.Details;
@@ -293,7 +293,7 @@
             buscarPresupuesto.TabIndex = 4;
             buscarPresupuesto.Text = "Buscar";
             buscarPresupuesto.UseVisualStyleBackColor = false;
-            buscarPresupuesto.Click += buscarProductosAereos_Click;
+            buscarPresupuesto.Click += btnBuscarProductos_Click;
             // 
             // agregarPresupuesto
             // 
@@ -302,13 +302,13 @@
             agregarPresupuesto.FlatStyle = FlatStyle.Flat;
             agregarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             agregarPresupuesto.ForeColor = Color.Black;
-            agregarPresupuesto.Location = new Point(27, 222);
+            agregarPresupuesto.Location = new Point(6, 222);
             agregarPresupuesto.Name = "agregarPresupuesto";
-            agregarPresupuesto.Size = new Size(943, 40);
+            agregarPresupuesto.Size = new Size(964, 40);
             agregarPresupuesto.TabIndex = 4;
             agregarPresupuesto.Text = "Agregar";
             agregarPresupuesto.UseVisualStyleBackColor = false;
-            agregarPresupuesto.Click += agregarProductosAereosElegidos_Click;
+            agregarPresupuesto.Click += btnAgregarProductos_Click;
             // 
             // removerPresupuesto
             // 
@@ -323,7 +323,7 @@
             removerPresupuesto.TabIndex = 4;
             removerPresupuesto.Text = "Quitar";
             removerPresupuesto.UseVisualStyleBackColor = false;
-            removerPresupuesto.Click += removerProductosAereosDeLosElegidos_Click;
+            removerPresupuesto.Click += btnRemoverProductos_Click;
             // 
             // finalizarPresupuesto
             // 
@@ -338,7 +338,7 @@
             finalizarPresupuesto.TabIndex = 4;
             finalizarPresupuesto.Text = "Confirmar";
             finalizarPresupuesto.UseVisualStyleBackColor = false;
-            finalizarPresupuesto.Click += finalizarPresupuestoAereo_Click;
+            finalizarPresupuesto.Click += btnFinalizarPresupuesto_Click;
             // 
             // grp_VuelosDisponibles
             // 

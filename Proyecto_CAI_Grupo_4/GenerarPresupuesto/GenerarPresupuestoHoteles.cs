@@ -2,12 +2,14 @@
 using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
+using System.Data;
+using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class GenerarPresupuestoHoteles : Form
+    public partial class GenerarPresupuestoHoteles : VistaBase
     {
-        public GenerarPresupuestoHoteles()
+        public GenerarPresupuestoHoteles() : base(tituloModulo: "Generar Presupuesto > Hoteles")
         {
             InitializeComponent();
         }
@@ -19,9 +21,9 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
-            AddProductosHotelesToListView(GenerarPresupuestosManager.hoteles, lstViewProductos);
+            AddProductosToListView(GenerarPresupuestosManager.hoteles, lstViewProductos);
 
-            AddProductosHotelesToListView(GenerarPresupuestosManager.hotelesElegidos, lstViewProductosElegidos);
+            AddProductosToListView(GenerarPresupuestosManager.hotelesElegidos, lstViewProductosElegidos);
         }
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
@@ -52,7 +54,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 lstViewProductos.Items.Clear();
 
-                AddProductosHotelesToListView(productos, lstViewProductos);
+                AddProductosToListView(productos, lstViewProductos);
 
                 if (!productos.Any())
                 {
@@ -122,12 +124,13 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosHotelesToListView(IEnumerable<Hoteles> listToAdd, ListView listView)
+        private void AddProductosToListView(IEnumerable<Hoteles> listToAdd, ListView listView)
         {
             foreach (var item in listToAdd)
             {
                 var row = new ListViewItem(item.Id.ToString());
 
+                row.SubItems.Add(item.Nombre);
                 row.SubItems.Add(item.Ciudad);
                 row.SubItems.Add(item.Precio.ToString());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
@@ -155,7 +158,7 @@ namespace Proyecto_CAI_Grupo_4
                     }
                 }
 
-                AddProductosHotelesToListView(productosToAdd, lstViewProductosElegidos);
+                AddProductosToListView(productosToAdd, lstViewProductosElegidos);
             }
             else
             {

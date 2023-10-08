@@ -2,12 +2,14 @@
 using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
+using System.Data;
+using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class GenerarPresupuestoCruceros : Form
+    public partial class GenerarPresupuestoCruceros : VistaBase
     {
-        public GenerarPresupuestoCruceros()
+        public GenerarPresupuestoCruceros() : base(tituloModulo: "Generar Presupuesto > Cruceros")
         {
             InitializeComponent();
         }
