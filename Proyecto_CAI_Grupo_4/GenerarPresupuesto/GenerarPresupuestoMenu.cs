@@ -2,6 +2,7 @@
 using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
+using System.Windows.Forms;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -40,17 +41,20 @@ namespace Proyecto_CAI_Grupo_4
             presupuestoTotal.Text = total.ToString();
         }
 
-        private void AddProductosToListView(IEnumerable<Productos> listToAdd, ListView listView)
+        private void AddProductosToListView(IEnumerable<Productos> listToAdd, DataGridView listView)
         {
             foreach (var item in listToAdd)
             {
-                var row = new ListViewItem(item.Id.ToString());
+                DataGridViewRow row = new DataGridViewRow();
 
-                row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Precio.ToString());
-                row.SubItems.Add(item.TipoDeServicio.GetDescription());
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeServicio.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio });
 
-                listView.Items.Add(row);
+                productosElegidos.Rows.Add(row);
             }
         }
 
@@ -112,7 +116,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
         {
-            if (productosElegidos.Items.Count > 0)
+            if (productosElegidos.RowCount > 0)
             {
                 var result = MessageBox.Show("¿Desea generar una Pre Reserva a partir de este Presupuesto?", string.Empty, MessageBoxButtons.YesNo);
 
@@ -145,6 +149,62 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenMenuPrincipal()
         {
             Application.Run(new MenuPrincipal());
+        }
+
+        private void productosElegidos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            var idColumnIndex = 0;
+            var precioColumnIndex = 3;
+            var cantidadColumnIndex = 4;
+            var subTotalColumnIndex = 5;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex == cantidadColumnIndex)
+            {
+                var dataGridView = sender as DataGridView;
+
+                var changedCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                var precioCell = dataGridView.Rows[e.RowIndex].Cells[precioColumnIndex];
+
+                var subTotalCell = dataGridView.Rows[e.RowIndex].Cells[subTotalColumnIndex];
+
+                var cantidadValid = int.TryParse(changedCell.Value.ToString(), out int cantidad);
+
+                var precioValid = decimal.TryParse(precioCell.Value.ToString(), out decimal precio);
+
+                if (cantidadValid && precioValid)
+                {
+                    subTotalCell.Value = precio * cantidad;
+                }
+                else
+                {
+                    changedCell.Value = 1;
+                    subTotalCell.Value = precioCell.Value;
+
+                    var id = dataGridView.Rows[e.RowIndex].Cells[idColumnIndex].Value;
+
+                    MessageBox.Show($"La Cantidad para el Producto con ID [{id}] debe ser un numero entero.", "Error");
+                }
+
+                dataGridView.Refresh();
+
+                UpdateTotalDelPresupuesto(subTotalColumnIndex);
+            }
+        }
+
+        private void UpdateTotalDelPresupuesto(int subTotalColumnIndex)
+        {
+            decimal total = 0;
+
+            foreach (DataGridViewRow row in productosElegidos.Rows)
+            {
+                if (decimal.TryParse(row.Cells[subTotalColumnIndex].Value.ToString(), out decimal subTotal))
+                {
+                    total += subTotal;
+                }
+            }
+
+            presupuestoTotal.Text = total.ToString();
         }
     }
 }
