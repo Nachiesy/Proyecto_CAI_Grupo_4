@@ -101,6 +101,18 @@ namespace Proyecto_CAI_Grupo_4
                 FechaDesde = DateTime.Now.AddDays(7),
                 FechaHasta = DateTime.Now.AddDays(21),
             },
+                        new Reserva()
+            {
+                Codigo = Guid.NewGuid(),
+                Estado = ReservaEstadoEnum.pagada,
+                TipoDoc = 1,
+                DNI = "20945665",
+                CantPasajeros = 2,
+                Precio = (decimal)500000.95,
+                Fecha = DateTime.Now.AddDays(-21),
+                FechaDesde = DateTime.Now.AddDays(7),
+                FechaHasta = DateTime.Now.AddDays(21),
+            },
         };
         private void btnBuscar_Click(object sender, EventArgs e, Guid nropresup)
         {
@@ -170,8 +182,19 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            gbxPasajeros.Enabled = true;
 
+
+            if (listPresupuestos.SelectedItems.Count > 0)
+            {
+                // Reserva ReservaSelecc = listPresupuestos.SelectedItems;
+
+                gbxPasajeros.Enabled = true;
+
+            lblcantpasajeros.Text = "Pasajeros Disponibles " + listPresupuestos.SelectedItems;
+            }
+            else{
+                MessageBox.Show("Seleccione un presupuesto.");
+            }
 
         }
 
