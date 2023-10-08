@@ -43,7 +43,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void OpenEstadoDeReservas()
         {
-            Application.Run(new Reservas());
+            Application.Run(new ConsultarReservas());
         }
 
         private void btnGenerarReserva_Click(object sender, EventArgs e)

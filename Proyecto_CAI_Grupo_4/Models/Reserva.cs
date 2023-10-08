@@ -4,11 +4,11 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class Reserva
     {
-        public string Codigo { get; set; }
+        public Guid Codigo { get; set; }
 
         public ReservaEstadoEnum Estado { get; set; }
 
-        public string NumeroDeDocumento { get; set; }
+        public string DNI { get; set; }
 
         public decimal Precio { get; set; }
 

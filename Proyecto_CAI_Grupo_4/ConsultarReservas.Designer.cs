@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4
 {
-    partial class Reservas
+    partial class ConsultarReservas
     {
         /// <summary>
         ///  Required designer variable.
@@ -58,7 +58,6 @@
             reservasListView.TabIndex = 0;
             reservasListView.UseCompatibleStateImageBehavior = false;
             reservasListView.View = View.Details;
-            reservasListView.SelectedIndexChanged += reservasListView_SelectedIndexChanged;
             // 
             // Codigo
             // 
@@ -202,7 +201,7 @@
             Controls.Add(reservasListView);
             Name = "Reservas";
             Text = "Form1";
-            Load += CasoDeUso5_Load;
+            Load += ConsultarReservas_Load;
             Controls.SetChildIndex(reservasListView, 0);
             Controls.SetChildIndex(btn_BuscarReserva, 0);
             Controls.SetChildIndex(grp_Filtros, 0);

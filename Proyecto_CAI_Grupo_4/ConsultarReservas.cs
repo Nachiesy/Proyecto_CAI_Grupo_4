@@ -4,15 +4,15 @@ using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class Reservas : VistaBase
+    public partial class ConsultarReservas : VistaBase
     {
         private List<Reserva> reservas = new List<Reserva>()
         {
             new Reserva()
             {
-                Codigo = "Cod-1",
+                Codigo = Guid.NewGuid(),
                 Estado = ReservaEstadoEnum.pendienteDePago,
-                NumeroDeDocumento = "Nro.1",
+                DNI = "41753082",
                 Precio = (decimal)100000.50,
                 Fecha = DateTime.Now.AddDays(-7),
                 FechaDesde = DateTime.Now.AddDays(21),
@@ -20,19 +20,19 @@ namespace Proyecto_CAI_Grupo_4
             },
             new Reserva()
             {
-                Codigo = "Cod-2",
+                Codigo = Guid.NewGuid(),
                 Estado = ReservaEstadoEnum.pagada,
-                NumeroDeDocumento = "Nro.2",
-                Precio = (decimal)50000,
+                DNI = "14975308",
+                Precio = (decimal)50000.20,
                 Fecha = DateTime.Now.AddDays(-14),
                 FechaDesde = DateTime.Now.AddDays(14),
                 FechaHasta = DateTime.Now.AddDays(7),
             },
             new Reserva()
             {
-                Codigo = "Cod-3",
+                Codigo = Guid.NewGuid(),
                 Estado = ReservaEstadoEnum.confirmada,
-                NumeroDeDocumento = "Nro.3",
+                DNI = "29327456",
                 Precio = (decimal)500000.95,
                 Fecha = DateTime.Now.AddDays(-21),
                 FechaDesde = DateTime.Now.AddDays(7),
@@ -40,12 +40,12 @@ namespace Proyecto_CAI_Grupo_4
             },
         };
 
-        public Reservas() : base(tituloModulo: "Consulta de Reservas")
+        public ConsultarReservas() : base(tituloModulo: "Consulta de Reservas")
         {
             InitializeComponent();
         }
 
-        private void CasoDeUso5_Load(object sender, EventArgs e)
+        private void ConsultarReservas_Load(object sender, EventArgs e)
         {
             AddReservasToListView(reservas);
         }
@@ -56,12 +56,12 @@ namespace Proyecto_CAI_Grupo_4
 
             var estado = filtroEstado.SelectedIndex;
 
-            var nroDeDoc = filtroNroDeDoc.Text.Trim();
+            var dni = filtroNroDeDoc.Text.Trim();
 
             var filteredReservas = reservas
-                .Where(x => (string.IsNullOrEmpty(codigo) || x.Codigo == codigo)
+                .Where(x => (string.IsNullOrEmpty(codigo) || x.Codigo == Guid.Parse(codigo))
                             && (estado == -1 || (int)x.Estado == estado)
-                            && (string.IsNullOrEmpty(nroDeDoc) || x.NumeroDeDocumento == nroDeDoc));
+                            && (string.IsNullOrEmpty(dni) || x.DNI == dni));
 
             if (filteredReservas.Any())
             {
@@ -79,10 +79,10 @@ namespace Proyecto_CAI_Grupo_4
         {
             foreach (var item in list)
             {
-                var row = new ListViewItem(item.Codigo);
+                var row = new ListViewItem(item.Codigo.ToString());
 
                 row.SubItems.Add(item.Estado.GetDescription());
-                row.SubItems.Add(item.NumeroDeDocumento);
+                row.SubItems.Add(item.DNI);
                 row.SubItems.Add(item.Precio.ToString());
                 row.SubItems.Add(item.Fecha.ToFormDate());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
@@ -90,25 +90,6 @@ namespace Proyecto_CAI_Grupo_4
 
                 reservasListView.Items.Add(row);
             }
-        }
-
-        private void volverAlMenuPrincipal_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Thread thread = new Thread(OpenCasoDeUso5Form);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void OpenCasoDeUso5Form()
-        {
-            Application.Run(new MenuPrincipal());
-        }
-
-        private void reservasListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void limpiarConsulta_Click(object sender, EventArgs e)
