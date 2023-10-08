@@ -10,6 +10,8 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public string DNI { get; set; }
 
+        public int TipoDoc {  get; set; }
+
         public decimal Precio { get; set; }
 
         public DateTime Fecha { get; set; }
@@ -17,6 +19,8 @@ namespace Proyecto_CAI_Grupo_4.Models
         public DateTime FechaDesde { get; set; }
 
         public DateTime FechaHasta { get; set; }
+
+        public int CantPasajeros { get; set; }
 
         private string DateTimeToString(DateTime dateTime)
         {

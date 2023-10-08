@@ -48,7 +48,7 @@
             confirmpasajerobtn = new Button();
             cancelpasajbtn = new Button();
             label10 = new Label();
-            dt = new DateTimePicker();
+            dtnacmiento = new DateTimePicker();
             label11 = new Label();
             cbxTipodoc = new ComboBox();
             SuspendLayout();
@@ -188,6 +188,7 @@
             // paiscbx
             // 
             paiscbx.FormattingEnabled = true;
+            paiscbx.Items.AddRange(new object[] { "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Paraguay", "Venezuela", "Uruguay" });
             paiscbx.Location = new Point(370, 612);
             paiscbx.Margin = new Padding(6);
             paiscbx.Name = "paiscbx";
@@ -205,6 +206,7 @@
             // nacpasajerocbx
             // 
             nacpasajerocbx.FormattingEnabled = true;
+            nacpasajerocbx.Items.AddRange(new object[] { "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Paraguay", "Venezuela", "Uruguay" });
             nacpasajerocbx.Location = new Point(370, 328);
             nacpasajerocbx.Margin = new Padding(6);
             nacpasajerocbx.Name = "nacpasajerocbx";
@@ -220,6 +222,7 @@
             confirmpasajerobtn.TabIndex = 20;
             confirmpasajerobtn.Text = "Confirmar";
             confirmpasajerobtn.UseVisualStyleBackColor = true;
+            confirmpasajerobtn.Click += confirmpasajerobtn_Click;
             // 
             // cancelpasajbtn
             // 
@@ -243,13 +246,13 @@
             label10.Text = "Fecha de Nacimiento:";
             label10.Click += label10_Click;
             // 
-            // dt
+            // dtnacmiento
             // 
-            dt.Location = new Point(368, 259);
-            dt.Margin = new Padding(6);
-            dt.Name = "dt";
-            dt.Size = new Size(307, 39);
-            dt.TabIndex = 23;
+            dtnacmiento.Location = new Point(368, 259);
+            dtnacmiento.Margin = new Padding(6);
+            dtnacmiento.Name = "dtnacmiento";
+            dtnacmiento.Size = new Size(307, 39);
+            dtnacmiento.TabIndex = 23;
             // 
             // label11
             // 
@@ -264,6 +267,7 @@
             // cbxTipodoc
             // 
             cbxTipodoc.FormattingEnabled = true;
+            cbxTipodoc.Items.AddRange(new object[] { "DNI", "Pasaporte" });
             cbxTipodoc.Location = new Point(368, 400);
             cbxTipodoc.Margin = new Padding(6);
             cbxTipodoc.Name = "cbxTipodoc";
@@ -278,7 +282,7 @@
             ClientSize = new Size(741, 944);
             Controls.Add(cbxTipodoc);
             Controls.Add(label11);
-            Controls.Add(dt);
+            Controls.Add(dtnacmiento);
             Controls.Add(label10);
             Controls.Add(cancelpasajbtn);
             Controls.Add(confirmpasajerobtn);
@@ -302,6 +306,7 @@
             Margin = new Padding(6);
             Name = "IngresarPasajero";
             Text = "IngresarPasajero";
+            Load += IngresarPasajero_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -328,7 +333,7 @@
         private Button confirmpasajerobtn;
         private Button cancelpasajbtn;
         private Label label10;
-        private DateTimePicker dt;
+        private DateTimePicker dtnacmiento;
         private Label label11;
         private ComboBox cbxTipodoc;
     }

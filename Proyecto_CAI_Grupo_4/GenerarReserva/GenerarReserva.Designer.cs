@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             gbxPasajeros = new GroupBox();
+            lblcantpasajeros = new Label();
             listView1 = new ListView();
             nombre = new ColumnHeader();
             apellido = new ColumnHeader();
@@ -47,6 +48,11 @@
             nropresup = new ColumnHeader();
             doccliente = new ColumnHeader();
             cantpasajeros = new ColumnHeader();
+            precio = new ColumnHeader();
+            estado = new ColumnHeader();
+            fechadesde = new ColumnHeader();
+            fechahasta = new ColumnHeader();
+            fecha = new ColumnHeader();
             btnBuscar = new Button();
             txbDocumento = new TextBox();
             nroPresupuestotxt = new TextBox();
@@ -63,15 +69,26 @@
             // 
             // gbxPasajeros
             // 
+            gbxPasajeros.Controls.Add(lblcantpasajeros);
             gbxPasajeros.Controls.Add(listView1);
             gbxPasajeros.Controls.Add(btnQuitpasajero);
             gbxPasajeros.Controls.Add(btnAddpasajero);
-            gbxPasajeros.Location = new Point(22, 532);
+            gbxPasajeros.Enabled = false;
+            gbxPasajeros.Location = new Point(16, 528);
             gbxPasajeros.Name = "gbxPasajeros";
             gbxPasajeros.Size = new Size(1958, 419);
             gbxPasajeros.TabIndex = 6;
             gbxPasajeros.TabStop = false;
             gbxPasajeros.Text = "Pasajeros";
+            // 
+            // lblcantpasajeros
+            // 
+            lblcantpasajeros.AutoSize = true;
+            lblcantpasajeros.Location = new Point(38, 83);
+            lblcantpasajeros.Name = "lblcantpasajeros";
+            lblcantpasajeros.Size = new Size(249, 32);
+            lblcantpasajeros.TabIndex = 4;
+            lblcantpasajeros.Text = "Pasajeros Disponibles ";
             // 
             // listView1
             // 
@@ -137,7 +154,7 @@
             // 
             // btnQuitpasajero
             // 
-            btnQuitpasajero.Location = new Point(220, 76);
+            btnQuitpasajero.Location = new Point(1802, 76);
             btnQuitpasajero.Name = "btnQuitpasajero";
             btnQuitpasajero.Size = new Size(150, 46);
             btnQuitpasajero.TabIndex = 1;
@@ -146,7 +163,7 @@
             // 
             // btnAddpasajero
             // 
-            btnAddpasajero.Location = new Point(32, 76);
+            btnAddpasajero.Location = new Point(1605, 76);
             btnAddpasajero.Name = "btnAddpasajero";
             btnAddpasajero.Size = new Size(150, 46);
             btnAddpasajero.TabIndex = 0;
@@ -174,9 +191,12 @@
             // 
             // listPresupuestos
             // 
-            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros });
+            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, precio, estado, fechadesde, fechahasta, fecha });
+            listPresupuestos.FullRowSelect = true;
             listPresupuestos.Location = new Point(19, 147);
+            listPresupuestos.MultiSelect = false;
             listPresupuestos.Name = "listPresupuestos";
+            listPresupuestos.ShowItemToolTips = true;
             listPresupuestos.Size = new Size(1914, 257);
             listPresupuestos.TabIndex = 9;
             listPresupuestos.UseCompatibleStateImageBehavior = false;
@@ -186,17 +206,45 @@
             // nropresup
             // 
             nropresup.Text = "Nro. Presupuesto";
-            nropresup.Width = 200;
+            nropresup.Width = 300;
             // 
             // doccliente
             // 
             doccliente.Text = "Documento";
-            doccliente.Width = 120;
+            doccliente.Width = 160;
             // 
             // cantpasajeros
             // 
             cantpasajeros.Text = "Cant. de Pasajeros";
             cantpasajeros.Width = 220;
+            // 
+            // precio
+            // 
+            precio.Text = "Precio";
+            precio.Width = 180;
+            // 
+            // estado
+            // 
+            estado.Text = "Estado";
+            estado.Width = 180;
+            // 
+            // fechadesde
+            // 
+            fechadesde.DisplayIndex = 6;
+            fechadesde.Text = "Fecha Desde";
+            fechadesde.Width = 200;
+            // 
+            // fechahasta
+            // 
+            fechahasta.DisplayIndex = 7;
+            fechahasta.Text = "Fecha Hasta";
+            fechahasta.Width = 200;
+            // 
+            // fecha
+            // 
+            fecha.DisplayIndex = 5;
+            fecha.Text = "Fecha";
+            fecha.Width = 180;
             // 
             // btnBuscar
             // 
@@ -266,10 +314,11 @@
             btnSelect.TabIndex = 1;
             btnSelect.Text = "Seleccionar";
             btnSelect.UseVisualStyleBackColor = true;
+            btnSelect.Click += btnSelect_Click;
             // 
             // btnGenreserva
             // 
-            btnGenreserva.Location = new Point(1142, 995);
+            btnGenreserva.Location = new Point(1483, 995);
             btnGenreserva.Name = "btnGenreserva";
             btnGenreserva.Size = new Size(233, 46);
             btnGenreserva.TabIndex = 8;
@@ -278,7 +327,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(1434, 995);
+            btnCancelar.Location = new Point(1735, 995);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(233, 46);
             btnCancelar.TabIndex = 9;
@@ -299,7 +348,9 @@
             Margin = new Padding(2);
             Name = "GenerarReserva";
             Text = "Generar Reserva";
+            Load += GenerarReserva_Load;
             gbxPasajeros.ResumeLayout(false);
+            gbxPasajeros.PerformLayout();
             gpProsupuesto.ResumeLayout(false);
             gpProsupuesto.PerformLayout();
             ResumeLayout(false);
@@ -335,5 +386,11 @@
         private ColumnHeader nropresup;
         private ColumnHeader doccliente;
         private ColumnHeader cantpasajeros;
+        private ColumnHeader precio;
+        private ColumnHeader estado;
+        private ColumnHeader fechadesde;
+        private ColumnHeader fechahasta;
+        private ColumnHeader fecha;
+        private Label lblcantpasajeros;
     }
 }
