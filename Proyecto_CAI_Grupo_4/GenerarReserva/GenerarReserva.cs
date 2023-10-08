@@ -26,5 +26,37 @@ namespace Proyecto_CAI_Grupo_4
 
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+
+        {
+            this.Close();
+
+            Thread thread = new Thread(OpenMenuPrincipal);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenMenuPrincipal()
+        {
+            Application.Run(new MenuPrincipal());
+        }
+
+        private void btnAddpasajero_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Thread thread = new Thread(AgregarPasajero);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void AgregarPasajero()
+        {
+            Application.Run(new IngresarPasajero());
+        }
     }
 }

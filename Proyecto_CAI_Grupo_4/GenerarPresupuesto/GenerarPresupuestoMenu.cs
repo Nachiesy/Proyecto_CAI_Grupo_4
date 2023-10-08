@@ -209,5 +209,10 @@ namespace Proyecto_CAI_Grupo_4
             btnFinalizarPresupuesto.Enabled = total > 0;
             presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
         }
+
+        private void productosElegidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

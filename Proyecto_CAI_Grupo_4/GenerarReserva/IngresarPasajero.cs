@@ -26,5 +26,24 @@ namespace Proyecto_CAI_Grupo_4
         {
 
         }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancelpasajbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Thread thread = new Thread(ReturnGenerarReserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void ReturnGenerarReserva()
+        {
+            Application.Run(new GenerarReserva());
+        }
     }
 }
