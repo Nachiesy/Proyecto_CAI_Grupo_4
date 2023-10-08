@@ -49,6 +49,8 @@
             cancelpasajbtn = new Button();
             label10 = new Label();
             dt = new DateTimePicker();
+            label11 = new Label();
+            cbxTipodoc = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -85,7 +87,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(54, 686);
+            label4.Location = new Point(54, 755);
             label4.Margin = new Padding(6, 0, 6, 0);
             label4.Name = "label4";
             label4.Size = new Size(245, 32);
@@ -96,7 +98,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(54, 617);
+            label5.Location = new Point(54, 686);
             label5.Margin = new Padding(6, 0, 6, 0);
             label5.Name = "label5";
             label5.Size = new Size(87, 32);
@@ -106,7 +108,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(54, 551);
+            label6.Location = new Point(54, 620);
             label6.Margin = new Padding(6, 0, 6, 0);
             label6.Name = "label6";
             label6.Size = new Size(137, 32);
@@ -116,7 +118,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(54, 485);
+            label7.Location = new Point(54, 554);
             label7.Margin = new Padding(6, 0, 6, 0);
             label7.Name = "label7";
             label7.Size = new Size(230, 32);
@@ -126,7 +128,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(54, 404);
+            label8.Location = new Point(54, 473);
             label8.Margin = new Padding(6, 0, 6, 0);
             label8.Name = "label8";
             label8.Size = new Size(301, 32);
@@ -146,7 +148,7 @@
             // nombrepasajerotxt
             // 
             nombrepasajerotxt.Location = new Point(370, 119);
-            nombrepasajerotxt.Margin = new Padding(6, 6, 6, 6);
+            nombrepasajerotxt.Margin = new Padding(6);
             nombrepasajerotxt.Name = "nombrepasajerotxt";
             nombrepasajerotxt.Size = new Size(307, 39);
             nombrepasajerotxt.TabIndex = 9;
@@ -154,31 +156,31 @@
             // apellidopasajerotxt
             // 
             apellidopasajerotxt.Location = new Point(370, 186);
-            apellidopasajerotxt.Margin = new Padding(6, 6, 6, 6);
+            apellidopasajerotxt.Margin = new Padding(6);
             apellidopasajerotxt.Name = "apellidopasajerotxt";
             apellidopasajerotxt.Size = new Size(307, 39);
             apellidopasajerotxt.TabIndex = 10;
             // 
             // dnipasajerotxt
             // 
-            dnipasajerotxt.Location = new Point(370, 404);
-            dnipasajerotxt.Margin = new Padding(6, 6, 6, 6);
+            dnipasajerotxt.Location = new Point(370, 473);
+            dnipasajerotxt.Margin = new Padding(6);
             dnipasajerotxt.Name = "dnipasajerotxt";
             dnipasajerotxt.Size = new Size(307, 39);
             dnipasajerotxt.TabIndex = 12;
             // 
             // emailpasajerotxt
             // 
-            emailpasajerotxt.Location = new Point(368, 610);
-            emailpasajerotxt.Margin = new Padding(6, 6, 6, 6);
+            emailpasajerotxt.Location = new Point(368, 679);
+            emailpasajerotxt.Margin = new Padding(6);
             emailpasajerotxt.Name = "emailpasajerotxt";
             emailpasajerotxt.Size = new Size(307, 39);
             emailpasajerotxt.TabIndex = 15;
             // 
             // telpasajerotxt
             // 
-            telpasajerotxt.Location = new Point(370, 681);
-            telpasajerotxt.Margin = new Padding(6, 6, 6, 6);
+            telpasajerotxt.Location = new Point(370, 750);
+            telpasajerotxt.Margin = new Padding(6);
             telpasajerotxt.Name = "telpasajerotxt";
             telpasajerotxt.Size = new Size(307, 39);
             telpasajerotxt.TabIndex = 16;
@@ -186,16 +188,16 @@
             // paiscbx
             // 
             paiscbx.FormattingEnabled = true;
-            paiscbx.Location = new Point(370, 543);
-            paiscbx.Margin = new Padding(6, 6, 6, 6);
+            paiscbx.Location = new Point(370, 612);
+            paiscbx.Margin = new Padding(6);
             paiscbx.Name = "paiscbx";
             paiscbx.Size = new Size(307, 40);
             paiscbx.TabIndex = 17;
             // 
             // exppasajerodgv
             // 
-            exppasajerodgv.Location = new Point(370, 480);
-            exppasajerodgv.Margin = new Padding(6, 6, 6, 6);
+            exppasajerodgv.Location = new Point(370, 549);
+            exppasajerodgv.Margin = new Padding(6);
             exppasajerodgv.Name = "exppasajerodgv";
             exppasajerodgv.Size = new Size(307, 39);
             exppasajerodgv.TabIndex = 18;
@@ -204,7 +206,7 @@
             // 
             nacpasajerocbx.FormattingEnabled = true;
             nacpasajerocbx.Location = new Point(370, 328);
-            nacpasajerocbx.Margin = new Padding(6, 6, 6, 6);
+            nacpasajerocbx.Margin = new Padding(6);
             nacpasajerocbx.Name = "nacpasajerocbx";
             nacpasajerocbx.Size = new Size(307, 40);
             nacpasajerocbx.TabIndex = 19;
@@ -212,7 +214,7 @@
             // confirmpasajerobtn
             // 
             confirmpasajerobtn.Location = new Point(368, 816);
-            confirmpasajerobtn.Margin = new Padding(6, 6, 6, 6);
+            confirmpasajerobtn.Margin = new Padding(6);
             confirmpasajerobtn.Name = "confirmpasajerobtn";
             confirmpasajerobtn.Size = new Size(139, 49);
             confirmpasajerobtn.TabIndex = 20;
@@ -222,7 +224,7 @@
             // cancelpasajbtn
             // 
             cancelpasajbtn.Location = new Point(538, 816);
-            cancelpasajbtn.Margin = new Padding(6, 6, 6, 6);
+            cancelpasajbtn.Margin = new Padding(6);
             cancelpasajbtn.Name = "cancelpasajbtn";
             cancelpasajbtn.Size = new Size(139, 49);
             cancelpasajbtn.TabIndex = 21;
@@ -249,11 +251,33 @@
             dt.Size = new Size(307, 39);
             dt.TabIndex = 23;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(54, 408);
+            label11.Margin = new Padding(6, 0, 6, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(233, 32);
+            label11.TabIndex = 24;
+            label11.Text = "Tipo de Documento:";
+            // 
+            // cbxTipodoc
+            // 
+            cbxTipodoc.FormattingEnabled = true;
+            cbxTipodoc.Location = new Point(368, 400);
+            cbxTipodoc.Margin = new Padding(6);
+            cbxTipodoc.Name = "cbxTipodoc";
+            cbxTipodoc.Size = new Size(307, 40);
+            cbxTipodoc.TabIndex = 25;
+            cbxTipodoc.SelectedIndexChanged += cbxTipodoc_SelectedIndexChanged;
+            // 
             // IngresarPasajero
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(741, 944);
+            Controls.Add(cbxTipodoc);
+            Controls.Add(label11);
             Controls.Add(dt);
             Controls.Add(label10);
             Controls.Add(cancelpasajbtn);
@@ -275,7 +299,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "IngresarPasajero";
             Text = "IngresarPasajero";
             ResumeLayout(false);
@@ -305,5 +329,7 @@
         private Button cancelpasajbtn;
         private Label label10;
         private DateTimePicker dt;
+        private Label label11;
+        private ComboBox cbxTipodoc;
     }
 }

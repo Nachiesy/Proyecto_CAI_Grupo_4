@@ -45,5 +45,10 @@ namespace Proyecto_CAI_Grupo_4
         {
             Application.Run(new GenerarReserva());
         }
+
+        private void cbxTipodoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
