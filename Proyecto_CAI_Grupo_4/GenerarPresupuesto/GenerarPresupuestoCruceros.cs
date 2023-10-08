@@ -21,7 +21,7 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFilterFechaHasta.Checked = false;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.cruceros);
+            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.cruceros.Where(x => x.Cantidad > 0));
 
             AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.crucerosElegidos);
         }
@@ -47,7 +47,8 @@ namespace Proyecto_CAI_Grupo_4
                 var filter = new CrucerosFilter(filterDto);
 
                 var productos = GenerarPresupuestosManager.cruceros
-                    .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
+                    .Where(x => x.Cantidad > 0
+                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
                                 && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
                                 && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta));
@@ -209,29 +210,36 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            GenerarPresupuestosManager.crucerosElegidos.Clear();
-
-            foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+            if (dataGridViewProductosSeleccionados.RowCount > 0)
             {
-                var idCellIndex = 0;
-                var cantidadSeleccionadaColumnIndex = 4;
-                var subTotalColumnIndex = 5;
+                GenerarPresupuestosManager.crucerosElegidos.Clear();
 
-                var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+                foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+                {
+                    var idCellIndex = 0;
+                    var cantidadSeleccionadaColumnIndex = 4;
+                    var subTotalColumnIndex = 5;
 
-                var producto = GenerarPresupuestosManager.cruceros.Where(x => x.Id == id).SingleOrDefault();
+                    var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
 
-                producto.CantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
-                producto.SubTotal = decimal.Parse(row.Cells[subTotalColumnIndex].Value.ToString());
+                    var producto = GenerarPresupuestosManager.cruceros.Where(x => x.Id == id).SingleOrDefault();
 
-                GenerarPresupuestosManager.crucerosElegidos.Add(producto);
+                    producto.CantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
+                    producto.SubTotal = decimal.Parse(row.Cells[subTotalColumnIndex].Value.ToString());
+
+                    GenerarPresupuestosManager.crucerosElegidos.Add(producto);
+                }
+
+                this.Close();
+
+                Thread thread = new Thread(OpenMenuGenerarPresupuesto);
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
             }
-
-            this.Close();
-
-            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            else
+            {
+                MessageBox.Show("Debes seleccionar Cruceros para poder confirmar el presupuesto");
+            }
         }
 
         private void btnVolverAlMenuGenerarPresupuestos_Click(object sender, EventArgs e)

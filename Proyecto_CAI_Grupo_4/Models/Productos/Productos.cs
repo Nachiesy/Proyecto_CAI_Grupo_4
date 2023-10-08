@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Proyecto_CAI_Grupo_4.Utils;
+using System.ComponentModel;
 
 namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
@@ -30,4 +31,35 @@ public enum TipoDeServicioEnum
 
     [Description("Crucero")]
     crucero,
+
+    [Description("Paquete")]
+    paquete,
+}
+
+public static class TipoDeServicioEnumHelper
+{
+    public static TipoDeServicioEnum? GetTipoDeServicioEnum(string tipoDeServicio)
+    {
+        if (tipoDeServicio == TipoDeServicioEnum.aereo.GetDescription())
+        {
+            return TipoDeServicioEnum.aereo;
+        }
+
+        if (tipoDeServicio == TipoDeServicioEnum.hotel.GetDescription())
+        {
+            return TipoDeServicioEnum.hotel;
+        }
+
+        if (tipoDeServicio == TipoDeServicioEnum.crucero.GetDescription())
+        {
+            return TipoDeServicioEnum.crucero;
+        }
+
+        if (tipoDeServicio == TipoDeServicioEnum.paquete.GetDescription())
+        {
+            return TipoDeServicioEnum.paquete;
+        }
+
+        return null;
+    }
 }

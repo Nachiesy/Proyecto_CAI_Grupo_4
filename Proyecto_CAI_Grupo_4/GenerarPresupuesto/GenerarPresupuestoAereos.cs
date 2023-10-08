@@ -21,7 +21,7 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFilterFechaHasta.Checked = false;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.aereos);
+            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.aereos.Where(x => x.Cantidad > 0));
 
             AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.aereosElegidos);
         }
@@ -47,7 +47,8 @@ namespace Proyecto_CAI_Grupo_4
                 var filter = new AereosFilter(filterDto);
 
                 var productos = GenerarPresupuestosManager.aereos
-                    .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
+                    .Where(x => x.Cantidad > 0
+                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
                                 && (!filter.FechaDesde.HasValue || x.FechaDeSalida == filter.FechaDesde)
                                 && (!filter.FechaHasta.HasValue || x.FechaDeLlegada == filter.FechaHasta));
@@ -211,29 +212,36 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            GenerarPresupuestosManager.aereosElegidos.Clear();
-
-            foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+            if (dataGridViewProductosSeleccionados.RowCount > 0)
             {
-                var idCellIndex = 0;
-                var cantidadSeleccionadaColumnIndex = 4;
-                var subTotalColumnIndex = 5;
+                GenerarPresupuestosManager.aereosElegidos.Clear();
 
-                var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+                foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+                {
+                    var idCellIndex = 0;
+                    var cantidadSeleccionadaColumnIndex = 4;
+                    var subTotalColumnIndex = 5;
 
-                var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
+                    var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
 
-                producto.CantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
-                producto.SubTotal = decimal.Parse(row.Cells[subTotalColumnIndex].Value.ToString());
+                    var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
 
-                GenerarPresupuestosManager.aereosElegidos.Add(producto);
+                    producto.CantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
+                    producto.SubTotal = decimal.Parse(row.Cells[subTotalColumnIndex].Value.ToString());
+
+                    GenerarPresupuestosManager.aereosElegidos.Add(producto);
+                }
+
+                this.Close();
+
+                Thread thread = new Thread(OpenMenuGenerarPresupuesto);
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
             }
-
-            this.Close();
-
-            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            else
+            {
+                MessageBox.Show("Debes seleccionar Vuelos para poder confirmar el presupuesto");
+            }
         }
 
         private void btnVolverAlMenuGenerarPresupuestos_Click(object sender, EventArgs e)
