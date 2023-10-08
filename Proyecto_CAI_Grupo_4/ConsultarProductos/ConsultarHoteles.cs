@@ -7,14 +7,14 @@ using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class GenerarPresupuestoHoteles : VistaBase
+    public partial class ConsultarHoteles : VistaBase
     {
-        public GenerarPresupuestoHoteles() : base(tituloModulo: "Generar Presupuesto > Hoteles")
+        public ConsultarHoteles() : base(tituloModulo: "Consultar Productos > Hoteles")
         {
             InitializeComponent();
         }
 
-        private void GenerarPresupuestoHoteles_Load(object sender, EventArgs e)
+        private void GenerarPresupuestoAereos_Load(object sender, EventArgs e)
         {
             datePickerFechaSalida.Checked = false;
             datePickerFechaSalida.Value = DateTime.Now.Date;
@@ -22,11 +22,9 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
             AddProductosToListView(GenerarPresupuestosManager.hoteles, lstViewProductos);
-
-            AddProductosToListView(GenerarPresupuestosManager.hotelesElegidos, lstViewProductosElegidos);
         }
 
-        private void btnBuscarProducto_Click(object sender, EventArgs e)
+        private void btnBuscarProductos_Click(object sender, EventArgs e)
         {
             var filterDto = new HotelesFilterDto()
             {
@@ -140,81 +138,6 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void btnAgregarProductos_Click(object sender, EventArgs e)
-        {
-            if (lstViewProductos.SelectedItems.Count > 0)
-            {
-                var productosToAdd = new List<Hoteles>();
-
-                foreach (ListViewItem selectedItem in lstViewProductos.SelectedItems)
-                {
-                    var id = Guid.Parse(selectedItem.Text);
-
-                    var producto = GenerarPresupuestosManager.hoteles.Where(x => x.Id == id).SingleOrDefault();
-
-                    if (!IsProductInSelectedListView(id))
-                    {
-                        productosToAdd.Add(producto);
-                    }
-                }
-
-                AddProductosToListView(productosToAdd, lstViewProductosElegidos);
-            }
-            else
-            {
-                MessageBox.Show("Ningun vuelo seleccionado para agregar al presupuesto.");
-            }
-        }
-
-        private void btnRemoverProductos_Click(object sender, EventArgs e)
-        {
-            if (lstViewProductosElegidos.SelectedItems.Count > 0)
-            {
-                foreach (ListViewItem selectedItem in lstViewProductosElegidos.SelectedItems)
-                {
-                    lstViewProductosElegidos.Items.Remove(selectedItem);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Ningun vuelo seleccionado para remover del presupuesto.");
-            }
-        }
-
-        private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
-        {
-            GenerarPresupuestosManager.hotelesElegidos.Clear();
-
-            foreach (ListViewItem selectedItem in lstViewProductosElegidos.Items)
-            {
-                var id = Guid.Parse(selectedItem.Text);
-
-                var producto = GenerarPresupuestosManager.hoteles.Where(x => x.Id == id).SingleOrDefault();
-
-                GenerarPresupuestosManager.hotelesElegidos.Add(producto);
-            }
-
-            this.Close();
-
-            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void OpenMenuGenerarPresupuesto()
-        {
-            Application.Run(new GenerarPresupuestoMenu());
-        }
-
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)
         {
             txtBoxPrecioDesde.Clear();
@@ -224,21 +147,21 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
-            btnBuscarProducto_Click(sender, e);
+            btnBuscarProductos_Click(sender, e);
         }
 
-        private bool IsProductInSelectedListView(Guid id)
+        private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)
         {
-            var ids = new List<Guid>();
+            Close();
 
-            foreach (ListViewItem selectedItem in lstViewProductosElegidos.Items)
-            {
-                var selectedId = Guid.Parse(selectedItem.Text);
+            Thread thread = new Thread(OpenMenuConsultarProductos);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
 
-                ids.Add(selectedId);
-            }
-
-            return ids.Any(x => x == id);
+        private void OpenMenuConsultarProductos()
+        {
+            Application.Run(new ConsultarProductosMenu());
         }
     }
 }

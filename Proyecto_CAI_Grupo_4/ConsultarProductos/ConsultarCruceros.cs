@@ -7,28 +7,26 @@ using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class GenerarPresupuestoHoteles : VistaBase
+    public partial class ConsultarCruceros : VistaBase
     {
-        public GenerarPresupuestoHoteles() : base(tituloModulo: "Generar Presupuesto > Hoteles")
+        public ConsultarCruceros() : base(tituloModulo: "Consultar Productos > Cruceros")
         {
             InitializeComponent();
         }
 
-        private void GenerarPresupuestoHoteles_Load(object sender, EventArgs e)
+        private void GenerarPresupuestoAereos_Load(object sender, EventArgs e)
         {
             datePickerFechaSalida.Checked = false;
             datePickerFechaSalida.Value = DateTime.Now.Date;
             datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
-            AddProductosToListView(GenerarPresupuestosManager.hoteles, lstViewProductos);
-
-            AddProductosToListView(GenerarPresupuestosManager.hotelesElegidos, lstViewProductosElegidos);
+            AddProductosToListView(GenerarPresupuestosManager.cruceros, lstViewProductos);
         }
 
-        private void btnBuscarProducto_Click(object sender, EventArgs e)
+        private void btnBuscarProductos_Click(object sender, EventArgs e)
         {
-            var filterDto = new HotelesFilterDto()
+            var filterDto = new CrucerosFilterDto()
             {
                 PrecioDesde = txtBoxPrecioDesde.Text,
                 PrecioHasta = txtBoxPrecioHasta.Text,
@@ -44,9 +42,9 @@ namespace Proyecto_CAI_Grupo_4
             }
             else
             {
-                var filter = new HotelesFilter(filterDto);
+                var filter = new CrucerosFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.hoteles
+                var productos = GenerarPresupuestosManager.cruceros
                     .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
                                 && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
@@ -58,12 +56,12 @@ namespace Proyecto_CAI_Grupo_4
 
                 if (!productos.Any())
                 {
-                    MessageBox.Show("No hay Hoteles disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show("No hay Cruceros disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
                 }
             }
         }
 
-        private string ValidacionDeFiltros(HotelesFilterDto presupuesto)
+        private string ValidacionDeFiltros(CrucerosFilterDto presupuesto)
         {
             var messages = string.Empty;
 
@@ -77,7 +75,7 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private string ValidarPrecios(HotelesFilterDto presupuesto)
+        private string ValidarPrecios(CrucerosFilterDto presupuesto)
         {
             var messages = string.Empty;
 
@@ -108,7 +106,7 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private string ValidarFechas(HotelesFilterDto presupuesto)
+        private string ValidarFechas(CrucerosFilterDto presupuesto)
         {
             var messages = string.Empty;
 
@@ -124,95 +122,21 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosToListView(IEnumerable<Hoteles> listToAdd, ListView listView)
+        private void AddProductosToListView(IEnumerable<Cruceros> listToAdd, ListView listView)
         {
             foreach (var item in listToAdd)
             {
                 var row = new ListViewItem(item.Id.ToString());
 
                 row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Ciudad);
+                row.SubItems.Add(item.CiudadDePartida);
+                row.SubItems.Add(item.CiudadDeLlegada);
                 row.SubItems.Add(item.Precio.ToString());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
                 row.SubItems.Add(item.FechaHasta.ToFormDate());
 
                 listView.Items.Add(row);
             }
-        }
-
-        private void btnAgregarProductos_Click(object sender, EventArgs e)
-        {
-            if (lstViewProductos.SelectedItems.Count > 0)
-            {
-                var productosToAdd = new List<Hoteles>();
-
-                foreach (ListViewItem selectedItem in lstViewProductos.SelectedItems)
-                {
-                    var id = Guid.Parse(selectedItem.Text);
-
-                    var producto = GenerarPresupuestosManager.hoteles.Where(x => x.Id == id).SingleOrDefault();
-
-                    if (!IsProductInSelectedListView(id))
-                    {
-                        productosToAdd.Add(producto);
-                    }
-                }
-
-                AddProductosToListView(productosToAdd, lstViewProductosElegidos);
-            }
-            else
-            {
-                MessageBox.Show("Ningun vuelo seleccionado para agregar al presupuesto.");
-            }
-        }
-
-        private void btnRemoverProductos_Click(object sender, EventArgs e)
-        {
-            if (lstViewProductosElegidos.SelectedItems.Count > 0)
-            {
-                foreach (ListViewItem selectedItem in lstViewProductosElegidos.SelectedItems)
-                {
-                    lstViewProductosElegidos.Items.Remove(selectedItem);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Ningun vuelo seleccionado para remover del presupuesto.");
-            }
-        }
-
-        private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
-        {
-            GenerarPresupuestosManager.hotelesElegidos.Clear();
-
-            foreach (ListViewItem selectedItem in lstViewProductosElegidos.Items)
-            {
-                var id = Guid.Parse(selectedItem.Text);
-
-                var producto = GenerarPresupuestosManager.hoteles.Where(x => x.Id == id).SingleOrDefault();
-
-                GenerarPresupuestosManager.hotelesElegidos.Add(producto);
-            }
-
-            this.Close();
-
-            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void OpenMenuGenerarPresupuesto()
-        {
-            Application.Run(new GenerarPresupuestoMenu());
         }
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)
@@ -224,21 +148,21 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
-            btnBuscarProducto_Click(sender, e);
+            btnBuscarProductos_Click(sender, e);
         }
 
-        private bool IsProductInSelectedListView(Guid id)
+        private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)
         {
-            var ids = new List<Guid>();
+            Close();
 
-            foreach (ListViewItem selectedItem in lstViewProductosElegidos.Items)
-            {
-                var selectedId = Guid.Parse(selectedItem.Text);
+            Thread thread = new Thread(OpenMenuConsultarProductos);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
 
-                ids.Add(selectedId);
-            }
-
-            return ids.Any(x => x == id);
+        private void OpenMenuConsultarProductos()
+        {
+            Application.Run(new ConsultarProductosMenu());
         }
     }
 }

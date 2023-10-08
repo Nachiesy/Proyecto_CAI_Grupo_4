@@ -58,7 +58,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 if (!productos.Any())
                 {
-                    MessageBox.Show("No hay Vuelos disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show("No hay Cruceros disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
                 }
             }
         }
