@@ -131,5 +131,55 @@ namespace Proyecto_CAI_Grupo_4.Managers
         };
 
         public static List<Cruceros> crucerosElegidos = new List<Cruceros>();
+
+        public static List<PaquetesTuristicos> paquetesTuristicos = new List<PaquetesTuristicos>()
+        {
+            new PaquetesTuristicos()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Paquete de la Costa",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.crucero,
+                Origen = "Buenos Aires",
+                Destino = "Mar del Plata",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+            new PaquetesTuristicos()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Paquete Sudafrica",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.crucero,
+                Origen = "Sao Pablo",
+                Destino = "Pretoria",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+            new PaquetesTuristicos()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Paque Italia",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.crucero,
+                Origen = "Filadelfia",
+                Destino = "Napoles",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+            new PaquetesTuristicos()
+            {
+                Id = Guid.NewGuid(),
+                Nombre = "Paquete Japon",
+                Precio = 10,
+                TipoDeServicio = TipoDeServicioEnum.crucero,
+                Origen = "Sidney",
+                Destino = "Tokio",
+                FechaDesde = DateTime.Now.AddDays(10).Date,
+                FechaHasta = DateTime.Now.AddDays(20).Date,
+            },
+        };
+
+        public static List<PaquetesTuristicos> paquetesTuristicosElegidos = new List<PaquetesTuristicos>();
     }
 }

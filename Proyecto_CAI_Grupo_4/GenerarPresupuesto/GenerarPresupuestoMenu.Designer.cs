@@ -35,13 +35,17 @@
             label2 = new Label();
             btnFinalizarPresupuesto = new Button();
             btnVolverMenuPrincipal = new Button();
-            productosElegidos = new ListView();
-            ID = new ColumnHeader();
-            Nombre = new ColumnHeader();
-            Precio = new ColumnHeader();
-            TipoDeServicio = new ColumnHeader();
             presupuestoTotal = new TextBox();
             label3 = new Label();
+            btnMenuPaquetes = new Button();
+            productosElegidos = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            TipoDeServicio = new DataGridViewTextBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            SubTotal = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)productosElegidos).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -59,7 +63,7 @@
             btnMenuHoteles.Name = "btnMenuHoteles";
             btnMenuHoteles.Size = new Size(206, 23);
             btnMenuHoteles.TabIndex = 11;
-            btnMenuHoteles.Text = "Generar Presupuesto de Hoteles";
+            btnMenuHoteles.Text = "Hoteles";
             btnMenuHoteles.UseVisualStyleBackColor = true;
             btnMenuHoteles.Click += btnMenuHoteles_Click;
             // 
@@ -69,7 +73,7 @@
             btnMenuCruceros.Name = "btnMenuCruceros";
             btnMenuCruceros.Size = new Size(206, 23);
             btnMenuCruceros.TabIndex = 8;
-            btnMenuCruceros.Text = "Generar Presupuesto de Cruceros";
+            btnMenuCruceros.Text = "Cruceros";
             btnMenuCruceros.UseVisualStyleBackColor = true;
             btnMenuCruceros.Click += btnMenuCruceros_Click;
             // 
@@ -79,7 +83,7 @@
             btnMenuAereos.Name = "btnMenuAereos";
             btnMenuAereos.Size = new Size(206, 23);
             btnMenuAereos.TabIndex = 7;
-            btnMenuAereos.Text = "Generar Presupuesto de Aéreos";
+            btnMenuAereos.Text = "Aéreos";
             btnMenuAereos.UseVisualStyleBackColor = true;
             btnMenuAereos.Click += btnMenuAereos_Click;
             // 
@@ -95,7 +99,7 @@
             // 
             // btnFinalizarPresupuesto
             // 
-            btnFinalizarPresupuesto.Location = new Point(502, 531);
+            btnFinalizarPresupuesto.Location = new Point(502, 568);
             btnFinalizarPresupuesto.Name = "btnFinalizarPresupuesto";
             btnFinalizarPresupuesto.Size = new Size(206, 23);
             btnFinalizarPresupuesto.TabIndex = 14;
@@ -105,7 +109,7 @@
             // 
             // btnVolverMenuPrincipal
             // 
-            btnVolverMenuPrincipal.Location = new Point(502, 572);
+            btnVolverMenuPrincipal.Location = new Point(502, 609);
             btnVolverMenuPrincipal.Name = "btnVolverMenuPrincipal";
             btnVolverMenuPrincipal.Size = new Size(206, 23);
             btnVolverMenuPrincipal.TabIndex = 15;
@@ -113,41 +117,10 @@
             btnVolverMenuPrincipal.UseVisualStyleBackColor = true;
             btnVolverMenuPrincipal.Click += btnVolverMenuPrincipal_Click;
             // 
-            // productosElegidos
-            // 
-            productosElegidos.Columns.AddRange(new ColumnHeader[] { ID, Nombre, Precio, TipoDeServicio });
-            productosElegidos.FullRowSelect = true;
-            productosElegidos.Location = new Point(47, 225);
-            productosElegidos.Name = "productosElegidos";
-            productosElegidos.Size = new Size(1159, 280);
-            productosElegidos.TabIndex = 32;
-            productosElegidos.UseCompatibleStateImageBehavior = false;
-            productosElegidos.View = View.Details;
-            // 
-            // ID
-            // 
-            ID.Text = "ID";
-            ID.Width = 250;
-            // 
-            // Nombre
-            // 
-            Nombre.Text = "Nombre";
-            Nombre.Width = 200;
-            // 
-            // Precio
-            // 
-            Precio.Text = "Precio";
-            Precio.Width = 100;
-            // 
-            // TipoDeServicio
-            // 
-            TipoDeServicio.Text = "Tipo de Servicio";
-            TipoDeServicio.Width = 100;
-            // 
             // presupuestoTotal
             // 
             presupuestoTotal.Enabled = false;
-            presupuestoTotal.Location = new Point(47, 532);
+            presupuestoTotal.Location = new Point(184, 527);
             presupuestoTotal.Name = "presupuestoTotal";
             presupuestoTotal.Size = new Size(101, 23);
             presupuestoTotal.TabIndex = 33;
@@ -155,20 +128,82 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(47, 513);
+            label3.Location = new Point(184, 508);
             label3.Name = "label3";
             label3.Size = new Size(32, 15);
             label3.TabIndex = 34;
             label3.Text = "Total";
+            // 
+            // btnMenuPaquetes
+            // 
+            btnMenuPaquetes.Location = new Point(502, 204);
+            btnMenuPaquetes.Name = "btnMenuPaquetes";
+            btnMenuPaquetes.Size = new Size(206, 23);
+            btnMenuPaquetes.TabIndex = 35;
+            btnMenuPaquetes.Text = "Paquetes";
+            btnMenuPaquetes.UseVisualStyleBackColor = true;
+            btnMenuPaquetes.Click += btnMenuPaquetes_Click;
+            // 
+            // productosElegidos
+            // 
+            productosElegidos.AllowUserToAddRows = false;
+            productosElegidos.AllowUserToDeleteRows = false;
+            productosElegidos.AllowUserToOrderColumns = true;
+            productosElegidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, TipoDeServicio, PrecioUnitario, Cantidad, SubTotal });
+            productosElegidos.Location = new Point(184, 251);
+            productosElegidos.Name = "productosElegidos";
+            productosElegidos.RowTemplate.Height = 25;
+            productosElegidos.Size = new Size(893, 245);
+            productosElegidos.TabIndex = 36;
+            productosElegidos.CellValueChanged += productosElegidos_CellValueChanged;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 250;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // TipoDeServicio
+            // 
+            TipoDeServicio.HeaderText = "Tipo de Servicio";
+            TipoDeServicio.Name = "TipoDeServicio";
+            TipoDeServicio.ReadOnly = true;
+            // 
+            // PrecioUnitario
+            // 
+            PrecioUnitario.HeaderText = "Precio Unitario";
+            PrecioUnitario.Name = "PrecioUnitario";
+            PrecioUnitario.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.Name = "Cantidad";
+            // 
+            // SubTotal
+            // 
+            SubTotal.HeaderText = "SubTotal";
+            SubTotal.Name = "SubTotal";
+            SubTotal.ReadOnly = true;
             // 
             // GenerarPresupuestoMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1252, 644);
+            Controls.Add(productosElegidos);
+            Controls.Add(btnMenuPaquetes);
             Controls.Add(label3);
             Controls.Add(presupuestoTotal);
-            Controls.Add(productosElegidos);
             Controls.Add(btnVolverMenuPrincipal);
             Controls.Add(btnFinalizarPresupuesto);
             Controls.Add(label2);
@@ -179,6 +214,7 @@
             Name = "GenerarPresupuestoMenu";
             Text = "Generar Presupuesto";
             Load += GenerarPresupuestoMenu_Load;
+            ((System.ComponentModel.ISupportInitialize)productosElegidos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -192,12 +228,15 @@
         private Label label2;
         private Button btnFinalizarPresupuesto;
         private Button btnVolverMenuPrincipal;
-        private ListView productosElegidos;
-        private ColumnHeader ID;
-        private ColumnHeader Nombre;
-        private ColumnHeader Precio;
-        private ColumnHeader TipoDeServicio;
         private TextBox presupuestoTotal;
         private Label label3;
+        private Button btnMenuPaquetes;
+        private DataGridView productosElegidos;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn TipoDeServicio;
+        private DataGridViewTextBoxColumn PrecioUnitario;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn SubTotal;
     }
 }
