@@ -38,11 +38,9 @@ namespace Proyecto_CAI_Grupo_4
 
         private void cancelpasajbtn_Click(object sender, EventArgs e)
         {
-            this.Close();
-
-            Thread thread = new Thread(ReturnGenerarReserva);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            pasajero = null;
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void ReturnGenerarReserva()

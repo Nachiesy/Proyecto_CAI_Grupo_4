@@ -74,11 +74,17 @@ namespace Proyecto_CAI_Grupo_4
 
             if (result == DialogResult.OK)
             {
+                    if (Agregar.pasajero ==null) {
+                    }
+                    else {
+                        RecibirDatosPasajero(Agregar.pasajero);
+                        MessageBox.Show("Se Agregó el pasajero");
+                        controlPasjeros++;
+                    }
 
-                RecibirDatosPasajero(Agregar.pasajero);
-                MessageBox.Show("Se Agregó el pasajero");
-                    controlPasjeros++;
-            }
+
+
+                }
             }
             else { MessageBox.Show("Limite de Pasajeros alcanzado");
             }
@@ -216,6 +222,7 @@ namespace Proyecto_CAI_Grupo_4
             {
 
                 gbxPasajeros.Enabled = true;
+                gpProsupuesto.Enabled = false;
 
                 lblcantpasajeros.Text = "Pasajeros Disponibles " + PresupuestoSeleccionado();
             }
