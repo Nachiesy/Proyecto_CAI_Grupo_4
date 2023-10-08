@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +15,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class IngresarPasajero : Form
     {
+        public Pasajeros pasajero = new Pasajeros();
         public IngresarPasajero()
         {
             InitializeComponent();
@@ -47,6 +51,28 @@ namespace Proyecto_CAI_Grupo_4
         }
 
         private void cbxTipodoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void confirmpasajerobtn_Click(object sender, EventArgs e)
+        {
+            string nombre = nombrepasajerotxt.Text;
+            string apellido = apellidopasajerotxt.Text;
+            DateTime fechanachimiento = dtnacmiento.Value;
+            string nacionalidad = nacpasajerocbx.Text;
+            int tipodoc = cbxTipodoc.TabIndex;
+            string documento = dnipasajerotxt.Text;
+            DateTime fechaexpo = exppasajerodgv.Value;
+            string paisemisor = paiscbx.Text;
+            string email = emailpasajerotxt.Text;
+            string telefono = telpasajerotxt.Text;
+
+
+
+            
+        }
+        private void IngresarPasajero_Load_1(object sender, EventArgs e)
         {
 
         }

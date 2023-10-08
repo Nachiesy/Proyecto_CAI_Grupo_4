@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
-    internal class PasajerosModel
+    public class Pasajeros
     {
 
         public int Id { get; set; }

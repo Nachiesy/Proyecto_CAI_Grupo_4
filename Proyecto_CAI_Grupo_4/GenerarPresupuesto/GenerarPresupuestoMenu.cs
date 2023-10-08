@@ -226,5 +226,10 @@ namespace Proyecto_CAI_Grupo_4
 
             btnFinalizarPresupuesto.Enabled = total > 0 && !string.IsNullOrEmpty(textBoxClienteDNI.Text.Trim());
         }
+
+        private void productosElegidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

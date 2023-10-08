@@ -45,10 +45,10 @@ namespace Proyecto_CAI_Grupo_4
         {
             Application.Run(new MenuPrincipal());
         }
-
+        public event Action<Pasajeros> DatosPasajeros;
         private void btnAddpasajero_Click(object sender, EventArgs e)
         {
-            this.Close();
+  
             Thread thread = new Thread(AgregarPasajero);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
@@ -67,8 +67,11 @@ namespace Proyecto_CAI_Grupo_4
         {
             new Reserva()
             {
-                Estado = ReservaEstadoEnum.pendienteDePago,
-                DNI = "Nro.1",
+                Codigo = Guid.NewGuid(),
+                Estado = ReservaEstadoEnum.pagada,
+                TipoDoc = 1,
+                DNI = "39117825",
+                CantPasajeros = 2,
                 Precio = (decimal)100000.50,
                 Fecha = DateTime.Now.AddDays(-7),
                 FechaDesde = DateTime.Now.AddDays(21),
@@ -76,9 +79,11 @@ namespace Proyecto_CAI_Grupo_4
             },
             new Reserva()
             {
-
+                Codigo = Guid.NewGuid(),
                 Estado = ReservaEstadoEnum.pagada,
-                DNI = "Nro.2",
+                TipoDoc = 1,
+                DNI = "27098332",
+                CantPasajeros = 5,
                 Precio = (decimal)50000,
                 Fecha = DateTime.Now.AddDays(-14),
                 FechaDesde = DateTime.Now.AddDays(14),
@@ -86,8 +91,11 @@ namespace Proyecto_CAI_Grupo_4
             },
             new Reserva()
             {
-                Estado = ReservaEstadoEnum.confirmada,
-                DNI = "Nro.3",
+                Codigo = Guid.NewGuid(),
+                Estado = ReservaEstadoEnum.pagada,
+                TipoDoc = 1,
+                DNI = "30945665",
+                CantPasajeros = 2,
                 Precio = (decimal)500000.95,
                 Fecha = DateTime.Now.AddDays(-21),
                 FechaDesde = DateTime.Now.AddDays(7),
@@ -104,7 +112,7 @@ namespace Proyecto_CAI_Grupo_4
 
             var filteredReservas = reservas
                 .Where(x =>
-                            (tipodoc == -1 || (int)x.Estado == tipodoc)
+                            (tipodoc == -1 || (int)x.TipoDoc == tipodoc)
                             && (string.IsNullOrEmpty(nroDeDoc) || x.DNI == nroDeDoc));
 
             if (filteredReservas.Any())
@@ -122,20 +130,52 @@ namespace Proyecto_CAI_Grupo_4
         {
             foreach (var item in list)
             {
-                var row = new ListViewItem(item.DNI);
-
-                row.SubItems.Add(item.Estado.GetDescription());
+                var row = new ListViewItem(item.Codigo.ToString());
                 row.SubItems.Add(item.DNI);
+                row.SubItems.Add(item.CantPasajeros.ToString());
                 row.SubItems.Add(item.Precio.ToString());
-                row.SubItems.Add(item.Fecha.ToFormDate());
+                row.SubItems.Add(item.Estado.GetDescription());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
                 row.SubItems.Add(item.FechaHasta.ToFormDate());
+                row.SubItems.Add(item.Fecha.ToFormDate());
 
                 listPresupuestos.Items.Add(row);
             }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            var codigo = nroPresupuestotxt.Text.Trim();
+
+            var tipodoc = cbxTipodoc.SelectedIndex;
+
+            var dni = txbDocumento.Text.Trim();
+
+            var filteredReservas = reservas
+                .Where(x => (string.IsNullOrEmpty(codigo) || x.Codigo == Guid.Parse(codigo))
+                            && (tipodoc == -1 || (int)x.Estado == tipodoc)
+                           && (string.IsNullOrEmpty(dni) || x.DNI == dni));
+
+            if (filteredReservas.Any())
+            {
+                listPresupuestos.Items.Clear();
+
+                AddReservasToListView(filteredReservas);
+            }
+            else
+            {
+                MessageBox.Show("No hay reservas disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            gbxPasajeros.Enabled = true;
+
+
+        }
+
+        private void GenerarReserva_Load(object sender, EventArgs e)
         {
 
         }

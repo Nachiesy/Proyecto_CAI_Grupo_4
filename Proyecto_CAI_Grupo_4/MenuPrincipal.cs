@@ -73,5 +73,10 @@ namespace Proyecto_CAI_Grupo_4
         {
             Application.Run(new ConsultarProductosMenu());
         }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
