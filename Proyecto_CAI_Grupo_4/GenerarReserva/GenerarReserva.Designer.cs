@@ -63,12 +63,14 @@
             btnSelect = new Button();
             btnGenreserva = new Button();
             btnCancelar = new Button();
+            lblcodigp = new Label();
             gbxPasajeros.SuspendLayout();
             gpProsupuesto.SuspendLayout();
             SuspendLayout();
             // 
             // gbxPasajeros
             // 
+            gbxPasajeros.Controls.Add(lblcodigp);
             gbxPasajeros.Controls.Add(lblcantpasajeros);
             gbxPasajeros.Controls.Add(listPasajeros);
             gbxPasajeros.Controls.Add(btnQuitpasajero);
@@ -324,6 +326,7 @@
             btnGenreserva.TabIndex = 8;
             btnGenreserva.Text = "Generar Reserva";
             btnGenreserva.UseVisualStyleBackColor = true;
+            btnGenreserva.Click += btnGenreserva_Click;
             // 
             // btnCancelar
             // 
@@ -334,6 +337,16 @@
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
+            // 
+            // lblcodigp
+            // 
+            lblcodigp.AutoSize = true;
+            lblcodigp.Location = new Point(359, 83);
+            lblcodigp.Name = "lblcodigp";
+            lblcodigp.Size = new Size(241, 32);
+            lblcodigp.TabIndex = 5;
+            lblcodigp.Text = "Codigo Presupuesto: ";
+            lblcodigp.Click += label4_Click;
             // 
             // GenerarReserva
             // 
@@ -392,5 +405,6 @@
         private ColumnHeader fechahasta;
         private ColumnHeader fecha;
         private Label lblcantpasajeros;
+        private Label lblcodigp;
     }
 }

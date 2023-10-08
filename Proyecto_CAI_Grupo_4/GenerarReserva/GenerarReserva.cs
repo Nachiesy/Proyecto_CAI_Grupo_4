@@ -67,16 +67,19 @@ namespace Proyecto_CAI_Grupo_4
         }
         private void btnAddpasajero_Click(object sender, EventArgs e)
         {
-            
-            if (controlPasjeros <= PresupuestoSeleccionado()) { 
-            IngresarPasajero Agregar = new IngresarPasajero();
-            DialogResult result = Agregar.ShowDialog();
 
-            if (result == DialogResult.OK)
+            if (controlPasjeros <= PresupuestoSeleccionado())
             {
-                    if (Agregar.pasajero ==null) {
+                IngresarPasajero Agregar = new IngresarPasajero();
+                DialogResult result = Agregar.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    if (Agregar.pasajero == null)
+                    {
                     }
-                    else {
+                    else
+                    {
                         RecibirDatosPasajero(Agregar.pasajero);
                         MessageBox.Show("Se Agregó el pasajero");
                         controlPasjeros++;
@@ -86,7 +89,9 @@ namespace Proyecto_CAI_Grupo_4
 
                 }
             }
-            else { MessageBox.Show("Limite de Pasajeros alcanzado");
+            else
+            {
+                MessageBox.Show("Limite de Pasajeros alcanzado");
             }
 
         }
@@ -244,6 +249,28 @@ namespace Proyecto_CAI_Grupo_4
         private void GenerarReserva_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGenreserva_Click(object sender, EventArgs e)
+        {
+            if (controlPasjeros > PresupuestoSeleccionado())
+            {
+                MessageBox.Show("Reserva Generada Exitosamente");
+                this.Close();
+
+                Thread thread = new Thread(OpenMenuPrincipal);
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+            }
+            else
+            {
+                MessageBox.Show("Debe Completar todos los pasajeros");
+            }
         }
     }
 }
