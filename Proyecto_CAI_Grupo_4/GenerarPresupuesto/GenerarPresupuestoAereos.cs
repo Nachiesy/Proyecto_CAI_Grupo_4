@@ -3,12 +3,13 @@ using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
 using System.Data;
+using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class GenerarPresupuestoAereos : Form
+    public partial class GenerarPresupuestoAereos : VistaBase
     {
-        public GenerarPresupuestoAereos()
+        public GenerarPresupuestoAereos() : base(tituloModulo: "Generar Presupuesto > Aereos")
         {
             InitializeComponent();
         }

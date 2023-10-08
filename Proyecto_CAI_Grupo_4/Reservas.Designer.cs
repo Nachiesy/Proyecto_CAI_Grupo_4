@@ -50,6 +50,7 @@
             // 
             // reservasListView
             // 
+            reservasListView.BackColor = SystemColors.ControlLight;
             reservasListView.Columns.AddRange(new ColumnHeader[] { Codigo, Estado, NroDocumento, Precio, Fecha, Desde, Hasta });
             reservasListView.Location = new Point(27, 245);
             reservasListView.Name = "reservasListView";
@@ -193,6 +194,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(843, 487);
             Controls.Add(btn_Limpiar);
             Controls.Add(grp_Filtros);

@@ -56,9 +56,9 @@
             btn_VolverAlMenu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             btn_VolverAlMenu.Cursor = Cursors.Hand;
             btn_VolverAlMenu.Image = (Image)resources.GetObject("btn_VolverAlMenu.Image");
-            btn_VolverAlMenu.Location = new Point(646, 8);
+            btn_VolverAlMenu.Location = new Point(654, 12);
             btn_VolverAlMenu.Name = "btn_VolverAlMenu";
-            btn_VolverAlMenu.Size = new Size(72, 72);
+            btn_VolverAlMenu.Size = new Size(64, 64);
             btn_VolverAlMenu.TabIndex = 3;
             btn_VolverAlMenu.TabStop = false;
             btn_VolverAlMenu.Click += btn_Volver_Menu;

@@ -73,6 +73,7 @@
             productosElegidos.AllowUserToAddRows = false;
             productosElegidos.AllowUserToDeleteRows = false;
             productosElegidos.AllowUserToOrderColumns = true;
+            productosElegidos.BackgroundColor = SystemColors.ControlLight;
             productosElegidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, TipoDeServicio, PrecioUnitario, Cantidad, SubTotal });
             productosElegidos.Location = new Point(303, 126);
@@ -221,6 +222,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(1209, 483);
             Controls.Add(grp_Estimacion);
             Controls.Add(btnFinalizarPresupuesto);
