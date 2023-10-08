@@ -1,4 +1,4 @@
-﻿namespace Proyecto_CAI_Grupo_4
+namespace Proyecto_CAI_Grupo_4
 {
     partial class GenerarPresupuestoMenu
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarPresupuestoMenu));
             label1 = new Label();
             presupuestoTotal = new Label();
             productosElegidos = new DataGridView();
@@ -38,6 +39,10 @@
             Cantidad = new DataGridViewTextBoxColumn();
             SubTotal = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
+            pictureBox4 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            pictureBox1 = new PictureBox();
             btnMenuAereos = new Common.Components.BotonEstilizado();
             btnMenuPaquetes = new Common.Components.BotonEstilizado();
             btnMenuHoteles = new Common.Components.BotonEstilizado();
@@ -46,6 +51,10 @@
             grp_Estimacion = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)productosElegidos).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             grp_Estimacion.SuspendLayout();
             SuspendLayout();
             // 
@@ -122,16 +131,56 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(pictureBox4);
+            groupBox1.Controls.Add(pictureBox3);
+            groupBox1.Controls.Add(pictureBox2);
+            groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(btnMenuAereos);
             groupBox1.Controls.Add(btnMenuPaquetes);
             groupBox1.Controls.Add(btnMenuHoteles);
             groupBox1.Controls.Add(btnMenuCruceros);
-            groupBox1.Location = new Point(12, 115);
+            groupBox1.Location = new Point(12, 106);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(246, 228);
+            groupBox1.Size = new Size(246, 237);
             groupBox1.TabIndex = 37;
             groupBox1.TabStop = false;
             groupBox1.Text = "Agregar productos";
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(15, 184);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(48, 48);
+            pictureBox4.TabIndex = 8;
+            pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(14, 131);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(48, 48);
+            pictureBox3.TabIndex = 7;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(14, 76);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(48, 48);
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(14, 23);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(48, 48);
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
             // 
             // btnMenuAereos
             // 
@@ -140,7 +189,7 @@
             btnMenuAereos.FlatStyle = FlatStyle.Flat;
             btnMenuAereos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuAereos.ForeColor = Color.Black;
-            btnMenuAereos.Location = new Point(68, 31);
+            btnMenuAereos.Location = new Point(68, 23);
             btnMenuAereos.Name = "btnMenuAereos";
             btnMenuAereos.Size = new Size(172, 40);
             btnMenuAereos.TabIndex = 4;
@@ -155,7 +204,7 @@
             btnMenuPaquetes.FlatStyle = FlatStyle.Flat;
             btnMenuPaquetes.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuPaquetes.ForeColor = Color.Black;
-            btnMenuPaquetes.Location = new Point(68, 169);
+            btnMenuPaquetes.Location = new Point(68, 187);
             btnMenuPaquetes.Name = "btnMenuPaquetes";
             btnMenuPaquetes.Size = new Size(172, 40);
             btnMenuPaquetes.TabIndex = 4;
@@ -169,7 +218,7 @@
             btnMenuHoteles.FlatStyle = FlatStyle.Flat;
             btnMenuHoteles.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuHoteles.ForeColor = Color.Black;
-            btnMenuHoteles.Location = new Point(68, 77);
+            btnMenuHoteles.Location = new Point(68, 79);
             btnMenuHoteles.Name = "btnMenuHoteles";
             btnMenuHoteles.Size = new Size(172, 40);
             btnMenuHoteles.TabIndex = 4;
@@ -184,7 +233,7 @@
             btnMenuCruceros.FlatStyle = FlatStyle.Flat;
             btnMenuCruceros.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenuCruceros.ForeColor = Color.Black;
-            btnMenuCruceros.Location = new Point(68, 123);
+            btnMenuCruceros.Location = new Point(68, 133);
             btnMenuCruceros.Name = "btnMenuCruceros";
             btnMenuCruceros.Size = new Size(172, 40);
             btnMenuCruceros.TabIndex = 4;
@@ -239,6 +288,10 @@
             Controls.SetChildIndex(grp_Estimacion, 0);
             ((System.ComponentModel.ISupportInitialize)productosElegidos).EndInit();
             groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             grp_Estimacion.ResumeLayout(false);
             grp_Estimacion.PerformLayout();
             ResumeLayout(false);
@@ -263,5 +316,9 @@
         private Common.Components.BotonEstilizado btnMenuPaquetes;
         private Common.Components.BotonEstilizado btnFinalizarPresupuesto;
         private GroupBox grp_Estimacion;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox2;
     }
 }
