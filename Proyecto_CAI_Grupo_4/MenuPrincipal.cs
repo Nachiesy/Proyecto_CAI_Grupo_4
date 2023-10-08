@@ -78,5 +78,19 @@ namespace Proyecto_CAI_Grupo_4
         {
 
         }
+
+        private void btn_ConfirmarReserva_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            Thread thread = new Thread(OpenConfirmarReserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+        private void OpenConfirmarReserva()
+        {
+            Application.Run(new ConfirmarReserva());
+        }
+
     }
 }
