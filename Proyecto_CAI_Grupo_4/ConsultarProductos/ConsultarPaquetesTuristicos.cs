@@ -26,7 +26,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
         {
-            var filterDto = new ProductosFilterDto()
+            var filterDto = new PaquetesTuristicosFilterDto()
             {
                 PrecioDesde = txtBoxPrecioDesde.Text,
                 PrecioHasta = txtBoxPrecioHasta.Text,
@@ -42,7 +42,7 @@ namespace Proyecto_CAI_Grupo_4
             }
             else
             {
-                var filter = new ProductosFilter(filterDto);
+                var filter = new PaquetesTuristicosFilter(filterDto);
 
                 var productos = GenerarPresupuestosManager.paquetesTuristicos
                     .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
@@ -61,7 +61,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private string ValidacionDeFiltros(ProductosFilterDto presupuesto)
+        private string ValidacionDeFiltros(PaquetesTuristicosFilterDto presupuesto)
         {
             var messages = string.Empty;
 
@@ -75,7 +75,7 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private string ValidarPrecios(ProductosFilterDto presupuesto)
+        private string ValidarPrecios(PaquetesTuristicosFilterDto presupuesto)
         {
             var messages = string.Empty;
 
@@ -106,7 +106,7 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private string ValidarFechas(ProductosFilterDto presupuesto)
+        private string ValidarFechas(PaquetesTuristicosFilterDto presupuesto)
         {
             var messages = string.Empty;
 

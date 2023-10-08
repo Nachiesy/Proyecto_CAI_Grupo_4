@@ -16,32 +16,32 @@ namespace Proyecto_CAI_Grupo_4
         {
             var aereos = GenerarPresupuestosManager.aereosElegidos;
 
-            AddProductosToListView(aereos, productosElegidos);
+            AddProductosToListView(aereos);
 
             var hoteles = GenerarPresupuestosManager.hotelesElegidos;
 
-            AddProductosToListView(hoteles, productosElegidos);
+            AddProductosToListView(hoteles);
 
             var cruceros = GenerarPresupuestosManager.crucerosElegidos;
 
-            AddProductosToListView(cruceros, productosElegidos);
+            AddProductosToListView(cruceros);
 
             var paquetesTuristicos = GenerarPresupuestosManager.paquetesTuristicosElegidos;
 
-            AddProductosToListView(paquetesTuristicos, productosElegidos);
+            AddProductosToListView(paquetesTuristicos);
 
             decimal total = 0;
 
-            total += aereos.Sum(x => x.Precio);
-            total += hoteles.Sum(x => x.Precio);
-            total += cruceros.Sum(x => x.Precio);
-            total += paquetesTuristicos.Sum(x => x.Precio);
+            total += aereos.Sum(x => x.SubTotal.Value);
+            total += hoteles.Sum(x => x.SubTotal.Value);
+            total += cruceros.Sum(x => x.SubTotal.Value);
+            total += paquetesTuristicos.Sum(x => x.SubTotal.Value);
 
             btnFinalizarPresupuesto.Enabled = total > 0 && !string.IsNullOrEmpty(textBoxClienteDNI.Text.Trim());
             presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
         }
 
-        private void AddProductosToListView(IEnumerable<Productos> listToAdd, DataGridView listView)
+        private void AddProductosToListView(IEnumerable<Productos> listToAdd)
         {
             foreach (var item in listToAdd)
             {
@@ -51,8 +51,8 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeServicio.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionada });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal });
 
                 productosElegidos.Rows.Add(row);
             }
@@ -151,63 +151,6 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenMenuPrincipal()
         {
             Application.Run(new MenuPrincipal());
-        }
-
-        private void productosElegidos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            var idColumnIndex = 0;
-            var precioColumnIndex = 3;
-            var cantidadColumnIndex = 4;
-            var subTotalColumnIndex = 5;
-
-            if (e.RowIndex >= 0 && e.ColumnIndex == cantidadColumnIndex)
-            {
-                var dataGridView = sender as DataGridView;
-
-                var changedCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
-                var precioCell = dataGridView.Rows[e.RowIndex].Cells[precioColumnIndex];
-
-                var subTotalCell = dataGridView.Rows[e.RowIndex].Cells[subTotalColumnIndex];
-
-                var cantidadValid = int.TryParse(changedCell.Value.ToString(), out int cantidad);
-
-                var precioValid = decimal.TryParse(precioCell.Value.ToString(), out decimal precio);
-
-                if (cantidadValid && precioValid)
-                {
-                    subTotalCell.Value = precio * cantidad;
-                }
-                else
-                {
-                    changedCell.Value = 1;
-                    subTotalCell.Value = precioCell.Value;
-
-                    var id = dataGridView.Rows[e.RowIndex].Cells[idColumnIndex].Value;
-
-                    MessageBox.Show($"La Cantidad para el Producto con ID [{id}] debe ser un numero entero.", "Error");
-                }
-
-                dataGridView.Refresh();
-
-                UpdateTotalDelPresupuesto(subTotalColumnIndex);
-            }
-        }
-
-        private void UpdateTotalDelPresupuesto(int subTotalColumnIndex)
-        {
-            decimal total = 0;
-
-            foreach (DataGridViewRow row in productosElegidos.Rows)
-            {
-                if (decimal.TryParse(row.Cells[subTotalColumnIndex].Value.ToString(), out decimal subTotal))
-                {
-                    total += subTotal;
-                }
-            }
-
-            btnFinalizarPresupuesto.Enabled = total > 0 && !string.IsNullOrEmpty(textBoxClienteDNI.Text.Trim());
-            presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
         }
 
         private void textBoxClienteDNI_TextChanged(object sender, EventArgs e)

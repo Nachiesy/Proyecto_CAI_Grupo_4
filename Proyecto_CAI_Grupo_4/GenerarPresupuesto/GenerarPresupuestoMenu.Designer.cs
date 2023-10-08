@@ -32,12 +32,6 @@ namespace Proyecto_CAI_Grupo_4
             label1 = new Label();
             presupuestoTotal = new Label();
             productosElegidos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            TipoDeServicio = new DataGridViewTextBoxColumn();
-            PrecioUnitario = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            SubTotal = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -52,6 +46,12 @@ namespace Proyecto_CAI_Grupo_4
             grp_Filtros = new GroupBox();
             textBoxClienteDNI = new TextBox();
             label2 = new Label();
+            ID = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            TipoDeServicio = new DataGridViewTextBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            SubTotal = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)productosElegidos).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -91,58 +91,11 @@ namespace Proyecto_CAI_Grupo_4
             productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, TipoDeServicio, PrecioUnitario, Cantidad, SubTotal });
             productosElegidos.Location = new Point(303, 126);
             productosElegidos.Name = "productosElegidos";
+            productosElegidos.ReadOnly = true;
             productosElegidos.RowHeadersWidth = 82;
             productosElegidos.RowTemplate.Height = 25;
             productosElegidos.Size = new Size(893, 443);
             productosElegidos.TabIndex = 36;
-            productosElegidos.CellValueChanged += productosElegidos_CellValueChanged;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Width = 250;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // TipoDeServicio
-            // 
-            TipoDeServicio.HeaderText = "Tipo de Servicio";
-            TipoDeServicio.MinimumWidth = 10;
-            TipoDeServicio.Name = "TipoDeServicio";
-            TipoDeServicio.ReadOnly = true;
-            TipoDeServicio.Width = 200;
-            // 
-            // PrecioUnitario
-            // 
-            PrecioUnitario.HeaderText = "Precio Unitario";
-            PrecioUnitario.MinimumWidth = 10;
-            PrecioUnitario.Name = "PrecioUnitario";
-            PrecioUnitario.ReadOnly = true;
-            PrecioUnitario.Width = 200;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            Cantidad.Width = 200;
-            // 
-            // SubTotal
-            // 
-            SubTotal.HeaderText = "SubTotal";
-            SubTotal.MinimumWidth = 10;
-            SubTotal.Name = "SubTotal";
-            SubTotal.ReadOnly = true;
-            SubTotal.Width = 200;
             // 
             // groupBox1
             // 
@@ -311,6 +264,54 @@ namespace Proyecto_CAI_Grupo_4
             label2.TabIndex = 3;
             label2.Text = "DNI";
             // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 250;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 10;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // TipoDeServicio
+            // 
+            TipoDeServicio.HeaderText = "Tipo de Servicio";
+            TipoDeServicio.MinimumWidth = 10;
+            TipoDeServicio.Name = "TipoDeServicio";
+            TipoDeServicio.ReadOnly = true;
+            TipoDeServicio.Width = 200;
+            // 
+            // PrecioUnitario
+            // 
+            PrecioUnitario.HeaderText = "Precio Unitario";
+            PrecioUnitario.MinimumWidth = 10;
+            PrecioUnitario.Name = "PrecioUnitario";
+            PrecioUnitario.ReadOnly = true;
+            PrecioUnitario.Width = 200;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 10;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 200;
+            // 
+            // SubTotal
+            // 
+            SubTotal.HeaderText = "SubTotal";
+            SubTotal.MinimumWidth = 10;
+            SubTotal.Name = "SubTotal";
+            SubTotal.ReadOnly = true;
+            SubTotal.Width = 200;
+            // 
             // GenerarPresupuestoMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -352,12 +353,6 @@ namespace Proyecto_CAI_Grupo_4
         private Label label1;
         private Label presupuestoTotal;
         private DataGridView productosElegidos;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn TipoDeServicio;
-        private DataGridViewTextBoxColumn PrecioUnitario;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn SubTotal;
         private GroupBox groupBox1;
         private Common.Components.BotonEstilizado btnMenuAereos;
         private Common.Components.BotonEstilizado btnMenuHoteles;
@@ -372,5 +367,11 @@ namespace Proyecto_CAI_Grupo_4
         private GroupBox grp_Filtros;
         private TextBox textBoxClienteDNI;
         private Label label2;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn TipoDeServicio;
+        private DataGridViewTextBoxColumn PrecioUnitario;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn SubTotal;
     }
 }

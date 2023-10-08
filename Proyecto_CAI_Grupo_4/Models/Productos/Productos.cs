@@ -10,6 +10,12 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public decimal Precio { get; set; }
 
+        public int Cantidad { get; set; }
+
+        public int? CantidadSeleccionada { get; set; }
+
+        public decimal? SubTotal { get; set; }
+
         public TipoDeServicioEnum TipoDeServicio { get; set; }
     }
 }
