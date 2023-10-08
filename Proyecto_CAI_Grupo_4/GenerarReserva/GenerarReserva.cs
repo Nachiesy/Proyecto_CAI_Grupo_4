@@ -17,7 +17,7 @@ namespace Proyecto_CAI_Grupo_4
 
     public partial class GenerarReserva : Form
     {
-
+        int controlPasjeros = 1;
         public GenerarReserva()
         {
             InitializeComponent();
@@ -54,7 +54,7 @@ namespace Proyecto_CAI_Grupo_4
 
             ListViewItem item = new ListViewItem(SumarPasajero.Nombre);
             item.SubItems.Add(SumarPasajero.Apellido.ToString());
-           item.SubItems.Add(SumarPasajero.Fecha_Nac.ToFormDate());
+            item.SubItems.Add(SumarPasajero.Fecha_Nac.ToFormDate());
             item.SubItems.Add(SumarPasajero.Nacionalidad.ToString());
             item.SubItems.Add(SumarPasajero.Tipo_Doc.ToString());
             item.SubItems.Add(SumarPasajero.Doc.ToString());
@@ -67,6 +67,8 @@ namespace Proyecto_CAI_Grupo_4
         }
         private void btnAddpasajero_Click(object sender, EventArgs e)
         {
+            
+            if (controlPasjeros <= PresupuestoSeleccionado()) { 
             IngresarPasajero Agregar = new IngresarPasajero();
             DialogResult result = Agregar.ShowDialog();
 
@@ -75,7 +77,12 @@ namespace Proyecto_CAI_Grupo_4
 
                 RecibirDatosPasajero(Agregar.pasajero);
                 MessageBox.Show("Se Agregó el pasajero");
+                    controlPasjeros++;
             }
+            }
+            else { MessageBox.Show("Limite de Pasajeros alcanzado");
+            }
+
         }
 
 
@@ -207,18 +214,24 @@ namespace Proyecto_CAI_Grupo_4
 
             if (listPresupuestos.SelectedItems.Count > 0)
             {
-                ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
-                string cantidad = presupuesto.SubItems[2].Text;
 
                 gbxPasajeros.Enabled = true;
 
-                lblcantpasajeros.Text = "Pasajeros Disponibles " + cantidad;
+                lblcantpasajeros.Text = "Pasajeros Disponibles " + PresupuestoSeleccionado();
             }
             else
             {
                 MessageBox.Show("Seleccione un presupuesto.");
             }
 
+        }
+
+        public int PresupuestoSeleccionado()
+        {
+            ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
+            string cantidad = presupuesto.SubItems[2].Text;
+            int elegido = int.Parse(cantidad);
+            return elegido;
         }
 
         private void GenerarReserva_Load(object sender, EventArgs e)
