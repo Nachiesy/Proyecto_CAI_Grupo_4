@@ -1,4 +1,4 @@
-﻿namespace Proyecto_CAI_Grupo_4
+namespace Proyecto_CAI_Grupo_4
 {
     partial class MenuPrincipal
     {
@@ -28,111 +28,113 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            btnMenuGenerarPresupuesto = new Button();
-            button2 = new Button();
-            btnClose = new Button();
-            btnEstadoDeReservas = new Button();
-            button5 = new Button();
-            button6 = new Button();
+            btn_InformarProductos = new Common.Components.BotonEstilizado();
+            btn_GenerarPresupuesto = new Common.Components.BotonEstilizado();
+            btn_GenerarReserva = new Common.Components.BotonEstilizado();
+            btn_ConfirmarReserva = new Common.Components.BotonEstilizado();
+            btn_EstadoDeReservas = new Common.Components.BotonEstilizado();
             SuspendLayout();
             // 
-            // label1
+            // btn_InformarProductos
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(19, 58);
-            label1.Name = "label1";
-            label1.Size = new Size(269, 30);
-            label1.TabIndex = 0;
-            label1.Text = "Seleccione que desea hacer";
+            btn_InformarProductos.BackColor = Color.Transparent;
+            btn_InformarProductos.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btn_InformarProductos.FlatStyle = FlatStyle.Flat;
+            btn_InformarProductos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_InformarProductos.ForeColor = Color.Black;
+            btn_InformarProductos.Location = new Point(27, 106);
+            btn_InformarProductos.Name = "btn_InformarProductos";
+            btn_InformarProductos.Size = new Size(227, 67);
+            btn_InformarProductos.TabIndex = 4;
+            btn_InformarProductos.Text = "Informar Productos Disponibles";
+            btn_InformarProductos.UseVisualStyleBackColor = false;
             // 
-            // btnMenuGenerarPresupuesto
+            // btn_GenerarPresupuesto
             // 
-            btnMenuGenerarPresupuesto.Location = new Point(518, 190);
-            btnMenuGenerarPresupuesto.Name = "btnMenuGenerarPresupuesto";
-            btnMenuGenerarPresupuesto.Size = new Size(241, 23);
-            btnMenuGenerarPresupuesto.TabIndex = 0;
-            btnMenuGenerarPresupuesto.Text = "Generar Presupuesto";
-            btnMenuGenerarPresupuesto.UseVisualStyleBackColor = true;
-            btnMenuGenerarPresupuesto.Click += btnMenuGenerarPresupuesto_Click;
+            btn_GenerarPresupuesto.BackColor = Color.Transparent;
+            btn_GenerarPresupuesto.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btn_GenerarPresupuesto.FlatStyle = FlatStyle.Flat;
+            btn_GenerarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_GenerarPresupuesto.ForeColor = Color.Black;
+            btn_GenerarPresupuesto.Location = new Point(320, 106);
+            btn_GenerarPresupuesto.Name = "btn_GenerarPresupuesto";
+            btn_GenerarPresupuesto.Size = new Size(226, 67);
+            btn_GenerarPresupuesto.TabIndex = 4;
+            btn_GenerarPresupuesto.Text = "Generar Presupuesto";
+            btn_GenerarPresupuesto.UseVisualStyleBackColor = false;
+            btn_GenerarPresupuesto.Click += btnMenuGenerarPresupuesto_Click;
             // 
-            // button2
+            // btn_GenerarReserva
             // 
-            button2.Location = new Point(518, 231);
-            button2.Name = "button2";
-            button2.Size = new Size(241, 23);
-            button2.TabIndex = 1;
-            button2.Text = "Generar Reserva";
-            button2.UseVisualStyleBackColor = true;
+            btn_GenerarReserva.BackColor = Color.Transparent;
+            btn_GenerarReserva.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btn_GenerarReserva.FlatStyle = FlatStyle.Flat;
+            btn_GenerarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_GenerarReserva.ForeColor = Color.Black;
+            btn_GenerarReserva.Location = new Point(320, 188);
+            btn_GenerarReserva.Name = "btn_GenerarReserva";
+            btn_GenerarReserva.Size = new Size(224, 67);
+            btn_GenerarReserva.TabIndex = 4;
+            btn_GenerarReserva.Text = "Generar Reserva";
+            btn_GenerarReserva.UseVisualStyleBackColor = false;
             // 
-            // btnClose
+            // btn_ConfirmarReserva
             // 
-            btnClose.Location = new Point(518, 357);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(241, 23);
-            btnClose.TabIndex = 2;
-            btnClose.Text = "Salir del Sistema";
-            btnClose.UseVisualStyleBackColor = true;
-            btnClose.Click += btnClose_Click;
+            btn_ConfirmarReserva.BackColor = Color.Transparent;
+            btn_ConfirmarReserva.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btn_ConfirmarReserva.FlatStyle = FlatStyle.Flat;
+            btn_ConfirmarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_ConfirmarReserva.ForeColor = Color.Black;
+            btn_ConfirmarReserva.Location = new Point(320, 271);
+            btn_ConfirmarReserva.Name = "btn_ConfirmarReserva";
+            btn_ConfirmarReserva.Size = new Size(226, 67);
+            btn_ConfirmarReserva.TabIndex = 4;
+            btn_ConfirmarReserva.Text = "Confirmar Reserva";
+            btn_ConfirmarReserva.UseVisualStyleBackColor = false;
             // 
-            // btnEstadoDeReservas
+            // btn_EstadoDeReservas
             // 
-            btnEstadoDeReservas.Location = new Point(518, 315);
-            btnEstadoDeReservas.Name = "btnEstadoDeReservas";
-            btnEstadoDeReservas.Size = new Size(241, 23);
-            btnEstadoDeReservas.TabIndex = 3;
-            btnEstadoDeReservas.Text = "Informar Estado de Reservas";
-            btnEstadoDeReservas.UseVisualStyleBackColor = true;
-            btnEstadoDeReservas.Click += btnEstadoDeReservas_Click;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(518, 152);
-            button5.Name = "button5";
-            button5.Size = new Size(241, 23);
-            button5.TabIndex = 4;
-            button5.Text = "Informar Productos Disponibles";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(518, 271);
-            button6.Name = "button6";
-            button6.Size = new Size(241, 23);
-            button6.TabIndex = 5;
-            button6.Text = "Confirmar Reserva";
-            button6.UseVisualStyleBackColor = true;
+            btn_EstadoDeReservas.BackColor = Color.Transparent;
+            btn_EstadoDeReservas.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btn_EstadoDeReservas.FlatStyle = FlatStyle.Flat;
+            btn_EstadoDeReservas.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_EstadoDeReservas.ForeColor = Color.Black;
+            btn_EstadoDeReservas.Location = new Point(28, 188);
+            btn_EstadoDeReservas.Name = "btn_EstadoDeReservas";
+            btn_EstadoDeReservas.Size = new Size(226, 67);
+            btn_EstadoDeReservas.TabIndex = 4;
+            btn_EstadoDeReservas.Text = "Informar Estado de Reservas";
+            btn_EstadoDeReservas.UseVisualStyleBackColor = false;
+            btn_EstadoDeReservas.Click += btnEstadoDeReservas_Click;
             // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1251, 487);
-            Controls.Add(label1);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(btnEstadoDeReservas);
-            Controls.Add(btnClose);
-            Controls.Add(button2);
-            Controls.Add(btnMenuGenerarPresupuesto);
+            BackColor = Color.White;
+            ClientSize = new Size(560, 358);
+            Controls.Add(btn_EstadoDeReservas);
+            Controls.Add(btn_ConfirmarReserva);
+            Controls.Add(btn_GenerarReserva);
+            Controls.Add(btn_GenerarPresupuesto);
+            Controls.Add(btn_InformarProductos);
             Name = "MenuPrincipal";
             Text = "Menu Principal";
+            Controls.SetChildIndex(btn_InformarProductos, 0);
+            Controls.SetChildIndex(btn_GenerarPresupuesto, 0);
+            Controls.SetChildIndex(btn_GenerarReserva, 0);
+            Controls.SetChildIndex(btn_ConfirmarReserva, 0);
+            Controls.SetChildIndex(btn_EstadoDeReservas, 0);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        //<<<<<<< HEAD
-        private Label label1;
         //=======
-        private Button btnMenuGenerarPresupuesto;
-        private Button button2;
-        private Button btnClose;
-        private Button btnEstadoDeReservas;
-        private Button button5;
-        private Button button6;
+        private Common.Components.BotonEstilizado btn_InformarProductos;
+        private Common.Components.BotonEstilizado btn_GenerarPresupuesto;
+        private Common.Components.BotonEstilizado btn_GenerarReserva;
+        private Common.Components.BotonEstilizado btn_ConfirmarReserva;
+        private Common.Components.BotonEstilizado btn_EstadoDeReservas;
         //>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3
     }
 }

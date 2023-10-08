@@ -3,12 +3,13 @@ using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
 using System.Windows.Forms;
+using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class GenerarPresupuestoMenu : Form
+    public partial class GenerarPresupuestoMenu : VistaBase
     {
-        public GenerarPresupuestoMenu()
+        public GenerarPresupuestoMenu() : base(tituloModulo: "Generar Presupuesto")
         {
             InitializeComponent();
         }
@@ -38,7 +39,8 @@ namespace Proyecto_CAI_Grupo_4
             total += cruceros.Sum(x => x.Precio);
             total += paquetesTuristicos.Sum(x => x.Precio);
 
-            presupuestoTotal.Text = total.ToString();
+            btnFinalizarPresupuesto.Enabled = total > 0;
+            presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
         }
 
         private void AddProductosToListView(IEnumerable<Productos> listToAdd, DataGridView listView)
@@ -204,7 +206,8 @@ namespace Proyecto_CAI_Grupo_4
                 }
             }
 
-            presupuestoTotal.Text = total.ToString();
+            btnFinalizarPresupuesto.Enabled = total > 0;
+            presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
         }
     }
 }
