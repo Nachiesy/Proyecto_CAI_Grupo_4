@@ -191,6 +191,7 @@
             // lstViewProductos
             // 
             lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader12, columnHeader13, columnHeader14, columnHeader15 });
+            lstViewProductos.FullRowSelect = true;
             lstViewProductos.Location = new Point(30, 155);
             lstViewProductos.Name = "lstViewProductos";
             lstViewProductos.Size = new Size(1159, 194);
@@ -241,6 +242,7 @@
             // lstViewProductosElegidos
             // 
             lstViewProductosElegidos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader16 });
+            lstViewProductosElegidos.FullRowSelect = true;
             lstViewProductosElegidos.Location = new Point(30, 427);
             lstViewProductosElegidos.Name = "lstViewProductosElegidos";
             lstViewProductosElegidos.Size = new Size(1159, 194);

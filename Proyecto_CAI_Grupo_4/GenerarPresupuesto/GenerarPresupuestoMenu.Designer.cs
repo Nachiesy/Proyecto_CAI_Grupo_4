@@ -40,6 +40,8 @@
             Nombre = new ColumnHeader();
             Precio = new ColumnHeader();
             TipoDeServicio = new ColumnHeader();
+            presupuestoTotal = new TextBox();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -142,11 +144,30 @@
             TipoDeServicio.Text = "Tipo de Servicio";
             TipoDeServicio.Width = 100;
             // 
+            // presupuestoTotal
+            // 
+            presupuestoTotal.Enabled = false;
+            presupuestoTotal.Location = new Point(47, 532);
+            presupuestoTotal.Name = "presupuestoTotal";
+            presupuestoTotal.Size = new Size(101, 23);
+            presupuestoTotal.TabIndex = 33;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(47, 513);
+            label3.Name = "label3";
+            label3.Size = new Size(32, 15);
+            label3.TabIndex = 34;
+            label3.Text = "Total";
+            // 
             // GenerarPresupuestoMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1252, 644);
+            Controls.Add(label3);
+            Controls.Add(presupuestoTotal);
             Controls.Add(productosElegidos);
             Controls.Add(btnVolverMenuPrincipal);
             Controls.Add(btnFinalizarPresupuesto);
@@ -176,5 +197,7 @@
         private ColumnHeader Nombre;
         private ColumnHeader Precio;
         private ColumnHeader TipoDeServicio;
+        private TextBox presupuestoTotal;
+        private Label label3;
     }
 }
