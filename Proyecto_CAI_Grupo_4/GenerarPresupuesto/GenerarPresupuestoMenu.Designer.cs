@@ -210,6 +210,7 @@ namespace Proyecto_CAI_Grupo_4
             btnMenuPaquetes.TabIndex = 4;
             btnMenuPaquetes.Text = "Paquetes";
             btnMenuPaquetes.UseVisualStyleBackColor = false;
+            btnMenuPaquetes.Click += btnMenuPaquetes_Click;
             // 
             // btnMenuHoteles
             // 

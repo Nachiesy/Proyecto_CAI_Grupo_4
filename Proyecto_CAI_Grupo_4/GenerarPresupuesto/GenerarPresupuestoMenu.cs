@@ -1,8 +1,6 @@
-﻿using Proyecto_CAI_Grupo_4.GenerarPresupuesto;
-using Proyecto_CAI_Grupo_4.Managers;
+﻿using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4

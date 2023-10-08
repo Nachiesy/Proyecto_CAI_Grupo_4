@@ -21,12 +21,12 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
-            AddProductosAereosToListView(GenerarPresupuestosManager.aereos, lstViewProductos);
+            AddProductosToListView(GenerarPresupuestosManager.aereos, lstViewProductos);
 
-            AddProductosAereosToListView(GenerarPresupuestosManager.aereosElegidos, lstViewProductosElegidos);
+            AddProductosToListView(GenerarPresupuestosManager.aereosElegidos, lstViewProductosElegidos);
         }
 
-        private void buscarProductosAereos_Click(object sender, EventArgs e)
+        private void btnBuscarProductos_Click(object sender, EventArgs e)
         {
             var filterDto = new AereosFilterDto()
             {
@@ -54,7 +54,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 lstViewProductos.Items.Clear();
 
-                AddProductosAereosToListView(productos, lstViewProductos);
+                AddProductosToListView(productos, lstViewProductos);
 
                 if (!productos.Any())
                 {
@@ -124,7 +124,7 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosAereosToListView(IEnumerable<Aereos> listToAdd, ListView listView)
+        private void AddProductosToListView(IEnumerable<Aereos> listToAdd, ListView listView)
         {
             foreach (var item in listToAdd)
             {
@@ -142,7 +142,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void agregarProductosAereosElegidos_Click(object sender, EventArgs e)
+        private void btnAgregarProductos_Click(object sender, EventArgs e)
         {
             if (lstViewProductos.SelectedItems.Count > 0)
             {
@@ -160,7 +160,7 @@ namespace Proyecto_CAI_Grupo_4
                     }
                 }
 
-                AddProductosAereosToListView(productosToAdd, lstViewProductosElegidos);
+                AddProductosToListView(productosToAdd, lstViewProductosElegidos);
             }
             else
             {
@@ -168,7 +168,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void removerProductosAereosDeLosElegidos_Click(object sender, EventArgs e)
+        private void btnRemoverProductos_Click(object sender, EventArgs e)
         {
             if (lstViewProductosElegidos.SelectedItems.Count > 0)
             {
@@ -183,7 +183,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void finalizarPresupuestoAereo_Click(object sender, EventArgs e)
+        private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
         {
             GenerarPresupuestosManager.aereosElegidos.Clear();
 
@@ -226,7 +226,7 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
-            buscarProductosAereos_Click(sender, e);
+            btnBuscarProductos_Click(sender, e);
         }
 
         private bool IsProductInSelectedListView(Guid id)

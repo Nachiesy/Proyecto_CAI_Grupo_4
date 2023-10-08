@@ -3,12 +3,13 @@ using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
 using System.Data;
+using Proyecto_CAI_Grupo_4.Common.Views;
 
-namespace Proyecto_CAI_Grupo_4.GenerarPresupuesto
+namespace Proyecto_CAI_Grupo_4
 {
-    public partial class GenerarPresupuestoPaquetesTuristicos : Form
+    public partial class GenerarPresupuestoPaquetesTuristicos : VistaBase
     {
-        public GenerarPresupuestoPaquetesTuristicos()
+        public GenerarPresupuestoPaquetesTuristicos() : base(tituloModulo: "Generar Presupuesto > Paquetes Turisticos")
         {
             InitializeComponent();
         }
