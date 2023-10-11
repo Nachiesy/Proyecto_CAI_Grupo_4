@@ -80,6 +80,7 @@ namespace Proyecto_CAI_Grupo_4
                 row.SubItems.Add(item.Origen);
                 row.SubItems.Add(item.Destino);
                 row.SubItems.Add(item.Precio.ToString());
+                row.SubItems.Add(item.Cantidad.ToString());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
                 row.SubItems.Add(item.FechaHasta.ToFormDate());
 

@@ -48,6 +48,7 @@
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             btnVolverMenuGenerarPresupuestos = new Button();
+            columnHeader5 = new ColumnHeader();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
@@ -167,7 +168,7 @@
             // lstViewProductos
             // 
             lstViewProductos.BackColor = SystemColors.ControlLight;
-            lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader6, columnHeader7, columnHeader8 });
+            lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader6, columnHeader7, columnHeader8, columnHeader5 });
             lstViewProductos.Location = new Point(27, 291);
             lstViewProductos.Name = "lstViewProductos";
             lstViewProductos.Size = new Size(1064, 228);
@@ -202,12 +203,12 @@
             // 
             // columnHeader7
             // 
-            columnHeader7.Text = "Fecha Desde";
-            columnHeader7.Width = 100;
+            columnHeader7.Text = "Cantidad Disponible";
+            columnHeader7.Width = 150;
             // 
             // columnHeader8
             // 
-            columnHeader8.Text = "Fecha Hasta";
+            columnHeader8.Text = "Fecha Desde";
             columnHeader8.Width = 100;
             // 
             // btnVolverMenuGenerarPresupuestos
@@ -219,6 +220,11 @@
             btnVolverMenuGenerarPresupuestos.Text = "Volver";
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Fecha Hasta";
+            columnHeader5.Width = 100;
             // 
             // ConsultarCruceros
             // 
@@ -265,5 +271,6 @@
         private ColumnHeader columnHeader7;
         private ColumnHeader columnHeader8;
         private Button btnVolverMenuGenerarPresupuestos;
+        private ColumnHeader columnHeader5;
     }
 }

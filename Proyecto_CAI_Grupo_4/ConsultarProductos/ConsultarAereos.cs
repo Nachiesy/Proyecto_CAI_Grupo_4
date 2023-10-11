@@ -80,7 +80,9 @@ namespace Proyecto_CAI_Grupo_4
                 row.SubItems.Add(item.Origen);
                 row.SubItems.Add(item.Destino);
                 row.SubItems.Add(item.TipoDeClaseAerea.GetDescription());
-                row.SubItems.Add(item.Precio.ToString());
+                row.SubItems.Add(item.PrecioAdultos.ToString());
+                row.SubItems.Add(item.PrecioMenores.ToString());
+                row.SubItems.Add(item.Cantidad.ToString());
                 row.SubItems.Add(item.FechaDeSalida.ToFormDate());
                 row.SubItems.Add(item.FechaDeLlegada.ToFormDate());
 

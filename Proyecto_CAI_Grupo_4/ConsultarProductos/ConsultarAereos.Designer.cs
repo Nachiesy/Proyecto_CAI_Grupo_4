@@ -48,6 +48,8 @@
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
             btnVolverMenuGenerarPresupuestos = new Button();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
@@ -168,7 +170,7 @@
             // lstViewProductos
             // 
             lstViewProductos.BackColor = SystemColors.ControlLight;
-            lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8 });
+            lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9, columnHeader10 });
             lstViewProductos.Location = new Point(27, 291);
             lstViewProductos.Name = "lstViewProductos";
             lstViewProductos.Size = new Size(1064, 228);
@@ -203,18 +205,28 @@
             // 
             // columnHeader6
             // 
-            columnHeader6.Text = "Precio";
+            columnHeader6.Text = "Precio Adultos";
             columnHeader6.Width = 100;
             // 
             // columnHeader7
             // 
-            columnHeader7.Text = "Fecha Salida";
+            columnHeader7.Text = "Precio Menores";
             columnHeader7.Width = 100;
             // 
             // columnHeader8
             // 
-            columnHeader8.Text = "Fecha Llegada";
-            columnHeader8.Width = 100;
+            columnHeader8.Text = "Cantidad Disponible";
+            columnHeader8.Width = 150;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Fecha Salida";
+            columnHeader9.Width = 100;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Fecha Llegada";
+            columnHeader10.Width = 100;
             // 
             // btnVolverMenuGenerarPresupuestos
             // 
@@ -272,5 +284,7 @@
         private ColumnHeader columnHeader7;
         private ColumnHeader columnHeader8;
         private Button btnVolverMenuGenerarPresupuestos;
+        private ColumnHeader columnHeader9;
+        private ColumnHeader columnHeader10;
     }
 }
