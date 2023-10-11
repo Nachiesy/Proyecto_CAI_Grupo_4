@@ -119,7 +119,9 @@ namespace Proyecto_CAI_Grupo_4
 
             var validacionProductos = productosElegidos.RowCount > 0;
 
-            var validacionDNI = ValidarDNI();
+            var dniMsg = ValidarDNI();
+
+            var validacionDNI = string.IsNullOrEmpty(dniMsg);
 
             if (validacionProductos && validacionDNI)
             {
@@ -141,7 +143,6 @@ namespace Proyecto_CAI_Grupo_4
             else
             {
                 var productosMsg = "Debes elegir productos";
-                var dniMsg = "Debes ingresar el DNI del Cliente";
 
                 var msgFinal = "para poder generar un Presupuesto.";
 
@@ -252,31 +253,26 @@ namespace Proyecto_CAI_Grupo_4
             Application.Run(new MenuPrincipal());
         }
 
-        private void textBoxClienteDNI_TextChanged(object sender, EventArgs e)
-        {
-            ValidarDNI();
-        }
-
-        private bool ValidarDNI()
+        private string ValidarDNI()
         {
             var dni = textBoxClienteDNI.Text.Trim();
 
             if (string.IsNullOrEmpty(dni))
             {
-                return false;
+                return "Debes ingresar el DNI del Cliente";
             }
 
             if (!int.TryParse(dni, out int nroDeDoc))
             {
-                return false;
+                return "El DNI debe ser un numero entero";
             }
 
             if (nroDeDoc < 0 || nroDeDoc > 99999999)
             {
-                return false;
+                return "El DNI no puede ser menor a 0 ni mayor a 99999999";
             }
 
-            return true;
+            return string.Empty;
         }
     }
 }
