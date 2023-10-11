@@ -260,6 +260,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1097, 552);
             Controls.Add(grupoFiltros);
             Controls.Add(gpProsupuesto);

@@ -10,15 +10,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_CAI_Grupo_4.Common.Views;
 using static System.Windows.Forms.DataFormats;
 
 namespace Proyecto_CAI_Grupo_4
 {
 
-    public partial class GenerarReserva : Form
+    public partial class GenerarReserva : VistaBase
     {
         int controlPasjeros = 1;
-        public GenerarReserva()
+        public GenerarReserva() : base(tituloModulo: "Generar Reserva")
         {
             InitializeComponent();
         }
@@ -229,7 +230,7 @@ namespace Proyecto_CAI_Grupo_4
                 gbxPasajeros.Enabled = true;
                 gpProsupuesto.Enabled = false;
 
-                lblcantpasajeros.Text = "Pasajeros Disponibles " + PresupuestoSeleccionado();
+                lblcantpasajeros.Text = "Pasajeros Disponibles: " + PresupuestoSeleccionado();
             }
             else
             {
