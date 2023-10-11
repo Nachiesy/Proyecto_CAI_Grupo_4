@@ -4,6 +4,10 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
     public class Aereos : Productos
     {
+        public decimal PrecioAdultos { get; set; }
+
+        public decimal PrecioMenores { get; set; }
+
         public string Origen { get; set; }
 
         public string Destino { get; set; }

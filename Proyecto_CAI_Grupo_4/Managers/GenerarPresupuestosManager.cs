@@ -10,7 +10,8 @@ namespace Proyecto_CAI_Grupo_4.Managers
             {
                 Id = Guid.NewGuid(),
                 Nombre = "Vuelo 113",
-                Precio = 10,
+                PrecioAdultos = 20,
+                PrecioMenores = 10,
                 Cantidad = 1,
                 TipoDeServicio = TipoDeServicioEnum.aereo,
                 Origen = "Buenos Aires",
@@ -23,7 +24,8 @@ namespace Proyecto_CAI_Grupo_4.Managers
             {
                 Id = Guid.NewGuid(),
                 Nombre = "Vuelo 201",
-                Precio = 10,
+                PrecioAdultos = 20,
+                PrecioMenores = 10,
                 Cantidad = 2,
                 TipoDeServicio = TipoDeServicioEnum.aereo,
                 Origen = "Madrid",
@@ -36,7 +38,8 @@ namespace Proyecto_CAI_Grupo_4.Managers
             {
                 Id = Guid.NewGuid(),
                 Nombre = "Vuelo 369",
-                Precio = 10,
+                PrecioAdultos = 20,
+                PrecioMenores = 10,
                 Cantidad = 3,
                 TipoDeServicio = TipoDeServicioEnum.aereo,
                 Origen = "Londres",

@@ -133,7 +133,8 @@ namespace Proyecto_CAI_Grupo_4
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormDate() });
@@ -153,10 +154,12 @@ namespace Proyecto_CAI_Grupo_4
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() }); // Sub Total
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada Adultos
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = 0.ToString() }); // Cantidad Seleccionada Menores
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() }); // Sub Total
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen });
@@ -288,9 +291,13 @@ namespace Proyecto_CAI_Grupo_4
 
         private void dataGridViewProductosSeleccionados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            var cantidadSeleccionadaColumnIndex = 4;
+            var cantidadSeleccionadaAdultosColumnIndex = 5;
+            var cantidadSeleccionadaMenoresColumnIndex = 6;
 
-            if (e.RowIndex >= 0 && e.ColumnIndex == cantidadSeleccionadaColumnIndex)
+            var precioAdultosChanged = e.ColumnIndex == cantidadSeleccionadaAdultosColumnIndex;
+            var precioMenoresChanged = e.ColumnIndex == cantidadSeleccionadaMenoresColumnIndex;
+
+            if (e.RowIndex >= 0 && (precioAdultosChanged || precioMenoresChanged))
             {
                 var dataGridView = sender as DataGridView;
 
@@ -299,57 +306,90 @@ namespace Proyecto_CAI_Grupo_4
                 var idCell = dataGridView.Rows[e.RowIndex].Cells[idColumnIndex];
                 var id = idCell.Value.ToString();
 
-                // Precio
-                var precioColumnIndex = 2;
-                var precioCell = dataGridView.Rows[e.RowIndex].Cells[precioColumnIndex];
-                var precio = decimal.Parse(precioCell.Value.ToString());
+                // Precio Adultos
+                var precioAdultosColumnIndex = 2;
+                var precioAdultosCell = dataGridView.Rows[e.RowIndex].Cells[precioAdultosColumnIndex];
+                var precioAdultos = decimal.Parse(precioAdultosCell.Value.ToString());
+
+                // Precio Menores
+                var precioMenoresColumnIndex = 3;
+                var precioMenoresCell = dataGridView.Rows[e.RowIndex].Cells[precioMenoresColumnIndex];
+                var precioMenores = decimal.Parse(precioMenoresCell.Value.ToString());
 
                 // Cantidad Disponible
-                var cantidadDisponibleColumnIndex = 3;
+                var cantidadDisponibleColumnIndex = 4;
                 var cantidadDisponibleCell = dataGridView.Rows[e.RowIndex].Cells[cantidadDisponibleColumnIndex];
                 var cantidadDisponible = int.Parse(cantidadDisponibleCell.Value.ToString());
 
-                // Cantidad Seleccionada
-                var cantidadSeleccionadaCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                var isCantidadSeleccionadaValid = int.TryParse(cantidadSeleccionadaCell.Value.ToString(), out int cantidadSeleccionada);
+                // Cantidad Seleccionada Adultos
+                var cantidadSeleccionadaAdultosCell = dataGridView.Rows[e.RowIndex].Cells[cantidadSeleccionadaAdultosColumnIndex];
+                var isCantidadSeleccionadaAdultosValid = int.TryParse(cantidadSeleccionadaAdultosCell.Value.ToString(), out int cantidadSeleccionadaAdultos);
+
+                // Cantidad Seleccionada Menores
+                var cantidadSeleccionadaMenoresCell = dataGridView.Rows[e.RowIndex].Cells[cantidadSeleccionadaMenoresColumnIndex];
+                var isCantidadSeleccionadaMenoresValid = int.TryParse(cantidadSeleccionadaMenoresCell.Value.ToString(), out int cantidadSeleccionadaMenores);
 
                 // SubTotal
-                var subTotalColumnIndex = 5;
+                var subTotalColumnIndex = 7;
                 var subTotalCell = dataGridView.Rows[e.RowIndex].Cells[subTotalColumnIndex];
 
-                var validation = ValidarCantidadSeleccionada(id, isCantidadSeleccionadaValid, cantidadSeleccionada, cantidadDisponible);
-
-                if (string.IsNullOrEmpty(validation))
+                if (precioAdultosChanged)
                 {
-                    subTotalCell.Value = precio * cantidadSeleccionada;
+                    cantidadDisponible = cantidadDisponible - cantidadSeleccionadaMenores;
+
+                    var validacion = ValidarCantidadSeleccionada(id, isCantidadSeleccionadaAdultosValid, cantidadSeleccionadaAdultos, cantidadDisponible, 1, "Adultos");
+
+                    if (string.IsNullOrEmpty(validacion))
+                    {
+                        subTotalCell.Value = (precioAdultos * cantidadSeleccionadaAdultos) + (precioMenores * cantidadSeleccionadaMenores);
+                    }
+                    else
+                    {
+                        cantidadSeleccionadaAdultosCell.Value = 1;
+                        subTotalCell.Value = precioAdultos + (precioMenores * cantidadSeleccionadaMenores);
+
+                        MessageBox.Show(validacion, "Error");
+                    }
                 }
-                else
-                {
-                    cantidadSeleccionadaCell.Value = 1;
-                    subTotalCell.Value = precioCell.Value;
 
-                    MessageBox.Show(validation, "Error");
+                if (precioMenoresChanged)
+                {
+                    cantidadDisponible = cantidadDisponible - cantidadSeleccionadaAdultos;
+
+                    var validacion = ValidarCantidadSeleccionada(id, isCantidadSeleccionadaMenoresValid, cantidadSeleccionadaMenores, cantidadDisponible, 0, "Menores");
+
+                    if (string.IsNullOrEmpty(validacion))
+                    {
+                        subTotalCell.Value = (precioAdultos * cantidadSeleccionadaAdultos) + (precioMenores * cantidadSeleccionadaMenores);
+                    }
+                    else
+                    {
+                        cantidadSeleccionadaMenoresCell.Value = 0;
+                        subTotalCell.Value = precioAdultos * cantidadSeleccionadaAdultos;
+
+                        MessageBox.Show(validacion, "Error");
+                    }
                 }
 
                 dataGridView.Refresh();
             }
         }
 
-        private string ValidarCantidadSeleccionada(string id, bool isCantidadSeleccionadaValid, int? cantidadSeleccionada, int cantidadDisponible)
+        private string ValidarCantidadSeleccionada(string id, bool isCantidadSeleccionadaValid, int? cantidadSeleccionada, int cantidadDisponible, int cantidadSeleccionadaMinima, string label)
         {
             if (!isCantidadSeleccionadaValid)
             {
-                return $"La Cantidad para el Vuelo con ID [{id}] debe ser un numero entero.";
+                return $"La Cantidad Seleccionada de {label} para el Vuelo con ID [{id}] debe ser un numero entero.";
             }
 
             if (cantidadDisponible < cantidadSeleccionada)
             {
-                return $"La Cantidad Seleccionada para el Vuelo con ID [{id}] debe ser un menor o igual a la Cantidad Disponible.";
+                return $"La Cantidad Seleccionada de {label} para el Vuelo con ID [{id}] supera la Cantidad Disponible.";
             }
 
-            if (cantidadSeleccionada <= 0)
+            if (cantidadSeleccionada < cantidadSeleccionadaMinima)
             {
-                return $"La Cantidad Seleccionada para el Vuelo con ID [{id}] debe ser mayor a 0.";
+                return $"La Cantidad Seleccionada de {label} para el Vuelo con ID [{id}] no puede ser menor a {cantidadSeleccionadaMinima}.";
             }
 
             return string.Empty;
