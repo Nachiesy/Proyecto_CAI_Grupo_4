@@ -238,7 +238,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 MessageBox.Show("Debes seleccionar Hoteles para poder confirmar el presupuesto");
             }
-}
+        }
 
         private void btnVolverAlMenuGenerarPresupuestos_Click(object sender, EventArgs e)
         {

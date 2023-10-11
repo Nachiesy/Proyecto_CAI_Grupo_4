@@ -62,7 +62,7 @@
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
             btnRemoverProductos = new Common.Components.BotonEstilizado();
             btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
-            btnVolverAlMenuGenerarPresupuestos = new Button();
+            btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
             grp_HotelesDisponibles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             grp_Filtros.SuspendLayout();
@@ -225,7 +225,7 @@
             datePickerFilterFechaDesde.Location = new Point(18, 116);
             datePickerFilterFechaDesde.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
             datePickerFilterFechaDesde.Name = "datePickerFilterFechaDesde";
-            datePickerFilterFechaDesde.Size = new Size(235, 23);
+            datePickerFilterFechaDesde.Size = new Size(271, 23);
             datePickerFilterFechaDesde.TabIndex = 12;
             // 
             // labelFiltroFechaDesde
@@ -242,7 +242,7 @@
             datePickerFilterFechaHasta.Location = new Point(18, 179);
             datePickerFilterFechaHasta.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
             datePickerFilterFechaHasta.Name = "datePickerFilterFechaHasta";
-            datePickerFilterFechaHasta.Size = new Size(232, 23);
+            datePickerFilterFechaHasta.Size = new Size(271, 23);
             datePickerFilterFechaHasta.TabIndex = 14;
             // 
             // labelFiltroFechaHasta
@@ -401,12 +401,17 @@
             // 
             // btnVolverAlMenuGenerarPresupuestos
             // 
+            btnVolverAlMenuGenerarPresupuestos.BackColor = Color.Transparent;
+            btnVolverAlMenuGenerarPresupuestos.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnVolverAlMenuGenerarPresupuestos.FlatStyle = FlatStyle.Flat;
+            btnVolverAlMenuGenerarPresupuestos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnVolverAlMenuGenerarPresupuestos.ForeColor = Color.Black;
             btnVolverAlMenuGenerarPresupuestos.Location = new Point(13, 423);
             btnVolverAlMenuGenerarPresupuestos.Name = "btnVolverAlMenuGenerarPresupuestos";
             btnVolverAlMenuGenerarPresupuestos.Size = new Size(322, 47);
-            btnVolverAlMenuGenerarPresupuestos.TabIndex = 39;
+            btnVolverAlMenuGenerarPresupuestos.TabIndex = 41;
             btnVolverAlMenuGenerarPresupuestos.Text = "Volver";
-            btnVolverAlMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
+            btnVolverAlMenuGenerarPresupuestos.UseVisualStyleBackColor = false;
             btnVolverAlMenuGenerarPresupuestos.Click += btnVolverAlMenuGenerarPresupuestos_Click;
             // 
             // GenerarPresupuestoHoteles
@@ -415,8 +420,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1364, 721);
-            Controls.Add(grp_CrucerosSeleccionados);
             Controls.Add(btnVolverAlMenuGenerarPresupuestos);
+            Controls.Add(grp_CrucerosSeleccionados);
             Controls.Add(grp_HotelesDisponibles);
             Controls.Add(grp_Filtros);
             Name = "GenerarPresupuestoHoteles";
@@ -424,8 +429,8 @@
             Load += GenerarPresupuestoHoteles_Load;
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(grp_HotelesDisponibles, 0);
-            Controls.SetChildIndex(btnVolverAlMenuGenerarPresupuestos, 0);
             Controls.SetChildIndex(grp_CrucerosSeleccionados, 0);
+            Controls.SetChildIndex(btnVolverAlMenuGenerarPresupuestos, 0);
             grp_HotelesDisponibles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             grp_Filtros.ResumeLayout(false);
@@ -455,7 +460,6 @@
         private DataGridView dataGridViewProductosSeleccionados;
         private Common.Components.BotonEstilizado btnRemoverProductos;
         private Common.Components.BotonEstilizado btnConfirmarProductosSeleccionados;
-        private Button btnVolverAlMenuGenerarPresupuestos;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn PrecioUnitario;
@@ -472,5 +476,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private Common.Components.BotonEstilizado btnVolverAlMenuGenerarPresupuestos;
     }
 }

@@ -30,6 +30,14 @@
         {
             grp_CrucerosDisponibles = new GroupBox();
             dataGridViewProductos = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            FechaDesde = new DataGridViewTextBoxColumn();
+            FechaHasta = new DataGridViewTextBoxColumn();
+            Origen = new DataGridViewTextBoxColumn();
+            Destino = new DataGridViewTextBoxColumn();
             btnAgregarProductos = new Common.Components.BotonEstilizado();
             grp_Filtros = new GroupBox();
             btnLimpiarFiltros = new Common.Components.BotonEstilizado();
@@ -44,17 +52,6 @@
             txtBoxFiltroPrecioDesde = new TextBox();
             grp_CrucerosSeleccionados = new GroupBox();
             dataGridViewProductosSeleccionados = new DataGridView();
-            btnRemoverProductos = new Common.Components.BotonEstilizado();
-            btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
-            btnVolverAlMenuGenerarPresupuestos = new Button();
-            ID = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            PrecioUnitario = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            FechaDesde = new DataGridViewTextBoxColumn();
-            FechaHasta = new DataGridViewTextBoxColumn();
-            Origen = new DataGridViewTextBoxColumn();
-            Destino = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
@@ -65,6 +62,9 @@
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            btnRemoverProductos = new Common.Components.BotonEstilizado();
+            btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
+            btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
             grp_CrucerosDisponibles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             grp_Filtros.SuspendLayout();
@@ -98,6 +98,64 @@
             dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewProductos.Size = new Size(964, 194);
             dataGridViewProductos.TabIndex = 38;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 250;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 10;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // PrecioUnitario
+            // 
+            PrecioUnitario.HeaderText = "Precio Unitario";
+            PrecioUnitario.MinimumWidth = 10;
+            PrecioUnitario.Name = "PrecioUnitario";
+            PrecioUnitario.ReadOnly = true;
+            PrecioUnitario.Width = 200;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad Disponible";
+            Cantidad.MinimumWidth = 10;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 200;
+            // 
+            // FechaDesde
+            // 
+            FechaDesde.HeaderText = "Fecha Desde";
+            FechaDesde.Name = "FechaDesde";
+            FechaDesde.ReadOnly = true;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.HeaderText = "Fecha Hasta";
+            FechaHasta.Name = "FechaHasta";
+            FechaHasta.ReadOnly = true;
+            // 
+            // Origen
+            // 
+            Origen.HeaderText = "Ciudad de Partida";
+            Origen.Name = "Origen";
+            Origen.ReadOnly = true;
+            Origen.Width = 200;
+            // 
+            // Destino
+            // 
+            Destino.HeaderText = "Ciudad de Llegada";
+            Destino.Name = "Destino";
+            Destino.ReadOnly = true;
+            Destino.Width = 200;
             // 
             // btnAgregarProductos
             // 
@@ -177,7 +235,7 @@
             datePickerFilterFechaDesde.Location = new Point(18, 116);
             datePickerFilterFechaDesde.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
             datePickerFilterFechaDesde.Name = "datePickerFilterFechaDesde";
-            datePickerFilterFechaDesde.Size = new Size(235, 23);
+            datePickerFilterFechaDesde.Size = new Size(271, 23);
             datePickerFilterFechaDesde.TabIndex = 12;
             // 
             // labelFiltroFechaDesde
@@ -194,7 +252,7 @@
             datePickerFilterFechaHasta.Location = new Point(18, 179);
             datePickerFilterFechaHasta.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
             datePickerFilterFechaHasta.Name = "datePickerFilterFechaHasta";
-            datePickerFilterFechaHasta.Size = new Size(232, 23);
+            datePickerFilterFechaHasta.Size = new Size(271, 23);
             datePickerFilterFechaHasta.TabIndex = 14;
             // 
             // labelFiltroFechaHasta
@@ -257,104 +315,6 @@
             dataGridViewProductosSeleccionados.Size = new Size(964, 194);
             dataGridViewProductosSeleccionados.TabIndex = 39;
             dataGridViewProductosSeleccionados.CellValueChanged += dataGridViewProductosSeleccionados_CellValueChanged;
-            // 
-            // btnRemoverProductos
-            // 
-            btnRemoverProductos.BackColor = Color.Transparent;
-            btnRemoverProductos.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            btnRemoverProductos.FlatStyle = FlatStyle.Flat;
-            btnRemoverProductos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRemoverProductos.ForeColor = Color.Black;
-            btnRemoverProductos.Location = new Point(6, 222);
-            btnRemoverProductos.Name = "btnRemoverProductos";
-            btnRemoverProductos.Size = new Size(479, 40);
-            btnRemoverProductos.TabIndex = 4;
-            btnRemoverProductos.Text = "Quitar";
-            btnRemoverProductos.UseVisualStyleBackColor = false;
-            btnRemoverProductos.Click += btnRemoverProductos_Click;
-            // 
-            // btnConfirmarProductosSeleccionados
-            // 
-            btnConfirmarProductosSeleccionados.BackColor = Color.Transparent;
-            btnConfirmarProductosSeleccionados.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            btnConfirmarProductosSeleccionados.FlatStyle = FlatStyle.Flat;
-            btnConfirmarProductosSeleccionados.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnConfirmarProductosSeleccionados.ForeColor = Color.Black;
-            btnConfirmarProductosSeleccionados.Location = new Point(491, 222);
-            btnConfirmarProductosSeleccionados.Name = "btnConfirmarProductosSeleccionados";
-            btnConfirmarProductosSeleccionados.Size = new Size(479, 40);
-            btnConfirmarProductosSeleccionados.TabIndex = 4;
-            btnConfirmarProductosSeleccionados.Text = "Confirmar";
-            btnConfirmarProductosSeleccionados.UseVisualStyleBackColor = false;
-            btnConfirmarProductosSeleccionados.Click += btnConfirmarProductosSeleccionados_Click;
-            // 
-            // btnVolverAlMenuGenerarPresupuestos
-            // 
-            btnVolverAlMenuGenerarPresupuestos.Location = new Point(13, 423);
-            btnVolverAlMenuGenerarPresupuestos.Name = "btnVolverAlMenuGenerarPresupuestos";
-            btnVolverAlMenuGenerarPresupuestos.Size = new Size(322, 47);
-            btnVolverAlMenuGenerarPresupuestos.TabIndex = 39;
-            btnVolverAlMenuGenerarPresupuestos.Text = "Volver";
-            btnVolverAlMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
-            btnVolverAlMenuGenerarPresupuestos.Click += btnVolverAlMenuGenerarPresupuestos_Click;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Width = 250;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // PrecioUnitario
-            // 
-            PrecioUnitario.HeaderText = "Precio Unitario";
-            PrecioUnitario.MinimumWidth = 10;
-            PrecioUnitario.Name = "PrecioUnitario";
-            PrecioUnitario.ReadOnly = true;
-            PrecioUnitario.Width = 200;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad Disponible";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 200;
-            // 
-            // FechaDesde
-            // 
-            FechaDesde.HeaderText = "Fecha Desde";
-            FechaDesde.Name = "FechaDesde";
-            FechaDesde.ReadOnly = true;
-            // 
-            // FechaHasta
-            // 
-            FechaHasta.HeaderText = "Fecha Hasta";
-            FechaHasta.Name = "FechaHasta";
-            FechaHasta.ReadOnly = true;
-            // 
-            // Origen
-            // 
-            Origen.HeaderText = "Ciudad de Partida";
-            Origen.Name = "Origen";
-            Origen.ReadOnly = true;
-            Origen.Width = 200;
-            // 
-            // Destino
-            // 
-            Destino.HeaderText = "Ciudad de Llegada";
-            Destino.Name = "Destino";
-            Destino.ReadOnly = true;
-            Destino.Width = 200;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -427,14 +387,59 @@
             dataGridViewTextBoxColumn8.ReadOnly = true;
             dataGridViewTextBoxColumn8.Width = 200;
             // 
+            // btnRemoverProductos
+            // 
+            btnRemoverProductos.BackColor = Color.Transparent;
+            btnRemoverProductos.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnRemoverProductos.FlatStyle = FlatStyle.Flat;
+            btnRemoverProductos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRemoverProductos.ForeColor = Color.Black;
+            btnRemoverProductos.Location = new Point(6, 222);
+            btnRemoverProductos.Name = "btnRemoverProductos";
+            btnRemoverProductos.Size = new Size(479, 40);
+            btnRemoverProductos.TabIndex = 4;
+            btnRemoverProductos.Text = "Quitar";
+            btnRemoverProductos.UseVisualStyleBackColor = false;
+            btnRemoverProductos.Click += btnRemoverProductos_Click;
+            // 
+            // btnConfirmarProductosSeleccionados
+            // 
+            btnConfirmarProductosSeleccionados.BackColor = Color.Transparent;
+            btnConfirmarProductosSeleccionados.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnConfirmarProductosSeleccionados.FlatStyle = FlatStyle.Flat;
+            btnConfirmarProductosSeleccionados.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnConfirmarProductosSeleccionados.ForeColor = Color.Black;
+            btnConfirmarProductosSeleccionados.Location = new Point(491, 222);
+            btnConfirmarProductosSeleccionados.Name = "btnConfirmarProductosSeleccionados";
+            btnConfirmarProductosSeleccionados.Size = new Size(479, 40);
+            btnConfirmarProductosSeleccionados.TabIndex = 4;
+            btnConfirmarProductosSeleccionados.Text = "Confirmar";
+            btnConfirmarProductosSeleccionados.UseVisualStyleBackColor = false;
+            btnConfirmarProductosSeleccionados.Click += btnConfirmarProductosSeleccionados_Click;
+            // 
+            // btnVolverAlMenuGenerarPresupuestos
+            // 
+            btnVolverAlMenuGenerarPresupuestos.BackColor = Color.Transparent;
+            btnVolverAlMenuGenerarPresupuestos.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnVolverAlMenuGenerarPresupuestos.FlatStyle = FlatStyle.Flat;
+            btnVolverAlMenuGenerarPresupuestos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnVolverAlMenuGenerarPresupuestos.ForeColor = Color.Black;
+            btnVolverAlMenuGenerarPresupuestos.Location = new Point(13, 423);
+            btnVolverAlMenuGenerarPresupuestos.Name = "btnVolverAlMenuGenerarPresupuestos";
+            btnVolverAlMenuGenerarPresupuestos.Size = new Size(322, 47);
+            btnVolverAlMenuGenerarPresupuestos.TabIndex = 42;
+            btnVolverAlMenuGenerarPresupuestos.Text = "Volver";
+            btnVolverAlMenuGenerarPresupuestos.UseVisualStyleBackColor = false;
+            btnVolverAlMenuGenerarPresupuestos.Click += btnVolverAlMenuGenerarPresupuestos_Click;
+            // 
             // GenerarPresupuestoCruceros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1364, 721);
-            Controls.Add(grp_CrucerosSeleccionados);
             Controls.Add(btnVolverAlMenuGenerarPresupuestos);
+            Controls.Add(grp_CrucerosSeleccionados);
             Controls.Add(grp_CrucerosDisponibles);
             Controls.Add(grp_Filtros);
             Name = "GenerarPresupuestoCruceros";
@@ -442,8 +447,8 @@
             Load += GenerarPresupuestoCruceros_Load;
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(grp_CrucerosDisponibles, 0);
-            Controls.SetChildIndex(btnVolverAlMenuGenerarPresupuestos, 0);
             Controls.SetChildIndex(grp_CrucerosSeleccionados, 0);
+            Controls.SetChildIndex(btnVolverAlMenuGenerarPresupuestos, 0);
             grp_CrucerosDisponibles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             grp_Filtros.ResumeLayout(false);
@@ -473,7 +478,6 @@
         private DataGridView dataGridViewProductosSeleccionados;
         private Common.Components.BotonEstilizado btnRemoverProductos;
         private Common.Components.BotonEstilizado btnConfirmarProductosSeleccionados;
-        private Button btnVolverAlMenuGenerarPresupuestos;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn PrecioUnitario;
@@ -492,5 +496,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private Common.Components.BotonEstilizado btnVolverAlMenuGenerarPresupuestos;
     }
 }

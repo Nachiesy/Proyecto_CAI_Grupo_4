@@ -36,7 +36,6 @@
             txtBoxFiltroPrecioHasta = new TextBox();
             labelFiltroPrecioDesde = new Label();
             txtBoxFiltroPrecioDesde = new TextBox();
-            btnVolverAlMenuGenerarPresupuestos = new Button();
             grp_Filtros = new GroupBox();
             btnLimpiarFiltros = new Common.Components.BotonEstilizado();
             btnBuscarPresupuestos = new Common.Components.BotonEstilizado();
@@ -45,8 +44,6 @@
             btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
             grp_VuelosDisponibles = new GroupBox();
             dataGridViewProductos = new DataGridView();
-            grp_VuelosSeleccionados = new GroupBox();
-            dataGridViewProductosSeleccionados = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             PrecioUnitario = new DataGridViewTextBoxColumn();
@@ -56,6 +53,8 @@
             Origen = new DataGridViewTextBoxColumn();
             Destino = new DataGridViewTextBoxColumn();
             Clase = new DataGridViewTextBoxColumn();
+            grp_VuelosSeleccionados = new GroupBox();
+            dataGridViewProductosSeleccionados = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
@@ -67,6 +66,7 @@
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
+            btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
             grp_Filtros.SuspendLayout();
             grp_VuelosDisponibles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
@@ -79,7 +79,7 @@
             datePickerFilterFechaDesde.Location = new Point(18, 116);
             datePickerFilterFechaDesde.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
             datePickerFilterFechaDesde.Name = "datePickerFilterFechaDesde";
-            datePickerFilterFechaDesde.Size = new Size(235, 23);
+            datePickerFilterFechaDesde.Size = new Size(271, 23);
             datePickerFilterFechaDesde.TabIndex = 12;
             // 
             // labelFiltroFechaDesde
@@ -105,7 +105,7 @@
             datePickerFilterFechaHasta.Location = new Point(18, 179);
             datePickerFilterFechaHasta.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
             datePickerFilterFechaHasta.Name = "datePickerFilterFechaHasta";
-            datePickerFilterFechaHasta.Size = new Size(232, 23);
+            datePickerFilterFechaHasta.Size = new Size(271, 23);
             datePickerFilterFechaHasta.TabIndex = 14;
             // 
             // labelFiltroPrecioHasta
@@ -139,16 +139,6 @@
             txtBoxFiltroPrecioDesde.Name = "txtBoxFiltroPrecioDesde";
             txtBoxFiltroPrecioDesde.Size = new Size(126, 23);
             txtBoxFiltroPrecioDesde.TabIndex = 18;
-            // 
-            // btnVolverAlMenuGenerarPresupuestos
-            // 
-            btnVolverAlMenuGenerarPresupuestos.Location = new Point(27, 422);
-            btnVolverAlMenuGenerarPresupuestos.Name = "btnVolverAlMenuGenerarPresupuestos";
-            btnVolverAlMenuGenerarPresupuestos.Size = new Size(322, 47);
-            btnVolverAlMenuGenerarPresupuestos.TabIndex = 30;
-            btnVolverAlMenuGenerarPresupuestos.Text = "Volver";
-            btnVolverAlMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
-            btnVolverAlMenuGenerarPresupuestos.Click += btnVolverAlMenuGenerarPresupuestos_Click;
             // 
             // grp_Filtros
             // 
@@ -271,35 +261,6 @@
             dataGridViewProductos.Size = new Size(964, 194);
             dataGridViewProductos.TabIndex = 38;
             // 
-            // grp_VuelosSeleccionados
-            // 
-            grp_VuelosSeleccionados.Controls.Add(dataGridViewProductosSeleccionados);
-            grp_VuelosSeleccionados.Controls.Add(btnRemoverProductos);
-            grp_VuelosSeleccionados.Controls.Add(btnConfirmarProductosSeleccionados);
-            grp_VuelosSeleccionados.Location = new Point(376, 422);
-            grp_VuelosSeleccionados.Name = "grp_VuelosSeleccionados";
-            grp_VuelosSeleccionados.Size = new Size(976, 269);
-            grp_VuelosSeleccionados.TabIndex = 37;
-            grp_VuelosSeleccionados.TabStop = false;
-            grp_VuelosSeleccionados.Text = "Vuelos Seleccionados";
-            // 
-            // dataGridViewProductosSeleccionados
-            // 
-            dataGridViewProductosSeleccionados.AllowUserToAddRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToDeleteRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
-            dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9 });
-            dataGridViewProductosSeleccionados.Location = new Point(6, 22);
-            dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
-            dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
-            dataGridViewProductosSeleccionados.RowTemplate.Height = 25;
-            dataGridViewProductosSeleccionados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductosSeleccionados.Size = new Size(964, 194);
-            dataGridViewProductosSeleccionados.TabIndex = 39;
-            dataGridViewProductosSeleccionados.CellValueChanged += dataGridViewProductosSeleccionados_CellValueChanged;
-            // 
             // ID
             // 
             ID.HeaderText = "ID";
@@ -362,6 +323,35 @@
             Clase.HeaderText = "Clase";
             Clase.Name = "Clase";
             Clase.ReadOnly = true;
+            // 
+            // grp_VuelosSeleccionados
+            // 
+            grp_VuelosSeleccionados.Controls.Add(dataGridViewProductosSeleccionados);
+            grp_VuelosSeleccionados.Controls.Add(btnRemoverProductos);
+            grp_VuelosSeleccionados.Controls.Add(btnConfirmarProductosSeleccionados);
+            grp_VuelosSeleccionados.Location = new Point(376, 422);
+            grp_VuelosSeleccionados.Name = "grp_VuelosSeleccionados";
+            grp_VuelosSeleccionados.Size = new Size(976, 269);
+            grp_VuelosSeleccionados.TabIndex = 37;
+            grp_VuelosSeleccionados.TabStop = false;
+            grp_VuelosSeleccionados.Text = "Vuelos Seleccionados";
+            // 
+            // dataGridViewProductosSeleccionados
+            // 
+            dataGridViewProductosSeleccionados.AllowUserToAddRows = false;
+            dataGridViewProductosSeleccionados.AllowUserToDeleteRows = false;
+            dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
+            dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9 });
+            dataGridViewProductosSeleccionados.Location = new Point(6, 22);
+            dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
+            dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
+            dataGridViewProductosSeleccionados.RowTemplate.Height = 25;
+            dataGridViewProductosSeleccionados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewProductosSeleccionados.Size = new Size(964, 194);
+            dataGridViewProductosSeleccionados.TabIndex = 39;
+            dataGridViewProductosSeleccionados.CellValueChanged += dataGridViewProductosSeleccionados_CellValueChanged;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -439,23 +429,38 @@
             dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
+            // btnVolverAlMenuGenerarPresupuestos
+            // 
+            btnVolverAlMenuGenerarPresupuestos.BackColor = Color.Transparent;
+            btnVolverAlMenuGenerarPresupuestos.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnVolverAlMenuGenerarPresupuestos.FlatStyle = FlatStyle.Flat;
+            btnVolverAlMenuGenerarPresupuestos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnVolverAlMenuGenerarPresupuestos.ForeColor = Color.Black;
+            btnVolverAlMenuGenerarPresupuestos.Location = new Point(27, 422);
+            btnVolverAlMenuGenerarPresupuestos.Name = "btnVolverAlMenuGenerarPresupuestos";
+            btnVolverAlMenuGenerarPresupuestos.Size = new Size(322, 47);
+            btnVolverAlMenuGenerarPresupuestos.TabIndex = 43;
+            btnVolverAlMenuGenerarPresupuestos.Text = "Volver";
+            btnVolverAlMenuGenerarPresupuestos.UseVisualStyleBackColor = false;
+            btnVolverAlMenuGenerarPresupuestos.Click += btnVolverAlMenuGenerarPresupuestos_Click;
+            // 
             // GenerarPresupuestoAereos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1364, 721);
+            Controls.Add(btnVolverAlMenuGenerarPresupuestos);
             Controls.Add(grp_VuelosSeleccionados);
             Controls.Add(grp_VuelosDisponibles);
             Controls.Add(grp_Filtros);
-            Controls.Add(btnVolverAlMenuGenerarPresupuestos);
             Name = "GenerarPresupuestoAereos";
             Text = "Generar Presupuesto - Aéreos";
             Load += GenerarPresupuestoAereos_Load;
-            Controls.SetChildIndex(btnVolverAlMenuGenerarPresupuestos, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(grp_VuelosDisponibles, 0);
             Controls.SetChildIndex(grp_VuelosSeleccionados, 0);
+            Controls.SetChildIndex(btnVolverAlMenuGenerarPresupuestos, 0);
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
             grp_VuelosDisponibles.ResumeLayout(false);
@@ -474,7 +479,6 @@
         private TextBox txtBoxFiltroPrecioHasta;
         private Label labelFiltroPrecioDesde;
         private TextBox txtBoxFiltroPrecioDesde;
-        private Button btnVolverAlMenuGenerarPresupuestos;
         private GroupBox grp_Filtros;
         private Common.Components.BotonEstilizado btnLimpiarFiltros;
         private Common.Components.BotonEstilizado btnBuscarPresupuestos;
@@ -505,5 +509,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private Common.Components.BotonEstilizado btnVolverAlMenuGenerarPresupuestos;
     }
 }
