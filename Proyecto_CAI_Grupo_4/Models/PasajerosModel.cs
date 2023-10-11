@@ -21,7 +21,8 @@ namespace Proyecto_CAI_Grupo_4.Models
         public string Pais_emisor { get; set; }
         public string Email { get; set; }
         public string Tel_contacto { get; set; }
-
+        public int Edad {  get; set; }
+        public string Estado { get; set; }
 
     }
 
@@ -34,4 +35,6 @@ namespace Proyecto_CAI_Grupo_4.Models
         pasaporte,
 
     }
+
+
 }

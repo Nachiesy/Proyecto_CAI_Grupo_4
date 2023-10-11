@@ -57,9 +57,30 @@ namespace Proyecto_CAI_Grupo_4
         {
 
             pasajero = new Pasajeros();
-            pasajero.Nombre = nombrepasajerotxt.Text;
-            pasajero.Apellido = apellidopasajerotxt.Text;
-            pasajero.Fecha_Nac = dtnacmiento.Value;
+
+            List<string> camposVacios = new List<string>();
+
+
+
+            if (string.IsNullOrWhiteSpace(nombrepasajerotxt.Text))
+            {
+                camposVacios.Add("Nombre");
+            }
+            else { pasajero.Nombre = nombrepasajerotxt.Text; }
+
+            if (string.IsNullOrWhiteSpace(apellidopasajerotxt.Text))
+            {
+                camposVacios.Add("Apellido");
+            }
+            else { pasajero.Apellido = apellidopasajerotxt.Text; }
+
+            if (dtnacmiento.Value<DateTime.Today)
+            {
+                camposVacios.Add("Fecha de Nacimiento debe ser inferio al día de hoy");
+            }
+            else { pasajero.Fecha_Nac = dtnacmiento.Value; }
+
+
             pasajero.Nacionalidad = nacpasajerocbx.Text;
             pasajero.Tipo_Doc = cbxTipodoc.TabIndex;
             pasajero.Doc = dnipasajerotxt.Text;
@@ -71,8 +92,18 @@ namespace Proyecto_CAI_Grupo_4
 
 
 
-            DialogResult = DialogResult.OK;
-            Close();
+            if (camposVacios.Count > 0)
+            {
+                string mensajeError = "Los siguientes campos no se han completado:\n" + string.Join(", ", camposVacios);
+                MessageBox.Show(mensajeError, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+
+
 
 
         }
