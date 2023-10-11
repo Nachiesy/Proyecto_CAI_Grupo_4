@@ -16,9 +16,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuestoPaquetesTuristicos_Load(object sender, EventArgs e)
         {
-            datePickerFilterFechaDesde.Checked = false;
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
-            datePickerFilterFechaHasta.Checked = false;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
             AddProductosToDataGridViewProductos(GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Cantidad > 0));
@@ -32,8 +30,8 @@ namespace Proyecto_CAI_Grupo_4
             {
                 PrecioDesde = txtBoxFiltroPrecioDesde.Text,
                 PrecioHasta = txtBoxFiltroPrecioHasta.Text,
-                FechaDesde = datePickerFilterFechaDesde.Checked ? datePickerFilterFechaDesde.Value : null,
-                FechaHasta = datePickerFilterFechaHasta.Checked ? datePickerFilterFechaHasta.Value : null,
+                FechaDesde = datePickerFilterFechaDesde.Value,
+                FechaHasta = datePickerFilterFechaHasta.Value,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -50,8 +48,8 @@ namespace Proyecto_CAI_Grupo_4
                     .Where(x => x.Cantidad > 0
                                 && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta));
+                                && (x.FechaDesde == filter.FechaDesde)
+                                && (x.FechaHasta == filter.FechaHasta));
 
                 dataGridViewProductos.Rows.Clear();
 
@@ -68,59 +66,9 @@ namespace Proyecto_CAI_Grupo_4
         {
             var messages = string.Empty;
 
-            messages += ValidarPrecios(presupuesto);
-
-            if (presupuesto.FechaDesde.HasValue && presupuesto.FechaHasta.HasValue)
-            {
-                messages += ValidarFechas(presupuesto);
-            }
-
-            return messages;
-        }
-
-        private string ValidarPrecios(PaquetesTuristicosFilterDto presupuesto)
-        {
-            var messages = string.Empty;
-
-            var precioDesdeEmpty = string.IsNullOrEmpty(presupuesto.PrecioDesde);
-            var precioHastaEmpty = string.IsNullOrEmpty(presupuesto.PrecioHasta);
-
-            var isPrecioDesdeDecimal = decimal.TryParse(presupuesto.PrecioDesde, out decimal precioDesde);
-            var isPrecioHastaDecimal = decimal.TryParse(presupuesto.PrecioHasta, out decimal precioHasta);
-
-            if (!precioDesdeEmpty && !isPrecioDesdeDecimal)
-            {
-                messages += $"Precio Desde debe ser un numero decimal" + Environment.NewLine;
-            }
-
-            if (!precioHastaEmpty && !isPrecioHastaDecimal)
-            {
-                messages += $"Precio Hasta debe ser un numero decimal" + Environment.NewLine;
-            }
-
-            if (string.IsNullOrEmpty(messages) && !precioDesdeEmpty && !precioHastaEmpty)
-            {
-                if (precioDesde >= precioHasta)
-                {
-                    messages += "El Precio Desde debe ser menor al Precio Hasta" + Environment.NewLine;
-                }
-            }
-
-            return messages;
-        }
-
-        private string ValidarFechas(PaquetesTuristicosFilterDto presupuesto)
-        {
-            var messages = string.Empty;
-
-            if (presupuesto.FechaDesde.Value.Date < DateTime.Now.Date)
-            {
-                messages += "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
-            }
-            else if (presupuesto.FechaDesde.Value.Date >= presupuesto.FechaHasta.Value.Date)
-            {
-                messages += "La Fecha Desde debe ser menor a la Fecha Hasta" + Environment.NewLine;
-            }
+            messages += FiltrosManager.ValidarPrecios(presupuesto);
+            
+            messages += FiltrosManager.ValidarFechas(presupuesto);
 
             return messages;
         }
@@ -260,12 +208,12 @@ namespace Proyecto_CAI_Grupo_4
         {
             txtBoxFiltroPrecioDesde.Clear();
             txtBoxFiltroPrecioHasta.Clear();
-            datePickerFilterFechaDesde.Checked = false;
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
-            datePickerFilterFechaHasta.Checked = false;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            btnBuscarProductos_Click(sender, e);
+            dataGridViewProductos.Rows.Clear();
+
+            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.paquetesTuristicos);
         }
 
         private bool IsProductInDataGridViewProductosSeleccionados(Guid id)

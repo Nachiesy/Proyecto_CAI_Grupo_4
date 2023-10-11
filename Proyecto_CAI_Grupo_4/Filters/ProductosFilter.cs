@@ -6,9 +6,9 @@
 
         public string PrecioHasta { get; set; }
 
-        public DateTime? FechaDesde { get; set; }
+        public DateTime FechaDesde { get; set; }
 
-        public DateTime? FechaHasta { get; set; }
+        public DateTime FechaHasta { get; set; }
     }
 
     public class ProductosFilter
@@ -25,17 +25,17 @@
                 PrecioHasta = precioHasta;
             }
 
-            FechaDesde = dto.FechaDesde.HasValue ? dto.FechaDesde.Value.Date : null;
+            FechaDesde = dto.FechaDesde;
 
-            FechaHasta = dto.FechaHasta.HasValue ? dto.FechaHasta.Value.Date : null;
+            FechaHasta = dto.FechaHasta;
         }
 
         public decimal? PrecioDesde { get; set; }
 
         public decimal? PrecioHasta { get; set; }
 
-        public DateTime? FechaDesde { get; set; }
+        public DateTime FechaDesde { get; set; }
 
-        public DateTime? FechaHasta { get; set; }
+        public DateTime FechaHasta { get; set; }
     }
 }

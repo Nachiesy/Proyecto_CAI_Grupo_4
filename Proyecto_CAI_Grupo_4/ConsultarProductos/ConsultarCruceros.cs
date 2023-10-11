@@ -16,9 +16,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuestoAereos_Load(object sender, EventArgs e)
         {
-            datePickerFechaSalida.Checked = false;
             datePickerFechaSalida.Value = DateTime.Now.Date;
-            datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
             AddProductosToListView(GenerarPresupuestosManager.cruceros, lstViewProductos);
@@ -30,8 +28,8 @@ namespace Proyecto_CAI_Grupo_4
             {
                 PrecioDesde = txtBoxPrecioDesde.Text,
                 PrecioHasta = txtBoxPrecioHasta.Text,
-                FechaDesde = datePickerFechaSalida.Checked ? datePickerFechaSalida.Value : null,
-                FechaHasta = datePickerFechaLlegada.Checked ? datePickerFechaLlegada.Value : null,
+                FechaDesde = datePickerFechaSalida.Value,
+                FechaHasta = datePickerFechaLlegada.Value,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -47,8 +45,8 @@ namespace Proyecto_CAI_Grupo_4
                 var productos = GenerarPresupuestosManager.cruceros
                     .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta));
+                                && (x.FechaDesde == filter.FechaDesde)
+                                && (x.FechaHasta == filter.FechaHasta));
 
                 lstViewProductos.Items.Clear();
 
@@ -65,59 +63,9 @@ namespace Proyecto_CAI_Grupo_4
         {
             var messages = string.Empty;
 
-            messages += ValidarPrecios(presupuesto);
+            messages += FiltrosManager.ValidarPrecios(presupuesto);
 
-            if (presupuesto.FechaDesde.HasValue && presupuesto.FechaHasta.HasValue)
-            {
-                messages += ValidarFechas(presupuesto);
-            }
-
-            return messages;
-        }
-
-        private string ValidarPrecios(CrucerosFilterDto presupuesto)
-        {
-            var messages = string.Empty;
-
-            var precioDesdeEmpty = string.IsNullOrEmpty(presupuesto.PrecioDesde);
-            var precioHastaEmpty = string.IsNullOrEmpty(presupuesto.PrecioHasta);
-
-            var isPrecioDesdeDecimal = decimal.TryParse(presupuesto.PrecioDesde, out decimal precioDesde);
-            var isPrecioHastaDecimal = decimal.TryParse(presupuesto.PrecioHasta, out decimal precioHasta);
-
-            if (!precioDesdeEmpty && !isPrecioDesdeDecimal)
-            {
-                messages += $"Precio Desde debe ser un numero decimal" + Environment.NewLine;
-            }
-
-            if (!precioHastaEmpty && !isPrecioHastaDecimal)
-            {
-                messages += $"Precio Hasta debe ser un numero decimal" + Environment.NewLine;
-            }
-
-            if (string.IsNullOrEmpty(messages) && !precioDesdeEmpty && !precioHastaEmpty)
-            {
-                if (precioDesde >= precioHasta)
-                {
-                    messages += "El Precio Desde debe ser menor al Precio Hasta" + Environment.NewLine;
-                }
-            }
-
-            return messages;
-        }
-
-        private string ValidarFechas(CrucerosFilterDto presupuesto)
-        {
-            var messages = string.Empty;
-
-            if (presupuesto.FechaDesde.Value.Date < DateTime.Now.Date)
-            {
-                messages += "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
-            }
-            else if (presupuesto.FechaDesde.Value.Date >= presupuesto.FechaHasta.Value.Date)
-            {
-                messages += "La Fecha Desde debe ser menor a la Fecha Hasta" + Environment.NewLine;
-            }
+            messages += FiltrosManager.ValidarFechas(presupuesto);
 
             return messages;
         }
@@ -143,12 +91,12 @@ namespace Proyecto_CAI_Grupo_4
         {
             txtBoxPrecioDesde.Clear();
             txtBoxPrecioHasta.Clear();
-            datePickerFechaSalida.Checked = false;
             datePickerFechaSalida.Value = DateTime.Now.Date;
-            datePickerFechaLlegada.Checked = false;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
-            btnBuscarProductos_Click(sender, e);
+            lstViewProductos.Items.Clear();
+
+            AddProductosToListView(GenerarPresupuestosManager.cruceros, lstViewProductos);
         }
 
         private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)
