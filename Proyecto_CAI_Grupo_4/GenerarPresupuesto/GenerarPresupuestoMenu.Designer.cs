@@ -290,7 +290,6 @@ namespace Proyecto_CAI_Grupo_4
             textBoxClienteDNI.Name = "textBoxClienteDNI";
             textBoxClienteDNI.Size = new Size(226, 23);
             textBoxClienteDNI.TabIndex = 2;
-            textBoxClienteDNI.TextChanged += textBoxClienteDNI_TextChanged;
             // 
             // label2
             // 
