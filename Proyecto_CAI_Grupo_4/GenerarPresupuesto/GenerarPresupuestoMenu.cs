@@ -128,10 +128,11 @@ namespace Proyecto_CAI_Grupo_4
                 var result = MessageBox.Show("¿Desea generar una Pre Reserva a partir de este Presupuesto?", string.Empty, MessageBoxButtons.YesNo);
 
                 var presupuestoID = Guid.NewGuid();
+                var reservaID = Guid.NewGuid();
 
                 if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show($"Presupuesto [{presupuestoID}] y Pre Reserva generados correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+                    MessageBox.Show($"Presupuesto [{presupuestoID}] y Pre Reserva [{reservaID}] generados correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
                 }
                 else
                 {
