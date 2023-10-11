@@ -401,6 +401,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1105, 609);
             Controls.Add(btn_Cancelar);
             Controls.Add(btn_GenerarReserva);

@@ -10,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class IngresarPasajero : Form
+    public partial class IngresarPasajero : VistaBase
     {
-        public Pasajeros pasajero { get;private set; }
-        public IngresarPasajero()
+        public Pasajeros pasajero { get; private set; }
+        public IngresarPasajero() : base(tituloModulo: "Ingresar Pasajero")
         {
             InitializeComponent();
         }

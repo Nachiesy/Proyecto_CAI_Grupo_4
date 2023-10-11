@@ -19,7 +19,7 @@ namespace Proyecto_CAI_Grupo_4
     public partial class GenerarReserva : VistaBase
     {
         int controlPasjeros = 1;
-        public GenerarReserva()
+        public GenerarReserva() : base(tituloModulo: "Generar Reserva")
         {
             InitializeComponent();
         }
