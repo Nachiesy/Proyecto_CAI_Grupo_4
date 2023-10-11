@@ -59,29 +59,9 @@ namespace Proyecto_CAI_Grupo_4
 
             pasajero = new Pasajeros();
 
-            List<string> camposVacios = new List<string>();
-
-
-
-            if (string.IsNullOrWhiteSpace(nombrepasajerotxt.Text))
-            {
-                camposVacios.Add("Nombre");
-            }
-            else { pasajero.Nombre = nombrepasajerotxt.Text; }
-
-            if (string.IsNullOrWhiteSpace(apellidopasajerotxt.Text))
-            {
-                camposVacios.Add("Apellido");
-            }
-            else { pasajero.Apellido = apellidopasajerotxt.Text; }
-
-            if (dtnacmiento.Value<DateTime.Today)
-            {
-                camposVacios.Add("Fecha de Nacimiento debe ser inferio al día de hoy");
-            }
-            else { pasajero.Fecha_Nac = dtnacmiento.Value; }
-
-
+            pasajero.Nombre = nombrepasajerotxt.Text;
+            pasajero.Apellido = apellidopasajerotxt.Text;      
+            pasajero.Fecha_Nac = dtnacmiento.Value;
             pasajero.Nacionalidad = nacpasajerocbx.Text;
             pasajero.Tipo_Doc = cbxTipodoc.TabIndex;
             pasajero.Doc = dnipasajerotxt.Text;
@@ -93,13 +73,15 @@ namespace Proyecto_CAI_Grupo_4
 
 
 
-            if (camposVacios.Count > 0)
+            if (pasajero.CamposPasajeros().Count > 0)
             {
-                string mensajeError = "Los siguientes campos no se han completado:\n" + string.Join(", ", camposVacios);
+                string mensajeError = "Los siguientes campos no se han completado:\n" + string.Join(", ", pasajero.CamposPasajeros());
                 MessageBox.Show(mensajeError, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+                pasajero.Edad = pasajero.Fecha_Nac.Calculoedad();
+                pasajero.Tipo = pasajero.Edad.TipoPasajero();
                 DialogResult = DialogResult.OK;
                 Close();
             }

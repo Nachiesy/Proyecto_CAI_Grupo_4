@@ -56,6 +56,8 @@ namespace Proyecto_CAI_Grupo_4
             ListViewItem item = new ListViewItem(SumarPasajero.Nombre);
             item.SubItems.Add(SumarPasajero.Apellido.ToString());
             item.SubItems.Add(SumarPasajero.Fecha_Nac.ToFormDate());
+            item.SubItems.Add(SumarPasajero.Edad.ToString());
+            item.SubItems.Add(SumarPasajero.Tipo.ToString());
             item.SubItems.Add(SumarPasajero.Nacionalidad.ToString());
             item.SubItems.Add(SumarPasajero.Tipo_Doc.ToString());
             item.SubItems.Add(SumarPasajero.Doc.ToString());
@@ -63,6 +65,7 @@ namespace Proyecto_CAI_Grupo_4
             item.SubItems.Add(SumarPasajero.Fecha_Exp.ToFormDate());
             item.SubItems.Add(SumarPasajero.Email.ToString());
             item.SubItems.Add(SumarPasajero.Tel_contacto.ToString());
+
             listPasajeros.Items.Add(item);
 
         }
@@ -272,6 +275,11 @@ namespace Proyecto_CAI_Grupo_4
             {
                 MessageBox.Show("Debe Completar todos los pasajeros");
             }
+        }
+
+        private void listPasajeros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
