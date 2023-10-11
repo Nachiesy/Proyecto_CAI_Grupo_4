@@ -9,7 +9,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoPaquetesTuristicos : VistaBase
     {
-        public GenerarPresupuestoPaquetesTuristicos() : base(tituloModulo: "Generar Presupuesto > Paquetes Turisticos")
+        public GenerarPresupuestoPaquetesTuristicos() : base(tituloModulo: "Generar Presupuesto > Paquetes Turísticos")
         {
             InitializeComponent();
         }

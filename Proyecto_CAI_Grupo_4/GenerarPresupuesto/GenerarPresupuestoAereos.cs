@@ -9,7 +9,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoAereos : VistaBase
     {
-        public GenerarPresupuestoAereos() : base(tituloModulo: "Generar Presupuesto > Aereos")
+        public GenerarPresupuestoAereos() : base(tituloModulo: "Generar Presupuesto > Aéreos")
         {
             InitializeComponent();
         }
