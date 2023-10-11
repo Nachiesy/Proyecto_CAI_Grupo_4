@@ -9,10 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_CAI_Grupo_4.Common.Views;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class ConfirmarReserva : Form
+    public partial class ConfirmarReserva : VistaBase
     {
         public ConfirmarReserva()
         {
@@ -74,15 +75,6 @@ namespace Proyecto_CAI_Grupo_4
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Thread thread = new Thread(OpenMenuPrincipal);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
         private void OpenMenuPrincipal()
         {
             Application.Run(new MenuPrincipal());
@@ -127,6 +119,28 @@ namespace Proyecto_CAI_Grupo_4
 
                 listPresupuestos.Items.Add(row);
             }
+        }
+
+        private void btn_LimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            nroPresupuestotxt.Text = string.Empty;
+            cbxTipodoc.SelectedIndex = -1;
+            txbDocumento.Text = string.Empty;
+            listPresupuestos.Items.Clear();
+        }
+
+        private void btn_ConfirmarReserva_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Volver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            Thread thread = new Thread(OpenMenuPrincipal);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
     }
 }
