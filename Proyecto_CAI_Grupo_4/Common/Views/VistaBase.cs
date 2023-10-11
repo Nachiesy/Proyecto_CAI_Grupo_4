@@ -18,7 +18,7 @@ public partial class VistaBase : Form
         InitializeComponent();
     }
 
-    public VistaBase(string tituloModulo)
+    public VistaBase(string tituloModulo, bool deshabilitarBotones = false)
     {
         InitializeComponent();
 
@@ -27,6 +27,12 @@ public partial class VistaBase : Form
         if (tituloModulo == "Menu Principal")
         {
             btn_VolverAlMenu.Visible = false;
+        }
+
+        if (deshabilitarBotones)
+        {
+            btn_VolverAlMenu.Visible = false;
+            btn_Salir.Visible = false;
         }
     }
 
