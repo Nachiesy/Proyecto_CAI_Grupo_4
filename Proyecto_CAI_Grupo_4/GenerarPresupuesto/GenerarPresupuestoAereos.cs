@@ -21,7 +21,7 @@ namespace Proyecto_CAI_Grupo_4
 
             AddProductosToDataGridViewProductos(GenerarPresupuestosManager.aereos.Where(x => x.Cantidad > 0));
 
-            AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.aereosElegidos);
+            AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.aereosElegidos, true);
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void AddProductosSeleccionadosToDataGridView(IEnumerable<Aereos> listToAdd)
+        private void AddProductosSeleccionadosToDataGridView(IEnumerable<Aereos> listToAdd, bool isInitForm)
         {
             foreach (var item in listToAdd)
             {
@@ -105,9 +105,20 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada Adultos
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = 0.ToString() }); // Cantidad Seleccionada Menores
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() }); // Sub Total
+
+                if (isInitForm)
+                {
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionadaAdultos.ToString() });
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionadaMenores.ToString() });
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal.ToString() });
+                }
+                else
+                {
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada Adultos
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = 0.ToString() }); // Cantidad Seleccionada Menores
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() }); // Sub Total
+                }
+
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen });
@@ -138,7 +149,7 @@ namespace Proyecto_CAI_Grupo_4
                     }
                 }
 
-                AddProductosSeleccionadosToDataGridView(productosToAdd);
+                AddProductosSeleccionadosToDataGridView(productosToAdd, false);
             }
             else
             {
@@ -170,14 +181,20 @@ namespace Proyecto_CAI_Grupo_4
                 foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
                 {
                     var idCellIndex = 0;
-                    var cantidadSeleccionadaColumnIndex = 4;
-                    var subTotalColumnIndex = 5;
+                    var cantidadSeleccionadaAdultosColumnIndex = 5;
+                    var cantidadSeleccionadaMenoresColumnIndex = 6;
+                    var subTotalColumnIndex = 7;
 
                     var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
 
                     var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
 
-                    producto.CantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
+                    var cantidadSeleccionadaAdultos = int.Parse(row.Cells[cantidadSeleccionadaAdultosColumnIndex].Value.ToString());
+                    var cantidadSeleccionadaMenores = int.Parse(row.Cells[cantidadSeleccionadaMenoresColumnIndex].Value.ToString());
+
+                    producto.CantidadSeleccionadaAdultos = cantidadSeleccionadaAdultos;
+                    producto.CantidadSeleccionadaMenores = cantidadSeleccionadaMenores;
+                    producto.CantidadSeleccionada = producto.CantidadSeleccionadaAdultos + producto.CantidadSeleccionadaMenores;
                     producto.SubTotal = decimal.Parse(row.Cells[subTotalColumnIndex].Value.ToString());
 
                     GenerarPresupuestosManager.aereosElegidos.Add(producto);

@@ -8,6 +8,10 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public decimal PrecioMenores { get; set; }
 
+        public int CantidadSeleccionadaAdultos { get; set; }
+
+        public int CantidadSeleccionadaMenores { get; set; }
+
         public string Origen { get; set; }
 
         public string Destino { get; set; }

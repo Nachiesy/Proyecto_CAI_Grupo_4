@@ -21,7 +21,7 @@ namespace Proyecto_CAI_Grupo_4
 
             AddProductosToDataGridViewProductos(GenerarPresupuestosManager.hoteles.Where(x => x.Cantidad > 0));
 
-            AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.hotelesElegidos);
+            AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.hotelesElegidos, true);
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -91,7 +91,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void AddProductosSeleccionadosToDataGridView(IEnumerable<Hoteles> listToAdd)
+        private void AddProductosSeleccionadosToDataGridView(IEnumerable<Hoteles> listToAdd, bool isInitForm)
         {
             foreach (var item in listToAdd)
             {
@@ -101,8 +101,18 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() }); // Sub Total
+
+                if (isInitForm)
+                {
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionada });
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal.ToString() });
+                }
+                else
+                {
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() }); // Sub Total
+                }
+
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad });
@@ -131,7 +141,7 @@ namespace Proyecto_CAI_Grupo_4
                     }
                 }
 
-                AddProductosSeleccionadosToDataGridView(productosToAdd);
+                AddProductosSeleccionadosToDataGridView(productosToAdd, false);
             }
             else
             {

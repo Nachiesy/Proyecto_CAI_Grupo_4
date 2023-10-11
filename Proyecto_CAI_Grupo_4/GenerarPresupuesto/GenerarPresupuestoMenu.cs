@@ -37,7 +37,6 @@ namespace Proyecto_CAI_Grupo_4
             total += cruceros.Sum(x => x.SubTotal.Value);
             total += paquetesTuristicos.Sum(x => x.SubTotal.Value);
 
-            btnFinalizarPresupuesto.Enabled = total > 0 && ValidarDNI();
             presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
         }
 
@@ -50,9 +49,8 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeServicio.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionada });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionada });
 
                 productosElegidos.Rows.Add(row);
             }
@@ -235,19 +233,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void textBoxClienteDNI_TextChanged(object sender, EventArgs e)
         {
-            var subTotalColumnIndex = 5;
-
-            decimal total = 0;
-
-            foreach (DataGridViewRow row in productosElegidos.Rows)
-            {
-                if (decimal.TryParse(row.Cells[subTotalColumnIndex].Value.ToString(), out decimal subTotal))
-                {
-                    total += subTotal;
-                }
-            }
-
-            btnFinalizarPresupuesto.Enabled = total > 0 && ValidarDNI();
+            ValidarDNI();
         }
 
         private bool ValidarDNI()
