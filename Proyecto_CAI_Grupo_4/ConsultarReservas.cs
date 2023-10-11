@@ -100,10 +100,5 @@ namespace Proyecto_CAI_Grupo_4
             filtroEstado.SelectedIndex = -1;
             filtroNroDeDoc.Text = string.Empty;
         }
-
-        private void reservasListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
