@@ -8,6 +8,10 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoMenu : VistaBase
     {
+        private readonly int idColumnIndex = 0;
+        private readonly int tipoDeServicioColumnIndex = 3;
+        private readonly int cantidadSeleccionadaColumnIndex = 5;
+
         public GenerarPresupuestoMenu() : base(tituloModulo: "Generar Presupuesto")
         {
             InitializeComponent();
@@ -48,6 +52,7 @@ namespace Proyecto_CAI_Grupo_4
                 DataGridViewRow row = new DataGridViewRow();
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeServicio.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal });
@@ -169,16 +174,13 @@ namespace Proyecto_CAI_Grupo_4
             foreach (DataGridViewRow row in productosElegidos.Rows)
             {
                 // ID
-                var idCellIndex = 0;
-                var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+                var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
 
                 // Tipo de Servicio
-                var tipoDeServicioIndex = 2;
-                var tipoDeServicio = TipoDeServicioEnumHelper.GetTipoDeServicioEnum(row.Cells[tipoDeServicioIndex].Value.ToString());
+                var tipoDeServicio = TipoDeServicioEnumHelper.GetTipoDeServicioEnum(row.Cells[tipoDeServicioColumnIndex].Value.ToString());
 
                 // Cantidad Seleccionada
-                var cantidadSeleccionadaIndex = 4;
-                var cantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaIndex].Value.ToString());
+                var cantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
 
                 switch (tipoDeServicio)
                 {

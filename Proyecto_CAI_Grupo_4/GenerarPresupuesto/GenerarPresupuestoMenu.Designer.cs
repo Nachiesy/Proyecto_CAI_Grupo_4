@@ -32,11 +32,6 @@ namespace Proyecto_CAI_Grupo_4
             label1 = new Label();
             presupuestoTotal = new Label();
             productosElegidos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            TipoDeServicio = new DataGridViewTextBoxColumn();
-            SubTotal = new DataGridViewTextBoxColumn();
-            CantidadSeleccionada = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -51,6 +46,12 @@ namespace Proyecto_CAI_Grupo_4
             grp_Filtros = new GroupBox();
             textBoxClienteDNI = new TextBox();
             label2 = new Label();
+            ID = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            TipoDeServicio = new DataGridViewTextBoxColumn();
+            SubTotal = new DataGridViewTextBoxColumn();
+            CantidadSeleccionada = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)productosElegidos).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -87,7 +88,7 @@ namespace Proyecto_CAI_Grupo_4
             productosElegidos.AllowUserToOrderColumns = true;
             productosElegidos.BackgroundColor = SystemColors.ControlLight;
             productosElegidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, TipoDeServicio, SubTotal, CantidadSeleccionada });
+            productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, TipoDeServicio, SubTotal, CantidadSeleccionada });
             productosElegidos.Location = new Point(303, 126);
             productosElegidos.Name = "productosElegidos";
             productosElegidos.ReadOnly = true;
@@ -95,45 +96,6 @@ namespace Proyecto_CAI_Grupo_4
             productosElegidos.RowTemplate.Height = 25;
             productosElegidos.Size = new Size(893, 443);
             productosElegidos.TabIndex = 36;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Width = 250;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // TipoDeServicio
-            // 
-            TipoDeServicio.HeaderText = "Tipo de Servicio";
-            TipoDeServicio.MinimumWidth = 10;
-            TipoDeServicio.Name = "TipoDeServicio";
-            TipoDeServicio.ReadOnly = true;
-            TipoDeServicio.Width = 200;
-            // 
-            // SubTotal
-            // 
-            SubTotal.HeaderText = "SubTotal";
-            SubTotal.MinimumWidth = 10;
-            SubTotal.Name = "SubTotal";
-            SubTotal.ReadOnly = true;
-            SubTotal.Width = 200;
-            // 
-            // CantidadSeleccionada
-            // 
-            CantidadSeleccionada.HeaderText = "Cantidad Seleccionada";
-            CantidadSeleccionada.Name = "CantidadSeleccionada";
-            CantidadSeleccionada.ReadOnly = true;
-            CantidadSeleccionada.Visible = false;
             // 
             // groupBox1
             // 
@@ -300,6 +262,52 @@ namespace Proyecto_CAI_Grupo_4
             label2.TabIndex = 3;
             label2.Text = "DNI";
             // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            ID.Width = 250;
+            // 
+            // Codigo
+            // 
+            Codigo.HeaderText = "Código";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 10;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // TipoDeServicio
+            // 
+            TipoDeServicio.HeaderText = "Tipo de Servicio";
+            TipoDeServicio.MinimumWidth = 10;
+            TipoDeServicio.Name = "TipoDeServicio";
+            TipoDeServicio.ReadOnly = true;
+            TipoDeServicio.Width = 200;
+            // 
+            // SubTotal
+            // 
+            SubTotal.HeaderText = "SubTotal";
+            SubTotal.MinimumWidth = 10;
+            SubTotal.Name = "SubTotal";
+            SubTotal.ReadOnly = true;
+            SubTotal.Width = 200;
+            // 
+            // CantidadSeleccionada
+            // 
+            CantidadSeleccionada.HeaderText = "Cantidad Seleccionada";
+            CantidadSeleccionada.Name = "CantidadSeleccionada";
+            CantidadSeleccionada.ReadOnly = true;
+            CantidadSeleccionada.Visible = false;
+            // 
             // GenerarPresupuestoMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -356,6 +364,7 @@ namespace Proyecto_CAI_Grupo_4
         private TextBox textBoxClienteDNI;
         private Label label2;
         private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn TipoDeServicio;
         private DataGridViewTextBoxColumn SubTotal;
