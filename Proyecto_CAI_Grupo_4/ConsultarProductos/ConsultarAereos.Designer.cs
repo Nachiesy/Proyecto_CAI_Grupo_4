@@ -37,27 +37,28 @@
             label7 = new Label();
             txtBoxPrecioDesde = new TextBox();
             grp_Filtros = new GroupBox();
-            btnLimpiarFiltro = new Common.Components.BotonEstilizado();
-            buscarPresupuesto = new Common.Components.BotonEstilizado();
-            lstViewProductos = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
-            columnHeader9 = new ColumnHeader();
-            columnHeader10 = new ColumnHeader();
-            btnVolverMenuGenerarPresupuestos = new Button();
             labelDestino = new Label();
             labelOrigen = new Label();
             comboBoxDestino = new ComboBox();
             comboBoxOrigen = new ComboBox();
             btnDisableDatePickerFilterFechaHasta = new Button();
             btnDisableDatePickerFilterFechaDesde = new Button();
+            btnLimpiarFiltro = new Common.Components.BotonEstilizado();
+            buscarPresupuesto = new Common.Components.BotonEstilizado();
+            btnVolverMenuGenerarPresupuestos = new Button();
+            dataGridViewProductos = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            PrecioUnitarioAdulto = new DataGridViewTextBoxColumn();
+            PrecioUnitarioMenor = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            FechaDesde = new DataGridViewTextBoxColumn();
+            FechaHasta = new DataGridViewTextBoxColumn();
+            Origen = new DataGridViewTextBoxColumn();
+            Destino = new DataGridViewTextBoxColumn();
+            Clase = new DataGridViewTextBoxColumn();
             grp_Filtros.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             SuspendLayout();
             // 
             // datePickerFechaSalida
@@ -149,107 +150,6 @@
             grp_Filtros.TabStop = false;
             grp_Filtros.Text = "Filtros";
             // 
-            // btnLimpiarFiltro
-            // 
-            btnLimpiarFiltro.BackColor = Color.Transparent;
-            btnLimpiarFiltro.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            btnLimpiarFiltro.FlatStyle = FlatStyle.Flat;
-            btnLimpiarFiltro.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLimpiarFiltro.ForeColor = Color.Black;
-            btnLimpiarFiltro.Location = new Point(952, 201);
-            btnLimpiarFiltro.Name = "btnLimpiarFiltro";
-            btnLimpiarFiltro.Size = new Size(139, 40);
-            btnLimpiarFiltro.TabIndex = 4;
-            btnLimpiarFiltro.Text = "Limpiar";
-            btnLimpiarFiltro.UseVisualStyleBackColor = false;
-            btnLimpiarFiltro.Click += btnLimpiarFiltro_Click;
-            // 
-            // buscarPresupuesto
-            // 
-            buscarPresupuesto.BackColor = Color.Transparent;
-            buscarPresupuesto.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            buscarPresupuesto.FlatStyle = FlatStyle.Flat;
-            buscarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            buscarPresupuesto.ForeColor = Color.Black;
-            buscarPresupuesto.Location = new Point(952, 131);
-            buscarPresupuesto.Name = "buscarPresupuesto";
-            buscarPresupuesto.Size = new Size(139, 40);
-            buscarPresupuesto.TabIndex = 4;
-            buscarPresupuesto.Text = "Buscar";
-            buscarPresupuesto.UseVisualStyleBackColor = false;
-            buscarPresupuesto.Click += btnBuscarProductos_Click;
-            // 
-            // lstViewProductos
-            // 
-            lstViewProductos.BackColor = SystemColors.ControlLight;
-            lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader9, columnHeader10 });
-            lstViewProductos.Location = new Point(27, 375);
-            lstViewProductos.Name = "lstViewProductos";
-            lstViewProductos.Size = new Size(1064, 228);
-            lstViewProductos.TabIndex = 36;
-            lstViewProductos.UseCompatibleStateImageBehavior = false;
-            lstViewProductos.View = View.Details;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 250;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Nombre";
-            columnHeader2.Width = 200;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Origen";
-            columnHeader3.Width = 100;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Destino";
-            columnHeader4.Width = 100;
-            // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "Clase";
-            columnHeader5.Width = 100;
-            // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Precio Adultos";
-            columnHeader6.Width = 100;
-            // 
-            // columnHeader7
-            // 
-            columnHeader7.Text = "Precio Menores";
-            columnHeader7.Width = 100;
-            // 
-            // columnHeader8
-            // 
-            columnHeader8.Text = "Cantidad Disponible";
-            columnHeader8.Width = 150;
-            // 
-            // columnHeader9
-            // 
-            columnHeader9.Text = "Fecha Salida";
-            columnHeader9.Width = 100;
-            // 
-            // columnHeader10
-            // 
-            columnHeader10.Text = "Fecha Llegada";
-            columnHeader10.Width = 100;
-            // 
-            // btnVolverMenuGenerarPresupuestos
-            // 
-            btnVolverMenuGenerarPresupuestos.Location = new Point(27, 618);
-            btnVolverMenuGenerarPresupuestos.Name = "btnVolverMenuGenerarPresupuestos";
-            btnVolverMenuGenerarPresupuestos.Size = new Size(289, 47);
-            btnVolverMenuGenerarPresupuestos.TabIndex = 37;
-            btnVolverMenuGenerarPresupuestos.Text = "Volver";
-            btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
-            btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
-            // 
             // labelDestino
             // 
             labelDestino.AutoSize = true;
@@ -304,14 +204,140 @@
             btnDisableDatePickerFilterFechaDesde.UseVisualStyleBackColor = true;
             btnDisableDatePickerFilterFechaDesde.Click += btnDisableDatePickerFilterFechaDesde_Click;
             // 
+            // btnLimpiarFiltro
+            // 
+            btnLimpiarFiltro.BackColor = Color.Transparent;
+            btnLimpiarFiltro.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnLimpiarFiltro.FlatStyle = FlatStyle.Flat;
+            btnLimpiarFiltro.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLimpiarFiltro.ForeColor = Color.Black;
+            btnLimpiarFiltro.Location = new Point(952, 201);
+            btnLimpiarFiltro.Name = "btnLimpiarFiltro";
+            btnLimpiarFiltro.Size = new Size(139, 40);
+            btnLimpiarFiltro.TabIndex = 4;
+            btnLimpiarFiltro.Text = "Limpiar";
+            btnLimpiarFiltro.UseVisualStyleBackColor = false;
+            btnLimpiarFiltro.Click += btnLimpiarFiltro_Click;
+            // 
+            // buscarPresupuesto
+            // 
+            buscarPresupuesto.BackColor = Color.Transparent;
+            buscarPresupuesto.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            buscarPresupuesto.FlatStyle = FlatStyle.Flat;
+            buscarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            buscarPresupuesto.ForeColor = Color.Black;
+            buscarPresupuesto.Location = new Point(952, 131);
+            buscarPresupuesto.Name = "buscarPresupuesto";
+            buscarPresupuesto.Size = new Size(139, 40);
+            buscarPresupuesto.TabIndex = 4;
+            buscarPresupuesto.Text = "Buscar";
+            buscarPresupuesto.UseVisualStyleBackColor = false;
+            buscarPresupuesto.Click += btnBuscarProductos_Click;
+            // 
+            // btnVolverMenuGenerarPresupuestos
+            // 
+            btnVolverMenuGenerarPresupuestos.Location = new Point(27, 618);
+            btnVolverMenuGenerarPresupuestos.Name = "btnVolverMenuGenerarPresupuestos";
+            btnVolverMenuGenerarPresupuestos.Size = new Size(289, 47);
+            btnVolverMenuGenerarPresupuestos.TabIndex = 37;
+            btnVolverMenuGenerarPresupuestos.Text = "Volver";
+            btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
+            btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
+            // 
+            // dataGridViewProductos
+            // 
+            dataGridViewProductos.AllowUserToAddRows = false;
+            dataGridViewProductos.AllowUserToDeleteRows = false;
+            dataGridViewProductos.AllowUserToOrderColumns = true;
+            dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, PrecioUnitarioAdulto, PrecioUnitarioMenor, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Clase });
+            dataGridViewProductos.Location = new Point(27, 372);
+            dataGridViewProductos.Name = "dataGridViewProductos";
+            dataGridViewProductos.RowHeadersWidth = 82;
+            dataGridViewProductos.RowTemplate.Height = 25;
+            dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewProductos.Size = new Size(1064, 227);
+            dataGridViewProductos.TabIndex = 39;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 250;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 10;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // PrecioUnitarioAdulto
+            // 
+            PrecioUnitarioAdulto.HeaderText = "Precio Unitario Adultos";
+            PrecioUnitarioAdulto.MinimumWidth = 10;
+            PrecioUnitarioAdulto.Name = "PrecioUnitarioAdulto";
+            PrecioUnitarioAdulto.ReadOnly = true;
+            PrecioUnitarioAdulto.Width = 200;
+            // 
+            // PrecioUnitarioMenor
+            // 
+            PrecioUnitarioMenor.HeaderText = "Precio Unitario Menores";
+            PrecioUnitarioMenor.Name = "PrecioUnitarioMenor";
+            PrecioUnitarioMenor.ReadOnly = true;
+            PrecioUnitarioMenor.Width = 200;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad Disponible";
+            Cantidad.MinimumWidth = 10;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 200;
+            // 
+            // FechaDesde
+            // 
+            FechaDesde.HeaderText = "Fecha Salida";
+            FechaDesde.Name = "FechaDesde";
+            FechaDesde.ReadOnly = true;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.HeaderText = "Fecha Llegada";
+            FechaHasta.Name = "FechaHasta";
+            FechaHasta.ReadOnly = true;
+            FechaHasta.Width = 200;
+            // 
+            // Origen
+            // 
+            Origen.HeaderText = "Origen";
+            Origen.Name = "Origen";
+            Origen.ReadOnly = true;
+            // 
+            // Destino
+            // 
+            Destino.HeaderText = "Destino";
+            Destino.Name = "Destino";
+            Destino.ReadOnly = true;
+            // 
+            // Clase
+            // 
+            Clase.HeaderText = "Clase";
+            Clase.Name = "Clase";
+            Clase.ReadOnly = true;
+            // 
             // ConsultarAereos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1106, 686);
+            Controls.Add(dataGridViewProductos);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
-            Controls.Add(lstViewProductos);
             Controls.Add(btnLimpiarFiltro);
             Controls.Add(grp_Filtros);
             Controls.Add(buscarPresupuesto);
@@ -321,10 +347,11 @@
             Controls.SetChildIndex(buscarPresupuesto, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(btnLimpiarFiltro, 0);
-            Controls.SetChildIndex(lstViewProductos, 0);
             Controls.SetChildIndex(btnVolverMenuGenerarPresupuestos, 0);
+            Controls.SetChildIndex(dataGridViewProductos, 0);
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             ResumeLayout(false);
         }
 
@@ -340,23 +367,23 @@
         private GroupBox grp_Filtros;
         private Common.Components.BotonEstilizado btnLimpiarFiltro;
         private Common.Components.BotonEstilizado buscarPresupuesto;
-        private ListView lstViewProductos;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
-        private ColumnHeader columnHeader8;
         private Button btnVolverMenuGenerarPresupuestos;
-        private ColumnHeader columnHeader9;
-        private ColumnHeader columnHeader10;
         private Label labelDestino;
         private Label labelOrigen;
         private ComboBox comboBoxDestino;
         private ComboBox comboBoxOrigen;
         private Button btnDisableDatePickerFilterFechaHasta;
         private Button btnDisableDatePickerFilterFechaDesde;
+        private DataGridView dataGridViewProductos;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn PrecioUnitarioAdulto;
+        private DataGridViewTextBoxColumn PrecioUnitarioMenor;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn FechaDesde;
+        private DataGridViewTextBoxColumn FechaHasta;
+        private DataGridViewTextBoxColumn Origen;
+        private DataGridViewTextBoxColumn Destino;
+        private DataGridViewTextBoxColumn Clase;
     }
 }

@@ -29,7 +29,7 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxDestino.Items.Add(value.GetDescription());
             }
 
-            AddProductosToListView(GenerarPresupuestosManager.aereos, lstViewProductos);
+            AddProductosToDataGridView(GenerarPresupuestosManager.aereos);
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -62,9 +62,9 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
                                 && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino));
 
-                lstViewProductos.Items.Clear();
+                dataGridViewProductos.Rows.Clear();
 
-                AddProductosToListView(productos, lstViewProductos);
+                AddProductosToDataGridView(productos);
 
                 if (!productos.Any())
                 {
@@ -84,23 +84,24 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosToListView(IEnumerable<Aereos> listToAdd, ListView listView)
+        private void AddProductosToDataGridView(IEnumerable<Aereos> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                var row = new ListViewItem(item.Id.ToString());
+                DataGridViewRow row = new DataGridViewRow();
 
-                row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Origen.GetDescription());
-                row.SubItems.Add(item.Destino.GetDescription());
-                row.SubItems.Add(item.TipoDeClaseAerea.GetDescription());
-                row.SubItems.Add(item.PrecioAdultos.ToString());
-                row.SubItems.Add(item.PrecioMenores.ToString());
-                row.SubItems.Add(item.Cantidad.ToString());
-                row.SubItems.Add(item.FechaDeSalida.ToFormDate());
-                row.SubItems.Add(item.FechaDeLlegada.ToFormDate());
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormDate() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormDate() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeClaseAerea.GetDescription() });
 
-                listView.Items.Add(row);
+                dataGridViewProductos.Rows.Add(row);
             }
         }
 
@@ -113,9 +114,9 @@ namespace Proyecto_CAI_Grupo_4
             comboBoxOrigen.SelectedIndex = -1;
             comboBoxDestino.SelectedIndex = -1;
 
-            lstViewProductos.Items.Clear();
+            dataGridViewProductos.Rows.Clear();
 
-            AddProductosToListView(GenerarPresupuestosManager.aereos, lstViewProductos);
+            AddProductosToDataGridView(GenerarPresupuestosManager.aereos);
         }
 
         private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)

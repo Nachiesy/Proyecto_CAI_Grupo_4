@@ -45,20 +45,21 @@
             btnDisableDatePickerFilterFechaDesde = new Button();
             btnLimpiarFiltro = new Common.Components.BotonEstilizado();
             buscarPresupuesto = new Common.Components.BotonEstilizado();
-            lstViewProductos = new ListView();
-            ID = new ColumnHeader();
-            Nombre = new ColumnHeader();
-            Origen = new ColumnHeader();
-            Destino = new ColumnHeader();
-            Precio = new ColumnHeader();
-            CantidadDisponible = new ColumnHeader();
-            FechaSalida = new ColumnHeader();
-            FechaLleagada = new ColumnHeader();
-            Actividades = new ColumnHeader();
             btnVolverMenuGenerarPresupuestos = new Button();
-            CapacidadMaxAdultos = new ColumnHeader();
-            CapacidadMaxMenores = new ColumnHeader();
+            dataGridViewProductos = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            FechaDesde = new DataGridViewTextBoxColumn();
+            FechaHasta = new DataGridViewTextBoxColumn();
+            Origen = new DataGridViewTextBoxColumn();
+            Destino = new DataGridViewTextBoxColumn();
+            Actividades = new DataGridViewTextBoxColumn();
+            CapacidadMaximaAdultos = new DataGridViewTextBoxColumn();
+            CapacidadMaximaMenores = new DataGridViewTextBoxColumn();
             grp_Filtros.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             SuspendLayout();
             // 
             // datePickerFechaSalida
@@ -234,62 +235,6 @@
             buscarPresupuesto.UseVisualStyleBackColor = false;
             buscarPresupuesto.Click += btnBuscarProductos_Click;
             // 
-            // lstViewProductos
-            // 
-            lstViewProductos.BackColor = SystemColors.ControlLight;
-            lstViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Nombre, Origen, Destino, Precio, CantidadDisponible, FechaSalida, FechaLleagada, Actividades, CapacidadMaxAdultos, CapacidadMaxMenores });
-            lstViewProductos.Location = new Point(27, 337);
-            lstViewProductos.Name = "lstViewProductos";
-            lstViewProductos.Size = new Size(1064, 264);
-            lstViewProductos.TabIndex = 36;
-            lstViewProductos.UseCompatibleStateImageBehavior = false;
-            lstViewProductos.View = View.Details;
-            // 
-            // ID
-            // 
-            ID.Text = "ID";
-            ID.Width = 250;
-            // 
-            // Nombre
-            // 
-            Nombre.Text = "Nombre";
-            Nombre.Width = 200;
-            // 
-            // Origen
-            // 
-            Origen.Text = "Origen";
-            Origen.Width = 100;
-            // 
-            // Destino
-            // 
-            Destino.Text = "Destino";
-            Destino.Width = 100;
-            // 
-            // Precio
-            // 
-            Precio.Text = "Precio";
-            Precio.Width = 100;
-            // 
-            // CantidadDisponible
-            // 
-            CantidadDisponible.Text = "Cantidad Disponible";
-            CantidadDisponible.Width = 150;
-            // 
-            // FechaSalida
-            // 
-            FechaSalida.Text = "Fecha Salida";
-            FechaSalida.Width = 100;
-            // 
-            // FechaLleagada
-            // 
-            FechaLleagada.Text = "Fecha Llegada";
-            FechaLleagada.Width = 100;
-            // 
-            // Actividades
-            // 
-            Actividades.Text = "Actividades";
-            Actividades.Width = 200;
-            // 
             // btnVolverMenuGenerarPresupuestos
             // 
             btnVolverMenuGenerarPresupuestos.Location = new Point(27, 623);
@@ -300,15 +245,98 @@
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
-            // CapacidadMaxAdultos
+            // dataGridViewProductos
             // 
-            CapacidadMaxAdultos.Text = "Capacidad Maxima Adultos";
-            CapacidadMaxAdultos.Width = 300;
+            dataGridViewProductos.AllowUserToAddRows = false;
+            dataGridViewProductos.AllowUserToDeleteRows = false;
+            dataGridViewProductos.AllowUserToOrderColumns = true;
+            dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Actividades, CapacidadMaximaAdultos, CapacidadMaximaMenores });
+            dataGridViewProductos.Location = new Point(27, 339);
+            dataGridViewProductos.Name = "dataGridViewProductos";
+            dataGridViewProductos.RowHeadersWidth = 82;
+            dataGridViewProductos.RowTemplate.Height = 25;
+            dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewProductos.Size = new Size(1067, 267);
+            dataGridViewProductos.TabIndex = 39;
             // 
-            // CapacidadMaxMenores
+            // ID
             // 
-            CapacidadMaxMenores.Text = "Capacidad Maxima Menores";
-            CapacidadMaxMenores.Width = 300;
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 250;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 10;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // PrecioUnitario
+            // 
+            PrecioUnitario.HeaderText = "Precio Unitario";
+            PrecioUnitario.MinimumWidth = 10;
+            PrecioUnitario.Name = "PrecioUnitario";
+            PrecioUnitario.ReadOnly = true;
+            PrecioUnitario.Width = 200;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad Disponible";
+            Cantidad.MinimumWidth = 10;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 200;
+            // 
+            // FechaDesde
+            // 
+            FechaDesde.HeaderText = "Fecha Desde";
+            FechaDesde.Name = "FechaDesde";
+            FechaDesde.ReadOnly = true;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.HeaderText = "Fecha Hasta";
+            FechaHasta.Name = "FechaHasta";
+            FechaHasta.ReadOnly = true;
+            // 
+            // Origen
+            // 
+            Origen.HeaderText = "Origen";
+            Origen.Name = "Origen";
+            Origen.ReadOnly = true;
+            // 
+            // Destino
+            // 
+            Destino.HeaderText = "Destino";
+            Destino.Name = "Destino";
+            Destino.ReadOnly = true;
+            // 
+            // Actividades
+            // 
+            Actividades.HeaderText = "Actividades";
+            Actividades.Name = "Actividades";
+            Actividades.ReadOnly = true;
+            Actividades.Width = 200;
+            // 
+            // CapacidadMaximaAdultos
+            // 
+            CapacidadMaximaAdultos.HeaderText = "Capacidad Maxima Adultos";
+            CapacidadMaximaAdultos.Name = "CapacidadMaximaAdultos";
+            CapacidadMaximaAdultos.ReadOnly = true;
+            CapacidadMaximaAdultos.Width = 300;
+            // 
+            // CapacidadMaximaMenores
+            // 
+            CapacidadMaximaMenores.HeaderText = "Capacidad Maxima Menores";
+            CapacidadMaximaMenores.Name = "CapacidadMaximaMenores";
+            CapacidadMaximaMenores.ReadOnly = true;
+            CapacidadMaximaMenores.Width = 300;
             // 
             // ConsultarPaquetesTuristicos
             // 
@@ -316,8 +344,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1106, 682);
+            Controls.Add(dataGridViewProductos);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
-            Controls.Add(lstViewProductos);
             Controls.Add(btnLimpiarFiltro);
             Controls.Add(grp_Filtros);
             Controls.Add(buscarPresupuesto);
@@ -327,10 +355,11 @@
             Controls.SetChildIndex(buscarPresupuesto, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(btnLimpiarFiltro, 0);
-            Controls.SetChildIndex(lstViewProductos, 0);
             Controls.SetChildIndex(btnVolverMenuGenerarPresupuestos, 0);
+            Controls.SetChildIndex(dataGridViewProductos, 0);
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             ResumeLayout(false);
         }
 
@@ -346,24 +375,24 @@
         private GroupBox grp_Filtros;
         private Common.Components.BotonEstilizado btnLimpiarFiltro;
         private Common.Components.BotonEstilizado buscarPresupuesto;
-        private ListView lstViewProductos;
-        private ColumnHeader ID;
-        private ColumnHeader Nombre;
-        private ColumnHeader Origen;
-        private ColumnHeader Destino;
-        private ColumnHeader Precio;
-        private ColumnHeader CantidadDisponible;
-        private ColumnHeader FechaSalida;
         private Button btnVolverMenuGenerarPresupuestos;
-        private ColumnHeader FechaLleagada;
         private Label labelDestino;
         private Label labelOrigen;
         private ComboBox comboBoxDestino;
         private ComboBox comboBoxOrigen;
         private Button btnDisableDatePickerFilterFechaHasta;
         private Button btnDisableDatePickerFilterFechaDesde;
-        private ColumnHeader Actividades;
-        private ColumnHeader CapacidadMaxAdultos;
-        private ColumnHeader CapacidadMaxMenores;
+        private DataGridView dataGridViewProductos;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn PrecioUnitario;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn FechaDesde;
+        private DataGridViewTextBoxColumn FechaHasta;
+        private DataGridViewTextBoxColumn Origen;
+        private DataGridViewTextBoxColumn Destino;
+        private DataGridViewTextBoxColumn Actividades;
+        private DataGridViewTextBoxColumn CapacidadMaximaAdultos;
+        private DataGridViewTextBoxColumn CapacidadMaximaMenores;
     }
 }
