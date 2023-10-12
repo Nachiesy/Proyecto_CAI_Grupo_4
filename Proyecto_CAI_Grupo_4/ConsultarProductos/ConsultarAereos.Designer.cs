@@ -48,6 +48,7 @@
             btnVolverMenuGenerarPresupuestos = new Button();
             dataGridViewProductos = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             PrecioUnitarioAdulto = new DataGridViewTextBoxColumn();
             PrecioUnitarioMenor = new DataGridViewTextBoxColumn();
@@ -251,7 +252,7 @@
             dataGridViewProductos.AllowUserToOrderColumns = true;
             dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, PrecioUnitarioAdulto, PrecioUnitarioMenor, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Clase });
+            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitarioAdulto, PrecioUnitarioMenor, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Clase });
             dataGridViewProductos.Location = new Point(27, 372);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.RowHeadersWidth = 82;
@@ -266,7 +267,14 @@
             ID.MinimumWidth = 10;
             ID.Name = "ID";
             ID.ReadOnly = true;
+            ID.Visible = false;
             ID.Width = 250;
+            // 
+            // Codigo
+            // 
+            Codigo.HeaderText = "Codigo";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
             // 
             // Nombre
             // 
@@ -376,6 +384,7 @@
         private Button btnDisableDatePickerFilterFechaDesde;
         private DataGridView dataGridViewProductos;
         private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn PrecioUnitarioAdulto;
         private DataGridViewTextBoxColumn PrecioUnitarioMenor;

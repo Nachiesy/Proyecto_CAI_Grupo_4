@@ -9,6 +9,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Aereos()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "A113",
                 Nombre = "Vuelo 113",
                 PrecioAdultos = 20,
                 PrecioMenores = 10,
@@ -23,6 +24,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Aereos()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "B201",
                 Nombre = "Vuelo 201",
                 PrecioAdultos = 20,
                 PrecioMenores = 10,
@@ -37,6 +39,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Aereos()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "C369",
                 Nombre = "Vuelo 369",
                 PrecioAdultos = 20,
                 PrecioMenores = 10,

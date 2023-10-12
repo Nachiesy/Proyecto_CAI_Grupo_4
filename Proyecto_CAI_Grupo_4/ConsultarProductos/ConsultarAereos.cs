@@ -91,6 +91,7 @@ namespace Proyecto_CAI_Grupo_4
                 DataGridViewRow row = new DataGridViewRow();
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToString() });

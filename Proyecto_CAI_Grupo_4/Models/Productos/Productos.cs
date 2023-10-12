@@ -7,6 +7,8 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
     {
         public Guid Id { get; set; }
 
+        public string Codigo { get; set; }
+
         public string Nombre { get; set; }
 
         public decimal Precio { get; set; }

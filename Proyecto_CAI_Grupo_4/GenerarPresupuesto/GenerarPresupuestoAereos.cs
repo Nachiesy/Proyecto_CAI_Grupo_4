@@ -9,6 +9,14 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoAereos : VistaBase
     {
+        private readonly int idColumnIndex = 0;
+        private readonly int precioAdultosColumnIndex = 3;
+        private readonly int precioMenoresColumnIndex = 4;
+        private readonly int cantidadDisponibleColumnIndex = 5;
+        private readonly int cantidadSeleccionadaAdultosColumnIndex = 6;
+        private readonly int cantidadSeleccionadaMenoresColumnIndex = 7;
+        private readonly int subTotalColumnIndex = 8;
+
         public GenerarPresupuestoAereos() : base(tituloModulo: "Generar Presupuesto > Aéreos")
         {
             InitializeComponent();
@@ -94,6 +102,7 @@ namespace Proyecto_CAI_Grupo_4
                 DataGridViewRow row = new DataGridViewRow();
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToString() });
@@ -115,6 +124,7 @@ namespace Proyecto_CAI_Grupo_4
                 DataGridViewRow row = new DataGridViewRow();
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToString() });
@@ -151,9 +161,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 foreach (DataGridViewRow row in dataGridViewProductos.SelectedRows)
                 {
-                    var idCellIndex = 0;
-
-                    var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
 
                     var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
 
@@ -194,12 +202,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
                 {
-                    var idCellIndex = 0;
-                    var cantidadSeleccionadaAdultosColumnIndex = 5;
-                    var cantidadSeleccionadaMenoresColumnIndex = 6;
-                    var subTotalColumnIndex = 7;
-
-                    var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
 
                     var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
 
@@ -260,9 +263,7 @@ namespace Proyecto_CAI_Grupo_4
 
             foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
             {
-                var idCellIndex = 0;
-
-                var selectedId = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+                var selectedId = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
 
                 idList.Add(selectedId);
             }
@@ -272,9 +273,6 @@ namespace Proyecto_CAI_Grupo_4
 
         private void dataGridViewProductosSeleccionados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            var cantidadSeleccionadaAdultosColumnIndex = 5;
-            var cantidadSeleccionadaMenoresColumnIndex = 6;
-
             var precioAdultosChanged = e.ColumnIndex == cantidadSeleccionadaAdultosColumnIndex;
             var precioMenoresChanged = e.ColumnIndex == cantidadSeleccionadaMenoresColumnIndex;
 
@@ -283,22 +281,18 @@ namespace Proyecto_CAI_Grupo_4
                 var dataGridView = sender as DataGridView;
 
                 // ID
-                var idColumnIndex = 0;
                 var idCell = dataGridView.Rows[e.RowIndex].Cells[idColumnIndex];
                 var id = idCell.Value.ToString();
 
                 // Precio Adultos
-                var precioAdultosColumnIndex = 2;
                 var precioAdultosCell = dataGridView.Rows[e.RowIndex].Cells[precioAdultosColumnIndex];
                 var precioAdultos = decimal.Parse(precioAdultosCell.Value.ToString());
 
                 // Precio Menores
-                var precioMenoresColumnIndex = 3;
                 var precioMenoresCell = dataGridView.Rows[e.RowIndex].Cells[precioMenoresColumnIndex];
                 var precioMenores = decimal.Parse(precioMenoresCell.Value.ToString());
 
                 // Cantidad Disponible
-                var cantidadDisponibleColumnIndex = 4;
                 var cantidadDisponibleCell = dataGridView.Rows[e.RowIndex].Cells[cantidadDisponibleColumnIndex];
                 var cantidadDisponible = int.Parse(cantidadDisponibleCell.Value.ToString());
 
@@ -311,7 +305,6 @@ namespace Proyecto_CAI_Grupo_4
                 var isCantidadSeleccionadaMenoresValid = int.TryParse(cantidadSeleccionadaMenoresCell.Value.ToString(), out int cantidadSeleccionadaMenores);
 
                 // SubTotal
-                var subTotalColumnIndex = 7;
                 var subTotalCell = dataGridView.Rows[e.RowIndex].Cells[subTotalColumnIndex];
 
                 if (precioAdultosChanged)

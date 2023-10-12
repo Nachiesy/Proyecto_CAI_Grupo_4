@@ -34,6 +34,7 @@
             grp_VuelosDisponibles = new GroupBox();
             dataGridViewProductos = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             PrecioUnitarioAdulto = new DataGridViewTextBoxColumn();
             PrecioUnitarioMenor = new DataGridViewTextBoxColumn();
@@ -45,19 +46,6 @@
             Clase = new DataGridViewTextBoxColumn();
             grp_VuelosSeleccionados = new GroupBox();
             dataGridViewProductosSeleccionados = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            PrecioUnitarioMenores = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            CantidadSeleccionadaAdulto = new DataGridViewTextBoxColumn();
-            CantidadSeleccionadaMenores = new DataGridViewTextBoxColumn();
-            SubTotal = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
             btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
             grp_Filtros = new GroupBox();
             btnDisableDatePickerFilterFechaDesde = new Button();
@@ -76,6 +64,20 @@
             txtBoxFiltroPrecioHasta = new TextBox();
             labelFiltroPrecioHasta = new Label();
             txtBoxFiltroPrecioDesde = new TextBox();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            PrecioUnitarioMenores = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            CantidadSeleccionadaAdulto = new DataGridViewTextBoxColumn();
+            CantidadSeleccionadaMenores = new DataGridViewTextBoxColumn();
+            SubTotal = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
             grp_VuelosDisponibles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             grp_VuelosSeleccionados.SuspendLayout();
@@ -146,7 +148,7 @@
             dataGridViewProductos.AllowUserToOrderColumns = true;
             dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, PrecioUnitarioAdulto, PrecioUnitarioMenor, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Clase });
+            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitarioAdulto, PrecioUnitarioMenor, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Clase });
             dataGridViewProductos.Location = new Point(6, 22);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.RowHeadersWidth = 82;
@@ -161,7 +163,14 @@
             ID.MinimumWidth = 10;
             ID.Name = "ID";
             ID.ReadOnly = true;
+            ID.Visible = false;
             ID.Width = 250;
+            // 
+            // Codigo
+            // 
+            Codigo.HeaderText = "Codigo";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
             // 
             // Nombre
             // 
@@ -244,7 +253,7 @@
             dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
             dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, PrecioUnitarioMenores, dataGridViewTextBoxColumn4, CantidadSeleccionadaAdulto, CantidadSeleccionadaMenores, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9 });
+            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Column1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, PrecioUnitarioMenores, dataGridViewTextBoxColumn4, CantidadSeleccionadaAdulto, CantidadSeleccionadaMenores, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9 });
             dataGridViewProductosSeleccionados.Location = new Point(6, 22);
             dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
             dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
@@ -253,95 +262,6 @@
             dataGridViewProductosSeleccionados.Size = new Size(964, 194);
             dataGridViewProductosSeleccionados.TabIndex = 39;
             dataGridViewProductosSeleccionados.CellValueChanged += dataGridViewProductosSeleccionados_CellValueChanged;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "ID";
-            dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Width = 250;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            dataGridViewTextBoxColumn2.MinimumWidth = 10;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Precio Unitario Adultos";
-            dataGridViewTextBoxColumn3.MinimumWidth = 10;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // PrecioUnitarioMenores
-            // 
-            PrecioUnitarioMenores.HeaderText = "Precio Unitario Menores";
-            PrecioUnitarioMenores.Name = "PrecioUnitarioMenores";
-            PrecioUnitarioMenores.ReadOnly = true;
-            PrecioUnitarioMenores.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Cantidad Disponible";
-            dataGridViewTextBoxColumn4.MinimumWidth = 10;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // CantidadSeleccionadaAdulto
-            // 
-            CantidadSeleccionadaAdulto.HeaderText = "Cantidad Seleccionada Adultos";
-            CantidadSeleccionadaAdulto.Name = "CantidadSeleccionadaAdulto";
-            CantidadSeleccionadaAdulto.Width = 200;
-            // 
-            // CantidadSeleccionadaMenores
-            // 
-            CantidadSeleccionadaMenores.HeaderText = "Cantidad Seleccionada Menores";
-            CantidadSeleccionadaMenores.Name = "CantidadSeleccionadaMenores";
-            CantidadSeleccionadaMenores.Width = 200;
-            // 
-            // SubTotal
-            // 
-            SubTotal.HeaderText = "Sub Total";
-            SubTotal.Name = "SubTotal";
-            SubTotal.ReadOnly = true;
-            SubTotal.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Fecha Salida";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Fecha Llegada";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            dataGridViewTextBoxColumn6.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.HeaderText = "Origen";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.HeaderText = "Destino";
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.HeaderText = "Clase";
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // btnVolverAlMenuGenerarPresupuestos
             // 
@@ -533,6 +453,102 @@
             txtBoxFiltroPrecioDesde.Size = new Size(126, 23);
             txtBoxFiltroPrecioDesde.TabIndex = 18;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "ID";
+            dataGridViewTextBoxColumn1.MinimumWidth = 10;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.Visible = false;
+            dataGridViewTextBoxColumn1.Width = 250;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Codigo";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Nombre";
+            dataGridViewTextBoxColumn2.MinimumWidth = 10;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "Precio Unitario Adultos";
+            dataGridViewTextBoxColumn3.MinimumWidth = 10;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumn3.Width = 200;
+            // 
+            // PrecioUnitarioMenores
+            // 
+            PrecioUnitarioMenores.HeaderText = "Precio Unitario Menores";
+            PrecioUnitarioMenores.Name = "PrecioUnitarioMenores";
+            PrecioUnitarioMenores.ReadOnly = true;
+            PrecioUnitarioMenores.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.HeaderText = "Cantidad Disponible";
+            dataGridViewTextBoxColumn4.MinimumWidth = 10;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            dataGridViewTextBoxColumn4.Width = 200;
+            // 
+            // CantidadSeleccionadaAdulto
+            // 
+            CantidadSeleccionadaAdulto.HeaderText = "Cantidad Seleccionada Adultos";
+            CantidadSeleccionadaAdulto.Name = "CantidadSeleccionadaAdulto";
+            CantidadSeleccionadaAdulto.Width = 200;
+            // 
+            // CantidadSeleccionadaMenores
+            // 
+            CantidadSeleccionadaMenores.HeaderText = "Cantidad Seleccionada Menores";
+            CantidadSeleccionadaMenores.Name = "CantidadSeleccionadaMenores";
+            CantidadSeleccionadaMenores.Width = 200;
+            // 
+            // SubTotal
+            // 
+            SubTotal.HeaderText = "Sub Total";
+            SubTotal.Name = "SubTotal";
+            SubTotal.ReadOnly = true;
+            SubTotal.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.HeaderText = "Fecha Salida";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.HeaderText = "Fecha Llegada";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
+            dataGridViewTextBoxColumn6.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            dataGridViewTextBoxColumn7.HeaderText = "Origen";
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewTextBoxColumn8.HeaderText = "Destino";
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            dataGridViewTextBoxColumn9.HeaderText = "Clase";
+            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
             // GenerarPresupuestoAereos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -568,29 +584,6 @@
         private DataGridView dataGridViewProductos;
         private DataGridView dataGridViewProductosSeleccionados;
         private Common.Components.BotonEstilizado btnVolverAlMenuGenerarPresupuestos;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn PrecioUnitarioAdulto;
-        private DataGridViewTextBoxColumn PrecioUnitarioMenor;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn FechaDesde;
-        private DataGridViewTextBoxColumn FechaHasta;
-        private DataGridViewTextBoxColumn Origen;
-        private DataGridViewTextBoxColumn Destino;
-        private DataGridViewTextBoxColumn Clase;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn PrecioUnitarioMenores;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn CantidadSeleccionadaAdulto;
-        private DataGridViewTextBoxColumn CantidadSeleccionadaMenores;
-        private DataGridViewTextBoxColumn SubTotal;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private GroupBox grp_Filtros;
         private Button btnDisableDatePickerFilterFechaDesde;
         private Button btnDisableDatePickerFilterFechaHasta;
@@ -608,5 +601,30 @@
         private TextBox txtBoxFiltroPrecioHasta;
         private Label labelFiltroPrecioHasta;
         private TextBox txtBoxFiltroPrecioDesde;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Codigo;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn PrecioUnitarioAdulto;
+        private DataGridViewTextBoxColumn PrecioUnitarioMenor;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn FechaDesde;
+        private DataGridViewTextBoxColumn FechaHasta;
+        private DataGridViewTextBoxColumn Origen;
+        private DataGridViewTextBoxColumn Destino;
+        private DataGridViewTextBoxColumn Clase;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn PrecioUnitarioMenores;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn CantidadSeleccionadaAdulto;
+        private DataGridViewTextBoxColumn CantidadSeleccionadaMenores;
+        private DataGridViewTextBoxColumn SubTotal;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
     }
 }
