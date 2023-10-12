@@ -407,7 +407,7 @@
             // 
             // Codigo
             // 
-            Codigo.HeaderText = "Codigo";
+            Codigo.HeaderText = "Código";
             Codigo.Name = "Codigo";
             Codigo.ReadOnly = true;
             // 
@@ -484,7 +484,7 @@
             // 
             // Column4
             // 
-            Column4.HeaderText = "Codigo";
+            Column4.HeaderText = "Código";
             Column4.Name = "Column4";
             Column4.ReadOnly = true;
             // 

@@ -33,17 +33,6 @@
             btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
             grp_VuelosDisponibles = new GroupBox();
             dataGridViewProductos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            PrecioUnitarioAdulto = new DataGridViewTextBoxColumn();
-            PrecioUnitarioMenor = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            FechaDesde = new DataGridViewTextBoxColumn();
-            FechaHasta = new DataGridViewTextBoxColumn();
-            Origen = new DataGridViewTextBoxColumn();
-            Destino = new DataGridViewTextBoxColumn();
-            Clase = new DataGridViewTextBoxColumn();
             grp_VuelosSeleccionados = new GroupBox();
             dataGridViewProductosSeleccionados = new DataGridView();
             btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
@@ -64,6 +53,17 @@
             txtBoxFiltroPrecioHasta = new TextBox();
             labelFiltroPrecioHasta = new Label();
             txtBoxFiltroPrecioDesde = new TextBox();
+            ID = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            PrecioUnitarioAdulto = new DataGridViewTextBoxColumn();
+            PrecioUnitarioMenor = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            FechaDesde = new DataGridViewTextBoxColumn();
+            FechaHasta = new DataGridViewTextBoxColumn();
+            Origen = new DataGridViewTextBoxColumn();
+            Destino = new DataGridViewTextBoxColumn();
+            Clase = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -156,83 +156,6 @@
             dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewProductos.Size = new Size(964, 194);
             dataGridViewProductos.TabIndex = 38;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            ID.Width = 250;
-            // 
-            // Codigo
-            // 
-            Codigo.HeaderText = "Codigo";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // PrecioUnitarioAdulto
-            // 
-            PrecioUnitarioAdulto.HeaderText = "Precio Unitario Adultos";
-            PrecioUnitarioAdulto.MinimumWidth = 10;
-            PrecioUnitarioAdulto.Name = "PrecioUnitarioAdulto";
-            PrecioUnitarioAdulto.ReadOnly = true;
-            PrecioUnitarioAdulto.Width = 200;
-            // 
-            // PrecioUnitarioMenor
-            // 
-            PrecioUnitarioMenor.HeaderText = "Precio Unitario Menores";
-            PrecioUnitarioMenor.Name = "PrecioUnitarioMenor";
-            PrecioUnitarioMenor.ReadOnly = true;
-            PrecioUnitarioMenor.Width = 200;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad Disponible";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 200;
-            // 
-            // FechaDesde
-            // 
-            FechaDesde.HeaderText = "Fecha Salida";
-            FechaDesde.Name = "FechaDesde";
-            FechaDesde.ReadOnly = true;
-            // 
-            // FechaHasta
-            // 
-            FechaHasta.HeaderText = "Fecha Llegada";
-            FechaHasta.Name = "FechaHasta";
-            FechaHasta.ReadOnly = true;
-            FechaHasta.Width = 200;
-            // 
-            // Origen
-            // 
-            Origen.HeaderText = "Origen";
-            Origen.Name = "Origen";
-            Origen.ReadOnly = true;
-            // 
-            // Destino
-            // 
-            Destino.HeaderText = "Destino";
-            Destino.Name = "Destino";
-            Destino.ReadOnly = true;
-            // 
-            // Clase
-            // 
-            Clase.HeaderText = "Clase";
-            Clase.Name = "Clase";
-            Clase.ReadOnly = true;
             // 
             // grp_VuelosSeleccionados
             // 
@@ -453,6 +376,83 @@
             txtBoxFiltroPrecioDesde.Size = new Size(126, 23);
             txtBoxFiltroPrecioDesde.TabIndex = 18;
             // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            ID.Width = 250;
+            // 
+            // Codigo
+            // 
+            Codigo.HeaderText = "Código";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 10;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // PrecioUnitarioAdulto
+            // 
+            PrecioUnitarioAdulto.HeaderText = "Precio Unitario Adultos";
+            PrecioUnitarioAdulto.MinimumWidth = 10;
+            PrecioUnitarioAdulto.Name = "PrecioUnitarioAdulto";
+            PrecioUnitarioAdulto.ReadOnly = true;
+            PrecioUnitarioAdulto.Width = 200;
+            // 
+            // PrecioUnitarioMenor
+            // 
+            PrecioUnitarioMenor.HeaderText = "Precio Unitario Menores";
+            PrecioUnitarioMenor.Name = "PrecioUnitarioMenor";
+            PrecioUnitarioMenor.ReadOnly = true;
+            PrecioUnitarioMenor.Width = 200;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad Disponible";
+            Cantidad.MinimumWidth = 10;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 200;
+            // 
+            // FechaDesde
+            // 
+            FechaDesde.HeaderText = "Fecha Salida";
+            FechaDesde.Name = "FechaDesde";
+            FechaDesde.ReadOnly = true;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.HeaderText = "Fecha Llegada";
+            FechaHasta.Name = "FechaHasta";
+            FechaHasta.ReadOnly = true;
+            FechaHasta.Width = 200;
+            // 
+            // Origen
+            // 
+            Origen.HeaderText = "Origen";
+            Origen.Name = "Origen";
+            Origen.ReadOnly = true;
+            // 
+            // Destino
+            // 
+            Destino.HeaderText = "Destino";
+            Destino.Name = "Destino";
+            Destino.ReadOnly = true;
+            // 
+            // Clase
+            // 
+            Clase.HeaderText = "Clase";
+            Clase.Name = "Clase";
+            Clase.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             dataGridViewTextBoxColumn1.HeaderText = "ID";
@@ -464,7 +464,7 @@
             // 
             // Column1
             // 
-            Column1.HeaderText = "Codigo";
+            Column1.HeaderText = "Código";
             Column1.Name = "Column1";
             Column1.ReadOnly = true;
             // 

@@ -272,7 +272,7 @@
             // 
             // Codigo
             // 
-            Codigo.HeaderText = "Codigo";
+            Codigo.HeaderText = "Código";
             Codigo.Name = "Codigo";
             Codigo.ReadOnly = true;
             // 
