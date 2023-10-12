@@ -57,14 +57,15 @@
             label1.Location = new Point(19, 55);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(202, 32);
+            label1.Size = new Size(130, 32);
             label1.TabIndex = 2;
-            label1.Text = "Nro. Presupuesto:";
+            label1.Text = "ID Reserva:";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(442, 55);
+            label2.Location = new Point(396, 55);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(233, 32);
@@ -83,8 +84,9 @@
             // 
             // cbxTipodoc
             // 
+            cbxTipodoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxTipodoc.FormattingEnabled = true;
-            cbxTipodoc.Location = new Point(663, 49);
+            cbxTipodoc.Location = new Point(637, 47);
             cbxTipodoc.Margin = new Padding(4, 2, 4, 2);
             cbxTipodoc.Name = "cbxTipodoc";
             cbxTipodoc.Size = new Size(242, 40);
@@ -92,7 +94,7 @@
             // 
             // nroPresupuestotxt
             // 
-            nroPresupuestotxt.Location = new Point(214, 49);
+            nroPresupuestotxt.Location = new Point(157, 48);
             nroPresupuestotxt.Margin = new Padding(4, 2, 4, 2);
             nroPresupuestotxt.Name = "nroPresupuestotxt";
             nroPresupuestotxt.Size = new Size(201, 39);
@@ -100,7 +102,7 @@
             // 
             // txbDocumento
             // 
-            txbDocumento.Location = new Point(1157, 49);
+            txbDocumento.Location = new Point(1175, 49);
             txbDocumento.Margin = new Padding(4, 2, 4, 2);
             txbDocumento.Name = "txbDocumento";
             txbDocumento.Size = new Size(227, 39);
@@ -122,7 +124,7 @@
             // 
             // nropresup
             // 
-            nropresup.Text = "Nro. Presupuesto";
+            nropresup.Text = "ID Reserva";
             nropresup.Width = 300;
             // 
             // doccliente
@@ -172,7 +174,7 @@
             btn_Volver.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Volver.ForeColor = Color.Black;
             btn_Volver.Location = new Point(9, 636);
-            btn_Volver.Margin = new Padding(6, 6, 6, 6);
+            btn_Volver.Margin = new Padding(6);
             btn_Volver.Name = "btn_Volver";
             btn_Volver.Size = new Size(979, 85);
             btn_Volver.TabIndex = 4;
@@ -188,7 +190,7 @@
             btn_ConfirmarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_ConfirmarReserva.ForeColor = Color.Black;
             btn_ConfirmarReserva.Location = new Point(999, 636);
-            btn_ConfirmarReserva.Margin = new Padding(6, 6, 6, 6);
+            btn_ConfirmarReserva.Margin = new Padding(6);
             btn_ConfirmarReserva.Name = "btn_ConfirmarReserva";
             btn_ConfirmarReserva.Size = new Size(984, 85);
             btn_ConfirmarReserva.TabIndex = 4;
@@ -207,9 +209,9 @@
             grupoFiltros.Controls.Add(label3);
             grupoFiltros.Controls.Add(cbxTipodoc);
             grupoFiltros.Location = new Point(22, 247);
-            grupoFiltros.Margin = new Padding(6, 6, 6, 6);
+            grupoFiltros.Margin = new Padding(6);
             grupoFiltros.Name = "grupoFiltros";
-            grupoFiltros.Padding = new Padding(6, 6, 6, 6);
+            grupoFiltros.Padding = new Padding(6);
             grupoFiltros.Size = new Size(1993, 128);
             grupoFiltros.TabIndex = 9;
             grupoFiltros.TabStop = false;
@@ -223,7 +225,7 @@
             btn_LimpiarFiltros.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_LimpiarFiltros.ForeColor = Color.Black;
             btn_LimpiarFiltros.Location = new Point(1725, 28);
-            btn_LimpiarFiltros.Margin = new Padding(6, 6, 6, 6);
+            btn_LimpiarFiltros.Margin = new Padding(6);
             btn_LimpiarFiltros.Name = "btn_LimpiarFiltros";
             btn_LimpiarFiltros.Size = new Size(256, 85);
             btn_LimpiarFiltros.TabIndex = 4;
@@ -239,7 +241,7 @@
             btn_FiltrarPresupuestos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_FiltrarPresupuestos.ForeColor = Color.Black;
             btn_FiltrarPresupuestos.Location = new Point(1449, 28);
-            btn_FiltrarPresupuestos.Margin = new Padding(6, 6, 6, 6);
+            btn_FiltrarPresupuestos.Margin = new Padding(6);
             btn_FiltrarPresupuestos.Name = "btn_FiltrarPresupuestos";
             btn_FiltrarPresupuestos.Size = new Size(266, 85);
             btn_FiltrarPresupuestos.TabIndex = 4;

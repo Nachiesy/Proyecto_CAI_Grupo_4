@@ -364,7 +364,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(503, 53);
+            label2.Location = new Point(491, 52);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(307, 38);
@@ -379,9 +379,9 @@
             label1.Location = new Point(19, 53);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(269, 38);
+            label1.Size = new Size(240, 38);
             label1.TabIndex = 2;
-            label1.Text = "Nro. Presupuesto:";
+            label1.Text = "ID Presupuesto:";
             // 
             // btn_GenerarReserva
             // 

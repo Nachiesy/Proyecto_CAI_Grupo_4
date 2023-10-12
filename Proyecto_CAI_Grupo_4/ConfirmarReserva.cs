@@ -151,5 +151,10 @@ namespace Proyecto_CAI_Grupo_4
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

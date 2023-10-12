@@ -235,7 +235,7 @@ namespace Proyecto_CAI_Grupo_4
 
             if (listPresupuestos.SelectedItems.Count > 0)
             {
-                
+
 
                 ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
                 reservaselct.Codigo = int.Parse(presupuesto.SubItems[0].Text);
