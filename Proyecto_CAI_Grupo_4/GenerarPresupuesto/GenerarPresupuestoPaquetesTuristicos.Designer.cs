@@ -62,6 +62,8 @@
             Origen = new DataGridViewTextBoxColumn();
             Destino = new DataGridViewTextBoxColumn();
             Actividades = new DataGridViewTextBoxColumn();
+            CapacidadMaximaAdultos = new DataGridViewTextBoxColumn();
+            CapacidadMaximaMenores = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
@@ -73,6 +75,8 @@
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
             grp_Filtros.SuspendLayout();
             grp_VuelosDisponibles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
@@ -318,7 +322,7 @@
             dataGridViewProductos.AllowUserToOrderColumns = true;
             dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Actividades });
+            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Actividades, CapacidadMaximaAdultos, CapacidadMaximaMenores });
             dataGridViewProductos.Location = new Point(6, 22);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.RowHeadersWidth = 82;
@@ -346,7 +350,7 @@
             dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
             dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, Column1 });
+            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, Column1, Column2, Column3 });
             dataGridViewProductosSeleccionados.Location = new Point(6, 22);
             dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
             dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
@@ -434,6 +438,20 @@
             Actividades.ReadOnly = true;
             Actividades.Width = 200;
             // 
+            // CapacidadMaximaAdultos
+            // 
+            CapacidadMaximaAdultos.HeaderText = "Capacidad Maxima Adultos";
+            CapacidadMaximaAdultos.Name = "CapacidadMaximaAdultos";
+            CapacidadMaximaAdultos.ReadOnly = true;
+            CapacidadMaximaAdultos.Width = 300;
+            // 
+            // CapacidadMaximaMenores
+            // 
+            CapacidadMaximaMenores.HeaderText = "Capacidad Maxima Menores";
+            CapacidadMaximaMenores.Name = "CapacidadMaximaMenores";
+            CapacidadMaximaMenores.ReadOnly = true;
+            CapacidadMaximaMenores.Width = 300;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             dataGridViewTextBoxColumn1.HeaderText = "ID";
@@ -510,6 +528,20 @@
             Column1.ReadOnly = true;
             Column1.Width = 200;
             // 
+            // Column2
+            // 
+            Column2.HeaderText = "Capacidad Maxima Adultos";
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            Column2.Width = 300;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Capacidad Maxima Menores";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            Column3.Width = 300;
+            // 
             // GenerarPresupuestoPaquetesTuristicos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -571,6 +603,8 @@
         private DataGridViewTextBoxColumn Origen;
         private DataGridViewTextBoxColumn Destino;
         private DataGridViewTextBoxColumn Actividades;
+        private DataGridViewTextBoxColumn CapacidadMaximaAdultos;
+        private DataGridViewTextBoxColumn CapacidadMaximaMenores;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -582,5 +616,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
     }
 }

@@ -169,6 +169,8 @@ namespace Proyecto_CAI_Grupo_4.Managers
                         Nombre = "Tobogan Acuatico",
                     },
                 },
+                CapacidadMaximaAdultos = 2,
+                CapacidadMaximaMenores = 2,
             },
             new PaquetesTuristicos()
             {
@@ -192,6 +194,8 @@ namespace Proyecto_CAI_Grupo_4.Managers
                         Nombre = "Playa",
                     },
                 },
+                CapacidadMaximaAdultos = 10,
+                CapacidadMaximaMenores = 20,
             },
             new PaquetesTuristicos()
             {
@@ -215,6 +219,8 @@ namespace Proyecto_CAI_Grupo_4.Managers
                         Nombre = "Tour por Venecia",
                     },
                 },
+                CapacidadMaximaAdultos = 4,
+                CapacidadMaximaMenores = 6,
             },
             new PaquetesTuristicos()
             {
@@ -238,6 +244,8 @@ namespace Proyecto_CAI_Grupo_4.Managers
                         Nombre = "Viaje a la Montaña",
                     },
                 },
+                CapacidadMaximaAdultos = 6,
+                CapacidadMaximaMenores = 8,
             },
         };
 

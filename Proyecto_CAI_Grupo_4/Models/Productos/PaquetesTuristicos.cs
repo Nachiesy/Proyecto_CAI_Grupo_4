@@ -14,6 +14,10 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public IEnumerable<PaquetesTuristicosActividades> Actividades { get; set; }
 
+        public int CapacidadMaximaAdultos { get; set; }
+
+        public int CapacidadMaximaMenores { get; set; }
+
         public string GetActividades()
         {
             var actividades = string.Empty;

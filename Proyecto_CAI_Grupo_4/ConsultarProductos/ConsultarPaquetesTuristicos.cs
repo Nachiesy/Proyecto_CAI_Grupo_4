@@ -98,6 +98,8 @@ namespace Proyecto_CAI_Grupo_4
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
                 row.SubItems.Add(item.FechaHasta.ToFormDate());
                 row.SubItems.Add(item.GetActividades());
+                row.SubItems.Add(item.CapacidadMaximaAdultos.ToString());
+                row.SubItems.Add(item.CapacidadMaximaMenores.ToString());
 
                 listView.Items.Add(row);
             }

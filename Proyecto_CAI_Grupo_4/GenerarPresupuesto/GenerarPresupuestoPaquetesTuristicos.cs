@@ -102,6 +102,8 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetActividades() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CapacidadMaximaAdultos });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CapacidadMaximaMenores });
 
                 dataGridViewProductos.Rows.Add(row);
             }
@@ -134,6 +136,8 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetActividades() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CapacidadMaximaAdultos });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CapacidadMaximaMenores });
 
                 dataGridViewProductosSeleccionados.Rows.Add(row);
             }
