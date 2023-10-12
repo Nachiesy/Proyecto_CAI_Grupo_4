@@ -2,11 +2,11 @@
 {
     public class AereosFilterDto : ProductosFilterDto
     {
-        public string Origen { get; set; }
+        public int? Origen { get; set; }
 
-        public string Destino { get; set; }
+        public int? Destino { get; set; }
 
-        public int TipoDeClaseAerea { get; set; }
+        public int? TipoDeClaseAerea { get; set; }
     }
 
     public class AereosFilter : ProductosFilter
@@ -20,10 +20,10 @@
             TipoDeClaseAerea = dto.TipoDeClaseAerea;
         }
 
-        public string Origen { get; set; }
+        public int? Origen { get; set; }
 
-        public string Destino { get; set; }
+        public int? Destino { get; set; }
 
-        public int TipoDeClaseAerea { get; set; }
+        public int? TipoDeClaseAerea { get; set; }
     }
 }

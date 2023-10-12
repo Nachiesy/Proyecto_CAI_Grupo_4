@@ -12,9 +12,9 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public int CantidadSeleccionadaMenores { get; set; }
 
-        public string Origen { get; set; }
+        public AereosOrigenEnum Origen { get; set; }
 
-        public string Destino { get; set; }
+        public AereosDestinoEnum Destino { get; set; }
 
         public DateTime FechaDeSalida { get; set; }
 
@@ -22,16 +22,40 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public TipoDeClaseAereaEnum TipoDeClaseAerea { get; set; }
     }
-}
 
-public enum TipoDeClaseAereaEnum
-{
-    [Description("Turista")]
-    turista,
+    public enum TipoDeClaseAereaEnum
+    {
+        [Description("Turista")]
+        turista,
 
-    [Description("Ejecutivo")]
-    ejecutivo,
+        [Description("Ejecutivo")]
+        ejecutivo,
 
-    [Description("Primera Clase")]
-    primeraClase,
+        [Description("Primera Clase")]
+        primeraClase,
+    }
+
+    public enum AereosOrigenEnum
+    {
+        [Description("Buenos Aires")]
+        buenosAires,
+
+        [Description("Madrid")]
+        madrid,
+
+        [Description("Londres")]
+        londres,
+    }
+
+    public enum AereosDestinoEnum
+    {
+        [Description("Montevideo")]
+        montevideo,
+
+        [Description("Paris")]
+        paris,
+
+        [Description("San Francisco")]
+        sanFrancisco,
+    }
 }

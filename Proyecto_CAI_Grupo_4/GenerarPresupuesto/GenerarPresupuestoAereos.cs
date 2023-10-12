@@ -19,6 +19,16 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
+            foreach (AereosOrigenEnum value in Enum.GetValues(typeof(AereosOrigenEnum)))
+            {
+                comboBoxOrigen.Items.Add(value.GetDescription());
+            }
+
+            foreach (AereosDestinoEnum value in Enum.GetValues(typeof(AereosDestinoEnum)))
+            {
+                comboBoxDestino.Items.Add(value.GetDescription());
+            }
+
             AddProductosToDataGridViewProductos(GenerarPresupuestosManager.aereos.Where(x => x.Cantidad > 0));
 
             AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.aereosElegidos, true);
@@ -30,8 +40,10 @@ namespace Proyecto_CAI_Grupo_4
             {
                 PrecioDesde = txtBoxFiltroPrecioDesde.Text,
                 PrecioHasta = txtBoxFiltroPrecioHasta.Text,
-                FechaDesde = datePickerFilterFechaDesde.Value,
-                FechaHasta = datePickerFilterFechaHasta.Value,
+                FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
+                FechaHasta = datePickerFilterFechaHasta.Enabled ? datePickerFilterFechaHasta.Value : null,
+                Origen = comboBoxOrigen.SelectedIndex != -1 ? comboBoxOrigen.SelectedIndex : null,
+                Destino = comboBoxDestino.SelectedIndex != -1 ? comboBoxDestino.SelectedIndex : null,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -48,8 +60,10 @@ namespace Proyecto_CAI_Grupo_4
                     .Where(x => x.Cantidad > 0
                                 && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (x.FechaDeSalida == filter.FechaDesde)
-                                && (x.FechaDeLlegada == filter.FechaHasta));
+                                && (!filter.FechaDesde.HasValue || x.FechaDeSalida == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.FechaDeLlegada == filter.FechaHasta)
+                                && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
+                                && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino));
 
                 dataGridViewProductos.Rows.Clear();
 
@@ -67,7 +81,7 @@ namespace Proyecto_CAI_Grupo_4
             var messages = string.Empty;
 
             messages += FiltrosManager.ValidarPrecios(presupuesto);
-               
+
             messages += FiltrosManager.ValidarFechas(presupuesto);
 
             return messages;
@@ -86,8 +100,8 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeClaseAerea.GetDescription() });
 
                 dataGridViewProductos.Rows.Add(row);
@@ -121,8 +135,8 @@ namespace Proyecto_CAI_Grupo_4
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeClaseAerea.GetDescription() });
 
                 dataGridViewProductosSeleccionados.Rows.Add(row);
@@ -232,6 +246,8 @@ namespace Proyecto_CAI_Grupo_4
             txtBoxFiltroPrecioHasta.Clear();
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
+            comboBoxOrigen.SelectedIndex = -1;
+            comboBoxDestino.SelectedIndex = -1;
 
             dataGridViewProductos.Rows.Clear();
 
@@ -358,6 +374,34 @@ namespace Proyecto_CAI_Grupo_4
             }
 
             return string.Empty;
+        }
+
+        private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)
+        {
+            if (datePickerFilterFechaDesde.Enabled)
+            {
+                datePickerFilterFechaDesde.Enabled = false;
+                btnDisableDatePickerFilterFechaDesde.Text = "Habilitar";
+            }
+            else
+            {
+                datePickerFilterFechaDesde.Enabled = true;
+                btnDisableDatePickerFilterFechaDesde.Text = "Deshabilitar";
+            }
+        }
+
+        private void btnDisableDatePickerFilterFechaHasta_Click(object sender, EventArgs e)
+        {
+            if (datePickerFilterFechaHasta.Enabled)
+            {
+                datePickerFilterFechaHasta.Enabled = false;
+                btnDisableDatePickerFilterFechaHasta.Text = "Habilitar";
+            }
+            else
+            {
+                datePickerFilterFechaHasta.Enabled = true;
+                btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
+            }
         }
     }
 }
