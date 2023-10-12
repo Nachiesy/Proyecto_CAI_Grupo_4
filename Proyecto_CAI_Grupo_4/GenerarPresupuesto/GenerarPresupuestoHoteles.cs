@@ -109,6 +109,7 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeHabitacion.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Calificacion.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadDePersonas.ToString() });
 
                 dataGridViewProductos.Rows.Add(row);
             }
@@ -141,6 +142,7 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeHabitacion.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Calificacion.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadDePersonas.ToString() });
 
                 dataGridViewProductosSeleccionados.Rows.Add(row);
             }

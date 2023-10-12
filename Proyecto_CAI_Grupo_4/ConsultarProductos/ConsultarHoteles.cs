@@ -34,7 +34,7 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxCalificacion.Items.Add(value.GetDescription());
             }
 
-            AddProductosToListView(GenerarPresupuestosManager.hoteles, lstViewProductos);
+            AddProductosToDataGridView(GenerarPresupuestosManager.hoteles);
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -69,9 +69,9 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.TipoDeHabitacion.HasValue || (int)x.TipoDeHabitacion == filter.TipoDeHabitacion)
                                 && (!filter.Calificacion.HasValue || (int)x.Calificacion == filter.Calificacion));
 
-                lstViewProductos.Items.Clear();
+                dataGridViewProductos.Rows.Clear();
 
-                AddProductosToListView(productos, lstViewProductos);
+                AddProductosToDataGridView(productos);
 
                 if (!productos.Any())
                 {
@@ -91,22 +91,24 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosToListView(IEnumerable<Hoteles> listToAdd, ListView listView)
+        private void AddProductosToDataGridView(IEnumerable<Hoteles> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                var row = new ListViewItem(item.Id.ToString());
+                DataGridViewRow row = new DataGridViewRow();
 
-                row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Ciudad.GetDescription());
-                row.SubItems.Add(item.Precio.ToString());
-                row.SubItems.Add(item.Cantidad.ToString());
-                row.SubItems.Add(item.FechaDesde.ToFormDate());
-                row.SubItems.Add(item.FechaHasta.ToFormDate());
-                row.SubItems.Add(item.TipoDeHabitacion.GetDescription());
-                row.SubItems.Add(item.Calificacion.GetDescription());
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeHabitacion.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Calificacion.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadDePersonas.ToString() });
 
-                listView.Items.Add(row);
+                dataGridViewProductos.Rows.Add(row);
             }
         }
 
@@ -120,9 +122,9 @@ namespace Proyecto_CAI_Grupo_4
             comboBoxTipoDeHabitacion.SelectedIndex = -1;
             comboBoxCalificacion.SelectedIndex = -1;
 
-            lstViewProductos.Items.Clear();
+            dataGridViewProductos.Rows.Clear();
 
-            AddProductosToListView(GenerarPresupuestosManager.hoteles, lstViewProductos);
+            AddProductosToDataGridView(GenerarPresupuestosManager.hoteles);
         }
 
         private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)

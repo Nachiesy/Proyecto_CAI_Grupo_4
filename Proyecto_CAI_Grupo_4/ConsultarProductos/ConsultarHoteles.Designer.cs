@@ -47,18 +47,20 @@
             btnDisableDatePickerFilterFechaDesde = new Button();
             btnLimpiarFiltro = new Common.Components.BotonEstilizado();
             buscarPresupuesto = new Common.Components.BotonEstilizado();
-            lstViewProductos = new ListView();
-            ID = new ColumnHeader();
-            Nombre = new ColumnHeader();
-            Ciudad = new ColumnHeader();
-            Precio = new ColumnHeader();
-            CantidadDisponible = new ColumnHeader();
-            FechaDesde = new ColumnHeader();
-            FechaHasta = new ColumnHeader();
-            TipoDeHabitacion = new ColumnHeader();
-            Calificaciom = new ColumnHeader();
             btnVolverMenuGenerarPresupuestos = new Button();
+            dataGridViewProductos = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            FechaDesde = new DataGridViewTextBoxColumn();
+            FechaHasta = new DataGridViewTextBoxColumn();
+            Ciudad = new DataGridViewTextBoxColumn();
+            TipoDeHabitación = new DataGridViewTextBoxColumn();
+            Calificacion = new DataGridViewTextBoxColumn();
+            CantidadDePersonas = new DataGridViewTextBoxColumn();
             grp_Filtros.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             SuspendLayout();
             // 
             // datePickerFilterFechaDesde
@@ -253,62 +255,6 @@
             buscarPresupuesto.UseVisualStyleBackColor = false;
             buscarPresupuesto.Click += btnBuscarProductos_Click;
             // 
-            // lstViewProductos
-            // 
-            lstViewProductos.BackColor = SystemColors.ControlLight;
-            lstViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Nombre, Ciudad, Precio, CantidadDisponible, FechaDesde, FechaHasta, TipoDeHabitacion, Calificaciom });
-            lstViewProductos.Location = new Point(27, 357);
-            lstViewProductos.Name = "lstViewProductos";
-            lstViewProductos.Size = new Size(1064, 228);
-            lstViewProductos.TabIndex = 36;
-            lstViewProductos.UseCompatibleStateImageBehavior = false;
-            lstViewProductos.View = View.Details;
-            // 
-            // ID
-            // 
-            ID.Text = "ID";
-            ID.Width = 250;
-            // 
-            // Nombre
-            // 
-            Nombre.Text = "Nombre";
-            Nombre.Width = 200;
-            // 
-            // Ciudad
-            // 
-            Ciudad.Text = "Ciudad";
-            Ciudad.Width = 100;
-            // 
-            // Precio
-            // 
-            Precio.Text = "Precio";
-            Precio.Width = 100;
-            // 
-            // CantidadDisponible
-            // 
-            CantidadDisponible.Text = "Cantidad Disponible";
-            CantidadDisponible.Width = 150;
-            // 
-            // FechaDesde
-            // 
-            FechaDesde.Text = "Fecha Desde";
-            FechaDesde.Width = 100;
-            // 
-            // FechaHasta
-            // 
-            FechaHasta.Text = "Fecha Hasta";
-            FechaHasta.Width = 100;
-            // 
-            // TipoDeHabitacion
-            // 
-            TipoDeHabitacion.Text = "Tipo de Habitación";
-            TipoDeHabitacion.Width = 200;
-            // 
-            // Calificaciom
-            // 
-            Calificaciom.Text = "Calificación";
-            Calificaciom.Width = 100;
-            // 
             // btnVolverMenuGenerarPresupuestos
             // 
             btnVolverMenuGenerarPresupuestos.Location = new Point(27, 601);
@@ -319,14 +265,100 @@
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
+            // dataGridViewProductos
+            // 
+            dataGridViewProductos.AllowUserToAddRows = false;
+            dataGridViewProductos.AllowUserToDeleteRows = false;
+            dataGridViewProductos.AllowUserToOrderColumns = true;
+            dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Ciudad, TipoDeHabitación, Calificacion, CantidadDePersonas });
+            dataGridViewProductos.Location = new Point(27, 355);
+            dataGridViewProductos.Name = "dataGridViewProductos";
+            dataGridViewProductos.RowHeadersWidth = 82;
+            dataGridViewProductos.RowTemplate.Height = 25;
+            dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewProductos.Size = new Size(1064, 229);
+            dataGridViewProductos.TabIndex = 39;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 250;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 10;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // PrecioUnitario
+            // 
+            PrecioUnitario.HeaderText = "Precio Unitario";
+            PrecioUnitario.MinimumWidth = 10;
+            PrecioUnitario.Name = "PrecioUnitario";
+            PrecioUnitario.ReadOnly = true;
+            PrecioUnitario.Width = 200;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad Disponible";
+            Cantidad.MinimumWidth = 10;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 200;
+            // 
+            // FechaDesde
+            // 
+            FechaDesde.HeaderText = "Fecha Desde";
+            FechaDesde.Name = "FechaDesde";
+            FechaDesde.ReadOnly = true;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.HeaderText = "Fecha Hasta";
+            FechaHasta.Name = "FechaHasta";
+            FechaHasta.ReadOnly = true;
+            // 
+            // Ciudad
+            // 
+            Ciudad.HeaderText = "Ciudad";
+            Ciudad.Name = "Ciudad";
+            Ciudad.ReadOnly = true;
+            // 
+            // TipoDeHabitación
+            // 
+            TipoDeHabitación.HeaderText = "Tipo de Habitacion";
+            TipoDeHabitación.Name = "TipoDeHabitación";
+            TipoDeHabitación.ReadOnly = true;
+            TipoDeHabitación.Width = 200;
+            // 
+            // Calificacion
+            // 
+            Calificacion.HeaderText = "Calificación";
+            Calificacion.Name = "Calificacion";
+            Calificacion.ReadOnly = true;
+            // 
+            // CantidadDePersonas
+            // 
+            CantidadDePersonas.HeaderText = "Cantidad de Personas";
+            CantidadDePersonas.Name = "CantidadDePersonas";
+            CantidadDePersonas.ReadOnly = true;
+            CantidadDePersonas.Width = 200;
+            // 
             // ConsultarHoteles
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1106, 675);
+            Controls.Add(dataGridViewProductos);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
-            Controls.Add(lstViewProductos);
             Controls.Add(btnLimpiarFiltro);
             Controls.Add(grp_Filtros);
             Controls.Add(buscarPresupuesto);
@@ -336,10 +368,11 @@
             Controls.SetChildIndex(buscarPresupuesto, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(btnLimpiarFiltro, 0);
-            Controls.SetChildIndex(lstViewProductos, 0);
             Controls.SetChildIndex(btnVolverMenuGenerarPresupuestos, 0);
+            Controls.SetChildIndex(dataGridViewProductos, 0);
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             ResumeLayout(false);
         }
 
@@ -355,15 +388,7 @@
         private GroupBox grp_Filtros;
         private Common.Components.BotonEstilizado btnLimpiarFiltro;
         private Common.Components.BotonEstilizado buscarPresupuesto;
-        private ListView lstViewProductos;
-        private ColumnHeader ID;
-        private ColumnHeader Nombre;
-        private ColumnHeader Ciudad;
-        private ColumnHeader Precio;
-        private ColumnHeader CantidadDisponible;
-        private ColumnHeader FechaDesde;
         private Button btnVolverMenuGenerarPresupuestos;
-        private ColumnHeader FechaHasta;
         private Button btnDisableDatePickerFilterFechaDesde;
         private Button btnDisableDatePickerFilterFechaHasta;
         private Label labelCiudad;
@@ -372,7 +397,16 @@
         private ComboBox comboBoxTipoDeHabitacion;
         private Label labelCalificacion;
         private ComboBox comboBoxCalificacion;
-        private ColumnHeader TipoDeHabitacion;
-        private ColumnHeader Calificaciom;
+        private DataGridView dataGridViewProductos;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn PrecioUnitario;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn FechaDesde;
+        private DataGridViewTextBoxColumn FechaHasta;
+        private DataGridViewTextBoxColumn Ciudad;
+        private DataGridViewTextBoxColumn TipoDeHabitación;
+        private DataGridViewTextBoxColumn Calificacion;
+        private DataGridViewTextBoxColumn CantidadDePersonas;
     }
 }

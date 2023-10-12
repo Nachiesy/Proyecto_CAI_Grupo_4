@@ -66,6 +66,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 FechaHasta = DateTime.Now.AddDays(20).Date,
                 TipoDeHabitacion = TipoDeHabitacionEnum.simple,
                 Calificacion = HotelesCalificacionEnum.cinco,
+                CantidadDePersonas = 2,
             },
             new Hoteles()
             {
@@ -79,6 +80,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 FechaHasta = DateTime.Now.AddDays(20).Date,
                 TipoDeHabitacion = TipoDeHabitacionEnum.doble,
                 Calificacion = HotelesCalificacionEnum.cinco,
+                CantidadDePersonas = 4,
             },
             new Hoteles()
             {
@@ -92,6 +94,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 FechaHasta = DateTime.Now.AddDays(20).Date,
                 TipoDeHabitacion = TipoDeHabitacionEnum.triple,
                 Calificacion = HotelesCalificacionEnum.cuatro,
+                CantidadDePersonas = 6,
             },
         };
 

@@ -64,6 +64,7 @@
             Ciudad = new DataGridViewTextBoxColumn();
             TipoDeHabitación = new DataGridViewTextBoxColumn();
             Calificacion = new DataGridViewTextBoxColumn();
+            CantidadDePersonas = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
@@ -75,6 +76,7 @@
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
             grp_HotelesDisponibles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             grp_Filtros.SuspendLayout();
@@ -100,7 +102,7 @@
             dataGridViewProductos.AllowUserToOrderColumns = true;
             dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Ciudad, TipoDeHabitación, Calificacion });
+            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Ciudad, TipoDeHabitación, Calificacion, CantidadDePersonas });
             dataGridViewProductos.Location = new Point(6, 22);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.RowHeadersWidth = 82;
@@ -337,7 +339,7 @@
             dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
             dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, Column1, Column2 });
+            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, Column1, Column2, Column3 });
             dataGridViewProductosSeleccionados.Location = new Point(6, 22);
             dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
             dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
@@ -455,6 +457,13 @@
             Calificacion.Name = "Calificacion";
             Calificacion.ReadOnly = true;
             // 
+            // CantidadDePersonas
+            // 
+            CantidadDePersonas.HeaderText = "Cantidad de Personas";
+            CantidadDePersonas.Name = "CantidadDePersonas";
+            CantidadDePersonas.ReadOnly = true;
+            CantidadDePersonas.Width = 200;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             dataGridViewTextBoxColumn1.HeaderText = "ID";
@@ -531,6 +540,13 @@
             Column2.Name = "Column2";
             Column2.ReadOnly = true;
             // 
+            // Column3
+            // 
+            Column3.HeaderText = "Cantidad de Personas";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            Column3.Width = 200;
+            // 
             // GenerarPresupuestoHoteles
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -595,6 +611,7 @@
         private DataGridViewTextBoxColumn Ciudad;
         private DataGridViewTextBoxColumn TipoDeHabitación;
         private DataGridViewTextBoxColumn Calificacion;
+        private DataGridViewTextBoxColumn CantidadDePersonas;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -606,5 +623,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
     }
 }

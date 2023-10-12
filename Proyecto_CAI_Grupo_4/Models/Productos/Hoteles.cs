@@ -13,6 +13,8 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
         public TipoDeHabitacionEnum TipoDeHabitacion { get; set; }
 
         public HotelesCalificacionEnum Calificacion { get; set; }
+
+        public int CantidadDePersonas { get; set; }
     }
 
     public enum HotelesCiudadEnum
