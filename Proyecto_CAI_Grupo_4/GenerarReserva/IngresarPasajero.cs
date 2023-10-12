@@ -60,7 +60,7 @@ namespace Proyecto_CAI_Grupo_4
             pasajero = new Pasajeros();
 
             pasajero.Nombre = nombrepasajerotxt.Text;
-            pasajero.Apellido = apellidopasajerotxt.Text;      
+            pasajero.Apellido = apellidopasajerotxt.Text;
             pasajero.Fecha_Nac = dtnacmiento.Value;
             pasajero.Nacionalidad = nacpasajerocbx.Text;
             pasajero.Tipo_Doc = cbxTipodoc.TabIndex;

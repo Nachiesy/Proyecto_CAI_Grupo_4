@@ -4,7 +4,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class Reserva
     {
-        public Guid Codigo { get; set; }
+        public int Codigo { get; set; }
 
         public ReservaEstadoEnum Estado { get; set; }
 
@@ -22,6 +22,10 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public int CantPasajeros { get; set; }
 
+        public int CantMayores { get; set; }
+        public int CantMenores { get; set; }
+
+
         private string DateTimeToString(DateTime dateTime)
         {
             return dateTime.ToString("dd/MM/yyyy");
@@ -33,7 +37,7 @@ namespace Proyecto_CAI_Grupo_4.Models
         [Description("Pendiente de Pago")]
         pendienteDePago,
 
-        [Description("Pagada")]
+        [Description("Abonada")]
         pagada,
 
         [Description("Confirmada")]

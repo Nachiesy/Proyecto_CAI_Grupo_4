@@ -37,6 +37,8 @@
             nombre = new ColumnHeader();
             apellido = new ColumnHeader();
             fechadenac = new ColumnHeader();
+            edad = new ColumnHeader();
+            tipopasajero = new ColumnHeader();
             nacionalidad = new ColumnHeader();
             tipodoc = new ColumnHeader();
             documento = new ColumnHeader();
@@ -44,14 +46,14 @@
             paisemisor = new ColumnHeader();
             email = new ColumnHeader();
             telcontacto = new ColumnHeader();
-            edad = new ColumnHeader();
-            tipopasajero = new ColumnHeader();
             gpProsupuesto = new GroupBox();
             btn_Buscar = new Common.Components.BotonEstilizado();
             listPresupuestos = new ListView();
             nropresup = new ColumnHeader();
             doccliente = new ColumnHeader();
             cantpasajeros = new ColumnHeader();
+            cantAdultos = new ColumnHeader();
+            cantMenores = new ColumnHeader();
             precio = new ColumnHeader();
             estado = new ColumnHeader();
             fechadesde = new ColumnHeader();
@@ -94,9 +96,9 @@
             lblcodigp.Location = new Point(524, 64);
             lblcodigp.Margin = new Padding(4, 0, 4, 0);
             lblcodigp.Name = "lblcodigp";
-            lblcodigp.Size = new Size(427, 48);
+            lblcodigp.Size = new Size(336, 48);
             lblcodigp.TabIndex = 5;
-            lblcodigp.Text = "Codigo Presupuesto:  -";
+            lblcodigp.Text = "ID Presupuesto:  -";
             // 
             // btn_Quitar
             // 
@@ -167,6 +169,16 @@
             fechadenac.Text = "Fecha de Nacimiento";
             fechadenac.Width = 250;
             // 
+            // edad
+            // 
+            edad.Text = "Edad";
+            edad.Width = 80;
+            // 
+            // tipopasajero
+            // 
+            tipopasajero.Text = "Tipo";
+            tipopasajero.Width = 100;
+            // 
             // nacionalidad
             // 
             nacionalidad.Text = "Nacionalidad";
@@ -202,16 +214,6 @@
             telcontacto.Text = "Tel. de Contacto";
             telcontacto.Width = 180;
             // 
-            // edad
-            // 
-            edad.Text = "Edad";
-            edad.Width = 80;
-            // 
-            // tipopasajero
-            // 
-            tipopasajero.Text = "Tipo";
-            tipopasajero.Width = 100;
-            // 
             // gpProsupuesto
             // 
             gpProsupuesto.Controls.Add(btn_Buscar);
@@ -231,6 +233,7 @@
             gpProsupuesto.TabIndex = 7;
             gpProsupuesto.TabStop = false;
             gpProsupuesto.Text = "Presupuestos";
+            gpProsupuesto.Enter += gpProsupuesto_Enter;
             // 
             // btn_Buscar
             // 
@@ -250,7 +253,7 @@
             // 
             // listPresupuestos
             // 
-            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, precio, estado, fechadesde, fechahasta, fecha });
+            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, cantAdultos, cantMenores, precio, estado, fechadesde, fechahasta, fecha });
             listPresupuestos.FullRowSelect = true;
             listPresupuestos.Location = new Point(19, 126);
             listPresupuestos.Margin = new Padding(4, 2, 4, 2);
@@ -265,8 +268,8 @@
             // 
             // nropresup
             // 
-            nropresup.Text = "Nro. Presupuesto";
-            nropresup.Width = 300;
+            nropresup.Text = "ID Presupuesto";
+            nropresup.Width = 200;
             // 
             // doccliente
             // 
@@ -277,6 +280,16 @@
             // 
             cantpasajeros.Text = "Cant. de Pasajeros";
             cantpasajeros.Width = 220;
+            // 
+            // cantAdultos
+            // 
+            cantAdultos.Text = "Cant. Adultos";
+            cantAdultos.Width = 200;
+            // 
+            // cantMenores
+            // 
+            cantMenores.Text = "Cant. Menores";
+            cantMenores.Width = 200;
             // 
             // precio
             // 
@@ -290,25 +303,22 @@
             // 
             // fechadesde
             // 
-            fechadesde.DisplayIndex = 6;
             fechadesde.Text = "Fecha Desde";
             fechadesde.Width = 200;
             // 
             // fechahasta
             // 
-            fechahasta.DisplayIndex = 7;
             fechahasta.Text = "Fecha Hasta";
             fechahasta.Width = 200;
             // 
             // fecha
             // 
-            fecha.DisplayIndex = 5;
             fecha.Text = "Fecha";
             fecha.Width = 180;
             // 
             // txbDocumento
             // 
-            txbDocumento.Location = new Point(1343, 53);
+            txbDocumento.Location = new Point(1356, 53);
             txbDocumento.Margin = new Padding(4, 2, 4, 2);
             txbDocumento.Name = "txbDocumento";
             txbDocumento.Size = new Size(305, 39);
@@ -324,8 +334,9 @@
             // 
             // cbxTipodoc
             // 
+            cbxTipodoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxTipodoc.FormattingEnabled = true;
-            cbxTipodoc.Location = new Point(787, 53);
+            cbxTipodoc.Location = new Point(806, 53);
             cbxTipodoc.Margin = new Padding(4, 2, 4, 2);
             cbxTipodoc.Name = "cbxTipodoc";
             cbxTipodoc.Size = new Size(242, 40);
@@ -478,5 +489,7 @@
         private Common.Components.BotonEstilizado btn_Buscar;
         private ColumnHeader edad;
         private ColumnHeader tipopasajero;
+        private ColumnHeader cantAdultos;
+        private ColumnHeader cantMenores;
     }
 }

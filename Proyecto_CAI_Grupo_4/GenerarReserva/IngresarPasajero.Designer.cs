@@ -61,9 +61,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(6, 31);
+            label1.Location = new Point(11, 66);
+            label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(70, 19);
+            label1.Size = new Size(142, 38);
             label1.TabIndex = 0;
             label1.Text = "Nombre:";
             // 
@@ -71,9 +72,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft JhengHei UI", 15.15F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(12, 113);
+            label2.Location = new Point(22, 241);
+            label2.Margin = new Padding(6, 0, 6, 0);
             label2.Name = "label2";
-            label2.Size = new Size(452, 26);
+            label2.Size = new Size(867, 52);
             label2.TabIndex = 1;
             label2.Text = "Por favor ingrese los datos de los pasajeros";
             // 
@@ -81,9 +83,10 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(6, 71);
+            label3.Location = new Point(11, 151);
+            label3.Margin = new Padding(6, 0, 6, 0);
             label3.Name = "label3";
-            label3.Size = new Size(70, 19);
+            label3.Size = new Size(143, 38);
             label3.TabIndex = 2;
             label3.Text = "Apellido:";
             // 
@@ -91,9 +94,10 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(9, 66);
+            label4.Location = new Point(17, 141);
+            label4.Margin = new Padding(6, 0, 6, 0);
             label4.Name = "label4";
-            label4.Size = new Size(157, 19);
+            label4.Size = new Size(325, 38);
             label4.TabIndex = 3;
             label4.Text = "Teléfono de contacto:";
             label4.Click += label4_Click;
@@ -102,9 +106,10 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(9, 28);
+            label5.Location = new Point(17, 60);
+            label5.Margin = new Padding(6, 0, 6, 0);
             label5.Name = "label5";
-            label5.Size = new Size(56, 19);
+            label5.Size = new Size(114, 38);
             label5.TabIndex = 4;
             label5.Text = "E-Mail:";
             // 
@@ -112,9 +117,10 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(280, 169);
+            label6.Location = new Point(520, 361);
+            label6.Margin = new Padding(6, 0, 6, 0);
             label6.Name = "label6";
-            label6.Size = new Size(92, 19);
+            label6.Size = new Size(184, 38);
             label6.TabIndex = 5;
             label6.Text = "Pais Emisor:";
             // 
@@ -122,9 +128,10 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(280, 110);
+            label7.Location = new Point(520, 235);
+            label7.Margin = new Padding(6, 0, 6, 0);
             label7.Name = "label7";
-            label7.Size = new Size(149, 19);
+            label7.Size = new Size(303, 38);
             label7.TabIndex = 6;
             label7.Text = "Fecha de Expiración:";
             // 
@@ -132,9 +139,10 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(6, 169);
+            label8.Location = new Point(11, 361);
+            label8.Margin = new Padding(6, 0, 6, 0);
             label8.Name = "label8";
-            label8.Size = new Size(198, 19);
+            label8.Size = new Size(403, 38);
             label8.TabIndex = 7;
             label8.Text = "DNI/Numero de Pasaporte:";
             // 
@@ -142,107 +150,124 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(281, 80);
+            label9.Location = new Point(522, 171);
+            label9.Margin = new Padding(6, 0, 6, 0);
             label9.Name = "label9";
-            label9.Size = new Size(105, 19);
+            label9.Size = new Size(210, 38);
             label9.TabIndex = 8;
             label9.Text = "Nacionalidad:";
             // 
             // nombrepasajerotxt
             // 
-            nombrepasajerotxt.Location = new Point(85, 30);
+            nombrepasajerotxt.Location = new Point(158, 64);
+            nombrepasajerotxt.Margin = new Padding(6);
+            nombrepasajerotxt.MaxLength = 50;
             nombrepasajerotxt.Name = "nombrepasajerotxt";
-            nombrepasajerotxt.Size = new Size(180, 23);
+            nombrepasajerotxt.Size = new Size(331, 39);
             nombrepasajerotxt.TabIndex = 9;
             // 
             // apellidopasajerotxt
             // 
-            apellidopasajerotxt.Location = new Point(82, 71);
+            apellidopasajerotxt.Location = new Point(152, 151);
+            apellidopasajerotxt.Margin = new Padding(6);
+            apellidopasajerotxt.MaxLength = 50;
             apellidopasajerotxt.Name = "apellidopasajerotxt";
-            apellidopasajerotxt.Size = new Size(183, 23);
+            apellidopasajerotxt.Size = new Size(336, 39);
             apellidopasajerotxt.TabIndex = 10;
             // 
             // dnipasajerotxt
             // 
-            dnipasajerotxt.Location = new Point(6, 191);
+            dnipasajerotxt.Location = new Point(11, 407);
+            dnipasajerotxt.Margin = new Padding(6);
             dnipasajerotxt.Name = "dnipasajerotxt";
-            dnipasajerotxt.Size = new Size(259, 23);
+            dnipasajerotxt.Size = new Size(478, 39);
             dnipasajerotxt.TabIndex = 12;
             // 
             // emailpasajerotxt
             // 
-            emailpasajerotxt.Location = new Point(71, 28);
+            emailpasajerotxt.Location = new Point(132, 60);
+            emailpasajerotxt.Margin = new Padding(6);
             emailpasajerotxt.Name = "emailpasajerotxt";
-            emailpasajerotxt.Size = new Size(268, 23);
+            emailpasajerotxt.Size = new Size(494, 39);
             emailpasajerotxt.TabIndex = 15;
             // 
             // telpasajerotxt
             // 
-            telpasajerotxt.Location = new Point(172, 66);
+            telpasajerotxt.Location = new Point(319, 141);
+            telpasajerotxt.Margin = new Padding(6);
             telpasajerotxt.Name = "telpasajerotxt";
-            telpasajerotxt.Size = new Size(167, 23);
+            telpasajerotxt.Size = new Size(307, 39);
             telpasajerotxt.TabIndex = 16;
             // 
             // paiscbx
             // 
             paiscbx.FormattingEnabled = true;
             paiscbx.Items.AddRange(new object[] { "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Paraguay", "Venezuela", "Uruguay" });
-            paiscbx.Location = new Point(281, 191);
+            paiscbx.Location = new Point(522, 407);
+            paiscbx.Margin = new Padding(6);
             paiscbx.Name = "paiscbx";
-            paiscbx.Size = new Size(237, 23);
+            paiscbx.Size = new Size(437, 40);
             paiscbx.TabIndex = 17;
             // 
             // exppasajerodgv
             // 
-            exppasajerodgv.Location = new Point(280, 132);
+            exppasajerodgv.Location = new Point(520, 282);
+            exppasajerodgv.Margin = new Padding(6);
             exppasajerodgv.Name = "exppasajerodgv";
-            exppasajerodgv.Size = new Size(238, 23);
+            exppasajerodgv.Size = new Size(439, 39);
             exppasajerodgv.TabIndex = 18;
             // 
             // nacpasajerocbx
             // 
+            nacpasajerocbx.DropDownStyle = ComboBoxStyle.DropDownList;
             nacpasajerocbx.FormattingEnabled = true;
             nacpasajerocbx.Items.AddRange(new object[] { "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Paraguay", "Venezuela", "Uruguay" });
-            nacpasajerocbx.Location = new Point(390, 78);
+            nacpasajerocbx.Location = new Point(724, 166);
+            nacpasajerocbx.Margin = new Padding(6);
             nacpasajerocbx.Name = "nacpasajerocbx";
-            nacpasajerocbx.Size = new Size(128, 23);
+            nacpasajerocbx.Size = new Size(234, 40);
             nacpasajerocbx.TabIndex = 19;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(281, 19);
+            label10.Location = new Point(522, 41);
+            label10.Margin = new Padding(6, 0, 6, 0);
             label10.Name = "label10";
-            label10.Size = new Size(158, 19);
+            label10.Size = new Size(322, 38);
             label10.TabIndex = 22;
             label10.Text = "Fecha de Nacimiento:";
             label10.Click += label10_Click;
             // 
             // dtnacmiento
             // 
-            dtnacmiento.Location = new Point(281, 45);
+            dtnacmiento.Location = new Point(522, 96);
+            dtnacmiento.Margin = new Padding(6);
             dtnacmiento.Name = "dtnacmiento";
-            dtnacmiento.Size = new Size(238, 23);
+            dtnacmiento.Size = new Size(439, 39);
             dtnacmiento.TabIndex = 23;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(6, 106);
+            label11.Location = new Point(11, 226);
+            label11.Margin = new Padding(6, 0, 6, 0);
             label11.Name = "label11";
-            label11.Size = new Size(149, 19);
+            label11.Size = new Size(307, 38);
             label11.TabIndex = 24;
             label11.Text = "Tipo de Documento:";
             // 
             // cbxTipodoc
             // 
+            cbxTipodoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxTipodoc.FormattingEnabled = true;
             cbxTipodoc.Items.AddRange(new object[] { "DNI", "Pasaporte" });
-            cbxTipodoc.Location = new Point(6, 128);
+            cbxTipodoc.Location = new Point(11, 273);
+            cbxTipodoc.Margin = new Padding(6);
             cbxTipodoc.Name = "cbxTipodoc";
-            cbxTipodoc.Size = new Size(259, 23);
+            cbxTipodoc.Size = new Size(478, 40);
             cbxTipodoc.TabIndex = 25;
             cbxTipodoc.SelectedIndexChanged += cbxTipodoc_SelectedIndexChanged;
             // 
@@ -264,9 +289,11 @@
             grp_DatosPersonales.Controls.Add(nacpasajerocbx);
             grp_DatosPersonales.Controls.Add(label8);
             grp_DatosPersonales.Controls.Add(label9);
-            grp_DatosPersonales.Location = new Point(12, 151);
+            grp_DatosPersonales.Location = new Point(22, 322);
+            grp_DatosPersonales.Margin = new Padding(6);
             grp_DatosPersonales.Name = "grp_DatosPersonales";
-            grp_DatosPersonales.Size = new Size(525, 231);
+            grp_DatosPersonales.Padding = new Padding(6);
+            grp_DatosPersonales.Size = new Size(975, 493);
             grp_DatosPersonales.TabIndex = 26;
             grp_DatosPersonales.TabStop = false;
             grp_DatosPersonales.Text = "Datos Personales";
@@ -277,9 +304,11 @@
             grp_DatosContato.Controls.Add(emailpasajerotxt);
             grp_DatosContato.Controls.Add(label4);
             grp_DatosContato.Controls.Add(telpasajerotxt);
-            grp_DatosContato.Location = new Point(12, 404);
+            grp_DatosContato.Location = new Point(22, 862);
+            grp_DatosContato.Margin = new Padding(6);
             grp_DatosContato.Name = "grp_DatosContato";
-            grp_DatosContato.Size = new Size(361, 100);
+            grp_DatosContato.Padding = new Padding(6);
+            grp_DatosContato.Size = new Size(670, 213);
             grp_DatosContato.TabIndex = 27;
             grp_DatosContato.TabStop = false;
             grp_DatosContato.Text = "Datos de Contacto";
@@ -291,9 +320,10 @@
             btn_Confirmar.FlatStyle = FlatStyle.Flat;
             btn_Confirmar.Font = new Font("Microsoft JhengHei UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_Confirmar.ForeColor = Color.Black;
-            btn_Confirmar.Location = new Point(379, 411);
+            btn_Confirmar.Location = new Point(704, 877);
+            btn_Confirmar.Margin = new Padding(6);
             btn_Confirmar.Name = "btn_Confirmar";
-            btn_Confirmar.Size = new Size(158, 40);
+            btn_Confirmar.Size = new Size(293, 85);
             btn_Confirmar.TabIndex = 4;
             btn_Confirmar.Text = "Confirmar";
             btn_Confirmar.UseVisualStyleBackColor = false;
@@ -306,9 +336,10 @@
             btn_Cancelar.FlatStyle = FlatStyle.Flat;
             btn_Cancelar.Font = new Font("Microsoft JhengHei UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Cancelar.ForeColor = Color.Black;
-            btn_Cancelar.Location = new Point(379, 464);
+            btn_Cancelar.Location = new Point(704, 990);
+            btn_Cancelar.Margin = new Padding(6);
             btn_Cancelar.Name = "btn_Cancelar";
-            btn_Cancelar.Size = new Size(158, 40);
+            btn_Cancelar.Size = new Size(293, 85);
             btn_Cancelar.TabIndex = 28;
             btn_Cancelar.Text = "Cancelar";
             btn_Cancelar.UseVisualStyleBackColor = false;
@@ -316,15 +347,16 @@
             // 
             // IngresarPasajero
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(549, 521);
+            ClientSize = new Size(1020, 1111);
             Controls.Add(btn_Cancelar);
             Controls.Add(btn_Confirmar);
             Controls.Add(grp_DatosContato);
             Controls.Add(grp_DatosPersonales);
             Controls.Add(label2);
+            Margin = new Padding(11, 13, 11, 13);
             Name = "IngresarPasajero";
             Text = "IngresarPasajero";
             Load += IngresarPasajero_Load_1;

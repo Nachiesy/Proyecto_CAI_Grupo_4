@@ -10,7 +10,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             new Reserva()
             {
-                Codigo = Guid.NewGuid(),
+                Codigo = 92,
                 Estado = ReservaEstadoEnum.pendienteDePago,
                 DNI = "41753082",
                 Precio = (decimal)100000.50,
@@ -20,7 +20,7 @@ namespace Proyecto_CAI_Grupo_4
             },
             new Reserva()
             {
-                Codigo = Guid.NewGuid(),
+                Codigo = 93,
                 Estado = ReservaEstadoEnum.pagada,
                 DNI = "14975308",
                 Precio = (decimal)50000.20,
@@ -30,7 +30,7 @@ namespace Proyecto_CAI_Grupo_4
             },
             new Reserva()
             {
-                Codigo = Guid.NewGuid(),
+                Codigo = 107,
                 Estado = ReservaEstadoEnum.confirmada,
                 DNI = "29327456",
                 Precio = (decimal)500000.95,
@@ -59,7 +59,7 @@ namespace Proyecto_CAI_Grupo_4
             var dni = filtroNroDeDoc.Text.Trim();
 
             var filteredReservas = reservas
-                .Where(x => (string.IsNullOrEmpty(codigo) || x.Codigo == Guid.Parse(codigo))
+                .Where(x => (string.IsNullOrEmpty(codigo) || x.Codigo == int.Parse(codigo))
                             && (estado == -1 || (int)x.Estado == estado)
                             && (string.IsNullOrEmpty(dni) || x.DNI == dni));
 

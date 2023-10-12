@@ -109,11 +109,13 @@ namespace Proyecto_CAI_Grupo_4
         {
             new Reserva()
             {
-                Codigo = Guid.NewGuid(),
+                Codigo = 120,
                 Estado = ReservaEstadoEnum.pagada,
                 TipoDoc = 1,
                 DNI = "39117825",
                 CantPasajeros = 2,
+                CantMayores = 2,
+                CantMenores = 0,
                 Precio = (decimal)100000.50,
                 Fecha = DateTime.Now.AddDays(-7),
                 FechaDesde = DateTime.Now.AddDays(21),
@@ -121,9 +123,11 @@ namespace Proyecto_CAI_Grupo_4
             },
             new Reserva()
             {
-                Codigo = Guid.NewGuid(),
+                Codigo = 132,
                 Estado = ReservaEstadoEnum.pagada,
                 TipoDoc = 1,
+                CantMayores = 2,
+                CantMenores = 3,
                 DNI = "27098332",
                 CantPasajeros = 5,
                 Precio = (decimal)50000,
@@ -133,9 +137,11 @@ namespace Proyecto_CAI_Grupo_4
             },
             new Reserva()
             {
-                Codigo = Guid.NewGuid(),
+                Codigo = 133,
                 Estado = ReservaEstadoEnum.pagada,
                 TipoDoc = 1,
+                CantMayores = 2,
+                CantMenores = 0,
                 DNI = "30945665",
                 CantPasajeros = 2,
                 Precio = (decimal)500000.95,
@@ -145,9 +151,11 @@ namespace Proyecto_CAI_Grupo_4
             },
                         new Reserva()
             {
-                Codigo = Guid.NewGuid(),
+                Codigo = 150,
                 Estado = ReservaEstadoEnum.pagada,
                 TipoDoc = 1,
+                CantMayores = 1,
+                CantMenores = 1,
                 DNI = "20945665",
                 CantPasajeros = 2,
                 Precio = (decimal)500000.95,
@@ -187,6 +195,8 @@ namespace Proyecto_CAI_Grupo_4
                 var row = new ListViewItem(item.Codigo.ToString());
                 row.SubItems.Add(item.DNI);
                 row.SubItems.Add(item.CantPasajeros.ToString());
+                row.SubItems.Add(item.CantMayores.ToString());
+                row.SubItems.Add(item.CantMenores.ToString());
                 row.SubItems.Add(item.Precio.ToString());
                 row.SubItems.Add(item.Estado.GetDescription());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
@@ -207,7 +217,7 @@ namespace Proyecto_CAI_Grupo_4
             var dni = txbDocumento.Text.Trim();
 
             var filteredReservas = reservas
-                .Where(x => (string.IsNullOrEmpty(codigo) || x.Codigo == Guid.Parse(codigo))
+                .Where(x => (string.IsNullOrEmpty(codigo) || (int)x.Codigo == int.Parse(codigo))
                             && (tipodoc == -1 || (int)x.Estado == tipodoc)
                            && (string.IsNullOrEmpty(dni) || x.DNI == dni));
 
@@ -229,11 +239,20 @@ namespace Proyecto_CAI_Grupo_4
 
             if (listPresupuestos.SelectedItems.Count > 0)
             {
+                Reserva reservaselct = new Reserva();
+
+                ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
+                reservaselct.Codigo = int.Parse(presupuesto.SubItems[0].Text);
+                reservaselct.CantPasajeros = int.Parse(presupuesto.SubItems[2].Text);
 
                 gbxPasajeros.Enabled = true;
                 gpProsupuesto.Enabled = false;
 
-                lblcantpasajeros.Text = "Pasajeros Disponibles: " + PresupuestoSeleccionado();
+
+
+                lblcantpasajeros.Text = "Pasajeros Disponibles: " + reservaselct.CantPasajeros;
+                lblcodigp.Text = "ID Presupuesto: " + reservaselct.Codigo;
+
             }
             else
             {
@@ -248,6 +267,7 @@ namespace Proyecto_CAI_Grupo_4
             string cantidad = presupuesto.SubItems[2].Text;
             int elegido = int.Parse(cantidad);
             return elegido;
+
         }
 
         private void GenerarReserva_Load(object sender, EventArgs e)
@@ -278,6 +298,11 @@ namespace Proyecto_CAI_Grupo_4
         }
 
         private void listPasajeros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gpProsupuesto_Enter(object sender, EventArgs e)
         {
 
         }
