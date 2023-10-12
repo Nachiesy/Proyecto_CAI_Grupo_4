@@ -29,6 +29,11 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxDestino.Items.Add(value.GetDescription());
             }
 
+            foreach (TipoDeCamaroteEnum value in Enum.GetValues(typeof(TipoDeCamaroteEnum)))
+            {
+                comboBoxTipoDeCamarote.Items.Add(value.GetDescription());
+            }
+
             AddProductosToDataGridViewProductos(GenerarPresupuestosManager.cruceros.Where(x => x.Cantidad > 0));
 
             AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.crucerosElegidos, true);
@@ -44,6 +49,7 @@ namespace Proyecto_CAI_Grupo_4
                 FechaHasta = datePickerFilterFechaHasta.Enabled ? datePickerFilterFechaHasta.Value : null,
                 CiudadDePartida = comboBoxOrigen.SelectedIndex != -1 ? comboBoxOrigen.SelectedIndex : null,
                 CiudadDeLlegada = comboBoxDestino.SelectedIndex != -1 ? comboBoxDestino.SelectedIndex : null,
+                TipoDeCamarote = comboBoxTipoDeCamarote.SelectedIndex != -1 ? comboBoxTipoDeCamarote.SelectedIndex : null,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -63,7 +69,8 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
                                 && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
                                 && (!filter.CiudadDePartida.HasValue || (int)x.CiudadDePartida == filter.CiudadDePartida)
-                                && (!filter.CiudadDeLlegada.HasValue || (int)x.CiudadDeLlegada == filter.CiudadDeLlegada));
+                                && (!filter.CiudadDeLlegada.HasValue || (int)x.CiudadDeLlegada == filter.CiudadDeLlegada)
+                                && (!filter.TipoDeCamarote.HasValue || (int)x.TipoDeCamarote == filter.TipoDeCamarote));
 
                 dataGridViewProductos.Rows.Clear();
 
@@ -101,6 +108,8 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDePartida.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDeLlegada.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeCamarote.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetParadas() });
 
                 dataGridViewProductos.Rows.Add(row);
             }
@@ -132,6 +141,8 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDePartida.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDeLlegada.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeCamarote.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetParadas() });
 
                 dataGridViewProductosSeleccionados.Rows.Add(row);
             }
@@ -236,6 +247,7 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
             comboBoxOrigen.SelectedIndex = -1;
             comboBoxDestino.SelectedIndex = -1;
+            comboBoxTipoDeCamarote.SelectedIndex = -1;
 
             dataGridViewProductos.Rows.Clear();
 

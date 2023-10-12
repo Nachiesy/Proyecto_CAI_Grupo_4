@@ -37,24 +37,28 @@
             label7 = new Label();
             txtBoxPrecioDesde = new TextBox();
             grp_Filtros = new GroupBox();
+            labelTipoDeCamarote = new Label();
+            comboBoxTipoDeCamarote = new ComboBox();
+            labelDestino = new Label();
+            labelOrigen = new Label();
+            comboBoxDestino = new ComboBox();
+            comboBoxOrigen = new ComboBox();
+            btnDisableDatePickerFilterFechaHasta = new Button();
+            btnDisableDatePickerFilterFechaDesde = new Button();
             btnLimpiarFiltro = new Common.Components.BotonEstilizado();
             buscarPresupuesto = new Common.Components.BotonEstilizado();
             lstViewProductos = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
+            ID = new ColumnHeader();
+            Nombre = new ColumnHeader();
+            Origen = new ColumnHeader();
+            Destino = new ColumnHeader();
+            Precio = new ColumnHeader();
+            CantidadDisponible = new ColumnHeader();
+            FechaDesde = new ColumnHeader();
+            FechaHasta = new ColumnHeader();
             btnVolverMenuGenerarPresupuestos = new Button();
-            btnDisableDatePickerFilterFechaDesde = new Button();
-            btnDisableDatePickerFilterFechaHasta = new Button();
-            comboBoxOrigen = new ComboBox();
-            comboBoxDestino = new ComboBox();
-            labelOrigen = new Label();
-            labelDestino = new Label();
+            TipoDeCamarote = new ColumnHeader();
+            Paradas = new ColumnHeader();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
@@ -126,6 +130,8 @@
             // 
             // grp_Filtros
             // 
+            grp_Filtros.Controls.Add(labelTipoDeCamarote);
+            grp_Filtros.Controls.Add(comboBoxTipoDeCamarote);
             grp_Filtros.Controls.Add(labelDestino);
             grp_Filtros.Controls.Add(labelOrigen);
             grp_Filtros.Controls.Add(comboBoxDestino);
@@ -146,6 +152,77 @@
             grp_Filtros.TabIndex = 35;
             grp_Filtros.TabStop = false;
             grp_Filtros.Text = "Filtros";
+            // 
+            // labelTipoDeCamarote
+            // 
+            labelTipoDeCamarote.AutoSize = true;
+            labelTipoDeCamarote.Location = new Point(316, 125);
+            labelTipoDeCamarote.Name = "labelTipoDeCamarote";
+            labelTipoDeCamarote.Size = new Size(101, 15);
+            labelTipoDeCamarote.TabIndex = 39;
+            labelTipoDeCamarote.Text = "Tipo de Camarote";
+            // 
+            // comboBoxTipoDeCamarote
+            // 
+            comboBoxTipoDeCamarote.FormattingEnabled = true;
+            comboBoxTipoDeCamarote.Location = new Point(316, 143);
+            comboBoxTipoDeCamarote.Name = "comboBoxTipoDeCamarote";
+            comboBoxTipoDeCamarote.Size = new Size(126, 23);
+            comboBoxTipoDeCamarote.TabIndex = 38;
+            // 
+            // labelDestino
+            // 
+            labelDestino.AutoSize = true;
+            labelDestino.Location = new Point(163, 125);
+            labelDestino.Name = "labelDestino";
+            labelDestino.Size = new Size(105, 15);
+            labelDestino.TabIndex = 31;
+            labelDestino.Text = "Ciudad de Llegada";
+            // 
+            // labelOrigen
+            // 
+            labelOrigen.AutoSize = true;
+            labelOrigen.Location = new Point(18, 125);
+            labelOrigen.Name = "labelOrigen";
+            labelOrigen.Size = new Size(101, 15);
+            labelOrigen.TabIndex = 30;
+            labelOrigen.Text = "Ciudad de Partida";
+            // 
+            // comboBoxDestino
+            // 
+            comboBoxDestino.FormattingEnabled = true;
+            comboBoxDestino.Location = new Point(163, 143);
+            comboBoxDestino.Name = "comboBoxDestino";
+            comboBoxDestino.Size = new Size(126, 23);
+            comboBoxDestino.TabIndex = 29;
+            // 
+            // comboBoxOrigen
+            // 
+            comboBoxOrigen.FormattingEnabled = true;
+            comboBoxOrigen.Location = new Point(18, 143);
+            comboBoxOrigen.Name = "comboBoxOrigen";
+            comboBoxOrigen.Size = new Size(126, 23);
+            comboBoxOrigen.TabIndex = 28;
+            // 
+            // btnDisableDatePickerFilterFechaHasta
+            // 
+            btnDisableDatePickerFilterFechaHasta.Location = new Point(576, 85);
+            btnDisableDatePickerFilterFechaHasta.Name = "btnDisableDatePickerFilterFechaHasta";
+            btnDisableDatePickerFilterFechaHasta.Size = new Size(80, 23);
+            btnDisableDatePickerFilterFechaHasta.TabIndex = 27;
+            btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
+            btnDisableDatePickerFilterFechaHasta.UseVisualStyleBackColor = true;
+            btnDisableDatePickerFilterFechaHasta.Click += btnDisableDatePickerFilterFechaHasta_Click;
+            // 
+            // btnDisableDatePickerFilterFechaDesde
+            // 
+            btnDisableDatePickerFilterFechaDesde.Location = new Point(316, 85);
+            btnDisableDatePickerFilterFechaDesde.Name = "btnDisableDatePickerFilterFechaDesde";
+            btnDisableDatePickerFilterFechaDesde.Size = new Size(80, 23);
+            btnDisableDatePickerFilterFechaDesde.TabIndex = 26;
+            btnDisableDatePickerFilterFechaDesde.Text = "Deshabilitar";
+            btnDisableDatePickerFilterFechaDesde.UseVisualStyleBackColor = true;
+            btnDisableDatePickerFilterFechaDesde.Click += btnDisableDatePickerFilterFechaDesde_Click;
             // 
             // btnLimpiarFiltro
             // 
@@ -180,7 +257,7 @@
             // lstViewProductos
             // 
             lstViewProductos.BackColor = SystemColors.ControlLight;
-            lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader6, columnHeader7, columnHeader8, columnHeader5 });
+            lstViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Nombre, Origen, Destino, Precio, CantidadDisponible, FechaDesde, FechaHasta, TipoDeCamarote, Paradas });
             lstViewProductos.Location = new Point(30, 356);
             lstViewProductos.Name = "lstViewProductos";
             lstViewProductos.Size = new Size(1064, 228);
@@ -188,45 +265,45 @@
             lstViewProductos.UseCompatibleStateImageBehavior = false;
             lstViewProductos.View = View.Details;
             // 
-            // columnHeader1
+            // ID
             // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 250;
+            ID.Text = "ID";
+            ID.Width = 250;
             // 
-            // columnHeader2
+            // Nombre
             // 
-            columnHeader2.Text = "Nombre";
-            columnHeader2.Width = 200;
+            Nombre.Text = "Nombre";
+            Nombre.Width = 200;
             // 
-            // columnHeader3
+            // Origen
             // 
-            columnHeader3.Text = "Ciudad de Partida";
-            columnHeader3.Width = 150;
+            Origen.Text = "Ciudad de Partida";
+            Origen.Width = 150;
             // 
-            // columnHeader4
+            // Destino
             // 
-            columnHeader4.Text = "Ciudad de Llegada";
-            columnHeader4.Width = 150;
+            Destino.Text = "Ciudad de Llegada";
+            Destino.Width = 150;
             // 
-            // columnHeader6
+            // Precio
             // 
-            columnHeader6.Text = "Precio";
-            columnHeader6.Width = 100;
+            Precio.Text = "Precio";
+            Precio.Width = 100;
             // 
-            // columnHeader7
+            // CantidadDisponible
             // 
-            columnHeader7.Text = "Cantidad Disponible";
-            columnHeader7.Width = 150;
+            CantidadDisponible.Text = "Cantidad Disponible";
+            CantidadDisponible.Width = 150;
             // 
-            // columnHeader8
+            // FechaDesde
             // 
-            columnHeader8.Text = "Fecha Desde";
-            columnHeader8.Width = 100;
+            FechaDesde.Text = "Fecha Desde";
+            FechaDesde.Width = 100;
             // 
-            // columnHeader5
+            // FechaHasta
             // 
-            columnHeader5.Text = "Fecha Hasta";
-            columnHeader5.Width = 100;
+            FechaHasta.Text = "Fecha Hasta";
+            FechaHasta.Width = 100;
             // 
             // btnVolverMenuGenerarPresupuestos
             // 
@@ -238,59 +315,15 @@
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
-            // btnDisableDatePickerFilterFechaDesde
+            // TipoDeCamarote
             // 
-            btnDisableDatePickerFilterFechaDesde.Location = new Point(316, 85);
-            btnDisableDatePickerFilterFechaDesde.Name = "btnDisableDatePickerFilterFechaDesde";
-            btnDisableDatePickerFilterFechaDesde.Size = new Size(80, 23);
-            btnDisableDatePickerFilterFechaDesde.TabIndex = 26;
-            btnDisableDatePickerFilterFechaDesde.Text = "Deshabilitar";
-            btnDisableDatePickerFilterFechaDesde.UseVisualStyleBackColor = true;
-            btnDisableDatePickerFilterFechaDesde.Click += btnDisableDatePickerFilterFechaDesde_Click;
+            TipoDeCamarote.Text = "Tipo de Camarote";
+            TipoDeCamarote.Width = 200;
             // 
-            // btnDisableDatePickerFilterFechaHasta
+            // Paradas
             // 
-            btnDisableDatePickerFilterFechaHasta.Location = new Point(576, 85);
-            btnDisableDatePickerFilterFechaHasta.Name = "btnDisableDatePickerFilterFechaHasta";
-            btnDisableDatePickerFilterFechaHasta.Size = new Size(80, 23);
-            btnDisableDatePickerFilterFechaHasta.TabIndex = 27;
-            btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
-            btnDisableDatePickerFilterFechaHasta.UseVisualStyleBackColor = true;
-            btnDisableDatePickerFilterFechaHasta.Click += btnDisableDatePickerFilterFechaHasta_Click;
-            // 
-            // comboBoxOrigen
-            // 
-            comboBoxOrigen.FormattingEnabled = true;
-            comboBoxOrigen.Location = new Point(18, 143);
-            comboBoxOrigen.Name = "comboBoxOrigen";
-            comboBoxOrigen.Size = new Size(126, 23);
-            comboBoxOrigen.TabIndex = 28;
-            // 
-            // comboBoxDestino
-            // 
-            comboBoxDestino.FormattingEnabled = true;
-            comboBoxDestino.Location = new Point(163, 143);
-            comboBoxDestino.Name = "comboBoxDestino";
-            comboBoxDestino.Size = new Size(126, 23);
-            comboBoxDestino.TabIndex = 29;
-            // 
-            // labelOrigen
-            // 
-            labelOrigen.AutoSize = true;
-            labelOrigen.Location = new Point(18, 125);
-            labelOrigen.Name = "labelOrigen";
-            labelOrigen.Size = new Size(101, 15);
-            labelOrigen.TabIndex = 30;
-            labelOrigen.Text = "Ciudad de Partida";
-            // 
-            // labelDestino
-            // 
-            labelDestino.AutoSize = true;
-            labelDestino.Location = new Point(163, 125);
-            labelDestino.Name = "labelDestino";
-            labelDestino.Size = new Size(105, 15);
-            labelDestino.TabIndex = 31;
-            labelDestino.Text = "Ciudad de Llegada";
+            Paradas.Text = "Paradas";
+            Paradas.Width = 200;
             // 
             // ConsultarCruceros
             // 
@@ -329,20 +362,24 @@
         private Common.Components.BotonEstilizado btnLimpiarFiltro;
         private Common.Components.BotonEstilizado buscarPresupuesto;
         private ListView lstViewProductos;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
-        private ColumnHeader columnHeader8;
+        private ColumnHeader ID;
+        private ColumnHeader Nombre;
+        private ColumnHeader Origen;
+        private ColumnHeader Destino;
+        private ColumnHeader Precio;
+        private ColumnHeader CantidadDisponible;
+        private ColumnHeader FechaDesde;
         private Button btnVolverMenuGenerarPresupuestos;
-        private ColumnHeader columnHeader5;
+        private ColumnHeader FechaHasta;
         private Button btnDisableDatePickerFilterFechaDesde;
         private Button btnDisableDatePickerFilterFechaHasta;
         private ComboBox comboBoxOrigen;
         private ComboBox comboBoxDestino;
         private Label labelOrigen;
         private Label labelDestino;
+        private Label labelTipoDeCamarote;
+        private ComboBox comboBoxTipoDeCamarote;
+        private ColumnHeader TipoDeCamarote;
+        private ColumnHeader Paradas;
     }
 }

@@ -29,6 +29,12 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxDestino.Items.Add(value.GetDescription());
             }
 
+
+            foreach (TipoDeCamaroteEnum value in Enum.GetValues(typeof(TipoDeCamaroteEnum)))
+            {
+                comboBoxTipoDeCamarote.Items.Add(value.GetDescription());
+            }
+
             AddProductosToListView(GenerarPresupuestosManager.cruceros, lstViewProductos);
         }
 
@@ -42,6 +48,7 @@ namespace Proyecto_CAI_Grupo_4
                 FechaHasta = datePickerFechaLlegada.Enabled ? datePickerFechaLlegada.Value : null,
                 CiudadDePartida = comboBoxOrigen.SelectedIndex != -1 ? comboBoxOrigen.SelectedIndex : null,
                 CiudadDeLlegada = comboBoxDestino.SelectedIndex != -1 ? comboBoxDestino.SelectedIndex : null,
+                TipoDeCamarote = comboBoxTipoDeCamarote.SelectedIndex != -1 ? comboBoxTipoDeCamarote.SelectedIndex : null,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -60,7 +67,8 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
                                 && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
                                 && (!filter.CiudadDePartida.HasValue || (int)x.CiudadDePartida == filter.CiudadDePartida)
-                                && (!filter.CiudadDeLlegada.HasValue || (int)x.CiudadDeLlegada == filter.CiudadDeLlegada));
+                                && (!filter.CiudadDeLlegada.HasValue || (int)x.CiudadDeLlegada == filter.CiudadDeLlegada)
+                                && (!filter.TipoDeCamarote.HasValue || (int)x.TipoDeCamarote == filter.TipoDeCamarote));
 
                 lstViewProductos.Items.Clear();
 
@@ -97,6 +105,8 @@ namespace Proyecto_CAI_Grupo_4
                 row.SubItems.Add(item.Cantidad.ToString());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
                 row.SubItems.Add(item.FechaHasta.ToFormDate());
+                row.SubItems.Add(item.TipoDeCamarote.GetDescription());
+                row.SubItems.Add(item.GetParadas());
 
                 listView.Items.Add(row);
             }
@@ -110,6 +120,7 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
             comboBoxOrigen.SelectedIndex = -1;
             comboBoxDestino.SelectedIndex = -1;
+            comboBoxTipoDeCamarote.SelectedIndex = -1;
 
             lstViewProductos.Items.Clear();
 

@@ -104,6 +104,18 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 CiudadDeLlegada = CrucerosDestinoEnum.marDelPlata,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                TipoDeCamarote = TipoDeCamaroteEnum.interior,
+                Paradas = new List<CrucerosParadas>()
+                {
+                    new CrucerosParadas()
+                    {
+                        Nombre = "Mar del Plata",
+                    },
+                    new CrucerosParadas()
+                    {
+                        Nombre = "Bahia Blanca",
+                    },
+                },
             },
             new Cruceros()
             {
@@ -116,6 +128,18 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 CiudadDeLlegada = CrucerosDestinoEnum.rioDeJaneiro,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                TipoDeCamarote = TipoDeCamaroteEnum.exterior,
+                Paradas = new List<CrucerosParadas>()
+                {
+                    new CrucerosParadas()
+                    {
+                        Nombre = "Isla Grande",
+                    },
+                    new CrucerosParadas()
+                    {
+                        Nombre = "Rio de Janeiro",
+                    },
+                },
             },
             new Cruceros()
             {
@@ -128,6 +152,18 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 CiudadDeLlegada = CrucerosDestinoEnum.cancun,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                TipoDeCamarote = TipoDeCamaroteEnum.conBalcon,
+                Paradas = new List<CrucerosParadas>()
+                {
+                    new CrucerosParadas()
+                    {
+                        Nombre = "Cancun",
+                    },
+                    new CrucerosParadas()
+                    {
+                        Nombre = "Republica Dominicana",
+                    },
+                },
             },
             new Cruceros()
             {
@@ -140,6 +176,18 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 CiudadDeLlegada = CrucerosDestinoEnum.marruecos,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                TipoDeCamarote = TipoDeCamaroteEnum.suite,
+                Paradas = new List<CrucerosParadas>()
+                {
+                    new CrucerosParadas()
+                    {
+                        Nombre = "Barcelona",
+                    },
+                    new CrucerosParadas()
+                    {
+                        Nombre = "Marsella",
+                    },
+                },
             },
         };
 
