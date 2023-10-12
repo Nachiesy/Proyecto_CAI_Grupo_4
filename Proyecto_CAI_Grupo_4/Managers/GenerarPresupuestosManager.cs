@@ -60,6 +60,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Hoteles()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "HIL",
                 Nombre = "Hilton",
                 Precio = 10,
                 Cantidad = 1,
@@ -74,6 +75,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Hoteles()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "SHE",
                 Nombre = "Sheraton",
                 Precio = 10,
                 Cantidad = 2,
@@ -88,6 +90,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Hoteles()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "INT",
                 Nombre = "Intercontinental",
                 Precio = 10,
                 Cantidad = 3,
