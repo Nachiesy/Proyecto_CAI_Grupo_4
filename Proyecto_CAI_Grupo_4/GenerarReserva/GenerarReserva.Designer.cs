@@ -78,11 +78,11 @@
             gbxPasajeros.Controls.Add(btn_Agregar);
             gbxPasajeros.Controls.Add(listPasajeros);
             gbxPasajeros.Enabled = false;
-            gbxPasajeros.Location = new Point(22, 762);
-            gbxPasajeros.Margin = new Padding(4, 2, 4, 2);
+            gbxPasajeros.Location = new Point(12, 357);
+            gbxPasajeros.Margin = new Padding(2, 1, 2, 1);
             gbxPasajeros.Name = "gbxPasajeros";
-            gbxPasajeros.Padding = new Padding(4, 2, 4, 2);
-            gbxPasajeros.Size = new Size(2009, 418);
+            gbxPasajeros.Padding = new Padding(2, 1, 2, 1);
+            gbxPasajeros.Size = new Size(1082, 196);
             gbxPasajeros.TabIndex = 6;
             gbxPasajeros.TabStop = false;
             gbxPasajeros.Text = "Pasajeros";
@@ -91,10 +91,10 @@
             // 
             lblcodigp.AutoSize = true;
             lblcodigp.Font = new Font("Microsoft JhengHei UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblcodigp.Location = new Point(524, 64);
-            lblcodigp.Margin = new Padding(4, 0, 4, 0);
+            lblcodigp.Location = new Point(282, 30);
+            lblcodigp.Margin = new Padding(2, 0, 2, 0);
             lblcodigp.Name = "lblcodigp";
-            lblcodigp.Size = new Size(336, 48);
+            lblcodigp.Size = new Size(169, 24);
             lblcodigp.TabIndex = 5;
             lblcodigp.Text = "ID Presupuesto:  -";
             // 
@@ -105,10 +105,9 @@
             btn_Quitar.FlatStyle = FlatStyle.Flat;
             btn_Quitar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Quitar.ForeColor = Color.Black;
-            btn_Quitar.Location = new Point(1814, 47);
-            btn_Quitar.Margin = new Padding(6);
+            btn_Quitar.Location = new Point(977, 22);
             btn_Quitar.Name = "btn_Quitar";
-            btn_Quitar.Size = new Size(186, 85);
+            btn_Quitar.Size = new Size(100, 40);
             btn_Quitar.TabIndex = 13;
             btn_Quitar.Text = "Quitar";
             btn_Quitar.UseVisualStyleBackColor = false;
@@ -118,10 +117,10 @@
             // 
             lblcantpasajeros.AutoSize = true;
             lblcantpasajeros.Font = new Font("Microsoft JhengHei UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblcantpasajeros.Location = new Point(32, 64);
-            lblcantpasajeros.Margin = new Padding(4, 0, 4, 0);
+            lblcantpasajeros.Location = new Point(17, 30);
+            lblcantpasajeros.Margin = new Padding(2, 0, 2, 0);
             lblcantpasajeros.Name = "lblcantpasajeros";
-            lblcantpasajeros.Size = new Size(452, 48);
+            lblcantpasajeros.Size = new Size(227, 24);
             lblcantpasajeros.TabIndex = 4;
             lblcantpasajeros.Text = "Pasajeros Disponibles:  -";
             // 
@@ -132,10 +131,9 @@
             btn_Agregar.FlatStyle = FlatStyle.Flat;
             btn_Agregar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Agregar.ForeColor = Color.Black;
-            btn_Agregar.Location = new Point(1618, 47);
-            btn_Agregar.Margin = new Padding(6);
+            btn_Agregar.Location = new Point(871, 22);
             btn_Agregar.Name = "btn_Agregar";
-            btn_Agregar.Size = new Size(186, 85);
+            btn_Agregar.Size = new Size(100, 40);
             btn_Agregar.TabIndex = 12;
             btn_Agregar.Text = "Agregar";
             btn_Agregar.UseVisualStyleBackColor = false;
@@ -145,10 +143,10 @@
             // 
             listPasajeros.Columns.AddRange(new ColumnHeader[] { nombre, apellido, fechadenac, edad, tipopasajero, nacionalidad, tipodoc, documento, fechavencimiento, paisemisor, email, telcontacto });
             listPasajeros.FullRowSelect = true;
-            listPasajeros.Location = new Point(32, 147);
-            listPasajeros.Margin = new Padding(4, 2, 4, 2);
+            listPasajeros.Location = new Point(17, 69);
+            listPasajeros.Margin = new Padding(2, 1, 2, 1);
             listPasajeros.Name = "listPasajeros";
-            listPasajeros.Size = new Size(1965, 234);
+            listPasajeros.Size = new Size(1060, 112);
             listPasajeros.TabIndex = 3;
             listPasajeros.UseCompatibleStateImageBehavior = false;
             listPasajeros.View = View.Details;
@@ -225,11 +223,11 @@
             gpProsupuesto.Controls.Add(label3);
             gpProsupuesto.Controls.Add(label2);
             gpProsupuesto.Controls.Add(label1);
-            gpProsupuesto.Location = new Point(20, 222);
-            gpProsupuesto.Margin = new Padding(4, 2, 4, 2);
+            gpProsupuesto.Location = new Point(11, 104);
+            gpProsupuesto.Margin = new Padding(2, 1, 2, 1);
             gpProsupuesto.Name = "gpProsupuesto";
-            gpProsupuesto.Padding = new Padding(4, 2, 4, 2);
-            gpProsupuesto.Size = new Size(2011, 535);
+            gpProsupuesto.Padding = new Padding(2, 1, 2, 1);
+            gpProsupuesto.Size = new Size(1083, 251);
             gpProsupuesto.TabIndex = 7;
             gpProsupuesto.TabStop = false;
             gpProsupuesto.Text = "Presupuestos";
@@ -242,10 +240,9 @@
             btn_Buscar.FlatStyle = FlatStyle.Flat;
             btn_Buscar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Buscar.ForeColor = Color.Black;
-            btn_Buscar.Location = new Point(1692, 32);
-            btn_Buscar.Margin = new Padding(6);
+            btn_Buscar.Location = new Point(911, 15);
             btn_Buscar.Name = "btn_Buscar";
-            btn_Buscar.Size = new Size(310, 85);
+            btn_Buscar.Size = new Size(167, 40);
             btn_Buscar.TabIndex = 14;
             btn_Buscar.Text = "Buscar";
             btn_Buscar.UseVisualStyleBackColor = false;
@@ -255,12 +252,12 @@
             // 
             listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, cantAdultos, cantMenores, precio, estado, fecha });
             listPresupuestos.FullRowSelect = true;
-            listPresupuestos.Location = new Point(19, 126);
-            listPresupuestos.Margin = new Padding(4, 2, 4, 2);
+            listPresupuestos.Location = new Point(10, 59);
+            listPresupuestos.Margin = new Padding(2, 1, 2, 1);
             listPresupuestos.MultiSelect = false;
             listPresupuestos.Name = "listPresupuestos";
             listPresupuestos.ShowItemToolTips = true;
-            listPresupuestos.Size = new Size(1980, 279);
+            listPresupuestos.Size = new Size(1068, 133);
             listPresupuestos.TabIndex = 9;
             listPresupuestos.UseCompatibleStateImageBehavior = false;
             listPresupuestos.View = View.Details;
@@ -308,28 +305,28 @@
             // 
             // txbDocumento
             // 
-            txbDocumento.Location = new Point(1356, 53);
-            txbDocumento.Margin = new Padding(4, 2, 4, 2);
+            txbDocumento.Location = new Point(730, 25);
+            txbDocumento.Margin = new Padding(2, 1, 2, 1);
             txbDocumento.Name = "txbDocumento";
-            txbDocumento.Size = new Size(305, 39);
+            txbDocumento.Size = new Size(166, 23);
             txbDocumento.TabIndex = 7;
             // 
             // nroPresupuestotxt
             // 
-            nroPresupuestotxt.Location = new Point(271, 53);
-            nroPresupuestotxt.Margin = new Padding(4, 2, 4, 2);
+            nroPresupuestotxt.Location = new Point(146, 25);
+            nroPresupuestotxt.Margin = new Padding(2, 1, 2, 1);
             nroPresupuestotxt.Name = "nroPresupuestotxt";
-            nroPresupuestotxt.Size = new Size(201, 39);
+            nroPresupuestotxt.Size = new Size(110, 23);
             nroPresupuestotxt.TabIndex = 6;
             // 
             // cbxTipodoc
             // 
             cbxTipodoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxTipodoc.FormattingEnabled = true;
-            cbxTipodoc.Location = new Point(806, 53);
-            cbxTipodoc.Margin = new Padding(4, 2, 4, 2);
+            cbxTipodoc.Location = new Point(434, 25);
+            cbxTipodoc.Margin = new Padding(2, 1, 2, 1);
             cbxTipodoc.Name = "cbxTipodoc";
-            cbxTipodoc.Size = new Size(242, 40);
+            cbxTipodoc.Size = new Size(132, 23);
             cbxTipodoc.TabIndex = 5;
             // 
             // btn_SeleccionarPresupuesto
@@ -339,10 +336,9 @@
             btn_SeleccionarPresupuesto.FlatStyle = FlatStyle.Flat;
             btn_SeleccionarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_SeleccionarPresupuesto.ForeColor = Color.Black;
-            btn_SeleccionarPresupuesto.Location = new Point(19, 442);
-            btn_SeleccionarPresupuesto.Margin = new Padding(6);
+            btn_SeleccionarPresupuesto.Location = new Point(10, 207);
             btn_SeleccionarPresupuesto.Name = "btn_SeleccionarPresupuesto";
-            btn_SeleccionarPresupuesto.Size = new Size(1983, 85);
+            btn_SeleccionarPresupuesto.Size = new Size(1068, 40);
             btn_SeleccionarPresupuesto.TabIndex = 11;
             btn_SeleccionarPresupuesto.Text = "Seleccionar";
             btn_SeleccionarPresupuesto.UseVisualStyleBackColor = false;
@@ -353,10 +349,10 @@
             label3.AutoSize = true;
             label3.FlatStyle = FlatStyle.System;
             label3.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(1059, 53);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(570, 25);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(305, 38);
+            label3.Size = new Size(149, 19);
             label3.TabIndex = 4;
             label3.Text = "Nro. de Documento:";
             // 
@@ -364,10 +360,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(491, 52);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(264, 24);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(307, 38);
+            label2.Size = new Size(149, 19);
             label2.TabIndex = 3;
             label2.Text = "Tipo de Documento:";
             label2.Click += label2_Click;
@@ -376,10 +372,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(19, 53);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(10, 25);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(240, 38);
+            label1.Size = new Size(117, 19);
             label1.TabIndex = 2;
             label1.Text = "ID Presupuesto:";
             // 
@@ -390,10 +386,9 @@
             btn_GenerarReserva.FlatStyle = FlatStyle.Flat;
             btn_GenerarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_GenerarReserva.ForeColor = Color.Black;
-            btn_GenerarReserva.Location = new Point(1007, 1188);
-            btn_GenerarReserva.Margin = new Padding(6);
+            btn_GenerarReserva.Location = new Point(542, 557);
             btn_GenerarReserva.Name = "btn_GenerarReserva";
-            btn_GenerarReserva.Size = new Size(1023, 85);
+            btn_GenerarReserva.Size = new Size(551, 40);
             btn_GenerarReserva.TabIndex = 4;
             btn_GenerarReserva.Text = "Generar Reserva";
             btn_GenerarReserva.UseVisualStyleBackColor = false;
@@ -406,10 +401,9 @@
             btn_Cancelar.FlatStyle = FlatStyle.Flat;
             btn_Cancelar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Cancelar.ForeColor = Color.Black;
-            btn_Cancelar.Location = new Point(22, 1188);
-            btn_Cancelar.Margin = new Padding(6);
+            btn_Cancelar.Location = new Point(12, 557);
             btn_Cancelar.Name = "btn_Cancelar";
-            btn_Cancelar.Size = new Size(973, 85);
+            btn_Cancelar.Size = new Size(524, 40);
             btn_Cancelar.TabIndex = 10;
             btn_Cancelar.Text = "Cancelar";
             btn_Cancelar.UseVisualStyleBackColor = false;
@@ -417,15 +411,15 @@
             // 
             // GenerarReserva
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(2052, 1299);
+            ClientSize = new Size(1105, 612);
             Controls.Add(btn_Cancelar);
             Controls.Add(btn_GenerarReserva);
             Controls.Add(gpProsupuesto);
             Controls.Add(gbxPasajeros);
-            Margin = new Padding(2);
+            Margin = new Padding(1, 1, 1, 1);
             Name = "GenerarReserva";
             Text = "Generar Reserva";
             Load += GenerarReserva_Load;
