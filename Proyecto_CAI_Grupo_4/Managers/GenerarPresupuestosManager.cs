@@ -217,6 +217,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new PaquetesTuristicos()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "PC11",
                 Nombre = "Paquete de la Costa",
                 Precio = 10,
                 Cantidad = 1,
@@ -242,6 +243,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new PaquetesTuristicos()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "PS22",
                 Nombre = "Paquete Sudafrica",
                 Precio = 10,
                 Cantidad = 2,
@@ -267,6 +269,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new PaquetesTuristicos()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "PI33",
                 Nombre = "Paque Italia",
                 Precio = 10,
                 Cantidad = 3,
@@ -292,6 +295,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new PaquetesTuristicos()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "PJ44",
                 Nombre = "Paquete Japon",
                 Precio = 10,
                 Cantidad = 4,

@@ -9,6 +9,12 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoPaquetesTuristicos : VistaBase
     {
+        private readonly int idColumnIndex = 0;
+        private readonly int precioColumnIndex = 3;
+        private readonly int cantidadDisponibleColumnIndex = 4;
+        private readonly int cantidadSeleccionadaColumnIndex = 5;
+        private readonly int subTotalColumnIndex = 6;
+
         public GenerarPresupuestoPaquetesTuristicos() : base(tituloModulo: "Generar Presupuesto > Paquetes Turísticos")
         {
             InitializeComponent();
@@ -94,6 +100,7 @@ namespace Proyecto_CAI_Grupo_4
                 DataGridViewRow row = new DataGridViewRow();
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
@@ -116,6 +123,7 @@ namespace Proyecto_CAI_Grupo_4
                 DataGridViewRow row = new DataGridViewRow();
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
@@ -151,9 +159,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 foreach (DataGridViewRow row in dataGridViewProductos.SelectedRows)
                 {
-                    var idCellIndex = 0;
-
-                    var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
 
                     var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
 
@@ -194,11 +200,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
                 {
-                    var idCellIndex = 0;
-                    var cantidadSeleccionadaColumnIndex = 4;
-                    var subTotalColumnIndex = 5;
-
-                    var id = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
 
                     var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
 
@@ -254,9 +256,7 @@ namespace Proyecto_CAI_Grupo_4
 
             foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
             {
-                var idCellIndex = 0;
-
-                var selectedId = Guid.Parse(row.Cells[idCellIndex].Value.ToString());
+                var selectedId = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
 
                 idList.Add(selectedId);
             }
@@ -266,24 +266,19 @@ namespace Proyecto_CAI_Grupo_4
 
         private void dataGridViewProductosSeleccionados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            var cantidadSeleccionadaColumnIndex = 4;
-
             if (e.RowIndex >= 0 && e.ColumnIndex == cantidadSeleccionadaColumnIndex)
             {
                 var dataGridView = sender as DataGridView;
 
                 // ID
-                var idColumnIndex = 0;
                 var idCell = dataGridView.Rows[e.RowIndex].Cells[idColumnIndex];
                 var id = idCell.Value.ToString();
 
                 // Precio
-                var precioColumnIndex = 2;
                 var precioCell = dataGridView.Rows[e.RowIndex].Cells[precioColumnIndex];
                 var precio = decimal.Parse(precioCell.Value.ToString());
 
                 // Cantidad Disponible
-                var cantidadDisponibleColumnIndex = 3;
                 var cantidadDisponibleCell = dataGridView.Rows[e.RowIndex].Cells[cantidadDisponibleColumnIndex];
                 var cantidadDisponible = int.Parse(cantidadDisponibleCell.Value.ToString());
 
@@ -292,7 +287,6 @@ namespace Proyecto_CAI_Grupo_4
                 var isCantidadSeleccionadaValid = int.TryParse(cantidadSeleccionadaCell.Value.ToString(), out int cantidadSeleccionada);
 
                 // SubTotal
-                var subTotalColumnIndex = 5;
                 var subTotalCell = dataGridView.Rows[e.RowIndex].Cells[subTotalColumnIndex];
 
                 var validation = ValidarCantidadSeleccionada(id, isCantidadSeleccionadaValid, cantidadSeleccionada, cantidadDisponible);
