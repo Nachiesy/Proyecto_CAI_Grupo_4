@@ -1,13 +1,52 @@
-﻿namespace Proyecto_CAI_Grupo_4.Models.Productos
+﻿using System.ComponentModel;
+
+namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
     public class PaquetesTuristicos : Productos
     {
-        public string Origen { get; set; }
+        public PaquetesTuristicosOrigenEnum Origen { get; set; }
 
-        public string Destino { get; set; }
+        public PaquetesTuristicosDestinoEnum Destino { get; set; }
 
         public DateTime FechaDesde { get; set; }
 
         public DateTime FechaHasta { get; set; }
+
+        public IEnumerable<PaquetesTuristicosActividades> Actividades { get; set; }
+    }
+
+    public enum PaquetesTuristicosOrigenEnum
+    {
+        [Description("Buenos Aires")]
+        buenosAires,
+
+        [Description("Sao Pablo")]
+        saoPablo,
+
+        [Description("Filadelfia")]
+        filadelfia,
+
+        [Description("Sidney")]
+        sidney,
+    }
+
+    public enum PaquetesTuristicosDestinoEnum
+    {
+        [Description("Mar del Plata")]
+        marDelPlata,
+
+        [Description("Pretoria")]
+        pretoria,
+
+        [Description("Napoles")]
+        napoles,
+
+        [Description("Tokio")]
+        tokio,
+    }
+
+    public class PaquetesTuristicosActividades
+    {
+        public string Nombre { get; set; }
     }
 }

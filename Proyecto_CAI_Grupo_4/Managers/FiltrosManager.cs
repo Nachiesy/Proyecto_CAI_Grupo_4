@@ -37,18 +37,25 @@ namespace Proyecto_CAI_Grupo_4.Managers
 
         public static string ValidarFechas(ProductosFilterDto presupuesto)
         {
-            var messages = string.Empty;
+            var fechaDesdeHasValue = presupuesto.FechaDesde.HasValue;
+            var fechaHastaHasValue = presupuesto.FechaHasta.HasValue;
 
-            if (presupuesto.FechaDesde.Date < DateTime.Now.Date)
+            if (fechaDesdeHasValue && (presupuesto.FechaDesde.Value.Date < DateTime.Now.Date))
             {
-                messages += "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
-            }
-            else if (presupuesto.FechaDesde.Date >= presupuesto.FechaHasta.Date)
-            {
-                messages += "La Fecha Desde debe ser menor a la Fecha Hasta" + Environment.NewLine;
+                return "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
             }
 
-            return messages;
+            if (fechaHastaHasValue && (presupuesto.FechaHasta.Value.Date < DateTime.Now.Date))
+            {
+                return "La Fecha Hasta debe ser mayor a hoy" + Environment.NewLine;
+            }
+
+            if (fechaDesdeHasValue && fechaHastaHasValue && (presupuesto.FechaDesde.Value.Date >= presupuesto.FechaHasta.Value.Date))
+            {
+                return "La Fecha Desde debe ser menor a la Fecha Hasta" + Environment.NewLine;
+            }
+
+            return string.Empty;
         }
     }
 }

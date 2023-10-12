@@ -2,9 +2,9 @@
 {
     public class CrucerosFilterDto : ProductosFilterDto
     {
-        public string CiudadDePartida { get; set; }
+        public int? CiudadDePartida { get; set; }
 
-        public string CiudadDeLlegada { get; set; }
+        public int? CiudadDeLlegada { get; set; }
     }
 
     public class CrucerosFilter : ProductosFilter
@@ -16,8 +16,8 @@
             CiudadDeLlegada = dto.CiudadDeLlegada;
         }
 
-        public string CiudadDePartida { get; set; }
+        public int? CiudadDePartida { get; set; }
 
-        public string CiudadDeLlegada { get; set; }
+        public int? CiudadDeLlegada { get; set; }
     }
 }

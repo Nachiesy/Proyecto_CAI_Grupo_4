@@ -47,8 +47,14 @@
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
-            btnVolverMenuGenerarPresupuestos = new Button();
             columnHeader5 = new ColumnHeader();
+            btnVolverMenuGenerarPresupuestos = new Button();
+            labelDestino = new Label();
+            labelOrigen = new Label();
+            comboBoxDestino = new ComboBox();
+            comboBoxOrigen = new ComboBox();
+            btnDisableDatePickerFilterFechaHasta = new Button();
+            btnDisableDatePickerFilterFechaDesde = new Button();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
@@ -120,6 +126,12 @@
             // 
             // grp_Filtros
             // 
+            grp_Filtros.Controls.Add(labelDestino);
+            grp_Filtros.Controls.Add(labelOrigen);
+            grp_Filtros.Controls.Add(comboBoxDestino);
+            grp_Filtros.Controls.Add(comboBoxOrigen);
+            grp_Filtros.Controls.Add(btnDisableDatePickerFilterFechaHasta);
+            grp_Filtros.Controls.Add(btnDisableDatePickerFilterFechaDesde);
             grp_Filtros.Controls.Add(label7);
             grp_Filtros.Controls.Add(datePickerFechaSalida);
             grp_Filtros.Controls.Add(label4);
@@ -130,7 +142,7 @@
             grp_Filtros.Controls.Add(txtBoxPrecioDesde);
             grp_Filtros.Location = new Point(27, 123);
             grp_Filtros.Name = "grp_Filtros";
-            grp_Filtros.Size = new Size(830, 118);
+            grp_Filtros.Size = new Size(830, 199);
             grp_Filtros.TabIndex = 35;
             grp_Filtros.TabStop = false;
             grp_Filtros.Text = "Filtros";
@@ -169,7 +181,7 @@
             // 
             lstViewProductos.BackColor = SystemColors.ControlLight;
             lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader6, columnHeader7, columnHeader8, columnHeader5 });
-            lstViewProductos.Location = new Point(27, 262);
+            lstViewProductos.Location = new Point(27, 337);
             lstViewProductos.Name = "lstViewProductos";
             lstViewProductos.Size = new Size(1064, 264);
             lstViewProductos.TabIndex = 36;
@@ -211,9 +223,14 @@
             columnHeader8.Text = "Fecha Salida";
             columnHeader8.Width = 100;
             // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Fecha Llegada";
+            columnHeader5.Width = 100;
+            // 
             // btnVolverMenuGenerarPresupuestos
             // 
-            btnVolverMenuGenerarPresupuestos.Location = new Point(27, 541);
+            btnVolverMenuGenerarPresupuestos.Location = new Point(27, 623);
             btnVolverMenuGenerarPresupuestos.Name = "btnVolverMenuGenerarPresupuestos";
             btnVolverMenuGenerarPresupuestos.Size = new Size(289, 47);
             btnVolverMenuGenerarPresupuestos.TabIndex = 37;
@@ -221,17 +238,66 @@
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
-            // columnHeader5
+            // labelDestino
             // 
-            columnHeader5.Text = "Fecha Llegada";
-            columnHeader5.Width = 100;
+            labelDestino.AutoSize = true;
+            labelDestino.Location = new Point(163, 127);
+            labelDestino.Name = "labelDestino";
+            labelDestino.Size = new Size(47, 15);
+            labelDestino.TabIndex = 37;
+            labelDestino.Text = "Destino";
+            // 
+            // labelOrigen
+            // 
+            labelOrigen.AutoSize = true;
+            labelOrigen.Location = new Point(18, 127);
+            labelOrigen.Name = "labelOrigen";
+            labelOrigen.Size = new Size(43, 15);
+            labelOrigen.TabIndex = 36;
+            labelOrigen.Text = "Origen";
+            // 
+            // comboBoxDestino
+            // 
+            comboBoxDestino.FormattingEnabled = true;
+            comboBoxDestino.Location = new Point(163, 145);
+            comboBoxDestino.Name = "comboBoxDestino";
+            comboBoxDestino.Size = new Size(126, 23);
+            comboBoxDestino.TabIndex = 35;
+            // 
+            // comboBoxOrigen
+            // 
+            comboBoxOrigen.FormattingEnabled = true;
+            comboBoxOrigen.Location = new Point(18, 145);
+            comboBoxOrigen.Name = "comboBoxOrigen";
+            comboBoxOrigen.Size = new Size(126, 23);
+            comboBoxOrigen.TabIndex = 34;
+            // 
+            // btnDisableDatePickerFilterFechaHasta
+            // 
+            btnDisableDatePickerFilterFechaHasta.Location = new Point(576, 87);
+            btnDisableDatePickerFilterFechaHasta.Name = "btnDisableDatePickerFilterFechaHasta";
+            btnDisableDatePickerFilterFechaHasta.Size = new Size(80, 23);
+            btnDisableDatePickerFilterFechaHasta.TabIndex = 33;
+            btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
+            btnDisableDatePickerFilterFechaHasta.UseVisualStyleBackColor = true;
+            btnDisableDatePickerFilterFechaHasta.Click += btnDisableDatePickerFilterFechaHasta_Click;
+            // 
+            // btnDisableDatePickerFilterFechaDesde
+            // 
+            btnDisableDatePickerFilterFechaDesde.Location = new Point(316, 87);
+            btnDisableDatePickerFilterFechaDesde.Name = "btnDisableDatePickerFilterFechaDesde";
+            btnDisableDatePickerFilterFechaDesde.Size = new Size(80, 23);
+            btnDisableDatePickerFilterFechaDesde.TabIndex = 32;
+            btnDisableDatePickerFilterFechaDesde.Text = "Deshabilitar";
+            btnDisableDatePickerFilterFechaDesde.UseVisualStyleBackColor = true;
+            btnDisableDatePickerFilterFechaDesde.Click += btnDisableDatePickerFilterFechaDesde_Click;
             // 
             // ConsultarPaquetesTuristicos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1106, 600);
+            ClientSize = new Size(1106, 682);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
             Controls.Add(lstViewProductos);
             Controls.Add(btnLimpiarFiltro);
@@ -272,5 +338,11 @@
         private ColumnHeader columnHeader8;
         private Button btnVolverMenuGenerarPresupuestos;
         private ColumnHeader columnHeader5;
+        private Label labelDestino;
+        private Label labelOrigen;
+        private ComboBox comboBoxDestino;
+        private ComboBox comboBoxOrigen;
+        private Button btnDisableDatePickerFilterFechaHasta;
+        private Button btnDisableDatePickerFilterFechaDesde;
     }
 }

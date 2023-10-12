@@ -19,6 +19,16 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFechaSalida.Value = DateTime.Now.Date;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
 
+            foreach (CrucerosOrigenEnum value in Enum.GetValues(typeof(CrucerosOrigenEnum)))
+            {
+                comboBoxOrigen.Items.Add(value.GetDescription());
+            }
+
+            foreach (CrucerosDestinoEnum value in Enum.GetValues(typeof(CrucerosDestinoEnum)))
+            {
+                comboBoxDestino.Items.Add(value.GetDescription());
+            }
+
             AddProductosToListView(GenerarPresupuestosManager.cruceros, lstViewProductos);
         }
 
@@ -28,8 +38,10 @@ namespace Proyecto_CAI_Grupo_4
             {
                 PrecioDesde = txtBoxPrecioDesde.Text,
                 PrecioHasta = txtBoxPrecioHasta.Text,
-                FechaDesde = datePickerFechaSalida.Value,
-                FechaHasta = datePickerFechaLlegada.Value,
+                FechaDesde = datePickerFechaSalida.Enabled ? datePickerFechaSalida.Value : null,
+                FechaHasta = datePickerFechaLlegada.Enabled ? datePickerFechaLlegada.Value : null,
+                CiudadDePartida = comboBoxOrigen.SelectedIndex != -1 ? comboBoxOrigen.SelectedIndex : null,
+                CiudadDeLlegada = comboBoxDestino.SelectedIndex != -1 ? comboBoxDestino.SelectedIndex : null,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -45,8 +57,10 @@ namespace Proyecto_CAI_Grupo_4
                 var productos = GenerarPresupuestosManager.cruceros
                     .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (x.FechaDesde == filter.FechaDesde)
-                                && (x.FechaHasta == filter.FechaHasta));
+                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
+                                && (!filter.CiudadDePartida.HasValue || (int)x.CiudadDePartida == filter.CiudadDePartida)
+                                && (!filter.CiudadDeLlegada.HasValue || (int)x.CiudadDeLlegada == filter.CiudadDeLlegada));
 
                 lstViewProductos.Items.Clear();
 
@@ -77,8 +91,8 @@ namespace Proyecto_CAI_Grupo_4
                 var row = new ListViewItem(item.Id.ToString());
 
                 row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.CiudadDePartida);
-                row.SubItems.Add(item.CiudadDeLlegada);
+                row.SubItems.Add(item.CiudadDePartida.GetDescription());
+                row.SubItems.Add(item.CiudadDeLlegada.GetDescription());
                 row.SubItems.Add(item.Precio.ToString());
                 row.SubItems.Add(item.Cantidad.ToString());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
@@ -94,6 +108,8 @@ namespace Proyecto_CAI_Grupo_4
             txtBoxPrecioHasta.Clear();
             datePickerFechaSalida.Value = DateTime.Now.Date;
             datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
+            comboBoxOrigen.SelectedIndex = -1;
+            comboBoxDestino.SelectedIndex = -1;
 
             lstViewProductos.Items.Clear();
 
@@ -112,6 +128,34 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenMenuConsultarProductos()
         {
             Application.Run(new ConsultarProductosMenu());
+        }
+
+        private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)
+        {
+            if (datePickerFechaSalida.Enabled)
+            {
+                datePickerFechaSalida.Enabled = false;
+                btnDisableDatePickerFilterFechaDesde.Text = "Habilitar";
+            }
+            else
+            {
+                datePickerFechaSalida.Enabled = true;
+                btnDisableDatePickerFilterFechaDesde.Text = "Deshabilitar";
+            }
+        }
+
+        private void btnDisableDatePickerFilterFechaHasta_Click(object sender, EventArgs e)
+        {
+            if (datePickerFechaLlegada.Enabled)
+            {
+                datePickerFechaLlegada.Enabled = false;
+                btnDisableDatePickerFilterFechaHasta.Text = "Habilitar";
+            }
+            else
+            {
+                datePickerFechaLlegada.Enabled = true;
+                btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
+            }
         }
     }
 }

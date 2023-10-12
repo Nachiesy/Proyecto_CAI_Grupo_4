@@ -2,9 +2,9 @@
 {
     public class PaquetesTuristicosFilterDto : ProductosFilterDto
     {
-        public string Origen { get; set; }
+        public int? Origen { get; set; }
 
-        public string Destino { get; set; }
+        public int? Destino { get; set; }
     }
 
     public class PaquetesTuristicosFilter : ProductosFilter
@@ -16,8 +16,8 @@
             Destino = dto.Destino;
         }
 
-        public string Origen { get; set; }
+        public int? Origen { get; set; }
 
-        public string Destino { get; set; }
+        public int? Destino { get; set; }
     }
 }

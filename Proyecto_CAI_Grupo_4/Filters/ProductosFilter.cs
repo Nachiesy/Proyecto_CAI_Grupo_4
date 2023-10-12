@@ -6,9 +6,9 @@
 
         public string PrecioHasta { get; set; }
 
-        public DateTime FechaDesde { get; set; }
+        public DateTime? FechaDesde { get; set; }
 
-        public DateTime FechaHasta { get; set; }
+        public DateTime? FechaHasta { get; set; }
     }
 
     public class ProductosFilter
@@ -34,8 +34,8 @@
 
         public decimal? PrecioHasta { get; set; }
 
-        public DateTime FechaDesde { get; set; }
+        public DateTime? FechaDesde { get; set; }
 
-        public DateTime FechaHasta { get; set; }
+        public DateTime? FechaHasta { get; set; }
     }
 }
