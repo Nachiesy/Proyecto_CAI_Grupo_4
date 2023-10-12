@@ -55,9 +55,11 @@
             Cantidad = new DataGridViewTextBoxColumn();
             FechaDesde = new DataGridViewTextBoxColumn();
             FechaHasta = new DataGridViewTextBoxColumn();
+            Aerolinea = new DataGridViewTextBoxColumn();
             Origen = new DataGridViewTextBoxColumn();
             Destino = new DataGridViewTextBoxColumn();
             Clase = new DataGridViewTextBoxColumn();
+            Paradas = new DataGridViewTextBoxColumn();
             grp_Filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             SuspendLayout();
@@ -252,7 +254,7 @@
             dataGridViewProductos.AllowUserToOrderColumns = true;
             dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitarioAdulto, PrecioUnitarioMenor, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Clase });
+            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitarioAdulto, PrecioUnitarioMenor, Cantidad, FechaDesde, FechaHasta, Aerolinea, Origen, Destino, Clase, Paradas });
             dataGridViewProductos.Location = new Point(27, 372);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.RowHeadersWidth = 82;
@@ -320,6 +322,13 @@
             FechaHasta.ReadOnly = true;
             FechaHasta.Width = 200;
             // 
+            // Aerolinea
+            // 
+            Aerolinea.HeaderText = "Aerolínea";
+            Aerolinea.Name = "Aerolinea";
+            Aerolinea.ReadOnly = true;
+            Aerolinea.Width = 200;
+            // 
             // Origen
             // 
             Origen.HeaderText = "Origen";
@@ -337,6 +346,13 @@
             Clase.HeaderText = "Clase";
             Clase.Name = "Clase";
             Clase.ReadOnly = true;
+            // 
+            // Paradas
+            // 
+            Paradas.HeaderText = "Paradas";
+            Paradas.Name = "Paradas";
+            Paradas.ReadOnly = true;
+            Paradas.Width = 200;
             // 
             // ConsultarAereos
             // 
@@ -391,8 +407,10 @@
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn FechaDesde;
         private DataGridViewTextBoxColumn FechaHasta;
+        private DataGridViewTextBoxColumn Aerolinea;
         private DataGridViewTextBoxColumn Origen;
         private DataGridViewTextBoxColumn Destino;
         private DataGridViewTextBoxColumn Clase;
+        private DataGridViewTextBoxColumn Paradas;
     }
 }

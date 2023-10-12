@@ -4,6 +4,11 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
     public class PaquetesTuristicos : Productos
     {
+        public PaquetesTuristicos()
+        {
+            Actividades = new List<PaquetesTuristicosActividades>();
+        }
+
         public PaquetesTuristicosOrigenEnum Origen { get; set; }
 
         public PaquetesTuristicosDestinoEnum Destino { get; set; }

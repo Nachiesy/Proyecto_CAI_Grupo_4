@@ -98,9 +98,11 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormDate() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Aerolinea.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeClaseAerea.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetParadas() });
 
                 dataGridViewProductos.Rows.Add(row);
             }

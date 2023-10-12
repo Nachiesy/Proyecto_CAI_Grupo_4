@@ -4,6 +4,11 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
     public class Cruceros : Productos
     {
+        public Cruceros()
+        {
+            Paradas = new List<CrucerosParadas>();
+        }
+
         public CrucerosOrigenEnum CiudadDePartida { get; set; }
 
         public CrucerosDestinoEnum CiudadDeLlegada { get; set; }

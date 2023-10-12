@@ -14,6 +14,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 PrecioAdultos = 20,
                 PrecioMenores = 10,
                 Cantidad = 1,
+                Aerolinea = AerolineaEnum.argentinas,
                 TipoDeServicio = TipoDeServicioEnum.aereo,
                 Origen = AereosOrigenEnum.buenosAires,
                 Destino = AereosDestinoEnum.montevideo,
@@ -29,6 +30,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 PrecioAdultos = 20,
                 PrecioMenores = 10,
                 Cantidad = 2,
+                Aerolinea = AerolineaEnum.latam,
                 TipoDeServicio = TipoDeServicioEnum.aereo,
                 Origen = AereosOrigenEnum.madrid,
                 Destino = AereosDestinoEnum.paris,
@@ -44,12 +46,20 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 PrecioAdultos = 20,
                 PrecioMenores = 10,
                 Cantidad = 3,
+                Aerolinea = AerolineaEnum.latam,
                 TipoDeServicio = TipoDeServicioEnum.aereo,
                 Origen = AereosOrigenEnum.londres,
                 Destino = AereosDestinoEnum.sanFrancisco,
                 FechaDeSalida = DateTime.Now.AddDays(10).Date,
                 FechaDeLlegada = DateTime.Now.AddDays(20).Date,
                 TipoDeClaseAerea = TipoDeClaseAereaEnum.primeraClase,
+                Paradas = new List<AereosParadas>()
+                {
+                    new AereosParadas()
+                    {
+                        Nombre = "Nueva York",
+                    },
+                },
             },
         };
 

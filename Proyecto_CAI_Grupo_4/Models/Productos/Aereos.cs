@@ -4,6 +4,11 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
     public class Aereos : Productos
     {
+        public Aereos()
+        {
+            Paradas = new List<AereosParadas>();
+        }
+
         public decimal PrecioAdultos { get; set; }
 
         public decimal PrecioMenores { get; set; }
@@ -20,7 +25,43 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public DateTime FechaDeLlegada { get; set; }
 
+        public AerolineaEnum Aerolinea { get; set; }
+
         public TipoDeClaseAereaEnum TipoDeClaseAerea { get; set; }
+
+        public IEnumerable<AereosParadas> Paradas { get; set; }
+
+        public string GetParadas()
+        {
+            var paradas = string.Empty;
+
+            var delimitter = ";";
+
+            foreach (var parada in Paradas)
+            {
+                if (paradas == string.Empty)
+                {
+                    paradas += $"{parada.Nombre}";
+                }
+                else
+                {
+                    paradas += $"{delimitter}{parada.Nombre}";
+                }
+            }
+
+            paradas = paradas.Replace(delimitter, ", ");
+
+            return paradas;
+        }
+    }
+
+    public enum AerolineaEnum
+    {
+        [Description("Aerolíneas Argentinas")]
+        argentinas,
+
+        [Description("LATAM")]
+        latam,
     }
 
     public enum TipoDeClaseAereaEnum
@@ -57,5 +98,10 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         [Description("San Francisco")]
         sanFrancisco,
+    }
+
+    public class AereosParadas
+    {
+        public string Nombre { get; set; }
     }
 }
