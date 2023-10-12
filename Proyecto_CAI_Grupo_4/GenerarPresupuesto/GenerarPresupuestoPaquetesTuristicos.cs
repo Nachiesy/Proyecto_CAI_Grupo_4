@@ -101,6 +101,7 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetActividades() });
 
                 dataGridViewProductos.Rows.Add(row);
             }
@@ -132,6 +133,7 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetActividades() });
 
                 dataGridViewProductosSeleccionados.Rows.Add(row);
             }

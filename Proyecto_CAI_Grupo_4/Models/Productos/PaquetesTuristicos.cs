@@ -13,6 +13,29 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
         public DateTime FechaHasta { get; set; }
 
         public IEnumerable<PaquetesTuristicosActividades> Actividades { get; set; }
+
+        public string GetActividades()
+        {
+            var actividades = string.Empty;
+
+            var delimitter = ";";
+
+            foreach (var actividad in Actividades)
+            {
+                if (actividades == string.Empty)
+                {
+                    actividades += $"{actividad.Nombre}";
+                }
+                else
+                {
+                    actividades += $"{delimitter}{actividad.Nombre}";
+                }
+            }
+
+            actividades = actividades.Replace(delimitter, ", ");
+
+            return actividades;
+        }
     }
 
     public enum PaquetesTuristicosOrigenEnum

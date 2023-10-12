@@ -158,6 +158,17 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Destino = PaquetesTuristicosDestinoEnum.marDelPlata,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                Actividades = new List<PaquetesTuristicosActividades>()
+                {
+                    new PaquetesTuristicosActividades()
+                    {
+                        Nombre = "Montaña Rusa",
+                    },
+                    new PaquetesTuristicosActividades()
+                    {
+                        Nombre = "Tobogan Acuatico",
+                    },
+                },
             },
             new PaquetesTuristicos()
             {
@@ -170,6 +181,17 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Destino = PaquetesTuristicosDestinoEnum.pretoria,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                Actividades = new List<PaquetesTuristicosActividades>()
+                {
+                    new PaquetesTuristicosActividades()
+                    {
+                        Nombre = "Safari",
+                    },
+                    new PaquetesTuristicosActividades()
+                    {
+                        Nombre = "Playa",
+                    },
+                },
             },
             new PaquetesTuristicos()
             {
@@ -182,6 +204,17 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Destino = PaquetesTuristicosDestinoEnum.napoles,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                Actividades = new List<PaquetesTuristicosActividades>()
+                {
+                    new PaquetesTuristicosActividades()
+                    {
+                        Nombre = "Coliseo de Roma",
+                    },
+                    new PaquetesTuristicosActividades()
+                    {
+                        Nombre = "Tour por Venecia",
+                    },
+                },
             },
             new PaquetesTuristicos()
             {
@@ -194,6 +227,17 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Destino = PaquetesTuristicosDestinoEnum.tokio,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                Actividades = new List<PaquetesTuristicosActividades>()
+                {
+                    new PaquetesTuristicosActividades()
+                    {
+                        Nombre = "Tour por Tokio",
+                    },
+                    new PaquetesTuristicosActividades()
+                    {
+                        Nombre = "Viaje a la Montaña",
+                    },
+                },
             },
         };
 
