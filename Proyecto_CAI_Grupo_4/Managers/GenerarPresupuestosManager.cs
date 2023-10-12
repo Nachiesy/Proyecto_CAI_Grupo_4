@@ -111,6 +111,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Cruceros()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "CC11",
                 Nombre = "Crucero de la Costa",
                 Precio = 10,
                 Cantidad = 1,
@@ -135,6 +136,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Cruceros()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "CB22",
                 Nombre = "Crucero dou Brasil",
                 Precio = 10,
                 Cantidad = 2,
@@ -159,6 +161,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Cruceros()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "CA33",
                 Nombre = "Crucero del Caribe",
                 Precio = 10,
                 Cantidad = 3,
@@ -183,6 +186,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
             new Cruceros()
             {
                 Id = Guid.NewGuid(),
+                Codigo = "CM44",
                 Nombre = "Crucero del Mediterraneo",
                 Precio = 10,
                 Cantidad = 4,
