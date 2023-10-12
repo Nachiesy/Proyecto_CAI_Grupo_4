@@ -16,8 +16,23 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuestoAereos_Load(object sender, EventArgs e)
         {
-            datePickerFechaSalida.Value = DateTime.Now.Date;
-            datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
+            datePickerFilterFechaDesde.Value = DateTime.Now.Date;
+            datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
+
+            foreach (HotelesCiudadEnum value in Enum.GetValues(typeof(HotelesCiudadEnum)))
+            {
+                comboBoxCiudad.Items.Add(value.GetDescription());
+            }
+
+            foreach (TipoDeHabitacionEnum value in Enum.GetValues(typeof(TipoDeHabitacionEnum)))
+            {
+                comboBoxTipoDeHabitacion.Items.Add(value.GetDescription());
+            }
+
+            foreach (HotelesCalificacionEnum value in Enum.GetValues(typeof(HotelesCalificacionEnum)))
+            {
+                comboBoxCalificacion.Items.Add(value.GetDescription());
+            }
 
             AddProductosToListView(GenerarPresupuestosManager.hoteles, lstViewProductos);
         }
@@ -28,8 +43,11 @@ namespace Proyecto_CAI_Grupo_4
             {
                 PrecioDesde = txtBoxPrecioDesde.Text,
                 PrecioHasta = txtBoxPrecioHasta.Text,
-                FechaDesde = datePickerFechaSalida.Value,
-                FechaHasta = datePickerFechaLlegada.Value,
+                FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
+                FechaHasta = datePickerFilterFechaHasta.Enabled ? datePickerFilterFechaHasta.Value : null,
+                Ciudad = comboBoxCiudad.SelectedIndex != -1 ? comboBoxCiudad.SelectedIndex : null,
+                TipoDeHabitacion = comboBoxTipoDeHabitacion.SelectedIndex != -1 ? comboBoxTipoDeHabitacion.SelectedIndex : null,
+                Calificacion = comboBoxCalificacion.SelectedIndex != -1 ? comboBoxCalificacion.SelectedIndex : null,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -45,8 +63,11 @@ namespace Proyecto_CAI_Grupo_4
                 var productos = GenerarPresupuestosManager.hoteles
                     .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (x.FechaDesde == filter.FechaDesde)
-                                && (x.FechaHasta == filter.FechaHasta));
+                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
+                                && (!filter.Ciudad.HasValue || (int)x.Ciudad == filter.Ciudad)
+                                && (!filter.TipoDeHabitacion.HasValue || (int)x.TipoDeHabitacion == filter.TipoDeHabitacion)
+                                && (!filter.Calificacion.HasValue || (int)x.Calificacion == filter.Calificacion));
 
                 lstViewProductos.Items.Clear();
 
@@ -77,11 +98,13 @@ namespace Proyecto_CAI_Grupo_4
                 var row = new ListViewItem(item.Id.ToString());
 
                 row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Ciudad);
+                row.SubItems.Add(item.Ciudad.GetDescription());
                 row.SubItems.Add(item.Precio.ToString());
                 row.SubItems.Add(item.Cantidad.ToString());
                 row.SubItems.Add(item.FechaDesde.ToFormDate());
                 row.SubItems.Add(item.FechaHasta.ToFormDate());
+                row.SubItems.Add(item.TipoDeHabitacion.GetDescription());
+                row.SubItems.Add(item.Calificacion.GetDescription());
 
                 listView.Items.Add(row);
             }
@@ -91,8 +114,11 @@ namespace Proyecto_CAI_Grupo_4
         {
             txtBoxPrecioDesde.Clear();
             txtBoxPrecioHasta.Clear();
-            datePickerFechaSalida.Value = DateTime.Now.Date;
-            datePickerFechaLlegada.Value = DateTime.Now.AddDays(1).Date;
+            datePickerFilterFechaDesde.Value = DateTime.Now.Date;
+            datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
+            comboBoxCiudad.SelectedIndex = -1;
+            comboBoxTipoDeHabitacion.SelectedIndex = -1;
+            comboBoxCalificacion.SelectedIndex = -1;
 
             lstViewProductos.Items.Clear();
 
@@ -111,6 +137,34 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenMenuConsultarProductos()
         {
             Application.Run(new ConsultarProductosMenu());
+        }
+
+        private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)
+        {
+            if (datePickerFilterFechaDesde.Enabled)
+            {
+                datePickerFilterFechaDesde.Enabled = false;
+                btnDisableDatePickerFilterFechaDesde.Text = "Habilitar";
+            }
+            else
+            {
+                datePickerFilterFechaDesde.Enabled = true;
+                btnDisableDatePickerFilterFechaDesde.Text = "Deshabilitar";
+            }
+        }
+
+        private void btnDisableDatePickerFilterFechaHasta_Click(object sender, EventArgs e)
+        {
+            if (datePickerFilterFechaHasta.Enabled)
+            {
+                datePickerFilterFechaHasta.Enabled = false;
+                btnDisableDatePickerFilterFechaHasta.Text = "Habilitar";
+            }
+            else
+            {
+                datePickerFilterFechaHasta.Enabled = true;
+                btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
+            }
         }
     }
 }

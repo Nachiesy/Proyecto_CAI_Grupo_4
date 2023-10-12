@@ -19,6 +19,21 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
+            foreach (HotelesCiudadEnum value in Enum.GetValues(typeof(HotelesCiudadEnum)))
+            {
+                comboBoxCiudad.Items.Add(value.GetDescription());
+            }
+
+            foreach (TipoDeHabitacionEnum value in Enum.GetValues(typeof(TipoDeHabitacionEnum)))
+            {
+                comboBoxTipoDeHabitacion.Items.Add(value.GetDescription());
+            }
+
+            foreach (HotelesCalificacionEnum value in Enum.GetValues(typeof(HotelesCalificacionEnum)))
+            {
+                comboBoxCalificacion.Items.Add(value.GetDescription());
+            }
+
             AddProductosToDataGridViewProductos(GenerarPresupuestosManager.hoteles.Where(x => x.Cantidad > 0));
 
             AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.hotelesElegidos, true);
@@ -30,8 +45,11 @@ namespace Proyecto_CAI_Grupo_4
             {
                 PrecioDesde = txtBoxFiltroPrecioDesde.Text,
                 PrecioHasta = txtBoxFiltroPrecioHasta.Text,
-                FechaDesde = datePickerFilterFechaDesde.Value,
-                FechaHasta = datePickerFilterFechaHasta.Value,
+                FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
+                FechaHasta = datePickerFilterFechaHasta.Enabled ? datePickerFilterFechaHasta.Value : null,
+                Ciudad = comboBoxCiudad.SelectedIndex != -1 ? comboBoxCiudad.SelectedIndex : null,
+                TipoDeHabitacion = comboBoxTipoDeHabitacion.SelectedIndex != -1 ? comboBoxTipoDeHabitacion.SelectedIndex : null,
+                Calificacion = comboBoxCalificacion.SelectedIndex != -1 ? comboBoxCalificacion.SelectedIndex : null,
             };
 
             var validacion = ValidacionDeFiltros(filterDto);
@@ -48,8 +66,11 @@ namespace Proyecto_CAI_Grupo_4
                     .Where(x => x.Cantidad > 0
                                 && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (x.FechaDesde == filter.FechaDesde)
-                                && (x.FechaHasta == filter.FechaHasta));
+                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
+                                && (!filter.Ciudad.HasValue || (int)x.Ciudad == filter.Ciudad)
+                                && (!filter.TipoDeHabitacion.HasValue || (int)x.TipoDeHabitacion == filter.TipoDeHabitacion)
+                                && (!filter.Calificacion.HasValue || (int)x.Calificacion == filter.Calificacion));
 
                 dataGridViewProductos.Rows.Clear();
 
@@ -85,7 +106,9 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeHabitacion.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Calificacion.GetDescription() });
 
                 dataGridViewProductos.Rows.Add(row);
             }
@@ -115,7 +138,9 @@ namespace Proyecto_CAI_Grupo_4
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeHabitacion.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Calificacion.GetDescription() });
 
                 dataGridViewProductosSeleccionados.Rows.Add(row);
             }
@@ -218,6 +243,9 @@ namespace Proyecto_CAI_Grupo_4
             txtBoxFiltroPrecioHasta.Clear();
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
+            comboBoxCiudad.SelectedIndex = -1;
+            comboBoxTipoDeHabitacion.SelectedIndex = -1;
+            comboBoxCalificacion.SelectedIndex = -1;
 
             dataGridViewProductos.Rows.Clear();
 
@@ -307,6 +335,34 @@ namespace Proyecto_CAI_Grupo_4
             }
 
             return string.Empty;
+        }
+
+        private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)
+        {
+            if (datePickerFilterFechaDesde.Enabled)
+            {
+                datePickerFilterFechaDesde.Enabled = false;
+                btnDisableDatePickerFilterFechaDesde.Text = "Habilitar";
+            }
+            else
+            {
+                datePickerFilterFechaDesde.Enabled = true;
+                btnDisableDatePickerFilterFechaDesde.Text = "Deshabilitar";
+            }
+        }
+
+        private void btnDisableDatePickerFilterFechaHasta_Click(object sender, EventArgs e)
+        {
+            if (datePickerFilterFechaHasta.Enabled)
+            {
+                datePickerFilterFechaHasta.Enabled = false;
+                btnDisableDatePickerFilterFechaHasta.Text = "Habilitar";
+            }
+            else
+            {
+                datePickerFilterFechaHasta.Enabled = true;
+                btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
+            }
         }
     }
 }

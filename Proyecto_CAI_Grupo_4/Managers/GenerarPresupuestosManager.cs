@@ -61,9 +61,11 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Precio = 10,
                 Cantidad = 1,
                 TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = "Buenos Aires",
+                Ciudad = HotelesCiudadEnum.buenosAires,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                TipoDeHabitacion = TipoDeHabitacionEnum.simple,
+                Calificacion = HotelesCalificacionEnum.cinco,
             },
             new Hoteles()
             {
@@ -72,9 +74,11 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Precio = 10,
                 Cantidad = 2,
                 TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = "Montevideo",
+                Ciudad = HotelesCiudadEnum.montevideo,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                TipoDeHabitacion = TipoDeHabitacionEnum.doble,
+                Calificacion = HotelesCalificacionEnum.cinco,
             },
             new Hoteles()
             {
@@ -83,9 +87,11 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Precio = 10,
                 Cantidad = 3,
                 TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = "Madrid",
+                Ciudad = HotelesCiudadEnum.madrid,
                 FechaDesde = DateTime.Now.AddDays(10).Date,
                 FechaHasta = DateTime.Now.AddDays(20).Date,
+                TipoDeHabitacion = TipoDeHabitacionEnum.triple,
+                Calificacion = HotelesCalificacionEnum.cuatro,
             },
         };
 

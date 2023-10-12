@@ -28,36 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            datePickerFechaSalida = new DateTimePicker();
+            datePickerFilterFechaDesde = new DateTimePicker();
             label4 = new Label();
             label5 = new Label();
-            datePickerFechaLlegada = new DateTimePicker();
+            datePickerFilterFechaHasta = new DateTimePicker();
             label6 = new Label();
             txtBoxPrecioHasta = new TextBox();
             label7 = new Label();
             txtBoxPrecioDesde = new TextBox();
             grp_Filtros = new GroupBox();
+            labelCalificacion = new Label();
+            comboBoxCalificacion = new ComboBox();
+            labelTipoDeHabitacion = new Label();
+            comboBoxTipoDeHabitacion = new ComboBox();
+            labelCiudad = new Label();
+            comboBoxCiudad = new ComboBox();
+            btnDisableDatePickerFilterFechaHasta = new Button();
+            btnDisableDatePickerFilterFechaDesde = new Button();
             btnLimpiarFiltro = new Common.Components.BotonEstilizado();
             buscarPresupuesto = new Common.Components.BotonEstilizado();
             lstViewProductos = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
+            ID = new ColumnHeader();
+            Nombre = new ColumnHeader();
+            Ciudad = new ColumnHeader();
+            Precio = new ColumnHeader();
+            CantidadDisponible = new ColumnHeader();
+            FechaDesde = new ColumnHeader();
+            FechaHasta = new ColumnHeader();
+            TipoDeHabitacion = new ColumnHeader();
+            Calificaciom = new ColumnHeader();
             btnVolverMenuGenerarPresupuestos = new Button();
-            columnHeader4 = new ColumnHeader();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
-            // datePickerFechaSalida
+            // datePickerFilterFechaDesde
             // 
-            datePickerFechaSalida.Location = new Point(316, 56);
-            datePickerFechaSalida.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
-            datePickerFechaSalida.Name = "datePickerFechaSalida";
-            datePickerFechaSalida.Size = new Size(235, 23);
-            datePickerFechaSalida.TabIndex = 12;
+            datePickerFilterFechaDesde.Location = new Point(316, 56);
+            datePickerFilterFechaDesde.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
+            datePickerFilterFechaDesde.Name = "datePickerFilterFechaDesde";
+            datePickerFilterFechaDesde.Size = new Size(235, 23);
+            datePickerFilterFechaDesde.TabIndex = 12;
             // 
             // label4
             // 
@@ -77,13 +87,13 @@
             label5.TabIndex = 15;
             label5.Text = "Fecha Hasta";
             // 
-            // datePickerFechaLlegada
+            // datePickerFilterFechaHasta
             // 
-            datePickerFechaLlegada.Location = new Point(576, 56);
-            datePickerFechaLlegada.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
-            datePickerFechaLlegada.Name = "datePickerFechaLlegada";
-            datePickerFechaLlegada.Size = new Size(232, 23);
-            datePickerFechaLlegada.TabIndex = 14;
+            datePickerFilterFechaHasta.Location = new Point(576, 56);
+            datePickerFilterFechaHasta.MinDate = new DateTime(2023, 10, 7, 0, 0, 0, 0);
+            datePickerFilterFechaHasta.Name = "datePickerFilterFechaHasta";
+            datePickerFilterFechaHasta.Size = new Size(232, 23);
+            datePickerFilterFechaHasta.TabIndex = 14;
             // 
             // label6
             // 
@@ -119,20 +129,99 @@
             // 
             // grp_Filtros
             // 
+            grp_Filtros.Controls.Add(labelCalificacion);
+            grp_Filtros.Controls.Add(comboBoxCalificacion);
+            grp_Filtros.Controls.Add(labelTipoDeHabitacion);
+            grp_Filtros.Controls.Add(comboBoxTipoDeHabitacion);
+            grp_Filtros.Controls.Add(labelCiudad);
+            grp_Filtros.Controls.Add(comboBoxCiudad);
+            grp_Filtros.Controls.Add(btnDisableDatePickerFilterFechaHasta);
+            grp_Filtros.Controls.Add(btnDisableDatePickerFilterFechaDesde);
             grp_Filtros.Controls.Add(label7);
-            grp_Filtros.Controls.Add(datePickerFechaSalida);
+            grp_Filtros.Controls.Add(datePickerFilterFechaDesde);
             grp_Filtros.Controls.Add(label4);
-            grp_Filtros.Controls.Add(datePickerFechaLlegada);
+            grp_Filtros.Controls.Add(datePickerFilterFechaHasta);
             grp_Filtros.Controls.Add(label5);
             grp_Filtros.Controls.Add(txtBoxPrecioHasta);
             grp_Filtros.Controls.Add(label6);
             grp_Filtros.Controls.Add(txtBoxPrecioDesde);
             grp_Filtros.Location = new Point(27, 123);
             grp_Filtros.Name = "grp_Filtros";
-            grp_Filtros.Size = new Size(830, 118);
+            grp_Filtros.Size = new Size(830, 216);
             grp_Filtros.TabIndex = 35;
             grp_Filtros.TabStop = false;
             grp_Filtros.Text = "Filtros";
+            // 
+            // labelCalificacion
+            // 
+            labelCalificacion.AutoSize = true;
+            labelCalificacion.Location = new Point(316, 140);
+            labelCalificacion.Name = "labelCalificacion";
+            labelCalificacion.Size = new Size(69, 15);
+            labelCalificacion.TabIndex = 49;
+            labelCalificacion.Text = "Calificación";
+            // 
+            // comboBoxCalificacion
+            // 
+            comboBoxCalificacion.FormattingEnabled = true;
+            comboBoxCalificacion.Location = new Point(316, 158);
+            comboBoxCalificacion.Name = "comboBoxCalificacion";
+            comboBoxCalificacion.Size = new Size(126, 23);
+            comboBoxCalificacion.TabIndex = 48;
+            // 
+            // labelTipoDeHabitacion
+            // 
+            labelTipoDeHabitacion.AutoSize = true;
+            labelTipoDeHabitacion.Location = new Point(163, 140);
+            labelTipoDeHabitacion.Name = "labelTipoDeHabitacion";
+            labelTipoDeHabitacion.Size = new Size(107, 15);
+            labelTipoDeHabitacion.TabIndex = 47;
+            labelTipoDeHabitacion.Text = "Tipo de Habitación";
+            // 
+            // comboBoxTipoDeHabitacion
+            // 
+            comboBoxTipoDeHabitacion.FormattingEnabled = true;
+            comboBoxTipoDeHabitacion.Location = new Point(163, 158);
+            comboBoxTipoDeHabitacion.Name = "comboBoxTipoDeHabitacion";
+            comboBoxTipoDeHabitacion.Size = new Size(126, 23);
+            comboBoxTipoDeHabitacion.TabIndex = 46;
+            // 
+            // labelCiudad
+            // 
+            labelCiudad.AutoSize = true;
+            labelCiudad.Location = new Point(18, 140);
+            labelCiudad.Name = "labelCiudad";
+            labelCiudad.Size = new Size(45, 15);
+            labelCiudad.TabIndex = 45;
+            labelCiudad.Text = "Ciudad";
+            // 
+            // comboBoxCiudad
+            // 
+            comboBoxCiudad.FormattingEnabled = true;
+            comboBoxCiudad.Location = new Point(18, 158);
+            comboBoxCiudad.Name = "comboBoxCiudad";
+            comboBoxCiudad.Size = new Size(126, 23);
+            comboBoxCiudad.TabIndex = 44;
+            // 
+            // btnDisableDatePickerFilterFechaHasta
+            // 
+            btnDisableDatePickerFilterFechaHasta.Location = new Point(576, 85);
+            btnDisableDatePickerFilterFechaHasta.Name = "btnDisableDatePickerFilterFechaHasta";
+            btnDisableDatePickerFilterFechaHasta.Size = new Size(80, 23);
+            btnDisableDatePickerFilterFechaHasta.TabIndex = 39;
+            btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
+            btnDisableDatePickerFilterFechaHasta.UseVisualStyleBackColor = true;
+            btnDisableDatePickerFilterFechaHasta.Click += btnDisableDatePickerFilterFechaHasta_Click;
+            // 
+            // btnDisableDatePickerFilterFechaDesde
+            // 
+            btnDisableDatePickerFilterFechaDesde.Location = new Point(316, 85);
+            btnDisableDatePickerFilterFechaDesde.Name = "btnDisableDatePickerFilterFechaDesde";
+            btnDisableDatePickerFilterFechaDesde.Size = new Size(80, 23);
+            btnDisableDatePickerFilterFechaDesde.TabIndex = 38;
+            btnDisableDatePickerFilterFechaDesde.Text = "Deshabilitar";
+            btnDisableDatePickerFilterFechaDesde.UseVisualStyleBackColor = true;
+            btnDisableDatePickerFilterFechaDesde.Click += btnDisableDatePickerFilterFechaDesde_Click;
             // 
             // btnLimpiarFiltro
             // 
@@ -167,47 +256,62 @@
             // lstViewProductos
             // 
             lstViewProductos.BackColor = SystemColors.ControlLight;
-            lstViewProductos.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader6, columnHeader7, columnHeader8, columnHeader4 });
-            lstViewProductos.Location = new Point(27, 291);
+            lstViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Nombre, Ciudad, Precio, CantidadDisponible, FechaDesde, FechaHasta, TipoDeHabitacion, Calificaciom });
+            lstViewProductos.Location = new Point(27, 357);
             lstViewProductos.Name = "lstViewProductos";
             lstViewProductos.Size = new Size(1064, 228);
             lstViewProductos.TabIndex = 36;
             lstViewProductos.UseCompatibleStateImageBehavior = false;
             lstViewProductos.View = View.Details;
             // 
-            // columnHeader1
+            // ID
             // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 250;
+            ID.Text = "ID";
+            ID.Width = 250;
             // 
-            // columnHeader2
+            // Nombre
             // 
-            columnHeader2.Text = "Nombre";
-            columnHeader2.Width = 200;
+            Nombre.Text = "Nombre";
+            Nombre.Width = 200;
             // 
-            // columnHeader3
+            // Ciudad
             // 
-            columnHeader3.Text = "Ciudad";
-            columnHeader3.Width = 100;
+            Ciudad.Text = "Ciudad";
+            Ciudad.Width = 100;
             // 
-            // columnHeader6
+            // Precio
             // 
-            columnHeader6.Text = "Precio";
-            columnHeader6.Width = 100;
+            Precio.Text = "Precio";
+            Precio.Width = 100;
             // 
-            // columnHeader7
+            // CantidadDisponible
             // 
-            columnHeader7.Text = "Cantidad Disponible";
-            columnHeader7.Width = 150;
+            CantidadDisponible.Text = "Cantidad Disponible";
+            CantidadDisponible.Width = 150;
             // 
-            // columnHeader8
+            // FechaDesde
             // 
-            columnHeader8.Text = "Fecha Desde";
-            columnHeader8.Width = 100;
+            FechaDesde.Text = "Fecha Desde";
+            FechaDesde.Width = 100;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.Text = "Fecha Hasta";
+            FechaHasta.Width = 100;
+            // 
+            // TipoDeHabitacion
+            // 
+            TipoDeHabitacion.Text = "Tipo de Habitación";
+            TipoDeHabitacion.Width = 200;
+            // 
+            // Calificaciom
+            // 
+            Calificaciom.Text = "Calificación";
+            Calificaciom.Width = 100;
             // 
             // btnVolverMenuGenerarPresupuestos
             // 
-            btnVolverMenuGenerarPresupuestos.Location = new Point(27, 541);
+            btnVolverMenuGenerarPresupuestos.Location = new Point(27, 601);
             btnVolverMenuGenerarPresupuestos.Name = "btnVolverMenuGenerarPresupuestos";
             btnVolverMenuGenerarPresupuestos.Size = new Size(289, 47);
             btnVolverMenuGenerarPresupuestos.TabIndex = 37;
@@ -215,17 +319,12 @@
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Fecha Hasta";
-            columnHeader4.Width = 100;
-            // 
             // ConsultarHoteles
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1106, 600);
+            ClientSize = new Size(1106, 675);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
             Controls.Add(lstViewProductos);
             Controls.Add(btnLimpiarFiltro);
@@ -245,10 +344,10 @@
         }
 
         #endregion
-        private DateTimePicker datePickerFechaSalida;
+        private DateTimePicker datePickerFilterFechaDesde;
         private Label label4;
         private Label label5;
-        private DateTimePicker datePickerFechaLlegada;
+        private DateTimePicker datePickerFilterFechaHasta;
         private Label label6;
         private TextBox txtBoxPrecioHasta;
         private Label label7;
@@ -257,13 +356,23 @@
         private Common.Components.BotonEstilizado btnLimpiarFiltro;
         private Common.Components.BotonEstilizado buscarPresupuesto;
         private ListView lstViewProductos;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
-        private ColumnHeader columnHeader8;
+        private ColumnHeader ID;
+        private ColumnHeader Nombre;
+        private ColumnHeader Ciudad;
+        private ColumnHeader Precio;
+        private ColumnHeader CantidadDisponible;
+        private ColumnHeader FechaDesde;
         private Button btnVolverMenuGenerarPresupuestos;
-        private ColumnHeader columnHeader4;
+        private ColumnHeader FechaHasta;
+        private Button btnDisableDatePickerFilterFechaDesde;
+        private Button btnDisableDatePickerFilterFechaHasta;
+        private Label labelCiudad;
+        private ComboBox comboBoxCiudad;
+        private Label labelTipoDeHabitacion;
+        private ComboBox comboBoxTipoDeHabitacion;
+        private Label labelCalificacion;
+        private ComboBox comboBoxCalificacion;
+        private ColumnHeader TipoDeHabitacion;
+        private ColumnHeader Calificaciom;
     }
 }
