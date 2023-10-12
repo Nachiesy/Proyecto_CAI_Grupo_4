@@ -56,8 +56,6 @@
             cantMenores = new ColumnHeader();
             precio = new ColumnHeader();
             estado = new ColumnHeader();
-            fechadesde = new ColumnHeader();
-            fechahasta = new ColumnHeader();
             fecha = new ColumnHeader();
             txbDocumento = new TextBox();
             nroPresupuestotxt = new TextBox();
@@ -114,6 +112,7 @@
             btn_Quitar.TabIndex = 13;
             btn_Quitar.Text = "Quitar";
             btn_Quitar.UseVisualStyleBackColor = false;
+            btn_Quitar.Click += btn_Quitar_Click;
             // 
             // lblcantpasajeros
             // 
@@ -145,6 +144,7 @@
             // listPasajeros
             // 
             listPasajeros.Columns.AddRange(new ColumnHeader[] { nombre, apellido, fechadenac, edad, tipopasajero, nacionalidad, tipodoc, documento, fechavencimiento, paisemisor, email, telcontacto });
+            listPasajeros.FullRowSelect = true;
             listPasajeros.Location = new Point(32, 147);
             listPasajeros.Margin = new Padding(4, 2, 4, 2);
             listPasajeros.Name = "listPasajeros";
@@ -253,7 +253,7 @@
             // 
             // listPresupuestos
             // 
-            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, cantAdultos, cantMenores, precio, estado, fechadesde, fechahasta, fecha });
+            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, cantAdultos, cantMenores, precio, estado, fecha });
             listPresupuestos.FullRowSelect = true;
             listPresupuestos.Location = new Point(19, 126);
             listPresupuestos.Margin = new Padding(4, 2, 4, 2);
@@ -300,16 +300,6 @@
             // 
             estado.Text = "Estado";
             estado.Width = 180;
-            // 
-            // fechadesde
-            // 
-            fechadesde.Text = "Fecha Desde";
-            fechadesde.Width = 200;
-            // 
-            // fechahasta
-            // 
-            fechahasta.Text = "Fecha Hasta";
-            fechahasta.Width = 200;
             // 
             // fecha
             // 
@@ -476,8 +466,6 @@
         private ColumnHeader cantpasajeros;
         private ColumnHeader precio;
         private ColumnHeader estado;
-        private ColumnHeader fechadesde;
-        private ColumnHeader fechahasta;
         private ColumnHeader fecha;
         private Label lblcantpasajeros;
         private Label lblcodigp;

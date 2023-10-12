@@ -201,6 +201,7 @@
             // 
             // paiscbx
             // 
+            paiscbx.DropDownStyle = ComboBoxStyle.DropDownList;
             paiscbx.FormattingEnabled = true;
             paiscbx.Items.AddRange(new object[] { "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Paraguay", "Venezuela", "Uruguay" });
             paiscbx.Location = new Point(522, 407);

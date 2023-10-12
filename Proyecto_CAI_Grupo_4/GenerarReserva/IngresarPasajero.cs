@@ -17,7 +17,7 @@ namespace Proyecto_CAI_Grupo_4
     public partial class IngresarPasajero : VistaBase
     {
         public Pasajeros pasajero { get; private set; }
-        public IngresarPasajero() : base(tituloModulo: "Ingresar Pasajero", deshabilitarBotones: true)
+        public IngresarPasajero() : base(tituloModulo: "Ingresar Pasajero")
         {
             InitializeComponent();
         }
@@ -63,7 +63,7 @@ namespace Proyecto_CAI_Grupo_4
             pasajero.Apellido = apellidopasajerotxt.Text;
             pasajero.Fecha_Nac = dtnacmiento.Value;
             pasajero.Nacionalidad = nacpasajerocbx.Text;
-            pasajero.Tipo_Doc = cbxTipodoc.TabIndex;
+            pasajero.Tipo_Doc = cbxTipodoc.Text;
             pasajero.Doc = dnipasajerotxt.Text;
             pasajero.Fecha_Exp = exppasajerodgv.Value;
             pasajero.Pais_emisor = paiscbx.Text;
@@ -73,10 +73,10 @@ namespace Proyecto_CAI_Grupo_4
 
 
 
-            if (pasajero.CamposPasajeros().Count > 0)
+            if (pasajero.CamposPasajeros() != null)
             {
-                string mensajeError = "Los siguientes campos no se han completado:\n" + string.Join(", ", pasajero.CamposPasajeros());
-                MessageBox.Show(mensajeError, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string mensajeError = string.Join("", pasajero.CamposPasajeros());
+                MessageBox.Show(mensajeError, "Error de validación", MessageBoxButtons.OK);
             }
             else
             {

@@ -15,6 +15,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class ConfirmarReserva : VistaBase
     {
+        Reserva reservaselct = new Reserva();
         public ConfirmarReserva()
         {
             InitializeComponent();
@@ -30,8 +31,6 @@ namespace Proyecto_CAI_Grupo_4
                 CantPasajeros = 2,
                 Precio = (decimal)100000.50,
                 Fecha = DateTime.Now.AddDays(-7),
-                FechaDesde = DateTime.Now.AddDays(21),
-                FechaHasta = DateTime.Now.AddDays(14),
             },
             new Reserva()
             {
@@ -42,8 +41,6 @@ namespace Proyecto_CAI_Grupo_4
                 CantPasajeros = 5,
                 Precio = (decimal)50000,
                 Fecha = DateTime.Now.AddDays(-14),
-                FechaDesde = DateTime.Now.AddDays(14),
-                FechaHasta = DateTime.Now.AddDays(7),
             },
             new Reserva()
             {
@@ -54,8 +51,6 @@ namespace Proyecto_CAI_Grupo_4
                 CantPasajeros = 2,
                 Precio = (decimal)500000.95,
                 Fecha = DateTime.Now.AddDays(-21),
-                FechaDesde = DateTime.Now.AddDays(7),
-                FechaHasta = DateTime.Now.AddDays(21),
             },
                         new Reserva()
             {
@@ -66,8 +61,6 @@ namespace Proyecto_CAI_Grupo_4
                 CantPasajeros = 2,
                 Precio = (decimal)500000.95,
                 Fecha = DateTime.Now.AddDays(-21),
-                FechaDesde = DateTime.Now.AddDays(7),
-                FechaHasta = DateTime.Now.AddDays(21),
             },
         };
         private void btnSelect_Click(object sender, EventArgs e)
@@ -89,7 +82,7 @@ namespace Proyecto_CAI_Grupo_4
             var dni = txbDocumento.Text.Trim();
 
             var filteredReservas = reservas
-                .Where(x => (x.Codigo ==-1 || x.Codigo == int.Parse(codigo))
+                .Where(x => (string.IsNullOrEmpty(codigo) || (int)x.Codigo == int.Parse(codigo))
                             && (tipodoc == -1 || (int)x.Estado == tipodoc)
                            && (string.IsNullOrEmpty(dni) || x.DNI == dni));
 
@@ -113,8 +106,6 @@ namespace Proyecto_CAI_Grupo_4
                 row.SubItems.Add(item.CantPasajeros.ToString());
                 row.SubItems.Add(item.Precio.ToString());
                 row.SubItems.Add(item.Estado.GetDescription());
-                row.SubItems.Add(item.FechaDesde.ToFormDate());
-                row.SubItems.Add(item.FechaHasta.ToFormDate());
                 row.SubItems.Add(item.Fecha.ToFormDate());
 
                 listPresupuestos.Items.Add(row);
@@ -131,6 +122,24 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btn_ConfirmarReserva_Click(object sender, EventArgs e)
         {
+            ListViewItem item = listPresupuestos.SelectedItems[0];
+
+            if (listPresupuestos.SelectedItems.Count > 0)
+            {
+
+                DialogResult resultado = MessageBox.Show("¿Desea continuar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    MessageBox.Show("Reserva Confirmada");
+                    listPresupuestos.Items.Remove(item);
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una reserva");
+            }
 
         }
 

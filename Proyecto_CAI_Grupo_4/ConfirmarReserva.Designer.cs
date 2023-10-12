@@ -40,8 +40,6 @@
             cantpasajeros = new ColumnHeader();
             precio = new ColumnHeader();
             estado = new ColumnHeader();
-            fechadesde = new ColumnHeader();
-            fechahasta = new ColumnHeader();
             fecha = new ColumnHeader();
             gpProsupuesto = new GroupBox();
             btn_Volver = new Common.Components.BotonEstilizado();
@@ -56,68 +54,68 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 26);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(19, 55);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(101, 15);
+            label1.Size = new Size(202, 32);
             label1.TabIndex = 2;
             label1.Text = "Nro. Presupuesto:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(238, 26);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(442, 55);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(115, 15);
+            label2.Size = new Size(233, 32);
             label2.TabIndex = 3;
             label2.Text = "Tipo de Documento:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(504, 26);
-            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Location = new Point(936, 55);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(115, 15);
+            label3.Size = new Size(231, 32);
             label3.TabIndex = 4;
             label3.Text = "Nro. de Documento:";
             // 
             // cbxTipodoc
             // 
             cbxTipodoc.FormattingEnabled = true;
-            cbxTipodoc.Location = new Point(357, 23);
-            cbxTipodoc.Margin = new Padding(2, 1, 2, 1);
+            cbxTipodoc.Location = new Point(663, 49);
+            cbxTipodoc.Margin = new Padding(4, 2, 4, 2);
             cbxTipodoc.Name = "cbxTipodoc";
-            cbxTipodoc.Size = new Size(132, 23);
+            cbxTipodoc.Size = new Size(242, 40);
             cbxTipodoc.TabIndex = 5;
             // 
             // nroPresupuestotxt
             // 
-            nroPresupuestotxt.Location = new Point(115, 23);
-            nroPresupuestotxt.Margin = new Padding(2, 1, 2, 1);
+            nroPresupuestotxt.Location = new Point(214, 49);
+            nroPresupuestotxt.Margin = new Padding(4, 2, 4, 2);
             nroPresupuestotxt.Name = "nroPresupuestotxt";
-            nroPresupuestotxt.Size = new Size(110, 23);
+            nroPresupuestotxt.Size = new Size(201, 39);
             nroPresupuestotxt.TabIndex = 6;
             // 
             // txbDocumento
             // 
-            txbDocumento.Location = new Point(623, 23);
-            txbDocumento.Margin = new Padding(2, 1, 2, 1);
+            txbDocumento.Location = new Point(1157, 49);
+            txbDocumento.Margin = new Padding(4, 2, 4, 2);
             txbDocumento.Name = "txbDocumento";
-            txbDocumento.Size = new Size(124, 23);
+            txbDocumento.Size = new Size(227, 39);
             txbDocumento.TabIndex = 7;
             // 
             // listPresupuestos
             // 
-            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, precio, estado, fechadesde, fechahasta, fecha });
+            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, precio, estado, fecha });
             listPresupuestos.FullRowSelect = true;
-            listPresupuestos.Location = new Point(9, 18);
-            listPresupuestos.Margin = new Padding(2, 1, 2, 1);
+            listPresupuestos.Location = new Point(17, 38);
+            listPresupuestos.Margin = new Padding(4, 2, 4, 2);
             listPresupuestos.MultiSelect = false;
             listPresupuestos.Name = "listPresupuestos";
             listPresupuestos.ShowItemToolTips = true;
-            listPresupuestos.Size = new Size(1060, 276);
+            listPresupuestos.Size = new Size(1965, 584);
             listPresupuestos.TabIndex = 9;
             listPresupuestos.UseCompatibleStateImageBehavior = false;
             listPresupuestos.View = View.Details;
@@ -147,21 +145,8 @@
             estado.Text = "Estado";
             estado.Width = 180;
             // 
-            // fechadesde
-            // 
-            fechadesde.DisplayIndex = 6;
-            fechadesde.Text = "Fecha Desde";
-            fechadesde.Width = 200;
-            // 
-            // fechahasta
-            // 
-            fechahasta.DisplayIndex = 7;
-            fechahasta.Text = "Fecha Hasta";
-            fechahasta.Width = 200;
-            // 
             // fecha
             // 
-            fecha.DisplayIndex = 5;
             fecha.Text = "Fecha";
             fecha.Width = 180;
             // 
@@ -170,11 +155,11 @@
             gpProsupuesto.Controls.Add(btn_Volver);
             gpProsupuesto.Controls.Add(btn_ConfirmarReserva);
             gpProsupuesto.Controls.Add(listPresupuestos);
-            gpProsupuesto.Location = new Point(12, 190);
-            gpProsupuesto.Margin = new Padding(2, 1, 2, 1);
+            gpProsupuesto.Location = new Point(22, 405);
+            gpProsupuesto.Margin = new Padding(4, 2, 4, 2);
             gpProsupuesto.Name = "gpProsupuesto";
-            gpProsupuesto.Padding = new Padding(2, 1, 2, 1);
-            gpProsupuesto.Size = new Size(1073, 342);
+            gpProsupuesto.Padding = new Padding(4, 2, 4, 2);
+            gpProsupuesto.Size = new Size(1993, 730);
             gpProsupuesto.TabIndex = 8;
             gpProsupuesto.TabStop = false;
             gpProsupuesto.Text = "Presupuestos";
@@ -186,9 +171,10 @@
             btn_Volver.FlatStyle = FlatStyle.Flat;
             btn_Volver.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Volver.ForeColor = Color.Black;
-            btn_Volver.Location = new Point(5, 298);
+            btn_Volver.Location = new Point(9, 636);
+            btn_Volver.Margin = new Padding(6, 6, 6, 6);
             btn_Volver.Name = "btn_Volver";
-            btn_Volver.Size = new Size(527, 40);
+            btn_Volver.Size = new Size(979, 85);
             btn_Volver.TabIndex = 4;
             btn_Volver.Text = "Volver";
             btn_Volver.UseVisualStyleBackColor = false;
@@ -201,9 +187,10 @@
             btn_ConfirmarReserva.FlatStyle = FlatStyle.Flat;
             btn_ConfirmarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_ConfirmarReserva.ForeColor = Color.Black;
-            btn_ConfirmarReserva.Location = new Point(538, 298);
+            btn_ConfirmarReserva.Location = new Point(999, 636);
+            btn_ConfirmarReserva.Margin = new Padding(6, 6, 6, 6);
             btn_ConfirmarReserva.Name = "btn_ConfirmarReserva";
-            btn_ConfirmarReserva.Size = new Size(530, 40);
+            btn_ConfirmarReserva.Size = new Size(984, 85);
             btn_ConfirmarReserva.TabIndex = 4;
             btn_ConfirmarReserva.Text = "Confirmar Reserva";
             btn_ConfirmarReserva.UseVisualStyleBackColor = false;
@@ -219,9 +206,11 @@
             grupoFiltros.Controls.Add(txbDocumento);
             grupoFiltros.Controls.Add(label3);
             grupoFiltros.Controls.Add(cbxTipodoc);
-            grupoFiltros.Location = new Point(12, 116);
+            grupoFiltros.Location = new Point(22, 247);
+            grupoFiltros.Margin = new Padding(6, 6, 6, 6);
             grupoFiltros.Name = "grupoFiltros";
-            grupoFiltros.Size = new Size(1073, 60);
+            grupoFiltros.Padding = new Padding(6, 6, 6, 6);
+            grupoFiltros.Size = new Size(1993, 128);
             grupoFiltros.TabIndex = 9;
             grupoFiltros.TabStop = false;
             grupoFiltros.Text = "Filtros";
@@ -233,9 +222,10 @@
             btn_LimpiarFiltros.FlatStyle = FlatStyle.Flat;
             btn_LimpiarFiltros.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_LimpiarFiltros.ForeColor = Color.Black;
-            btn_LimpiarFiltros.Location = new Point(929, 13);
+            btn_LimpiarFiltros.Location = new Point(1725, 28);
+            btn_LimpiarFiltros.Margin = new Padding(6, 6, 6, 6);
             btn_LimpiarFiltros.Name = "btn_LimpiarFiltros";
-            btn_LimpiarFiltros.Size = new Size(138, 40);
+            btn_LimpiarFiltros.Size = new Size(256, 85);
             btn_LimpiarFiltros.TabIndex = 4;
             btn_LimpiarFiltros.Text = "Limpiar";
             btn_LimpiarFiltros.UseVisualStyleBackColor = false;
@@ -248,9 +238,10 @@
             btn_FiltrarPresupuestos.FlatStyle = FlatStyle.Flat;
             btn_FiltrarPresupuestos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_FiltrarPresupuestos.ForeColor = Color.Black;
-            btn_FiltrarPresupuestos.Location = new Point(780, 13);
+            btn_FiltrarPresupuestos.Location = new Point(1449, 28);
+            btn_FiltrarPresupuestos.Margin = new Padding(6, 6, 6, 6);
             btn_FiltrarPresupuestos.Name = "btn_FiltrarPresupuestos";
-            btn_FiltrarPresupuestos.Size = new Size(143, 40);
+            btn_FiltrarPresupuestos.Size = new Size(266, 85);
             btn_FiltrarPresupuestos.TabIndex = 4;
             btn_FiltrarPresupuestos.Text = "Buscar";
             btn_FiltrarPresupuestos.UseVisualStyleBackColor = false;
@@ -258,13 +249,13 @@
             // 
             // ConfirmarReserva
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(1097, 552);
+            ClientSize = new Size(2037, 1178);
             Controls.Add(grupoFiltros);
             Controls.Add(gpProsupuesto);
-            Margin = new Padding(2, 1, 2, 1);
+            Margin = new Padding(4, 2, 4, 2);
             Name = "ConfirmarReserva";
             Text = "ConfirmarReserva";
             Controls.SetChildIndex(gpProsupuesto, 0);
@@ -288,8 +279,6 @@
         private ColumnHeader cantpasajeros;
         private ColumnHeader precio;
         private ColumnHeader estado;
-        private ColumnHeader fechadesde;
-        private ColumnHeader fechahasta;
         private ColumnHeader fecha;
         private GroupBox gpProsupuesto;
         private GroupBox grupoFiltros;

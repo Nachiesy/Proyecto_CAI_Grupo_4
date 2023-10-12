@@ -12,13 +12,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Proyecto_CAI_Grupo_4
 {
 
     public partial class GenerarReserva : VistaBase
     {
-        int controlPasjeros = 1;
+        Reserva reservaselct = new Reserva();
+        int controlPasajeros = 1;
         public GenerarReserva() : base(tituloModulo: "Generar Reserva")
         {
             InitializeComponent();
@@ -72,7 +74,7 @@ namespace Proyecto_CAI_Grupo_4
         private void btnAddpasajero_Click(object sender, EventArgs e)
         {
 
-            if (controlPasjeros <= PresupuestoSeleccionado())
+            if (controlPasajeros <= reservaselct.CantPasajeros)
             {
                 IngresarPasajero Agregar = new IngresarPasajero();
                 DialogResult result = Agregar.ShowDialog();
@@ -86,7 +88,7 @@ namespace Proyecto_CAI_Grupo_4
                     {
                         RecibirDatosPasajero(Agregar.pasajero);
                         MessageBox.Show("Se Agregó el pasajero");
-                        controlPasjeros++;
+                        controlPasajeros++;
                     }
 
 
@@ -118,8 +120,7 @@ namespace Proyecto_CAI_Grupo_4
                 CantMenores = 0,
                 Precio = (decimal)100000.50,
                 Fecha = DateTime.Now.AddDays(-7),
-                FechaDesde = DateTime.Now.AddDays(21),
-                FechaHasta = DateTime.Now.AddDays(14),
+
             },
             new Reserva()
             {
@@ -132,8 +133,7 @@ namespace Proyecto_CAI_Grupo_4
                 CantPasajeros = 5,
                 Precio = (decimal)50000,
                 Fecha = DateTime.Now.AddDays(-14),
-                FechaDesde = DateTime.Now.AddDays(14),
-                FechaHasta = DateTime.Now.AddDays(7),
+
             },
             new Reserva()
             {
@@ -146,8 +146,7 @@ namespace Proyecto_CAI_Grupo_4
                 CantPasajeros = 2,
                 Precio = (decimal)500000.95,
                 Fecha = DateTime.Now.AddDays(-21),
-                FechaDesde = DateTime.Now.AddDays(7),
-                FechaHasta = DateTime.Now.AddDays(21),
+
             },
                         new Reserva()
             {
@@ -160,8 +159,7 @@ namespace Proyecto_CAI_Grupo_4
                 CantPasajeros = 2,
                 Precio = (decimal)500000.95,
                 Fecha = DateTime.Now.AddDays(-21),
-                FechaDesde = DateTime.Now.AddDays(7),
-                FechaHasta = DateTime.Now.AddDays(21),
+
             },
         };
         private void btnBuscar_Click(object sender, EventArgs e, Guid nropresup)
@@ -185,7 +183,7 @@ namespace Proyecto_CAI_Grupo_4
             }
             else
             {
-                MessageBox.Show("No hay reservas disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
+                listPresupuestos.Items.Clear();
             }
         }
         private void AddReservasToListView(IEnumerable<Reserva> list)
@@ -199,8 +197,6 @@ namespace Proyecto_CAI_Grupo_4
                 row.SubItems.Add(item.CantMenores.ToString());
                 row.SubItems.Add(item.Precio.ToString());
                 row.SubItems.Add(item.Estado.GetDescription());
-                row.SubItems.Add(item.FechaDesde.ToFormDate());
-                row.SubItems.Add(item.FechaHasta.ToFormDate());
                 row.SubItems.Add(item.Fecha.ToFormDate());
 
                 listPresupuestos.Items.Add(row);
@@ -229,7 +225,7 @@ namespace Proyecto_CAI_Grupo_4
             }
             else
             {
-                MessageBox.Show("No hay reservas disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
+                listPresupuestos.Items.Clear();
             }
         }
 
@@ -239,11 +235,13 @@ namespace Proyecto_CAI_Grupo_4
 
             if (listPresupuestos.SelectedItems.Count > 0)
             {
-                Reserva reservaselct = new Reserva();
+                
 
                 ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
                 reservaselct.Codigo = int.Parse(presupuesto.SubItems[0].Text);
                 reservaselct.CantPasajeros = int.Parse(presupuesto.SubItems[2].Text);
+                reservaselct.CantMayores = int.Parse(presupuesto.SubItems[3].Text);
+                reservaselct.CantMenores = int.Parse(presupuesto.SubItems[4].Text);
 
                 gbxPasajeros.Enabled = true;
                 gpProsupuesto.Enabled = false;
@@ -282,7 +280,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnGenreserva_Click(object sender, EventArgs e)
         {
-            if (controlPasjeros > PresupuestoSeleccionado())
+            if (reservaselct.CantPasajeros > PresupuestoSeleccionado())
             {
                 MessageBox.Show("Reserva Generada Exitosamente");
                 this.Close();
@@ -305,6 +303,18 @@ namespace Proyecto_CAI_Grupo_4
         private void gpProsupuesto_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Quitar_Click(object sender, EventArgs e)
+        {
+            if (listPasajeros.SelectedItems.Count > 0)
+            {
+                foreach (ListViewItem item in listPasajeros.SelectedItems)
+                {
+                    listPasajeros.Items.Remove(item);
+                    controlPasajeros--;
+                }
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Proyecto_CAI_Grupo_4.Models
         public string Apellido { get; set; }
         public string Nacionalidad { get; set; }
         public DateTime Fecha_Nac { get; set; }
-        public int Tipo_Doc { get; set; }
+        public string Tipo_Doc { get; set; }
         public string Doc { get; set; }
         public string Pasaporte { get; set; }
         public DateTime Fecha_Exp { get; set; }
@@ -76,60 +76,72 @@ namespace Proyecto_CAI_Grupo_4.Models
             return tipo;
         }
 
-        public static List<string> CamposPasajeros(this Pasajeros nuevopasajero)
+        public static string CamposPasajeros(this Pasajeros nuevopasajero)
         {
-            List<string> camposVacios = new List<string>();
+            string camposVacios = null;
 
             if (string.IsNullOrWhiteSpace(nuevopasajero.Nombre))
             {
-                camposVacios.Add("Nombre");
+                camposVacios="Debe completar el Nombre";
+                return camposVacios;
             }
 
             if (string.IsNullOrWhiteSpace(nuevopasajero.Apellido))
             {
-                camposVacios.Add("Apellido");
+                camposVacios = "Debe completar el Apellido";
+                return camposVacios;
             }
 
             if (nuevopasajero.Fecha_Nac>DateTime.Today)
             {
-                camposVacios.Add("Fecha de nacimiento Incorrecta");
+                camposVacios = "La fecha nacimiento debe ser anterior al día de hoy";
+                return camposVacios;
             }
 
             if (string.IsNullOrWhiteSpace(nuevopasajero.Nacionalidad))
             {
-                camposVacios.Add("Nacionalidad");
+                camposVacios = "Debe seleccionar una Nacionalidad";
+                return camposVacios;
             }
 
-            if (nuevopasajero.Tipo_Doc==0)
+            if (string.IsNullOrWhiteSpace(nuevopasajero.Tipo_Doc))
             {
-                camposVacios.Add("Tipo de Documento");
+                camposVacios = "Debe seleccionar un tipo de documento";
+                return camposVacios;
             }
             if (string.IsNullOrWhiteSpace(nuevopasajero.Doc))
             {
-                camposVacios.Add("Documento");
+                camposVacios = "Debe completar el Documento";
+                return camposVacios;
             }
             if (nuevopasajero.Fecha_Exp < DateTime.Today)
             {
-                camposVacios.Add("Fecha de Expiración Incorrecta");
+                camposVacios = "Documento expirado, revise la fecha ingresada";
+                return camposVacios;
             }
             if (string.IsNullOrWhiteSpace(nuevopasajero.Pais_emisor))
             {
-                camposVacios.Add("Pais Emisor");
+                camposVacios = "Debe completar el País Emisor";
+                return camposVacios;
             }
             if (string.IsNullOrWhiteSpace(nuevopasajero.Email))
             {
-                camposVacios.Add( "Email");
+                camposVacios = "Debe completar el Email";
+                return camposVacios;
             }
             else
             {
                 if (EsCorreoElectronicoValido(nuevopasajero.Email) == false) {
-                    camposVacios.Add("Ingrese un Mail Valido");
+                    camposVacios = "Ingrese un Email valido";
+                    return camposVacios;
                 };
 
             }
             if (string.IsNullOrWhiteSpace(nuevopasajero.Tel_contacto))
             {
-                camposVacios.Add("Telefono");        }
+                camposVacios = "Debe completar el Telefono";
+                return camposVacios;
+            }
             return camposVacios;
         }
     }

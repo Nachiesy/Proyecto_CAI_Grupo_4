@@ -16,10 +16,6 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public DateTime Fecha { get; set; }
 
-        public DateTime FechaDesde { get; set; }
-
-        public DateTime FechaHasta { get; set; }
-
         public int CantPasajeros { get; set; }
 
         public int CantMayores { get; set; }
