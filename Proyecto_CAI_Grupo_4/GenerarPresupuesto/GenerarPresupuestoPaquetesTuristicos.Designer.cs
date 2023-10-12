@@ -241,7 +241,7 @@
             grp_VuelosDisponibles.Size = new Size(976, 278);
             grp_VuelosDisponibles.TabIndex = 36;
             grp_VuelosDisponibles.TabStop = false;
-            grp_VuelosDisponibles.Text = "Vuelos Disponibles";
+            grp_VuelosDisponibles.Text = "Paquetes Disponibles";
             // 
             // dataGridViewProductos
             // 
@@ -325,7 +325,7 @@
             grp_VuelosSeleccionados.Size = new Size(976, 269);
             grp_VuelosSeleccionados.TabIndex = 37;
             grp_VuelosSeleccionados.TabStop = false;
-            grp_VuelosSeleccionados.Text = "Vuelos Seleccionados";
+            grp_VuelosSeleccionados.Text = "Paquetes Seleccionados";
             // 
             // dataGridViewProductosSeleccionados
             // 

@@ -2,6 +2,7 @@
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using System.Net;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -116,17 +117,26 @@ namespace Proyecto_CAI_Grupo_4
         {
             var dni = textBoxClienteDNI.Text.Trim();
 
-            if (productosElegidos.RowCount > 0 && ValidarDNI())
+            var validacionProductos = productosElegidos.RowCount > 0;
+
+            var dniMsg = ValidarDNI();
+
+            var validacionDNI = string.IsNullOrEmpty(dniMsg);
+
+            if (validacionProductos && validacionDNI)
             {
                 var result = MessageBox.Show("¿Desea generar una Pre Reserva a partir de este Presupuesto?", string.Empty, MessageBoxButtons.YesNo);
 
+                var presupuestoID = Guid.NewGuid();
+                var reservaID = Guid.NewGuid();
+
                 if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show($"Presupuesto y Pre Reserva generados correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+                    MessageBox.Show($"Presupuesto [{presupuestoID}] y Pre Reserva [{reservaID}] generados correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    MessageBox.Show($"Presupuesto generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+                    MessageBox.Show($"Presupuesto [{presupuestoID}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
                 }
 
                 ActualizarCantidadesDeProductos();
@@ -135,7 +145,22 @@ namespace Proyecto_CAI_Grupo_4
             }
             else
             {
-                MessageBox.Show("Debes ingresar el DNI del Cliente a generarle el presupuesto y Debes elegir productos turisticos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
+                var productosMsg = "Debes elegir productos";
+
+                var msgFinal = "para poder generar un Presupuesto.";
+
+                if (!validacionProductos && !validacionDNI)
+                {
+                    MessageBox.Show($"{dniMsg} y {productosMsg} {msgFinal}", "Error", MessageBoxButtons.OK);
+                }
+                else if (!validacionProductos)
+                {
+                    MessageBox.Show($"{productosMsg} {msgFinal}", "Error", MessageBoxButtons.OK);
+                }
+                else if (!validacionDNI)
+                {
+                    MessageBox.Show($"{dniMsg} {msgFinal}", "Error", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -231,31 +256,26 @@ namespace Proyecto_CAI_Grupo_4
             Application.Run(new MenuPrincipal());
         }
 
-        private void textBoxClienteDNI_TextChanged(object sender, EventArgs e)
-        {
-            ValidarDNI();
-        }
-
-        private bool ValidarDNI()
+        private string ValidarDNI()
         {
             var dni = textBoxClienteDNI.Text.Trim();
 
             if (string.IsNullOrEmpty(dni))
             {
-                return false;
+                return "Debes ingresar el DNI del Cliente";
             }
 
             if (!int.TryParse(dni, out int nroDeDoc))
             {
-                return false;
+                return "El DNI debe ser un numero entero";
             }
 
             if (nroDeDoc < 0 || nroDeDoc > 99999999)
             {
-                return false;
+                return "El DNI no puede ser menor a 0 ni mayor a 99999999";
             }
 
-            return true;
+            return string.Empty;
         }
     }
 }

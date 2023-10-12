@@ -150,7 +150,7 @@ namespace Proyecto_CAI_Grupo_4
             groupBox1.Size = new Size(246, 237);
             groupBox1.TabIndex = 37;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Agregar productos";
+            groupBox1.Text = "Productos";
             // 
             // pictureBox4
             // 
@@ -271,7 +271,7 @@ namespace Proyecto_CAI_Grupo_4
             grp_Estimacion.Size = new Size(246, 75);
             grp_Estimacion.TabIndex = 38;
             grp_Estimacion.TabStop = false;
-            grp_Estimacion.Text = "Estimacion";
+            grp_Estimacion.Text = "Presupuesto";
             // 
             // grp_Filtros
             // 
@@ -282,7 +282,7 @@ namespace Proyecto_CAI_Grupo_4
             grp_Filtros.Size = new Size(246, 87);
             grp_Filtros.TabIndex = 39;
             grp_Filtros.TabStop = false;
-            grp_Filtros.Text = "Agregar Cliente";
+            grp_Filtros.Text = "Cliente";
             // 
             // textBoxClienteDNI
             // 
@@ -290,7 +290,6 @@ namespace Proyecto_CAI_Grupo_4
             textBoxClienteDNI.Name = "textBoxClienteDNI";
             textBoxClienteDNI.Size = new Size(226, 23);
             textBoxClienteDNI.TabIndex = 2;
-            textBoxClienteDNI.TextChanged += textBoxClienteDNI_TextChanged;
             // 
             // label2
             // 

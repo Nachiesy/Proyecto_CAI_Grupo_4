@@ -17,7 +17,7 @@ namespace Proyecto_CAI_Grupo_4
     public partial class IngresarPasajero : VistaBase
     {
         public Pasajeros pasajero { get; private set; }
-        public IngresarPasajero() : base(tituloModulo: "Ingresar Pasajero")
+        public IngresarPasajero() : base(tituloModulo: "Ingresar Pasajero", deshabilitarBotones: true)
         {
             InitializeComponent();
         }
