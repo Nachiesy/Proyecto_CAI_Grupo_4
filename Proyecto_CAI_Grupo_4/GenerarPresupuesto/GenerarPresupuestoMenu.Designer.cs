@@ -318,6 +318,7 @@ namespace Proyecto_CAI_Grupo_4
             // productosElegidos
             // 
             productosElegidos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, TipoServicio, Precios });
+            productosElegidos.Enabled = false;
             productosElegidos.FullRowSelect = true;
             productosElegidos.Location = new Point(273, 116);
             productosElegidos.Name = "productosElegidos";
