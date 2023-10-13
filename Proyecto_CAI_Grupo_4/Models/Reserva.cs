@@ -20,6 +20,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public int CantMayores { get; set; }
         public int CantMenores { get; set; }
+        public bool prereserva {  get; set; }
 
 
         private string DateTimeToString(DateTime dateTime)
@@ -38,5 +39,9 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         [Description("Confirmada")]
         confirmada,
+
+        [Description("Pendiente de confirmación")]
+        pendconfirmacion,
+
     }
 }

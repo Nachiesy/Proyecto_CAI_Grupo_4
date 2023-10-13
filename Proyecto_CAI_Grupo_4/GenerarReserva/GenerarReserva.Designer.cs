@@ -59,13 +59,12 @@
             fecha = new ColumnHeader();
             txbDocumento = new TextBox();
             nroPresupuestotxt = new TextBox();
-            cbxTipodoc = new ComboBox();
             btn_SeleccionarPresupuesto = new Common.Components.BotonEstilizado();
             label3 = new Label();
-            label2 = new Label();
             label1 = new Label();
             btn_GenerarReserva = new Common.Components.BotonEstilizado();
             btn_Cancelar = new Common.Components.BotonEstilizado();
+            prereserva = new ColumnHeader();
             gbxPasajeros.SuspendLayout();
             gpProsupuesto.SuspendLayout();
             SuspendLayout();
@@ -218,10 +217,8 @@
             gpProsupuesto.Controls.Add(listPresupuestos);
             gpProsupuesto.Controls.Add(txbDocumento);
             gpProsupuesto.Controls.Add(nroPresupuestotxt);
-            gpProsupuesto.Controls.Add(cbxTipodoc);
             gpProsupuesto.Controls.Add(btn_SeleccionarPresupuesto);
             gpProsupuesto.Controls.Add(label3);
-            gpProsupuesto.Controls.Add(label2);
             gpProsupuesto.Controls.Add(label1);
             gpProsupuesto.Location = new Point(11, 104);
             gpProsupuesto.Margin = new Padding(2, 1, 2, 1);
@@ -250,7 +247,7 @@
             // 
             // listPresupuestos
             // 
-            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, cantAdultos, cantMenores, precio, estado, fecha });
+            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, cantAdultos, cantMenores, precio, estado, fecha, prereserva });
             listPresupuestos.FullRowSelect = true;
             listPresupuestos.Location = new Point(10, 59);
             listPresupuestos.Margin = new Padding(2, 1, 2, 1);
@@ -305,7 +302,7 @@
             // 
             // txbDocumento
             // 
-            txbDocumento.Location = new Point(730, 25);
+            txbDocumento.Location = new Point(312, 25);
             txbDocumento.Margin = new Padding(2, 1, 2, 1);
             txbDocumento.Name = "txbDocumento";
             txbDocumento.Size = new Size(166, 23);
@@ -318,16 +315,6 @@
             nroPresupuestotxt.Name = "nroPresupuestotxt";
             nroPresupuestotxt.Size = new Size(110, 23);
             nroPresupuestotxt.TabIndex = 6;
-            // 
-            // cbxTipodoc
-            // 
-            cbxTipodoc.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxTipodoc.FormattingEnabled = true;
-            cbxTipodoc.Location = new Point(434, 25);
-            cbxTipodoc.Margin = new Padding(2, 1, 2, 1);
-            cbxTipodoc.Name = "cbxTipodoc";
-            cbxTipodoc.Size = new Size(132, 23);
-            cbxTipodoc.TabIndex = 5;
             // 
             // btn_SeleccionarPresupuesto
             // 
@@ -349,24 +336,12 @@
             label3.AutoSize = true;
             label3.FlatStyle = FlatStyle.System;
             label3.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(570, 25);
+            label3.Location = new Point(269, 25);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(149, 19);
+            label3.Size = new Size(39, 19);
             label3.TabIndex = 4;
-            label3.Text = "Nro. de Documento:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft JhengHei UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(264, 24);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(149, 19);
-            label2.TabIndex = 3;
-            label2.Text = "Tipo de Documento:";
-            label2.Click += label2_Click;
+            label3.Text = "DNI:";
             // 
             // label1
             // 
@@ -409,6 +384,11 @@
             btn_Cancelar.UseVisualStyleBackColor = false;
             btn_Cancelar.Click += btnCancelar_Click;
             // 
+            // prereserva
+            // 
+            prereserva.Text = "Prereserva";
+            prereserva.TextAlign = HorizontalAlignment.Right;
+            // 
             // GenerarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -419,7 +399,7 @@
             Controls.Add(btn_GenerarReserva);
             Controls.Add(gpProsupuesto);
             Controls.Add(gbxPasajeros);
-            Margin = new Padding(1, 1, 1, 1);
+            Margin = new Padding(1);
             Name = "GenerarReserva";
             Text = "Generar Reserva";
             Load += GenerarReserva_Load;
@@ -439,9 +419,7 @@
         private GroupBox gpProsupuesto;
         private TextBox txbDocumento;
         private TextBox nroPresupuestotxt;
-        private ComboBox cbxTipodoc;
         private Label label3;
-        private Label label2;
         private Label label1;
         private ListView listPasajeros;
         private ColumnHeader nombre;
@@ -473,5 +451,6 @@
         private ColumnHeader tipopasajero;
         private ColumnHeader cantAdultos;
         private ColumnHeader cantMenores;
+        private ColumnHeader prereserva;
     }
 }

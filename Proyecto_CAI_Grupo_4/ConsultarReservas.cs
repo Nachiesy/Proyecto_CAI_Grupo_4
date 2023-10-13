@@ -11,26 +11,29 @@ namespace Proyecto_CAI_Grupo_4
             new Reserva()
             {
                 Codigo = 92,
-                Estado = ReservaEstadoEnum.pendienteDePago,
+                Estado = ReservaEstadoEnum.pendconfirmacion,
                 DNI = "41753082",
                 Precio = (decimal)100000.50,
+                CantPasajeros = 2,
                 Fecha = DateTime.Now.AddDays(-7),
             },
             new Reserva()
             {
                 Codigo = 93,
-                Estado = ReservaEstadoEnum.pagada,
+                Estado = ReservaEstadoEnum.confirmada,
                 DNI = "14975308",
                 Precio = (decimal)50000.20,
+                CantPasajeros = 6,
                 Fecha = DateTime.Now.AddDays(-14),
 
             },
             new Reserva()
             {
                 Codigo = 107,
-                Estado = ReservaEstadoEnum.confirmada,
+                Estado = ReservaEstadoEnum.pendconfirmacion,
                 DNI = "29327456",
                 Precio = (decimal)500000.95,
+                CantPasajeros = 4,
                 Fecha = DateTime.Now.AddDays(-21),
 
             },
@@ -80,6 +83,7 @@ namespace Proyecto_CAI_Grupo_4
                 row.SubItems.Add(item.Estado.GetDescription());
                 row.SubItems.Add(item.DNI);
                 row.SubItems.Add(item.Precio.ToString());
+                row.SubItems.Add(item.CantPasajeros.ToString());
                 row.SubItems.Add(item.Fecha.ToFormDate());
 
 

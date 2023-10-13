@@ -25,7 +25,7 @@ namespace Proyecto_CAI_Grupo_4
             new Reserva()
             {
                 Codigo = 110,
-                Estado = ReservaEstadoEnum.pagada,
+                Estado = ReservaEstadoEnum.pendconfirmacion,
                 TipoDoc = 1,
                 DNI = "39117825",
                 CantPasajeros = 2,
@@ -35,7 +35,7 @@ namespace Proyecto_CAI_Grupo_4
             new Reserva()
             {
                 Codigo = 111,
-                Estado = ReservaEstadoEnum.pagada,
+                Estado = ReservaEstadoEnum.pendconfirmacion,
                 TipoDoc = 1,
                 DNI = "27098332",
                 CantPasajeros = 5,
@@ -45,7 +45,7 @@ namespace Proyecto_CAI_Grupo_4
             new Reserva()
             {
                 Codigo = 112,
-                Estado = ReservaEstadoEnum.pagada,
+                Estado = ReservaEstadoEnum.pendconfirmacion,
                 TipoDoc = 1,
                 DNI = "30945665",
                 CantPasajeros = 2,
@@ -55,7 +55,7 @@ namespace Proyecto_CAI_Grupo_4
                         new Reserva()
             {
                 Codigo = 113,
-                Estado = ReservaEstadoEnum.pagada,
+                Estado = ReservaEstadoEnum.pendconfirmacion,
                 TipoDoc = 1,
                 DNI = "20945665",
                 CantPasajeros = 2,
@@ -71,31 +71,51 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenMenuPrincipal()
         {
             Application.Run(new MenuPrincipal());
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             var codigo = nroPresupuestotxt.Text.Trim();
-
-            var tipodoc = cbxTipodoc.SelectedIndex;
-
             var dni = txbDocumento.Text.Trim();
 
-            var filteredReservas = reservas
-                .Where(x => (string.IsNullOrEmpty(codigo) || (int)x.Codigo == int.Parse(codigo))
-                            && (tipodoc == -1 || (int)x.Estado == tipodoc)
-                           && (string.IsNullOrEmpty(dni) || x.DNI == dni));
-
-            if (filteredReservas.Any())
+            if (dni == "")
             {
-                listPresupuestos.Items.Clear();
 
-                AddReservasToListView(filteredReservas);
+                var filteredReservas = reservas
+                .Where(x => (string.IsNullOrEmpty(codigo) || (int)x.Codigo == int.Parse(codigo))
+                 && (string.IsNullOrEmpty(dni) || x.DNI == dni));
+                if (filteredReservas.Any())
+                {
+                    listPresupuestos.Items.Clear();
+
+                    AddReservasToListView(filteredReservas);
+                }
+                else
+                {
+                    listPresupuestos.Items.Clear();
+                }
+            }
+            else if (!dni.EsDNI())
+            {
+                MessageBox.Show("Ingrese un DNI valido por favor.");
             }
             else
             {
-                MessageBox.Show("No hay reservas disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
-            }
+                var filteredReservas = reservas
+                .Where(x => (string.IsNullOrEmpty(codigo) || (int)x.Codigo == int.Parse(codigo))
+                 && (string.IsNullOrEmpty(dni) || x.DNI == dni));
+                if (filteredReservas.Any())
+                {
+                    listPresupuestos.Items.Clear();
+
+                    AddReservasToListView(filteredReservas);
+                }
+                else
+                {
+                    listPresupuestos.Items.Clear();
+                }
+            };
         }
         private void AddReservasToListView(IEnumerable<Reserva> list)
         {
@@ -115,19 +135,18 @@ namespace Proyecto_CAI_Grupo_4
         private void btn_LimpiarFiltros_Click(object sender, EventArgs e)
         {
             nroPresupuestotxt.Text = string.Empty;
-            cbxTipodoc.SelectedIndex = -1;
             txbDocumento.Text = string.Empty;
             listPresupuestos.Items.Clear();
         }
 
         private void btn_ConfirmarReserva_Click(object sender, EventArgs e)
         {
-            ListViewItem item = listPresupuestos.SelectedItems[0];
+
 
             if (listPresupuestos.SelectedItems.Count > 0)
             {
-
-                DialogResult resultado = MessageBox.Show("¿Desea continuar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                ListViewItem item = listPresupuestos.SelectedItems[0];
+                DialogResult resultado = MessageBox.Show("¿Desea confirmar la reserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (resultado == DialogResult.Yes)
                 {
@@ -153,6 +172,11 @@ namespace Proyecto_CAI_Grupo_4
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ConfirmarReserva_Load(object sender, EventArgs e)
         {
 
         }

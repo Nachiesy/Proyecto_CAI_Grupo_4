@@ -64,11 +64,11 @@ namespace Proyecto_CAI_Grupo_4
             pasajero.Fecha_Nac = dtnacmiento.Value;
             pasajero.Nacionalidad = nacpasajerocbx.Text;
             pasajero.Tipo_Doc = cbxTipodoc.Text;
-            pasajero.Doc = dnipasajerotxt.Text;
+            if (int.TryParse(dnipasajerotxt.Text, out int dato)) { pasajero.Doc = dato; } else { pasajero.Doc = 0; };
             pasajero.Fecha_Exp = exppasajerodgv.Value;
             pasajero.Pais_emisor = paiscbx.Text;
             pasajero.Email = emailpasajerotxt.Text;
-            pasajero.Tel_contacto = telpasajerotxt.Text;
+            if (int.TryParse(telpasajerotxt.Text, out int tel)) { pasajero.Tel_contacto = tel; } else { pasajero.Tel_contacto = 0; };
 
 
 
@@ -91,6 +91,11 @@ namespace Proyecto_CAI_Grupo_4
 
         }
         private void IngresarPasajero_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }

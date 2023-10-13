@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
@@ -17,12 +18,12 @@ namespace Proyecto_CAI_Grupo_4.Models
         public string Nacionalidad { get; set; }
         public DateTime Fecha_Nac { get; set; }
         public string Tipo_Doc { get; set; }
-        public string Doc { get; set; }
+        public int Doc { get; set; }
         public string Pasaporte { get; set; }
         public DateTime Fecha_Exp { get; set; }
         public string Pais_emisor { get; set; }
         public string Email { get; set; }
-        public string Tel_contacto { get; set; }
+        public int Tel_contacto { get; set; }
         public int Edad {  get; set; }
         public string Tipo { get; set; }
 
@@ -109,9 +110,13 @@ namespace Proyecto_CAI_Grupo_4.Models
                 camposVacios = "Debe seleccionar un tipo de documento";
                 return camposVacios;
             }
-            if (string.IsNullOrWhiteSpace(nuevopasajero.Doc))
+            if (nuevopasajero.Doc ==0)
             {
                 camposVacios = "Debe completar el Documento";
+                return camposVacios;
+            }
+            else if(!nuevopasajero.Doc.ToString().EsDNI()) {
+                camposVacios = "DNI ingresado invalido";
                 return camposVacios;
             }
             if (nuevopasajero.Fecha_Exp < DateTime.Today)
@@ -137,9 +142,9 @@ namespace Proyecto_CAI_Grupo_4.Models
                 };
 
             }
-            if (string.IsNullOrWhiteSpace(nuevopasajero.Tel_contacto))
+            if (nuevopasajero.Tel_contacto== 0)
             {
-                camposVacios = "Debe completar el Telefono";
+                camposVacios = "Debe completar un Telefono valido";
                 return camposVacios;
             }
             return camposVacios;

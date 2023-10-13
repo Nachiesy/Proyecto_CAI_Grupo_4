@@ -33,6 +33,7 @@
             Estado = new ColumnHeader();
             NroDocumento = new ColumnHeader();
             Precio = new ColumnHeader();
+            cantpasajeros = new ColumnHeader();
             Fecha = new ColumnHeader();
             filtroCodigo = new TextBox();
             label1 = new Label();
@@ -43,7 +44,6 @@
             btn_BuscarReserva = new Common.Components.BotonEstilizado();
             grp_Filtros = new GroupBox();
             btn_Limpiar = new Common.Components.BotonEstilizado();
-            cantpasajeros = new ColumnHeader();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,10 +51,9 @@
             // 
             reservasListView.BackColor = SystemColors.ControlLight;
             reservasListView.Columns.AddRange(new ColumnHeader[] { Codigo, Estado, NroDocumento, Precio, cantpasajeros, Fecha });
-            reservasListView.Location = new Point(50, 523);
-            reservasListView.Margin = new Padding(6, 6, 6, 6);
+            reservasListView.Location = new Point(27, 245);
             reservasListView.Name = "reservasListView";
-            reservasListView.Size = new Size(1493, 482);
+            reservasListView.Size = new Size(806, 228);
             reservasListView.TabIndex = 0;
             reservasListView.UseCompatibleStateImageBehavior = false;
             reservasListView.View = View.Details;
@@ -79,6 +78,11 @@
             Precio.Text = "Precio";
             Precio.Width = 150;
             // 
+            // cantpasajeros
+            // 
+            cantpasajeros.Text = "Cant. Pasajeros";
+            cantpasajeros.Width = 200;
+            // 
             // Fecha
             // 
             Fecha.Text = "Fecha";
@@ -86,58 +90,52 @@
             // 
             // filtroCodigo
             // 
-            filtroCodigo.Location = new Point(208, 47);
-            filtroCodigo.Margin = new Padding(6, 6, 6, 6);
+            filtroCodigo.Location = new Point(112, 22);
             filtroCodigo.Name = "filtroCodigo";
-            filtroCodigo.Size = new Size(251, 39);
+            filtroCodigo.Size = new Size(137, 23);
             filtroCodigo.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(19, 47);
-            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Location = new Point(10, 22);
             label1.Name = "label1";
-            label1.Size = new Size(91, 32);
+            label1.Size = new Size(46, 15);
             label1.TabIndex = 3;
             label1.Text = "Codigo";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(19, 117);
-            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Location = new Point(10, 55);
             label2.Name = "label2";
-            label2.Size = new Size(55, 32);
+            label2.Size = new Size(27, 15);
             label2.TabIndex = 5;
             label2.Text = "DNI";
             // 
             // filtroNroDeDoc
             // 
-            filtroNroDeDoc.Location = new Point(208, 117);
-            filtroNroDeDoc.Margin = new Padding(6, 6, 6, 6);
+            filtroNroDeDoc.Location = new Point(112, 55);
             filtroNroDeDoc.Name = "filtroNroDeDoc";
-            filtroNroDeDoc.Size = new Size(251, 39);
+            filtroNroDeDoc.Size = new Size(137, 23);
             filtroNroDeDoc.TabIndex = 4;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(19, 183);
-            label3.Margin = new Padding(6, 0, 6, 0);
+            label3.Location = new Point(10, 86);
             label3.Name = "label3";
-            label3.Size = new Size(84, 32);
+            label3.Size = new Size(42, 15);
             label3.TabIndex = 7;
             label3.Text = "Estado";
             // 
             // filtroEstado
             // 
             filtroEstado.FormattingEnabled = true;
-            filtroEstado.Items.AddRange(new object[] { "Pendiente de Pago", "Pagada", "Confirmada" });
-            filtroEstado.Location = new Point(208, 183);
-            filtroEstado.Margin = new Padding(6, 6, 6, 6);
+            filtroEstado.Items.AddRange(new object[] { "Pendiente de Confirmación", "Confirmada" });
+            filtroEstado.Location = new Point(112, 86);
             filtroEstado.Name = "filtroEstado";
-            filtroEstado.Size = new Size(251, 40);
+            filtroEstado.Size = new Size(137, 23);
             filtroEstado.TabIndex = 9;
             // 
             // btn_BuscarReserva
@@ -147,10 +145,9 @@
             btn_BuscarReserva.FlatStyle = FlatStyle.Flat;
             btn_BuscarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_BuscarReserva.ForeColor = Color.Black;
-            btn_BuscarReserva.Location = new Point(1164, 243);
-            btn_BuscarReserva.Margin = new Padding(6, 6, 6, 6);
+            btn_BuscarReserva.Location = new Point(627, 114);
             btn_BuscarReserva.Name = "btn_BuscarReserva";
-            btn_BuscarReserva.Size = new Size(379, 85);
+            btn_BuscarReserva.Size = new Size(204, 40);
             btn_BuscarReserva.TabIndex = 4;
             btn_BuscarReserva.Text = "Buscar";
             btn_BuscarReserva.UseVisualStyleBackColor = false;
@@ -164,11 +161,9 @@
             grp_Filtros.Controls.Add(label2);
             grp_Filtros.Controls.Add(label3);
             grp_Filtros.Controls.Add(filtroEstado);
-            grp_Filtros.Location = new Point(50, 226);
-            grp_Filtros.Margin = new Padding(6, 6, 6, 6);
+            grp_Filtros.Location = new Point(27, 106);
             grp_Filtros.Name = "grp_Filtros";
-            grp_Filtros.Padding = new Padding(6, 6, 6, 6);
-            grp_Filtros.Size = new Size(552, 245);
+            grp_Filtros.Size = new Size(297, 115);
             grp_Filtros.TabIndex = 10;
             grp_Filtros.TabStop = false;
             grp_Filtros.Text = "Filtros";
@@ -180,31 +175,25 @@
             btn_Limpiar.FlatStyle = FlatStyle.Flat;
             btn_Limpiar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Limpiar.ForeColor = Color.Black;
-            btn_Limpiar.Location = new Point(1166, 373);
-            btn_Limpiar.Margin = new Padding(6, 6, 6, 6);
+            btn_Limpiar.Location = new Point(628, 175);
             btn_Limpiar.Name = "btn_Limpiar";
-            btn_Limpiar.Size = new Size(377, 85);
+            btn_Limpiar.Size = new Size(203, 40);
             btn_Limpiar.TabIndex = 4;
             btn_Limpiar.Text = "Limpiar";
             btn_Limpiar.UseVisualStyleBackColor = false;
             btn_Limpiar.Click += limpiarConsulta_Click;
             // 
-            // cantpasajeros
-            // 
-            cantpasajeros.Text = "Cant. Pasajeros";
-            cantpasajeros.Width = 200;
-            // 
             // ConsultarReservas
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1566, 1039);
+            ClientSize = new Size(843, 487);
             Controls.Add(btn_Limpiar);
             Controls.Add(grp_Filtros);
             Controls.Add(btn_BuscarReserva);
             Controls.Add(reservasListView);
-            Margin = new Padding(11, 13, 11, 13);
+            Margin = new Padding(6, 6, 6, 6);
             Name = "ConsultarReservas";
             Text = "Form1";
             Load += ConsultarReservas_Load;

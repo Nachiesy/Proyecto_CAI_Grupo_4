@@ -49,4 +49,18 @@ namespace Proyecto_CAI_Grupo_4.Utils
             return number.ToString("0.00");
         }
     }
+
+    public static class Validaciones
+    {
+        public static bool EsDNI(this string dniingresado)
+        {
+            if (int.TryParse(dniingresado, out int dni) && dniingresado.Length >6 && dniingresado.Length < 9) {
+                return true; 
+            
+            }else { return false; }
+
+            ;
+          
+        }
+    }
 }
