@@ -187,6 +187,7 @@
             // 
             // comboBoxCalificacion
             // 
+            comboBoxCalificacion.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCalificacion.FormattingEnabled = true;
             comboBoxCalificacion.Location = new Point(469, 157);
             comboBoxCalificacion.Name = "comboBoxCalificacion";
@@ -204,6 +205,7 @@
             // 
             // comboBoxTipoDeHabitacion
             // 
+            comboBoxTipoDeHabitacion.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTipoDeHabitacion.FormattingEnabled = true;
             comboBoxTipoDeHabitacion.Location = new Point(316, 157);
             comboBoxTipoDeHabitacion.Name = "comboBoxTipoDeHabitacion";
@@ -221,6 +223,7 @@
             // 
             // comboBoxCiudad
             // 
+            comboBoxCiudad.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCiudad.FormattingEnabled = true;
             comboBoxCiudad.Location = new Point(163, 157);
             comboBoxCiudad.Name = "comboBoxCiudad";

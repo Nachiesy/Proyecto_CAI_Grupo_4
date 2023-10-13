@@ -164,6 +164,7 @@
             // 
             // comboBoxTipoDeCamarote
             // 
+            comboBoxTipoDeCamarote.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTipoDeCamarote.FormattingEnabled = true;
             comboBoxTipoDeCamarote.Location = new Point(316, 143);
             comboBoxTipoDeCamarote.Name = "comboBoxTipoDeCamarote";
@@ -190,6 +191,7 @@
             // 
             // comboBoxDestino
             // 
+            comboBoxDestino.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxDestino.FormattingEnabled = true;
             comboBoxDestino.Location = new Point(163, 143);
             comboBoxDestino.Name = "comboBoxDestino";
@@ -198,6 +200,7 @@
             // 
             // comboBoxOrigen
             // 
+            comboBoxOrigen.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxOrigen.FormattingEnabled = true;
             comboBoxOrigen.Location = new Point(18, 143);
             comboBoxOrigen.Name = "comboBoxOrigen";

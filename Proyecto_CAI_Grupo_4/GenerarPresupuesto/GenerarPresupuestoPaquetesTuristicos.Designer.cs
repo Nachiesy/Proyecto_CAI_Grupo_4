@@ -49,8 +49,6 @@
             btnRemoverProductos = new Common.Components.BotonEstilizado();
             btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
             grp_VuelosDisponibles = new GroupBox();
-            grp_VuelosSeleccionados = new GroupBox();
-            btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
             listViewProductos = new ListView();
             ID = new ColumnHeader();
             Codigo = new ColumnHeader();
@@ -59,8 +57,11 @@
             Destino = new ColumnHeader();
             Cantidad = new ColumnHeader();
             Precio = new ColumnHeader();
+            CapacidadAdultos = new ColumnHeader();
+            CapacidadMenores = new ColumnHeader();
             FechaDesde = new ColumnHeader();
             FechaHasta = new ColumnHeader();
+            grp_VuelosSeleccionados = new GroupBox();
             listViewProductosSeleccionados = new ListView();
             SelectID = new ColumnHeader();
             SelectCodigo = new ColumnHeader();
@@ -68,12 +69,11 @@
             SelectOrigen = new ColumnHeader();
             SelectDestino = new ColumnHeader();
             SelectPrecio = new ColumnHeader();
-            SelectFechaDesde = new ColumnHeader();
-            SelectFechaHasta = new ColumnHeader();
-            CapacidadAdultos = new ColumnHeader();
-            CapacidadMenores = new ColumnHeader();
             SelectCapacidadAdultos = new ColumnHeader();
             SelectCapacidadMenores = new ColumnHeader();
+            SelectFechaDesde = new ColumnHeader();
+            SelectFechaHasta = new ColumnHeader();
+            btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
             grp_Filtros.SuspendLayout();
             grp_VuelosDisponibles.SuspendLayout();
             grp_VuelosSeleccionados.SuspendLayout();
@@ -201,6 +201,7 @@
             // 
             // comboBoxDestino
             // 
+            comboBoxDestino.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxDestino.FormattingEnabled = true;
             comboBoxDestino.Location = new Point(163, 291);
             comboBoxDestino.Name = "comboBoxDestino";
@@ -218,6 +219,7 @@
             // 
             // comboBoxOrigen
             // 
+            comboBoxOrigen.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxOrigen.FormattingEnabled = true;
             comboBoxOrigen.Location = new Point(18, 291);
             comboBoxOrigen.Name = "comboBoxOrigen";
@@ -310,33 +312,6 @@
             grp_VuelosDisponibles.TabStop = false;
             grp_VuelosDisponibles.Text = "Paquetes Disponibles";
             // 
-            // grp_VuelosSeleccionados
-            // 
-            grp_VuelosSeleccionados.Controls.Add(listViewProductosSeleccionados);
-            grp_VuelosSeleccionados.Controls.Add(btnRemoverProductos);
-            grp_VuelosSeleccionados.Controls.Add(btnConfirmarProductosSeleccionados);
-            grp_VuelosSeleccionados.Location = new Point(376, 422);
-            grp_VuelosSeleccionados.Name = "grp_VuelosSeleccionados";
-            grp_VuelosSeleccionados.Size = new Size(976, 269);
-            grp_VuelosSeleccionados.TabIndex = 37;
-            grp_VuelosSeleccionados.TabStop = false;
-            grp_VuelosSeleccionados.Text = "Paquetes Seleccionados";
-            // 
-            // btnVolverAlMenuGenerarPresupuestos
-            // 
-            btnVolverAlMenuGenerarPresupuestos.BackColor = Color.Transparent;
-            btnVolverAlMenuGenerarPresupuestos.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            btnVolverAlMenuGenerarPresupuestos.FlatStyle = FlatStyle.Flat;
-            btnVolverAlMenuGenerarPresupuestos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnVolverAlMenuGenerarPresupuestos.ForeColor = Color.Black;
-            btnVolverAlMenuGenerarPresupuestos.Location = new Point(27, 637);
-            btnVolverAlMenuGenerarPresupuestos.Name = "btnVolverAlMenuGenerarPresupuestos";
-            btnVolverAlMenuGenerarPresupuestos.Size = new Size(322, 47);
-            btnVolverAlMenuGenerarPresupuestos.TabIndex = 4;
-            btnVolverAlMenuGenerarPresupuestos.Text = "Volver";
-            btnVolverAlMenuGenerarPresupuestos.UseVisualStyleBackColor = false;
-            btnVolverAlMenuGenerarPresupuestos.Click += btnVolverAlMenuGenerarPresupuestos_Click;
-            // 
             // listViewProductos
             // 
             listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Origen, Destino, Cantidad, Precio, CapacidadAdultos, CapacidadMenores, FechaDesde, FechaHasta });
@@ -383,6 +358,16 @@
             Precio.Text = "Precio";
             Precio.Width = 100;
             // 
+            // CapacidadAdultos
+            // 
+            CapacidadAdultos.Text = "Capacidad de Adultos";
+            CapacidadAdultos.Width = 150;
+            // 
+            // CapacidadMenores
+            // 
+            CapacidadMenores.Text = "Capacidad de Menores";
+            CapacidadMenores.Width = 150;
+            // 
             // FechaDesde
             // 
             FechaDesde.Text = "Fecha Desde";
@@ -392,6 +377,18 @@
             // 
             FechaHasta.Text = "Fecha Hasta";
             FechaHasta.Width = 100;
+            // 
+            // grp_VuelosSeleccionados
+            // 
+            grp_VuelosSeleccionados.Controls.Add(listViewProductosSeleccionados);
+            grp_VuelosSeleccionados.Controls.Add(btnRemoverProductos);
+            grp_VuelosSeleccionados.Controls.Add(btnConfirmarProductosSeleccionados);
+            grp_VuelosSeleccionados.Location = new Point(376, 422);
+            grp_VuelosSeleccionados.Name = "grp_VuelosSeleccionados";
+            grp_VuelosSeleccionados.Size = new Size(976, 269);
+            grp_VuelosSeleccionados.TabIndex = 37;
+            grp_VuelosSeleccionados.TabStop = false;
+            grp_VuelosSeleccionados.Text = "Paquetes Seleccionados";
             // 
             // listViewProductosSeleccionados
             // 
@@ -434,6 +431,16 @@
             SelectPrecio.Text = "Precio";
             SelectPrecio.Width = 100;
             // 
+            // SelectCapacidadAdultos
+            // 
+            SelectCapacidadAdultos.Text = "Capacidad de Adultos";
+            SelectCapacidadAdultos.Width = 150;
+            // 
+            // SelectCapacidadMenores
+            // 
+            SelectCapacidadMenores.Text = "Capacidad de Menores";
+            SelectCapacidadMenores.Width = 150;
+            // 
             // SelectFechaDesde
             // 
             SelectFechaDesde.Text = "Fecha Desde";
@@ -444,25 +451,20 @@
             SelectFechaHasta.Text = "Fecha Hasta";
             SelectFechaHasta.Width = 100;
             // 
-            // CapacidadAdultos
+            // btnVolverAlMenuGenerarPresupuestos
             // 
-            CapacidadAdultos.Text = "Capacidad de Adultos";
-            CapacidadAdultos.Width = 150;
-            // 
-            // CapacidadMenores
-            // 
-            CapacidadMenores.Text = "Capacidad de Menores";
-            CapacidadMenores.Width = 150;
-            // 
-            // SelectCapacidadAdultos
-            // 
-            SelectCapacidadAdultos.Text = "Capacidad de Adultos";
-            SelectCapacidadAdultos.Width = 150;
-            // 
-            // SelectCapacidadMenores
-            // 
-            SelectCapacidadMenores.Text = "Capacidad de Menores";
-            SelectCapacidadMenores.Width = 150;
+            btnVolverAlMenuGenerarPresupuestos.BackColor = Color.Transparent;
+            btnVolverAlMenuGenerarPresupuestos.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnVolverAlMenuGenerarPresupuestos.FlatStyle = FlatStyle.Flat;
+            btnVolverAlMenuGenerarPresupuestos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnVolverAlMenuGenerarPresupuestos.ForeColor = Color.Black;
+            btnVolverAlMenuGenerarPresupuestos.Location = new Point(27, 637);
+            btnVolverAlMenuGenerarPresupuestos.Name = "btnVolverAlMenuGenerarPresupuestos";
+            btnVolverAlMenuGenerarPresupuestos.Size = new Size(322, 47);
+            btnVolverAlMenuGenerarPresupuestos.TabIndex = 4;
+            btnVolverAlMenuGenerarPresupuestos.Text = "Volver";
+            btnVolverAlMenuGenerarPresupuestos.UseVisualStyleBackColor = false;
+            btnVolverAlMenuGenerarPresupuestos.Click += btnVolverAlMenuGenerarPresupuestos_Click;
             // 
             // GenerarPresupuestoPaquetesTuristicos
             // 

@@ -170,6 +170,7 @@
             // 
             // comboBoxDestino
             // 
+            comboBoxDestino.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxDestino.FormattingEnabled = true;
             comboBoxDestino.Location = new Point(163, 145);
             comboBoxDestino.Name = "comboBoxDestino";
@@ -178,6 +179,7 @@
             // 
             // comboBoxOrigen
             // 
+            comboBoxOrigen.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxOrigen.FormattingEnabled = true;
             comboBoxOrigen.Location = new Point(18, 145);
             comboBoxOrigen.Name = "comboBoxOrigen";

@@ -184,6 +184,7 @@
             // 
             // comboBoxClase
             // 
+            comboBoxClase.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxClase.FormattingEnabled = true;
             comboBoxClase.Location = new Point(626, 143);
             comboBoxClase.Name = "comboBoxClase";
@@ -210,6 +211,7 @@
             // 
             // comboBoxDestino
             // 
+            comboBoxDestino.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxDestino.FormattingEnabled = true;
             comboBoxDestino.Location = new Point(163, 143);
             comboBoxDestino.Name = "comboBoxDestino";
@@ -218,6 +220,7 @@
             // 
             // comboBoxItinerario
             // 
+            comboBoxItinerario.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxItinerario.FormattingEnabled = true;
             comboBoxItinerario.Location = new Point(470, 143);
             comboBoxItinerario.Name = "comboBoxItinerario";
@@ -235,6 +238,7 @@
             // 
             // comboBoxOrigen
             // 
+            comboBoxOrigen.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxOrigen.FormattingEnabled = true;
             comboBoxOrigen.Location = new Point(18, 143);
             comboBoxOrigen.Name = "comboBoxOrigen";
@@ -243,6 +247,7 @@
             // 
             // comboBoxTipoDePasajero
             // 
+            comboBoxTipoDePasajero.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTipoDePasajero.FormattingEnabled = true;
             comboBoxTipoDePasajero.Location = new Point(316, 143);
             comboBoxTipoDePasajero.Name = "comboBoxTipoDePasajero";
