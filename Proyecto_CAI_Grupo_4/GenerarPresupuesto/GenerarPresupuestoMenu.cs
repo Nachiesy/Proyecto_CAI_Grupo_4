@@ -49,15 +49,14 @@ namespace Proyecto_CAI_Grupo_4
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeServicio.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Nombre);
+                row.SubItems.Add(item.TipoDeServicio.GetDescription());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
 
-                productosElegidos.Rows.Add(row);
+                productosElegidos.Items.Add(row);
             }
         }
 
@@ -121,7 +120,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             var dni = textBoxClienteDNI.Text.Trim();
 
-            var validacionProductos = productosElegidos.RowCount > 0;
+            var validacionProductos = productosElegidos.Items.Count > 0;
 
             var validacionDNI = dni.EsDNI();
 

@@ -31,12 +31,6 @@ namespace Proyecto_CAI_Grupo_4
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarPresupuestoMenu));
             label1 = new Label();
             presupuestoTotal = new Label();
-            productosElegidos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            TipoDeServicio = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -52,13 +46,18 @@ namespace Proyecto_CAI_Grupo_4
             textBoxClienteDNI = new TextBox();
             label2 = new Label();
             groupBox2 = new GroupBox();
+            textBoxPasajerosInfantes = new TextBox();
+            labelPasajerosInfantes = new Label();
             textBoxPasajerosMenores = new TextBox();
             labelPasajerosMenores = new Label();
             textBoxPasajerosAdultos = new TextBox();
             labelPasajerosAdultos = new Label();
-            textBoxPasajerosInfantes = new TextBox();
-            labelPasajerosInfantes = new Label();
-            ((System.ComponentModel.ISupportInitialize)productosElegidos).BeginInit();
+            productosElegidos = new ListView();
+            ID = new ColumnHeader();
+            Codigo = new ColumnHeader();
+            Nombre = new ColumnHeader();
+            TipoServicio = new ColumnHeader();
+            Precios = new ColumnHeader();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -87,61 +86,6 @@ namespace Proyecto_CAI_Grupo_4
             presupuestoTotal.Size = new Size(108, 31);
             presupuestoTotal.TabIndex = 34;
             presupuestoTotal.Text = "Total: $-";
-            // 
-            // productosElegidos
-            // 
-            productosElegidos.AllowUserToAddRows = false;
-            productosElegidos.AllowUserToDeleteRows = false;
-            productosElegidos.AllowUserToOrderColumns = true;
-            productosElegidos.BackgroundColor = SystemColors.ControlLight;
-            productosElegidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, TipoDeServicio, Precio });
-            productosElegidos.Location = new Point(303, 126);
-            productosElegidos.Name = "productosElegidos";
-            productosElegidos.ReadOnly = true;
-            productosElegidos.RowHeadersWidth = 82;
-            productosElegidos.RowTemplate.Height = 25;
-            productosElegidos.Size = new Size(893, 584);
-            productosElegidos.TabIndex = 36;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            ID.Width = 250;
-            // 
-            // Codigo
-            // 
-            Codigo.HeaderText = "Código";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // TipoDeServicio
-            // 
-            TipoDeServicio.HeaderText = "Tipo de Servicio";
-            TipoDeServicio.MinimumWidth = 10;
-            TipoDeServicio.Name = "TipoDeServicio";
-            TipoDeServicio.ReadOnly = true;
-            TipoDeServicio.Width = 200;
-            // 
-            // Precio
-            // 
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 10;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 200;
             // 
             // groupBox1
             // 
@@ -323,6 +267,22 @@ namespace Proyecto_CAI_Grupo_4
             groupBox2.TabStop = false;
             groupBox2.Text = "Pasajeros";
             // 
+            // textBoxPasajerosInfantes
+            // 
+            textBoxPasajerosInfantes.Location = new Point(7, 102);
+            textBoxPasajerosInfantes.Name = "textBoxPasajerosInfantes";
+            textBoxPasajerosInfantes.Size = new Size(233, 23);
+            textBoxPasajerosInfantes.TabIndex = 6;
+            // 
+            // labelPasajerosInfantes
+            // 
+            labelPasajerosInfantes.AutoSize = true;
+            labelPasajerosInfantes.Location = new Point(8, 80);
+            labelPasajerosInfantes.Name = "labelPasajerosInfantes";
+            labelPasajerosInfantes.Size = new Size(49, 15);
+            labelPasajerosInfantes.TabIndex = 7;
+            labelPasajerosInfantes.Text = "Infantes";
+            // 
             // textBoxPasajerosMenores
             // 
             textBoxPasajerosMenores.Location = new Point(134, 50);
@@ -355,21 +315,41 @@ namespace Proyecto_CAI_Grupo_4
             labelPasajerosAdultos.TabIndex = 3;
             labelPasajerosAdultos.Text = "Adultos";
             // 
-            // textBoxPasajerosInfantes
+            // productosElegidos
             // 
-            textBoxPasajerosInfantes.Location = new Point(7, 102);
-            textBoxPasajerosInfantes.Name = "textBoxPasajerosInfantes";
-            textBoxPasajerosInfantes.Size = new Size(233, 23);
-            textBoxPasajerosInfantes.TabIndex = 6;
+            productosElegidos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, TipoServicio, Precios });
+            productosElegidos.FullRowSelect = true;
+            productosElegidos.Location = new Point(273, 116);
+            productosElegidos.Name = "productosElegidos";
+            productosElegidos.Size = new Size(853, 594);
+            productosElegidos.TabIndex = 41;
+            productosElegidos.UseCompatibleStateImageBehavior = false;
+            productosElegidos.View = View.Details;
             // 
-            // labelPasajerosInfantes
+            // ID
             // 
-            labelPasajerosInfantes.AutoSize = true;
-            labelPasajerosInfantes.Location = new Point(8, 80);
-            labelPasajerosInfantes.Name = "labelPasajerosInfantes";
-            labelPasajerosInfantes.Size = new Size(49, 15);
-            labelPasajerosInfantes.TabIndex = 7;
-            labelPasajerosInfantes.Text = "Infantes";
+            ID.Text = "ID";
+            ID.Width = 0;
+            // 
+            // Codigo
+            // 
+            Codigo.Text = "Código";
+            Codigo.Width = 100;
+            // 
+            // Nombre
+            // 
+            Nombre.Text = "Nombre";
+            Nombre.Width = 200;
+            // 
+            // TipoServicio
+            // 
+            TipoServicio.Text = "Tipo de Servicio";
+            TipoServicio.Width = 200;
+            // 
+            // Precios
+            // 
+            Precios.Text = "Precio";
+            Precios.Width = 100;
             // 
             // GenerarPresupuestoMenu
             // 
@@ -377,25 +357,24 @@ namespace Proyecto_CAI_Grupo_4
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1208, 720);
+            Controls.Add(productosElegidos);
             Controls.Add(groupBox2);
             Controls.Add(grp_Filtros);
             Controls.Add(grp_Estimacion);
             Controls.Add(btnFinalizarPresupuesto);
             Controls.Add(groupBox1);
-            Controls.Add(productosElegidos);
             Controls.Add(label1);
             Margin = new Padding(6);
             Name = "GenerarPresupuestoMenu";
             Text = "Generar Presupuesto";
             Load += GenerarPresupuestoMenu_Load;
             Controls.SetChildIndex(label1, 0);
-            Controls.SetChildIndex(productosElegidos, 0);
             Controls.SetChildIndex(groupBox1, 0);
             Controls.SetChildIndex(btnFinalizarPresupuesto, 0);
             Controls.SetChildIndex(grp_Estimacion, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(groupBox2, 0);
-            ((System.ComponentModel.ISupportInitialize)productosElegidos).EndInit();
+            Controls.SetChildIndex(productosElegidos, 0);
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -415,7 +394,6 @@ namespace Proyecto_CAI_Grupo_4
 
         private Label label1;
         private Label presupuestoTotal;
-        private DataGridView productosElegidos;
         private GroupBox groupBox1;
         private Common.Components.BotonEstilizado btnMenuAereos;
         private Common.Components.BotonEstilizado btnMenuHoteles;
@@ -430,11 +408,6 @@ namespace Proyecto_CAI_Grupo_4
         private GroupBox grp_Filtros;
         private TextBox textBoxClienteDNI;
         private Label label2;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn TipoDeServicio;
-        private DataGridViewTextBoxColumn Precio;
         private GroupBox groupBox2;
         private TextBox textBoxPasajerosMenores;
         private Label labelPasajerosMenores;
@@ -442,5 +415,11 @@ namespace Proyecto_CAI_Grupo_4
         private Label labelPasajerosAdultos;
         private TextBox textBoxPasajerosInfantes;
         private Label labelPasajerosInfantes;
+        private ListView productosElegidos;
+        private ColumnHeader ID;
+        private ColumnHeader Codigo;
+        private ColumnHeader Nombre;
+        private ColumnHeader TipoServicio;
+        private ColumnHeader Precios;
     }
 }
