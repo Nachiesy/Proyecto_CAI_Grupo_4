@@ -57,7 +57,6 @@
             gbxPasajeros.Controls.Add(lblcantpasajeros);
             gbxPasajeros.Controls.Add(btn_Agregar);
             gbxPasajeros.Controls.Add(listPasajeros);
-            gbxPasajeros.Enabled = false;
             gbxPasajeros.Location = new Point(12, 114);
             gbxPasajeros.Margin = new Padding(2, 1, 2, 1);
             gbxPasajeros.Name = "gbxPasajeros";
