@@ -29,7 +29,20 @@
         private void InitializeComponent()
         {
             grp_HotelesDisponibles = new GroupBox();
-            dataGridViewProductos = new DataGridView();
+            listViewProductos = new ListView();
+            ID = new ColumnHeader();
+            Codigo = new ColumnHeader();
+            Nombre = new ColumnHeader();
+            Ciudad = new ColumnHeader();
+            Direccion = new ColumnHeader();
+            Calificacion = new ColumnHeader();
+            CantidadHabitaciones = new ColumnHeader();
+            TipoHabitacion = new ColumnHeader();
+            Precio = new ColumnHeader();
+            CapacidadPersonas = new ColumnHeader();
+            CapacidadAdultos = new ColumnHeader();
+            CapacidadMenores = new ColumnHeader();
+            CapacidadInfantes = new ColumnHeader();
             btnAgregarProductos = new Common.Components.BotonEstilizado();
             grp_Filtros = new GroupBox();
             labelNombre = new Label();
@@ -53,52 +66,30 @@
             labelFiltroPrecioHasta = new Label();
             txtBoxFiltroPrecioDesde = new TextBox();
             grp_CrucerosSeleccionados = new GroupBox();
-            dataGridViewProductosSeleccionados = new DataGridView();
+            listViewProductosSeleccionados = new ListView();
+            SelectID = new ColumnHeader();
+            SelectCodigo = new ColumnHeader();
+            SelectNombre = new ColumnHeader();
+            SelectCiudad = new ColumnHeader();
+            SelectDireccion = new ColumnHeader();
+            SelectCalificacion = new ColumnHeader();
+            SelectTipoHabitacion = new ColumnHeader();
+            SelectPrecio = new ColumnHeader();
+            SelectCapacidadPersonas = new ColumnHeader();
+            SelectCapacidadAdultos = new ColumnHeader();
+            SelectCapacidadMenores = new ColumnHeader();
+            SelectCapacidadInfantes = new ColumnHeader();
             btnRemoverProductos = new Common.Components.BotonEstilizado();
             btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
             btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
-            ID = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            PrecioUnitario = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            FechaDesde = new DataGridViewTextBoxColumn();
-            FechaHasta = new DataGridViewTextBoxColumn();
-            Ciudad = new DataGridViewTextBoxColumn();
-            Direccion = new DataGridViewTextBoxColumn();
-            TipoDeHabitación = new DataGridViewTextBoxColumn();
-            Calificacion = new DataGridViewTextBoxColumn();
-            Capacidad = new DataGridViewTextBoxColumn();
-            CapacidadAdultos = new DataGridViewTextBoxColumn();
-            CapacidadMenores = new DataGridViewTextBoxColumn();
-            CapacidadInfantes = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            CantidadSeleccionada = new DataGridViewTextBoxColumn();
-            SubTotal = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            Column8 = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
             grp_HotelesDisponibles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             grp_Filtros.SuspendLayout();
             grp_CrucerosSeleccionados.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductosSeleccionados).BeginInit();
             SuspendLayout();
             // 
             // grp_HotelesDisponibles
             // 
-            grp_HotelesDisponibles.Controls.Add(dataGridViewProductos);
+            grp_HotelesDisponibles.Controls.Add(listViewProductos);
             grp_HotelesDisponibles.Controls.Add(btnAgregarProductos);
             grp_HotelesDisponibles.Location = new Point(362, 127);
             grp_HotelesDisponibles.Name = "grp_HotelesDisponibles";
@@ -107,21 +98,81 @@
             grp_HotelesDisponibles.TabStop = false;
             grp_HotelesDisponibles.Text = "Hoteles Disponibles";
             // 
-            // dataGridViewProductos
+            // listViewProductos
             // 
-            dataGridViewProductos.AllowUserToAddRows = false;
-            dataGridViewProductos.AllowUserToDeleteRows = false;
-            dataGridViewProductos.AllowUserToOrderColumns = true;
-            dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Ciudad, Direccion, TipoDeHabitación, Calificacion, Capacidad, CapacidadAdultos, CapacidadMenores, CapacidadInfantes });
-            dataGridViewProductos.Location = new Point(6, 22);
-            dataGridViewProductos.Name = "dataGridViewProductos";
-            dataGridViewProductos.RowHeadersWidth = 82;
-            dataGridViewProductos.RowTemplate.Height = 25;
-            dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductos.Size = new Size(964, 194);
-            dataGridViewProductos.TabIndex = 38;
+            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Ciudad, Direccion, Calificacion, CantidadHabitaciones, TipoHabitacion, Precio, CapacidadPersonas, CapacidadAdultos, CapacidadMenores, CapacidadInfantes });
+            listViewProductos.FullRowSelect = true;
+            listViewProductos.Location = new Point(6, 22);
+            listViewProductos.Name = "listViewProductos";
+            listViewProductos.Size = new Size(964, 194);
+            listViewProductos.TabIndex = 5;
+            listViewProductos.UseCompatibleStateImageBehavior = false;
+            listViewProductos.View = View.Details;
+            // 
+            // ID
+            // 
+            ID.Text = "ID";
+            ID.Width = 0;
+            // 
+            // Codigo
+            // 
+            Codigo.Text = "Código";
+            Codigo.Width = 100;
+            // 
+            // Nombre
+            // 
+            Nombre.Text = "Nombre";
+            Nombre.Width = 100;
+            // 
+            // Ciudad
+            // 
+            Ciudad.Text = "Ciudad";
+            Ciudad.Width = 100;
+            // 
+            // Direccion
+            // 
+            Direccion.Text = "Dirección";
+            Direccion.Width = 200;
+            // 
+            // Calificacion
+            // 
+            Calificacion.Text = "Calificación";
+            Calificacion.Width = 100;
+            // 
+            // CantidadHabitaciones
+            // 
+            CantidadHabitaciones.Text = "Cantidad de Habitaciones";
+            CantidadHabitaciones.Width = 200;
+            // 
+            // TipoHabitacion
+            // 
+            TipoHabitacion.Text = "Tipo de Habitación";
+            TipoHabitacion.Width = 200;
+            // 
+            // Precio
+            // 
+            Precio.Text = "Precio";
+            Precio.Width = 100;
+            // 
+            // CapacidadPersonas
+            // 
+            CapacidadPersonas.Text = "Capacidad de Personas";
+            CapacidadPersonas.Width = 200;
+            // 
+            // CapacidadAdultos
+            // 
+            CapacidadAdultos.Text = "Capacidad de Adultos";
+            CapacidadAdultos.Width = 200;
+            // 
+            // CapacidadMenores
+            // 
+            CapacidadMenores.Text = "Capacidad de Menores";
+            CapacidadMenores.Width = 200;
+            // 
+            // CapacidadInfantes
+            // 
+            CapacidadInfantes.Text = "Capacidad de Infantes";
+            CapacidadInfantes.Width = 200;
             // 
             // btnAgregarProductos
             // 
@@ -352,7 +403,7 @@
             // 
             // grp_CrucerosSeleccionados
             // 
-            grp_CrucerosSeleccionados.Controls.Add(dataGridViewProductosSeleccionados);
+            grp_CrucerosSeleccionados.Controls.Add(listViewProductosSeleccionados);
             grp_CrucerosSeleccionados.Controls.Add(btnRemoverProductos);
             grp_CrucerosSeleccionados.Controls.Add(btnConfirmarProductosSeleccionados);
             grp_CrucerosSeleccionados.Location = new Point(362, 423);
@@ -362,22 +413,76 @@
             grp_CrucerosSeleccionados.TabStop = false;
             grp_CrucerosSeleccionados.Text = "Hoteles Seleccionados";
             // 
-            // dataGridViewProductosSeleccionados
+            // listViewProductosSeleccionados
             // 
-            dataGridViewProductosSeleccionados.AllowUserToAddRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToDeleteRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
-            dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Column4, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, Column8, Column1, Column2, Column3, Column5, Column6, Column7 });
-            dataGridViewProductosSeleccionados.Location = new Point(6, 22);
-            dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
-            dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
-            dataGridViewProductosSeleccionados.RowTemplate.Height = 25;
-            dataGridViewProductosSeleccionados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductosSeleccionados.Size = new Size(964, 194);
-            dataGridViewProductosSeleccionados.TabIndex = 39;
-            dataGridViewProductosSeleccionados.CellValueChanged += dataGridViewProductosSeleccionados_CellValueChanged;
+            listViewProductosSeleccionados.Columns.AddRange(new ColumnHeader[] { SelectID, SelectCodigo, SelectNombre, SelectCiudad, SelectDireccion, SelectCalificacion, SelectTipoHabitacion, SelectPrecio, SelectCapacidadPersonas, SelectCapacidadAdultos, SelectCapacidadMenores, SelectCapacidadInfantes });
+            listViewProductosSeleccionados.FullRowSelect = true;
+            listViewProductosSeleccionados.Location = new Point(6, 22);
+            listViewProductosSeleccionados.Name = "listViewProductosSeleccionados";
+            listViewProductosSeleccionados.Size = new Size(964, 194);
+            listViewProductosSeleccionados.TabIndex = 6;
+            listViewProductosSeleccionados.UseCompatibleStateImageBehavior = false;
+            listViewProductosSeleccionados.View = View.Details;
+            // 
+            // SelectID
+            // 
+            SelectID.Text = "ID";
+            SelectID.Width = 0;
+            // 
+            // SelectCodigo
+            // 
+            SelectCodigo.Text = "Código";
+            SelectCodigo.Width = 100;
+            // 
+            // SelectNombre
+            // 
+            SelectNombre.Text = "Nombre";
+            SelectNombre.Width = 100;
+            // 
+            // SelectCiudad
+            // 
+            SelectCiudad.Text = "Ciudad";
+            SelectCiudad.Width = 100;
+            // 
+            // SelectDireccion
+            // 
+            SelectDireccion.Text = "Dirección";
+            SelectDireccion.Width = 200;
+            // 
+            // SelectCalificacion
+            // 
+            SelectCalificacion.Text = "Calificación";
+            SelectCalificacion.Width = 100;
+            // 
+            // SelectTipoHabitacion
+            // 
+            SelectTipoHabitacion.Text = "Tipo de Habitación";
+            SelectTipoHabitacion.Width = 200;
+            // 
+            // SelectPrecio
+            // 
+            SelectPrecio.Text = "Precio";
+            SelectPrecio.Width = 100;
+            // 
+            // SelectCapacidadPersonas
+            // 
+            SelectCapacidadPersonas.Text = "Capacidad de Personas";
+            SelectCapacidadPersonas.Width = 200;
+            // 
+            // SelectCapacidadAdultos
+            // 
+            SelectCapacidadAdultos.Text = "Capacidad de Adultos";
+            SelectCapacidadAdultos.Width = 200;
+            // 
+            // SelectCapacidadMenores
+            // 
+            SelectCapacidadMenores.Text = "Capacidad de Menores";
+            SelectCapacidadMenores.Width = 200;
+            // 
+            // SelectCapacidadInfantes
+            // 
+            SelectCapacidadInfantes.Text = "Capacidad de Infantes";
+            SelectCapacidadInfantes.Width = 200;
             // 
             // btnRemoverProductos
             // 
@@ -424,225 +529,6 @@
             btnVolverAlMenuGenerarPresupuestos.UseVisualStyleBackColor = false;
             btnVolverAlMenuGenerarPresupuestos.Click += btnVolverAlMenuGenerarPresupuestos_Click;
             // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            ID.Width = 250;
-            // 
-            // Codigo
-            // 
-            Codigo.HeaderText = "Código";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // PrecioUnitario
-            // 
-            PrecioUnitario.HeaderText = "Precio Unitario";
-            PrecioUnitario.MinimumWidth = 10;
-            PrecioUnitario.Name = "PrecioUnitario";
-            PrecioUnitario.ReadOnly = true;
-            PrecioUnitario.Width = 200;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad Disponible";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 200;
-            // 
-            // FechaDesde
-            // 
-            FechaDesde.HeaderText = "Fecha Desde";
-            FechaDesde.Name = "FechaDesde";
-            FechaDesde.ReadOnly = true;
-            // 
-            // FechaHasta
-            // 
-            FechaHasta.HeaderText = "Fecha Hasta";
-            FechaHasta.Name = "FechaHasta";
-            FechaHasta.ReadOnly = true;
-            // 
-            // Ciudad
-            // 
-            Ciudad.HeaderText = "Ciudad";
-            Ciudad.Name = "Ciudad";
-            Ciudad.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            Direccion.HeaderText = "Dirección";
-            Direccion.Name = "Direccion";
-            Direccion.ReadOnly = true;
-            // 
-            // TipoDeHabitación
-            // 
-            TipoDeHabitación.HeaderText = "Tipo de Habitacion";
-            TipoDeHabitación.Name = "TipoDeHabitación";
-            TipoDeHabitación.ReadOnly = true;
-            TipoDeHabitación.Width = 200;
-            // 
-            // Calificacion
-            // 
-            Calificacion.HeaderText = "Calificación";
-            Calificacion.Name = "Calificacion";
-            Calificacion.ReadOnly = true;
-            // 
-            // Capacidad
-            // 
-            Capacidad.HeaderText = "Capacidad";
-            Capacidad.Name = "Capacidad";
-            Capacidad.ReadOnly = true;
-            // 
-            // CapacidadAdultos
-            // 
-            CapacidadAdultos.HeaderText = "Capacidad Adultos";
-            CapacidadAdultos.Name = "CapacidadAdultos";
-            CapacidadAdultos.ReadOnly = true;
-            CapacidadAdultos.Width = 200;
-            // 
-            // CapacidadMenores
-            // 
-            CapacidadMenores.HeaderText = "Capacidad Menores";
-            CapacidadMenores.Name = "CapacidadMenores";
-            CapacidadMenores.ReadOnly = true;
-            CapacidadMenores.Width = 200;
-            // 
-            // CapacidadInfantes
-            // 
-            CapacidadInfantes.HeaderText = "Capacidad Infantes";
-            CapacidadInfantes.Name = "CapacidadInfantes";
-            CapacidadInfantes.ReadOnly = true;
-            CapacidadInfantes.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "ID";
-            dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Visible = false;
-            dataGridViewTextBoxColumn1.Width = 250;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Código";
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            dataGridViewTextBoxColumn2.MinimumWidth = 10;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Precio Unitario";
-            dataGridViewTextBoxColumn3.MinimumWidth = 10;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Cantidad Disponible";
-            dataGridViewTextBoxColumn4.MinimumWidth = 10;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // CantidadSeleccionada
-            // 
-            CantidadSeleccionada.HeaderText = "Cantidad Seleccionada";
-            CantidadSeleccionada.Name = "CantidadSeleccionada";
-            CantidadSeleccionada.Width = 200;
-            // 
-            // SubTotal
-            // 
-            SubTotal.HeaderText = "Sub Total";
-            SubTotal.Name = "SubTotal";
-            SubTotal.ReadOnly = true;
-            SubTotal.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Fecha Desde";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Fecha Hasta";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.HeaderText = "Ciudad";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            Column8.HeaderText = "Dirección";
-            Column8.Name = "Column8";
-            Column8.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Tipo de Habitación";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Width = 200;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Calificación";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Capacidad";
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Capacidad Adultos";
-            Column5.Name = "Column5";
-            Column5.ReadOnly = true;
-            Column5.Width = 200;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Capacidad Menores";
-            Column6.Name = "Column6";
-            Column6.ReadOnly = true;
-            Column6.Width = 200;
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Capacidad Infantes";
-            Column7.Name = "Column7";
-            Column7.ReadOnly = true;
-            Column7.Width = 200;
-            // 
             // GenerarPresupuestoHoteles
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -661,18 +547,15 @@
             Controls.SetChildIndex(grp_CrucerosSeleccionados, 0);
             Controls.SetChildIndex(btnVolverAlMenuGenerarPresupuestos, 0);
             grp_HotelesDisponibles.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
             grp_CrucerosSeleccionados.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductosSeleccionados).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private GroupBox grp_HotelesDisponibles;
-        private DataGridView dataGridViewProductos;
         private Common.Components.BotonEstilizado btnAgregarProductos;
         private GroupBox grp_Filtros;
         private Common.Components.BotonEstilizado btnLimpiarFiltros;
@@ -686,7 +569,6 @@
         private Label labelFiltroPrecioHasta;
         private TextBox txtBoxFiltroPrecioDesde;
         private GroupBox grp_CrucerosSeleccionados;
-        private DataGridView dataGridViewProductosSeleccionados;
         private Common.Components.BotonEstilizado btnRemoverProductos;
         private Common.Components.BotonEstilizado btnConfirmarProductosSeleccionados;
         private Common.Components.BotonEstilizado btnVolverAlMenuGenerarPresupuestos;
@@ -700,37 +582,32 @@
         private ComboBox comboBoxTipoDeHabitacion;
         private Label labelNombre;
         private TextBox textBoxNombre;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn PrecioUnitario;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn FechaDesde;
-        private DataGridViewTextBoxColumn FechaHasta;
-        private DataGridViewTextBoxColumn Ciudad;
-        private DataGridViewTextBoxColumn Direccion;
-        private DataGridViewTextBoxColumn TipoDeHabitación;
-        private DataGridViewTextBoxColumn Calificacion;
-        private DataGridViewTextBoxColumn Capacidad;
-        private DataGridViewTextBoxColumn CapacidadAdultos;
-        private DataGridViewTextBoxColumn CapacidadMenores;
-        private DataGridViewTextBoxColumn CapacidadInfantes;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn CantidadSeleccionada;
-        private DataGridViewTextBoxColumn SubTotal;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn Column8;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column7;
+        private ListView listViewProductos;
+        private ColumnHeader ID;
+        private ColumnHeader Codigo;
+        private ColumnHeader Nombre;
+        private ColumnHeader Ciudad;
+        private ColumnHeader Direccion;
+        private ColumnHeader Calificacion;
+        private ColumnHeader CantidadHabitaciones;
+        private ColumnHeader TipoHabitacion;
+        private ColumnHeader CapacidadPersonas;
+        private ColumnHeader CapacidadAdultos;
+        private ColumnHeader CapacidadMenores;
+        private ColumnHeader CapacidadInfantes;
+        private ColumnHeader Precio;
+        private ListView listViewProductosSeleccionados;
+        private ColumnHeader SelectID;
+        private ColumnHeader SelectCodigo;
+        private ColumnHeader SelectNombre;
+        private ColumnHeader SelectCiudad;
+        private ColumnHeader SelectDireccion;
+        private ColumnHeader SelectCalificacion;
+        private ColumnHeader SelectTipoHabitacion;
+        private ColumnHeader SelectPrecio;
+        private ColumnHeader SelectCapacidadPersonas;
+        private ColumnHeader SelectCapacidadAdultos;
+        private ColumnHeader SelectCapacidadMenores;
+        private ColumnHeader SelectCapacidadInfantes;
     }
 }

@@ -44,7 +44,7 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxClase.Items.Add(value.GetDescription());
             }
 
-            AddProductosToDataGridView(GenerarPresupuestosManager.aereos);
+            AddProductosToListView(GenerarPresupuestosManager.aereos);
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -81,11 +81,11 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino)
                                 && (!filter.TipoDePasajero.HasValue || (int)x.TipoDePasajero == filter.TipoDePasajero)
                                 && (!filter.Itinerario.HasValue || (int)x.Itinerario == filter.Itinerario)
-                                && (!filter.Clase.HasValue || (int)x.TipoDeClaseAerea == filter.Clase));
+                                && (!filter.Clase.HasValue || (int)x.Clase == filter.Clase));
 
-                dataGridViewProductos.Rows.Clear();
+                listViewProductos.Items.Clear();
 
-                AddProductosToDataGridView(productos);
+                AddProductosToListView(productos);
 
                 if (!productos.Any())
                 {
@@ -105,29 +105,26 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosToDataGridView(IEnumerable<Aereos> listToAdd)
+        private void AddProductosToListView(IEnumerable<Aereos> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormVueloDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormVueloDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Aerolinea.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeClaseAerea.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetParadas() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDePasajero.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Itinerario.GetDescription() });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Origen.GetDescription());
+                row.SubItems.Add(item.Destino.GetDescription());
+                row.SubItems.Add(item.Clase.GetDescription());
+                row.SubItems.Add(item.Itinerario.GetDescription());
+                row.SubItems.Add(item.Cantidad.ToString());
+                row.SubItems.Add(item.TipoDePasajero.GetDescription());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
+                row.SubItems.Add(item.Aerolinea.GetDescription());
+                row.SubItems.Add(item.Paradas.Count().ToString());
+                row.SubItems.Add(item.FechaDeSalida.ToFormVueloDate());
+                row.SubItems.Add(item.FechaDeLlegada.ToFormVueloDate());
 
-                dataGridViewProductos.Rows.Add(row);
+                listViewProductos.Items.Add(row);
             }
         }
 
@@ -143,9 +140,9 @@ namespace Proyecto_CAI_Grupo_4
             comboBoxItinerario.SelectedIndex = -1;
             comboBoxClase.SelectedIndex = -1;
 
-            dataGridViewProductos.Rows.Clear();
+            listViewProductos.Items.Clear();
 
-            AddProductosToDataGridView(GenerarPresupuestosManager.aereos);
+            AddProductosToListView(GenerarPresupuestosManager.aereos);
         }
 
         private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)

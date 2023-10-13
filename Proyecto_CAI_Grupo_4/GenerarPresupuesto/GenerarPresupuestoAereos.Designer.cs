@@ -32,9 +32,34 @@
             btnRemoverProductos = new Common.Components.BotonEstilizado();
             btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
             grp_VuelosDisponibles = new GroupBox();
-            dataGridViewProductos = new DataGridView();
+            listViewProductos = new ListView();
+            ID = new ColumnHeader();
+            Codigo = new ColumnHeader();
+            Origen = new ColumnHeader();
+            Destino = new ColumnHeader();
+            Clase = new ColumnHeader();
+            Itinerario = new ColumnHeader();
+            Cantidad = new ColumnHeader();
+            TipoDePasajero = new ColumnHeader();
+            Precio = new ColumnHeader();
+            Aerolinea = new ColumnHeader();
+            Paradas = new ColumnHeader();
+            FechaSalida = new ColumnHeader();
+            FechaLlegada = new ColumnHeader();
             grp_VuelosSeleccionados = new GroupBox();
-            dataGridViewProductosSeleccionados = new DataGridView();
+            listViewProductosSeleccionados = new ListView();
+            SelectID = new ColumnHeader();
+            SelectCodigo = new ColumnHeader();
+            SelectOrigen = new ColumnHeader();
+            SelectDestino = new ColumnHeader();
+            SelectClase = new ColumnHeader();
+            SelectItinerario = new ColumnHeader();
+            SelectTipoDePasajero = new ColumnHeader();
+            SelectPrecio = new ColumnHeader();
+            SelectAerolinea = new ColumnHeader();
+            SelectParadas = new ColumnHeader();
+            SelectFechaSalida = new ColumnHeader();
+            SelectFechaLlegada = new ColumnHeader();
             btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
             grp_Filtros = new GroupBox();
             labelClase = new Label();
@@ -59,43 +84,8 @@
             txtBoxFiltroPrecioHasta = new TextBox();
             labelFiltroPrecioHasta = new Label();
             txtBoxFiltroPrecioDesde = new TextBox();
-            ID = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            PrecioUnitarioAdulto = new DataGridViewTextBoxColumn();
-            PrecioUnitarioMenor = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            FechaDesde = new DataGridViewTextBoxColumn();
-            FechaHasta = new DataGridViewTextBoxColumn();
-            Aerolinea = new DataGridViewTextBoxColumn();
-            Origen = new DataGridViewTextBoxColumn();
-            Destino = new DataGridViewTextBoxColumn();
-            Clase = new DataGridViewTextBoxColumn();
-            Paradas = new DataGridViewTextBoxColumn();
-            TipoDePasajero = new DataGridViewTextBoxColumn();
-            Itinerario = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            PrecioUnitarioMenores = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            CantidadSeleccionadaAdulto = new DataGridViewTextBoxColumn();
-            CantidadSeleccionadaMenores = new DataGridViewTextBoxColumn();
-            SubTotal = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
             grp_VuelosDisponibles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             grp_VuelosSeleccionados.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductosSeleccionados).BeginInit();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
@@ -146,7 +136,7 @@
             // 
             // grp_VuelosDisponibles
             // 
-            grp_VuelosDisponibles.Controls.Add(dataGridViewProductos);
+            grp_VuelosDisponibles.Controls.Add(listViewProductos);
             grp_VuelosDisponibles.Controls.Add(btnAgregarProductos);
             grp_VuelosDisponibles.Location = new Point(376, 131);
             grp_VuelosDisponibles.Name = "grp_VuelosDisponibles";
@@ -155,25 +145,85 @@
             grp_VuelosDisponibles.TabStop = false;
             grp_VuelosDisponibles.Text = "Vuelos Disponibles";
             // 
-            // dataGridViewProductos
+            // listViewProductos
             // 
-            dataGridViewProductos.AllowUserToAddRows = false;
-            dataGridViewProductos.AllowUserToDeleteRows = false;
-            dataGridViewProductos.AllowUserToOrderColumns = true;
-            dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitarioAdulto, PrecioUnitarioMenor, Cantidad, FechaDesde, FechaHasta, Aerolinea, Origen, Destino, Clase, Paradas, TipoDePasajero, Itinerario });
-            dataGridViewProductos.Location = new Point(6, 22);
-            dataGridViewProductos.Name = "dataGridViewProductos";
-            dataGridViewProductos.RowHeadersWidth = 82;
-            dataGridViewProductos.RowTemplate.Height = 25;
-            dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductos.Size = new Size(964, 194);
-            dataGridViewProductos.TabIndex = 38;
+            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Origen, Destino, Clase, Itinerario, Cantidad, TipoDePasajero, Precio, Aerolinea, Paradas, FechaSalida, FechaLlegada });
+            listViewProductos.FullRowSelect = true;
+            listViewProductos.Location = new Point(6, 22);
+            listViewProductos.Name = "listViewProductos";
+            listViewProductos.Size = new Size(964, 194);
+            listViewProductos.TabIndex = 6;
+            listViewProductos.UseCompatibleStateImageBehavior = false;
+            listViewProductos.View = View.Details;
+            // 
+            // ID
+            // 
+            ID.Text = "ID";
+            ID.Width = 0;
+            // 
+            // Codigo
+            // 
+            Codigo.Text = "Código";
+            Codigo.Width = 100;
+            // 
+            // Origen
+            // 
+            Origen.Text = "Origen";
+            Origen.Width = 100;
+            // 
+            // Destino
+            // 
+            Destino.Text = "Destino";
+            Destino.Width = 100;
+            // 
+            // Clase
+            // 
+            Clase.Text = "Clase";
+            Clase.Width = 100;
+            // 
+            // Itinerario
+            // 
+            Itinerario.Text = "Itinerario";
+            Itinerario.Width = 100;
+            // 
+            // Cantidad
+            // 
+            Cantidad.Text = "Asientos Disponibles";
+            Cantidad.Width = 150;
+            // 
+            // TipoDePasajero
+            // 
+            TipoDePasajero.Text = "Tarifa";
+            TipoDePasajero.Width = 100;
+            // 
+            // Precio
+            // 
+            Precio.Text = "Precio";
+            Precio.Width = 100;
+            // 
+            // Aerolinea
+            // 
+            Aerolinea.Text = "Aerolinea";
+            Aerolinea.Width = 150;
+            // 
+            // Paradas
+            // 
+            Paradas.Text = "Cantidad de Paradas";
+            Paradas.Width = 150;
+            // 
+            // FechaSalida
+            // 
+            FechaSalida.Text = "Fecha de Salida";
+            FechaSalida.Width = 150;
+            // 
+            // FechaLlegada
+            // 
+            FechaLlegada.Text = "Fecha de Llegada";
+            FechaLlegada.Width = 150;
             // 
             // grp_VuelosSeleccionados
             // 
-            grp_VuelosSeleccionados.Controls.Add(dataGridViewProductosSeleccionados);
+            grp_VuelosSeleccionados.Controls.Add(listViewProductosSeleccionados);
             grp_VuelosSeleccionados.Controls.Add(btnRemoverProductos);
             grp_VuelosSeleccionados.Controls.Add(btnConfirmarProductosSeleccionados);
             grp_VuelosSeleccionados.Location = new Point(376, 422);
@@ -183,22 +233,76 @@
             grp_VuelosSeleccionados.TabStop = false;
             grp_VuelosSeleccionados.Text = "Vuelos Seleccionados";
             // 
-            // dataGridViewProductosSeleccionados
+            // listViewProductosSeleccionados
             // 
-            dataGridViewProductosSeleccionados.AllowUserToAddRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToDeleteRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
-            dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Column1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, PrecioUnitarioMenores, dataGridViewTextBoxColumn4, CantidadSeleccionadaAdulto, CantidadSeleccionadaMenores, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, Column3, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, Column2, Column4, Column5 });
-            dataGridViewProductosSeleccionados.Location = new Point(6, 22);
-            dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
-            dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
-            dataGridViewProductosSeleccionados.RowTemplate.Height = 25;
-            dataGridViewProductosSeleccionados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductosSeleccionados.Size = new Size(964, 194);
-            dataGridViewProductosSeleccionados.TabIndex = 39;
-            dataGridViewProductosSeleccionados.CellValueChanged += dataGridViewProductosSeleccionados_CellValueChanged;
+            listViewProductosSeleccionados.Columns.AddRange(new ColumnHeader[] { SelectID, SelectCodigo, SelectOrigen, SelectDestino, SelectClase, SelectItinerario, SelectTipoDePasajero, SelectPrecio, SelectAerolinea, SelectParadas, SelectFechaSalida, SelectFechaLlegada });
+            listViewProductosSeleccionados.FullRowSelect = true;
+            listViewProductosSeleccionados.Location = new Point(6, 22);
+            listViewProductosSeleccionados.Name = "listViewProductosSeleccionados";
+            listViewProductosSeleccionados.Size = new Size(964, 194);
+            listViewProductosSeleccionados.TabIndex = 7;
+            listViewProductosSeleccionados.UseCompatibleStateImageBehavior = false;
+            listViewProductosSeleccionados.View = View.Details;
+            // 
+            // SelectID
+            // 
+            SelectID.Text = "ID";
+            SelectID.Width = 0;
+            // 
+            // SelectCodigo
+            // 
+            SelectCodigo.Text = "Código";
+            SelectCodigo.Width = 100;
+            // 
+            // SelectOrigen
+            // 
+            SelectOrigen.Text = "Origen";
+            SelectOrigen.Width = 100;
+            // 
+            // SelectDestino
+            // 
+            SelectDestino.Text = "Destino";
+            SelectDestino.Width = 100;
+            // 
+            // SelectClase
+            // 
+            SelectClase.Text = "Clase";
+            SelectClase.Width = 100;
+            // 
+            // SelectItinerario
+            // 
+            SelectItinerario.Text = "Itinerario";
+            SelectItinerario.Width = 100;
+            // 
+            // SelectTipoDePasajero
+            // 
+            SelectTipoDePasajero.Text = "Tarifa";
+            SelectTipoDePasajero.Width = 100;
+            // 
+            // SelectPrecio
+            // 
+            SelectPrecio.Text = "Precio";
+            SelectPrecio.Width = 100;
+            // 
+            // SelectAerolinea
+            // 
+            SelectAerolinea.Text = "Aerolinea";
+            SelectAerolinea.Width = 150;
+            // 
+            // SelectParadas
+            // 
+            SelectParadas.Text = "Cantidad de Paradas";
+            SelectParadas.Width = 150;
+            // 
+            // SelectFechaSalida
+            // 
+            SelectFechaSalida.Text = "Fecha de Salida";
+            SelectFechaSalida.Width = 150;
+            // 
+            // SelectFechaLlegada
+            // 
+            SelectFechaLlegada.Text = "Fecha de Llegada";
+            SelectFechaLlegada.Width = 150;
             // 
             // btnVolverAlMenuGenerarPresupuestos
             // 
@@ -447,233 +551,6 @@
             txtBoxFiltroPrecioDesde.Size = new Size(126, 23);
             txtBoxFiltroPrecioDesde.TabIndex = 18;
             // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            ID.Width = 250;
-            // 
-            // Codigo
-            // 
-            Codigo.HeaderText = "Código";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // PrecioUnitarioAdulto
-            // 
-            PrecioUnitarioAdulto.HeaderText = "Precio Unitario Adultos";
-            PrecioUnitarioAdulto.MinimumWidth = 10;
-            PrecioUnitarioAdulto.Name = "PrecioUnitarioAdulto";
-            PrecioUnitarioAdulto.ReadOnly = true;
-            PrecioUnitarioAdulto.Width = 200;
-            // 
-            // PrecioUnitarioMenor
-            // 
-            PrecioUnitarioMenor.HeaderText = "Precio Unitario Menores";
-            PrecioUnitarioMenor.Name = "PrecioUnitarioMenor";
-            PrecioUnitarioMenor.ReadOnly = true;
-            PrecioUnitarioMenor.Width = 200;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad Disponible";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 200;
-            // 
-            // FechaDesde
-            // 
-            FechaDesde.HeaderText = "Fecha Salida";
-            FechaDesde.Name = "FechaDesde";
-            FechaDesde.ReadOnly = true;
-            // 
-            // FechaHasta
-            // 
-            FechaHasta.HeaderText = "Fecha Llegada";
-            FechaHasta.Name = "FechaHasta";
-            FechaHasta.ReadOnly = true;
-            FechaHasta.Width = 200;
-            // 
-            // Aerolinea
-            // 
-            Aerolinea.HeaderText = "Aerolínea";
-            Aerolinea.Name = "Aerolinea";
-            Aerolinea.ReadOnly = true;
-            Aerolinea.Width = 200;
-            // 
-            // Origen
-            // 
-            Origen.HeaderText = "Origen";
-            Origen.Name = "Origen";
-            Origen.ReadOnly = true;
-            // 
-            // Destino
-            // 
-            Destino.HeaderText = "Destino";
-            Destino.Name = "Destino";
-            Destino.ReadOnly = true;
-            // 
-            // Clase
-            // 
-            Clase.HeaderText = "Clase";
-            Clase.Name = "Clase";
-            Clase.ReadOnly = true;
-            // 
-            // Paradas
-            // 
-            Paradas.HeaderText = "Paradas";
-            Paradas.Name = "Paradas";
-            Paradas.ReadOnly = true;
-            Paradas.Width = 200;
-            // 
-            // TipoDePasajero
-            // 
-            TipoDePasajero.HeaderText = "Tipo de Pasajero";
-            TipoDePasajero.Name = "TipoDePasajero";
-            TipoDePasajero.ReadOnly = true;
-            TipoDePasajero.Width = 200;
-            // 
-            // Itinerario
-            // 
-            Itinerario.HeaderText = "Itinerario";
-            Itinerario.Name = "Itinerario";
-            Itinerario.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "ID";
-            dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Visible = false;
-            dataGridViewTextBoxColumn1.Width = 250;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Código";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            dataGridViewTextBoxColumn2.MinimumWidth = 10;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Precio Unitario Adultos";
-            dataGridViewTextBoxColumn3.MinimumWidth = 10;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // PrecioUnitarioMenores
-            // 
-            PrecioUnitarioMenores.HeaderText = "Precio Unitario Menores";
-            PrecioUnitarioMenores.Name = "PrecioUnitarioMenores";
-            PrecioUnitarioMenores.ReadOnly = true;
-            PrecioUnitarioMenores.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Cantidad Disponible";
-            dataGridViewTextBoxColumn4.MinimumWidth = 10;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // CantidadSeleccionadaAdulto
-            // 
-            CantidadSeleccionadaAdulto.HeaderText = "Cantidad Seleccionada Adultos";
-            CantidadSeleccionadaAdulto.Name = "CantidadSeleccionadaAdulto";
-            CantidadSeleccionadaAdulto.Width = 200;
-            // 
-            // CantidadSeleccionadaMenores
-            // 
-            CantidadSeleccionadaMenores.HeaderText = "Cantidad Seleccionada Menores";
-            CantidadSeleccionadaMenores.Name = "CantidadSeleccionadaMenores";
-            CantidadSeleccionadaMenores.Width = 200;
-            // 
-            // SubTotal
-            // 
-            SubTotal.HeaderText = "Sub Total";
-            SubTotal.Name = "SubTotal";
-            SubTotal.ReadOnly = true;
-            SubTotal.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Fecha Salida";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Fecha Llegada";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            dataGridViewTextBoxColumn6.Width = 200;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Aerolínea";
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            Column3.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.HeaderText = "Origen";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.HeaderText = "Destino";
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.HeaderText = "Clase";
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Paradas";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            Column2.Width = 200;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Tipo de Pasajero";
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
-            Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Itinerario";
-            Column5.Name = "Column5";
-            Column5.ReadOnly = true;
-            // 
             // GenerarPresupuestoAereos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -692,9 +569,7 @@
             Controls.SetChildIndex(btnVolverAlMenuGenerarPresupuestos, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
             grp_VuelosDisponibles.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             grp_VuelosSeleccionados.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductosSeleccionados).EndInit();
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
             ResumeLayout(false);
@@ -706,8 +581,6 @@
         private Common.Components.BotonEstilizado btnConfirmarProductosSeleccionados;
         private GroupBox grp_VuelosDisponibles;
         private GroupBox grp_VuelosSeleccionados;
-        private DataGridView dataGridViewProductos;
-        private DataGridView dataGridViewProductosSeleccionados;
         private Common.Components.BotonEstilizado btnVolverAlMenuGenerarPresupuestos;
         private GroupBox grp_Filtros;
         private Button btnDisableDatePickerFilterFechaDesde;
@@ -732,38 +605,32 @@
         private ComboBox comboBoxTipoDePasajero;
         private Label labelClase;
         private ComboBox comboBoxClase;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn PrecioUnitarioAdulto;
-        private DataGridViewTextBoxColumn PrecioUnitarioMenor;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn FechaDesde;
-        private DataGridViewTextBoxColumn FechaHasta;
-        private DataGridViewTextBoxColumn Aerolinea;
-        private DataGridViewTextBoxColumn Origen;
-        private DataGridViewTextBoxColumn Destino;
-        private DataGridViewTextBoxColumn Clase;
-        private DataGridViewTextBoxColumn Paradas;
-        private DataGridViewTextBoxColumn TipoDePasajero;
-        private DataGridViewTextBoxColumn Itinerario;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn PrecioUnitarioMenores;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn CantidadSeleccionadaAdulto;
-        private DataGridViewTextBoxColumn CantidadSeleccionadaMenores;
-        private DataGridViewTextBoxColumn SubTotal;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
+        private ListView listViewProductos;
+        private ColumnHeader ID;
+        private ColumnHeader Codigo;
+        private ColumnHeader Origen;
+        private ColumnHeader Destino;
+        private ColumnHeader Clase;
+        private ColumnHeader Itinerario;
+        private ColumnHeader TipoDePasajero;
+        private ColumnHeader Cantidad;
+        private ColumnHeader Precio;
+        private ColumnHeader Aerolinea;
+        private ColumnHeader Paradas;
+        private ColumnHeader FechaSalida;
+        private ColumnHeader FechaLlegada;
+        private ListView listViewProductosSeleccionados;
+        private ColumnHeader SelectID;
+        private ColumnHeader SelectCodigo;
+        private ColumnHeader SelectOrigen;
+        private ColumnHeader SelectDestino;
+        private ColumnHeader SelectClase;
+        private ColumnHeader SelectItinerario;
+        private ColumnHeader SelectTipoDePasajero;
+        private ColumnHeader SelectPrecio;
+        private ColumnHeader SelectAerolinea;
+        private ColumnHeader SelectParadas;
+        private ColumnHeader SelectFechaSalida;
+        private ColumnHeader SelectFechaLlegada;
     }
 }

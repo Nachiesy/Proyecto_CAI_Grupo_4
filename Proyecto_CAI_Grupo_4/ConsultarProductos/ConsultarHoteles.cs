@@ -71,7 +71,7 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.TipoDeHabitacion.HasValue || (int)x.TipoDeHabitacion == filter.TipoDeHabitacion)
                                 && (!filter.Calificacion.HasValue || (int)x.Calificacion == filter.Calificacion));
 
-                dataGridViewProductos.Rows.Clear();
+                listViewProductos.Items.Clear();
 
                 AddProductosToDataGridView(productos);
 
@@ -97,25 +97,24 @@ namespace Proyecto_CAI_Grupo_4
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Direccion });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeHabitacion.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Calificacion.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadDePersonas.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadMaximaDeAdultos.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadMaximaDeMenores.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadMaximaDeInfantes.ToString() });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Nombre);
+                row.SubItems.Add(item.Ciudad.GetDescription());
+                row.SubItems.Add(item.Direccion);
+                row.SubItems.Add(item.Calificacion.GetDescription());
+                row.SubItems.Add(item.Cantidad.ToString());
+                row.SubItems.Add(item.TipoDeHabitacion.GetDescription());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
+                row.SubItems.Add(item.CantidadDePersonas.ToString());
+                row.SubItems.Add(item.CantidadMaximaDeAdultos.ToString());
+                row.SubItems.Add(item.CantidadMaximaDeMenores.ToString());
+                row.SubItems.Add(item.CantidadMaximaDeInfantes.ToString());
+                row.SubItems.Add(item.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.FechaHasta.ToFormDate());
 
-                dataGridViewProductos.Rows.Add(row);
+                listViewProductos.Items.Add(row);
             }
         }
 
@@ -130,7 +129,7 @@ namespace Proyecto_CAI_Grupo_4
             comboBoxTipoDeHabitacion.SelectedIndex = -1;
             comboBoxCalificacion.SelectedIndex = -1;
 
-            dataGridViewProductos.Rows.Clear();
+            listViewProductos.Items.Clear();
 
             AddProductosToDataGridView(GenerarPresupuestosManager.hoteles);
         }

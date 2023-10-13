@@ -50,8 +50,7 @@ namespace Proyecto_CAI_Grupo_4
             Codigo = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             TipoDeServicio = new DataGridViewTextBoxColumn();
-            SubTotal = new DataGridViewTextBoxColumn();
-            CantidadSeleccionada = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)productosElegidos).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -88,7 +87,7 @@ namespace Proyecto_CAI_Grupo_4
             productosElegidos.AllowUserToOrderColumns = true;
             productosElegidos.BackgroundColor = SystemColors.ControlLight;
             productosElegidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, TipoDeServicio, SubTotal, CantidadSeleccionada });
+            productosElegidos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, TipoDeServicio, Precio });
             productosElegidos.Location = new Point(303, 126);
             productosElegidos.Name = "productosElegidos";
             productosElegidos.ReadOnly = true;
@@ -293,20 +292,13 @@ namespace Proyecto_CAI_Grupo_4
             TipoDeServicio.ReadOnly = true;
             TipoDeServicio.Width = 200;
             // 
-            // SubTotal
+            // Precio
             // 
-            SubTotal.HeaderText = "SubTotal";
-            SubTotal.MinimumWidth = 10;
-            SubTotal.Name = "SubTotal";
-            SubTotal.ReadOnly = true;
-            SubTotal.Width = 200;
-            // 
-            // CantidadSeleccionada
-            // 
-            CantidadSeleccionada.HeaderText = "Cantidad Seleccionada";
-            CantidadSeleccionada.Name = "CantidadSeleccionada";
-            CantidadSeleccionada.ReadOnly = true;
-            CantidadSeleccionada.Visible = false;
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 10;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 200;
             // 
             // GenerarPresupuestoMenu
             // 
@@ -367,7 +359,6 @@ namespace Proyecto_CAI_Grupo_4
         private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn TipoDeServicio;
-        private DataGridViewTextBoxColumn SubTotal;
-        private DataGridViewTextBoxColumn CantidadSeleccionada;
+        private DataGridViewTextBoxColumn Precio;
     }
 }
