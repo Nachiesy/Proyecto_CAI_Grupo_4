@@ -70,7 +70,7 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.CiudadDeLlegada.HasValue || (int)x.CiudadDeLlegada == filter.CiudadDeLlegada)
                                 && (!filter.TipoDeCamarote.HasValue || (int)x.TipoDeCamarote == filter.TipoDeCamarote));
 
-                dataGridViewProductos.Rows.Clear();
+                listViewProductos.Items.Clear();
 
                 AddProductosToDataGridView(productos);
 
@@ -96,21 +96,19 @@ namespace Proyecto_CAI_Grupo_4
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDePartida.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDeLlegada.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeCamarote.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetParadas() });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Nombre);
+                row.SubItems.Add(item.CiudadDePartida.GetDescription());
+                row.SubItems.Add(item.CiudadDeLlegada.GetDescription());
+                row.SubItems.Add(item.Cantidad.ToString());
+                row.SubItems.Add(item.TipoDeCamarote.GetDescription());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
+                row.SubItems.Add(item.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.FechaHasta.ToFormDate());
 
-                dataGridViewProductos.Rows.Add(row);
+                listViewProductos.Items.Add(row);
             }
         }
 
@@ -124,7 +122,7 @@ namespace Proyecto_CAI_Grupo_4
             comboBoxDestino.SelectedIndex = -1;
             comboBoxTipoDeCamarote.SelectedIndex = -1;
 
-            dataGridViewProductos.Rows.Clear();
+            listViewProductos.Items.Clear();
 
             AddProductosToDataGridView(GenerarPresupuestosManager.cruceros);
         }

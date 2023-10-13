@@ -9,11 +9,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoCruceros : VistaBase
     {
-        private readonly int idColumnIndex = 0;
-        private readonly int precioColumnIndex = 3;
-        private readonly int cantidadDisponibleColumnIndex = 4;
-        private readonly int cantidadSeleccionadaColumnIndex = 5;
-        private readonly int subTotalColumnIndex = 6;
+        private readonly int codigoSubItemIndex = 1;
 
         public GenerarPresupuestoCruceros() : base(tituloModulo: "Generar Presupuesto > Cruceros")
         {
@@ -40,9 +36,9 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxTipoDeCamarote.Items.Add(value.GetDescription());
             }
 
-            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.cruceros.Where(x => x.Cantidad > 0));
+            AddProductosToListView(GenerarPresupuestosManager.cruceros.Where(x => x.Cantidad > 0));
 
-            AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.crucerosElegidos, true);
+            AddProductosSeleccionadosToListView(GenerarPresupuestosManager.crucerosElegidos);
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -78,9 +74,9 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.CiudadDeLlegada.HasValue || (int)x.CiudadDeLlegada == filter.CiudadDeLlegada)
                                 && (!filter.TipoDeCamarote.HasValue || (int)x.TipoDeCamarote == filter.TipoDeCamarote));
 
-                dataGridViewProductos.Rows.Clear();
+                listViewProductos.Items.Clear();
 
-                AddProductosToDataGridViewProductos(productos);
+                AddProductosToListView(productos);
 
                 if (!productos.Any())
                 {
@@ -100,81 +96,67 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosToDataGridViewProductos(IEnumerable<Cruceros> listToAdd)
+        private void AddProductosToListView(IEnumerable<Cruceros> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDePartida.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDeLlegada.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeCamarote.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetParadas() });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Nombre);
+                row.SubItems.Add(item.CiudadDePartida.GetDescription());
+                row.SubItems.Add(item.CiudadDeLlegada.GetDescription());
+                row.SubItems.Add(item.Cantidad.ToString());
+                row.SubItems.Add(item.TipoDeCamarote.GetDescription());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
+                row.SubItems.Add(item.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.FechaHasta.ToFormDate());
 
-                dataGridViewProductos.Rows.Add(row);
+                listViewProductos.Items.Add(row);
             }
         }
 
-        private void AddProductosSeleccionadosToDataGridView(IEnumerable<Cruceros> listToAdd, bool isInitForm)
+        private void AddProductosSeleccionadosToListView(IEnumerable<Cruceros> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Nombre);
+                row.SubItems.Add(item.CiudadDePartida.GetDescription());
+                row.SubItems.Add(item.CiudadDeLlegada.GetDescription());
+                // row.SubItems.Add(item.Cantidad.ToString());
+                row.SubItems.Add(item.TipoDeCamarote.GetDescription());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
+                row.SubItems.Add(item.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.FechaHasta.ToFormDate());
 
-                if (isInitForm)
-                {
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionada });
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal.Value.ToFormDecimal() });
-                }
-                else
-                {
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() }); // Sub Total
-                }
-
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDePartida.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CiudadDeLlegada.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeCamarote.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetParadas() });
-
-                dataGridViewProductosSeleccionados.Rows.Add(row);
+                listViewProductosSeleccionados.Items.Add(row);
             }
         }
 
         private void btnAgregarProductos_Click(object sender, EventArgs e)
         {
-            if (dataGridViewProductos.SelectedRows.Count > 0)
+            if (listViewProductos.SelectedItems.Count > 0)
             {
                 var productosToAdd = new List<Cruceros>();
 
-                foreach (DataGridViewRow row in dataGridViewProductos.SelectedRows)
+                foreach (ListViewItem item in listViewProductos.SelectedItems)
                 {
-                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                    var id = Guid.Parse(item.Text);
 
                     var producto = GenerarPresupuestosManager.cruceros.Where(x => x.Id == id).SingleOrDefault();
 
-                    if (!IsProductInDataGridViewProductosSeleccionados(id))
+                    var cantidad = IsProductInProductosSeleccionados(producto.Codigo);
+
+                    if (producto.Cantidad > cantidad)
                     {
                         productosToAdd.Add(producto);
                     }
                 }
 
-                AddProductosSeleccionadosToDataGridView(productosToAdd, false);
+                AddProductosSeleccionadosToListView(productosToAdd);
             }
             else
             {
@@ -184,11 +166,11 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnRemoverProductos_Click(object sender, EventArgs e)
         {
-            if (dataGridViewProductosSeleccionados.SelectedRows.Count > 0)
+            if (listViewProductosSeleccionados.SelectedItems.Count > 0)
             {
-                foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.SelectedRows)
+                foreach (ListViewItem row in listViewProductosSeleccionados.SelectedItems)
                 {
-                    dataGridViewProductosSeleccionados.Rows.Remove(row);
+                    listViewProductosSeleccionados.Items.Remove(row);
                 }
             }
             else
@@ -199,18 +181,15 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            if (dataGridViewProductosSeleccionados.RowCount > 0)
+            if (listViewProductosSeleccionados.Items.Count > 0)
             {
                 GenerarPresupuestosManager.crucerosElegidos.Clear();
 
-                foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+                foreach (ListViewItem item in listViewProductosSeleccionados.Items)
                 {
-                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                    var id = Guid.Parse(item.Text);
 
                     var producto = GenerarPresupuestosManager.cruceros.Where(x => x.Id == id).SingleOrDefault();
-
-                    producto.CantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
-                    producto.SubTotal = decimal.Parse(row.Cells[subTotalColumnIndex].Value.ToString());
 
                     GenerarPresupuestosManager.crucerosElegidos.Add(producto);
                 }
@@ -251,86 +230,26 @@ namespace Proyecto_CAI_Grupo_4
             comboBoxDestino.SelectedIndex = -1;
             comboBoxTipoDeCamarote.SelectedIndex = -1;
 
-            dataGridViewProductos.Rows.Clear();
+            listViewProductos.Items.Clear();
 
-            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.cruceros);
+            AddProductosToListView(GenerarPresupuestosManager.cruceros);
         }
 
-        private bool IsProductInDataGridViewProductosSeleccionados(Guid id)
+        private int IsProductInProductosSeleccionados(string codigo)
         {
-            var idList = new List<Guid>();
+            var codigos = new List<string>();
 
-            foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+            foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
-                var selectedId = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                var selectedCodigo = item.SubItems[codigoSubItemIndex].Text;
 
-                idList.Add(selectedId);
-            }
-
-            return idList.Any(x => x == id);
-        }
-
-        private void dataGridViewProductosSeleccionados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex == cantidadSeleccionadaColumnIndex)
-            {
-                var dataGridView = sender as DataGridView;
-
-                // ID
-                var idCell = dataGridView.Rows[e.RowIndex].Cells[idColumnIndex];
-                var id = idCell.Value.ToString();
-
-                // Precio
-                var precioCell = dataGridView.Rows[e.RowIndex].Cells[precioColumnIndex];
-                var precio = decimal.Parse(precioCell.Value.ToString());
-
-                // Cantidad Disponible
-                var cantidadDisponibleCell = dataGridView.Rows[e.RowIndex].Cells[cantidadDisponibleColumnIndex];
-                var cantidadDisponible = int.Parse(cantidadDisponibleCell.Value.ToString());
-
-                // Cantidad Seleccionada
-                var cantidadSeleccionadaCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                var isCantidadSeleccionadaValid = int.TryParse(cantidadSeleccionadaCell.Value.ToString(), out int cantidadSeleccionada);
-
-                // SubTotal
-                var subTotalCell = dataGridView.Rows[e.RowIndex].Cells[subTotalColumnIndex];
-
-                var validation = ValidarCantidadSeleccionada(id, isCantidadSeleccionadaValid, cantidadSeleccionada, cantidadDisponible);
-
-                if (string.IsNullOrEmpty(validation))
+                if (selectedCodigo == codigo)
                 {
-                    subTotalCell.Value = precio * cantidadSeleccionada;
+                    codigos.Add(selectedCodigo);
                 }
-                else
-                {
-                    cantidadSeleccionadaCell.Value = 1;
-                    subTotalCell.Value = precioCell.Value;
-
-                    MessageBox.Show(validation, "Error");
-                }
-
-                dataGridView.Refresh();
-            }
-        }
-
-        private string ValidarCantidadSeleccionada(string id, bool isCantidadSeleccionadaValid, int? cantidadSeleccionada, int cantidadDisponible)
-        {
-            if (!isCantidadSeleccionadaValid)
-            {
-                return $"La Cantidad para el Crucero con ID [{id}] debe ser un numero entero.";
             }
 
-            if (cantidadDisponible < cantidadSeleccionada)
-            {
-                return $"La Cantidad Seleccionada para el Crucero con ID [{id}] debe ser un menor o igual a la Cantidad Disponible.";
-            }
-
-            if (cantidadSeleccionada <= 0)
-            {
-                return $"La Cantidad Seleccionada para el Crucero con ID [{id}] debe ser mayor a 0.";
-            }
-
-            return string.Empty;
+            return codigos.Count();
         }
 
         private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)

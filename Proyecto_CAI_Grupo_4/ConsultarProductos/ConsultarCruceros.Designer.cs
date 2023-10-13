@@ -48,20 +48,18 @@
             btnLimpiarFiltro = new Common.Components.BotonEstilizado();
             buscarPresupuesto = new Common.Components.BotonEstilizado();
             btnVolverMenuGenerarPresupuestos = new Button();
-            dataGridViewProductos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            PrecioUnitario = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            FechaDesde = new DataGridViewTextBoxColumn();
-            FechaHasta = new DataGridViewTextBoxColumn();
-            Origen = new DataGridViewTextBoxColumn();
-            Destino = new DataGridViewTextBoxColumn();
-            TipoDeCamarote = new DataGridViewTextBoxColumn();
-            Paradas = new DataGridViewTextBoxColumn();
+            listViewProductos = new ListView();
+            ID = new ColumnHeader();
+            Codigo = new ColumnHeader();
+            Nombre = new ColumnHeader();
+            Origen = new ColumnHeader();
+            Destino = new ColumnHeader();
+            Cantidad = new ColumnHeader();
+            TipoCamarote = new ColumnHeader();
+            Precio = new ColumnHeader();
+            FechaDesde = new ColumnHeader();
+            FechaHasta = new ColumnHeader();
             grp_Filtros.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             SuspendLayout();
             // 
             // datePickerFechaSalida
@@ -266,99 +264,66 @@
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
-            // dataGridViewProductos
+            // listViewProductos
             // 
-            dataGridViewProductos.AllowUserToAddRows = false;
-            dataGridViewProductos.AllowUserToDeleteRows = false;
-            dataGridViewProductos.AllowUserToOrderColumns = true;
-            dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Origen, Destino, TipoDeCamarote, Paradas });
-            dataGridViewProductos.Location = new Point(27, 337);
-            dataGridViewProductos.Name = "dataGridViewProductos";
-            dataGridViewProductos.RowHeadersWidth = 82;
-            dataGridViewProductos.RowTemplate.Height = 25;
-            dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductos.Size = new Size(1064, 254);
-            dataGridViewProductos.TabIndex = 39;
+            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Origen, Destino, Cantidad, TipoCamarote, Precio, FechaDesde, FechaHasta });
+            listViewProductos.FullRowSelect = true;
+            listViewProductos.Location = new Point(27, 328);
+            listViewProductos.Name = "listViewProductos";
+            listViewProductos.Size = new Size(1064, 276);
+            listViewProductos.TabIndex = 38;
+            listViewProductos.UseCompatibleStateImageBehavior = false;
+            listViewProductos.View = View.Details;
             // 
             // ID
             // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            ID.Width = 250;
+            ID.Text = "ID";
+            ID.Width = 0;
             // 
             // Codigo
             // 
-            Codigo.HeaderText = "Código";
-            Codigo.Name = "Codigo";
+            Codigo.Text = "Código";
+            Codigo.Width = 100;
             // 
             // Nombre
             // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // PrecioUnitario
-            // 
-            PrecioUnitario.HeaderText = "Precio Unitario";
-            PrecioUnitario.MinimumWidth = 10;
-            PrecioUnitario.Name = "PrecioUnitario";
-            PrecioUnitario.ReadOnly = true;
-            PrecioUnitario.Width = 200;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad Disponible";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 200;
-            // 
-            // FechaDesde
-            // 
-            FechaDesde.HeaderText = "Fecha Desde";
-            FechaDesde.Name = "FechaDesde";
-            FechaDesde.ReadOnly = true;
-            // 
-            // FechaHasta
-            // 
-            FechaHasta.HeaderText = "Fecha Hasta";
-            FechaHasta.Name = "FechaHasta";
-            FechaHasta.ReadOnly = true;
+            Nombre.Text = "Nombre";
+            Nombre.Width = 150;
             // 
             // Origen
             // 
-            Origen.HeaderText = "Ciudad de Partida";
-            Origen.Name = "Origen";
-            Origen.ReadOnly = true;
-            Origen.Width = 200;
+            Origen.Text = "Origen";
+            Origen.Width = 100;
             // 
             // Destino
             // 
-            Destino.HeaderText = "Ciudad de Llegada";
-            Destino.Name = "Destino";
-            Destino.ReadOnly = true;
-            Destino.Width = 200;
+            Destino.Text = "Destino";
+            Destino.Width = 100;
             // 
-            // TipoDeCamarote
+            // Cantidad
             // 
-            TipoDeCamarote.HeaderText = "Tipo de Camarote";
-            TipoDeCamarote.Name = "TipoDeCamarote";
-            TipoDeCamarote.ReadOnly = true;
-            TipoDeCamarote.Width = 200;
+            Cantidad.Text = "Cantidad Disponible";
+            Cantidad.Width = 150;
             // 
-            // Paradas
+            // TipoCamarote
             // 
-            Paradas.HeaderText = "Paradas";
-            Paradas.Name = "Paradas";
-            Paradas.ReadOnly = true;
-            Paradas.Width = 200;
+            TipoCamarote.Text = "Tipo de Camarote";
+            TipoCamarote.Width = 150;
+            // 
+            // Precio
+            // 
+            Precio.Text = "Precio";
+            Precio.Width = 100;
+            // 
+            // FechaDesde
+            // 
+            FechaDesde.Text = "Fecha Desde";
+            FechaDesde.Width = 100;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.Text = "Fecha Hasta";
+            FechaHasta.Width = 100;
             // 
             // ConsultarCruceros
             // 
@@ -366,7 +331,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1106, 669);
-            Controls.Add(dataGridViewProductos);
+            Controls.Add(listViewProductos);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
             Controls.Add(btnLimpiarFiltro);
             Controls.Add(grp_Filtros);
@@ -378,10 +343,9 @@
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(btnLimpiarFiltro, 0);
             Controls.SetChildIndex(btnVolverMenuGenerarPresupuestos, 0);
-            Controls.SetChildIndex(dataGridViewProductos, 0);
+            Controls.SetChildIndex(listViewProductos, 0);
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             ResumeLayout(false);
         }
 
@@ -406,17 +370,16 @@
         private Label labelDestino;
         private Label labelTipoDeCamarote;
         private ComboBox comboBoxTipoDeCamarote;
-        private DataGridView dataGridViewProductos;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn PrecioUnitario;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn FechaDesde;
-        private DataGridViewTextBoxColumn FechaHasta;
-        private DataGridViewTextBoxColumn Origen;
-        private DataGridViewTextBoxColumn Destino;
-        private DataGridViewTextBoxColumn TipoDeCamarote;
-        private DataGridViewTextBoxColumn Paradas;
+        private ListView listViewProductos;
+        private ColumnHeader ID;
+        private ColumnHeader Codigo;
+        private ColumnHeader Nombre;
+        private ColumnHeader Origen;
+        private ColumnHeader Destino;
+        private ColumnHeader Cantidad;
+        private ColumnHeader TipoCamarote;
+        private ColumnHeader Precio;
+        private ColumnHeader FechaDesde;
+        private ColumnHeader FechaHasta;
     }
 }

@@ -29,10 +29,29 @@
         private void InitializeComponent()
         {
             grp_CrucerosDisponibles = new GroupBox();
-            dataGridViewProductos = new DataGridView();
+            listViewProductos = new ListView();
+            ID = new ColumnHeader();
+            Codigo = new ColumnHeader();
+            Nombre = new ColumnHeader();
+            Origen = new ColumnHeader();
+            Destino = new ColumnHeader();
+            Cantidad = new ColumnHeader();
+            TipoCamarote = new ColumnHeader();
+            Precio = new ColumnHeader();
+            FechaDesde = new ColumnHeader();
+            FechaHasta = new ColumnHeader();
             btnAgregarProductos = new Common.Components.BotonEstilizado();
             grp_CrucerosSeleccionados = new GroupBox();
-            dataGridViewProductosSeleccionados = new DataGridView();
+            listViewProductosSeleccionados = new ListView();
+            SelectID = new ColumnHeader();
+            SelectCodigo = new ColumnHeader();
+            SelectNombre = new ColumnHeader();
+            SelectOrigen = new ColumnHeader();
+            SelectDestino = new ColumnHeader();
+            SelectTipoCamarote = new ColumnHeader();
+            SelectPrecio = new ColumnHeader();
+            SelectFechaDesde = new ColumnHeader();
+            SelectFechaHasta = new ColumnHeader();
             btnRemoverProductos = new Common.Components.BotonEstilizado();
             btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
             btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
@@ -55,40 +74,14 @@
             txtBoxFiltroPrecioHasta = new TextBox();
             labelFiltroPrecioHasta = new Label();
             txtBoxFiltroPrecioDesde = new TextBox();
-            ID = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            PrecioUnitario = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            FechaDesde = new DataGridViewTextBoxColumn();
-            FechaHasta = new DataGridViewTextBoxColumn();
-            Origen = new DataGridViewTextBoxColumn();
-            Destino = new DataGridViewTextBoxColumn();
-            TipoDeCamarote = new DataGridViewTextBoxColumn();
-            Paradas = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            CantidadSeleccionada = new DataGridViewTextBoxColumn();
-            SubTotal = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
             grp_CrucerosDisponibles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             grp_CrucerosSeleccionados.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductosSeleccionados).BeginInit();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
             // grp_CrucerosDisponibles
             // 
-            grp_CrucerosDisponibles.Controls.Add(dataGridViewProductos);
+            grp_CrucerosDisponibles.Controls.Add(listViewProductos);
             grp_CrucerosDisponibles.Controls.Add(btnAgregarProductos);
             grp_CrucerosDisponibles.Location = new Point(362, 127);
             grp_CrucerosDisponibles.Name = "grp_CrucerosDisponibles";
@@ -97,21 +90,66 @@
             grp_CrucerosDisponibles.TabStop = false;
             grp_CrucerosDisponibles.Text = "Cruceros Disponibles";
             // 
-            // dataGridViewProductos
+            // listViewProductos
             // 
-            dataGridViewProductos.AllowUserToAddRows = false;
-            dataGridViewProductos.AllowUserToDeleteRows = false;
-            dataGridViewProductos.AllowUserToOrderColumns = true;
-            dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Origen, Destino, TipoDeCamarote, Paradas });
-            dataGridViewProductos.Location = new Point(6, 22);
-            dataGridViewProductos.Name = "dataGridViewProductos";
-            dataGridViewProductos.RowHeadersWidth = 82;
-            dataGridViewProductos.RowTemplate.Height = 25;
-            dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductos.Size = new Size(964, 194);
-            dataGridViewProductos.TabIndex = 38;
+            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Origen, Destino, Cantidad, TipoCamarote, Precio, FechaDesde, FechaHasta });
+            listViewProductos.FullRowSelect = true;
+            listViewProductos.Location = new Point(6, 22);
+            listViewProductos.Name = "listViewProductos";
+            listViewProductos.Size = new Size(964, 194);
+            listViewProductos.TabIndex = 7;
+            listViewProductos.UseCompatibleStateImageBehavior = false;
+            listViewProductos.View = View.Details;
+            // 
+            // ID
+            // 
+            ID.Text = "ID";
+            ID.Width = 0;
+            // 
+            // Codigo
+            // 
+            Codigo.Text = "Código";
+            Codigo.Width = 100;
+            // 
+            // Nombre
+            // 
+            Nombre.Text = "Nombre";
+            Nombre.Width = 150;
+            // 
+            // Origen
+            // 
+            Origen.Text = "Origen";
+            Origen.Width = 100;
+            // 
+            // Destino
+            // 
+            Destino.Text = "Destino";
+            Destino.Width = 100;
+            // 
+            // Cantidad
+            // 
+            Cantidad.Text = "Cantidad Disponible";
+            Cantidad.Width = 150;
+            // 
+            // TipoCamarote
+            // 
+            TipoCamarote.Text = "Tipo de Camarote";
+            TipoCamarote.Width = 150;
+            // 
+            // Precio
+            // 
+            Precio.Text = "Precio";
+            Precio.Width = 100;
+            // 
+            // FechaDesde
+            // 
+            FechaDesde.Text = "Fecha Desde";
+            FechaDesde.Width = 100;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.Text = "Fecha Hasta";
+            FechaHasta.Width = 100;
             // 
             // btnAgregarProductos
             // 
@@ -130,7 +168,7 @@
             // 
             // grp_CrucerosSeleccionados
             // 
-            grp_CrucerosSeleccionados.Controls.Add(dataGridViewProductosSeleccionados);
+            grp_CrucerosSeleccionados.Controls.Add(listViewProductosSeleccionados);
             grp_CrucerosSeleccionados.Controls.Add(btnRemoverProductos);
             grp_CrucerosSeleccionados.Controls.Add(btnConfirmarProductosSeleccionados);
             grp_CrucerosSeleccionados.Location = new Point(362, 423);
@@ -140,22 +178,61 @@
             grp_CrucerosSeleccionados.TabStop = false;
             grp_CrucerosSeleccionados.Text = "Cruceros Seleccionados";
             // 
-            // dataGridViewProductosSeleccionados
+            // listViewProductosSeleccionados
             // 
-            dataGridViewProductosSeleccionados.AllowUserToAddRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToDeleteRows = false;
-            dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
-            dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Column3, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, Column1, Column2 });
-            dataGridViewProductosSeleccionados.Location = new Point(6, 22);
-            dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
-            dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
-            dataGridViewProductosSeleccionados.RowTemplate.Height = 25;
-            dataGridViewProductosSeleccionados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductosSeleccionados.Size = new Size(964, 194);
-            dataGridViewProductosSeleccionados.TabIndex = 39;
-            dataGridViewProductosSeleccionados.CellValueChanged += dataGridViewProductosSeleccionados_CellValueChanged;
+            listViewProductosSeleccionados.Columns.AddRange(new ColumnHeader[] { SelectID, SelectCodigo, SelectNombre, SelectOrigen, SelectDestino, SelectTipoCamarote, SelectPrecio, SelectFechaDesde, SelectFechaHasta });
+            listViewProductosSeleccionados.FullRowSelect = true;
+            listViewProductosSeleccionados.Location = new Point(6, 22);
+            listViewProductosSeleccionados.Name = "listViewProductosSeleccionados";
+            listViewProductosSeleccionados.Size = new Size(964, 194);
+            listViewProductosSeleccionados.TabIndex = 8;
+            listViewProductosSeleccionados.UseCompatibleStateImageBehavior = false;
+            listViewProductosSeleccionados.View = View.Details;
+            // 
+            // SelectID
+            // 
+            SelectID.Text = "ID";
+            SelectID.Width = 0;
+            // 
+            // SelectCodigo
+            // 
+            SelectCodigo.Text = "Código";
+            SelectCodigo.Width = 100;
+            // 
+            // SelectNombre
+            // 
+            SelectNombre.Text = "Nombre";
+            SelectNombre.Width = 150;
+            // 
+            // SelectOrigen
+            // 
+            SelectOrigen.Text = "Origen";
+            SelectOrigen.Width = 100;
+            // 
+            // SelectDestino
+            // 
+            SelectDestino.Text = "Destino";
+            SelectDestino.Width = 100;
+            // 
+            // SelectTipoCamarote
+            // 
+            SelectTipoCamarote.Text = "Tipo de Camarote";
+            SelectTipoCamarote.Width = 150;
+            // 
+            // SelectPrecio
+            // 
+            SelectPrecio.Text = "Precio";
+            SelectPrecio.Width = 100;
+            // 
+            // SelectFechaDesde
+            // 
+            SelectFechaDesde.Text = "Fecha Desde";
+            SelectFechaDesde.Width = 100;
+            // 
+            // SelectFechaHasta
+            // 
+            SelectFechaHasta.Text = "Fecha Hasta";
+            SelectFechaHasta.Width = 100;
             // 
             // btnRemoverProductos
             // 
@@ -396,177 +473,6 @@
             txtBoxFiltroPrecioDesde.Size = new Size(126, 23);
             txtBoxFiltroPrecioDesde.TabIndex = 18;
             // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            ID.Width = 250;
-            // 
-            // Codigo
-            // 
-            Codigo.HeaderText = "Código";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // PrecioUnitario
-            // 
-            PrecioUnitario.HeaderText = "Precio Unitario";
-            PrecioUnitario.MinimumWidth = 10;
-            PrecioUnitario.Name = "PrecioUnitario";
-            PrecioUnitario.ReadOnly = true;
-            PrecioUnitario.Width = 200;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad Disponible";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 200;
-            // 
-            // FechaDesde
-            // 
-            FechaDesde.HeaderText = "Fecha Desde";
-            FechaDesde.Name = "FechaDesde";
-            FechaDesde.ReadOnly = true;
-            // 
-            // FechaHasta
-            // 
-            FechaHasta.HeaderText = "Fecha Hasta";
-            FechaHasta.Name = "FechaHasta";
-            FechaHasta.ReadOnly = true;
-            // 
-            // Origen
-            // 
-            Origen.HeaderText = "Ciudad de Partida";
-            Origen.Name = "Origen";
-            Origen.ReadOnly = true;
-            Origen.Width = 200;
-            // 
-            // Destino
-            // 
-            Destino.HeaderText = "Ciudad de Llegada";
-            Destino.Name = "Destino";
-            Destino.ReadOnly = true;
-            Destino.Width = 200;
-            // 
-            // TipoDeCamarote
-            // 
-            TipoDeCamarote.HeaderText = "Tipo de Camarote";
-            TipoDeCamarote.Name = "TipoDeCamarote";
-            TipoDeCamarote.ReadOnly = true;
-            TipoDeCamarote.Width = 200;
-            // 
-            // Paradas
-            // 
-            Paradas.HeaderText = "Paradas";
-            Paradas.Name = "Paradas";
-            Paradas.ReadOnly = true;
-            Paradas.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "ID";
-            dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Visible = false;
-            dataGridViewTextBoxColumn1.Width = 250;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Código";
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            dataGridViewTextBoxColumn2.MinimumWidth = 10;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Precio Unitario";
-            dataGridViewTextBoxColumn3.MinimumWidth = 10;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Cantidad Disponible";
-            dataGridViewTextBoxColumn4.MinimumWidth = 10;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // CantidadSeleccionada
-            // 
-            CantidadSeleccionada.HeaderText = "Cantidad Seleccionada";
-            CantidadSeleccionada.Name = "CantidadSeleccionada";
-            CantidadSeleccionada.Width = 200;
-            // 
-            // SubTotal
-            // 
-            SubTotal.HeaderText = "Sub Total";
-            SubTotal.Name = "SubTotal";
-            SubTotal.ReadOnly = true;
-            SubTotal.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Fecha Desde";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Fecha Hasta";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.HeaderText = "Ciudad de Partida";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.ReadOnly = true;
-            dataGridViewTextBoxColumn7.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.HeaderText = "Ciudad de Llegada";
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            dataGridViewTextBoxColumn8.ReadOnly = true;
-            dataGridViewTextBoxColumn8.Width = 200;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Tipo de Camarote";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Width = 200;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Paradas";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            Column2.Width = 200;
-            // 
             // GenerarPresupuestoCruceros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -585,9 +491,7 @@
             Controls.SetChildIndex(btnVolverAlMenuGenerarPresupuestos, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
             grp_CrucerosDisponibles.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             grp_CrucerosSeleccionados.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductosSeleccionados).EndInit();
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
             ResumeLayout(false);
@@ -596,10 +500,8 @@
         #endregion
 
         private GroupBox grp_CrucerosDisponibles;
-        private DataGridView dataGridViewProductos;
         private Common.Components.BotonEstilizado btnAgregarProductos;
         private GroupBox grp_CrucerosSeleccionados;
-        private DataGridView dataGridViewProductosSeleccionados;
         private Common.Components.BotonEstilizado btnRemoverProductos;
         private Common.Components.BotonEstilizado btnConfirmarProductosSeleccionados;
         private Common.Components.BotonEstilizado btnVolverAlMenuGenerarPresupuestos;
@@ -622,29 +524,26 @@
         private TextBox txtBoxFiltroPrecioDesde;
         private Label labelTipoDeCamarote;
         private ComboBox comboBoxTipoDeCamarote;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn PrecioUnitario;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn FechaDesde;
-        private DataGridViewTextBoxColumn FechaHasta;
-        private DataGridViewTextBoxColumn Origen;
-        private DataGridViewTextBoxColumn Destino;
-        private DataGridViewTextBoxColumn TipoDeCamarote;
-        private DataGridViewTextBoxColumn Paradas;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn CantidadSeleccionada;
-        private DataGridViewTextBoxColumn SubTotal;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
+        private ListView listViewProductos;
+        private ColumnHeader ID;
+        private ColumnHeader Codigo;
+        private ColumnHeader Origen;
+        private ColumnHeader Destino;
+        private ColumnHeader Cantidad;
+        private ColumnHeader TipoCamarote;
+        private ColumnHeader Precio;
+        private ColumnHeader FechaDesde;
+        private ColumnHeader FechaHasta;
+        private ListView listViewProductosSeleccionados;
+        private ColumnHeader SelectID;
+        private ColumnHeader SelectCodigo;
+        private ColumnHeader SelectOrigen;
+        private ColumnHeader SelectDestino;
+        private ColumnHeader SelectTipoCamarote;
+        private ColumnHeader SelectPrecio;
+        private ColumnHeader SelectFechaDesde;
+        private ColumnHeader SelectFechaHasta;
+        private ColumnHeader Nombre;
+        private ColumnHeader SelectNombre;
     }
 }
