@@ -10,7 +10,7 @@ namespace Proyecto_CAI_Grupo_4
     public partial class GenerarReserva : VistaBase
     {
         Reserva reservaselct = new Reserva();
-        int controlPasajeros = 1;
+        int controlPasajeros = 0;
         public GenerarReserva() : base(tituloModulo: "Generar Reserva")
         {
             InitializeComponent();
@@ -64,7 +64,7 @@ namespace Proyecto_CAI_Grupo_4
         private void btnAddpasajero_Click(object sender, EventArgs e)
         {
 
-            if (controlPasajeros <= reservaselct.CantPasajeros)
+            if (controlPasajeros < reservaselct.CantPasajeros)
             {
                 IngresarPasajero Agregar = new IngresarPasajero();
                 DialogResult result = Agregar.ShowDialog();
@@ -217,15 +217,6 @@ namespace Proyecto_CAI_Grupo_4
 
         }
 
-        public int PresupuestoSeleccionado()
-        {
-            ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
-            string cantidad = presupuesto.SubItems[2].Text;
-            int elegido = int.Parse(cantidad);
-            return elegido;
-
-        }
-
         private void GenerarReserva_Load(object sender, EventArgs e)
         {
 
@@ -238,7 +229,9 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnGenreserva_Click(object sender, EventArgs e)
         {
-            if (reservaselct.CantPasajeros > PresupuestoSeleccionado())
+            if (listPresupuestos.SelectedItems.Count > 0)
+            {
+                if (reservaselct.CantPasajeros == controlPasajeros)
             {
                 MessageBox.Show("Reserva Generada Exitosamente");
                 this.Close();
@@ -250,6 +243,12 @@ namespace Proyecto_CAI_Grupo_4
             else
             {
                 MessageBox.Show("Debe Completar todos los pasajeros");
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un presupuesto");
             }
         }
 

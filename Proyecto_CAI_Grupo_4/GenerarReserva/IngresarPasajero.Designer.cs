@@ -245,7 +245,7 @@
             // 
             cbxTipodoc.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxTipodoc.FormattingEnabled = true;
-            cbxTipodoc.Items.AddRange(new object[] { "DNI", "Pasaporte" });
+            cbxTipodoc.Items.AddRange(new object[] { "DNI" });
             cbxTipodoc.Location = new Point(6, 128);
             cbxTipodoc.Name = "cbxTipodoc";
             cbxTipodoc.Size = new Size(259, 23);
@@ -331,7 +331,7 @@
             Controls.Add(grp_DatosContato);
             Controls.Add(grp_DatosPersonales);
             Controls.Add(label2);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "IngresarPasajero";
             Text = "IngresarPasajero";
             Load += IngresarPasajero_Load_1;
