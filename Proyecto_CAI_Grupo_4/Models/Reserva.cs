@@ -31,17 +31,21 @@ namespace Proyecto_CAI_Grupo_4.Models
 
     public enum ReservaEstadoEnum
     {
-        [Description("Pendiente de Pago")]
-        pendienteDePago,
-
-        [Description("Abonada")]
-        pagada,
+        [Description("Pendiente de confirmación")]
+        pendconfirmacion,
 
         [Description("Confirmada")]
         confirmada,
 
-        [Description("Pendiente de confirmación")]
-        pendconfirmacion,
+        [Description("Pendiente de Pago")]
+        pendienteDePago,
+
+
+        [Description("Abonada")]
+        pagada,
+
+
+
 
     }
 }

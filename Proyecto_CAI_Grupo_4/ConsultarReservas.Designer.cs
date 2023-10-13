@@ -85,14 +85,14 @@
             // 
             // Fecha
             // 
-            Fecha.Text = "Fecha";
+            Fecha.Text = "Fecha de Reserva";
             Fecha.Width = 200;
             // 
             // filtroCodigo
             // 
             filtroCodigo.Location = new Point(112, 22);
             filtroCodigo.Name = "filtroCodigo";
-            filtroCodigo.Size = new Size(137, 23);
+            filtroCodigo.Size = new Size(179, 23);
             filtroCodigo.TabIndex = 2;
             // 
             // label1
@@ -117,7 +117,7 @@
             // 
             filtroNroDeDoc.Location = new Point(112, 55);
             filtroNroDeDoc.Name = "filtroNroDeDoc";
-            filtroNroDeDoc.Size = new Size(137, 23);
+            filtroNroDeDoc.Size = new Size(179, 23);
             filtroNroDeDoc.TabIndex = 4;
             // 
             // label3
@@ -131,12 +131,14 @@
             // 
             // filtroEstado
             // 
+            filtroEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             filtroEstado.FormattingEnabled = true;
             filtroEstado.Items.AddRange(new object[] { "Pendiente de Confirmación", "Confirmada" });
             filtroEstado.Location = new Point(112, 86);
             filtroEstado.Name = "filtroEstado";
-            filtroEstado.Size = new Size(137, 23);
+            filtroEstado.Size = new Size(179, 23);
             filtroEstado.TabIndex = 9;
+            filtroEstado.SelectedIndexChanged += filtroEstado_SelectedIndexChanged;
             // 
             // btn_BuscarReserva
             // 
@@ -193,7 +195,7 @@
             Controls.Add(grp_Filtros);
             Controls.Add(btn_BuscarReserva);
             Controls.Add(reservasListView);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "ConsultarReservas";
             Text = "Form1";
             Load += ConsultarReservas_Load;
