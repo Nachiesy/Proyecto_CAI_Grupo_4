@@ -102,7 +102,7 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
@@ -125,18 +125,18 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
 
                 if (isInitForm)
                 {
                     row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionada });
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal.ToString() });
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal.Value.ToFormDecimal() });
                 }
                 else
                 {
                     row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() }); // Sub Total
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() }); // Sub Total
                 }
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });

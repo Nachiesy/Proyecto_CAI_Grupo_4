@@ -2,6 +2,8 @@
 {
     public class HotelesFilterDto : ProductosFilterDto
     {
+        public string Nombre { get; set; }
+
         public int? Ciudad { get; set; }
 
         public int? TipoDeHabitacion { get; set; }
@@ -13,10 +15,13 @@
     {
         public HotelesFilter(HotelesFilterDto dto) : base(dto)
         {
+            Nombre = dto.Nombre;
             Ciudad = dto.Ciudad;
             TipoDeHabitacion = dto.TipoDeHabitacion;
             Calificacion = dto.Calificacion;
         }
+
+        public string Nombre { get; set; }
 
         public int? Ciudad { get; set; }
 

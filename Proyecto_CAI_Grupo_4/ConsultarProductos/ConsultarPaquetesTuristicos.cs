@@ -93,7 +93,7 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });

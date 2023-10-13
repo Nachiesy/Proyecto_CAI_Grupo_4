@@ -32,6 +32,8 @@
             dataGridViewProductos = new DataGridView();
             btnAgregarProductos = new Common.Components.BotonEstilizado();
             grp_Filtros = new GroupBox();
+            labelNombre = new Label();
+            textBoxNombre = new TextBox();
             labelCalificacion = new Label();
             comboBoxCalificacion = new ComboBox();
             labelTipoDeHabitacion = new Label();
@@ -63,9 +65,13 @@
             FechaDesde = new DataGridViewTextBoxColumn();
             FechaHasta = new DataGridViewTextBoxColumn();
             Ciudad = new DataGridViewTextBoxColumn();
+            Direccion = new DataGridViewTextBoxColumn();
             TipoDeHabitación = new DataGridViewTextBoxColumn();
             Calificacion = new DataGridViewTextBoxColumn();
-            CantidadDePersonas = new DataGridViewTextBoxColumn();
+            Capacidad = new DataGridViewTextBoxColumn();
+            CapacidadAdultos = new DataGridViewTextBoxColumn();
+            CapacidadMenores = new DataGridViewTextBoxColumn();
+            CapacidadInfantes = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -76,9 +82,13 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
             grp_HotelesDisponibles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             grp_Filtros.SuspendLayout();
@@ -104,7 +114,7 @@
             dataGridViewProductos.AllowUserToOrderColumns = true;
             dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Ciudad, TipoDeHabitación, Calificacion, CantidadDePersonas });
+            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Ciudad, Direccion, TipoDeHabitación, Calificacion, Capacidad, CapacidadAdultos, CapacidadMenores, CapacidadInfantes });
             dataGridViewProductos.Location = new Point(6, 22);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.RowHeadersWidth = 82;
@@ -130,6 +140,8 @@
             // 
             // grp_Filtros
             // 
+            grp_Filtros.Controls.Add(labelNombre);
+            grp_Filtros.Controls.Add(textBoxNombre);
             grp_Filtros.Controls.Add(labelCalificacion);
             grp_Filtros.Controls.Add(comboBoxCalificacion);
             grp_Filtros.Controls.Add(labelTipoDeHabitacion);
@@ -155,6 +167,22 @@
             grp_Filtros.TabStop = false;
             grp_Filtros.Text = "Filtros";
             // 
+            // labelNombre
+            // 
+            labelNombre.AutoSize = true;
+            labelNombre.Location = new Point(18, 278);
+            labelNombre.Name = "labelNombre";
+            labelNombre.Size = new Size(51, 15);
+            labelNombre.TabIndex = 49;
+            labelNombre.Text = "Nombre";
+            // 
+            // textBoxNombre
+            // 
+            textBoxNombre.Location = new Point(18, 296);
+            textBoxNombre.Name = "textBoxNombre";
+            textBoxNombre.Size = new Size(126, 23);
+            textBoxNombre.TabIndex = 48;
+            // 
             // labelCalificacion
             // 
             labelCalificacion.AutoSize = true;
@@ -175,7 +203,7 @@
             // labelTipoDeHabitacion
             // 
             labelTipoDeHabitacion.AutoSize = true;
-            labelTipoDeHabitacion.Location = new Point(163, 278);
+            labelTipoDeHabitacion.Location = new Point(163, 333);
             labelTipoDeHabitacion.Name = "labelTipoDeHabitacion";
             labelTipoDeHabitacion.Size = new Size(107, 15);
             labelTipoDeHabitacion.TabIndex = 45;
@@ -184,7 +212,7 @@
             // comboBoxTipoDeHabitacion
             // 
             comboBoxTipoDeHabitacion.FormattingEnabled = true;
-            comboBoxTipoDeHabitacion.Location = new Point(163, 296);
+            comboBoxTipoDeHabitacion.Location = new Point(163, 351);
             comboBoxTipoDeHabitacion.Name = "comboBoxTipoDeHabitacion";
             comboBoxTipoDeHabitacion.Size = new Size(126, 23);
             comboBoxTipoDeHabitacion.TabIndex = 44;
@@ -192,7 +220,7 @@
             // labelCiudad
             // 
             labelCiudad.AutoSize = true;
-            labelCiudad.Location = new Point(18, 278);
+            labelCiudad.Location = new Point(163, 278);
             labelCiudad.Name = "labelCiudad";
             labelCiudad.Size = new Size(45, 15);
             labelCiudad.TabIndex = 43;
@@ -211,7 +239,7 @@
             // comboBoxCiudad
             // 
             comboBoxCiudad.FormattingEnabled = true;
-            comboBoxCiudad.Location = new Point(18, 296);
+            comboBoxCiudad.Location = new Point(163, 296);
             comboBoxCiudad.Name = "comboBoxCiudad";
             comboBoxCiudad.Size = new Size(126, 23);
             comboBoxCiudad.TabIndex = 42;
@@ -341,7 +369,7 @@
             dataGridViewProductosSeleccionados.AllowUserToOrderColumns = true;
             dataGridViewProductosSeleccionados.BackgroundColor = SystemColors.ControlLight;
             dataGridViewProductosSeleccionados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Column4, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, Column1, Column2, Column3 });
+            dataGridViewProductosSeleccionados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, Column4, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, CantidadSeleccionada, SubTotal, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, Column8, Column1, Column2, Column3, Column5, Column6, Column7 });
             dataGridViewProductosSeleccionados.Location = new Point(6, 22);
             dataGridViewProductosSeleccionados.Name = "dataGridViewProductosSeleccionados";
             dataGridViewProductosSeleccionados.RowHeadersWidth = 82;
@@ -453,6 +481,12 @@
             Ciudad.Name = "Ciudad";
             Ciudad.ReadOnly = true;
             // 
+            // Direccion
+            // 
+            Direccion.HeaderText = "Dirección";
+            Direccion.Name = "Direccion";
+            Direccion.ReadOnly = true;
+            // 
             // TipoDeHabitación
             // 
             TipoDeHabitación.HeaderText = "Tipo de Habitacion";
@@ -466,12 +500,32 @@
             Calificacion.Name = "Calificacion";
             Calificacion.ReadOnly = true;
             // 
-            // CantidadDePersonas
+            // Capacidad
             // 
-            CantidadDePersonas.HeaderText = "Cantidad de Personas";
-            CantidadDePersonas.Name = "CantidadDePersonas";
-            CantidadDePersonas.ReadOnly = true;
-            CantidadDePersonas.Width = 200;
+            Capacidad.HeaderText = "Capacidad";
+            Capacidad.Name = "Capacidad";
+            Capacidad.ReadOnly = true;
+            // 
+            // CapacidadAdultos
+            // 
+            CapacidadAdultos.HeaderText = "Capacidad Adultos";
+            CapacidadAdultos.Name = "CapacidadAdultos";
+            CapacidadAdultos.ReadOnly = true;
+            CapacidadAdultos.Width = 200;
+            // 
+            // CapacidadMenores
+            // 
+            CapacidadMenores.HeaderText = "Capacidad Menores";
+            CapacidadMenores.Name = "CapacidadMenores";
+            CapacidadMenores.ReadOnly = true;
+            CapacidadMenores.Width = 200;
+            // 
+            // CapacidadInfantes
+            // 
+            CapacidadInfantes.HeaderText = "Capacidad Infantes";
+            CapacidadInfantes.Name = "CapacidadInfantes";
+            CapacidadInfantes.ReadOnly = true;
+            CapacidadInfantes.Width = 200;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -543,6 +597,12 @@
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
+            // Column8
+            // 
+            Column8.HeaderText = "Dirección";
+            Column8.Name = "Column8";
+            Column8.ReadOnly = true;
+            // 
             // Column1
             // 
             Column1.HeaderText = "Tipo de Habitación";
@@ -558,10 +618,30 @@
             // 
             // Column3
             // 
-            Column3.HeaderText = "Cantidad de Personas";
+            Column3.HeaderText = "Capacidad";
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
-            Column3.Width = 200;
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Capacidad Adultos";
+            Column5.Name = "Column5";
+            Column5.ReadOnly = true;
+            Column5.Width = 200;
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Capacidad Menores";
+            Column6.Name = "Column6";
+            Column6.ReadOnly = true;
+            Column6.Width = 200;
+            // 
+            // Column7
+            // 
+            Column7.HeaderText = "Capacidad Infantes";
+            Column7.Name = "Column7";
+            Column7.ReadOnly = true;
+            Column7.Width = 200;
             // 
             // GenerarPresupuestoHoteles
             // 
@@ -618,6 +698,8 @@
         private ComboBox comboBoxCalificacion;
         private Label labelTipoDeHabitacion;
         private ComboBox comboBoxTipoDeHabitacion;
+        private Label labelNombre;
+        private TextBox textBoxNombre;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Codigo;
         private DataGridViewTextBoxColumn Nombre;
@@ -626,9 +708,13 @@
         private DataGridViewTextBoxColumn FechaDesde;
         private DataGridViewTextBoxColumn FechaHasta;
         private DataGridViewTextBoxColumn Ciudad;
+        private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn TipoDeHabitación;
         private DataGridViewTextBoxColumn Calificacion;
-        private DataGridViewTextBoxColumn CantidadDePersonas;
+        private DataGridViewTextBoxColumn Capacidad;
+        private DataGridViewTextBoxColumn CapacidadAdultos;
+        private DataGridViewTextBoxColumn CapacidadMenores;
+        private DataGridViewTextBoxColumn CapacidadInfantes;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -639,8 +725,12 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
     }
 }

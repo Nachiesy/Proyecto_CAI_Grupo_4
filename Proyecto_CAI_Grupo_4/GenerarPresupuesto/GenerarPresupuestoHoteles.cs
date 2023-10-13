@@ -53,6 +53,7 @@ namespace Proyecto_CAI_Grupo_4
                 PrecioHasta = txtBoxFiltroPrecioHasta.Text,
                 FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
                 FechaHasta = datePickerFilterFechaHasta.Enabled ? datePickerFilterFechaHasta.Value : null,
+                Nombre = textBoxNombre.Text,
                 Ciudad = comboBoxCiudad.SelectedIndex != -1 ? comboBoxCiudad.SelectedIndex : null,
                 TipoDeHabitacion = comboBoxTipoDeHabitacion.SelectedIndex != -1 ? comboBoxTipoDeHabitacion.SelectedIndex : null,
                 Calificacion = comboBoxCalificacion.SelectedIndex != -1 ? comboBoxCalificacion.SelectedIndex : null,
@@ -74,6 +75,7 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
                                 && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
                                 && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
+                                && (string.IsNullOrEmpty(filter.Nombre) || x.Nombre == filter.Nombre)
                                 && (!filter.Ciudad.HasValue || (int)x.Ciudad == filter.Ciudad)
                                 && (!filter.TipoDeHabitacion.HasValue || (int)x.TipoDeHabitacion == filter.TipoDeHabitacion)
                                 && (!filter.Calificacion.HasValue || (int)x.Calificacion == filter.Calificacion));
@@ -109,14 +111,18 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Direccion });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeHabitacion.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Calificacion.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadDePersonas.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadMaximaDeAdultos.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadMaximaDeMenores.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadMaximaDeInfantes.ToString() });
 
                 dataGridViewProductos.Rows.Add(row);
             }
@@ -131,26 +137,30 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
 
                 if (isInitForm)
                 {
                     row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionada });
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal.ToString() });
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal.Value.ToFormDecimal() });
                 }
                 else
                 {
                     row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToString() }); // Sub Total
+                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() }); // Sub Total
                 }
 
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Ciudad.GetDescription() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Direccion });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeHabitacion.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Calificacion.GetDescription() });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadDePersonas.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadMaximaDeAdultos.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadMaximaDeMenores.ToString() });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadMaximaDeInfantes.ToString() });
 
                 dataGridViewProductosSeleccionados.Rows.Add(row);
             }
@@ -247,6 +257,7 @@ namespace Proyecto_CAI_Grupo_4
             txtBoxFiltroPrecioHasta.Clear();
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
+            textBoxNombre.Clear();
             comboBoxCiudad.SelectedIndex = -1;
             comboBoxTipoDeHabitacion.SelectedIndex = -1;
             comboBoxCalificacion.SelectedIndex = -1;

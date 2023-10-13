@@ -6,7 +6,11 @@
 
         public int? Destino { get; set; }
 
-        public int? TipoDeClaseAerea { get; set; }
+        public int? TipoDePasajero { get; set; }
+
+        public int? Itinerario { get; set; }
+
+        public int? Clase { get; set; }
     }
 
     public class AereosFilter : ProductosFilter
@@ -17,13 +21,21 @@
 
             Destino = dto.Destino;
 
-            TipoDeClaseAerea = dto.TipoDeClaseAerea;
+            TipoDePasajero = dto.TipoDePasajero;
+
+            Itinerario = dto.Itinerario;
+
+            Clase = dto.Clase;
         }
 
         public int? Origen { get; set; }
 
         public int? Destino { get; set; }
 
-        public int? TipoDeClaseAerea { get; set; }
+        public int? TipoDePasajero { get; set; }
+
+        public int? Itinerario { get; set; }
+
+        public int? Clase { get; set; }
     }
 }

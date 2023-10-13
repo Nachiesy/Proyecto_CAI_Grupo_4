@@ -17,6 +17,10 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public int CantidadSeleccionadaMenores { get; set; }
 
+        public AereosItinerarioEnum Itinerario { get; set; }
+
+        public TipoDePasajeroEnum TipoDePasajero { get; set; }
+
         public AereosOrigenEnum Origen { get; set; }
 
         public AereosDestinoEnum Destino { get; set; }
@@ -66,14 +70,38 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
     public enum TipoDeClaseAereaEnum
     {
-        [Description("Turista")]
-        turista,
+        [Description("Economy")]
+        economy,
 
-        [Description("Ejecutivo")]
-        ejecutivo,
+        [Description("Premium")]
+        premium,
 
-        [Description("Primera Clase")]
-        primeraClase,
+        [Description("Business")]
+        business,
+
+        [Description("First")]
+        first,
+    }
+
+    public enum TipoDePasajeroEnum
+    {
+        [Description("Adulto")]
+        adulto,
+
+        [Description("Menor")]
+        menor,
+
+        [Description("Infante")]
+        infante,
+    }
+
+    public enum AereosItinerarioEnum
+    {
+        [Description("OW")]
+        oneWay,
+
+        [Description("RT")]
+        roundTrip,
     }
 
     public enum AereosOrigenEnum

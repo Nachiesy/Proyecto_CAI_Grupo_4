@@ -35,8 +35,18 @@ namespace Proyecto_CAI_Grupo_4.Utils
         {
             return dateTime.ToString("dd/MM/yyyy");
         }
+
+        public static string ToFormVueloDate(this DateTime dateTime)
+        {
+            return dateTime.ToString("dd/MM/yyyy HH mm");
+        }
     }
 
-   
-
+    public static class DecimalExtensions
+    {
+        public static string ToFormDecimal(this decimal number)
+        {
+            return number.ToString("0.00");
+        }
+    }
 }

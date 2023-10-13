@@ -6,6 +6,8 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
     {
         public HotelesCiudadEnum Ciudad { get; set; }
 
+        public string Direccion { get; set; }
+
         public DateTime FechaDesde { get; set; }
 
         public DateTime FechaHasta { get; set; }
@@ -14,7 +16,19 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public HotelesCalificacionEnum Calificacion { get; set; }
 
-        public int CantidadDePersonas { get; set; }
+        public int CantidadDePersonas
+        {
+            get
+            {
+                return CantidadMaximaDeAdultos + CantidadMaximaDeMenores + CantidadMaximaDeInfantes;
+            }
+        }
+
+        public int CantidadMaximaDeAdultos { get; set; }
+
+        public int CantidadMaximaDeMenores { get; set; }
+
+        public int CantidadMaximaDeInfantes { get; set; }
     }
 
     public enum HotelesCiudadEnum
@@ -39,6 +53,10 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         [Description("Triple")]
         triple,
+
+
+        [Description("Cuádruple")]
+        cuadruple,
     }
 
     public enum HotelesCalificacionEnum

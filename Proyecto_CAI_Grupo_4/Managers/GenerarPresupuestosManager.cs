@@ -20,7 +20,9 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Destino = AereosDestinoEnum.montevideo,
                 FechaDeSalida = DateTime.Now.AddDays(10).Date,
                 FechaDeLlegada = DateTime.Now.AddDays(20).Date,
-                TipoDeClaseAerea = TipoDeClaseAereaEnum.turista,
+                TipoDeClaseAerea = TipoDeClaseAereaEnum.economy,
+                Itinerario = AereosItinerarioEnum.oneWay,
+                TipoDePasajero = TipoDePasajeroEnum.adulto,
             },
             new Aereos()
             {
@@ -36,7 +38,9 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Destino = AereosDestinoEnum.paris,
                 FechaDeSalida = DateTime.Now.AddDays(10).Date,
                 FechaDeLlegada = DateTime.Now.AddDays(20).Date,
-                TipoDeClaseAerea = TipoDeClaseAereaEnum.ejecutivo,
+                TipoDeClaseAerea = TipoDeClaseAereaEnum.business,
+                Itinerario = AereosItinerarioEnum.roundTrip,
+                TipoDePasajero = TipoDePasajeroEnum.menor,
             },
             new Aereos()
             {
@@ -52,7 +56,9 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 Destino = AereosDestinoEnum.sanFrancisco,
                 FechaDeSalida = DateTime.Now.AddDays(10).Date,
                 FechaDeLlegada = DateTime.Now.AddDays(20).Date,
-                TipoDeClaseAerea = TipoDeClaseAereaEnum.primeraClase,
+                TipoDeClaseAerea = TipoDeClaseAereaEnum.first,
+                Itinerario = AereosItinerarioEnum.oneWay,
+                TipoDePasajero = TipoDePasajeroEnum.infante,
                 Paradas = new List<AereosParadas>()
                 {
                     new AereosParadas()
@@ -80,7 +86,10 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 FechaHasta = DateTime.Now.AddDays(20).Date,
                 TipoDeHabitacion = TipoDeHabitacionEnum.simple,
                 Calificacion = HotelesCalificacionEnum.cinco,
-                CantidadDePersonas = 2,
+                CantidadMaximaDeAdultos = 4,
+                CantidadMaximaDeMenores = 2,
+                CantidadMaximaDeInfantes = 1,
+                Direccion = "Av Libertador 100",
             },
             new Hoteles()
             {
@@ -95,7 +104,10 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 FechaHasta = DateTime.Now.AddDays(20).Date,
                 TipoDeHabitacion = TipoDeHabitacionEnum.doble,
                 Calificacion = HotelesCalificacionEnum.cinco,
-                CantidadDePersonas = 4,
+                CantidadMaximaDeAdultos = 4,
+                CantidadMaximaDeMenores = 2,
+                CantidadMaximaDeInfantes = 1,
+                Direccion = "Av 9 de Julio 200",
             },
             new Hoteles()
             {
@@ -110,7 +122,10 @@ namespace Proyecto_CAI_Grupo_4.Managers
                 FechaHasta = DateTime.Now.AddDays(20).Date,
                 TipoDeHabitacion = TipoDeHabitacionEnum.triple,
                 Calificacion = HotelesCalificacionEnum.cuatro,
-                CantidadDePersonas = 6,
+                 CantidadMaximaDeAdultos = 4,
+                CantidadMaximaDeMenores = 2,
+                CantidadMaximaDeInfantes = 1,
+                Direccion = "Av Cordoba 300",
             },
         };
 
