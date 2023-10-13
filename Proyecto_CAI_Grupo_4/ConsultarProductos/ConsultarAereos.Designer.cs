@@ -52,24 +52,21 @@
             btnLimpiarFiltro = new Common.Components.BotonEstilizado();
             buscarPresupuesto = new Common.Components.BotonEstilizado();
             btnVolverMenuGenerarPresupuestos = new Button();
-            dataGridViewProductos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            PrecioUnitarioAdulto = new DataGridViewTextBoxColumn();
-            PrecioUnitarioMenor = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            FechaDesde = new DataGridViewTextBoxColumn();
-            FechaHasta = new DataGridViewTextBoxColumn();
-            Aerolinea = new DataGridViewTextBoxColumn();
-            Origen = new DataGridViewTextBoxColumn();
-            Destino = new DataGridViewTextBoxColumn();
-            Clase = new DataGridViewTextBoxColumn();
-            Paradas = new DataGridViewTextBoxColumn();
-            TipoDePasajero = new DataGridViewTextBoxColumn();
-            Itinerario = new DataGridViewTextBoxColumn();
+            listViewProductos = new ListView();
+            ID = new ColumnHeader();
+            Codigo = new ColumnHeader();
+            Origen = new ColumnHeader();
+            Destino = new ColumnHeader();
+            Clase = new ColumnHeader();
+            Itinerario = new ColumnHeader();
+            Cantidad = new ColumnHeader();
+            TipoDePasajero = new ColumnHeader();
+            Precio = new ColumnHeader();
+            Aerolinea = new ColumnHeader();
+            Paradas = new ColumnHeader();
+            FechaSalida = new ColumnHeader();
+            FechaLlegada = new ColumnHeader();
             grp_Filtros.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             SuspendLayout();
             // 
             // datePickerFechaSalida
@@ -312,125 +309,81 @@
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
-            // dataGridViewProductos
+            // listViewProductos
             // 
-            dataGridViewProductos.AllowUserToAddRows = false;
-            dataGridViewProductos.AllowUserToDeleteRows = false;
-            dataGridViewProductos.AllowUserToOrderColumns = true;
-            dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitarioAdulto, PrecioUnitarioMenor, Cantidad, FechaDesde, FechaHasta, Aerolinea, Origen, Destino, Clase, Paradas, TipoDePasajero, Itinerario });
-            dataGridViewProductos.Location = new Point(27, 372);
-            dataGridViewProductos.Name = "dataGridViewProductos";
-            dataGridViewProductos.RowHeadersWidth = 82;
-            dataGridViewProductos.RowTemplate.Height = 25;
-            dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductos.Size = new Size(1064, 227);
-            dataGridViewProductos.TabIndex = 39;
+            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Origen, Destino, Clase, Itinerario, Cantidad, TipoDePasajero, Precio, Aerolinea, Paradas, FechaSalida, FechaLlegada });
+            listViewProductos.FullRowSelect = true;
+            listViewProductos.Location = new Point(27, 360);
+            listViewProductos.Name = "listViewProductos";
+            listViewProductos.Size = new Size(1064, 252);
+            listViewProductos.TabIndex = 38;
+            listViewProductos.UseCompatibleStateImageBehavior = false;
+            listViewProductos.View = View.Details;
             // 
             // ID
             // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            ID.Width = 250;
+            ID.Text = "ID";
+            ID.Width = 0;
             // 
             // Codigo
             // 
-            Codigo.HeaderText = "Código";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // PrecioUnitarioAdulto
-            // 
-            PrecioUnitarioAdulto.HeaderText = "Precio Unitario Adultos";
-            PrecioUnitarioAdulto.MinimumWidth = 10;
-            PrecioUnitarioAdulto.Name = "PrecioUnitarioAdulto";
-            PrecioUnitarioAdulto.ReadOnly = true;
-            PrecioUnitarioAdulto.Width = 200;
-            // 
-            // PrecioUnitarioMenor
-            // 
-            PrecioUnitarioMenor.HeaderText = "Precio Unitario Menores";
-            PrecioUnitarioMenor.Name = "PrecioUnitarioMenor";
-            PrecioUnitarioMenor.ReadOnly = true;
-            PrecioUnitarioMenor.Width = 200;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad Disponible";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 200;
-            // 
-            // FechaDesde
-            // 
-            FechaDesde.HeaderText = "Fecha Salida";
-            FechaDesde.Name = "FechaDesde";
-            FechaDesde.ReadOnly = true;
-            // 
-            // FechaHasta
-            // 
-            FechaHasta.HeaderText = "Fecha Llegada";
-            FechaHasta.Name = "FechaHasta";
-            FechaHasta.ReadOnly = true;
-            FechaHasta.Width = 200;
-            // 
-            // Aerolinea
-            // 
-            Aerolinea.HeaderText = "Aerolínea";
-            Aerolinea.Name = "Aerolinea";
-            Aerolinea.ReadOnly = true;
-            Aerolinea.Width = 200;
+            Codigo.Text = "Código";
+            Codigo.Width = 100;
             // 
             // Origen
             // 
-            Origen.HeaderText = "Origen";
-            Origen.Name = "Origen";
-            Origen.ReadOnly = true;
+            Origen.Text = "Origen";
+            Origen.Width = 100;
             // 
             // Destino
             // 
-            Destino.HeaderText = "Destino";
-            Destino.Name = "Destino";
-            Destino.ReadOnly = true;
+            Destino.Text = "Destino";
+            Destino.Width = 100;
             // 
             // Clase
             // 
-            Clase.HeaderText = "Clase";
-            Clase.Name = "Clase";
-            Clase.ReadOnly = true;
-            // 
-            // Paradas
-            // 
-            Paradas.HeaderText = "Paradas";
-            Paradas.Name = "Paradas";
-            Paradas.ReadOnly = true;
-            Paradas.Width = 200;
-            // 
-            // TipoDePasajero
-            // 
-            TipoDePasajero.HeaderText = "Tipo de Pasajero";
-            TipoDePasajero.Name = "TipoDePasajero";
-            TipoDePasajero.ReadOnly = true;
-            TipoDePasajero.Width = 200;
+            Clase.Text = "Clase";
+            Clase.Width = 100;
             // 
             // Itinerario
             // 
-            Itinerario.HeaderText = "Itinerario";
-            Itinerario.Name = "Itinerario";
-            Itinerario.ReadOnly = true;
+            Itinerario.Text = "Itinerario";
+            Itinerario.Width = 100;
+            // 
+            // Cantidad
+            // 
+            Cantidad.Text = "Asientos Disponibles";
+            Cantidad.Width = 150;
+            // 
+            // TipoDePasajero
+            // 
+            TipoDePasajero.Text = "Tarifa";
+            TipoDePasajero.Width = 100;
+            // 
+            // Precio
+            // 
+            Precio.Text = "Precio";
+            Precio.Width = 100;
+            // 
+            // Aerolinea
+            // 
+            Aerolinea.Text = "Aerolinea";
+            Aerolinea.Width = 150;
+            // 
+            // Paradas
+            // 
+            Paradas.Text = "Cantidad de Paradas";
+            Paradas.Width = 150;
+            // 
+            // FechaSalida
+            // 
+            FechaSalida.Text = "Fecha de Salida";
+            FechaSalida.Width = 150;
+            // 
+            // FechaLlegada
+            // 
+            FechaLlegada.Text = "Fecha de Llegada";
+            FechaLlegada.Width = 150;
             // 
             // ConsultarAereos
             // 
@@ -438,7 +391,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1106, 686);
-            Controls.Add(dataGridViewProductos);
+            Controls.Add(listViewProductos);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
             Controls.Add(btnLimpiarFiltro);
             Controls.Add(grp_Filtros);
@@ -450,10 +403,9 @@
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(btnLimpiarFiltro, 0);
             Controls.SetChildIndex(btnVolverMenuGenerarPresupuestos, 0);
-            Controls.SetChildIndex(dataGridViewProductos, 0);
+            Controls.SetChildIndex(listViewProductos, 0);
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             ResumeLayout(false);
         }
 
@@ -476,27 +428,25 @@
         private ComboBox comboBoxOrigen;
         private Button btnDisableDatePickerFilterFechaHasta;
         private Button btnDisableDatePickerFilterFechaDesde;
-        private DataGridView dataGridViewProductos;
         private Label labelClase;
         private ComboBox comboBoxClase;
         private Label labelItinerario;
         private ComboBox comboBoxItinerario;
         private Label labelTipoDePasajero;
         private ComboBox comboBoxTipoDePasajero;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn PrecioUnitarioAdulto;
-        private DataGridViewTextBoxColumn PrecioUnitarioMenor;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn FechaDesde;
-        private DataGridViewTextBoxColumn FechaHasta;
-        private DataGridViewTextBoxColumn Aerolinea;
-        private DataGridViewTextBoxColumn Origen;
-        private DataGridViewTextBoxColumn Destino;
-        private DataGridViewTextBoxColumn Clase;
-        private DataGridViewTextBoxColumn Paradas;
-        private DataGridViewTextBoxColumn TipoDePasajero;
-        private DataGridViewTextBoxColumn Itinerario;
+        private ListView listViewProductos;
+        private ColumnHeader ID;
+        private ColumnHeader Codigo;
+        private ColumnHeader Origen;
+        private ColumnHeader Destino;
+        private ColumnHeader Clase;
+        private ColumnHeader Itinerario;
+        private ColumnHeader Cantidad;
+        private ColumnHeader TipoDePasajero;
+        private ColumnHeader Precio;
+        private ColumnHeader Aerolinea;
+        private ColumnHeader Paradas;
+        private ColumnHeader FechaSalida;
+        private ColumnHeader FechaLlegada;
     }
 }

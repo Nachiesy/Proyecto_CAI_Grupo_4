@@ -9,14 +9,6 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             Paradas = new List<AereosParadas>();
         }
 
-        public decimal PrecioAdultos { get; set; }
-
-        public decimal PrecioMenores { get; set; }
-
-        public int CantidadSeleccionadaAdultos { get; set; }
-
-        public int CantidadSeleccionadaMenores { get; set; }
-
         public AereosItinerarioEnum Itinerario { get; set; }
 
         public TipoDePasajeroEnum TipoDePasajero { get; set; }
@@ -31,7 +23,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public AerolineaEnum Aerolinea { get; set; }
 
-        public TipoDeClaseAereaEnum TipoDeClaseAerea { get; set; }
+        public TipoDeClaseAereaEnum Clase { get; set; }
 
         public IEnumerable<AereosParadas> Paradas { get; set; }
 

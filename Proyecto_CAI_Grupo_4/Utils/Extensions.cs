@@ -38,7 +38,7 @@ namespace Proyecto_CAI_Grupo_4.Utils
 
         public static string ToFormVueloDate(this DateTime dateTime)
         {
-            return dateTime.ToString("dd/MM/yyyy HH mm");
+            return dateTime.ToString("dd/MM/yyyy HH:mm");
         }
     }
 

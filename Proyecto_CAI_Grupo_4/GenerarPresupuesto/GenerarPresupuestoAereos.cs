@@ -9,13 +9,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoAereos : VistaBase
     {
-        private readonly int idColumnIndex = 0;
-        private readonly int precioAdultosColumnIndex = 3;
-        private readonly int precioMenoresColumnIndex = 4;
-        private readonly int cantidadDisponibleColumnIndex = 5;
-        private readonly int cantidadSeleccionadaAdultosColumnIndex = 6;
-        private readonly int cantidadSeleccionadaMenoresColumnIndex = 7;
-        private readonly int subTotalColumnIndex = 8;
+        private readonly int codigoSubItemIndex = 1;
 
         public GenerarPresupuestoAereos() : base(tituloModulo: "Generar Presupuesto > Aéreos")
         {
@@ -52,9 +46,9 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxClase.Items.Add(value.GetDescription());
             }
 
-            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.aereos.Where(x => x.Cantidad > 0));
+            AddProductosToListView(GenerarPresupuestosManager.aereos.Where(x => x.Cantidad > 0));
 
-            AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.aereosElegidos, true);
+            AddProductosSeleccionadosToListView(GenerarPresupuestosManager.aereosElegidos);
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -92,11 +86,11 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino)
                                 && (!filter.TipoDePasajero.HasValue || (int)x.TipoDePasajero == filter.TipoDePasajero)
                                 && (!filter.Itinerario.HasValue || (int)x.Itinerario == filter.Itinerario)
-                                && (!filter.Clase.HasValue || (int)x.TipoDeClaseAerea == filter.Clase));
+                                && (!filter.Clase.HasValue || (int)x.Clase == filter.Clase));
 
-                dataGridViewProductos.Rows.Clear();
+                listViewProductos.Items.Clear();
 
-                AddProductosToDataGridViewProductos(productos);
+                AddProductosToListView(productos);
 
                 if (!productos.Any())
                 {
@@ -116,91 +110,73 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosToDataGridViewProductos(IEnumerable<Aereos> listToAdd)
+        private void AddProductosToListView(IEnumerable<Aereos> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormVueloDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormVueloDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Aerolinea.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeClaseAerea.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetParadas() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDePasajero.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Itinerario.GetDescription() });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Origen.GetDescription());
+                row.SubItems.Add(item.Destino.GetDescription());
+                row.SubItems.Add(item.Clase.GetDescription());
+                row.SubItems.Add(item.Itinerario.GetDescription());
+                row.SubItems.Add(item.Cantidad.ToString());
+                row.SubItems.Add(item.TipoDePasajero.GetDescription());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
+                row.SubItems.Add(item.Aerolinea.GetDescription());
+                row.SubItems.Add(item.Paradas.Count().ToString());
+                row.SubItems.Add(item.FechaDeSalida.ToFormVueloDate());
+                row.SubItems.Add(item.FechaDeLlegada.ToFormVueloDate());
 
-                dataGridViewProductos.Rows.Add(row);
+                listViewProductos.Items.Add(row);
             }
         }
 
-        private void AddProductosSeleccionadosToDataGridView(IEnumerable<Aereos> listToAdd, bool isInitForm)
+        private void AddProductosSeleccionadosToListView(IEnumerable<Aereos> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioMenores.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Origen.GetDescription());
+                row.SubItems.Add(item.Destino.GetDescription());
+                row.SubItems.Add(item.Clase.GetDescription());
+                row.SubItems.Add(item.Itinerario.GetDescription());
+                // row.SubItems.Add(item.Cantidad.ToString()); NO MOSTRAR CANTIDAD
+                row.SubItems.Add(item.TipoDePasajero.GetDescription());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
+                row.SubItems.Add(item.Aerolinea.GetDescription());
+                row.SubItems.Add(item.Paradas.Count().ToString());
+                row.SubItems.Add(item.FechaDeSalida.ToFormVueloDate());
+                row.SubItems.Add(item.FechaDeLlegada.ToFormVueloDate());
 
-                if (isInitForm)
-                {
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionadaAdultos.ToString() });
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionadaMenores.ToString() });
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal.Value.ToFormDecimal() });
-                }
-                else
-                {
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada Adultos
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = 0.ToString() }); // Cantidad Seleccionada Menores
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.PrecioAdultos.ToFormDecimal() }); // Sub Total
-                }
-
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeSalida.ToFormVueloDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDeLlegada.ToFormVueloDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Aerolinea.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeClaseAerea.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetParadas() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDePasajero.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Itinerario.GetDescription() });
-
-                dataGridViewProductosSeleccionados.Rows.Add(row);
+                listViewProductosSeleccionados.Items.Add(row);
             }
         }
 
         private void btnAgregarProductos_Click(object sender, EventArgs e)
         {
-            if (dataGridViewProductos.SelectedRows.Count > 0)
+            if (listViewProductos.SelectedItems.Count > 0)
             {
                 var productosToAdd = new List<Aereos>();
 
-                foreach (DataGridViewRow row in dataGridViewProductos.SelectedRows)
+                foreach (ListViewItem item in listViewProductos.SelectedItems)
                 {
-                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                    var id = Guid.Parse(item.Text);
 
                     var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
 
-                    if (!IsProductInDataGridViewProductosSeleccionados(id))
+                    var cantidad = IsProductInProductosSeleccionados(producto.Codigo);
+
+                    if (producto.Cantidad > cantidad)
                     {
                         productosToAdd.Add(producto);
                     }
                 }
 
-                AddProductosSeleccionadosToDataGridView(productosToAdd, false);
+                AddProductosSeleccionadosToListView(productosToAdd);
             }
             else
             {
@@ -210,11 +186,11 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnRemoverProductos_Click(object sender, EventArgs e)
         {
-            if (dataGridViewProductosSeleccionados.SelectedRows.Count > 0)
+            if (listViewProductosSeleccionados.SelectedItems.Count > 0)
             {
-                foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.SelectedRows)
+                foreach (ListViewItem item in listViewProductosSeleccionados.SelectedItems)
                 {
-                    dataGridViewProductosSeleccionados.Rows.Remove(row);
+                    listViewProductosSeleccionados.Items.Remove(item);
                 }
             }
             else
@@ -225,23 +201,15 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            if (dataGridViewProductosSeleccionados.RowCount > 0)
+            if (listViewProductosSeleccionados.Items.Count > 0)
             {
                 GenerarPresupuestosManager.aereosElegidos.Clear();
 
-                foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+                foreach (ListViewItem item in listViewProductosSeleccionados.Items)
                 {
-                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                    var id = Guid.Parse(item.Text);
 
                     var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
-
-                    var cantidadSeleccionadaAdultos = int.Parse(row.Cells[cantidadSeleccionadaAdultosColumnIndex].Value.ToString());
-                    var cantidadSeleccionadaMenores = int.Parse(row.Cells[cantidadSeleccionadaMenoresColumnIndex].Value.ToString());
-
-                    producto.CantidadSeleccionadaAdultos = cantidadSeleccionadaAdultos;
-                    producto.CantidadSeleccionadaMenores = cantidadSeleccionadaMenores;
-                    producto.CantidadSeleccionada = producto.CantidadSeleccionadaAdultos + producto.CantidadSeleccionadaMenores;
-                    producto.SubTotal = decimal.Parse(row.Cells[subTotalColumnIndex].Value.ToString());
 
                     GenerarPresupuestosManager.aereosElegidos.Add(producto);
                 }
@@ -284,121 +252,26 @@ namespace Proyecto_CAI_Grupo_4
             comboBoxItinerario.SelectedIndex = -1;
             comboBoxClase.SelectedIndex = -1;
 
-            dataGridViewProductos.Rows.Clear();
+            listViewProductos.Items.Clear();
 
-            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.aereos);
+            AddProductosToListView(GenerarPresupuestosManager.aereos);
         }
 
-        private bool IsProductInDataGridViewProductosSeleccionados(Guid id)
+        private int IsProductInProductosSeleccionados(string codigo)
         {
-            var idList = new List<Guid>();
+            var codigos = new List<string>();
 
-            foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+            foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
-                var selectedId = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                var selectedCodigo = item.SubItems[codigoSubItemIndex].Text;
 
-                idList.Add(selectedId);
-            }
-
-            return idList.Any(x => x == id);
-        }
-
-        private void dataGridViewProductosSeleccionados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            var precioAdultosChanged = e.ColumnIndex == cantidadSeleccionadaAdultosColumnIndex;
-            var precioMenoresChanged = e.ColumnIndex == cantidadSeleccionadaMenoresColumnIndex;
-
-            if (e.RowIndex >= 0 && (precioAdultosChanged || precioMenoresChanged))
-            {
-                var dataGridView = sender as DataGridView;
-
-                // ID
-                var idCell = dataGridView.Rows[e.RowIndex].Cells[idColumnIndex];
-                var id = idCell.Value.ToString();
-
-                // Precio Adultos
-                var precioAdultosCell = dataGridView.Rows[e.RowIndex].Cells[precioAdultosColumnIndex];
-                var precioAdultos = decimal.Parse(precioAdultosCell.Value.ToString());
-
-                // Precio Menores
-                var precioMenoresCell = dataGridView.Rows[e.RowIndex].Cells[precioMenoresColumnIndex];
-                var precioMenores = decimal.Parse(precioMenoresCell.Value.ToString());
-
-                // Cantidad Disponible
-                var cantidadDisponibleCell = dataGridView.Rows[e.RowIndex].Cells[cantidadDisponibleColumnIndex];
-                var cantidadDisponible = int.Parse(cantidadDisponibleCell.Value.ToString());
-
-                // Cantidad Seleccionada Adultos
-                var cantidadSeleccionadaAdultosCell = dataGridView.Rows[e.RowIndex].Cells[cantidadSeleccionadaAdultosColumnIndex];
-                var isCantidadSeleccionadaAdultosValid = int.TryParse(cantidadSeleccionadaAdultosCell.Value.ToString(), out int cantidadSeleccionadaAdultos);
-
-                // Cantidad Seleccionada Menores
-                var cantidadSeleccionadaMenoresCell = dataGridView.Rows[e.RowIndex].Cells[cantidadSeleccionadaMenoresColumnIndex];
-                var isCantidadSeleccionadaMenoresValid = int.TryParse(cantidadSeleccionadaMenoresCell.Value.ToString(), out int cantidadSeleccionadaMenores);
-
-                // SubTotal
-                var subTotalCell = dataGridView.Rows[e.RowIndex].Cells[subTotalColumnIndex];
-
-                if (precioAdultosChanged)
+                if (selectedCodigo == codigo)
                 {
-                    cantidadDisponible = cantidadDisponible - cantidadSeleccionadaMenores;
-
-                    var validacion = ValidarCantidadSeleccionada(id, isCantidadSeleccionadaAdultosValid, cantidadSeleccionadaAdultos, cantidadDisponible, 1, "Adultos");
-
-                    if (string.IsNullOrEmpty(validacion))
-                    {
-                        subTotalCell.Value = (precioAdultos * cantidadSeleccionadaAdultos) + (precioMenores * cantidadSeleccionadaMenores);
-                    }
-                    else
-                    {
-                        cantidadSeleccionadaAdultosCell.Value = 1;
-                        subTotalCell.Value = precioAdultos + (precioMenores * cantidadSeleccionadaMenores);
-
-                        MessageBox.Show(validacion, "Error");
-                    }
+                    codigos.Add(selectedCodigo);
                 }
-
-                if (precioMenoresChanged)
-                {
-                    cantidadDisponible = cantidadDisponible - cantidadSeleccionadaAdultos;
-
-                    var validacion = ValidarCantidadSeleccionada(id, isCantidadSeleccionadaMenoresValid, cantidadSeleccionadaMenores, cantidadDisponible, 0, "Menores");
-
-                    if (string.IsNullOrEmpty(validacion))
-                    {
-                        subTotalCell.Value = (precioAdultos * cantidadSeleccionadaAdultos) + (precioMenores * cantidadSeleccionadaMenores);
-                    }
-                    else
-                    {
-                        cantidadSeleccionadaMenoresCell.Value = 0;
-                        subTotalCell.Value = precioAdultos * cantidadSeleccionadaAdultos;
-
-                        MessageBox.Show(validacion, "Error");
-                    }
-                }
-
-                dataGridView.Refresh();
-            }
-        }
-
-        private string ValidarCantidadSeleccionada(string id, bool isCantidadSeleccionadaValid, int? cantidadSeleccionada, int cantidadDisponible, int cantidadSeleccionadaMinima, string label)
-        {
-            if (!isCantidadSeleccionadaValid)
-            {
-                return $"La Cantidad Seleccionada de {label} para el Vuelo con ID [{id}] debe ser un numero entero.";
             }
 
-            if (cantidadDisponible < cantidadSeleccionada)
-            {
-                return $"La Cantidad Seleccionada de {label} para el Vuelo con ID [{id}] supera la Cantidad Disponible.";
-            }
-
-            if (cantidadSeleccionada < cantidadSeleccionadaMinima)
-            {
-                return $"La Cantidad Seleccionada de {label} para el Vuelo con ID [{id}] no puede ser menor a {cantidadSeleccionadaMinima}.";
-            }
-
-            return string.Empty;
+            return codigos.Count();
         }
 
         private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)

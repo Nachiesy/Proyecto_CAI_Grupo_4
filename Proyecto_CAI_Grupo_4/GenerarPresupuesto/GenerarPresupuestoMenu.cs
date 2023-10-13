@@ -2,16 +2,11 @@
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
 using Proyecto_CAI_Grupo_4.Common.Views;
-using System.Net;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoMenu : VistaBase
     {
-        private readonly int idColumnIndex = 0;
-        private readonly int tipoDeServicioColumnIndex = 3;
-        private readonly int cantidadSeleccionadaColumnIndex = 5;
-
         public GenerarPresupuestoMenu() : base(tituloModulo: "Generar Presupuesto")
         {
             InitializeComponent();
@@ -37,10 +32,10 @@ namespace Proyecto_CAI_Grupo_4
 
             decimal total = 0;
 
-            total += aereos.Sum(x => x.SubTotal.Value);
-            total += hoteles.Sum(x => x.SubTotal.Value);
-            total += cruceros.Sum(x => x.SubTotal.Value);
-            total += paquetesTuristicos.Sum(x => x.SubTotal.Value);
+            total += aereos.Sum(x => x.Precio);
+            total += hoteles.Sum(x => x.Precio);
+            total += cruceros.Sum(x => x.Precio);
+            total += paquetesTuristicos.Sum(x => x.Precio);
 
             presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
         }
@@ -55,8 +50,7 @@ namespace Proyecto_CAI_Grupo_4
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
                 row.Cells.Add(new DataGridViewTextBoxCell { Value = item.TipoDeServicio.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionada });
+                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
 
                 productosElegidos.Rows.Add(row);
             }
@@ -171,76 +165,96 @@ namespace Proyecto_CAI_Grupo_4
 
         private void ActualizarCantidadesDeProductos()
         {
-            foreach (DataGridViewRow row in productosElegidos.Rows)
+            ActualizarCantidadesDeAereos();
+
+            ActualizarCantidadesDeHoteles();
+
+            ActualizarCantidadesDeCruceros();
+
+            ActualizarCantidadesDePaquetes();
+        }
+
+        private void ActualizarCantidadesDeAereos()
+        {
+            var aereosToUpdate = new List<Aereos>(GenerarPresupuestosManager.aereos.Intersect(GenerarPresupuestosManager.aereosElegidos));
+
+            foreach (var aereo in aereosToUpdate)
             {
-                // ID
-                var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                var indexAereo = GenerarPresupuestosManager.aereos.FindIndex(x => x.Id == aereo.Id);
 
-                // Tipo de Servicio
-                var tipoDeServicio = TipoDeServicioEnumHelper.GetTipoDeServicioEnum(row.Cells[tipoDeServicioColumnIndex].Value.ToString());
+                var cantidadSeleccionada = GenerarPresupuestosManager.aereosElegidos.Where(x => x.Id == aereo.Id).Count();
 
-                // Cantidad Seleccionada
-                var cantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
+                aereo.Cantidad = aereo.Cantidad - cantidadSeleccionada;
 
-                switch (tipoDeServicio)
+                if (indexAereo != -1)
                 {
-                    case TipoDeServicioEnum.aereo:
-                        var indexAereo = GenerarPresupuestosManager.aereos.FindIndex(x => x.Id == id);
-                        var aereo = GenerarPresupuestosManager.aereos.SingleOrDefault(x => x.Id == id);
-
-                        aereo.Cantidad = aereo.Cantidad - cantidadSeleccionada;
-
-                        if (indexAereo != -1)
-                        {
-                            GenerarPresupuestosManager.aereos[indexAereo] = aereo;
-                        }
-
-                        break;
-
-                    case TipoDeServicioEnum.hotel:
-                        var indexHotel = GenerarPresupuestosManager.hoteles.FindIndex(x => x.Id == id);
-                        var hotel = GenerarPresupuestosManager.hoteles.SingleOrDefault(x => x.Id == id);
-
-                        hotel.Cantidad = hotel.Cantidad - cantidadSeleccionada;
-
-                        if (indexHotel != -1)
-                        {
-                            GenerarPresupuestosManager.hoteles[indexHotel] = hotel;
-                        }
-
-                        break;
-
-                    case TipoDeServicioEnum.crucero:
-                        var cruceroIndex = GenerarPresupuestosManager.cruceros.FindIndex(x => x.Id == id);
-                        var crucero = GenerarPresupuestosManager.cruceros.SingleOrDefault(x => x.Id == id);
-
-                        crucero.Cantidad = crucero.Cantidad - cantidadSeleccionada;
-
-                        if (cruceroIndex != -1)
-                        {
-                            GenerarPresupuestosManager.cruceros[cruceroIndex] = crucero;
-                        }
-
-                        break;
-
-                    case TipoDeServicioEnum.paquete:
-                        var paqueteIndex = GenerarPresupuestosManager.paquetesTuristicos.FindIndex(x => x.Id == id);
-                        var paquete = GenerarPresupuestosManager.paquetesTuristicos.SingleOrDefault(x => x.Id == id);
-
-                        paquete.Cantidad = paquete.Cantidad - cantidadSeleccionada;
-
-                        if (paqueteIndex != -1)
-                        {
-                            GenerarPresupuestosManager.paquetesTuristicos[paqueteIndex] = paquete;
-                        }
-
-                        break;
+                    GenerarPresupuestosManager.aereos[indexAereo] = aereo;
                 }
             }
 
             GenerarPresupuestosManager.aereosElegidos.Clear();
+        }
+
+        private void ActualizarCantidadesDeHoteles()
+        {
+            var hotelesToUpdate = new List<Hoteles>(GenerarPresupuestosManager.hoteles.Intersect(GenerarPresupuestosManager.hotelesElegidos));
+
+            foreach (var hotel in hotelesToUpdate)
+            {
+                var indexHotel = GenerarPresupuestosManager.hoteles.FindIndex(x => x.Id == hotel.Id);
+
+                var cantidadSeleccionada = GenerarPresupuestosManager.hotelesElegidos.Where(x => x.Id == hotel.Id).Count();
+
+                hotel.Cantidad = hotel.Cantidad - cantidadSeleccionada;
+
+                if (indexHotel != -1)
+                {
+                    GenerarPresupuestosManager.hoteles[indexHotel] = hotel;
+                }
+            }
+
             GenerarPresupuestosManager.hotelesElegidos.Clear();
+        }
+
+        private void ActualizarCantidadesDeCruceros()
+        {
+            var crucerosToUpdate = new List<Cruceros>(GenerarPresupuestosManager.cruceros.Intersect(GenerarPresupuestosManager.crucerosElegidos));
+
+            foreach (var crucero in crucerosToUpdate)
+            {
+                var cruceroIndex = GenerarPresupuestosManager.cruceros.FindIndex(x => x.Id == crucero.Id);
+
+                var cantidadSeleccionada = GenerarPresupuestosManager.crucerosElegidos.Where(x => x.Id == crucero.Id).Count();
+
+                crucero.Cantidad = crucero.Cantidad - cantidadSeleccionada;
+
+                if (cruceroIndex != -1)
+                {
+                    GenerarPresupuestosManager.cruceros[cruceroIndex] = crucero;
+                }
+            }
+
             GenerarPresupuestosManager.crucerosElegidos.Clear();
+        }
+
+        private void ActualizarCantidadesDePaquetes()
+        {
+            var paquetesToUpdate = new List<PaquetesTuristicos>(GenerarPresupuestosManager.paquetesTuristicos.Intersect(GenerarPresupuestosManager.paquetesTuristicosElegidos));
+
+            foreach (var paquete in paquetesToUpdate)
+            {
+                var paqueteIndex = GenerarPresupuestosManager.paquetesTuristicos.FindIndex(x => x.Id == paquete.Id);
+
+                var cantidadSeleccionada = GenerarPresupuestosManager.paquetesTuristicosElegidos.Where(x => x.Id == paquete.Id).Count();
+
+                paquete.Cantidad = paquete.Cantidad - cantidadSeleccionada;
+
+                if (paqueteIndex != -1)
+                {
+                    GenerarPresupuestosManager.paquetesTuristicos[paqueteIndex] = paquete;
+                }
+            }
+
             GenerarPresupuestosManager.paquetesTuristicosElegidos.Clear();
         }
 
