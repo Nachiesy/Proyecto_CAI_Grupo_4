@@ -249,6 +249,7 @@
             // listViewProductos
             // 
             listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Origen, Destino, Cantidad, Precio, CapacidadAdultos, CapacidadMenores, FechaDesde, FechaHasta });
+            listViewProductos.Enabled = false;
             listViewProductos.FullRowSelect = true;
             listViewProductos.Location = new Point(27, 328);
             listViewProductos.Name = "listViewProductos";
