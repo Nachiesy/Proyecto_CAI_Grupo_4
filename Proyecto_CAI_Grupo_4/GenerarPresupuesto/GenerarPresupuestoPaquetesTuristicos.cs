@@ -9,11 +9,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoPaquetesTuristicos : VistaBase
     {
-        private readonly int idColumnIndex = 0;
-        private readonly int precioColumnIndex = 3;
-        private readonly int cantidadDisponibleColumnIndex = 4;
-        private readonly int cantidadSeleccionadaColumnIndex = 5;
-        private readonly int subTotalColumnIndex = 6;
+        private readonly int codigoSubItemIndex = 1;
 
         public GenerarPresupuestoPaquetesTuristicos() : base(tituloModulo: "Generar Presupuesto > Paquetes Turísticos")
         {
@@ -35,9 +31,9 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxDestino.Items.Add(value.GetDescription());
             }
 
-            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Cantidad > 0));
+            AddProductosToListView(GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Cantidad > 0));
 
-            AddProductosSeleccionadosToDataGridView(GenerarPresupuestosManager.paquetesTuristicosElegidos, true);
+            AddProductosSeleccionadosToListView(GenerarPresupuestosManager.paquetesTuristicosElegidos);
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -71,9 +67,9 @@ namespace Proyecto_CAI_Grupo_4
                                 && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
                                 && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino));
 
-                dataGridViewProductos.Rows.Clear();
+                listViewProductos.Items.Clear();
 
-                AddProductosToDataGridViewProductos(productos);
+                AddProductosToListView(productos);
 
                 if (!productos.Any())
                 {
@@ -93,83 +89,69 @@ namespace Proyecto_CAI_Grupo_4
             return messages;
         }
 
-        private void AddProductosToDataGridViewProductos(IEnumerable<PaquetesTuristicos> listToAdd)
+        private void AddProductosToListView(IEnumerable<PaquetesTuristicos> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetActividades() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CapacidadMaximaAdultos });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CapacidadMaximaMenores });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Nombre);
+                row.SubItems.Add(item.Origen.GetDescription());
+                row.SubItems.Add(item.Destino.GetDescription());
+                row.SubItems.Add(item.Cantidad.ToString());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
+                row.SubItems.Add(item.CapacidadMaximaAdultos.ToString());
+                row.SubItems.Add(item.CapacidadMaximaMenores.ToString());
+                row.SubItems.Add(item.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.FechaHasta.ToFormDate());
 
-                dataGridViewProductos.Rows.Add(row);
+                listViewProductos.Items.Add(row);
             }
         }
 
-        private void AddProductosSeleccionadosToDataGridView(IEnumerable<PaquetesTuristicos> listToAdd, bool isInitForm)
+        private void AddProductosSeleccionadosToListView(IEnumerable<PaquetesTuristicos> listToAdd)
         {
             foreach (var item in listToAdd)
             {
-                DataGridViewRow row = new DataGridViewRow();
+                var row = new ListViewItem(item.Id.ToString());
 
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Id.ToString() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Codigo });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Nombre });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Cantidad.ToString() });
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Nombre);
+                row.SubItems.Add(item.Origen.GetDescription());
+                row.SubItems.Add(item.Destino.GetDescription());
+                // row.SubItems.Add(item.Cantidad.ToString());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
+                row.SubItems.Add(item.CapacidadMaximaAdultos.ToString());
+                row.SubItems.Add(item.CapacidadMaximaMenores.ToString());
+                row.SubItems.Add(item.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.FechaHasta.ToFormDate());
 
-                if (isInitForm)
-                {
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CantidadSeleccionada });
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.SubTotal.Value.ToFormDecimal() });
-                }
-                else
-                {
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = 1.ToString() }); // Cantidad Seleccionada
-                    row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Precio.ToFormDecimal() }); // Sub Total
-                }
-
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaDesde.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.FechaHasta.ToFormDate() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Origen.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.Destino.GetDescription() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.GetActividades() });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CapacidadMaximaAdultos });
-                row.Cells.Add(new DataGridViewTextBoxCell { Value = item.CapacidadMaximaMenores });
-
-                dataGridViewProductosSeleccionados.Rows.Add(row);
+                listViewProductosSeleccionados.Items.Add(row);
             }
         }
 
         private void btnAgregarProductos_Click(object sender, EventArgs e)
         {
-            if (dataGridViewProductos.SelectedRows.Count > 0)
+            if (listViewProductos.SelectedItems.Count > 0)
             {
                 var productosToAdd = new List<PaquetesTuristicos>();
 
-                foreach (DataGridViewRow row in dataGridViewProductos.SelectedRows)
+                foreach (ListViewItem item in listViewProductos.SelectedItems)
                 {
-                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                    var id = Guid.Parse(item.Text);
 
                     var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
 
-                    if (!IsProductInDataGridViewProductosSeleccionados(id))
+                    var cantidad = IsProductInProductosSeleccionados(producto.Codigo);
+
+                    if (producto.Cantidad > cantidad)
                     {
                         productosToAdd.Add(producto);
                     }
                 }
 
-                AddProductosSeleccionadosToDataGridView(productosToAdd, false);
+                AddProductosSeleccionadosToListView(productosToAdd);
             }
             else
             {
@@ -179,11 +161,11 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnRemoverProductos_Click(object sender, EventArgs e)
         {
-            if (dataGridViewProductosSeleccionados.SelectedRows.Count > 0)
+            if (listViewProductosSeleccionados.SelectedItems.Count > 0)
             {
-                foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.SelectedRows)
+                foreach (ListViewItem row in listViewProductosSeleccionados.SelectedItems)
                 {
-                    dataGridViewProductosSeleccionados.Rows.Remove(row);
+                    listViewProductosSeleccionados.Items.Remove(row);
                 }
             }
             else
@@ -194,18 +176,15 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            if (dataGridViewProductosSeleccionados.RowCount > 0)
+            if (listViewProductosSeleccionados.Items.Count > 0)
             {
                 GenerarPresupuestosManager.paquetesTuristicosElegidos.Clear();
 
-                foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+                foreach (ListViewItem item in listViewProductosSeleccionados.Items)
                 {
-                    var id = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                    var id = Guid.Parse(item.Text);
 
                     var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
-
-                    producto.CantidadSeleccionada = int.Parse(row.Cells[cantidadSeleccionadaColumnIndex].Value.ToString());
-                    producto.SubTotal = decimal.Parse(row.Cells[subTotalColumnIndex].Value.ToString());
 
                     GenerarPresupuestosManager.paquetesTuristicosElegidos.Add(producto);
                 }
@@ -245,86 +224,26 @@ namespace Proyecto_CAI_Grupo_4
             comboBoxOrigen.SelectedIndex = -1;
             comboBoxDestino.SelectedIndex = -1;
 
-            dataGridViewProductos.Rows.Clear();
+            listViewProductos.Items.Clear();
 
-            AddProductosToDataGridViewProductos(GenerarPresupuestosManager.paquetesTuristicos);
+            AddProductosToListView(GenerarPresupuestosManager.paquetesTuristicos);
         }
 
-        private bool IsProductInDataGridViewProductosSeleccionados(Guid id)
+        private int IsProductInProductosSeleccionados(string codigo)
         {
-            var idList = new List<Guid>();
+            var codigos = new List<string>();
 
-            foreach (DataGridViewRow row in dataGridViewProductosSeleccionados.Rows)
+            foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
-                var selectedId = Guid.Parse(row.Cells[idColumnIndex].Value.ToString());
+                var selectedCodigo = item.SubItems[codigoSubItemIndex].Text;
 
-                idList.Add(selectedId);
-            }
-
-            return idList.Any(x => x == id);
-        }
-
-        private void dataGridViewProductosSeleccionados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex == cantidadSeleccionadaColumnIndex)
-            {
-                var dataGridView = sender as DataGridView;
-
-                // ID
-                var idCell = dataGridView.Rows[e.RowIndex].Cells[idColumnIndex];
-                var id = idCell.Value.ToString();
-
-                // Precio
-                var precioCell = dataGridView.Rows[e.RowIndex].Cells[precioColumnIndex];
-                var precio = decimal.Parse(precioCell.Value.ToString());
-
-                // Cantidad Disponible
-                var cantidadDisponibleCell = dataGridView.Rows[e.RowIndex].Cells[cantidadDisponibleColumnIndex];
-                var cantidadDisponible = int.Parse(cantidadDisponibleCell.Value.ToString());
-
-                // Cantidad Seleccionada
-                var cantidadSeleccionadaCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                var isCantidadSeleccionadaValid = int.TryParse(cantidadSeleccionadaCell.Value.ToString(), out int cantidadSeleccionada);
-
-                // SubTotal
-                var subTotalCell = dataGridView.Rows[e.RowIndex].Cells[subTotalColumnIndex];
-
-                var validation = ValidarCantidadSeleccionada(id, isCantidadSeleccionadaValid, cantidadSeleccionada, cantidadDisponible);
-
-                if (string.IsNullOrEmpty(validation))
+                if (selectedCodigo == codigo)
                 {
-                    subTotalCell.Value = precio * cantidadSeleccionada;
+                    codigos.Add(selectedCodigo);
                 }
-                else
-                {
-                    cantidadSeleccionadaCell.Value = 1;
-                    subTotalCell.Value = precioCell.Value;
-
-                    MessageBox.Show(validation, "Error");
-                }
-
-                dataGridView.Refresh();
-            }
-        }
-
-        private string ValidarCantidadSeleccionada(string id, bool isCantidadSeleccionadaValid, int? cantidadSeleccionada, int cantidadDisponible)
-        {
-            if (!isCantidadSeleccionadaValid)
-            {
-                return $"La Cantidad para el Paquete con ID [{id}] debe ser un numero entero.";
             }
 
-            if (cantidadDisponible < cantidadSeleccionada)
-            {
-                return $"La Cantidad Seleccionada para el Paquete con ID [{id}] debe ser un menor o igual a la Cantidad Disponible.";
-            }
-
-            if (cantidadSeleccionada <= 0)
-            {
-                return $"La Cantidad Seleccionada para el Paquete con ID [{id}] debe ser mayor a 0.";
-            }
-
-            return string.Empty;
+            return codigos.Count();
         }
 
         private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)

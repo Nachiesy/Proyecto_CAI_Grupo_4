@@ -46,21 +46,19 @@
             btnLimpiarFiltro = new Common.Components.BotonEstilizado();
             buscarPresupuesto = new Common.Components.BotonEstilizado();
             btnVolverMenuGenerarPresupuestos = new Button();
-            dataGridViewProductos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            PrecioUnitario = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            FechaDesde = new DataGridViewTextBoxColumn();
-            FechaHasta = new DataGridViewTextBoxColumn();
-            Origen = new DataGridViewTextBoxColumn();
-            Destino = new DataGridViewTextBoxColumn();
-            Actividades = new DataGridViewTextBoxColumn();
-            CapacidadMaximaAdultos = new DataGridViewTextBoxColumn();
-            CapacidadMaximaMenores = new DataGridViewTextBoxColumn();
+            listViewProductos = new ListView();
+            ID = new ColumnHeader();
+            Codigo = new ColumnHeader();
+            Nombre = new ColumnHeader();
+            Origen = new ColumnHeader();
+            Destino = new ColumnHeader();
+            Cantidad = new ColumnHeader();
+            Precio = new ColumnHeader();
+            CapacidadAdultos = new ColumnHeader();
+            CapacidadMenores = new ColumnHeader();
+            FechaDesde = new ColumnHeader();
+            FechaHasta = new ColumnHeader();
             grp_Filtros.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             SuspendLayout();
             // 
             // datePickerFechaSalida
@@ -246,105 +244,71 @@
             btnVolverMenuGenerarPresupuestos.UseVisualStyleBackColor = true;
             btnVolverMenuGenerarPresupuestos.Click += btnVolverMenuGenerarPresupuestos_Click;
             // 
-            // dataGridViewProductos
+            // listViewProductos
             // 
-            dataGridViewProductos.AllowUserToAddRows = false;
-            dataGridViewProductos.AllowUserToDeleteRows = false;
-            dataGridViewProductos.AllowUserToOrderColumns = true;
-            dataGridViewProductos.BackgroundColor = SystemColors.ControlLight;
-            dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Codigo, Nombre, PrecioUnitario, Cantidad, FechaDesde, FechaHasta, Origen, Destino, Actividades, CapacidadMaximaAdultos, CapacidadMaximaMenores });
-            dataGridViewProductos.Location = new Point(27, 339);
-            dataGridViewProductos.Name = "dataGridViewProductos";
-            dataGridViewProductos.RowHeadersWidth = 82;
-            dataGridViewProductos.RowTemplate.Height = 25;
-            dataGridViewProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewProductos.Size = new Size(1067, 267);
-            dataGridViewProductos.TabIndex = 39;
+            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Origen, Destino, Cantidad, Precio, CapacidadAdultos, CapacidadMenores, FechaDesde, FechaHasta });
+            listViewProductos.FullRowSelect = true;
+            listViewProductos.Location = new Point(27, 328);
+            listViewProductos.Name = "listViewProductos";
+            listViewProductos.Size = new Size(1064, 289);
+            listViewProductos.TabIndex = 38;
+            listViewProductos.UseCompatibleStateImageBehavior = false;
+            listViewProductos.View = View.Details;
             // 
             // ID
             // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            ID.Width = 250;
+            ID.Text = "ID";
+            ID.Width = 0;
             // 
             // Codigo
             // 
-            Codigo.HeaderText = "Código";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
+            Codigo.Text = "Código";
+            Codigo.Width = 100;
             // 
             // Nombre
             // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
-            // 
-            // PrecioUnitario
-            // 
-            PrecioUnitario.HeaderText = "Precio Unitario";
-            PrecioUnitario.MinimumWidth = 10;
-            PrecioUnitario.Name = "PrecioUnitario";
-            PrecioUnitario.ReadOnly = true;
-            PrecioUnitario.Width = 200;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad Disponible";
-            Cantidad.MinimumWidth = 10;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            Cantidad.Width = 200;
-            // 
-            // FechaDesde
-            // 
-            FechaDesde.HeaderText = "Fecha Desde";
-            FechaDesde.Name = "FechaDesde";
-            FechaDesde.ReadOnly = true;
-            // 
-            // FechaHasta
-            // 
-            FechaHasta.HeaderText = "Fecha Hasta";
-            FechaHasta.Name = "FechaHasta";
-            FechaHasta.ReadOnly = true;
+            Nombre.Text = "Nombre";
+            Nombre.Width = 150;
             // 
             // Origen
             // 
-            Origen.HeaderText = "Origen";
-            Origen.Name = "Origen";
-            Origen.ReadOnly = true;
+            Origen.Text = "Origen";
+            Origen.Width = 100;
             // 
             // Destino
             // 
-            Destino.HeaderText = "Destino";
-            Destino.Name = "Destino";
-            Destino.ReadOnly = true;
+            Destino.Text = "Destino";
+            Destino.Width = 100;
             // 
-            // Actividades
+            // Cantidad
             // 
-            Actividades.HeaderText = "Actividades";
-            Actividades.Name = "Actividades";
-            Actividades.ReadOnly = true;
-            Actividades.Width = 200;
+            Cantidad.Text = "Cantidad Disponible";
+            Cantidad.Width = 150;
             // 
-            // CapacidadMaximaAdultos
+            // Precio
             // 
-            CapacidadMaximaAdultos.HeaderText = "Capacidad Maxima Adultos";
-            CapacidadMaximaAdultos.Name = "CapacidadMaximaAdultos";
-            CapacidadMaximaAdultos.ReadOnly = true;
-            CapacidadMaximaAdultos.Width = 300;
+            Precio.Text = "Precio";
+            Precio.Width = 100;
             // 
-            // CapacidadMaximaMenores
+            // CapacidadAdultos
             // 
-            CapacidadMaximaMenores.HeaderText = "Capacidad Maxima Menores";
-            CapacidadMaximaMenores.Name = "CapacidadMaximaMenores";
-            CapacidadMaximaMenores.ReadOnly = true;
-            CapacidadMaximaMenores.Width = 300;
+            CapacidadAdultos.Text = "Capacidad de Adultos";
+            CapacidadAdultos.Width = 150;
+            // 
+            // CapacidadMenores
+            // 
+            CapacidadMenores.Text = "Capacidad de Menores";
+            CapacidadMenores.Width = 150;
+            // 
+            // FechaDesde
+            // 
+            FechaDesde.Text = "Fecha Desde";
+            FechaDesde.Width = 100;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.Text = "Fecha Hasta";
+            FechaHasta.Width = 100;
             // 
             // ConsultarPaquetesTuristicos
             // 
@@ -352,7 +316,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1106, 682);
-            Controls.Add(dataGridViewProductos);
+            Controls.Add(listViewProductos);
             Controls.Add(btnVolverMenuGenerarPresupuestos);
             Controls.Add(btnLimpiarFiltro);
             Controls.Add(grp_Filtros);
@@ -364,10 +328,9 @@
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(btnLimpiarFiltro, 0);
             Controls.SetChildIndex(btnVolverMenuGenerarPresupuestos, 0);
-            Controls.SetChildIndex(dataGridViewProductos, 0);
+            Controls.SetChildIndex(listViewProductos, 0);
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             ResumeLayout(false);
         }
 
@@ -390,18 +353,17 @@
         private ComboBox comboBoxOrigen;
         private Button btnDisableDatePickerFilterFechaHasta;
         private Button btnDisableDatePickerFilterFechaDesde;
-        private DataGridView dataGridViewProductos;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn PrecioUnitario;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn FechaDesde;
-        private DataGridViewTextBoxColumn FechaHasta;
-        private DataGridViewTextBoxColumn Origen;
-        private DataGridViewTextBoxColumn Destino;
-        private DataGridViewTextBoxColumn Actividades;
-        private DataGridViewTextBoxColumn CapacidadMaximaAdultos;
-        private DataGridViewTextBoxColumn CapacidadMaximaMenores;
+        private ListView listViewProductos;
+        private ColumnHeader ID;
+        private ColumnHeader Codigo;
+        private ColumnHeader Nombre;
+        private ColumnHeader Origen;
+        private ColumnHeader Destino;
+        private ColumnHeader Cantidad;
+        private ColumnHeader Precio;
+        private ColumnHeader CapacidadAdultos;
+        private ColumnHeader CapacidadMenores;
+        private ColumnHeader FechaDesde;
+        private ColumnHeader FechaHasta;
     }
 }
