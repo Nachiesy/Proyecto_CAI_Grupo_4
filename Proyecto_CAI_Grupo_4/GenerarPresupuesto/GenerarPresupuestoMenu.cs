@@ -2,11 +2,14 @@
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Models;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoMenu : VistaBase
     {
+        private decimal Total = 0;
+
         public GenerarPresupuestoMenu() : base(tituloModulo: "Generar Presupuesto")
         {
             InitializeComponent();
@@ -30,14 +33,12 @@ namespace Proyecto_CAI_Grupo_4
 
             AddProductosToListView(paquetesTuristicos);
 
-            decimal total = 0;
+            Total += aereos.Sum(x => x.Precio);
+            Total += hoteles.Sum(x => x.Precio);
+            Total += cruceros.Sum(x => x.Precio);
+            Total += paquetesTuristicos.Sum(x => x.Precio);
 
-            total += aereos.Sum(x => x.Precio);
-            total += hoteles.Sum(x => x.Precio);
-            total += cruceros.Sum(x => x.Precio);
-            total += paquetesTuristicos.Sum(x => x.Precio);
-
-            presupuestoTotal.Text = total > 0 ? $"Total: {total:C2}" : "Total: $-";
+            presupuestoTotal.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
         }
 
         private void AddProductosToListView(IEnumerable<Productos> listToAdd)
@@ -126,21 +127,29 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var result = MessageBox.Show("¿Desea generar una Pre Reserva a partir de este Presupuesto?", string.Empty, MessageBoxButtons.YesNo);
 
-                var presupuestoID = Guid.NewGuid();
-                var reservaID = Guid.NewGuid();
+                var isPreReserva = result == DialogResult.Yes;
 
-                if (result == DialogResult.Yes)
+                var reserva = new Reserva()
                 {
-                    MessageBox.Show($"Presupuesto [{presupuestoID}] y Pre Reserva [{reservaID}] generados correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show($"Presupuesto [{presupuestoID}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
-                }
+                    Codigo = 1,
+                    Estado = ReservaEstadoEnum.pendienteDePago,
+                    DNI = dni,
+                    TipoDoc = 1,
+                    Precio = Total,
+                    Fecha = DateTime.Now,
+                    CantPasajeros = GenerarPresupuestosManager.aereosElegidos.Count(),
+                    CantMayores = GenerarPresupuestosManager.aereosElegidos.Where(x => x.TipoDePasajero == TipoDePasajeroEnum.adulto).Count(),
+                    CantMenores = GenerarPresupuestosManager.aereosElegidos.Where(x => x.TipoDePasajero == TipoDePasajeroEnum.menor).Count(),
+                    prereserva = isPreReserva,
+                };
+
+                ReservasManager.reservas.Add(reserva);
+
+                MessageBox.Show($"Presupuesto con Código: [{reserva.Codigo}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
 
                 ActualizarCantidadesDeProductos();
 
-                btnVolverMenuPrincipal_Click(sender, e);
+                GoToGenerarReserva();
             }
             else
             {
@@ -258,18 +267,18 @@ namespace Proyecto_CAI_Grupo_4
             GenerarPresupuestosManager.paquetesTuristicosElegidos.Clear();
         }
 
-        private void btnVolverMenuPrincipal_Click(object sender, EventArgs e)
+        private void GoToGenerarReserva()
         {
-            this.Close();
+            Close();
 
-            Thread thread = new Thread(OpenMenuPrincipal);
+            Thread thread = new Thread(OpenGenerarReserva);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
 
-        private void OpenMenuPrincipal()
+        private void OpenGenerarReserva()
         {
-            Application.Run(new MenuPrincipal());
+            Application.Run(new GenerarReserva());
         }
 
         private string ValidarDNI()
