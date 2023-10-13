@@ -317,7 +317,6 @@
             // listViewProductos
             // 
             listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Origen, Destino, Clase, Itinerario, Cantidad, TipoDePasajero, Precio, Aerolinea, Paradas, FechaSalida, FechaLlegada });
-            listViewProductos.Enabled = false;
             listViewProductos.FullRowSelect = true;
             listViewProductos.Location = new Point(27, 360);
             listViewProductos.Name = "listViewProductos";
@@ -325,6 +324,7 @@
             listViewProductos.TabIndex = 38;
             listViewProductos.UseCompatibleStateImageBehavior = false;
             listViewProductos.View = View.Details;
+            listViewProductos.ColumnWidthChanging += listViewProductos_ColumnWidthChanging;
             // 
             // ID
             // 

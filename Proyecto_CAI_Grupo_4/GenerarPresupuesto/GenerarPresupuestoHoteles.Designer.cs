@@ -108,6 +108,7 @@
             listViewProductos.TabIndex = 5;
             listViewProductos.UseCompatibleStateImageBehavior = false;
             listViewProductos.View = View.Details;
+            listViewProductos.ColumnWidthChanging += listViewProductos_ColumnWidthChanging;
             // 
             // ID
             // 
@@ -426,6 +427,7 @@
             listViewProductosSeleccionados.TabIndex = 6;
             listViewProductosSeleccionados.UseCompatibleStateImageBehavior = false;
             listViewProductosSeleccionados.View = View.Details;
+            listViewProductosSeleccionados.ColumnWidthChanging += listViewProductosSeleccionados_ColumnWidthChanging;
             // 
             // SelectID
             // 

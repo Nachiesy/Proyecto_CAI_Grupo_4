@@ -249,7 +249,6 @@
             // listViewProductos
             // 
             listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Origen, Destino, Cantidad, Precio, CapacidadAdultos, CapacidadMenores, FechaDesde, FechaHasta });
-            listViewProductos.Enabled = false;
             listViewProductos.FullRowSelect = true;
             listViewProductos.Location = new Point(27, 328);
             listViewProductos.Name = "listViewProductos";
@@ -257,6 +256,7 @@
             listViewProductos.TabIndex = 38;
             listViewProductos.UseCompatibleStateImageBehavior = false;
             listViewProductos.View = View.Details;
+            listViewProductos.ColumnWidthChanging += listViewProductos_ColumnWidthChanging;
             // 
             // ID
             // 

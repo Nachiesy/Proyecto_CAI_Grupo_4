@@ -279,5 +279,23 @@ namespace Proyecto_CAI_Grupo_4
                 btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
             }
         }
+
+        private void listViewProductos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                e.Cancel = true;
+                e.NewWidth = 0;
+            }
+        }
+
+        private void listViewProductosSeleccionados_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                e.Cancel = true;
+                e.NewWidth = 0;
+            }
+        }
     }
 }
