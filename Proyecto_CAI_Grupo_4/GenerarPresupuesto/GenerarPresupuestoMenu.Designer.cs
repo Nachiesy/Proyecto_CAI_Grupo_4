@@ -32,6 +32,11 @@ namespace Proyecto_CAI_Grupo_4
             label1 = new Label();
             presupuestoTotal = new Label();
             productosElegidos = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Codigo = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            TipoDeServicio = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -46,11 +51,13 @@ namespace Proyecto_CAI_Grupo_4
             grp_Filtros = new GroupBox();
             textBoxClienteDNI = new TextBox();
             label2 = new Label();
-            ID = new DataGridViewTextBoxColumn();
-            Codigo = new DataGridViewTextBoxColumn();
-            Nombre = new DataGridViewTextBoxColumn();
-            TipoDeServicio = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
+            groupBox2 = new GroupBox();
+            textBoxPasajerosMenores = new TextBox();
+            labelPasajerosMenores = new Label();
+            textBoxPasajerosAdultos = new TextBox();
+            labelPasajerosAdultos = new Label();
+            textBoxPasajerosInfantes = new TextBox();
+            labelPasajerosInfantes = new Label();
             ((System.ComponentModel.ISupportInitialize)productosElegidos).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -59,6 +66,7 @@ namespace Proyecto_CAI_Grupo_4
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             grp_Estimacion.SuspendLayout();
             grp_Filtros.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -93,8 +101,47 @@ namespace Proyecto_CAI_Grupo_4
             productosElegidos.ReadOnly = true;
             productosElegidos.RowHeadersWidth = 82;
             productosElegidos.RowTemplate.Height = 25;
-            productosElegidos.Size = new Size(893, 443);
+            productosElegidos.Size = new Size(893, 584);
             productosElegidos.TabIndex = 36;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 10;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            ID.Width = 250;
+            // 
+            // Codigo
+            // 
+            Codigo.HeaderText = "Código";
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 10;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            Nombre.Width = 200;
+            // 
+            // TipoDeServicio
+            // 
+            TipoDeServicio.HeaderText = "Tipo de Servicio";
+            TipoDeServicio.MinimumWidth = 10;
+            TipoDeServicio.Name = "TipoDeServicio";
+            TipoDeServicio.ReadOnly = true;
+            TipoDeServicio.Width = 200;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 10;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 200;
             // 
             // groupBox1
             // 
@@ -216,7 +263,7 @@ namespace Proyecto_CAI_Grupo_4
             btnFinalizarPresupuesto.FlatStyle = FlatStyle.Flat;
             btnFinalizarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnFinalizarPresupuesto.ForeColor = Color.Black;
-            btnFinalizarPresupuesto.Location = new Point(12, 529);
+            btnFinalizarPresupuesto.Location = new Point(12, 670);
             btnFinalizarPresupuesto.Name = "btnFinalizarPresupuesto";
             btnFinalizarPresupuesto.Size = new Size(246, 40);
             btnFinalizarPresupuesto.TabIndex = 4;
@@ -227,7 +274,7 @@ namespace Proyecto_CAI_Grupo_4
             // grp_Estimacion
             // 
             grp_Estimacion.Controls.Add(presupuestoTotal);
-            grp_Estimacion.Location = new Point(12, 448);
+            grp_Estimacion.Location = new Point(12, 589);
             grp_Estimacion.Name = "grp_Estimacion";
             grp_Estimacion.Size = new Size(246, 75);
             grp_Estimacion.TabIndex = 38;
@@ -261,51 +308,76 @@ namespace Proyecto_CAI_Grupo_4
             label2.TabIndex = 3;
             label2.Text = "DNI";
             // 
-            // ID
+            // groupBox2
             // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 10;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            ID.Width = 250;
+            groupBox2.Controls.Add(textBoxPasajerosInfantes);
+            groupBox2.Controls.Add(labelPasajerosInfantes);
+            groupBox2.Controls.Add(textBoxPasajerosMenores);
+            groupBox2.Controls.Add(labelPasajerosMenores);
+            groupBox2.Controls.Add(textBoxPasajerosAdultos);
+            groupBox2.Controls.Add(labelPasajerosAdultos);
+            groupBox2.Location = new Point(12, 442);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(246, 141);
+            groupBox2.TabIndex = 40;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Pasajeros";
             // 
-            // Codigo
+            // textBoxPasajerosMenores
             // 
-            Codigo.HeaderText = "Código";
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
+            textBoxPasajerosMenores.Location = new Point(134, 50);
+            textBoxPasajerosMenores.Name = "textBoxPasajerosMenores";
+            textBoxPasajerosMenores.Size = new Size(106, 23);
+            textBoxPasajerosMenores.TabIndex = 4;
             // 
-            // Nombre
+            // labelPasajerosMenores
             // 
-            Nombre.HeaderText = "Nombre";
-            Nombre.MinimumWidth = 10;
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            Nombre.Width = 200;
+            labelPasajerosMenores.AutoSize = true;
+            labelPasajerosMenores.Location = new Point(135, 28);
+            labelPasajerosMenores.Name = "labelPasajerosMenores";
+            labelPasajerosMenores.Size = new Size(53, 15);
+            labelPasajerosMenores.TabIndex = 5;
+            labelPasajerosMenores.Text = "Menores";
             // 
-            // TipoDeServicio
+            // textBoxPasajerosAdultos
             // 
-            TipoDeServicio.HeaderText = "Tipo de Servicio";
-            TipoDeServicio.MinimumWidth = 10;
-            TipoDeServicio.Name = "TipoDeServicio";
-            TipoDeServicio.ReadOnly = true;
-            TipoDeServicio.Width = 200;
+            textBoxPasajerosAdultos.Location = new Point(6, 50);
+            textBoxPasajerosAdultos.Name = "textBoxPasajerosAdultos";
+            textBoxPasajerosAdultos.Size = new Size(106, 23);
+            textBoxPasajerosAdultos.TabIndex = 2;
             // 
-            // Precio
+            // labelPasajerosAdultos
             // 
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 10;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 200;
+            labelPasajerosAdultos.AutoSize = true;
+            labelPasajerosAdultos.Location = new Point(7, 28);
+            labelPasajerosAdultos.Name = "labelPasajerosAdultos";
+            labelPasajerosAdultos.Size = new Size(48, 15);
+            labelPasajerosAdultos.TabIndex = 3;
+            labelPasajerosAdultos.Text = "Adultos";
+            // 
+            // textBoxPasajerosInfantes
+            // 
+            textBoxPasajerosInfantes.Location = new Point(7, 102);
+            textBoxPasajerosInfantes.Name = "textBoxPasajerosInfantes";
+            textBoxPasajerosInfantes.Size = new Size(233, 23);
+            textBoxPasajerosInfantes.TabIndex = 6;
+            // 
+            // labelPasajerosInfantes
+            // 
+            labelPasajerosInfantes.AutoSize = true;
+            labelPasajerosInfantes.Location = new Point(8, 80);
+            labelPasajerosInfantes.Name = "labelPasajerosInfantes";
+            labelPasajerosInfantes.Size = new Size(49, 15);
+            labelPasajerosInfantes.TabIndex = 7;
+            labelPasajerosInfantes.Text = "Infantes";
             // 
             // GenerarPresupuestoMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1208, 604);
+            ClientSize = new Size(1208, 720);
+            Controls.Add(groupBox2);
             Controls.Add(grp_Filtros);
             Controls.Add(grp_Estimacion);
             Controls.Add(btnFinalizarPresupuesto);
@@ -322,6 +394,7 @@ namespace Proyecto_CAI_Grupo_4
             Controls.SetChildIndex(btnFinalizarPresupuesto, 0);
             Controls.SetChildIndex(grp_Estimacion, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
+            Controls.SetChildIndex(groupBox2, 0);
             ((System.ComponentModel.ISupportInitialize)productosElegidos).EndInit();
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -332,6 +405,8 @@ namespace Proyecto_CAI_Grupo_4
             grp_Estimacion.PerformLayout();
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -360,5 +435,12 @@ namespace Proyecto_CAI_Grupo_4
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn TipoDeServicio;
         private DataGridViewTextBoxColumn Precio;
+        private GroupBox groupBox2;
+        private TextBox textBoxPasajerosMenores;
+        private Label labelPasajerosMenores;
+        private TextBox textBoxPasajerosAdultos;
+        private Label labelPasajerosAdultos;
+        private TextBox textBoxPasajerosInfantes;
+        private Label labelPasajerosInfantes;
     }
 }

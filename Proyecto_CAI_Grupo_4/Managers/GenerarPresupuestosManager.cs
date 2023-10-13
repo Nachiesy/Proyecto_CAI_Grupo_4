@@ -1,4 +1,5 @@
-﻿using Proyecto_CAI_Grupo_4.Models.Productos;
+﻿using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Models.Productos;
 
 namespace Proyecto_CAI_Grupo_4.Managers
 {
@@ -343,5 +344,7 @@ namespace Proyecto_CAI_Grupo_4.Managers
         };
 
         public static List<PaquetesTuristicos> paquetesTuristicosElegidos = new List<PaquetesTuristicos>();
+
+        public static List<Reserva> reservas = new List<Reserva>();
     }
 }

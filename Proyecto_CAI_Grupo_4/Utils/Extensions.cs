@@ -52,15 +52,16 @@ namespace Proyecto_CAI_Grupo_4.Utils
 
     public static class Validaciones
     {
-        public static bool EsDNI(this string dniingresado)
+        public static bool EsDNI(this string dniIngresado)
         {
-            if (int.TryParse(dniingresado, out int dni) && dniingresado.Length >6 && dniingresado.Length < 9) {
-                return true; 
-            
-            }else { return false; }
-
-            ;
-          
+            if (int.TryParse(dniIngresado, out int dni) && dniIngresado.Length > 6 && dniIngresado.Length < 9)
+            {
+                return true;
+            }
+            else 
+            { 
+                return false; 
+            }
         }
     }
 }

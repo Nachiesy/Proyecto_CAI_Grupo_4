@@ -10,6 +10,10 @@ namespace Proyecto_CAI_Grupo_4
     {
         private decimal Total = 0;
 
+        private int PasajerosAdultos = 0;
+        private int PasajerosMenores = 0;
+        private int PasajerosInfantes = 0;
+
         public GenerarPresupuestoMenu() : base(tituloModulo: "Generar Presupuesto")
         {
             InitializeComponent();
@@ -119,55 +123,68 @@ namespace Proyecto_CAI_Grupo_4
 
             var validacionProductos = productosElegidos.RowCount > 0;
 
-            var dniMsg = ValidarDNI();
+            var validacionDNI = dni.EsDNI();
 
-            var validacionDNI = string.IsNullOrEmpty(dniMsg);
+            var pasajerosMsg = ValidarCantidadPasajeros();
 
-            if (validacionProductos && validacionDNI)
+            var validacionPasajeros = string.IsNullOrEmpty(pasajerosMsg);
+
+            if (validacionProductos && validacionDNI && validacionPasajeros)
             {
                 var result = MessageBox.Show("¿Desea generar una Pre Reserva a partir de este Presupuesto?", string.Empty, MessageBoxButtons.YesNo);
 
                 var isPreReserva = result == DialogResult.Yes;
 
-                var reserva = new Reserva()
+                if (isPreReserva)
                 {
-                    Codigo = 1,
-                    Estado = ReservaEstadoEnum.pendienteDePago,
-                    DNI = dni,
-                    TipoDoc = 1,
-                    Precio = Total,
-                    Fecha = DateTime.Now,
-                    CantPasajeros = GenerarPresupuestosManager.aereosElegidos.Count(),
-                    CantMayores = GenerarPresupuestosManager.aereosElegidos.Where(x => x.TipoDePasajero == TipoDePasajeroEnum.adulto).Count(),
-                    CantMenores = GenerarPresupuestosManager.aereosElegidos.Where(x => x.TipoDePasajero == TipoDePasajeroEnum.menor).Count(),
-                    prereserva = isPreReserva,
-                };
+                    var adultos = PasajerosAdultos;
+                    var menores = PasajerosMenores;
+                    var infantes = PasajerosInfantes;
 
-                ReservasManager.reservas.Add(reserva);
+                    var pasajeros = adultos + menores + infantes;
 
-                MessageBox.Show($"Presupuesto con Código: [{reserva.Codigo}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+                    var reserva = new Reserva()
+                    {
+                        Codigo = 1,
+                        Estado = ReservaEstadoEnum.pendienteDePago,
+                        DNI = dni,
+                        TipoDoc = 1,
+                        Precio = Total,
+                        Fecha = DateTime.Now,
+                        CantPasajeros = pasajeros,
+                        CantMayores = adultos,
+                        CantMenores = menores,
+                        prereserva = true,
+                    };
+
+                    GenerarPresupuestosManager.reservas.Add(reserva);
+
+                    GoToGenerarPreReserva();
+                }
+                else
+                {
+                    MessageBox.Show($"Presupuesto con Código: [{1}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+
+                    GoToMenuPrincipal();
+                }
 
                 ActualizarCantidadesDeProductos();
-
-                GoToGenerarReserva();
             }
             else
             {
-                var productosMsg = "Debes elegir productos";
-
                 var msgFinal = "para poder generar un Presupuesto.";
 
-                if (!validacionProductos && !validacionDNI)
+                if (!validacionDNI)
                 {
-                    MessageBox.Show($"{dniMsg} y {productosMsg} {msgFinal}", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show($"Debes ingresar un DNI correcto {msgFinal}", "Error", MessageBoxButtons.OK);
                 }
                 else if (!validacionProductos)
                 {
-                    MessageBox.Show($"{productosMsg} {msgFinal}", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show($"Debes elegir productos {msgFinal}", "Error", MessageBoxButtons.OK);
                 }
-                else if (!validacionDNI)
+                else if (!validacionPasajeros)
                 {
-                    MessageBox.Show($"{dniMsg} {msgFinal}", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show($"{pasajerosMsg} {msgFinal}", "Error", MessageBoxButtons.OK);
                 }
             }
         }
@@ -267,37 +284,69 @@ namespace Proyecto_CAI_Grupo_4
             GenerarPresupuestosManager.paquetesTuristicosElegidos.Clear();
         }
 
-        private void GoToGenerarReserva()
+        private void GoToMenuPrincipal()
         {
             Close();
 
-            Thread thread = new Thread(OpenGenerarReserva);
+            Thread thread = new Thread(OpenMenuPrincipal);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
 
-        private void OpenGenerarReserva()
+        private void OpenMenuPrincipal()
         {
-            Application.Run(new GenerarReserva());
+            Application.Run(new MenuPrincipal());
         }
 
-        private string ValidarDNI()
+        private void GoToGenerarPreReserva()
         {
-            var dni = textBoxClienteDNI.Text.Trim();
+            Close();
 
-            if (string.IsNullOrEmpty(dni))
+            Thread thread = new Thread(OpenGenerarPreReserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenGenerarPreReserva()
+        {
+            Application.Run(new GenerarPreReserva());
+        }
+
+        private string ValidarCantidadPasajeros()
+        {
+            if (string.IsNullOrEmpty(textBoxPasajerosAdultos.Text))
             {
-                return "Debes ingresar el DNI del Cliente";
+                return "Debes seleccionar una cantidad de pasajeros adultos";
             }
 
-            if (!int.TryParse(dni, out int nroDeDoc))
+            if (!int.TryParse(textBoxPasajerosAdultos.Text, out PasajerosAdultos))
             {
-                return "El DNI debe ser un numero entero";
+                return "La cantidad de pasajeros adultos debe ser un numero entero";
             }
 
-            if (nroDeDoc < 0 || nroDeDoc > 99999999)
+            if (PasajerosAdultos <= 0)
             {
-                return "El DNI no puede ser menor a 0 ni mayor a 99999999";
+                return "Debes seleccionar como minimo 1 pasajero adulto";
+            }
+
+            if (!int.TryParse(textBoxPasajerosMenores.Text, out PasajerosMenores) && !string.IsNullOrEmpty(textBoxPasajerosMenores.Text))
+            {
+                return "La cantidad de pasajeros menores debe ser un numero entero";
+            }
+
+            if (PasajerosMenores < 0)
+            {
+                return "La cantidad de pasajeros menores no puede ser menor a 0";
+            }
+
+            if (!int.TryParse(textBoxPasajerosInfantes.Text, out PasajerosInfantes) && !string.IsNullOrEmpty(textBoxPasajerosInfantes.Text))
+            {
+                return "La cantidad de pasajeros infantes debe ser un numero entero";
+            }
+
+            if (PasajerosInfantes < 0)
+            {
+                return "La cantidad de pasajeros infantes no puede ser menor a 0";
             }
 
             return string.Empty;
