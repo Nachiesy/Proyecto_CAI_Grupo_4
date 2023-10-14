@@ -53,8 +53,8 @@ namespace Proyecto_CAI_Grupo_4
             item.SubItems.Add(SumarPasajero.Nacionalidad.ToString());
             item.SubItems.Add(SumarPasajero.Tipo_Doc.ToString());
             item.SubItems.Add(SumarPasajero.Doc.ToString());
-            item.SubItems.Add(SumarPasajero.Pais_emisor.ToString());
             item.SubItems.Add(SumarPasajero.Fecha_Exp.ToFormDate());
+            item.SubItems.Add(SumarPasajero.Pais_emisor.ToString());
             item.SubItems.Add(SumarPasajero.Email.ToString());
             item.SubItems.Add(SumarPasajero.Tel_contacto.ToString());
 
