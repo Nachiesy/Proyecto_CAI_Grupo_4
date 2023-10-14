@@ -57,5 +57,23 @@ namespace Proyecto_CAI_Grupo_4.Managers
 
             return string.Empty;
         }
+
+        public static string ValidarFechasDeVuelos(ProductosFilterDto presupuesto)
+        {
+            var fechaDesdeHasValue = presupuesto.FechaDesde.HasValue;
+            var fechaHastaHasValue = presupuesto.FechaHasta.HasValue;
+
+            if (fechaDesdeHasValue && (presupuesto.FechaDesde.Value.Date < DateTime.Now.Date))
+            {
+                return "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
+            }
+
+            if (fechaHastaHasValue && (presupuesto.FechaHasta.Value.Date < DateTime.Now.Date))
+            {
+                return "La Fecha Hasta debe ser mayor a hoy" + Environment.NewLine;
+            }
+
+            return string.Empty;
+        }
     }
 }

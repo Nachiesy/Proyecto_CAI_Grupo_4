@@ -106,10 +106,28 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         [Description("Londres")]
         londres,
+
+        [Description("Montevideo")]
+        montevideo,
+
+        [Description("Paris")]
+        paris,
+
+        [Description("San Francisco")]
+        sanFrancisco,
     }
 
     public enum AereosDestinoEnum
     {
+        [Description("Buenos Aires")]
+        buenosAires,
+
+        [Description("Madrid")]
+        madrid,
+
+        [Description("Londres")]
+        londres,
+
         [Description("Montevideo")]
         montevideo,
 

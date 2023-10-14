@@ -80,8 +80,8 @@ namespace Proyecto_CAI_Grupo_4
                     .Where(x => x.Cantidad > 0
                                 && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
                                 && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDeSalida == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaDeLlegada == filter.FechaHasta)
+                                && (!filter.FechaDesde.HasValue || x.FechaDeSalida.Date == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.FechaDeLlegada.Date == filter.FechaHasta)
                                 && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
                                 && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino)
                                 && (!filter.TipoDePasajero.HasValue || (int)x.TipoDePasajero == filter.TipoDePasajero)
@@ -105,7 +105,7 @@ namespace Proyecto_CAI_Grupo_4
 
             messages += FiltrosManager.ValidarPrecios(presupuesto);
 
-            messages += FiltrosManager.ValidarFechas(presupuesto);
+            messages += FiltrosManager.ValidarFechasDeVuelos(presupuesto);
 
             return messages;
         }
