@@ -193,29 +193,22 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            if (listViewProductosSeleccionados.Items.Count > 0)
+            GenerarPresupuestosManager.hotelesElegidos.Clear();
+
+            foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
-                GenerarPresupuestosManager.hotelesElegidos.Clear();
+                var id = Guid.Parse(item.Text);
 
-                foreach (ListViewItem item in listViewProductosSeleccionados.Items)
-                {
-                    var id = Guid.Parse(item.Text);
+                var producto = GenerarPresupuestosManager.hoteles.Where(x => x.Id == id).SingleOrDefault();
 
-                    var producto = GenerarPresupuestosManager.hoteles.Where(x => x.Id == id).SingleOrDefault();
-
-                    GenerarPresupuestosManager.hotelesElegidos.Add(producto);
-                }
-
-                this.Close();
-
-                Thread thread = new Thread(OpenMenuGenerarPresupuesto);
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.Start();
+                GenerarPresupuestosManager.hotelesElegidos.Add(producto);
             }
-            else
-            {
-                MessageBox.Show("Debes seleccionar Hoteles para poder confirmar el presupuesto");
-            }
+
+            this.Close();
+
+            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void btnVolverAlMenuGenerarPresupuestos_Click(object sender, EventArgs e)

@@ -176,29 +176,22 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            if (listViewProductosSeleccionados.Items.Count > 0)
+            GenerarPresupuestosManager.paquetesTuristicosElegidos.Clear();
+
+            foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
-                GenerarPresupuestosManager.paquetesTuristicosElegidos.Clear();
+                var id = Guid.Parse(item.Text);
 
-                foreach (ListViewItem item in listViewProductosSeleccionados.Items)
-                {
-                    var id = Guid.Parse(item.Text);
+                var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
 
-                    var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
-
-                    GenerarPresupuestosManager.paquetesTuristicosElegidos.Add(producto);
-                }
-
-                this.Close();
-
-                Thread thread = new Thread(OpenMenuGenerarPresupuesto);
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.Start();
+                GenerarPresupuestosManager.paquetesTuristicosElegidos.Add(producto);
             }
-            else
-            {
-                MessageBox.Show("Debes seleccionar Paquetes para poder confirmar el presupuesto");
-            }
+
+            this.Close();
+
+            Thread thread = new Thread(OpenMenuGenerarPresupuesto);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void btnVolverAlMenuGenerarPresupuestos_Click(object sender, EventArgs e)
