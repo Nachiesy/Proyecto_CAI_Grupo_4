@@ -28,13 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            reservasListView = new ListView();
-            Codigo = new ColumnHeader();
-            Estado = new ColumnHeader();
-            NroDocumento = new ColumnHeader();
-            Precio = new ColumnHeader();
-            cantpasajeros = new ColumnHeader();
-            Fecha = new ColumnHeader();
             filtroCodigo = new TextBox();
             label1 = new Label();
             label2 = new Label();
@@ -44,49 +37,15 @@
             btn_BuscarReserva = new Common.Components.BotonEstilizado();
             grp_Filtros = new GroupBox();
             btn_Limpiar = new Common.Components.BotonEstilizado();
+            reservasListView = new ListView();
+            Codigo = new ColumnHeader();
+            Estado = new ColumnHeader();
+            DNI = new ColumnHeader();
+            CantidadPasajeros = new ColumnHeader();
+            Precio = new ColumnHeader();
+            Fecha = new ColumnHeader();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
-            // 
-            // reservasListView
-            // 
-            reservasListView.BackColor = SystemColors.ControlLight;
-            reservasListView.Columns.AddRange(new ColumnHeader[] { Codigo, Estado, NroDocumento, Precio, cantpasajeros, Fecha });
-            reservasListView.Location = new Point(27, 245);
-            reservasListView.Name = "reservasListView";
-            reservasListView.Size = new Size(806, 228);
-            reservasListView.TabIndex = 0;
-            reservasListView.UseCompatibleStateImageBehavior = false;
-            reservasListView.View = View.Details;
-            // 
-            // Codigo
-            // 
-            Codigo.Text = "ID";
-            Codigo.Width = 150;
-            // 
-            // Estado
-            // 
-            Estado.Text = "Estado";
-            Estado.Width = 150;
-            // 
-            // NroDocumento
-            // 
-            NroDocumento.Text = "Nro. Documento";
-            NroDocumento.Width = 200;
-            // 
-            // Precio
-            // 
-            Precio.Text = "Precio";
-            Precio.Width = 150;
-            // 
-            // cantpasajeros
-            // 
-            cantpasajeros.Text = "Cant. Pasajeros";
-            cantpasajeros.Width = 200;
-            // 
-            // Fecha
-            // 
-            Fecha.Text = "Fecha de Reserva";
-            Fecha.Width = 200;
             // 
             // filtroCodigo
             // 
@@ -138,7 +97,6 @@
             filtroEstado.Name = "filtroEstado";
             filtroEstado.Size = new Size(179, 23);
             filtroEstado.TabIndex = 9;
-            filtroEstado.SelectedIndexChanged += filtroEstado_SelectedIndexChanged;
             // 
             // btn_BuscarReserva
             // 
@@ -185,37 +143,70 @@
             btn_Limpiar.UseVisualStyleBackColor = false;
             btn_Limpiar.Click += limpiarConsulta_Click;
             // 
+            // reservasListView
+            // 
+            reservasListView.Columns.AddRange(new ColumnHeader[] { Codigo, Estado, DNI, CantidadPasajeros, Precio, Fecha });
+            reservasListView.Location = new Point(27, 239);
+            reservasListView.Name = "reservasListView";
+            reservasListView.Size = new Size(804, 226);
+            reservasListView.TabIndex = 11;
+            reservasListView.UseCompatibleStateImageBehavior = false;
+            reservasListView.View = View.Details;
+            // 
+            // Codigo
+            // 
+            Codigo.Text = "Código";
+            Codigo.Width = 100;
+            // 
+            // Estado
+            // 
+            Estado.Text = "Estado";
+            Estado.Width = 200;
+            // 
+            // DNI
+            // 
+            DNI.Text = "DNI";
+            DNI.Width = 200;
+            // 
+            // CantidadPasajeros
+            // 
+            CantidadPasajeros.Text = "Cantidad de Pasajeros";
+            CantidadPasajeros.Width = 150;
+            // 
+            // Precio
+            // 
+            Precio.Text = "Precio";
+            Precio.Width = 100;
+            // 
+            // Fecha
+            // 
+            Fecha.Text = "Fecha";
+            Fecha.Width = 100;
+            // 
             // ConsultarReservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(843, 487);
+            Controls.Add(reservasListView);
             Controls.Add(btn_Limpiar);
             Controls.Add(grp_Filtros);
             Controls.Add(btn_BuscarReserva);
-            Controls.Add(reservasListView);
             Margin = new Padding(6);
             Name = "ConsultarReservas";
             Text = "Form1";
             Load += ConsultarReservas_Load;
-            Controls.SetChildIndex(reservasListView, 0);
             Controls.SetChildIndex(btn_BuscarReserva, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(btn_Limpiar, 0);
+            Controls.SetChildIndex(reservasListView, 0);
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private ListView reservasListView;
-        private ColumnHeader Codigo;
-        private ColumnHeader Estado;
-        private ColumnHeader NroDocumento;
-        private ColumnHeader Precio;
-        private ColumnHeader Fecha;
         private TextBox filtroCodigo;
         private Label label1;
         private Label label2;
@@ -225,6 +216,12 @@
         private Common.Components.BotonEstilizado btn_BuscarReserva;
         private GroupBox grp_Filtros;
         private Common.Components.BotonEstilizado btn_Limpiar;
-        private ColumnHeader cantpasajeros;
+        private ListView reservasListView;
+        private ColumnHeader Codigo;
+        private ColumnHeader Estado;
+        private ColumnHeader DNI;
+        private ColumnHeader CantidadPasajeros;
+        private ColumnHeader Precio;
+        private ColumnHeader Fecha;
     }
 }

@@ -51,21 +51,23 @@ namespace Proyecto_CAI_Grupo_4
 
         private void buscarReserva_Click(object sender, EventArgs e)
         {
-            var codigo = filtroCodigo.Text.Trim();
+            var codigoInput = filtroCodigo.Text.Trim();
+
+            int.TryParse(codigoInput, out int codigo);
 
             var estado = filtroEstado.SelectedIndex;
 
             var dni = filtroNroDeDoc.Text.Trim();
 
             var filteredReservas = reservas
-                .Where(x => (string.IsNullOrEmpty(codigo) || x.Codigo == int.Parse(codigo))
+                .Where(x => (string.IsNullOrEmpty(codigoInput) || x.Codigo == codigo)
                             && (estado == -1 || (int)x.Estado == estado)
                             && (string.IsNullOrEmpty(dni) || x.DNI == dni));
 
+            reservasListView.Items.Clear();
+
             if (filteredReservas.Any())
             {
-                reservasListView.Items.Clear();
-
                 AddReservasToListView(filteredReservas);
             }
             else
@@ -86,7 +88,6 @@ namespace Proyecto_CAI_Grupo_4
                 row.SubItems.Add(item.CantPasajeros.ToString());
                 row.SubItems.Add(item.Fecha.ToFormDate());
 
-
                 reservasListView.Items.Add(row);
             }
         }
@@ -95,14 +96,11 @@ namespace Proyecto_CAI_Grupo_4
         {
             reservasListView.Items.Clear();
 
-            filtroCodigo.Text = string.Empty;
+            filtroCodigo.Clear();
             filtroEstado.SelectedIndex = -1;
-            filtroNroDeDoc.Text = string.Empty;
-        }
+            filtroNroDeDoc.Clear();
 
-        private void filtroEstado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            AddReservasToListView(reservas);
         }
     }
 }
