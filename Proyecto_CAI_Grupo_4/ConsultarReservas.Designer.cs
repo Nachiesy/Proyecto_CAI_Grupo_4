@@ -145,7 +145,7 @@
             // 
             // reservasListView
             // 
-            reservasListView.Columns.AddRange(new ColumnHeader[] { Codigo, Estado, DNI, CantidadPasajeros, Precio, Fecha });
+            reservasListView.Columns.AddRange(new ColumnHeader[] { Codigo, Estado, DNI, Precio, CantidadPasajeros, Fecha });
             reservasListView.Location = new Point(27, 239);
             reservasListView.Name = "reservasListView";
             reservasListView.Size = new Size(804, 226);

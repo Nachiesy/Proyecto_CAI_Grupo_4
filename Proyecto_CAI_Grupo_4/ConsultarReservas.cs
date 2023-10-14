@@ -84,7 +84,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 row.SubItems.Add(item.Estado.GetDescription());
                 row.SubItems.Add(item.DNI);
-                row.SubItems.Add(item.Precio.ToString());
+                row.SubItems.Add(item.Precio.ToFormDecimal());
                 row.SubItems.Add(item.CantPasajeros.ToString());
                 row.SubItems.Add(item.Fecha.ToFormDate());
 
