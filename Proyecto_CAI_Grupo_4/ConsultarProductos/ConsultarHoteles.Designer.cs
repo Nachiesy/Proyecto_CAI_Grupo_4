@@ -64,6 +64,8 @@
             CapacidadAdultos = new ColumnHeader();
             CapacidadMenores = new ColumnHeader();
             CapacidadInfantes = new ColumnHeader();
+            FechaDesde = new ColumnHeader();
+            FechaHasta = new ColumnHeader();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
@@ -292,7 +294,7 @@
             // 
             // listViewProductos
             // 
-            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Ciudad, Direccion, Calificacion, CantidadHabitaciones, TipoHabitacion, Precio, CapacidadPersonas, CapacidadAdultos, CapacidadMenores, CapacidadInfantes });
+            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Ciudad, Direccion, Calificacion, CantidadHabitaciones, TipoHabitacion, Precio, CapacidadPersonas, CapacidadAdultos, CapacidadMenores, CapacidadInfantes, FechaDesde, FechaHasta });
             listViewProductos.FullRowSelect = true;
             listViewProductos.Location = new Point(27, 355);
             listViewProductos.Name = "listViewProductos";
@@ -367,6 +369,16 @@
             CapacidadInfantes.Text = "Capacidad de Infantes";
             CapacidadInfantes.Width = 200;
             // 
+            // FechaDesde
+            // 
+            FechaDesde.Text = "Fecha Desde";
+            FechaDesde.Width = 100;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.Text = "Fecha Hasta";
+            FechaHasta.Width = 100;
+            // 
             // ConsultarHoteles
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -428,5 +440,7 @@
         private ColumnHeader CapacidadAdultos;
         private ColumnHeader CapacidadMenores;
         private ColumnHeader CapacidadInfantes;
+        private ColumnHeader FechaDesde;
+        private ColumnHeader FechaHasta;
     }
 }

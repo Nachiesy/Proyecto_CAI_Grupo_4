@@ -43,6 +43,8 @@
             CapacidadAdultos = new ColumnHeader();
             CapacidadMenores = new ColumnHeader();
             CapacidadInfantes = new ColumnHeader();
+            FechaDesde = new ColumnHeader();
+            FechaHasta = new ColumnHeader();
             btnAgregarProductos = new Common.Components.BotonEstilizado();
             grp_Filtros = new GroupBox();
             labelNombre = new Label();
@@ -79,6 +81,8 @@
             SelectCapacidadAdultos = new ColumnHeader();
             SelectCapacidadMenores = new ColumnHeader();
             SelectCapacidadInfantes = new ColumnHeader();
+            SelectFechaDesde = new ColumnHeader();
+            SelectFechaHasta = new ColumnHeader();
             btnRemoverProductos = new Common.Components.BotonEstilizado();
             btnConfirmarProductosSeleccionados = new Common.Components.BotonEstilizado();
             btnVolverAlMenuGenerarPresupuestos = new Common.Components.BotonEstilizado();
@@ -100,7 +104,7 @@
             // 
             // listViewProductos
             // 
-            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Ciudad, Direccion, Calificacion, CantidadHabitaciones, TipoHabitacion, Precio, CapacidadPersonas, CapacidadAdultos, CapacidadMenores, CapacidadInfantes });
+            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, Ciudad, Direccion, Calificacion, CantidadHabitaciones, TipoHabitacion, Precio, CapacidadPersonas, CapacidadAdultos, CapacidadMenores, CapacidadInfantes, FechaDesde, FechaHasta });
             listViewProductos.FullRowSelect = true;
             listViewProductos.Location = new Point(6, 22);
             listViewProductos.Name = "listViewProductos";
@@ -174,6 +178,16 @@
             // 
             CapacidadInfantes.Text = "Capacidad de Infantes";
             CapacidadInfantes.Width = 200;
+            // 
+            // FechaDesde
+            // 
+            FechaDesde.Text = "Fecha Desde";
+            FechaDesde.Width = 100;
+            // 
+            // FechaHasta
+            // 
+            FechaHasta.Text = "Fecha Hasta";
+            FechaHasta.Width = 100;
             // 
             // btnAgregarProductos
             // 
@@ -419,7 +433,7 @@
             // 
             // listViewProductosSeleccionados
             // 
-            listViewProductosSeleccionados.Columns.AddRange(new ColumnHeader[] { SelectID, SelectCodigo, SelectNombre, SelectCiudad, SelectDireccion, SelectCalificacion, SelectTipoHabitacion, SelectPrecio, SelectCapacidadPersonas, SelectCapacidadAdultos, SelectCapacidadMenores, SelectCapacidadInfantes });
+            listViewProductosSeleccionados.Columns.AddRange(new ColumnHeader[] { SelectID, SelectCodigo, SelectNombre, SelectCiudad, SelectDireccion, SelectCalificacion, SelectTipoHabitacion, SelectPrecio, SelectCapacidadPersonas, SelectCapacidadAdultos, SelectCapacidadMenores, SelectCapacidadInfantes, SelectFechaDesde, SelectFechaHasta });
             listViewProductosSeleccionados.FullRowSelect = true;
             listViewProductosSeleccionados.Location = new Point(6, 22);
             listViewProductosSeleccionados.Name = "listViewProductosSeleccionados";
@@ -488,6 +502,16 @@
             // 
             SelectCapacidadInfantes.Text = "Capacidad de Infantes";
             SelectCapacidadInfantes.Width = 200;
+            // 
+            // SelectFechaDesde
+            // 
+            SelectFechaDesde.Text = "Fecha Desde";
+            SelectFechaDesde.Width = 100;
+            // 
+            // SelectFechaHasta
+            // 
+            SelectFechaHasta.Text = "Fecha Hasta";
+            SelectFechaHasta.Width = 100;
             // 
             // btnRemoverProductos
             // 
@@ -614,5 +638,9 @@
         private ColumnHeader SelectCapacidadAdultos;
         private ColumnHeader SelectCapacidadMenores;
         private ColumnHeader SelectCapacidadInfantes;
+        private ColumnHeader FechaDesde;
+        private ColumnHeader FechaHasta;
+        private ColumnHeader SelectFechaDesde;
+        private ColumnHeader SelectFechaHasta;
     }
 }
