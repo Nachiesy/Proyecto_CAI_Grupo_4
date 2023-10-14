@@ -41,8 +41,8 @@
             Codigo = new ColumnHeader();
             Estado = new ColumnHeader();
             DNI = new ColumnHeader();
-            CantidadPasajeros = new ColumnHeader();
             Precio = new ColumnHeader();
+            CantidadPasajeros = new ColumnHeader();
             Fecha = new ColumnHeader();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
@@ -168,20 +168,20 @@
             DNI.Text = "DNI";
             DNI.Width = 200;
             // 
-            // CantidadPasajeros
-            // 
-            CantidadPasajeros.Text = "Cantidad de Pasajeros";
-            CantidadPasajeros.Width = 150;
-            // 
             // Precio
             // 
             Precio.Text = "Precio";
             Precio.Width = 100;
             // 
+            // CantidadPasajeros
+            // 
+            CantidadPasajeros.Text = "Cantidad de Pasajeros";
+            CantidadPasajeros.Width = 150;
+            // 
             // Fecha
             // 
-            Fecha.Text = "Fecha";
-            Fecha.Width = 100;
+            Fecha.Text = "Fecha de Reserva";
+            Fecha.Width = 150;
             // 
             // ConsultarReservas
             // 
