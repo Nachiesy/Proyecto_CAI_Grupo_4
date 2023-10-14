@@ -160,7 +160,7 @@ namespace Proyecto_CAI_Grupo_4
 
                     var producto = GenerarPresupuestosManager.hoteles.Where(x => x.Id == id).SingleOrDefault();
 
-                    var cantidad = IsProductInProductosSeleccionados(producto.Codigo);
+                    var cantidad = IsProductInProductosSeleccionados(producto.Id);
 
                     if (producto.Cantidad > cantidad)
                     {
@@ -241,21 +241,21 @@ namespace Proyecto_CAI_Grupo_4
             AddProductosToListView(GenerarPresupuestosManager.hoteles);
         }
 
-        private int IsProductInProductosSeleccionados(string codigo)
+        private int IsProductInProductosSeleccionados(Guid id)
         {
-            var codigos = new List<string>();
+            var selectedIDs = new List<Guid>();
 
             foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
-                var selectedCodigo = item.SubItems[codigoSubItemIndex].Text;
+                var selectedID = Guid.Parse(item.Text);
 
-                if (selectedCodigo == codigo)
+                if (selectedID == id)
                 {
-                    codigos.Add(selectedCodigo);
+                    selectedIDs.Add(selectedID);
                 }
             }
 
-            return codigos.Count();
+            return selectedIDs.Count();
         }
 
         private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)
