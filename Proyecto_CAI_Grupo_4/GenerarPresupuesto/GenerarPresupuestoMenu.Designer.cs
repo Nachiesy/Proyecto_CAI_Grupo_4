@@ -47,14 +47,14 @@ namespace Proyecto_CAI_Grupo_4
             label2 = new Label();
             textBoxClienteDNI = new TextBox();
             grp_Filtros = new GroupBox();
-            textBox2 = new TextBox();
+            textBoxClienteApellido = new TextBox();
             label4 = new Label();
-            textBox1 = new TextBox();
+            textBoxClienteNombre = new TextBox();
             label3 = new Label();
-            botonEstilizado1 = new Common.Components.BotonEstilizado();
+            btnPreReservar = new Common.Components.BotonEstilizado();
             groupBox2 = new GroupBox();
-            botonEstilizado4 = new Common.Components.BotonEstilizado();
-            botonEstilizado2 = new Common.Components.BotonEstilizado();
+            btnEliminarTodo = new Common.Components.BotonEstilizado();
+            btnEliminarSeleccion = new Common.Components.BotonEstilizado();
             groupBox3 = new GroupBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -225,9 +225,9 @@ namespace Proyecto_CAI_Grupo_4
             // 
             // grp_Filtros
             // 
-            grp_Filtros.Controls.Add(textBox2);
+            grp_Filtros.Controls.Add(textBoxClienteApellido);
             grp_Filtros.Controls.Add(label4);
-            grp_Filtros.Controls.Add(textBox1);
+            grp_Filtros.Controls.Add(textBoxClienteNombre);
             grp_Filtros.Controls.Add(label3);
             grp_Filtros.Controls.Add(textBoxClienteDNI);
             grp_Filtros.Controls.Add(label2);
@@ -238,12 +238,12 @@ namespace Proyecto_CAI_Grupo_4
             grp_Filtros.TabStop = false;
             grp_Filtros.Text = "Cliente";
             // 
-            // textBox2
+            // textBoxClienteApellido
             // 
-            textBox2.Location = new Point(10, 116);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(226, 23);
-            textBox2.TabIndex = 6;
+            textBoxClienteApellido.Location = new Point(10, 116);
+            textBoxClienteApellido.Name = "textBoxClienteApellido";
+            textBoxClienteApellido.Size = new Size(226, 23);
+            textBoxClienteApellido.TabIndex = 6;
             // 
             // label4
             // 
@@ -254,12 +254,12 @@ namespace Proyecto_CAI_Grupo_4
             label4.TabIndex = 7;
             label4.Text = "Apellido";
             // 
-            // textBox1
+            // textBoxClienteNombre
             // 
-            textBox1.Location = new Point(10, 53);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(226, 23);
-            textBox1.TabIndex = 4;
+            textBoxClienteNombre.Location = new Point(10, 53);
+            textBoxClienteNombre.Name = "textBoxClienteNombre";
+            textBoxClienteNombre.Size = new Size(226, 23);
+            textBoxClienteNombre.TabIndex = 4;
             // 
             // label3
             // 
@@ -270,24 +270,24 @@ namespace Proyecto_CAI_Grupo_4
             label3.TabIndex = 5;
             label3.Text = "Nombre";
             // 
-            // botonEstilizado1
+            // btnPreReservar
             // 
-            botonEstilizado1.BackColor = Color.Transparent;
-            botonEstilizado1.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            botonEstilizado1.FlatStyle = FlatStyle.Flat;
-            botonEstilizado1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            botonEstilizado1.ForeColor = Color.Black;
-            botonEstilizado1.Location = new Point(6, 89);
-            botonEstilizado1.Name = "botonEstilizado1";
-            botonEstilizado1.Size = new Size(230, 56);
-            botonEstilizado1.TabIndex = 42;
-            botonEstilizado1.Text = "Pre-reservar";
-            botonEstilizado1.UseVisualStyleBackColor = false;
+            btnPreReservar.BackColor = Color.Transparent;
+            btnPreReservar.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnPreReservar.FlatStyle = FlatStyle.Flat;
+            btnPreReservar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPreReservar.ForeColor = Color.Black;
+            btnPreReservar.Location = new Point(6, 89);
+            btnPreReservar.Name = "btnPreReservar";
+            btnPreReservar.Size = new Size(230, 56);
+            btnPreReservar.TabIndex = 42;
+            btnPreReservar.Text = "Pre-reservar";
+            btnPreReservar.UseVisualStyleBackColor = false;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(botonEstilizado2);
-            groupBox2.Controls.Add(botonEstilizado4);
+            groupBox2.Controls.Add(btnEliminarTodo);
+            groupBox2.Controls.Add(btnEliminarSeleccion);
             groupBox2.Controls.Add(productosElegidos);
             groupBox2.Location = new Point(279, 106);
             groupBox2.Name = "groupBox2";
@@ -296,37 +296,37 @@ namespace Proyecto_CAI_Grupo_4
             groupBox2.TabStop = false;
             groupBox2.Text = "Productos Asignados";
             // 
-            // botonEstilizado4
+            // btnEliminarTodo
             // 
-            botonEstilizado4.BackColor = Color.Transparent;
-            botonEstilizado4.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            botonEstilizado4.FlatStyle = FlatStyle.Flat;
-            botonEstilizado4.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            botonEstilizado4.ForeColor = Color.Black;
-            botonEstilizado4.Location = new Point(419, 629);
-            botonEstilizado4.Name = "botonEstilizado4";
-            botonEstilizado4.Size = new Size(428, 40);
-            botonEstilizado4.TabIndex = 45;
-            botonEstilizado4.Text = "Eliminar selección";
-            botonEstilizado4.UseVisualStyleBackColor = false;
+            btnEliminarTodo.BackColor = Color.Transparent;
+            btnEliminarTodo.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnEliminarTodo.FlatStyle = FlatStyle.Flat;
+            btnEliminarTodo.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEliminarTodo.ForeColor = Color.Black;
+            btnEliminarTodo.Location = new Point(6, 629);
+            btnEliminarTodo.Name = "btnEliminarTodo";
+            btnEliminarTodo.Size = new Size(388, 40);
+            btnEliminarTodo.TabIndex = 46;
+            btnEliminarTodo.Text = "Eliminar todo";
+            btnEliminarTodo.UseVisualStyleBackColor = false;
             // 
-            // botonEstilizado2
+            // btnEliminarSeleccion
             // 
-            botonEstilizado2.BackColor = Color.Transparent;
-            botonEstilizado2.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            botonEstilizado2.FlatStyle = FlatStyle.Flat;
-            botonEstilizado2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            botonEstilizado2.ForeColor = Color.Black;
-            botonEstilizado2.Location = new Point(6, 629);
-            botonEstilizado2.Name = "botonEstilizado2";
-            botonEstilizado2.Size = new Size(388, 40);
-            botonEstilizado2.TabIndex = 46;
-            botonEstilizado2.Text = "Eliminar todo";
-            botonEstilizado2.UseVisualStyleBackColor = false;
+            btnEliminarSeleccion.BackColor = Color.Transparent;
+            btnEliminarSeleccion.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btnEliminarSeleccion.FlatStyle = FlatStyle.Flat;
+            btnEliminarSeleccion.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEliminarSeleccion.ForeColor = Color.Black;
+            btnEliminarSeleccion.Location = new Point(419, 629);
+            btnEliminarSeleccion.Name = "btnEliminarSeleccion";
+            btnEliminarSeleccion.Size = new Size(428, 40);
+            btnEliminarSeleccion.TabIndex = 45;
+            btnEliminarSeleccion.Text = "Eliminar selección";
+            btnEliminarSeleccion.UseVisualStyleBackColor = false;
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(botonEstilizado1);
+            groupBox3.Controls.Add(btnPreReservar);
             groupBox3.Controls.Add(btnFinalizarPresupuesto);
             groupBox3.Location = new Point(12, 616);
             groupBox3.Name = "groupBox3";
@@ -390,14 +390,14 @@ namespace Proyecto_CAI_Grupo_4
         private Label label2;
         private TextBox textBoxClienteDNI;
         private GroupBox grp_Filtros;
-        private TextBox textBox2;
+        private TextBox textBoxClienteApellido;
         private Label label4;
-        private TextBox textBox1;
+        private TextBox textBoxClienteNombre;
         private Label label3;
-        private Common.Components.BotonEstilizado botonEstilizado1;
+        private Common.Components.BotonEstilizado btnPreReservar;
         private GroupBox groupBox2;
-        private Common.Components.BotonEstilizado botonEstilizado4;
-        private Common.Components.BotonEstilizado botonEstilizado2;
+        private Common.Components.BotonEstilizado btnEliminarSeleccion;
+        private Common.Components.BotonEstilizado btnEliminarTodo;
         private GroupBox groupBox3;
     }
 }
