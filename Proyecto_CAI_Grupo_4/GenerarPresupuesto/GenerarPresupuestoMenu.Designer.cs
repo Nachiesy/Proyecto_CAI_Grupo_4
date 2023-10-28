@@ -284,6 +284,7 @@ namespace Proyecto_CAI_Grupo_4
             btnPreReservar.TabIndex = 42;
             btnPreReservar.Text = "Pre-reservar";
             btnPreReservar.UseVisualStyleBackColor = false;
+            btnPreReservar.Click += btnPreReservar_Click;
             // 
             // groupBox2
             // 
