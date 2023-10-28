@@ -87,6 +87,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(397, 294);
             Controls.Add(btn_Volver);
             Controls.Add(label2);
