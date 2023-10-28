@@ -17,6 +17,13 @@ namespace Proyecto_CAI_Grupo_4
         public GenerarPresupuestoMenu() : base(tituloModulo: "Generar Presupuesto")
         {
             InitializeComponent();
+            ActualizarEstadoBotones();
+        }
+
+        private void ActualizarEstadoBotones()
+        {
+            btnEliminarTodo.Enabled = productosElegidos.Items.Count > 0;
+            btnEliminarSeleccion.Enabled = productosElegidos.SelectedItems.Count > 0;
         }
 
         private void GenerarPresupuestoMenu_Load(object sender, EventArgs e)
@@ -176,6 +183,17 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenGenerarPreReserva()
         {
             Application.Run(new GenerarPreReserva());
+        }
+
+        private void btnEliminarTodo_Click(object sender, EventArgs e)
+        {
+            AereosModel.ClearAereosElegidos();
+            HotelesModel.ClearHotelesElegidos();
+        }
+
+        private void ProductosSeleccionadosListView_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            ActualizarEstadoBotones();
         }
     }
 }

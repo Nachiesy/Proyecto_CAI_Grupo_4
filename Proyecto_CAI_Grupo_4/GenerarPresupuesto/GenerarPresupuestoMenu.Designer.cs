@@ -181,6 +181,7 @@ namespace Proyecto_CAI_Grupo_4
             productosElegidos.TabIndex = 41;
             productosElegidos.UseCompatibleStateImageBehavior = false;
             productosElegidos.View = View.Details;
+            productosElegidos.ItemCheck += ProductosSeleccionadosListView_ItemCheck;
             // 
             // ID
             // 
@@ -309,6 +310,7 @@ namespace Proyecto_CAI_Grupo_4
             btnEliminarTodo.TabIndex = 46;
             btnEliminarTodo.Text = "Eliminar todo";
             btnEliminarTodo.UseVisualStyleBackColor = false;
+            btnEliminarTodo.Click += btnEliminarTodo_Click;
             // 
             // btnEliminarSeleccion
             // 
