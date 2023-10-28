@@ -13,17 +13,15 @@ public partial class GenerarPresupuestoMenu : VistaBase
     private int presupuestoId = 0;
     private bool esNuevo = true;
 
-    public GenerarPresupuestoMenu() : base(tituloModulo: "Generar Presupuesto")
+    public GenerarPresupuestoMenu() : base(tituloModulo: $"Generar Presupuesto")
     {
         InitializeComponent();
-        ActualizarEstadoBotones();
         presupuestoId = PresupuestosModel.GenerarId();
     }
 
     public GenerarPresupuestoMenu(int presupuestoId) : base(tituloModulo: $"Modificar Presupuesto #{presupuestoId}")
     {
         InitializeComponent();
-        ActualizarEstadoBotones();
         this.presupuestoId = presupuestoId;
         esNuevo = false;
 
@@ -57,6 +55,8 @@ public partial class GenerarPresupuestoMenu : VistaBase
         Total += hoteles.Sum(x => x.Precio);
 
         presupuestoTotal.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
+
+        ActualizarEstadoBotones();
     }
 
     private void AddProductosToListView(IEnumerable<Productos> listToAdd)
@@ -134,7 +134,6 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         PresupuestosModel.AgregarPresupuesto(itinerario);
 
-
         if (esNuevo)
         {
             MessageBox.Show($"Presupuesto con Código: [{presupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
@@ -144,6 +143,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
             MessageBox.Show($"Presupuesto con Código: [{presupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
 
+        //TODO: ActualizarCantidadesDeProductos
         //Mepa que esto ta mal, no deberia actualizar el stock el presupuesto, solamente cuando se confirma la pre-reserva se baja el stock
         //ActualizarCantidadesDeProductos();
 
@@ -196,16 +196,14 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         AereosModel.ClearAereosElegidos();
         HotelesModel.ClearHotelesElegidos();
-    }
 
-    private void ProductosSeleccionadosListView_ItemCheck(object sender, ItemCheckEventArgs e)
-    {
-        ActualizarEstadoBotones();
+        productosElegidos.Items.Clear();
+
+        presupuestoTotal.Text = "Total: $-";
     }
 
     private void btnPreReservar_Click(object sender, EventArgs e)
     {
-
         //TODO: esto esta incompleto, revisar el DC y DF
 
         var reserva = new Reserva()
@@ -222,5 +220,30 @@ public partial class GenerarPresupuestoMenu : VistaBase
         ReservaModel.AddReserva(reserva);
 
         GoToGenerarPreReserva();
+    }
+
+    private void btnEliminarSeleccion_Click(object sender, EventArgs e)
+    {
+        foreach (ListViewItem item in productosElegidos.SelectedItems)
+        {
+            var id = Guid.Parse(item.Text);
+
+            AereosModel.RemoveAereoElegido(id);
+
+            HotelesModel.RemoveHotelElegido(id);
+
+            productosElegidos.Items.Remove(item);
+        }
+
+        Total = 0;
+        Total += AereosModel.GetAereosElegidos().Sum(x => x.Precio);
+        Total += HotelesModel.GetHotelesElegidos().Sum(x => x.Precio);
+
+        presupuestoTotal.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
+    }
+
+    private void productosElegidos_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ActualizarEstadoBotones();
     }
 }

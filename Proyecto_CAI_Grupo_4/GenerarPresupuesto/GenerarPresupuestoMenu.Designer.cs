@@ -53,9 +53,9 @@ namespace Proyecto_CAI_Grupo_4
             label3 = new Label();
             btnPreReservar = new Common.Components.BotonEstilizado();
             groupBox2 = new GroupBox();
+            groupBox3 = new GroupBox();
             btnEliminarTodo = new Common.Components.BotonEstilizado();
             btnEliminarSeleccion = new Common.Components.BotonEstilizado();
-            groupBox3 = new GroupBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -154,7 +154,7 @@ namespace Proyecto_CAI_Grupo_4
             btnFinalizarPresupuesto.ForeColor = Color.Black;
             btnFinalizarPresupuesto.Location = new Point(6, 22);
             btnFinalizarPresupuesto.Name = "btnFinalizarPresupuesto";
-            btnFinalizarPresupuesto.Size = new Size(230, 61);
+            btnFinalizarPresupuesto.Size = new Size(380, 47);
             btnFinalizarPresupuesto.TabIndex = 4;
             btnFinalizarPresupuesto.Text = "Guardar Presupuesto";
             btnFinalizarPresupuesto.UseVisualStyleBackColor = false;
@@ -165,7 +165,7 @@ namespace Proyecto_CAI_Grupo_4
             grp_Estimacion.Controls.Add(presupuestoTotal);
             grp_Estimacion.Location = new Point(12, 520);
             grp_Estimacion.Name = "grp_Estimacion";
-            grp_Estimacion.Size = new Size(246, 75);
+            grp_Estimacion.Size = new Size(246, 95);
             grp_Estimacion.TabIndex = 38;
             grp_Estimacion.TabStop = false;
             grp_Estimacion.Text = "Presupuesto";
@@ -173,15 +173,14 @@ namespace Proyecto_CAI_Grupo_4
             // productosElegidos
             // 
             productosElegidos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, TipoServicio, Precios });
-            productosElegidos.Enabled = false;
             productosElegidos.FullRowSelect = true;
-            productosElegidos.Location = new Point(6, 22);
+            productosElegidos.Location = new Point(8, 22);
             productosElegidos.Name = "productosElegidos";
-            productosElegidos.Size = new Size(841, 601);
+            productosElegidos.Size = new Size(841, 306);
             productosElegidos.TabIndex = 41;
             productosElegidos.UseCompatibleStateImageBehavior = false;
             productosElegidos.View = View.Details;
-            productosElegidos.ItemCheck += ProductosSeleccionadosListView_ItemCheck;
+            productosElegidos.SelectedIndexChanged += productosElegidos_SelectedIndexChanged;
             // 
             // ID
             // 
@@ -278,9 +277,9 @@ namespace Proyecto_CAI_Grupo_4
             btnPreReservar.FlatStyle = FlatStyle.Flat;
             btnPreReservar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnPreReservar.ForeColor = Color.Black;
-            btnPreReservar.Location = new Point(6, 89);
+            btnPreReservar.Location = new Point(451, 22);
             btnPreReservar.Name = "btnPreReservar";
-            btnPreReservar.Size = new Size(230, 56);
+            btnPreReservar.Size = new Size(382, 47);
             btnPreReservar.TabIndex = 42;
             btnPreReservar.Text = "Pre-reservar";
             btnPreReservar.UseVisualStyleBackColor = false;
@@ -288,15 +287,27 @@ namespace Proyecto_CAI_Grupo_4
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(groupBox3);
             groupBox2.Controls.Add(btnEliminarTodo);
             groupBox2.Controls.Add(btnEliminarSeleccion);
             groupBox2.Controls.Add(productosElegidos);
             groupBox2.Location = new Point(279, 106);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(853, 675);
+            groupBox2.Size = new Size(853, 509);
             groupBox2.TabIndex = 43;
             groupBox2.TabStop = false;
             groupBox2.Text = "Productos Asignados";
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(btnPreReservar);
+            groupBox3.Controls.Add(btnFinalizarPresupuesto);
+            groupBox3.Location = new Point(8, 414);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(841, 84);
+            groupBox3.TabIndex = 44;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Acciones";
             // 
             // btnEliminarTodo
             // 
@@ -305,9 +316,9 @@ namespace Proyecto_CAI_Grupo_4
             btnEliminarTodo.FlatStyle = FlatStyle.Flat;
             btnEliminarTodo.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnEliminarTodo.ForeColor = Color.Black;
-            btnEliminarTodo.Location = new Point(6, 629);
+            btnEliminarTodo.Location = new Point(459, 354);
             btnEliminarTodo.Name = "btnEliminarTodo";
-            btnEliminarTodo.Size = new Size(388, 40);
+            btnEliminarTodo.Size = new Size(382, 40);
             btnEliminarTodo.TabIndex = 46;
             btnEliminarTodo.Text = "Eliminar todo";
             btnEliminarTodo.UseVisualStyleBackColor = false;
@@ -320,31 +331,20 @@ namespace Proyecto_CAI_Grupo_4
             btnEliminarSeleccion.FlatStyle = FlatStyle.Flat;
             btnEliminarSeleccion.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnEliminarSeleccion.ForeColor = Color.Black;
-            btnEliminarSeleccion.Location = new Point(419, 629);
+            btnEliminarSeleccion.Location = new Point(12, 354);
             btnEliminarSeleccion.Name = "btnEliminarSeleccion";
-            btnEliminarSeleccion.Size = new Size(428, 40);
+            btnEliminarSeleccion.Size = new Size(382, 40);
             btnEliminarSeleccion.TabIndex = 45;
             btnEliminarSeleccion.Text = "Eliminar selección";
             btnEliminarSeleccion.UseVisualStyleBackColor = false;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(btnPreReservar);
-            groupBox3.Controls.Add(btnFinalizarPresupuesto);
-            groupBox3.Location = new Point(12, 616);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(246, 159);
-            groupBox3.TabIndex = 44;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Acciones";
+            btnEliminarSeleccion.Click += btnEliminarSeleccion_Click;
             // 
             // GenerarPresupuestoMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1144, 793);
-            Controls.Add(groupBox3);
+            ClientSize = new Size(1140, 622);
             Controls.Add(groupBox2);
             Controls.Add(grp_Filtros);
             Controls.Add(grp_Estimacion);
@@ -359,7 +359,6 @@ namespace Proyecto_CAI_Grupo_4
             Controls.SetChildIndex(grp_Estimacion, 0);
             Controls.SetChildIndex(grp_Filtros, 0);
             Controls.SetChildIndex(groupBox2, 0);
-            Controls.SetChildIndex(groupBox3, 0);
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

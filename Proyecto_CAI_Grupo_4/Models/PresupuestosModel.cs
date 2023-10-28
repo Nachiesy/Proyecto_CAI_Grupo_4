@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Proyecto_CAI_Grupo_4.Entities;
+﻿using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
     public static class PresupuestosModel
     {
-        public static List<Itinerario> Presupuestos { get; set; } = new List<Itinerario>();
+        private static List<Itinerario> Presupuestos { get; set; } = new List<Itinerario>();
 
         public static void AgregarPresupuesto(Itinerario itinerario)
         {

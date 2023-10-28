@@ -198,6 +198,16 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             hotelesElegidos.Add(producto);
         }
 
+        public static void RemoveHotelElegido(Guid id)
+        {
+            var index = hotelesElegidos.FindIndex(x => x.Id == id);
+
+            if (index != -1)
+            {
+                hotelesElegidos.RemoveAt(index);
+            }
+        }
+
         public static void ActualizarCantidadesDeHoteles()
         {
             var hotelesToUpdate = new List<Hoteles>(hoteles.Intersect(hotelesElegidos));

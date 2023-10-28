@@ -547,6 +547,16 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             aereosElegidos.Add(producto);
         }
 
+        public static void RemoveAereoElegido(Guid id)
+        {
+            var index = aereosElegidos.FindIndex(x => x.Id == id);
+
+            if (index != -1)
+            {
+                aereosElegidos.RemoveAt(index);
+            }
+        }
+
         public static void ActualizarCantidadesDeAereos()
         {
             var aereosToUpdate = new List<Aereos>(aereos.Intersect(aereosElegidos));
