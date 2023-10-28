@@ -1,5 +1,4 @@
-﻿using Proyecto_CAI_Grupo_4.Models;
-using Proyecto_CAI_Grupo_4.Utils;
+﻿using Proyecto_CAI_Grupo_4.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4
 {

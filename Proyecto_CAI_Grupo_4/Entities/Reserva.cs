@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Proyecto_CAI_Grupo_4.Models
+namespace Proyecto_CAI_Grupo_4.Entities
 {
     public class Reserva
     {
@@ -10,7 +10,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public string DNI { get; set; }
 
-        public int TipoDoc {  get; set; }
+        public int TipoDoc { get; set; }
 
         public decimal Precio { get; set; }
 
@@ -20,7 +20,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public int CantMayores { get; set; }
         public int CantMenores { get; set; }
-        public bool prereserva {  get; set; }
+        public bool prereserva { get; set; }
 
 
         private string DateTimeToString(DateTime dateTime)
@@ -40,12 +40,7 @@ namespace Proyecto_CAI_Grupo_4.Models
         [Description("Pendiente de Pago")]
         pendienteDePago,
 
-
         [Description("Abonada")]
         pagada,
-
-
-
-
     }
 }

@@ -3,6 +3,7 @@ using Proyecto_CAI_Grupo_4.Utils;
 using System.Data;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Modelos;
+using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4
 {
