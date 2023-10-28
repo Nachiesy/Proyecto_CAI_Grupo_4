@@ -1,11 +1,11 @@
-﻿using Proyecto_CAI_Grupo_4.Models;
-using Proyecto_CAI_Grupo_4.Models.Productos;
+﻿using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Filters;
 
-namespace Proyecto_CAI_Grupo_4.Managers
+namespace Proyecto_CAI_Grupo_4.Models.Productos
 {
-    public class GenerarPresupuestosManager
+    public static class AereosModel
     {
-        public static List<Aereos> aereos = new List<Aereos>()
+        private static List<Aereos> aereos = new List<Aereos>()
         {
             // A113
             new Aereos()
@@ -503,376 +503,69 @@ namespace Proyecto_CAI_Grupo_4.Managers
             },
         };
 
-        public static List<Aereos> aereosElegidos = new List<Aereos>();
+        private static List<Aereos> aereosElegidos = new List<Aereos>();
 
-        public static List<Hoteles> hoteles = new List<Hoteles>()
+        public static IEnumerable<Aereos> GetAereos()
         {
-            // HIL
-            new Hoteles()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "HIL",
-                Nombre = "Hilton",
-                Precio = 10000,
-                Cantidad = 4,
-                TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = HotelesCiudadEnum.buenosAires,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(11).Date,
-                TipoDeHabitacion = TipoDeHabitacionEnum.simple,
-                Calificacion = HotelesCalificacionEnum.cinco,
-                CantidadMaximaDeAdultos = 2,
-                CantidadMaximaDeMenores = 0,
-                CantidadMaximaDeInfantes = 0,
-                Direccion = "Av Libertador 100",
-            },
-            new Hoteles()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "HIL",
-                Nombre = "Hilton",
-                Precio = 20000,
-                Cantidad = 3,
-                TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = HotelesCiudadEnum.buenosAires,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(11).Date,
-                TipoDeHabitacion = TipoDeHabitacionEnum.doble,
-                Calificacion = HotelesCalificacionEnum.cinco,
-                CantidadMaximaDeAdultos = 2,
-                CantidadMaximaDeMenores = 2,
-                CantidadMaximaDeInfantes = 0,
-                Direccion = "Av Libertador 100",
-            },
-            new Hoteles()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "HIL",
-                Nombre = "Hilton",
-                Precio = 30000,
-                Cantidad = 2,
-                TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = HotelesCiudadEnum.buenosAires,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(11).Date,
-                TipoDeHabitacion = TipoDeHabitacionEnum.triple,
-                Calificacion = HotelesCalificacionEnum.cinco,
-                CantidadMaximaDeAdultos = 2,
-                CantidadMaximaDeMenores = 3,
-                CantidadMaximaDeInfantes = 1,
-                Direccion = "Av Libertador 100",
-            },
-            new Hoteles()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "HIL",
-                Nombre = "Hilton",
-                Precio = 40000,
-                Cantidad = 1,
-                TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = HotelesCiudadEnum.buenosAires,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(11).Date,
-                TipoDeHabitacion = TipoDeHabitacionEnum.cuadruple,
-                Calificacion = HotelesCalificacionEnum.cinco,
-                CantidadMaximaDeAdultos = 4,
-                CantidadMaximaDeMenores = 2,
-                CantidadMaximaDeInfantes = 2,
-                Direccion = "Av Libertador 100",
-            },
-            // SHE
-            new Hoteles()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "SHE",
-                Nombre = "Sheraton",
-                Precio = 10000,
-                Cantidad = 4,
-                TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = HotelesCiudadEnum.madrid,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(11).Date,
-                TipoDeHabitacion = TipoDeHabitacionEnum.simple,
-                Calificacion = HotelesCalificacionEnum.cuatro,
-                CantidadMaximaDeAdultos = 2,
-                CantidadMaximaDeMenores = 0,
-                CantidadMaximaDeInfantes = 0,
-                Direccion = "Av Cordoba 300",
-            },
-            new Hoteles()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "SHE",
-                Nombre = "Sheraton",
-                Precio = 20000,
-                Cantidad = 3,
-                TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = HotelesCiudadEnum.madrid,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(11).Date,
-                TipoDeHabitacion = TipoDeHabitacionEnum.doble,
-                Calificacion = HotelesCalificacionEnum.cuatro,
-                CantidadMaximaDeAdultos = 2,
-                CantidadMaximaDeMenores = 2,
-                CantidadMaximaDeInfantes = 0,
-                Direccion = "Av Cordoba 300",
-            },
-            new Hoteles()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "SHE",
-                Nombre = "Sheraton",
-                Precio = 30000,
-                Cantidad = 2,
-                TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = HotelesCiudadEnum.madrid,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(11).Date,
-                TipoDeHabitacion = TipoDeHabitacionEnum.triple,
-                Calificacion = HotelesCalificacionEnum.cuatro,
-                CantidadMaximaDeAdultos = 2,
-                CantidadMaximaDeMenores = 3,
-                CantidadMaximaDeInfantes = 1,
-                Direccion = "Av Cordoba 300",
-            },
-            new Hoteles()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "SHE",
-                Nombre = "Sheraton",
-                Precio = 40000,
-                Cantidad = 1,
-                TipoDeServicio = TipoDeServicioEnum.hotel,
-                Ciudad = HotelesCiudadEnum.madrid,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(11).Date,
-                TipoDeHabitacion = TipoDeHabitacionEnum.cuadruple,
-                Calificacion = HotelesCalificacionEnum.cuatro,
-                CantidadMaximaDeAdultos = 4,
-                CantidadMaximaDeMenores = 2,
-                CantidadMaximaDeInfantes = 2,
-                Direccion = "Av Cordoba 300",
-            },
-        };
+            return aereos;
+        }
 
-        public static List<Hoteles> hotelesElegidos = new List<Hoteles>();
-
-        public static List<Cruceros> cruceros = new List<Cruceros>()
+        public static IEnumerable<Aereos> GetAereos(AereosFilter filter)
         {
-            new Cruceros()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "CC11",
-                Nombre = "Crucero de la Costa",
-                Precio = 500000,
-                Cantidad = 1,
-                TipoDeServicio = TipoDeServicioEnum.crucero,
-                CiudadDePartida = CrucerosOrigenEnum.buenosAires,
-                CiudadDeLlegada = CrucerosDestinoEnum.marDelPlata,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(20).Date,
-                TipoDeCamarote = TipoDeCamaroteEnum.interior,
-                Paradas = new List<CrucerosParadas>()
-                {
-                    new CrucerosParadas()
-                    {
-                        Nombre = "Mar del Plata",
-                    },
-                    new CrucerosParadas()
-                    {
-                        Nombre = "Bahia Blanca",
-                    },
-                },
-            },
-            new Cruceros()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "CB22",
-                Nombre = "Crucero dou Brasil",
-                Precio = 500000,
-                Cantidad = 2,
-                TipoDeServicio = TipoDeServicioEnum.crucero,
-                CiudadDePartida = CrucerosOrigenEnum.montevideo,
-                CiudadDeLlegada = CrucerosDestinoEnum.rioDeJaneiro,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(20).Date,
-                TipoDeCamarote = TipoDeCamaroteEnum.exterior,
-                Paradas = new List<CrucerosParadas>()
-                {
-                    new CrucerosParadas()
-                    {
-                        Nombre = "Isla Grande",
-                    },
-                    new CrucerosParadas()
-                    {
-                        Nombre = "Rio de Janeiro",
-                    },
-                },
-            },
-            new Cruceros()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "CA33",
-                Nombre = "Crucero del Caribe",
-                Precio = 500000,
-                Cantidad = 3,
-                TipoDeServicio = TipoDeServicioEnum.crucero,
-                CiudadDePartida = CrucerosOrigenEnum.miami,
-                CiudadDeLlegada = CrucerosDestinoEnum.cancun,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(20).Date,
-                TipoDeCamarote = TipoDeCamaroteEnum.conBalcon,
-                Paradas = new List<CrucerosParadas>()
-                {
-                    new CrucerosParadas()
-                    {
-                        Nombre = "Cancun",
-                    },
-                    new CrucerosParadas()
-                    {
-                        Nombre = "Republica Dominicana",
-                    },
-                },
-            },
-            new Cruceros()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "CM44",
-                Nombre = "Crucero del Mediterraneo",
-                Precio = 500000,
-                Cantidad = 4,
-                TipoDeServicio = TipoDeServicioEnum.crucero,
-                CiudadDePartida = CrucerosOrigenEnum.atenas,
-                CiudadDeLlegada = CrucerosDestinoEnum.marruecos,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(20).Date,
-                TipoDeCamarote = TipoDeCamaroteEnum.suite,
-                Paradas = new List<CrucerosParadas>()
-                {
-                    new CrucerosParadas()
-                    {
-                        Nombre = "Barcelona",
-                    },
-                    new CrucerosParadas()
-                    {
-                        Nombre = "Marsella",
-                    },
-                },
-            },
-        };
+            return aereos
+                    .Where(x => (!filter.CantidadMin.HasValue || x.Cantidad >= filter.CantidadMin)
+                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
+                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
+                                && (!filter.FechaDesde.HasValue || x.FechaDeSalida.Date == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.FechaDeLlegada.Date == filter.FechaHasta)
+                                && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
+                                && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino)
+                                && (!filter.TipoDePasajero.HasValue || (int)x.TipoDePasajero == filter.TipoDePasajero)
+                                && (!filter.Itinerario.HasValue || (int)x.Itinerario == filter.Itinerario)
+                                && (!filter.Clase.HasValue || (int)x.Clase == filter.Clase));
+        }
 
-        public static List<Cruceros> crucerosElegidos = new List<Cruceros>();
-
-        public static List<PaquetesTuristicos> paquetesTuristicos = new List<PaquetesTuristicos>()
+        public static Aereos? GetAereoByID(Guid id)
         {
-            new PaquetesTuristicos()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "PC11",
-                Nombre = "Paquete de la Costa",
-                Precio = 300000,
-                Cantidad = 1,
-                TipoDeServicio = TipoDeServicioEnum.paquete,
-                Origen = PaquetesTuristicosOrigenEnum.buenosAires,
-                Destino = PaquetesTuristicosDestinoEnum.marDelPlata,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(20).Date,
-                Actividades = new List<PaquetesTuristicosActividades>()
-                {
-                    new PaquetesTuristicosActividades()
-                    {
-                        Nombre = "Montaña Rusa",
-                    },
-                    new PaquetesTuristicosActividades()
-                    {
-                        Nombre = "Tobogan Acuatico",
-                    },
-                },
-                CapacidadMaximaAdultos = 2,
-                CapacidadMaximaMenores = 2,
-            },
-            new PaquetesTuristicos()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "PS22",
-                Nombre = "Paquete Sudafrica",
-                Precio = 900000,
-                Cantidad = 2,
-                TipoDeServicio = TipoDeServicioEnum.paquete,
-                Origen = PaquetesTuristicosOrigenEnum.saoPablo,
-                Destino = PaquetesTuristicosDestinoEnum.pretoria,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(20).Date,
-                Actividades = new List<PaquetesTuristicosActividades>()
-                {
-                    new PaquetesTuristicosActividades()
-                    {
-                        Nombre = "Safari",
-                    },
-                    new PaquetesTuristicosActividades()
-                    {
-                        Nombre = "Playa",
-                    },
-                },
-                CapacidadMaximaAdultos = 10,
-                CapacidadMaximaMenores = 20,
-            },
-            new PaquetesTuristicos()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "PI33",
-                Nombre = "Paque Italia",
-                Precio = 900000,
-                Cantidad = 3,
-                TipoDeServicio = TipoDeServicioEnum.paquete,
-                Origen = PaquetesTuristicosOrigenEnum.filadelfia,
-                Destino = PaquetesTuristicosDestinoEnum.napoles,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(20).Date,
-                Actividades = new List<PaquetesTuristicosActividades>()
-                {
-                    new PaquetesTuristicosActividades()
-                    {
-                        Nombre = "Coliseo de Roma",
-                    },
-                    new PaquetesTuristicosActividades()
-                    {
-                        Nombre = "Tour por Venecia",
-                    },
-                },
-                CapacidadMaximaAdultos = 4,
-                CapacidadMaximaMenores = 6,
-            },
-            new PaquetesTuristicos()
-            {
-                Id = Guid.NewGuid(),
-                Codigo = "PJ44",
-                Nombre = "Paquete Japon",
-                Precio = 900000,
-                Cantidad = 4,
-                TipoDeServicio = TipoDeServicioEnum.paquete,
-                Origen = PaquetesTuristicosOrigenEnum.sidney,
-                Destino = PaquetesTuristicosDestinoEnum.tokio,
-                FechaDesde = DateTime.Now.AddDays(10).Date,
-                FechaHasta = DateTime.Now.AddDays(20).Date,
-                Actividades = new List<PaquetesTuristicosActividades>()
-                {
-                    new PaquetesTuristicosActividades()
-                    {
-                        Nombre = "Tour por Tokio",
-                    },
-                    new PaquetesTuristicosActividades()
-                    {
-                        Nombre = "Viaje a la Montaña",
-                    },
-                },
-                CapacidadMaximaAdultos = 6,
-                CapacidadMaximaMenores = 8,
-            },
-        };
+            return aereos.Where(x => x.Id == id).SingleOrDefault();
+        }
 
-        public static List<PaquetesTuristicos> paquetesTuristicosElegidos = new List<PaquetesTuristicos>();
+        public static IEnumerable<Aereos> GetAereosElegidos()
+        {
+            return aereosElegidos;
+        }
 
-        public static List<Reserva> reservas = new List<Reserva>();
+        public static void ClearAereosElegidos()
+        {
+            aereosElegidos.Clear();
+        }
+
+        public static void AddAereoElegido(Guid id)
+        {
+            var producto = aereos.Where(x => x.Id == id).SingleOrDefault();
+
+            aereosElegidos.Add(producto);
+        }
+
+        public static void ActualizarCantidadesDeAereos()
+        {
+            var aereosToUpdate = new List<Aereos>(aereos.Intersect(aereosElegidos));
+
+            foreach (var aereo in aereosToUpdate)
+            {
+                var indexAereo = aereos.FindIndex(x => x.Id == aereo.Id);
+
+                var cantidadSeleccionada = aereosElegidos.Where(x => x.Id == aereo.Id).Count();
+
+                aereo.Cantidad = aereo.Cantidad - cantidadSeleccionada;
+
+                if (indexAereo != -1)
+                {
+                    aereos[indexAereo] = aereo;
+                }
+            }
+
+            aereosElegidos.Clear();
+        }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Proyecto_CAI_Grupo_4.Filters;
 using Proyecto_CAI_Grupo_4.Managers;
-using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Data;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Models.Productos;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -29,7 +29,7 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxDestino.Items.Add(value.GetDescription());
             }
 
-            AddProductosToListView(GenerarPresupuestosManager.paquetesTuristicos);
+            AddProductosToListView(PaquetesTuristicosModel.GetPaquetesTuristicos());
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -54,13 +54,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var filter = new PaquetesTuristicosFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.paquetesTuristicos
-                    .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
-                                && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
-                                && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino));
+                var productos = PaquetesTuristicosModel.GetPaquetesTuristicos(filter);
 
                 listViewProductos.Items.Clear();
 
@@ -116,7 +110,7 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            AddProductosToListView(GenerarPresupuestosManager.paquetesTuristicos);
+            AddProductosToListView(PaquetesTuristicosModel.GetPaquetesTuristicos());
         }
 
         private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)

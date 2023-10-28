@@ -9,6 +9,8 @@
 
     public class PaquetesTuristicosFilter : ProductosFilter
     {
+        public PaquetesTuristicosFilter() : base() { }
+
         public PaquetesTuristicosFilter(PaquetesTuristicosFilterDto dto) : base(dto)
         {
             Origen = dto.Origen;

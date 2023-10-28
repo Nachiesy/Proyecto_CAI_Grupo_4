@@ -13,6 +13,8 @@
 
     public class HotelesFilter : ProductosFilter
     {
+        public HotelesFilter() : base() { }
+
         public HotelesFilter(HotelesFilterDto dto) : base(dto)
         {
             Nombre = dto.Nombre;

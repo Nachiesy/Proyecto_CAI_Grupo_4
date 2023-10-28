@@ -1,16 +1,14 @@
 ﻿using Proyecto_CAI_Grupo_4.Filters;
 using Proyecto_CAI_Grupo_4.Managers;
-using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Data;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Models.Productos;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoHoteles : VistaBase
     {
-        private readonly int codigoSubItemIndex = 1;
-
         public GenerarPresupuestoHoteles() : base(tituloModulo: "Generar Presupuesto > Hoteles")
         {
             InitializeComponent();
@@ -36,15 +34,19 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxCalificacion.Items.Add(value.GetDescription());
             }
 
-            AddProductosToListView(GenerarPresupuestosManager.hoteles.Where(x => x.Cantidad > 0));
+            AddProductosToListView(HotelesModel.GetHoteles(new HotelesFilter()
+            {
+                CantidadMin = 1,
+            }));
 
-            AddProductosSeleccionadosToListView(GenerarPresupuestosManager.hotelesElegidos);
+            AddProductosSeleccionadosToListView(HotelesModel.GetHotelesElegidos());
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
         {
             var filterDto = new HotelesFilterDto()
             {
+                CantidadMin = 1,
                 PrecioDesde = txtBoxFiltroPrecioDesde.Text,
                 PrecioHasta = txtBoxFiltroPrecioHasta.Text,
                 FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
@@ -65,16 +67,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var filter = new HotelesFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.hoteles
-                    .Where(x => x.Cantidad > 0
-                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
-                                && (string.IsNullOrEmpty(filter.Nombre) || x.Nombre == filter.Nombre)
-                                && (!filter.Ciudad.HasValue || (int)x.Ciudad == filter.Ciudad)
-                                && (!filter.TipoDeHabitacion.HasValue || (int)x.TipoDeHabitacion == filter.TipoDeHabitacion)
-                                && (!filter.Calificacion.HasValue || (int)x.Calificacion == filter.Calificacion));
+                var productos = HotelesModel.GetHoteles(filter);
 
                 listViewProductos.Items.Clear();
 
@@ -158,7 +151,7 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     var id = Guid.Parse(item.Text);
 
-                    var producto = GenerarPresupuestosManager.hoteles.Where(x => x.Id == id).SingleOrDefault();
+                    var producto = HotelesModel.GetHotelByID(id);
 
                     var cantidad = IsProductInProductosSeleccionados(producto.Id);
 
@@ -193,15 +186,13 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            GenerarPresupuestosManager.hotelesElegidos.Clear();
+            HotelesModel.ClearHotelesElegidos();
 
             foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
                 var id = Guid.Parse(item.Text);
 
-                var producto = GenerarPresupuestosManager.hoteles.Where(x => x.Id == id).SingleOrDefault();
-
-                GenerarPresupuestosManager.hotelesElegidos.Add(producto);
+                HotelesModel.AddHotelElegido(id);
             }
 
             this.Close();
@@ -238,7 +229,10 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            AddProductosToListView(GenerarPresupuestosManager.hoteles);
+            AddProductosToListView(HotelesModel.GetHoteles(new HotelesFilter()
+            {
+                CantidadMin = 1,
+            }));
         }
 
         private int IsProductInProductosSeleccionados(Guid id)

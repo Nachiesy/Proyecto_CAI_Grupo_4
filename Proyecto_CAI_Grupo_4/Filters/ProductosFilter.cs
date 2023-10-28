@@ -2,6 +2,8 @@
 {
     public class ProductosFilterDto
     {
+        public int? CantidadMin { get; set; }
+
         public string PrecioDesde { get; set; }
 
         public string PrecioHasta { get; set; }
@@ -13,8 +15,12 @@
 
     public class ProductosFilter
     {
+        public ProductosFilter() { }
+
         public ProductosFilter(ProductosFilterDto dto)
         {
+            CantidadMin = dto.CantidadMin;
+
             if (decimal.TryParse(dto.PrecioDesde, out decimal precioDesde))
             {
                 PrecioDesde = precioDesde;
@@ -29,6 +35,8 @@
 
             FechaHasta = dto.FechaHasta;
         }
+
+        public int? CantidadMin { get; set; }
 
         public decimal? PrecioDesde { get; set; }
 

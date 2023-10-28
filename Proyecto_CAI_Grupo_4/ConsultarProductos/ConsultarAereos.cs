@@ -1,9 +1,9 @@
 ﻿using Proyecto_CAI_Grupo_4.Filters;
 using Proyecto_CAI_Grupo_4.Managers;
-using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Data;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Models.Productos;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -44,7 +44,7 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxClase.Items.Add(value.GetDescription());
             }
 
-            AddProductosToListView(GenerarPresupuestosManager.aereos);
+            AddProductosToListView(AereosModel.GetAereos());
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -72,16 +72,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var filter = new AereosFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.aereos
-                    .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDeSalida.Date == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaDeLlegada.Date == filter.FechaHasta)
-                                && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
-                                && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino)
-                                && (!filter.TipoDePasajero.HasValue || (int)x.TipoDePasajero == filter.TipoDePasajero)
-                                && (!filter.Itinerario.HasValue || (int)x.Itinerario == filter.Itinerario)
-                                && (!filter.Clase.HasValue || (int)x.Clase == filter.Clase));
+                var productos = AereosModel.GetAereos(filter);
 
                 listViewProductos.Items.Clear();
 
@@ -142,7 +133,7 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            AddProductosToListView(GenerarPresupuestosManager.aereos);
+            AddProductosToListView(AereosModel.GetAereos());
         }
 
         private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)

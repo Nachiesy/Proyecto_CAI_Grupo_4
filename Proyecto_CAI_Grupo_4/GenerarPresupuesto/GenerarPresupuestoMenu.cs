@@ -1,8 +1,9 @@
-﻿using Proyecto_CAI_Grupo_4.Managers;
-using Proyecto_CAI_Grupo_4.Models.Productos;
-using Proyecto_CAI_Grupo_4.Utils;
+﻿using Proyecto_CAI_Grupo_4.Utils;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Models.Productos;
+using Proyecto_CAI_Grupo_4.Modelos;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -21,19 +22,19 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuestoMenu_Load(object sender, EventArgs e)
         {
-            var aereos = GenerarPresupuestosManager.aereosElegidos;
+            var aereos = AereosModel.GetAereosElegidos();
 
             AddProductosToListView(aereos);
 
-            var hoteles = GenerarPresupuestosManager.hotelesElegidos;
+            var hoteles = HotelesModel.GetHotelesElegidos();
 
             AddProductosToListView(hoteles);
 
-            var cruceros = GenerarPresupuestosManager.crucerosElegidos;
+            var cruceros = CrucerosModel.GetCrucerosElegidos();
 
             AddProductosToListView(cruceros);
 
-            var paquetesTuristicos = GenerarPresupuestosManager.paquetesTuristicosElegidos;
+            var paquetesTuristicos = PaquetesTuristicosModel.GetPaquetesTuristicosElegidos();
 
             AddProductosToListView(paquetesTuristicos);
 
@@ -156,7 +157,7 @@ namespace Proyecto_CAI_Grupo_4
                         prereserva = true,
                     };
 
-                    GenerarPresupuestosManager.reservas.Add(reserva);
+                    ReservaModel.AddReserva(reserva);
 
                     GoToGenerarPreReserva();
                 }
@@ -190,97 +191,13 @@ namespace Proyecto_CAI_Grupo_4
 
         private void ActualizarCantidadesDeProductos()
         {
-            ActualizarCantidadesDeAereos();
+            AereosModel.ActualizarCantidadesDeAereos();
 
-            ActualizarCantidadesDeHoteles();
+            HotelesModel.ActualizarCantidadesDeHoteles();
 
-            ActualizarCantidadesDeCruceros();
+            CrucerosModel.ActualizarCantidadesDeCruceros();
 
-            ActualizarCantidadesDePaquetes();
-        }
-
-        private void ActualizarCantidadesDeAereos()
-        {
-            var aereosToUpdate = new List<Aereos>(GenerarPresupuestosManager.aereos.Intersect(GenerarPresupuestosManager.aereosElegidos));
-
-            foreach (var aereo in aereosToUpdate)
-            {
-                var indexAereo = GenerarPresupuestosManager.aereos.FindIndex(x => x.Id == aereo.Id);
-
-                var cantidadSeleccionada = GenerarPresupuestosManager.aereosElegidos.Where(x => x.Id == aereo.Id).Count();
-
-                aereo.Cantidad = aereo.Cantidad - cantidadSeleccionada;
-
-                if (indexAereo != -1)
-                {
-                    GenerarPresupuestosManager.aereos[indexAereo] = aereo;
-                }
-            }
-
-            GenerarPresupuestosManager.aereosElegidos.Clear();
-        }
-
-        private void ActualizarCantidadesDeHoteles()
-        {
-            var hotelesToUpdate = new List<Hoteles>(GenerarPresupuestosManager.hoteles.Intersect(GenerarPresupuestosManager.hotelesElegidos));
-
-            foreach (var hotel in hotelesToUpdate)
-            {
-                var indexHotel = GenerarPresupuestosManager.hoteles.FindIndex(x => x.Id == hotel.Id);
-
-                var cantidadSeleccionada = GenerarPresupuestosManager.hotelesElegidos.Where(x => x.Id == hotel.Id).Count();
-
-                hotel.Cantidad = hotel.Cantidad - cantidadSeleccionada;
-
-                if (indexHotel != -1)
-                {
-                    GenerarPresupuestosManager.hoteles[indexHotel] = hotel;
-                }
-            }
-
-            GenerarPresupuestosManager.hotelesElegidos.Clear();
-        }
-
-        private void ActualizarCantidadesDeCruceros()
-        {
-            var crucerosToUpdate = new List<Cruceros>(GenerarPresupuestosManager.cruceros.Intersect(GenerarPresupuestosManager.crucerosElegidos));
-
-            foreach (var crucero in crucerosToUpdate)
-            {
-                var cruceroIndex = GenerarPresupuestosManager.cruceros.FindIndex(x => x.Id == crucero.Id);
-
-                var cantidadSeleccionada = GenerarPresupuestosManager.crucerosElegidos.Where(x => x.Id == crucero.Id).Count();
-
-                crucero.Cantidad = crucero.Cantidad - cantidadSeleccionada;
-
-                if (cruceroIndex != -1)
-                {
-                    GenerarPresupuestosManager.cruceros[cruceroIndex] = crucero;
-                }
-            }
-
-            GenerarPresupuestosManager.crucerosElegidos.Clear();
-        }
-
-        private void ActualizarCantidadesDePaquetes()
-        {
-            var paquetesToUpdate = new List<PaquetesTuristicos>(GenerarPresupuestosManager.paquetesTuristicos.Intersect(GenerarPresupuestosManager.paquetesTuristicosElegidos));
-
-            foreach (var paquete in paquetesToUpdate)
-            {
-                var paqueteIndex = GenerarPresupuestosManager.paquetesTuristicos.FindIndex(x => x.Id == paquete.Id);
-
-                var cantidadSeleccionada = GenerarPresupuestosManager.paquetesTuristicosElegidos.Where(x => x.Id == paquete.Id).Count();
-
-                paquete.Cantidad = paquete.Cantidad - cantidadSeleccionada;
-
-                if (paqueteIndex != -1)
-                {
-                    GenerarPresupuestosManager.paquetesTuristicos[paqueteIndex] = paquete;
-                }
-            }
-
-            GenerarPresupuestosManager.paquetesTuristicosElegidos.Clear();
+            PaquetesTuristicosModel.ActualizarCantidadesDePaquetes();
         }
 
         private void GoToMenuPrincipal()

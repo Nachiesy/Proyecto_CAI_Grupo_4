@@ -1,13 +1,13 @@
 ﻿using Proyecto_CAI_Grupo_4.Models;
 using Proyecto_CAI_Grupo_4.Utils;
 using Proyecto_CAI_Grupo_4.Common.Views;
-using Proyecto_CAI_Grupo_4.Managers;
+using Proyecto_CAI_Grupo_4.Modelos;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPreReserva : VistaBase
     {
-        private readonly Reserva reserva = GenerarPresupuestosManager.reservas.Last();
+        private readonly Reserva reserva = ReservaModel.GetLastReserva();
 
         int controlPasajeros = 0;
 

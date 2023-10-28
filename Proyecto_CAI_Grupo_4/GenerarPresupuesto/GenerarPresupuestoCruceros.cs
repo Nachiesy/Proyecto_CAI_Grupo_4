@@ -1,16 +1,14 @@
 ﻿using Proyecto_CAI_Grupo_4.Filters;
 using Proyecto_CAI_Grupo_4.Managers;
-using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Data;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Models.Productos;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoCruceros : VistaBase
     {
-        private readonly int codigoSubItemIndex = 1;
-
         public GenerarPresupuestoCruceros() : base(tituloModulo: "Generar Presupuesto > Cruceros")
         {
             InitializeComponent();
@@ -36,15 +34,19 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxTipoDeCamarote.Items.Add(value.GetDescription());
             }
 
-            AddProductosToListView(GenerarPresupuestosManager.cruceros.Where(x => x.Cantidad > 0));
+            AddProductosToListView(CrucerosModel.GetCruceros(new CrucerosFilter()
+            {
+                CantidadMin = 1,
+            }));
 
-            AddProductosSeleccionadosToListView(GenerarPresupuestosManager.crucerosElegidos);
+            AddProductosSeleccionadosToListView(CrucerosModel.GetCrucerosElegidos());
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
         {
             var filterDto = new CrucerosFilterDto()
             {
+                CantidadMin = 1,
                 PrecioDesde = txtBoxFiltroPrecioDesde.Text,
                 PrecioHasta = txtBoxFiltroPrecioHasta.Text,
                 FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
@@ -64,15 +66,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var filter = new CrucerosFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.cruceros
-                    .Where(x => x.Cantidad > 0
-                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
-                                && (!filter.CiudadDePartida.HasValue || (int)x.CiudadDePartida == filter.CiudadDePartida)
-                                && (!filter.CiudadDeLlegada.HasValue || (int)x.CiudadDeLlegada == filter.CiudadDeLlegada)
-                                && (!filter.TipoDeCamarote.HasValue || (int)x.TipoDeCamarote == filter.TipoDeCamarote));
+                var productos = CrucerosModel.GetCruceros(filter);
 
                 listViewProductos.Items.Clear();
 
@@ -146,7 +140,7 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     var id = Guid.Parse(item.Text);
 
-                    var producto = GenerarPresupuestosManager.cruceros.Where(x => x.Id == id).SingleOrDefault();
+                    var producto = CrucerosModel.GetCruceroByID(id);
 
                     var cantidad = IsProductInProductosSeleccionados(producto.Id);
 
@@ -181,15 +175,13 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            GenerarPresupuestosManager.crucerosElegidos.Clear();
+            CrucerosModel.ClearCrucerosElegidos();
 
             foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
                 var id = Guid.Parse(item.Text);
 
-                var producto = GenerarPresupuestosManager.cruceros.Where(x => x.Id == id).SingleOrDefault();
-
-                GenerarPresupuestosManager.crucerosElegidos.Add(producto);
+                CrucerosModel.AddCruceroElegido(id);
             }
 
             this.Close();
@@ -225,7 +217,10 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            AddProductosToListView(GenerarPresupuestosManager.cruceros);
+            AddProductosToListView(CrucerosModel.GetCruceros(new CrucerosFilter()
+            {
+                CantidadMin = 1,
+            }));
         }
 
         private int IsProductInProductosSeleccionados(Guid id)

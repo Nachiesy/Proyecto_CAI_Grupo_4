@@ -11,6 +11,8 @@
 
     public class CrucerosFilter : ProductosFilter
     {
+        public CrucerosFilter() : base() { }
+
         public CrucerosFilter(CrucerosFilterDto dto) : base(dto)
         {
             CiudadDePartida = dto.CiudadDePartida;

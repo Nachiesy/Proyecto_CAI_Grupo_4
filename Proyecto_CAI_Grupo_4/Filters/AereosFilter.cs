@@ -15,6 +15,8 @@
 
     public class AereosFilter : ProductosFilter
     {
+        public AereosFilter() : base() { }
+
         public AereosFilter(AereosFilterDto dto) : base(dto)
         {
             Origen = dto.Origen;

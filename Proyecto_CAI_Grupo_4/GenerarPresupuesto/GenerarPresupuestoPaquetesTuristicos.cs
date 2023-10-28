@@ -1,16 +1,14 @@
 ﻿using Proyecto_CAI_Grupo_4.Filters;
 using Proyecto_CAI_Grupo_4.Managers;
-using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Data;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Models.Productos;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoPaquetesTuristicos : VistaBase
     {
-        private readonly int codigoSubItemIndex = 1;
-
         public GenerarPresupuestoPaquetesTuristicos() : base(tituloModulo: "Generar Presupuesto > Paquetes Turísticos")
         {
             InitializeComponent();
@@ -31,15 +29,19 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxDestino.Items.Add(value.GetDescription());
             }
 
-            AddProductosToListView(GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Cantidad > 0));
+            AddProductosToListView(PaquetesTuristicosModel.GetPaquetesTuristicos(new PaquetesTuristicosFilter()
+            {
+                CantidadMin = 1,
+            }));
 
-            AddProductosSeleccionadosToListView(GenerarPresupuestosManager.paquetesTuristicosElegidos);
+            AddProductosSeleccionadosToListView(PaquetesTuristicosModel.GetPaquetesTuristicosElegidos());
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
         {
             var filterDto = new PaquetesTuristicosFilterDto()
             {
+                CantidadMin = 1,
                 PrecioDesde = txtBoxFiltroPrecioDesde.Text,
                 PrecioHasta = txtBoxFiltroPrecioHasta.Text,
                 FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
@@ -58,14 +60,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var filter = new PaquetesTuristicosFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.paquetesTuristicos
-                    .Where(x => x.Cantidad > 0
-                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
-                                && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
-                                && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino));
+                var productos = PaquetesTuristicosModel.GetPaquetesTuristicos(filter);
 
                 listViewProductos.Items.Clear();
 
@@ -141,7 +136,7 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     var id = Guid.Parse(item.Text);
 
-                    var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
+                    var producto = PaquetesTuristicosModel.GetPaqueteTuristicoByID(id);
 
                     var cantidad = IsProductInProductosSeleccionados(producto.Id);
 
@@ -176,15 +171,13 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            GenerarPresupuestosManager.paquetesTuristicosElegidos.Clear();
+            PaquetesTuristicosModel.ClearPaquetesTuristicosElegidos();
 
             foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
                 var id = Guid.Parse(item.Text);
 
-                var producto = GenerarPresupuestosManager.paquetesTuristicos.Where(x => x.Id == id).SingleOrDefault();
-
-                GenerarPresupuestosManager.paquetesTuristicosElegidos.Add(producto);
+                PaquetesTuristicosModel.AddPaqueteTuristicoElegido(id);
             }
 
             this.Close();
@@ -219,7 +212,10 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            AddProductosToListView(GenerarPresupuestosManager.paquetesTuristicos);
+            AddProductosToListView(PaquetesTuristicosModel.GetPaquetesTuristicos(new PaquetesTuristicosFilter()
+            {
+                CantidadMin = 1,
+            }));
         }
 
         private int IsProductInProductosSeleccionados(Guid id)

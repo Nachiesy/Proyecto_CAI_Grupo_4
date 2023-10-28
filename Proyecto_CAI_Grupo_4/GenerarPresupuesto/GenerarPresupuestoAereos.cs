@@ -1,16 +1,14 @@
 ﻿using Proyecto_CAI_Grupo_4.Filters;
 using Proyecto_CAI_Grupo_4.Managers;
-using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Data;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Models.Productos;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoAereos : VistaBase
     {
-        private readonly int codigoSubItemIndex = 1;
-
         public GenerarPresupuestoAereos() : base(tituloModulo: "Generar Presupuesto > Aéreos")
         {
             InitializeComponent();
@@ -46,15 +44,19 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxClase.Items.Add(value.GetDescription());
             }
 
-            AddProductosToListView(GenerarPresupuestosManager.aereos.Where(x => x.Cantidad > 0));
+            AddProductosToListView(AereosModel.GetAereos(new AereosFilter()
+            {
+                CantidadMin = 1,
+            }));
 
-            AddProductosSeleccionadosToListView(GenerarPresupuestosManager.aereosElegidos);
+            AddProductosSeleccionadosToListView(AereosModel.GetAereosElegidos());
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
         {
             var filterDto = new AereosFilterDto()
             {
+                CantidadMin = 1,
                 PrecioDesde = txtBoxFiltroPrecioDesde.Text,
                 PrecioHasta = txtBoxFiltroPrecioHasta.Text,
                 FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
@@ -76,17 +78,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var filter = new AereosFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.aereos
-                    .Where(x => x.Cantidad > 0
-                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDeSalida.Date == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaDeLlegada.Date == filter.FechaHasta)
-                                && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
-                                && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino)
-                                && (!filter.TipoDePasajero.HasValue || (int)x.TipoDePasajero == filter.TipoDePasajero)
-                                && (!filter.Itinerario.HasValue || (int)x.Itinerario == filter.Itinerario)
-                                && (!filter.Clase.HasValue || (int)x.Clase == filter.Clase));
+                var productos = AereosModel.GetAereos(filter);
 
                 listViewProductos.Items.Clear();
 
@@ -166,7 +158,7 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     var id = Guid.Parse(item.Text);
 
-                    var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
+                    var producto = AereosModel.GetAereoByID(id);
 
                     var cantidad = IsProductInProductosSeleccionados(producto.Id);
 
@@ -201,15 +193,13 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnConfirmarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-            GenerarPresupuestosManager.aereosElegidos.Clear();
+            AereosModel.ClearAereosElegidos();
 
             foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
                 var id = Guid.Parse(item.Text);
 
-                var producto = GenerarPresupuestosManager.aereos.Where(x => x.Id == id).SingleOrDefault();
-
-                GenerarPresupuestosManager.aereosElegidos.Add(producto);
+                AereosModel.AddAereoElegido(id);
             }
 
             this.Close();
@@ -247,7 +237,10 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            AddProductosToListView(GenerarPresupuestosManager.aereos);
+            AddProductosToListView(AereosModel.GetAereos(new AereosFilter()
+            {
+                CantidadMin = 1,
+            }));
         }
 
         private int IsProductInProductosSeleccionados(Guid id)

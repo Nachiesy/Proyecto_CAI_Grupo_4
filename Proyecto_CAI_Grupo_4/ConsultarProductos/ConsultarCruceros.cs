@@ -1,9 +1,9 @@
 ﻿using Proyecto_CAI_Grupo_4.Filters;
 using Proyecto_CAI_Grupo_4.Managers;
-using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Data;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Models.Productos;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -35,7 +35,7 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxTipoDeCamarote.Items.Add(value.GetDescription());
             }
 
-            AddProductosToDataGridView(GenerarPresupuestosManager.cruceros);
+            AddProductosToDataGridView(CrucerosModel.GetCruceros());
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -61,14 +61,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var filter = new CrucerosFilter(filterDto);
 
-                var productos = GenerarPresupuestosManager.cruceros
-                    .Where(x => (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
-                                && (!filter.CiudadDePartida.HasValue || (int)x.CiudadDePartida == filter.CiudadDePartida)
-                                && (!filter.CiudadDeLlegada.HasValue || (int)x.CiudadDeLlegada == filter.CiudadDeLlegada)
-                                && (!filter.TipoDeCamarote.HasValue || (int)x.TipoDeCamarote == filter.TipoDeCamarote));
+                var productos = CrucerosModel.GetCruceros(filter);
 
                 listViewProductos.Items.Clear();
 
@@ -124,7 +117,7 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            AddProductosToDataGridView(GenerarPresupuestosManager.cruceros);
+            AddProductosToDataGridView(CrucerosModel.GetCruceros());
         }
 
         private void btnVolverMenuGenerarPresupuestos_Click(object sender, EventArgs e)
