@@ -28,27 +28,12 @@ namespace Proyecto_CAI_Grupo_4
         /// </summary>
         private void InitializeComponent()
         {
-            btnConsultarProductos = new Common.Components.BotonEstilizado();
             btn_GenerarPresupuesto = new Common.Components.BotonEstilizado();
             btn_GenerarReserva = new Common.Components.BotonEstilizado();
             btn_ConfirmarReserva = new Common.Components.BotonEstilizado();
             btn_EstadoDeReservas = new Common.Components.BotonEstilizado();
             btn_BuscarPresupuesto = new Common.Components.BotonEstilizado();
             SuspendLayout();
-            // 
-            // btnConsultarProductos
-            // 
-            btnConsultarProductos.BackColor = Color.Transparent;
-            btnConsultarProductos.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            btnConsultarProductos.FlatStyle = FlatStyle.Flat;
-            btnConsultarProductos.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnConsultarProductos.ForeColor = Color.Black;
-            btnConsultarProductos.Location = new Point(27, 212);
-            btnConsultarProductos.Name = "btnConsultarProductos";
-            btnConsultarProductos.Size = new Size(227, 67);
-            btnConsultarProductos.TabIndex = 4;
-            btnConsultarProductos.Text = "Consultar Productos";
-            btnConsultarProductos.UseVisualStyleBackColor = false;
             // 
             // btn_GenerarPresupuesto
             // 
@@ -102,7 +87,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_EstadoDeReservas.FlatStyle = FlatStyle.Flat;
             btn_EstadoDeReservas.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_EstadoDeReservas.ForeColor = Color.Black;
-            btn_EstadoDeReservas.Location = new Point(27, 295);
+            btn_EstadoDeReservas.Location = new Point(27, 212);
             btn_EstadoDeReservas.Name = "btn_EstadoDeReservas";
             btn_EstadoDeReservas.Size = new Size(227, 67);
             btn_EstadoDeReservas.TabIndex = 8;
@@ -136,12 +121,10 @@ namespace Proyecto_CAI_Grupo_4
             Controls.Add(btn_ConfirmarReserva);
             Controls.Add(btn_GenerarReserva);
             Controls.Add(btn_GenerarPresupuesto);
-            Controls.Add(btnConsultarProductos);
             Margin = new Padding(6);
             Name = "MenuPrincipal";
             Text = "Menu Principal";
             Load += MenuPrincipal_Load;
-            Controls.SetChildIndex(btnConsultarProductos, 0);
             Controls.SetChildIndex(btn_GenerarPresupuesto, 0);
             Controls.SetChildIndex(btn_GenerarReserva, 0);
             Controls.SetChildIndex(btn_ConfirmarReserva, 0);
@@ -151,8 +134,6 @@ namespace Proyecto_CAI_Grupo_4
         }
 
         #endregion
-        //=======
-        private Common.Components.BotonEstilizado btnConsultarProductos;
         private Common.Components.BotonEstilizado btn_GenerarPresupuesto;
         private Common.Components.BotonEstilizado btn_GenerarReserva;
         private Common.Components.BotonEstilizado btn_ConfirmarReserva;
