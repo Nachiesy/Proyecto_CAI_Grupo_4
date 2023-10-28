@@ -136,7 +136,14 @@ public partial class GenerarPresupuestoMenu : VistaBase
         //Mepa que esto ta mal, no deberia actualizar el stock el presupuesto, solamente cuando se confirma la pre-reserva se baja el stock
         //ActualizarCantidadesDeProductos();
 
+        LimpiarSeleccionDeProductos();
         GoToMenuPrincipal();
+    }
+
+    public void LimpiarSeleccionDeProductos()
+    {
+        AereosModel.ClearAereosElegidos();
+        HotelesModel.ClearHotelesElegidos();
     }
 
     private void ActualizarCantidadesDeProductos()
