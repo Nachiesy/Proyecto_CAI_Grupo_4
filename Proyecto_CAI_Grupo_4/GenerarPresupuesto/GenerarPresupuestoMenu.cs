@@ -3,17 +3,29 @@ using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Modelos;
+using Proyecto_CAI_Grupo_4.Models;
 
 namespace Proyecto_CAI_Grupo_4;
 
 public partial class GenerarPresupuestoMenu : VistaBase
 {
     private decimal Total = 0;
+    private int presupuestoId = 0;
+    private bool esNuevo = true;
 
     public GenerarPresupuestoMenu() : base(tituloModulo: "Generar Presupuesto")
     {
         InitializeComponent();
         ActualizarEstadoBotones();
+        presupuestoId = PresupuestosModel.GenerarId();
+    }
+
+    public GenerarPresupuestoMenu(int presupuestoId) : base(tituloModulo: $"Modificar Presupuesto #{presupuestoId}")
+    {
+        InitializeComponent();
+        ActualizarEstadoBotones();
+        this.presupuestoId = presupuestoId;
+        esNuevo = false;
     }
 
     private void ActualizarEstadoBotones()
@@ -106,7 +118,20 @@ public partial class GenerarPresupuestoMenu : VistaBase
             return;
         }
 
-        MessageBox.Show($"Presupuesto con Código: [{1}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+        var cliente = new Cliente(dni, nombre, apellido);
+        var itinerario = new Itinerario(presupuestoId, AereosModel.GetAereosElegidos(), HotelesModel.GetHotelesElegidos(), cliente);
+
+        PresupuestosModel.AgregarPresupuesto(itinerario);
+
+
+        if (esNuevo)
+        {
+            MessageBox.Show($"Presupuesto con Código: [{presupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+        }
+        else
+        {
+            MessageBox.Show($"Presupuesto con Código: [{presupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+        }
 
         //Mepa que esto ta mal, no deberia actualizar el stock el presupuesto, solamente cuando se confirma la pre-reserva se baja el stock
         //ActualizarCantidadesDeProductos();
@@ -163,11 +188,13 @@ public partial class GenerarPresupuestoMenu : VistaBase
     private void btnPreReservar_Click(object sender, EventArgs e)
     {
 
+        //TODO: esto esta incompleto, revisar el DC y DF
+
         var reserva = new Reserva()
         {
             Codigo = 1,
             Estado = ReservaEstadoEnum.pendienteDePago,
-            DNI = dni,
+            DNI = "",
             TipoDoc = 1,
             Precio = Total,
             Fecha = DateTime.Now,
