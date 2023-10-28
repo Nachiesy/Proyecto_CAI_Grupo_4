@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Proyecto_CAI_Grupo_4.Common.Views;
+﻿using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4.GenerarPresupuesto;
 
 public partial class BuscarPresupuesto : VistaBase
 {
-    private int idPresupuesto;
+    private int PresupuestoId;
+
     public BuscarPresupuesto()
     {
         InitializeComponent();
@@ -35,7 +28,7 @@ public partial class BuscarPresupuesto : VistaBase
             return;
         }
 
-        var presupuesto = PresupuestosModel.ObtenerPresupuesto(nroPresupuesto);
+        var presupuesto = PresupuestosModel.GetPresupuesto(nroPresupuesto);
 
         if (presupuesto is null)
         {
@@ -43,7 +36,7 @@ public partial class BuscarPresupuesto : VistaBase
             return;
         }
 
-        idPresupuesto = nroPresupuesto;
+        PresupuestoId = nroPresupuesto;
 
         GoToGenerarPresupuestoMenu();
     }
@@ -59,8 +52,30 @@ public partial class BuscarPresupuesto : VistaBase
 
     private void OpenGenerarPresupuestoMenu()
     {
-        Application.Run(new GenerarPresupuestoMenu(idPresupuesto));
+        Application.Run(new GenerarPresupuestoMenu(new GenerarPresupuestoMenuParams()
+        {
+            PresupuestoId = PresupuestoId,
+            EsNuevo = false,
+            InitBuscarPresupuesto = true,
+        }));
     }
 
-    private void btn_Volver_Click(object sender, EventArgs e) => btn_Volver_Menu(sender, e);
+    private void btn_Volver_Click(object sender, EventArgs e)
+    {
+        GoToMenuPrincipal();
+    }
+
+    private void GoToMenuPrincipal()
+    {
+        Close();
+
+        Thread thread = new Thread(OpenMenuPrincipal);
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+    }
+
+    private void OpenMenuPrincipal()
+    {
+        Application.Run(new MenuPrincipal());
+    }
 }

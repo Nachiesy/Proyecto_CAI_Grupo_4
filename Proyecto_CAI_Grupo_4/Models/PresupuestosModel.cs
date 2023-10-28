@@ -6,12 +6,22 @@ namespace Proyecto_CAI_Grupo_4.Models
     {
         private static List<Itinerario> Presupuestos { get; set; } = new List<Itinerario>();
 
-        public static void AgregarPresupuesto(Itinerario itinerario)
+        public static void AddPresupuesto(Itinerario itinerario)
         {
             Presupuestos.Add(itinerario);
         }
 
-        public static Itinerario? ObtenerPresupuesto(int id)
+        public static void UpdatePresupuesto(Itinerario itinerarioActualizado)
+        {
+            var index = Presupuestos.FindIndex(x => x.IdItinerario == itinerarioActualizado.IdItinerario);
+
+            if (index != -1)
+            {
+                Presupuestos[index] = itinerarioActualizado;
+            }
+        }
+
+        public static Itinerario? GetPresupuesto(int id)
         {
             return Presupuestos.FirstOrDefault(x => x.IdItinerario == id);
         }

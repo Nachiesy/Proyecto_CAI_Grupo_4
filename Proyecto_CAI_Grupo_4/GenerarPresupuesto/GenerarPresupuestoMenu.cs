@@ -10,29 +10,34 @@ namespace Proyecto_CAI_Grupo_4;
 public partial class GenerarPresupuestoMenu : VistaBase
 {
     private decimal Total = 0;
-    private int presupuestoId = 0;
-    private bool esNuevo = true;
+    private int PresupuestoId = 0;
+    private bool EsNuevo = true;
 
     public GenerarPresupuestoMenu() : base(tituloModulo: $"Generar Presupuesto")
     {
         InitializeComponent();
-        presupuestoId = PresupuestosModel.GenerarId();
+
+        PresupuestoId = PresupuestosModel.GenerarId();
     }
 
-    public GenerarPresupuestoMenu(int presupuestoId) : base(tituloModulo: $"Modificar Presupuesto #{presupuestoId}")
+    public GenerarPresupuestoMenu(GenerarPresupuestoMenuParams parametros) : base(tituloModulo: $"Modificar Presupuesto #{parametros.PresupuestoId}")
     {
         InitializeComponent();
-        this.presupuestoId = presupuestoId;
-        esNuevo = false;
 
-        var presupuesto = PresupuestosModel.ObtenerPresupuesto(presupuestoId)!;
+        PresupuestoId = parametros.PresupuestoId;
+        EsNuevo = parametros.EsNuevo;
+
+        var presupuesto = PresupuestosModel.GetPresupuesto(PresupuestoId)!;
 
         textBoxClienteDNI.Text = presupuesto.Cliente.DNI;
         textBoxClienteNombre.Text = presupuesto.Cliente.Nombre;
         textBoxClienteApellido.Text = presupuesto.Cliente.Apellido;
 
-        presupuesto.AereosSeleccionados.ForEach(aereo => AereosModel.AddAereoElegido(aereo.Id));
-        presupuesto.HotelesSeleccionados.ForEach(hotel => HotelesModel.AddHotelElegido(hotel.Id));
+        if (parametros.InitBuscarPresupuesto)
+        {
+            presupuesto.AereosSeleccionados.ForEach(aereo => AereosModel.AddAereoElegido(aereo.Id));
+            presupuesto.HotelesSeleccionados.ForEach(hotel => HotelesModel.AddHotelElegido(hotel.Id));
+        }
     }
 
     private void ActualizarEstadoBotones()
@@ -86,7 +91,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
     private void OpenGenerarPresupuestoAereos()
     {
-        Application.Run(new GenerarPresupuestoAereos());
+        Application.Run(new GenerarPresupuestoAereos(PresupuestoId, EsNuevo));
     }
 
     private void btnMenuHoteles_Click(object sender, EventArgs e)
@@ -100,7 +105,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
     private void OpenGenerarPresupuestoHoteles()
     {
-        Application.Run(new GenerarPresupuestoHoteles());
+        Application.Run(new GenerarPresupuestoHoteles(PresupuestoId, EsNuevo));
     }
 
     private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
@@ -128,19 +133,19 @@ public partial class GenerarPresupuestoMenu : VistaBase
         }
 
         var cliente = new Cliente(dni, nombre, apellido);
-        var itinerario = new Itinerario(presupuestoId, AereosModel.GetAereosElegidos(), HotelesModel.GetHotelesElegidos(), cliente);
+        var itinerario = new Itinerario(PresupuestoId, AereosModel.GetAereosElegidos(), HotelesModel.GetHotelesElegidos(), cliente);
 
-        itinerario.Cliente = cliente;
-
-        PresupuestosModel.AgregarPresupuesto(itinerario);
-
-        if (esNuevo)
+        if (EsNuevo)
         {
-            MessageBox.Show($"Presupuesto con Código: [{presupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+            PresupuestosModel.AddPresupuesto(itinerario);
+
+            MessageBox.Show($"Presupuesto con Código: [{PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
         else
         {
-            MessageBox.Show($"Presupuesto con Código: [{presupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+            PresupuestosModel.UpdatePresupuesto(itinerario);
+
+            MessageBox.Show($"Presupuesto con Código: [{PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
 
         //TODO: ActualizarCantidadesDeProductos

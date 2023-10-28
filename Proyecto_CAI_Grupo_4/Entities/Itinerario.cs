@@ -1,44 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Proyecto_CAI_Grupo_4.Entities;
-
-public class Itinerario
+﻿namespace Proyecto_CAI_Grupo_4.Entities
 {
-    public Itinerario(int id, IEnumerable<Aereos> aereosSeleccionados, IEnumerable<Hoteles> hotelesSeleccionados, Cliente cliente)
+    public class Itinerario
     {
-        IdItinerario = id;
-        Estado = "Presupuesto";
-        FechaEstado = DateTime.Now;
+        public Itinerario(int id, IEnumerable<Aereos> aereosSeleccionados, IEnumerable<Hoteles> hotelesSeleccionados, Cliente cliente)
+        {
+            IdItinerario = id;
+            Estado = "Presupuesto";
+            FechaEstado = DateTime.Now;
 
-        AereosSeleccionados = aereosSeleccionados.ToList();
-        HotelesSeleccionados = hotelesSeleccionados.ToList();
+            AereosSeleccionados = aereosSeleccionados.ToList();
+            HotelesSeleccionados = hotelesSeleccionados.ToList();
 
-        CalcularTotal();
-    }
+            Cliente = cliente;
 
-    public int IdItinerario { get; set; }
-    public List<Aereos> AereosSeleccionados { get; set; }
-    public List<Hoteles> HotelesSeleccionados { get; set; }
-    public Cliente Cliente { get; set; }
-    public string Estado { get; set; }
-    public DateTime FechaEstado { get; set; }
-    public decimal PrecioTotal { get; set; }
+            CalcularTotal();
+        }
 
-    public void CalcularTotal()
-    {
-        var totalAereos = AereosSeleccionados.Sum(x => x.Precio);
-        var totalHoteles = HotelesSeleccionados.Sum(x => x.Precio);
+        public int IdItinerario { get; set; }
+        public List<Aereos> AereosSeleccionados { get; set; }
+        public List<Hoteles> HotelesSeleccionados { get; set; }
+        public Cliente Cliente { get; set; }
+        public string Estado { get; set; }
+        public DateTime FechaEstado { get; set; }
+        public decimal PrecioTotal { get; set; }
 
-        PrecioTotal = totalAereos + totalHoteles;
-    }
+        public void CalcularTotal()
+        {
+            var totalAereos = AereosSeleccionados.Sum(x => x.Precio);
+            var totalHoteles = HotelesSeleccionados.Sum(x => x.Precio);
 
-    public void PreReservar()
-    {
-        Estado = "Pre-Reserva";
-        FechaEstado = DateTime.Now;
+            PrecioTotal = totalAereos + totalHoteles;
+        }
+
+        public void PreReservar()
+        {
+            Estado = "Pre-Reserva";
+            FechaEstado = DateTime.Now;
+        }
     }
 }

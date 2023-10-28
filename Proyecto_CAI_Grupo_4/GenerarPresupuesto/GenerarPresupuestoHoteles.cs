@@ -9,9 +9,15 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoHoteles : VistaBase
     {
-        public GenerarPresupuestoHoteles() : base(tituloModulo: "Generar Presupuesto > Hoteles")
+        private int PresupuestoId = 0;
+        private bool EsNuevo = true;
+
+        public GenerarPresupuestoHoteles(int presupuestoId, bool esNuevo) : base(tituloModulo: "Generar Presupuesto > Hoteles")
         {
             InitializeComponent();
+
+            PresupuestoId = presupuestoId;
+            EsNuevo = esNuevo;
         }
 
         private void GenerarPresupuestoHoteles_Load(object sender, EventArgs e)
@@ -213,7 +219,19 @@ namespace Proyecto_CAI_Grupo_4
 
         private void OpenMenuGenerarPresupuesto()
         {
-            Application.Run(new GenerarPresupuestoMenu());
+            if (EsNuevo)
+            {
+                Application.Run(new GenerarPresupuestoMenu());
+            }
+            else
+            {
+                Application.Run(new GenerarPresupuestoMenu(new GenerarPresupuestoMenuParams()
+                {
+                    PresupuestoId = PresupuestoId,
+                    EsNuevo = EsNuevo,
+                    InitBuscarPresupuesto = false,
+                }));
+            }
         }
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)

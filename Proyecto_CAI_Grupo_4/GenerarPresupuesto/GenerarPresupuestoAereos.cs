@@ -9,9 +9,15 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoAereos : VistaBase
     {
-        public GenerarPresupuestoAereos() : base(tituloModulo: "Generar Presupuesto > Aéreos")
+        private int PresupuestoId = 0;
+        private bool EsNuevo = true;
+
+        public GenerarPresupuestoAereos(int presupuestoId, bool esNuevo) : base(tituloModulo: "Generar Presupuesto > Aéreos")
         {
             InitializeComponent();
+
+            PresupuestoId = presupuestoId;
+            EsNuevo = esNuevo;
         }
 
         private void GenerarPresupuestoAereos_Load(object sender, EventArgs e)
@@ -220,7 +226,19 @@ namespace Proyecto_CAI_Grupo_4
 
         private void OpenMenuGenerarPresupuesto()
         {
-            Application.Run(new GenerarPresupuestoMenu());
+            if (EsNuevo)
+            {
+                Application.Run(new GenerarPresupuestoMenu());
+            }
+            else
+            {
+                Application.Run(new GenerarPresupuestoMenu(new GenerarPresupuestoMenuParams()
+                {
+                    PresupuestoId = PresupuestoId,
+                    EsNuevo = EsNuevo,
+                    InitBuscarPresupuesto = false,
+                }));
+            }
         }
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)
