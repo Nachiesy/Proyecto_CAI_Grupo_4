@@ -58,7 +58,7 @@ public partial class VistaBase : Form
         Application.Run(new MenuPrincipal());
     }
 
-    private void btn_Volver_Menu(object sender, EventArgs e)
+    public void btn_Volver_Menu(object sender, EventArgs e)
     {
         Close();
 

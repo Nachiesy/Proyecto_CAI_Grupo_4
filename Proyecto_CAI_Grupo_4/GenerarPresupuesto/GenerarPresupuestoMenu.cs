@@ -26,6 +26,15 @@ public partial class GenerarPresupuestoMenu : VistaBase
         ActualizarEstadoBotones();
         this.presupuestoId = presupuestoId;
         esNuevo = false;
+
+        var presupuesto = PresupuestosModel.ObtenerPresupuesto(presupuestoId)!;
+
+        textBoxClienteDNI.Text = presupuesto.Cliente.DNI;
+        textBoxClienteNombre.Text = presupuesto.Cliente.Nombre;
+        textBoxClienteApellido.Text = presupuesto.Cliente.Apellido;
+
+        presupuesto.AereosSeleccionados.ForEach(aereo => AereosModel.AddAereoElegido(aereo.Id));
+        presupuesto.HotelesSeleccionados.ForEach(hotel => HotelesModel.AddHotelElegido(hotel.Id));
     }
 
     private void ActualizarEstadoBotones()
@@ -120,6 +129,8 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         var cliente = new Cliente(dni, nombre, apellido);
         var itinerario = new Itinerario(presupuestoId, AereosModel.GetAereosElegidos(), HotelesModel.GetHotelesElegidos(), cliente);
+
+        itinerario.Cliente = cliente;
 
         PresupuestosModel.AgregarPresupuesto(itinerario);
 

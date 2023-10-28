@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.GenerarPresupuesto;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -78,5 +79,18 @@ namespace Proyecto_CAI_Grupo_4
             Application.Run(new ConfirmarReserva());
         }
 
+        private void btn_BuscarPresupuesto_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            var thread = new Thread(OpenBuscarPresupuesto);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenBuscarPresupuesto()
+        {
+            Application.Run(new BuscarPresupuesto());
+        }
     }
 }
