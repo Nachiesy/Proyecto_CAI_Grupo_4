@@ -9,26 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="ConsultarProductos\ConsultarProductosMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="ConsultarProductos\ConsultarAereos.cs" />
-    <Compile Update="ConsultarProductos\ConsultarHoteles.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="ConsultarProductos\ConsultarCruceros.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="ConsultarProductos\ConsultarPaquetesTuristicos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="GenerarPresupuesto\GenerarPresupuestoPaquetesTuristicos.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="GenerarPresupuesto\GenerarPresupuestoHoteles.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="GenerarPresupuesto\GenerarPresupuestoCruceros.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GenerarPresupuesto\GenerarPreReserva.cs">

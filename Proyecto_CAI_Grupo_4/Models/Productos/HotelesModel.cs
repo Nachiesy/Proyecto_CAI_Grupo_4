@@ -1,4 +1,4 @@
-﻿using Proyecto_CAI_Grupo_4.Entities.Productos;
+﻿using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Filters;
 
 namespace Proyecto_CAI_Grupo_4.Models.Productos

@@ -1,7 +1,7 @@
 ﻿using Proyecto_CAI_Grupo_4.Utils;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Models;
-using Proyecto_CAI_Grupo_4.Entities.Productos;
+using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Modelos;
 
@@ -30,18 +30,8 @@ namespace Proyecto_CAI_Grupo_4
 
             AddProductosToListView(hoteles);
 
-            var cruceros = CrucerosModel.GetCrucerosElegidos();
-
-            AddProductosToListView(cruceros);
-
-            var paquetesTuristicos = PaquetesTuristicosModel.GetPaquetesTuristicosElegidos();
-
-            AddProductosToListView(paquetesTuristicos);
-
             Total += aereos.Sum(x => x.Precio);
             Total += hoteles.Sum(x => x.Precio);
-            Total += cruceros.Sum(x => x.Precio);
-            Total += paquetesTuristicos.Sum(x => x.Precio);
 
             presupuestoTotal.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
         }
@@ -87,34 +77,6 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenGenerarPresupuestoHoteles()
         {
             Application.Run(new GenerarPresupuestoHoteles());
-        }
-
-        private void btnMenuCruceros_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Thread thread = new Thread(OpenGenerarPresupuestoCruceros);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void OpenGenerarPresupuestoCruceros()
-        {
-            Application.Run(new GenerarPresupuestoCruceros());
-        }
-
-        private void btnMenuPaquetes_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Thread thread = new Thread(OpenGenerarPresupuestoPaquetes);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void OpenGenerarPresupuestoPaquetes()
-        {
-            Application.Run(new GenerarPresupuestoPaquetesTuristicos());
         }
 
         private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
@@ -194,10 +156,6 @@ namespace Proyecto_CAI_Grupo_4
             AereosModel.ActualizarCantidadesDeAereos();
 
             HotelesModel.ActualizarCantidadesDeHoteles();
-
-            CrucerosModel.ActualizarCantidadesDeCruceros();
-
-            PaquetesTuristicosModel.ActualizarCantidadesDePaquetes();
         }
 
         private void GoToMenuPrincipal()

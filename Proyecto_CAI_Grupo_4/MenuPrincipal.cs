@@ -60,20 +60,6 @@ namespace Proyecto_CAI_Grupo_4
             Application.Run(new GenerarReserva());
         }
 
-        private void btnConsultarProductos_Click(object sender, EventArgs e)
-        {
-            Close();
-
-            Thread thread = new Thread(OpenConsultarProductosMenu);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void OpenConsultarProductosMenu()
-        {
-            Application.Run(new ConsultarProductosMenu());
-        }
-
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
 

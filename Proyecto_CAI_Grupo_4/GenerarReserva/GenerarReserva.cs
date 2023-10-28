@@ -2,7 +2,7 @@
 using Proyecto_CAI_Grupo_4.Utils;
 using System.Data;
 using Proyecto_CAI_Grupo_4.Common.Views;
-using Proyecto_CAI_Grupo_4.Managers;
+using Proyecto_CAI_Grupo_4.Modelos;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -98,7 +98,7 @@ namespace Proyecto_CAI_Grupo_4
         {
 
         }
-        private List<Reserva> reservas = ReservasManager.reservas;
+        private List<Reserva> reservas = ReservaModel.GetReservas();
 
         private void AddReservasToListView(IEnumerable<Reserva> list)
         {

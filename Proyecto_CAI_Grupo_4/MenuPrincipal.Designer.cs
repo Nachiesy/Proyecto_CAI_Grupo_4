@@ -48,7 +48,6 @@ namespace Proyecto_CAI_Grupo_4
             btnConsultarProductos.TabIndex = 4;
             btnConsultarProductos.Text = "Consultar Productos";
             btnConsultarProductos.UseVisualStyleBackColor = false;
-            btnConsultarProductos.Click += btnConsultarProductos_Click;
             // 
             // btn_GenerarPresupuesto
             // 

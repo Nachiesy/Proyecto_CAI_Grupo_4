@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Proyecto_CAI_Grupo_4.Entities.Productos
+namespace Proyecto_CAI_Grupo_4.Entities
 {
     public class Aereos : Productos
     {
