@@ -86,11 +86,8 @@ namespace Proyecto_CAI_Grupo_4
 
             var validacionDNI = dni.EsDNI();
 
-            var pasajerosMsg = ValidarCantidadPasajeros();
 
-            var validacionPasajeros = string.IsNullOrEmpty(pasajerosMsg);
-
-            if (validacionProductos && validacionDNI && validacionPasajeros)
+            if (validacionProductos && validacionDNI)
             {
                 var result = MessageBox.Show("¿Desea generar una Pre Reserva a partir de este Presupuesto?", string.Empty, MessageBoxButtons.YesNo);
 
@@ -143,10 +140,6 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     MessageBox.Show($"Debes elegir productos {msgFinal}", "Error", MessageBoxButtons.OK);
                 }
-                else if (!validacionPasajeros)
-                {
-                    MessageBox.Show($"{pasajerosMsg} {msgFinal}", "Error", MessageBoxButtons.OK);
-                }
             }
         }
 
@@ -183,46 +176,6 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenGenerarPreReserva()
         {
             Application.Run(new GenerarPreReserva());
-        }
-
-        private string ValidarCantidadPasajeros()
-        {
-            if (string.IsNullOrEmpty(textBoxPasajerosAdultos.Text))
-            {
-                return "Debes seleccionar una cantidad de pasajeros adultos";
-            }
-
-            if (!int.TryParse(textBoxPasajerosAdultos.Text, out PasajerosAdultos))
-            {
-                return "La cantidad de pasajeros adultos debe ser un numero entero";
-            }
-
-            if (PasajerosAdultos <= 0)
-            {
-                return "Debes seleccionar como minimo 1 pasajero adulto";
-            }
-
-            if (!int.TryParse(textBoxPasajerosMenores.Text, out PasajerosMenores) && !string.IsNullOrEmpty(textBoxPasajerosMenores.Text))
-            {
-                return "La cantidad de pasajeros menores debe ser un numero entero";
-            }
-
-            if (PasajerosMenores < 0)
-            {
-                return "La cantidad de pasajeros menores no puede ser menor a 0";
-            }
-
-            if (!int.TryParse(textBoxPasajerosInfantes.Text, out PasajerosInfantes) && !string.IsNullOrEmpty(textBoxPasajerosInfantes.Text))
-            {
-                return "La cantidad de pasajeros infantes debe ser un numero entero";
-            }
-
-            if (PasajerosInfantes < 0)
-            {
-                return "La cantidad de pasajeros infantes no puede ser menor a 0";
-            }
-
-            return string.Empty;
         }
     }
 }
