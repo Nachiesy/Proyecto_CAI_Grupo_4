@@ -12,7 +12,8 @@ namespace Proyecto_CAI_Grupo_4.Models
                 }, new List<Guid> () {
                     Guid.Parse("55be2c9a-987a-4bfe-a7de-23025f7dc2fe")
                 },
-                new Cliente("53944876", "Lionel", "Messi"))
+                new Cliente("53944876", "Lionel", "Messi"),
+                20000)
         };
 
         public static List<Itinerario> GetPresupuestos()

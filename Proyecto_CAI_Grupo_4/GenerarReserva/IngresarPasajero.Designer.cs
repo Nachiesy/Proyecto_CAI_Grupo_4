@@ -62,9 +62,9 @@
             label2.Font = new Font("Microsoft JhengHei UI", 15.15F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(12, 113);
             label2.Name = "label2";
-            label2.Size = new Size(452, 26);
+            label2.Size = new Size(423, 26);
             label2.TabIndex = 1;
-            label2.Text = "Por favor ingrese los datos de los pasajeros";
+            label2.Text = "Por favor ingrese los datos del pasajeros";
             // 
             // label3
             // 
@@ -189,6 +189,7 @@
             listaProductosPorAsignar.ItemHeight = 15;
             listaProductosPorAsignar.Location = new Point(6, 22);
             listaProductosPorAsignar.Name = "listaProductosPorAsignar";
+            listaProductosPorAsignar.SelectionMode = SelectionMode.MultiSimple;
             listaProductosPorAsignar.Size = new Size(214, 199);
             listaProductosPorAsignar.TabIndex = 0;
             // 

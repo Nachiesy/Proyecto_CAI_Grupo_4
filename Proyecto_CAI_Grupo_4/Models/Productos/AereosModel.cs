@@ -530,7 +530,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public static Aereos? GetAereoByID(Guid id)
         {
-            return aereos.Where(x => x.Id == id).SingleOrDefault();
+            return aereos.SingleOrDefault(x => x.Id == id);
         }
 
         public static IEnumerable<Aereos> GetAereosElegidos()

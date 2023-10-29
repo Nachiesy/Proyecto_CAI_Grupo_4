@@ -12,8 +12,10 @@ namespace Proyecto_CAI_Grupo_4
 
     public partial class GenerarReserva : VistaBase
     {
-        Reserva reservaselct = new Reserva();
-        int controlPasajeros = 0;
+        private Reserva Reserva = null;
+        private Pasajeros Pasajero = null;
+
+        private int cantidadMaxPasajeros = 0;
 
         public GenerarReserva() : base(tituloModulo: "Generar Reserva")
         {
@@ -42,38 +44,68 @@ namespace Proyecto_CAI_Grupo_4
 
         public void RecibirDatosPasajero(Pasajeros SumarPasajero)
         {
-            ListViewItem item = new ListViewItem(SumarPasajero.Nombre);
-            item.SubItems.Add(SumarPasajero.Apellido.ToString());
+            foreach (var i in SumarPasajero.IdsAereosAsignados)
+            {
+                ListViewItem item = new ListViewItem(AereosModel.GetAereoByID(i).Codigo)
+                {
+                    SubItems =
+                    {
+                        AereosModel.GetAereoByID(i).Nombre,
+                        SumarPasajero.Nombre,
+                        SumarPasajero.Apellido,
+                        SumarPasajero.FechaNacimiento.ToShortDateString(),
+                        SumarPasajero.GetEdad().ToString(),
+                        i.ToString()
+                    }
+                };
 
-            listPasajeros.Items.Add(item);
+                listPasajeros.Items.Add(item);
+            }
 
+            foreach (var i in SumarPasajero.IdsHotelesAsignados)
+            {
+                ListViewItem item = new ListViewItem(HotelesModel.GetHotelByID(i).Codigo)
+                {
+                    SubItems =
+                    {
+                        HotelesModel.GetHotelByID(i).Nombre,
+                        SumarPasajero.Nombre,
+                        SumarPasajero.Apellido,
+                        SumarPasajero.FechaNacimiento.ToShortDateString(),
+                        SumarPasajero.GetEdad().ToString(),
+                        i.ToString()
+                    }
+                };
+
+                listPasajeros.Items.Add(item);
+            }
+
+            Pasajero = SumarPasajero;
         }
         private void btnAddpasajero_Click(object sender, EventArgs e)
         {
+            var cantAgregadaPasajeros = Pasajero is null ? 0 : Pasajero.TotalAsignados();
 
-            //if (controlPasajeros < reservaselct.CantPasajeros)
-            //{
-            //    IngresarPasajero Agregar = new IngresarPasajero();
-            //    DialogResult result = Agregar.ShowDialog();
+            if (cantAgregadaPasajeros < cantidadMaxPasajeros)
+            {
+                IngresarPasajero Agregar = new IngresarPasajero(Reserva.IdItinerario);
 
-            //    if (result == DialogResult.OK)
-            //    {
-            //        if (Agregar.pasajero == null)
-            //        {
-            //        }
-            //        else
-            //        {
-            //            RecibirDatosPasajero(Agregar.pasajero);
-            //            MessageBox.Show("Se Agregó el pasajero");
-            //            lblcantpasajeros.Text = "Pasajeros Disponibles: " + (reservaselct.CantPasajeros - controlPasajeros);
-            //            controlPasajeros++;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Limite de Pasajeros alcanzado");
-            //}
+                DialogResult result = Agregar.ShowDialog();
+
+                if (result == DialogResult.OK && Agregar.Pasajero != null)
+                {
+                    RecibirDatosPasajero(Agregar.Pasajero);
+                    MessageBox.Show("Se Agregó el pasajero");
+
+                    cantAgregadaPasajeros = Pasajero.TotalAsignados();
+
+                    ActualizarCantidadDisponiblePasajeros(cantidadMaxPasajeros - cantAgregadaPasajeros);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Limite de Pasajeros alcanzado");
+            }
         }
 
 
@@ -82,14 +114,8 @@ namespace Proyecto_CAI_Grupo_4
 
         }
 
-        private List<Reserva> reservas = ReservaModel.GetReservas();
-
         private void AddPresupuestosToListView(IEnumerable<Itinerario> listaItinerarios)
         {
-            //var cantPasajeros = 0;
-            //var aereos = AereosModel.GetAereosByIds(listaItinerarios.SelectMany(x => x.IdAereosSeleccionados));
-            //var hoteles = HotelesModel.GetHotelesByIds(listaItinerarios.SelectMany(x => x.IdHotelesSeleccionados));
-
             var itinerarios = listaItinerarios.Select(item => new ListViewItem(item.IdItinerario.ToString())
             {
                 SubItems =
@@ -156,47 +182,35 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            //if (listPresupuestos.SelectedItems.Count > 0)
-            //{
-            //    ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
-            //    reservaselct.Codigo = int.Parse(presupuesto.SubItems[0].Text);
-            //    reservaselct.CantPasajeros = int.Parse(presupuesto.SubItems[2].Text);
-            //    reservaselct.CantMayores = int.Parse(presupuesto.SubItems[3].Text);
-            //    reservaselct.CantMenores = int.Parse(presupuesto.SubItems[4].Text);
-            //    if (presupuesto.SubItems[8].Text =="Si") { reservaselct.prereserva = true; } else { reservaselct.prereserva = false; };
+            if (listPresupuestos.SelectedItems.Count == 1)
+            {
+                ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
 
-            //    gbxPasajeros.Enabled = true;
-            //    gpProsupuesto.Enabled = false;
+                Reserva = ReservaModel.NuevaReserva(int.Parse(presupuesto.SubItems[0].Text));
 
-            //    if (reservaselct.prereserva == true)
-            //    {
-            //        DialogResult resultado = MessageBox.Show("El presupuesto seleccionado ya posee una prereserva  ¿Desea crear la reserva con los mismos datos?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //        if (resultado == DialogResult.Yes)
-            //        {
-            //            MessageBox.Show("Reserva generada");
-            //            this.Close();
+                gbxPasajeros.Enabled = true;
+                gbxPresupuesto.Enabled = false;
+                cantidadMaxPasajeros = int.Parse(presupuesto.SubItems[2].Text);
 
-            //            Thread thread = new Thread(OpenMenuPrincipal);
-            //            thread.SetApartmentState(ApartmentState.STA);
-            //            thread.Start();
-            //        }
-            //        else
-            //        {
-            //            lblcantpasajeros.Text = "Pasajeros Disponibles: " + reservaselct.CantPasajeros;
-            //            lblcodigp.Text = "ID Presupuesto: " + reservaselct.Codigo;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        lblcantpasajeros.Text = "Pasajeros Disponibles: " + reservaselct.CantPasajeros;
-            //        lblcodigp.Text = "ID Presupuesto: " + reservaselct.Codigo;
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Seleccione un presupuesto.");
-            //}
+                ActualizarInformacionPresupuesto(int.Parse(presupuesto.Text));
+                ActualizarCantidadDisponiblePasajeros(int.Parse(presupuesto.SubItems[2].Text));
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un presupuesto.");
+            }
+        }
 
+        private void ActualizarInformacionPresupuesto(int idPresupuesto)
+        {
+            lblcodigp.Text = "ID Presupuesto: " + idPresupuesto;
+        }
+
+        private void ActualizarCantidadDisponiblePasajeros(int nuevaCantidad)
+        {
+            cantidadMaxPasajeros = nuevaCantidad;
+
+            lblcantpasajeros.Text = "Pasajeros Disponibles: " + nuevaCantidad;
         }
 
         private void GenerarReserva_Load(object sender, EventArgs e)
@@ -206,27 +220,30 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnGenreserva_Click(object sender, EventArgs e)
         {
-            //if (listPresupuestos.SelectedItems.Count > 0)
-            //{
-            //    if (reservaselct.CantPasajeros == controlPasajeros)
-            //{
-            //    MessageBox.Show("Reserva Generada Exitosamente");
-            //    this.Close();
+            if (listPresupuestos.SelectedItems.Count > 0)
+            {
+                if (Pasajero.TotalAsignados() == cantidadMaxPasajeros)
+                {
+                    ReservaModel.AddReserva(Reserva);
+                    PasajerosModel.AgregarPasajero(Pasajero);
 
-            //    Thread thread = new Thread(OpenMenuPrincipal);
-            //    thread.SetApartmentState(ApartmentState.STA);
-            //    thread.Start();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Debe Completar todos los pasajeros");
+                    MessageBox.Show("Reserva Generada Exitosamente");
+                    this.Close();
 
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Seleccione un presupuesto");
-            //}
+                    Thread thread = new Thread(OpenMenuPrincipal);
+                    thread.SetApartmentState(ApartmentState.STA);
+                    thread.Start();
+                }
+                else
+                {
+                    MessageBox.Show("Debe Completar todos los pasajeros");
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un presupuesto");
+            }
         }
 
         private void listPasajeros_SelectedIndexChanged(object sender, EventArgs e)
@@ -241,14 +258,15 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btn_Quitar_Click(object sender, EventArgs e)
         {
-        //    if (listPasajeros.SelectedItems.Count > 0)
-        //    {
-        //        foreach (ListViewItem item in listPasajeros.SelectedItems)
-        //        {
-        //            listPasajeros.Items.Remove(item);
-        //            controlPasajeros--;
-        //        }
-        //    }
+            if (listPasajeros.SelectedItems.Count > 0)
+            {
+                foreach (ListViewItem item in listPasajeros.SelectedItems)
+                {
+                    listPasajeros.Items.Remove(item);
+                    Pasajero.IdsAereosAsignados.Remove(Guid.Parse(item.SubItems[6].Text));
+                    Pasajero.IdsHotelesAsignados.Remove(Guid.Parse(item.SubItems[6].Text));
+                }
+            }
         }
     }
 }

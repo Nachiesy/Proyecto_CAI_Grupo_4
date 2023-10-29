@@ -139,10 +139,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
         }
 
         var cliente = new Cliente(dni, nombre, apellido);
-        var itinerario = new Itinerario(PresupuestoId, AereosModel.GetIdsAereosElegidos(), HotelesModel.GetIdsHotelesElegidos(), cliente);
-
-        itinerario.Cliente = cliente;
-        itinerario.PrecioTotal = Total;
+        var itinerario = new Itinerario(PresupuestoId, AereosModel.GetIdsAereosElegidos(), HotelesModel.GetIdsHotelesElegidos(), cliente, Total);
 
         if (EsNuevo)
         {

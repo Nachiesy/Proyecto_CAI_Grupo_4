@@ -8,11 +8,12 @@ namespace Proyecto_CAI_Grupo_4.Entities;
 
 public class Itinerario
 {
-    public Itinerario(int id, IEnumerable<Guid> aereosSeleccionados, IEnumerable<Guid> hotelesSeleccionados, Cliente cliente)
+    public Itinerario(int id, IEnumerable<Guid> aereosSeleccionados, IEnumerable<Guid> hotelesSeleccionados, Cliente cliente, Decimal precioTotal)
     {
         IdItinerario = id;
         Estado = "Presupuesto";
         FechaEstado = DateTime.Now;
+        PrecioTotal = precioTotal;
 
         Cliente = cliente;
         IdAereosSeleccionados = aereosSeleccionados.ToList();
