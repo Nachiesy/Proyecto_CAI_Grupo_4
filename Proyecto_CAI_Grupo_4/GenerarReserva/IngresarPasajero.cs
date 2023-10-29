@@ -55,6 +55,8 @@ namespace Proyecto_CAI_Grupo_4
 
         private void confirmpasajerobtn_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampos()) return;
+
             Pasajero = new Pasajeros(IdItinerario,
                 nombrepasajerotxt.Text,
                 apellidopasajerotxt.Text,
@@ -118,6 +120,41 @@ namespace Proyecto_CAI_Grupo_4
                 str += "Permite solo adultos";
             }
             return str;
+        }
+
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(nombrepasajerotxt.Text))
+            {
+                MessageBox.Show("Debe ingresar un nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(apellidopasajerotxt.Text))
+            {
+                MessageBox.Show("Debe ingresar un apellido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(dnipasajerotxt.Text))
+            {
+                MessageBox.Show("Debe ingresar un DNI", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (DateTime.Parse(dtnacmiento.Text) > DateTime.Now)
+            {
+                MessageBox.Show("La fecha de nacimiento no puede ser mayor a la fecha actual", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (listaProductosPorAsignar.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("Debe seleccionar al menos un producto para asignar al pasajero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }
