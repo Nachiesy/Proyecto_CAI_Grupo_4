@@ -1,11 +1,11 @@
-﻿namespace Proyecto_CAI_Grupo_4.Filters
+﻿using System.Windows.Forms;
+
+namespace Proyecto_CAI_Grupo_4.Filters
 {
     public static class FiltersHelper
     {
         public static string ValidarPrecios(ProductosFilterDto presupuesto)
         {
-            var messages = string.Empty;
-
             var precioDesdeEmpty = string.IsNullOrEmpty(presupuesto.PrecioDesde);
             var precioHastaEmpty = string.IsNullOrEmpty(presupuesto.PrecioHasta);
 
@@ -14,23 +14,39 @@
 
             if (!precioDesdeEmpty && !isPrecioDesdeDecimal)
             {
-                messages += $"Precio Desde debe ser un numero decimal" + Environment.NewLine;
+                return $"Precio Desde debe ser un numero decimal" + Environment.NewLine;
             }
 
             if (!precioHastaEmpty && !isPrecioHastaDecimal)
             {
-                messages += $"Precio Hasta debe ser un numero decimal" + Environment.NewLine;
+                return $"Precio Hasta debe ser un numero decimal" + Environment.NewLine;
             }
 
-            if (string.IsNullOrEmpty(messages) && !precioDesdeEmpty && !precioHastaEmpty)
+            if (!precioDesdeEmpty)
             {
-                if (precioDesde >= precioHasta)
+                if (precioDesde < 1 || precioDesde > 999999)
                 {
-                    messages += "El Precio Desde debe ser menor al Precio Hasta" + Environment.NewLine;
+                    return "El Precio Desde debe estar entre 1 y 999999" + Environment.NewLine;
                 }
             }
 
-            return messages;
+            if (!precioHastaEmpty)
+            {
+                if (precioHasta < 1 || precioHasta > 999999)
+                {
+                    return "El Precio Hasta debe estar entre 1 y 999999" + Environment.NewLine;
+                }
+            }
+
+            if (!precioDesdeEmpty && !precioHastaEmpty)
+            {
+                if (precioDesde >= precioHasta)
+                {
+                    return "El Precio Desde debe ser menor al Precio Hasta" + Environment.NewLine;
+                }
+            }
+
+            return string.Empty;
         }
 
         public static string ValidarFechas(ProductosFilterDto presupuesto)

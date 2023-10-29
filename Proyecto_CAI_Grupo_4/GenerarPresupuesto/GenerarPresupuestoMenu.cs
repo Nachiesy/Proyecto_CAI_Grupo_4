@@ -132,6 +132,18 @@ public partial class GenerarPresupuestoMenu : VistaBase
             return;
         }
 
+        if (string.IsNullOrEmpty(nombre))
+        {
+            MessageBox.Show($"Debes ingresar un Nombre.", "Error", MessageBoxButtons.OK);
+            return;
+        }
+
+        if (string.IsNullOrEmpty(apellido))
+        {
+            MessageBox.Show($"Debes ingresar un Apellido.", "Error", MessageBoxButtons.OK);
+            return;
+        }
+
         if (!validacionProductos)
         {
             MessageBox.Show($"Debes elegir productos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
