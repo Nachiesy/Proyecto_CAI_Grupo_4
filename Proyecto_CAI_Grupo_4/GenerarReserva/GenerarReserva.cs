@@ -187,7 +187,9 @@ namespace Proyecto_CAI_Grupo_4
             {
                 ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
 
-                Reserva = ReservaModel.GenerarNuevaReserva(int.Parse(presupuesto.SubItems[0].Text), ReservaEstadoEnum.pendienteDeConfirmacion);
+                int idItinerario = int.Parse(presupuesto.SubItems[0].Text);
+
+                Reserva = ReservaModel.GenerarNuevaReserva(idItinerario, ReservaEstadoEnum.pendienteDeConfirmacion, PresupuestosModel.GetPresupuesto(idItinerario).Cliente);
 
                 gbxPasajeros.Enabled = true;
                 gbxPresupuesto.Enabled = false;
