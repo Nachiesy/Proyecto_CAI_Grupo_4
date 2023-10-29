@@ -35,13 +35,13 @@ public partial class BuscarPresupuesto : VistaBase
             return;
         }
 
-        var presupuesto = PresupuestosModel.ObtenerPresupuesto(nroPresupuesto);
+        //var presupuesto = PresupuestosModel.ObtenerPresupuesto(nroPresupuesto);
 
-        if (presupuesto is null)
-        {
-            MessageBox.Show("El número de presupuesto ingresado no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
-        }
+        //if (presupuesto is null)
+        //{
+        //    MessageBox.Show("El número de presupuesto ingresado no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    return;
+        //}
 
         idPresupuesto = nroPresupuesto;
 
@@ -59,7 +59,7 @@ public partial class BuscarPresupuesto : VistaBase
 
     private void OpenGenerarPresupuestoMenu()
     {
-        Application.Run(new GenerarPresupuestoMenu(idPresupuesto));
+        //Application.Run(new GenerarPresupuestoMenu(idPresupuesto));
     }
 
     private void btn_Volver_Click(object sender, EventArgs e) => btn_Volver_Menu(sender, e);
