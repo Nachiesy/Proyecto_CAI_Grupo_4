@@ -32,6 +32,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_GenerarReserva = new Common.Components.BotonEstilizado();
             btn_ConfirmarReserva = new Common.Components.BotonEstilizado();
             btn_EstadoDeReservas = new Common.Components.BotonEstilizado();
+            btn_BuscarPresupuesto = new Common.Components.BotonEstilizado();
             SuspendLayout();
             // 
             // btn_GenerarPresupuesto
@@ -86,7 +87,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_EstadoDeReservas.FlatStyle = FlatStyle.Flat;
             btn_EstadoDeReservas.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_EstadoDeReservas.ForeColor = Color.Black;
-            btn_EstadoDeReservas.Location = new Point(27, 212);
+            btn_EstadoDeReservas.Location = new Point(27, 295);
             btn_EstadoDeReservas.Name = "btn_EstadoDeReservas";
             btn_EstadoDeReservas.Size = new Size(227, 67);
             btn_EstadoDeReservas.TabIndex = 8;
@@ -94,12 +95,28 @@ namespace Proyecto_CAI_Grupo_4
             btn_EstadoDeReservas.UseVisualStyleBackColor = false;
             btn_EstadoDeReservas.Click += btnConsultarReservas_Click;
             // 
+            // btn_BuscarPresupuesto
+            // 
+            btn_BuscarPresupuesto.BackColor = Color.Transparent;
+            btn_BuscarPresupuesto.FlatAppearance.MouseOverBackColor = Color.LightGray;
+            btn_BuscarPresupuesto.FlatStyle = FlatStyle.Flat;
+            btn_BuscarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_BuscarPresupuesto.ForeColor = Color.Black;
+            btn_BuscarPresupuesto.Location = new Point(27, 130);
+            btn_BuscarPresupuesto.Name = "btn_BuscarPresupuesto";
+            btn_BuscarPresupuesto.Size = new Size(226, 67);
+            btn_BuscarPresupuesto.TabIndex = 9;
+            btn_BuscarPresupuesto.Text = "Buscar Presupuesto";
+            btn_BuscarPresupuesto.UseVisualStyleBackColor = false;
+            btn_BuscarPresupuesto.Click += btn_BuscarPresupuesto_Click;
+            // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(557, 378);
+            Controls.Add(btn_BuscarPresupuesto);
             Controls.Add(btn_EstadoDeReservas);
             Controls.Add(btn_ConfirmarReserva);
             Controls.Add(btn_GenerarReserva);
@@ -112,6 +129,7 @@ namespace Proyecto_CAI_Grupo_4
             Controls.SetChildIndex(btn_GenerarReserva, 0);
             Controls.SetChildIndex(btn_ConfirmarReserva, 0);
             Controls.SetChildIndex(btn_EstadoDeReservas, 0);
+            Controls.SetChildIndex(btn_BuscarPresupuesto, 0);
             ResumeLayout(false);
         }
 
@@ -120,6 +138,7 @@ namespace Proyecto_CAI_Grupo_4
         private Common.Components.BotonEstilizado btn_GenerarReserva;
         private Common.Components.BotonEstilizado btn_ConfirmarReserva;
         private Common.Components.BotonEstilizado btn_EstadoDeReservas;
+        private Common.Components.BotonEstilizado btn_BuscarPresupuesto;
         //>>>>>>> 0cf15ab1261db55f98947b8966023a59eed0f5c3
     }
 }
