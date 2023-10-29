@@ -1,43 +1,14 @@
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
+using Proyecto_CAI_Grupo_4.Enums;
+using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class ConsultarReservas : VistaBase
     {
-        private List<Reserva> reservas = new List<Reserva>()
-        {
-            new Reserva()
-            {
-                Codigo = 92,
-                Estado = ReservaEstadoEnum.pendconfirmacion,
-                DNI = "41753082",
-                Precio = (decimal)100000.50,
-                CantPasajeros = 2,
-                Fecha = DateTime.Now.AddDays(-7),
-            },
-            new Reserva()
-            {
-                Codigo = 93,
-                Estado = ReservaEstadoEnum.confirmada,
-                DNI = "14975308",
-                Precio = (decimal)50000.20,
-                CantPasajeros = 6,
-                Fecha = DateTime.Now.AddDays(-14),
-
-            },
-            new Reserva()
-            {
-                Codigo = 107,
-                Estado = ReservaEstadoEnum.pendconfirmacion,
-                DNI = "29327456",
-                Precio = (decimal)500000.95,
-                CantPasajeros = 4,
-                Fecha = DateTime.Now.AddDays(-21),
-
-            },
-        };
+        private List<Reserva> reservas = ReservaModel.GetReservas();
 
         public ConsultarReservas() : base(tituloModulo: "Consulta de Reservas")
         {
@@ -51,45 +22,45 @@ namespace Proyecto_CAI_Grupo_4
 
         private void buscarReserva_Click(object sender, EventArgs e)
         {
-            var codigoInput = filtroCodigo.Text.Trim();
+            //var codigoInput = filtroCodigo.Text.Trim();
 
-            int.TryParse(codigoInput, out int codigo);
+            //int.TryParse(codigoInput, out int codigo);
 
-            var estado = filtroEstado.SelectedIndex;
+            //var estado = filtroEstado.SelectedIndex;
 
-            var dni = filtroNroDeDoc.Text.Trim();
+            //var dni = filtroNroDeDoc.Text.Trim();
 
-            var filteredReservas = reservas
-                .Where(x => (string.IsNullOrEmpty(codigoInput) || x.Codigo == codigo)
-                            && (estado == -1 || (int)x.Estado == estado)
-                            && (string.IsNullOrEmpty(dni) || x.DNI == dni));
+            //var filteredReservas = reservas
+            //    .Where(x => (string.IsNullOrEmpty(codigoInput) || x.Codigo == codigo)
+            //                && (estado == -1 || (int)x.Estado == estado)
+            //                && (string.IsNullOrEmpty(dni) || x.DNI == dni));
 
-            reservasListView.Items.Clear();
+            //reservasListView.Items.Clear();
 
-            if (filteredReservas.Any())
-            {
-                AddReservasToListView(filteredReservas);
-            }
-            else
-            {
-                MessageBox.Show("No hay reservas disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
-            }
+            //if (filteredReservas.Any())
+            //{
+            //    AddReservasToListView(filteredReservas);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No hay reservas disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
+            //}
         }
 
         private void AddReservasToListView(IEnumerable<Reserva> list)
         {
-            foreach (var item in list)
-            {
-                var row = new ListViewItem(item.Codigo.ToString());
+            //foreach (var item in list)
+            //{
+            //    var row = new ListViewItem(item.Codigo.ToString());
 
-                row.SubItems.Add(item.Estado.GetDescription());
-                row.SubItems.Add(item.DNI);
-                row.SubItems.Add(item.Precio.ToFormDecimal());
-                row.SubItems.Add(item.CantPasajeros.ToString());
-                row.SubItems.Add(item.Fecha.ToFormDate());
+            //    row.SubItems.Add(item.Estado.GetDescription());
+            //    row.SubItems.Add(item.DNI);
+            //    row.SubItems.Add(item.Precio.ToFormDecimal());
+            //    row.SubItems.Add(item.CantPasajeros.ToString());
+            //    row.SubItems.Add(item.Fecha.ToFormDate());
 
-                reservasListView.Items.Add(row);
-            }
+            //    reservasListView.Items.Add(row);
+            //}
         }
 
         private void limpiarConsulta_Click(object sender, EventArgs e)

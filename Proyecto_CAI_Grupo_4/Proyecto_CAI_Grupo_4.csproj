@@ -12,9 +12,6 @@
     <Compile Update="GenerarPresupuesto\GenerarPresupuestoHoteles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GenerarPresupuesto\GenerarPreReserva.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -7,10 +7,9 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
     {
         private static List<Hoteles> hoteles = new List<Hoteles>()
         {
-            // HIL
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("55be2c9a-987a-4bfe-a7de-23025f7dc2fe"),
                 Codigo = "HIL",
                 Nombre = "Hilton",
                 Precio = 10000,
@@ -28,7 +27,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("f3b64800-5eb6-40fc-8ee9-2d2d0eb661ae"),
                 Codigo = "HIL",
                 Nombre = "Hilton",
                 Precio = 20000,
@@ -46,7 +45,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("d0eb7781-145e-4f42-8c87-a11bee28636a"),
                 Codigo = "HIL",
                 Nombre = "Hilton",
                 Precio = 30000,
@@ -64,7 +63,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("7a13d7cb-10bf-4300-a620-25b21e95e4c6"),
                 Codigo = "HIL",
                 Nombre = "Hilton",
                 Precio = 40000,
@@ -80,10 +79,9 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
                 CantidadMaximaDeInfantes = 2,
                 Direccion = "Av Libertador 100",
             },
-            // SHE
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("6459cbc3-6757-4aea-b4ca-7befeea696e5"),
                 Codigo = "SHE",
                 Nombre = "Sheraton",
                 Precio = 10000,
@@ -101,7 +99,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("cd320b6d-093b-4131-98c9-77a31bafa353"),
                 Codigo = "SHE",
                 Nombre = "Sheraton",
                 Precio = 20000,
@@ -119,7 +117,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("88325af2-7a0d-4819-907a-c2358a130211"),
                 Codigo = "SHE",
                 Nombre = "Sheraton",
                 Precio = 30000,
@@ -137,7 +135,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("da20f950-9b8c-4d68-9376-357ada524df1"),
                 Codigo = "SHE",
                 Nombre = "Sheraton",
                 Precio = 40000,
@@ -162,6 +160,11 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             return hoteles;
         }
 
+        public static IEnumerable<Hoteles> GetHotelesByIds(IEnumerable<Guid> ids)
+        {
+            return hoteles.Where(x => ids.Contains(x.Id));
+        }
+
         public static IEnumerable<Hoteles> GetHoteles(HotelesFilter filter)
         {
             return hoteles
@@ -184,6 +187,11 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
         public static IEnumerable<Hoteles> GetHotelesElegidos()
         {
             return hotelesElegidos;
+        }
+
+        public static IEnumerable<Guid> GetIdsHotelesElegidos()
+        {
+            return hotelesElegidos.Select(x => x.Id);
         }
 
         public static void ClearHotelesElegidos()

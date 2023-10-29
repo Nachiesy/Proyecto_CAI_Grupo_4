@@ -1,6 +1,7 @@
-﻿using Proyecto_CAI_Grupo_4.Utils;
+using Proyecto_CAI_Grupo_4.Utils;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
+using Proyecto_CAI_Grupo_4.Enums;
 using Proyecto_CAI_Grupo_4.Models.Productos;
 using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Models;
@@ -59,6 +60,11 @@ public partial class GenerarPresupuestoMenu : VistaBase
         Total += aereos.Sum(x => x.Precio);
         Total += hoteles.Sum(x => x.Precio);
 
+        ActualizarTextoPrecioTotal();
+    }
+
+    private void ActualizarTextoPrecioTotal()
+    {
         presupuestoTotal.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
 
         ActualizarEstadoBotones();
@@ -185,16 +191,17 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
     private void GoToGenerarPreReserva()
     {
-        Close();
+        //TODO: Ver como hacer con la pre reserva
+        //Close();
 
-        Thread thread = new Thread(OpenGenerarPreReserva);
-        thread.SetApartmentState(ApartmentState.STA);
-        thread.Start();
+        //Thread thread = new Thread(OpenGenerarPreReserva);
+        //thread.SetApartmentState(ApartmentState.STA);
+        //thread.Start();
     }
 
     private void OpenGenerarPreReserva()
     {
-        Application.Run(new GenerarPreReserva());
+        //Application.Run(new GenerarPreReserva());
     }
 
     private void btnEliminarTodo_Click(object sender, EventArgs e)
@@ -211,20 +218,20 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         //TODO: esto esta incompleto, revisar el DC y DF
 
-        var reserva = new Reserva()
-        {
-            Codigo = 1,
-            Estado = ReservaEstadoEnum.pendienteDePago,
-            DNI = "",
-            TipoDoc = 1,
-            Precio = Total,
-            Fecha = DateTime.Now,
-            prereserva = true,
-        };
+        //var reserva = new Reserva()
+        //{
+        //    Codigo = 1,
+        //    Estado = ReservaEstadoEnum.pendienteDePago,
+        //    DNI = "",
+        //    TipoDoc = 1,
+        //    Precio = Total,
+        //    Fecha = DateTime.Now,
+        //    prereserva = true,
+        //};
 
-        ReservaModel.AddReserva(reserva);
+        //ReservaModel.AddReserva(reserva);
 
-        GoToGenerarPreReserva();
+        //GoToGenerarPreReserva();
     }
 
     private void btnEliminarSeleccion_Click(object sender, EventArgs e)

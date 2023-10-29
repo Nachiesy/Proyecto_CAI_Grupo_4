@@ -1,6 +1,6 @@
-﻿namespace Proyecto_CAI_Grupo_4.Entities
+namespace Proyecto_CAI_Grupo_4.Entities
 {
-    public class Itinerario
+    public Itinerario(int id, IEnumerable<Guid> aereosSeleccionados, IEnumerable<Guid> hotelesSeleccionados, Cliente cliente)
     {
         public Itinerario(int id, IEnumerable<Aereos> aereosSeleccionados, IEnumerable<Hoteles> hotelesSeleccionados, Cliente cliente)
         {
@@ -8,34 +8,23 @@
             Estado = "Presupuesto";
             FechaEstado = DateTime.Now;
 
-            AereosSeleccionados = aereosSeleccionados.ToList();
-            HotelesSeleccionados = hotelesSeleccionados.ToList();
+        Cliente = cliente;
+        IdAereosSeleccionados = aereosSeleccionados.ToList();
+        IdHotelesSeleccionados = hotelesSeleccionados.ToList();
+    }
 
-            Cliente = cliente;
+    public int IdItinerario { get; set; }
+    public List<Guid> IdAereosSeleccionados { get; set; }
+    public List<Guid> IdHotelesSeleccionados { get; set; }
+    public Cliente Cliente { get; set; }
+    public string Estado { get; set; }
+    public DateTime FechaEstado { get; set; }
+    public decimal PrecioTotal { get; set; }
 
-            CalcularTotal();
-        }
 
-        public int IdItinerario { get; set; }
-        public List<Aereos> AereosSeleccionados { get; set; }
-        public List<Hoteles> HotelesSeleccionados { get; set; }
-        public Cliente Cliente { get; set; }
-        public string Estado { get; set; }
-        public DateTime FechaEstado { get; set; }
-        public decimal PrecioTotal { get; set; }
-
-        public void CalcularTotal()
-        {
-            var totalAereos = AereosSeleccionados.Sum(x => x.Precio);
-            var totalHoteles = HotelesSeleccionados.Sum(x => x.Precio);
-
-            PrecioTotal = totalAereos + totalHoteles;
-        }
-
-        public void PreReservar()
-        {
-            Estado = "Pre-Reserva";
-            FechaEstado = DateTime.Now;
-        }
+    public void PreReservar()
+    {
+        Estado = "Pre-Reserva";
+        FechaEstado = DateTime.Now;
     }
 }
