@@ -45,7 +45,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             foreach (var i in SumarPasajero.IdsAereosAsignados)
             {
-                ListViewItem item = new ListViewItem(AereosModel.GetAereoByID(i).Codigo)
+                ListViewItem item = new ListViewItem(AereosModel.GetAereoByID(i).Id.ToString())
                 {
                     SubItems =
                     {
@@ -63,7 +63,7 @@ namespace Proyecto_CAI_Grupo_4
 
             foreach (var i in SumarPasajero.IdsHotelesAsignados)
             {
-                ListViewItem item = new ListViewItem(HotelesModel.GetHotelByID(i).Codigo)
+                ListViewItem item = new ListViewItem(HotelesModel.GetHotelByID(i).Id.ToString())
                 {
                     SubItems =
                     {

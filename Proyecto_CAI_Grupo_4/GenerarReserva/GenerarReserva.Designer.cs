@@ -34,7 +34,7 @@
             lblcantpasajeros = new Label();
             btn_Agregar = new Common.Components.BotonEstilizado();
             listPasajeros = new ListView();
-            codigoproducto = new ColumnHeader();
+            idproducto = new ColumnHeader();
             nombreproducto = new ColumnHeader();
             nombre = new ColumnHeader();
             apellido = new ColumnHeader();
@@ -48,6 +48,7 @@
             cantpasajeros = new ColumnHeader();
             cantAdultos = new ColumnHeader();
             cantMenores = new ColumnHeader();
+            cantInfantes = new ColumnHeader();
             precio = new ColumnHeader();
             estado = new ColumnHeader();
             fecha = new ColumnHeader();
@@ -59,7 +60,6 @@
             label1 = new Label();
             btn_GenerarReserva = new Common.Components.BotonEstilizado();
             btn_Cancelar = new Common.Components.BotonEstilizado();
-            cantInfantes = new ColumnHeader();
             gbxPasajeros.SuspendLayout();
             gbxPresupuesto.SuspendLayout();
             SuspendLayout();
@@ -135,7 +135,7 @@
             // 
             // listPasajeros
             // 
-            listPasajeros.Columns.AddRange(new ColumnHeader[] { codigoproducto, nombreproducto, nombre, apellido, fechadenac, edad });
+            listPasajeros.Columns.AddRange(new ColumnHeader[] { idproducto, nombreproducto, nombre, apellido, fechadenac, edad });
             listPasajeros.FullRowSelect = true;
             listPasajeros.Location = new Point(17, 69);
             listPasajeros.Margin = new Padding(2, 1, 2, 1);
@@ -146,10 +146,10 @@
             listPasajeros.View = View.Details;
             listPasajeros.SelectedIndexChanged += listPasajeros_SelectedIndexChanged;
             // 
-            // codigoproducto
+            // idproducto
             // 
-            codigoproducto.Text = "Codigo de Producto";
-            codigoproducto.Width = 180;
+            idproducto.Text = "Id del Producto";
+            idproducto.Width = 180;
             // 
             // nombreproducto
             // 
@@ -249,6 +249,11 @@
             // 
             cantMenores.Text = "Cant. Menores";
             cantMenores.Width = 100;
+            // 
+            // cantInfantes
+            // 
+            cantInfantes.Text = "Cant. Infantes";
+            cantInfantes.Width = 100;
             // 
             // precio
             // 
@@ -354,11 +359,6 @@
             btn_Cancelar.UseVisualStyleBackColor = false;
             btn_Cancelar.Click += btnCancelar_Click;
             // 
-            // cantInfantes
-            // 
-            cantInfantes.Text = "Cant. Infantes";
-            cantInfantes.Width = 100;
-            // 
             // GenerarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -414,7 +414,7 @@
         private ColumnHeader cantAdultos;
         private ColumnHeader cantMenores;
         private ColumnHeader prereserva;
-        private ColumnHeader codigoproducto;
+        private ColumnHeader idproducto;
         private ColumnHeader nombreproducto;
         private ColumnHeader cantInfantes;
     }

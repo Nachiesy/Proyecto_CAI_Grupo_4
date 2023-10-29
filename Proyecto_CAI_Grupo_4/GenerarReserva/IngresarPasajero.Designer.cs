@@ -152,7 +152,7 @@
             btn_Confirmar.ForeColor = Color.Black;
             btn_Confirmar.Location = new Point(311, 388);
             btn_Confirmar.Name = "btn_Confirmar";
-            btn_Confirmar.Size = new Size(226, 40);
+            btn_Confirmar.Size = new Size(391, 40);
             btn_Confirmar.TabIndex = 4;
             btn_Confirmar.Text = "Confirmar";
             btn_Confirmar.UseVisualStyleBackColor = false;
@@ -178,7 +178,7 @@
             grp_DatosContato.Controls.Add(listaProductosPorAsignar);
             grp_DatosContato.Location = new Point(311, 151);
             grp_DatosContato.Name = "grp_DatosContato";
-            grp_DatosContato.Size = new Size(226, 231);
+            grp_DatosContato.Size = new Size(391, 231);
             grp_DatosContato.TabIndex = 27;
             grp_DatosContato.TabStop = false;
             grp_DatosContato.Text = "Asignar a...";
@@ -190,7 +190,7 @@
             listaProductosPorAsignar.Location = new Point(6, 22);
             listaProductosPorAsignar.Name = "listaProductosPorAsignar";
             listaProductosPorAsignar.SelectionMode = SelectionMode.MultiSimple;
-            listaProductosPorAsignar.Size = new Size(214, 199);
+            listaProductosPorAsignar.Size = new Size(377, 199);
             listaProductosPorAsignar.TabIndex = 0;
             // 
             // IngresarPasajero
@@ -198,7 +198,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(549, 439);
+            ClientSize = new Size(710, 439);
             Controls.Add(btn_Cancelar);
             Controls.Add(btn_Confirmar);
             Controls.Add(grp_DatosContato);

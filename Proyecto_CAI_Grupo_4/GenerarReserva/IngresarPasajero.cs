@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -54,8 +55,6 @@ namespace Proyecto_CAI_Grupo_4
 
         private void confirmpasajerobtn_Click(object sender, EventArgs e)
         {
-            //TODO: Validaciones
-
             Pasajero = new Pasajeros(IdItinerario,
                 nombrepasajerotxt.Text,
                 apellidopasajerotxt.Text,
@@ -85,17 +84,40 @@ namespace Proyecto_CAI_Grupo_4
 
             listaProductosPorAsignar.Items.AddRange(aereosAsignables.Select(x => new ListBoxItem
             {
-                Display = $"{x.Codigo} - {x.Nombre}",
+                Display = $"{x.Id} - {x.Nombre} - {x.TipoDePasajero.ToString().ToUpper()}",
                 Id = x.Id,
                 TipoServicio = x.TipoDeServicio.ToString()
             }).ToArray());
 
             listaProductosPorAsignar.Items.AddRange(hotelesAsignables.Select(x => new ListBoxItem
             {
-                Display = $"{x.Codigo} - {x.Nombre}",
+                Display = $"{x.Id} - {x.Nombre} - {GetTextoPermitidosHoteles(x.CantidadMaximaDeMenores, x.CantidadMaximaDeInfantes)}",
                 Id = x.Id,
                 TipoServicio = x.TipoDeServicio.ToString()
             }).ToArray());
+        }
+
+        private string GetTextoPermitidosHoteles(int cantidadMaximaMenores, int cantidadMaximaInfantes)
+        {
+            var str = "";
+
+            if (cantidadMaximaInfantes > 0 && cantidadMaximaMenores > 0)
+            {
+                str += "Permite Infantes y Menores";
+            }
+            else if (cantidadMaximaInfantes > 0)
+            {
+                str += "Permite Infantes";
+            }
+            else if (cantidadMaximaMenores > 0)
+            {
+                str += "Permite Menores";
+            }
+            else
+            {
+                str += "Permite solo adultos";
+            }
+            return str;
         }
     }
 }
