@@ -355,8 +355,8 @@ namespace Proyecto_CAI_Grupo_4
                 foreach (ListViewItem item in listPasajeros.SelectedItems)
                 {
                     listPasajeros.Items.Remove(item);
-                    Pasajero.IdsAereosAsignados.Remove(Guid.Parse(item.SubItems[6].Text));
-                    Pasajero.IdsHotelesAsignados.Remove(Guid.Parse(item.SubItems[6].Text));
+                    Pasajeros.All(x => x.IdsAereosAsignados.Remove(Guid.Parse(item.SubItems[6].Text)));
+                    Pasajeros.All(x => x.IdsHotelesAsignados.Remove(Guid.Parse(item.SubItems[6].Text)));
                 }
             }
         }
