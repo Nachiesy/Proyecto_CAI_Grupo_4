@@ -4,8 +4,8 @@ namespace Proyecto_CAI_Grupo_4.Enums;
 
 public enum ReservaEstadoEnum
 {
-    [Description("Pendiente de confirmación")]
-    pendconfirmacion,
+    [Description("Pendiente de Confirmación")]
+    pendienteDeConfirmacion,
 
     [Description("Confirmada")]
     confirmada,

@@ -6,6 +6,7 @@ using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Models.Productos;
+using Proyecto_CAI_Grupo_4.Enums;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -186,7 +187,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
 
-                Reserva = ReservaModel.NuevaReserva(int.Parse(presupuesto.SubItems[0].Text));
+                Reserva = ReservaModel.GenerarNuevaReserva(int.Parse(presupuesto.SubItems[0].Text), ReservaEstadoEnum.pendienteDeConfirmacion);
 
                 gbxPasajeros.Enabled = true;
                 gbxPresupuesto.Enabled = false;

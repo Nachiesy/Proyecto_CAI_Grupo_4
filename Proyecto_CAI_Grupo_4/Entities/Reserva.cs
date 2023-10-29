@@ -10,11 +10,11 @@ namespace Proyecto_CAI_Grupo_4.Entities
         public ReservaEstadoEnum Estado { get; set; }
         public DateTime FechaReserva { get; set; }
 
-        public Reserva(int codigo, int idItinerario)
+        public Reserva(int codigo, int idItinerario, ReservaEstadoEnum estado)
         {
             Codigo = codigo;
             IdItinerario = idItinerario;
-            Estado = ReservaEstadoEnum.pendconfirmacion;
+            Estado = estado;
             FechaReserva = DateTime.Now;
         }
 

@@ -189,21 +189,6 @@ public partial class GenerarPresupuestoMenu : VistaBase
         Application.Run(new MenuPrincipal());
     }
 
-    private void GoToGenerarPreReserva()
-    {
-        //TODO: Ver como hacer con la pre reserva
-        //Close();
-
-        //Thread thread = new Thread(OpenGenerarPreReserva);
-        //thread.SetApartmentState(ApartmentState.STA);
-        //thread.Start();
-    }
-
-    private void OpenGenerarPreReserva()
-    {
-        //Application.Run(new GenerarPreReserva());
-    }
-
     private void btnEliminarTodo_Click(object sender, EventArgs e)
     {
         AereosModel.ClearAereosElegidos();
@@ -216,22 +201,50 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
     private void btnPreReservar_Click(object sender, EventArgs e)
     {
-        //TODO: esto esta incompleto, revisar el DC y DF
+        var dni = textBoxClienteDNI.Text.Trim();
 
-        //var reserva = new Reserva()
-        //{
-        //    Codigo = 1,
-        //    Estado = ReservaEstadoEnum.pendienteDePago,
-        //    DNI = "",
-        //    TipoDoc = 1,
-        //    Precio = Total,
-        //    Fecha = DateTime.Now,
-        //    prereserva = true,
-        //};
+        var nombre = textBoxClienteNombre.Text.Trim();
 
-        //ReservaModel.AddReserva(reserva);
+        var apellido = textBoxClienteApellido.Text.Trim();
 
-        //GoToGenerarPreReserva();
+        var validacionProductos = productosElegidos.Items.Count > 0;
+
+        var validacionDNI = dni.EsDNI();
+
+        if (!validacionDNI)
+        {
+            MessageBox.Show($"Debes ingresar un DNI correcto.", "Error", MessageBoxButtons.OK);
+            return;
+        }
+
+        if (!validacionProductos)
+        {
+            MessageBox.Show($"Debes elegir productos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
+            return;
+        }
+
+        var cliente = new Cliente(dni, nombre, apellido);
+        var itinerario = new Itinerario(PresupuestoId, AereosModel.GetIdsAereosElegidos(), HotelesModel.GetIdsHotelesElegidos(), cliente, Total);
+
+        if (EsNuevo)
+        {
+            PresupuestosModel.AddPresupuesto(itinerario);
+
+            MessageBox.Show($"Presupuesto con Código: [{PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+        }
+        else
+        {
+            PresupuestosModel.UpdatePresupuesto(itinerario);
+
+            MessageBox.Show($"Presupuesto con Código: [{PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+        }
+
+
+        var reserva = ReservaModel.GenerarNuevaReserva(itinerario.IdItinerario, ReservaEstadoEnum.pendienteDePago);
+
+        ReservaModel.AddReserva(reserva);
+
+        GoToMenuPrincipal();
     }
 
     private void btnEliminarSeleccion_Click(object sender, EventArgs e)
