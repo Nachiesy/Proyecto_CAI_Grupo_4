@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_CAI_Grupo_4.Models.Productos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -61,6 +62,10 @@ public partial class VistaBase : Form
     public void btn_Volver_Menu(object sender, EventArgs e)
     {
         Close();
+
+        AereosModel.ClearAereosElegidos();
+
+        HotelesModel.ClearHotelesElegidos();
 
         var thread = new Thread(OpenMenuPrincipal);
         thread.SetApartmentState(ApartmentState.STA);
