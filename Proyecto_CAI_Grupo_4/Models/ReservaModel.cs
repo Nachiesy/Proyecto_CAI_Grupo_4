@@ -11,6 +11,12 @@ namespace Proyecto_CAI_Grupo_4.Modelos
             {
                 Codigo = 1,
                 Estado = ReservaEstadoEnum.pagada,
+                Cliente = new Cliente()
+                {
+                    DNI = "43422654",
+                    Nombre = "Juan",
+                    Apellido = "Perez",
+                },
                 IdItinerario = 1,
                 FechaReserva = DateTime.Now,
             },
@@ -31,11 +37,11 @@ namespace Proyecto_CAI_Grupo_4.Modelos
             return GetLastReserva().Codigo + 1;
         }
 
-        public static Reserva GenerarNuevaReserva(int idItinerario, ReservaEstadoEnum estado)
+        public static Reserva GenerarNuevaReserva(int idItinerario, ReservaEstadoEnum estado, Cliente cliente)
         {
             var codigo = GenerarCodigoDeReserva();
 
-            return new Reserva(codigo, idItinerario, estado);
+            return new Reserva(codigo, idItinerario, estado, cliente);
         }
 
         public static void AddReserva(Reserva reserva)

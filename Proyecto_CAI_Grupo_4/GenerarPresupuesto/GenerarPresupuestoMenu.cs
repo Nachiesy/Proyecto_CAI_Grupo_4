@@ -239,8 +239,9 @@ public partial class GenerarPresupuestoMenu : VistaBase
             MessageBox.Show($"Presupuesto con Código: [{PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
 
+        var reserva = ReservaModel.GenerarNuevaReserva(itinerario.IdItinerario, ReservaEstadoEnum.pendienteDePago, cliente);
 
-        var reserva = ReservaModel.GenerarNuevaReserva(itinerario.IdItinerario, ReservaEstadoEnum.pendienteDePago);
+        MessageBox.Show($"Pre-Reserva generada correctamente para el cliente con DNI {dni} con código [{reserva.Codigo}]", "Exito", MessageBoxButtons.OK);
 
         ReservaModel.AddReserva(reserva);
 

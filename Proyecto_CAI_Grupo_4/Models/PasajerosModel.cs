@@ -24,5 +24,21 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             return Pasajeros;
         }
+
+        public static List<Pasajeros> GetPasajerosByIdReserva(int idReserva)
+        {
+            return Pasajeros
+                .Where(x => x.IdReserva == idReserva)
+                .ToList();
+        }
+
+        public static int GetTotalPasajerosByIdReserva(int idReserva)
+        {
+            return Pasajeros
+                .Where(x => x.IdReserva == idReserva)
+                .Select(x => x.IdsAereosAsignados.Count + x.IdsHotelesAsignados.Count)
+                .DefaultIfEmpty(0)
+                .Sum();
+        }
     }
 }
