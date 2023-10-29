@@ -87,7 +87,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_EstadoDeReservas.FlatStyle = FlatStyle.Flat;
             btn_EstadoDeReservas.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_EstadoDeReservas.ForeColor = Color.Black;
-            btn_EstadoDeReservas.Location = new Point(27, 212);
+            btn_EstadoDeReservas.Location = new Point(27, 295);
             btn_EstadoDeReservas.Name = "btn_EstadoDeReservas";
             btn_EstadoDeReservas.Size = new Size(227, 67);
             btn_EstadoDeReservas.TabIndex = 8;
