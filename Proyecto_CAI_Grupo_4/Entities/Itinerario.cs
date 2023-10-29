@@ -1,12 +1,18 @@
-namespace Proyecto_CAI_Grupo_4.Entities
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Proyecto_CAI_Grupo_4.Entities;
+
+public class Itinerario
 {
     public Itinerario(int id, IEnumerable<Guid> aereosSeleccionados, IEnumerable<Guid> hotelesSeleccionados, Cliente cliente)
     {
-        public Itinerario(int id, IEnumerable<Aereos> aereosSeleccionados, IEnumerable<Hoteles> hotelesSeleccionados, Cliente cliente)
-        {
-            IdItinerario = id;
-            Estado = "Presupuesto";
-            FechaEstado = DateTime.Now;
+        IdItinerario = id;
+        Estado = "Presupuesto";
+        FechaEstado = DateTime.Now;
 
         Cliente = cliente;
         IdAereosSeleccionados = aereosSeleccionados.ToList();

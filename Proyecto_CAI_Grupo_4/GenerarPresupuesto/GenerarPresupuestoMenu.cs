@@ -36,8 +36,8 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         if (parametros.InitBuscarPresupuesto)
         {
-            presupuesto.AereosSeleccionados.ForEach(aereo => AereosModel.AddAereoElegido(aereo.Id));
-            presupuesto.HotelesSeleccionados.ForEach(hotel => HotelesModel.AddHotelElegido(hotel.Id));
+            presupuesto.IdAereosSeleccionados.ForEach(id => AereosModel.AddAereoElegido(id));
+            presupuesto.IdHotelesSeleccionados.ForEach(id => HotelesModel.AddHotelElegido(id));
         }
     }
 
@@ -139,7 +139,10 @@ public partial class GenerarPresupuestoMenu : VistaBase
         }
 
         var cliente = new Cliente(dni, nombre, apellido);
-        var itinerario = new Itinerario(PresupuestoId, AereosModel.GetAereosElegidos(), HotelesModel.GetHotelesElegidos(), cliente);
+        var itinerario = new Itinerario(PresupuestoId, AereosModel.GetIdsAereosElegidos(), HotelesModel.GetIdsHotelesElegidos(), cliente);
+
+        itinerario.Cliente = cliente;
+        itinerario.PrecioTotal = Total;
 
         if (EsNuevo)
         {
