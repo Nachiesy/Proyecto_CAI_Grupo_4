@@ -10,7 +10,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             // A113
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 1,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 30000,
@@ -27,7 +27,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 2,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 25000,
@@ -44,7 +44,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 3,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 15000,
@@ -61,7 +61,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 4,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 35000,
@@ -78,7 +78,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 5,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 40000,
@@ -95,7 +95,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 6,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 45000,
@@ -112,7 +112,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 7,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 30000,
@@ -129,7 +129,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 8,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 35000,
@@ -146,7 +146,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 9,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 40000,
@@ -163,7 +163,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 10,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 20000,
@@ -180,7 +180,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 11,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 25000,
@@ -197,7 +197,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 12,
                 Codigo = "A113",
                 Nombre = "Vuelo 113",
                 Precio = 30000,
@@ -215,7 +215,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             // C369
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 13,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 60000 * 2,
@@ -239,7 +239,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 14,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 55000 * 2,
@@ -263,7 +263,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 15,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 45000 * 2,
@@ -287,7 +287,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 16,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 65000 * 2,
@@ -311,7 +311,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 17,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 70000 * 2,
@@ -335,7 +335,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 18,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 75000 * 2,
@@ -359,7 +359,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 19,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 60000 * 2,
@@ -383,7 +383,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 20,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 65000 * 2,
@@ -407,7 +407,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 21,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 70000 * 2,
@@ -431,7 +431,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 22,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 50000 * 2,
@@ -455,7 +455,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 23,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 55000 * 2,
@@ -479,7 +479,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Aereos()
             {
-                Id = Guid.NewGuid(),
+                Id = 24,
                 Codigo = "C369",
                 Nombre = "Vuelo 369",
                 Precio = 60000 * 2,
@@ -525,7 +525,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
                                 && (!filter.Clase.HasValue || (int)x.Clase == filter.Clase));
         }
 
-        public static Aereos? GetAereoByID(Guid id)
+        public static Aereos? GetAereoByID(int id)
         {
             return aereos.Where(x => x.Id == id).SingleOrDefault();
         }
@@ -540,14 +540,14 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             aereosElegidos.Clear();
         }
 
-        public static void AddAereoElegido(Guid id)
+        public static void AddAereoElegido(int id)
         {
             var producto = aereos.Where(x => x.Id == id).SingleOrDefault();
 
             aereosElegidos.Add(producto);
         }
 
-        public static void RemoveAereoElegido(Guid id)
+        public static void RemoveAereoElegido(int id)
         {
             var index = aereosElegidos.FindIndex(x => x.Id == id);
 

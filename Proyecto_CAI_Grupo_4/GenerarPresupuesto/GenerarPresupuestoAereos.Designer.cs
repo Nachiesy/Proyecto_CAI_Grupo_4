@@ -155,12 +155,11 @@
             listViewProductos.TabIndex = 6;
             listViewProductos.UseCompatibleStateImageBehavior = false;
             listViewProductos.View = View.Details;
-            listViewProductos.ColumnWidthChanging += listViewProductos_ColumnWidthChanging;
             // 
             // ID
             // 
             ID.Text = "ID";
-            ID.Width = 0;
+            ID.Width = 100;
             // 
             // Codigo
             // 
@@ -244,12 +243,11 @@
             listViewProductosSeleccionados.TabIndex = 7;
             listViewProductosSeleccionados.UseCompatibleStateImageBehavior = false;
             listViewProductosSeleccionados.View = View.Details;
-            listViewProductosSeleccionados.ColumnWidthChanging += listViewProductosSeleccionados_ColumnWidthChanging;
             // 
             // SelectID
             // 
             SelectID.Text = "ID";
-            SelectID.Width = 0;
+            SelectID.Width = 100;
             // 
             // SelectCodigo
             // 

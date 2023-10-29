@@ -185,7 +185,7 @@ namespace Proyecto_CAI_Grupo_4
             // ID
             // 
             ID.Text = "ID";
-            ID.Width = 0;
+            ID.Width = 100;
             // 
             // Codigo
             // 

@@ -154,7 +154,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 foreach (ListViewItem item in listViewProductos.SelectedItems)
                 {
-                    var id = Guid.Parse(item.Text);
+                    var id = int.Parse(item.Text);
 
                     var producto = HotelesModel.GetHotelByID(id);
 
@@ -195,7 +195,7 @@ namespace Proyecto_CAI_Grupo_4
 
             foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
-                var id = Guid.Parse(item.Text);
+                var id = int.Parse(item.Text);
 
                 HotelesModel.AddHotelElegido(id);
             }
@@ -252,13 +252,13 @@ namespace Proyecto_CAI_Grupo_4
             }));
         }
 
-        private int IsProductInProductosSeleccionados(Guid id)
+        private int IsProductInProductosSeleccionados(int id)
         {
-            var selectedIDs = new List<Guid>();
+            var selectedIDs = new List<int>();
 
             foreach (ListViewItem item in listViewProductosSeleccionados.Items)
             {
-                var selectedID = Guid.Parse(item.Text);
+                var selectedID = int.Parse(item.Text);
 
                 if (selectedID == id)
                 {
@@ -294,24 +294,6 @@ namespace Proyecto_CAI_Grupo_4
             {
                 datePickerFilterFechaHasta.Enabled = true;
                 btnDisableDatePickerFilterFechaHasta.Text = "Deshabilitar";
-            }
-        }
-
-        private void listViewProductos_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                e.Cancel = true;
-                e.NewWidth = 0;
-            }
-        }
-
-        private void listViewProductosSeleccionados_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                e.Cancel = true;
-                e.NewWidth = 0;
             }
         }
     }

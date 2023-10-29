@@ -10,7 +10,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             // HIL
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = 25,
                 Codigo = "HIL",
                 Nombre = "Hilton",
                 Precio = 10000,
@@ -28,7 +28,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = 26,
                 Codigo = "HIL",
                 Nombre = "Hilton",
                 Precio = 20000,
@@ -46,7 +46,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = 27,
                 Codigo = "HIL",
                 Nombre = "Hilton",
                 Precio = 30000,
@@ -64,7 +64,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = 28,
                 Codigo = "HIL",
                 Nombre = "Hilton",
                 Precio = 40000,
@@ -83,7 +83,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             // SHE
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = 29,
                 Codigo = "SHE",
                 Nombre = "Sheraton",
                 Precio = 10000,
@@ -101,7 +101,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = 30,
                 Codigo = "SHE",
                 Nombre = "Sheraton",
                 Precio = 20000,
@@ -119,7 +119,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = 31,
                 Codigo = "SHE",
                 Nombre = "Sheraton",
                 Precio = 30000,
@@ -137,7 +137,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             },
             new Hoteles()
             {
-                Id = Guid.NewGuid(),
+                Id = 32,
                 Codigo = "SHE",
                 Nombre = "Sheraton",
                 Precio = 40000,
@@ -176,7 +176,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
                                 && (!filter.Calificacion.HasValue || (int)x.Calificacion == filter.Calificacion));
         }
 
-        public static Hoteles? GetHotelByID(Guid id)
+        public static Hoteles? GetHotelByID(int id)
         {
             return hoteles.Where(x => x.Id == id).SingleOrDefault();
         }
@@ -191,14 +191,14 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             hotelesElegidos.Clear();
         }
 
-        public static void AddHotelElegido(Guid id)
+        public static void AddHotelElegido(int id)
         {
             var producto = hoteles.Where(x => x.Id == id).SingleOrDefault();
 
             hotelesElegidos.Add(producto);
         }
 
-        public static void RemoveHotelElegido(Guid id)
+        public static void RemoveHotelElegido(int id)
         {
             var index = hotelesElegidos.FindIndex(x => x.Id == id);
 
