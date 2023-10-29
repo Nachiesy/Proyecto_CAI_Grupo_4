@@ -1,5 +1,4 @@
 ﻿using Proyecto_CAI_Grupo_4.Filters;
-using Proyecto_CAI_Grupo_4.Managers;
 using Proyecto_CAI_Grupo_4.Utils;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
@@ -90,9 +89,9 @@ namespace Proyecto_CAI_Grupo_4
         {
             var messages = string.Empty;
 
-            messages += FiltrosManager.ValidarPrecios(presupuesto);
+            messages += FiltersHelper.ValidarPrecios(presupuesto);
 
-            messages += FiltrosManager.ValidarFechas(presupuesto);
+            messages += FiltersHelper.ValidarFechas(presupuesto);
 
             return messages;
         }

@@ -1,8 +1,6 @@
-﻿using Proyecto_CAI_Grupo_4.Filters;
-
-namespace Proyecto_CAI_Grupo_4.Managers
+﻿namespace Proyecto_CAI_Grupo_4.Filters
 {
-    public static class FiltrosManager
+    public static class FiltersHelper
     {
         public static string ValidarPrecios(ProductosFilterDto presupuesto)
         {
@@ -40,17 +38,17 @@ namespace Proyecto_CAI_Grupo_4.Managers
             var fechaDesdeHasValue = presupuesto.FechaDesde.HasValue;
             var fechaHastaHasValue = presupuesto.FechaHasta.HasValue;
 
-            if (fechaDesdeHasValue && (presupuesto.FechaDesde.Value.Date < DateTime.Now.Date))
+            if (fechaDesdeHasValue && presupuesto.FechaDesde.Value.Date < DateTime.Now.Date)
             {
                 return "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
             }
 
-            if (fechaHastaHasValue && (presupuesto.FechaHasta.Value.Date < DateTime.Now.Date))
+            if (fechaHastaHasValue && presupuesto.FechaHasta.Value.Date < DateTime.Now.Date)
             {
                 return "La Fecha Hasta debe ser mayor a hoy" + Environment.NewLine;
             }
 
-            if (fechaDesdeHasValue && fechaHastaHasValue && (presupuesto.FechaDesde.Value.Date >= presupuesto.FechaHasta.Value.Date))
+            if (fechaDesdeHasValue && fechaHastaHasValue && presupuesto.FechaDesde.Value.Date >= presupuesto.FechaHasta.Value.Date)
             {
                 return "La Fecha Desde debe ser menor a la Fecha Hasta" + Environment.NewLine;
             }
@@ -63,12 +61,12 @@ namespace Proyecto_CAI_Grupo_4.Managers
             var fechaDesdeHasValue = presupuesto.FechaDesde.HasValue;
             var fechaHastaHasValue = presupuesto.FechaHasta.HasValue;
 
-            if (fechaDesdeHasValue && (presupuesto.FechaDesde.Value.Date < DateTime.Now.Date))
+            if (fechaDesdeHasValue && presupuesto.FechaDesde.Value.Date < DateTime.Now.Date)
             {
                 return "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
             }
 
-            if (fechaHastaHasValue && (presupuesto.FechaHasta.Value.Date < DateTime.Now.Date))
+            if (fechaHastaHasValue && presupuesto.FechaHasta.Value.Date < DateTime.Now.Date)
             {
                 return "La Fecha Hasta debe ser mayor a hoy" + Environment.NewLine;
             }
