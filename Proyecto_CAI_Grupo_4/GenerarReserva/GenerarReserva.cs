@@ -83,9 +83,7 @@ namespace Proyecto_CAI_Grupo_4
         }
         private void btnAddpasajero_Click(object sender, EventArgs e)
         {
-            var cantAgregadaPasajeros = Pasajeros.Count;
-
-            if (cantAgregadaPasajeros == CantidadMaximaPasajeros)
+            if (GetCantidadProductosAsigadosAPasajeros() >= CantidadMaximaPasajeros)
             {
                 MessageBox.Show("Limite de Pasajeros alcanzado");
                 return;
@@ -100,8 +98,15 @@ namespace Proyecto_CAI_Grupo_4
                 RecibirDatosPasajero(Agregar.Pasajero);
                 MessageBox.Show("Se Agregó el pasajero");
 
-                DisminuirCantidadDisponiblePasajeros();
+                ActualizarCantidadDisponiblePasajeros(CantidadMaximaPasajeros - GetCantidadProductosAsigadosAPasajeros());
             }
+        }
+
+        private int GetCantidadProductosAsigadosAPasajeros()
+        {
+            return Pasajeros
+                .Select(x => x.IdsAereosAsignados.Count + x.IdsHotelesAsignados.Count)
+                .DefaultIfEmpty(0).Sum();
         }
 
 
@@ -253,8 +258,7 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-
-            if (Pasajeros.Count == CantidadMaximaPasajeros)
+            if (GetCantidadProductosAsigadosAPasajeros() == CantidadMaximaPasajeros)
             {
 
                 if (!ValidarEdadesPasajerosAsignados())
@@ -263,7 +267,12 @@ namespace Proyecto_CAI_Grupo_4
                 }
 
                 ReservaModel.AddReserva(Reserva);
-                PasajerosModel.AgregarPasajeros(Pasajeros);
+
+                var pasajerosConAsignaciones =
+                    Pasajeros
+                        .Where(x => x.IdsHotelesAsignados.Any() || x.IdsHotelesAsignados.Any()).ToList();
+
+                PasajerosModel.AgregarPasajeros(pasajerosConAsignaciones);
 
                 MessageBox.Show("Reserva Generada Exitosamente");
                 this.Close();
@@ -281,15 +290,15 @@ namespace Proyecto_CAI_Grupo_4
         private bool ValidarEdadesPasajerosAsignados()
         {
             var cantidadAdultos = Pasajeros
-                .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.adulto)
+                .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.adulto && (x.IdsHotelesAsignados.Any() || x.IdsAereosAsignados.Any()))
                 .Count();
 
             var cantidadMenores = Pasajeros
-                .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.menor)
+                .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.menor && (x.IdsHotelesAsignados.Any() || x.IdsAereosAsignados.Any()))
                 .Count();
 
             var cantidadInfantes = Pasajeros
-                .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.infante)
+                .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.infante && (x.IdsHotelesAsignados.Any() || x.IdsAereosAsignados.Any()))
                 .Count();
 
 
@@ -342,6 +351,18 @@ namespace Proyecto_CAI_Grupo_4
                 return false;
             }
 
+            if (Pasajeros.Any(x => x.IdsAereosAsignados.GroupBy(y => y).Any(z => z.Count() > 1)))
+            {
+                MessageBox.Show("Algun pasajero tiene asignado un mismo aereo mas de una vez");
+                return false;
+            }
+
+            if (Pasajeros.Any(x => x.IdsHotelesAsignados.GroupBy(y => y).Any(z => z.Count() > 1)))
+            {
+                MessageBox.Show("Algun pasajero tiene asignado un mismo hotel mas de una vez");
+                return false;
+            }
+
             return true;
         }
 
@@ -362,9 +383,21 @@ namespace Proyecto_CAI_Grupo_4
                 foreach (ListViewItem item in listPasajeros.SelectedItems)
                 {
                     listPasajeros.Items.Remove(item);
-                    Pasajeros.All(x => x.IdsAereosAsignados.Remove(Guid.Parse(item.SubItems[6].Text)));
-                    Pasajeros.All(x => x.IdsHotelesAsignados.Remove(Guid.Parse(item.SubItems[6].Text)));
+
+                    Pasajeros
+                        .Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text)
+                        .IdsAereosAsignados.Remove(Guid.Parse(item.SubItems[6].Text));
+
+                    Pasajeros
+                        .Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text)
+                        .IdsHotelesAsignados.Remove(Guid.Parse(item.SubItems[6].Text));
                 }
+
+                ActualizarCantidadDisponiblePasajeros(CantidadMaximaPasajeros - GetCantidadProductosAsigadosAPasajeros());
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un pasajero");
             }
         }
     }
