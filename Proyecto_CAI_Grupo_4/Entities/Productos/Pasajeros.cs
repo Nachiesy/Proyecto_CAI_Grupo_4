@@ -29,7 +29,7 @@ public class Pasajeros
     {
         var edad = GetEdad();
 
-        if (edad <= 11)
+        if (edad <= 2)
         {
             return TipoDePasajeroEnum.infante;
         }

@@ -253,9 +253,14 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
+
             if (Pasajeros.Count == CantidadMaximaPasajeros)
             {
-                ValidarEdadesPasajerosAsignados();
+
+                if (!ValidarEdadesPasajerosAsignados())
+                {
+                    return;
+                }
 
                 ReservaModel.AddReserva(Reserva);
                 PasajerosModel.AgregarPasajeros(Pasajeros);
@@ -273,7 +278,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void ValidarEdadesPasajerosAsignados()
+        private bool ValidarEdadesPasajerosAsignados()
         {
             var cantidadAdultos = Pasajeros
                 .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.adulto)
@@ -291,19 +296,19 @@ namespace Proyecto_CAI_Grupo_4
             if (cantidadAdultos > CantidadMaximaPasajerosAdultos)
             {
                 MessageBox.Show("La cantidad de adultos asignados supera el maximo permitido");
-                return;
+                return false;
             }
 
             if (cantidadMenores > CantidadMaximaPasajerosMenores)
             {
                 MessageBox.Show("La cantidad de menores asignados supera el maximo permitido");
-                return;
+                return false;
             }
 
             if (cantidadInfantes > CantidadMaximaPasajerosInfantes)
             {
                 MessageBox.Show("La cantidad de infantes asignados supera el maximo permitido");
-                return;
+                return false;
             }
 
             if (Pasajeros.Any(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.adulto
@@ -311,7 +316,7 @@ namespace Proyecto_CAI_Grupo_4
                                        .Any(y => y.CantidadMaximaDeAdultos == 0)))
             {
                 MessageBox.Show("Algun pasajero de tipo adulto fue asignado a un hotel que no permite adultos");
-                return;
+                return false;
             }
 
             if (Pasajeros.Any(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.menor
@@ -319,7 +324,7 @@ namespace Proyecto_CAI_Grupo_4
                                        .Any(y => y.CantidadMaximaDeMenores == 0)))
             {
                 MessageBox.Show("Algun pasajero de tipo menor fue asignado a un hotel que no permite menores");
-                return;
+                return false;
             }
 
             if (Pasajeros.Any(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.infante
@@ -327,15 +332,17 @@ namespace Proyecto_CAI_Grupo_4
                                        .Any(y => y.CantidadMaximaDeInfantes == 0)))
             {
                 MessageBox.Show("Algun pasajero de tipo infante fue asignado a un hotel que no permite infantes");
-                return;
+                return false;
             }
 
             if (Pasajeros.Any(x => AereosModel.GetAereosByIds(x.IdsAereosAsignados)
                     .Any(y => y.TipoDePasajero != x.GetTipoDePasajero())))
             {
                 MessageBox.Show("Algun pasajero fue asignado a un aereo que no permite ese tipo de pasajero");
-                return;
+                return false;
             }
+
+            return true;
         }
 
         private void listPasajeros_SelectedIndexChanged(object sender, EventArgs e)
