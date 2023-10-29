@@ -25,6 +25,23 @@ public class Pasajeros
         return DateTime.Now.Year - FechaNacimiento.Year;
     }
 
+    public TipoDePasajeroEnum GetTipoDePasajero()
+    {
+        var edad = GetEdad();
+
+        if (edad <= 11)
+        {
+            return TipoDePasajeroEnum.infante;
+        }
+        
+        if (edad < 18)
+        {
+            return TipoDePasajeroEnum.menor;
+        }
+
+        return TipoDePasajeroEnum.adulto;
+    }
+
     public int TotalAsignados()
     {
         return IdsAereosAsignados.Count + IdsHotelesAsignados.Count;

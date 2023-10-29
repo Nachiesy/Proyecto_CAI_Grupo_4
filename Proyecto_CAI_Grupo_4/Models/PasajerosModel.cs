@@ -20,6 +20,11 @@ namespace Proyecto_CAI_Grupo_4.Models
             Pasajeros.Add(pasajero);
         }
 
+        public static void AgregarPasajeros(List<Pasajeros> pasajeros)
+        {
+            Pasajeros.AddRange(pasajeros);
+        }
+
         public static List<Pasajeros> GetPasajeros()
         {
             return Pasajeros;
