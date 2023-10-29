@@ -225,7 +225,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             if (listPresupuestos.SelectedItems.Count > 0)
             {
-                if (Pasajero.TotalAsignados() == cantidadMaxPasajeros)
+                if (Pasajero is not null && Pasajero.TotalAsignados() == cantidadMaxPasajeros)
                 {
                     ReservaModel.AddReserva(Reserva);
                     PasajerosModel.AgregarPasajero(Pasajero);
