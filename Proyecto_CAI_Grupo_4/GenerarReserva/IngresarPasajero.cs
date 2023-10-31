@@ -6,98 +6,155 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Entities;
+using Proyecto_CAI_Grupo_4.Models.Productos;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class IngresarPasajero : VistaBase
     {
-        public Pasajeros pasajero { get; private set; }
-        public IngresarPasajero() : base(tituloModulo: "Ingresar Pasajero", deshabilitarBotones: true)
+        public Pasajeros Pasajero { get; private set; }
+        private List<Aereos> aereosAsignables { get; set; }
+        private List<Hoteles> hotelesAsignables { get; set; }
+        private int IdItinerario { get; set; }
+
+        private class ListBoxItem
         {
+            public string Display { get; set; }
+            public int Id { get; set; }
+            public string TipoServicio { get; set; }
+        }
+
+        public IngresarPasajero(int presupuestoId) : base(tituloModulo: "Ingresar Pasajero", deshabilitarBotones: true)
+        {
+
+            var itinerario = PresupuestosModel.GetPresupuesto(presupuestoId);
+
+            aereosAsignables = AereosModel.GetAereosByIds(itinerario.IdAereosSeleccionados).ToList();
+
+            hotelesAsignables = HotelesModel.GetHotelesByIds(itinerario.IdHotelesSeleccionados).ToList();
+
+            IdItinerario = presupuestoId;
+
             InitializeComponent();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IngresarPasajero_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void cancelpasajbtn_Click(object sender, EventArgs e)
         {
-            pasajero = null;
+            Pasajero = null;
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void ReturnGenerarReserva()
-        {
-            Application.Run(new GenerarReserva());
-        }
-
-        private void cbxTipodoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void confirmpasajerobtn_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampos()) return;
 
-            pasajero = new Pasajeros();
+            Pasajero = new Pasajeros(IdItinerario,
+                nombrepasajerotxt.Text,
+                apellidopasajerotxt.Text,
+                int.Parse(dnipasajerotxt.Text),
+                DateTime.Parse(dtnacmiento.Text));
 
-            pasajero.Nombre = nombrepasajerotxt.Text;
-            pasajero.Apellido = apellidopasajerotxt.Text;
-            pasajero.Fecha_Nac = dtnacmiento.Value;
-            pasajero.Nacionalidad = nacpasajerocbx.Text;
-            pasajero.Tipo_Doc = cbxTipodoc.Text;
-            if (int.TryParse(dnipasajerotxt.Text, out int dato)) { pasajero.Doc = dato; } else { pasajero.Doc = 0; };
-            pasajero.Fecha_Exp = exppasajerodgv.Value;
-            pasajero.Pais_emisor = paiscbx.Text;
-            pasajero.Email = emailpasajerotxt.Text;
-            if (int.TryParse(telpasajerotxt.Text, out int tel)) { pasajero.Tel_contacto = tel; } else { pasajero.Tel_contacto = 0; };
-
-
-
-
-            if (pasajero.CamposPasajeros() != null)
+            foreach (ListBoxItem productoParaAsignar in listaProductosPorAsignar.SelectedItems)
             {
-                string mensajeError = string.Join("", pasajero.CamposPasajeros());
-                MessageBox.Show(mensajeError, "Error de validación", MessageBoxButtons.OK);
+                if (productoParaAsignar.TipoServicio == TipoDeServicioEnum.aereo.ToString())
+                {
+                    Pasajero.AsignarAereo(productoParaAsignar.Id);
+                }
+                else if (productoParaAsignar.TipoServicio == TipoDeServicioEnum.hotel.ToString())
+                {
+                    Pasajero.AsignarHotel(productoParaAsignar.Id);
+                }
+            }
+
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void IngresarPasajero_Load(object sender, EventArgs e)
+        {
+            listaProductosPorAsignar.Items.Clear();
+            listaProductosPorAsignar.DisplayMember = "Display";
+
+            listaProductosPorAsignar.Items.AddRange(aereosAsignables.Select(x => new ListBoxItem
+            {
+                Display = $"{x.Id} - {x.Nombre} - {x.TipoDePasajero.ToString().ToUpper()}",
+                Id = x.Id,
+                TipoServicio = x.TipoDeServicio.ToString()
+            }).ToArray());
+
+            listaProductosPorAsignar.Items.AddRange(hotelesAsignables.Select(x => new ListBoxItem
+            {
+                Display = $"{x.Id} - {x.Nombre} - {GetTextoPermitidosHoteles(x.CantidadMaximaDeMenores, x.CantidadMaximaDeInfantes)}",
+                Id = x.Id,
+                TipoServicio = x.TipoDeServicio.ToString()
+            }).ToArray());
+        }
+
+        private string GetTextoPermitidosHoteles(int cantidadMaximaMenores, int cantidadMaximaInfantes)
+        {
+            var str = "";
+
+            if (cantidadMaximaInfantes > 0 && cantidadMaximaMenores > 0)
+            {
+                str += "Permite Infantes y Menores";
+            }
+            else if (cantidadMaximaInfantes > 0)
+            {
+                str += "Permite Infantes";
+            }
+            else if (cantidadMaximaMenores > 0)
+            {
+                str += "Permite Menores";
             }
             else
             {
-                pasajero.Edad = pasajero.Fecha_Nac.Calculoedad();
-                pasajero.Tipo = pasajero.Edad.TipoPasajero();
-                DialogResult = DialogResult.OK;
-                Close();
+                str += "Permite solo adultos";
+            }
+            return str;
+        }
+
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(nombrepasajerotxt.Text))
+            {
+                MessageBox.Show("Debe ingresar un nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
+            if (string.IsNullOrWhiteSpace(apellidopasajerotxt.Text))
+            {
+                MessageBox.Show("Debe ingresar un apellido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
+            if (string.IsNullOrWhiteSpace(dnipasajerotxt.Text))
+            {
+                MessageBox.Show("Debe ingresar un DNI", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
+            if (DateTime.Parse(dtnacmiento.Text) > DateTime.Now)
+            {
+                MessageBox.Show("La fecha de nacimiento no puede ser mayor a la fecha actual", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
-        }
-        private void IngresarPasajero_Load_1(object sender, EventArgs e)
-        {
+            if (listaProductosPorAsignar.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("Debe seleccionar al menos un producto para asignar al pasajero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
+            return true;
         }
     }
 }

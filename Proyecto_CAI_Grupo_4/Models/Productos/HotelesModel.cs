@@ -1,4 +1,4 @@
-﻿using Proyecto_CAI_Grupo_4.Entities;
+using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Filters;
 
 namespace Proyecto_CAI_Grupo_4.Models.Productos
@@ -7,7 +7,6 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
     {
         private static List<Hoteles> hoteles = new List<Hoteles>()
         {
-            // HIL
             new Hoteles()
             {
                 Id = 25,
@@ -80,7 +79,6 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
                 CantidadMaximaDeInfantes = 2,
                 Direccion = "Av Libertador 100",
             },
-            // SHE
             new Hoteles()
             {
                 Id = 29,
@@ -162,6 +160,11 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             return hoteles;
         }
 
+        public static IEnumerable<Hoteles> GetHotelesByIds(IEnumerable<int> ids)
+        {
+            return hoteles.Where(x => ids.Contains(x.Id));
+        }
+
         public static IEnumerable<Hoteles> GetHoteles(HotelesFilter filter)
         {
             return hoteles
@@ -184,6 +187,11 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
         public static IEnumerable<Hoteles> GetHotelesElegidos()
         {
             return hotelesElegidos;
+        }
+
+        public static IEnumerable<int> GetIdsHotelesElegidos()
+        {
+            return hotelesElegidos.Select(x => x.Id);
         }
 
         public static void ClearHotelesElegidos()

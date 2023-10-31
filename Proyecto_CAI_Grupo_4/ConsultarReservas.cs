@@ -1,43 +1,15 @@
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
+using Proyecto_CAI_Grupo_4.Enums;
+using Proyecto_CAI_Grupo_4.Modelos;
+using Proyecto_CAI_Grupo_4.Models;
 using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class ConsultarReservas : VistaBase
     {
-        private List<Reserva> reservas = new List<Reserva>()
-        {
-            new Reserva()
-            {
-                Codigo = 92,
-                Estado = ReservaEstadoEnum.pendconfirmacion,
-                DNI = "41753082",
-                Precio = (decimal)100000.50,
-                CantPasajeros = 2,
-                Fecha = DateTime.Now.AddDays(-7),
-            },
-            new Reserva()
-            {
-                Codigo = 93,
-                Estado = ReservaEstadoEnum.confirmada,
-                DNI = "14975308",
-                Precio = (decimal)50000.20,
-                CantPasajeros = 6,
-                Fecha = DateTime.Now.AddDays(-14),
-
-            },
-            new Reserva()
-            {
-                Codigo = 107,
-                Estado = ReservaEstadoEnum.pendconfirmacion,
-                DNI = "29327456",
-                Precio = (decimal)500000.95,
-                CantPasajeros = 4,
-                Fecha = DateTime.Now.AddDays(-21),
-
-            },
-        };
+        private List<Reserva> reservas = ReservaModel.GetReservas();
 
         public ConsultarReservas() : base(tituloModulo: "Consulta de Reservas")
         {
@@ -62,7 +34,7 @@ namespace Proyecto_CAI_Grupo_4
             var filteredReservas = reservas
                 .Where(x => (string.IsNullOrEmpty(codigoInput) || x.Codigo == codigo)
                             && (estado == -1 || (int)x.Estado == estado)
-                            && (string.IsNullOrEmpty(dni) || x.DNI == dni));
+                            && (string.IsNullOrEmpty(dni) || x.Cliente.DNI == dni));
 
             reservasListView.Items.Clear();
 
@@ -72,21 +44,23 @@ namespace Proyecto_CAI_Grupo_4
             }
             else
             {
-                MessageBox.Show("No hay reservas disponibles para los parámetros ingresados.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("No hay reservas disponibles para los parámetros ingresados.", "Error",
+                    MessageBoxButtons.OK);
+
             }
         }
 
-        private void AddReservasToListView(IEnumerable<Reserva> list)
-        {
+    private void AddReservasToListView(IEnumerable<Reserva> list)
+    {
             foreach (var item in list)
             {
                 var row = new ListViewItem(item.Codigo.ToString());
 
                 row.SubItems.Add(item.Estado.GetDescription());
-                row.SubItems.Add(item.DNI);
-                row.SubItems.Add(item.Precio.ToFormDecimal());
-                row.SubItems.Add(item.CantPasajeros.ToString());
-                row.SubItems.Add(item.Fecha.ToFormDate());
+                row.SubItems.Add(item.Cliente.DNI);
+                row.SubItems.Add(PresupuestosModel.GetPresupuesto(item.IdItinerario)!.PrecioTotal.ToFormDecimal());
+                row.SubItems.Add(PasajerosModel.GetTotalPasajerosByIdReserva(item.Codigo).ToString());
+                row.SubItems.Add(item.FechaReserva.ToFormDate());
 
                 reservasListView.Items.Add(row);
             }

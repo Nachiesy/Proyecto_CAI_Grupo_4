@@ -34,19 +34,13 @@
             lblcantpasajeros = new Label();
             btn_Agregar = new Common.Components.BotonEstilizado();
             listPasajeros = new ListView();
+            idproducto = new ColumnHeader();
+            nombreproducto = new ColumnHeader();
             nombre = new ColumnHeader();
             apellido = new ColumnHeader();
             fechadenac = new ColumnHeader();
             edad = new ColumnHeader();
-            tipopasajero = new ColumnHeader();
-            nacionalidad = new ColumnHeader();
-            tipodoc = new ColumnHeader();
-            documento = new ColumnHeader();
-            fechavencimiento = new ColumnHeader();
-            paisemisor = new ColumnHeader();
-            email = new ColumnHeader();
-            telcontacto = new ColumnHeader();
-            gpProsupuesto = new GroupBox();
+            gbxPresupuesto = new GroupBox();
             btn_Buscar = new Common.Components.BotonEstilizado();
             listPresupuestos = new ListView();
             nropresup = new ColumnHeader();
@@ -54,9 +48,11 @@
             cantpasajeros = new ColumnHeader();
             cantAdultos = new ColumnHeader();
             cantMenores = new ColumnHeader();
+            cantInfantes = new ColumnHeader();
             precio = new ColumnHeader();
             estado = new ColumnHeader();
             fecha = new ColumnHeader();
+            prereserva = new ColumnHeader();
             txbDocumento = new TextBox();
             nroPresupuestotxt = new TextBox();
             btn_SeleccionarPresupuesto = new Common.Components.BotonEstilizado();
@@ -64,9 +60,8 @@
             label1 = new Label();
             btn_GenerarReserva = new Common.Components.BotonEstilizado();
             btn_Cancelar = new Common.Components.BotonEstilizado();
-            prereserva = new ColumnHeader();
             gbxPasajeros.SuspendLayout();
-            gpProsupuesto.SuspendLayout();
+            gbxPresupuesto.SuspendLayout();
             SuspendLayout();
             // 
             // gbxPasajeros
@@ -140,7 +135,7 @@
             // 
             // listPasajeros
             // 
-            listPasajeros.Columns.AddRange(new ColumnHeader[] { nombre, apellido, fechadenac, edad, tipopasajero, nacionalidad, tipodoc, documento, fechavencimiento, paisemisor, email, telcontacto });
+            listPasajeros.Columns.AddRange(new ColumnHeader[] { idproducto, nombreproducto, nombre, apellido, fechadenac, edad });
             listPasajeros.FullRowSelect = true;
             listPasajeros.Location = new Point(17, 69);
             listPasajeros.Margin = new Padding(2, 1, 2, 1);
@@ -150,6 +145,16 @@
             listPasajeros.UseCompatibleStateImageBehavior = false;
             listPasajeros.View = View.Details;
             listPasajeros.SelectedIndexChanged += listPasajeros_SelectedIndexChanged;
+            // 
+            // idproducto
+            // 
+            idproducto.Text = "Id del Producto";
+            idproducto.Width = 180;
+            // 
+            // nombreproducto
+            // 
+            nombreproducto.Text = "Nombre del Producto";
+            nombreproducto.Width = 200;
             // 
             // nombre
             // 
@@ -171,64 +176,24 @@
             edad.Text = "Edad";
             edad.Width = 80;
             // 
-            // tipopasajero
+            // gbxPresupuesto
             // 
-            tipopasajero.Text = "Tipo";
-            tipopasajero.Width = 100;
-            // 
-            // nacionalidad
-            // 
-            nacionalidad.Text = "Nacionalidad";
-            nacionalidad.Width = 160;
-            // 
-            // tipodoc
-            // 
-            tipodoc.Text = "Tipo de Doc.";
-            tipodoc.Width = 160;
-            // 
-            // documento
-            // 
-            documento.Text = "Documento";
-            documento.Width = 160;
-            // 
-            // fechavencimiento
-            // 
-            fechavencimiento.Text = "Fecha de Vencimiento";
-            fechavencimiento.Width = 250;
-            // 
-            // paisemisor
-            // 
-            paisemisor.Text = "Pais Emisor";
-            paisemisor.Width = 160;
-            // 
-            // email
-            // 
-            email.Text = "E-mail";
-            email.Width = 200;
-            // 
-            // telcontacto
-            // 
-            telcontacto.Text = "Tel. de Contacto";
-            telcontacto.Width = 180;
-            // 
-            // gpProsupuesto
-            // 
-            gpProsupuesto.Controls.Add(btn_Buscar);
-            gpProsupuesto.Controls.Add(listPresupuestos);
-            gpProsupuesto.Controls.Add(txbDocumento);
-            gpProsupuesto.Controls.Add(nroPresupuestotxt);
-            gpProsupuesto.Controls.Add(btn_SeleccionarPresupuesto);
-            gpProsupuesto.Controls.Add(label3);
-            gpProsupuesto.Controls.Add(label1);
-            gpProsupuesto.Location = new Point(11, 104);
-            gpProsupuesto.Margin = new Padding(2, 1, 2, 1);
-            gpProsupuesto.Name = "gpProsupuesto";
-            gpProsupuesto.Padding = new Padding(2, 1, 2, 1);
-            gpProsupuesto.Size = new Size(1083, 251);
-            gpProsupuesto.TabIndex = 7;
-            gpProsupuesto.TabStop = false;
-            gpProsupuesto.Text = "Presupuestos";
-            gpProsupuesto.Enter += gpProsupuesto_Enter;
+            gbxPresupuesto.Controls.Add(btn_Buscar);
+            gbxPresupuesto.Controls.Add(listPresupuestos);
+            gbxPresupuesto.Controls.Add(txbDocumento);
+            gbxPresupuesto.Controls.Add(nroPresupuestotxt);
+            gbxPresupuesto.Controls.Add(btn_SeleccionarPresupuesto);
+            gbxPresupuesto.Controls.Add(label3);
+            gbxPresupuesto.Controls.Add(label1);
+            gbxPresupuesto.Location = new Point(11, 104);
+            gbxPresupuesto.Margin = new Padding(2, 1, 2, 1);
+            gbxPresupuesto.Name = "gbxPresupuesto";
+            gbxPresupuesto.Padding = new Padding(2, 1, 2, 1);
+            gbxPresupuesto.Size = new Size(1083, 251);
+            gbxPresupuesto.TabIndex = 7;
+            gbxPresupuesto.TabStop = false;
+            gbxPresupuesto.Text = "Presupuestos";
+            gbxPresupuesto.Enter += gpProsupuesto_Enter;
             // 
             // btn_Buscar
             // 
@@ -247,7 +212,7 @@
             // 
             // listPresupuestos
             // 
-            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, cantAdultos, cantMenores, precio, estado, fecha, prereserva });
+            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, cantAdultos, cantMenores, cantInfantes, precio, estado, fecha, prereserva });
             listPresupuestos.FullRowSelect = true;
             listPresupuestos.Location = new Point(10, 59);
             listPresupuestos.Margin = new Padding(2, 1, 2, 1);
@@ -273,17 +238,22 @@
             // cantpasajeros
             // 
             cantpasajeros.Text = "Cant. de Pasajeros";
-            cantpasajeros.Width = 220;
+            cantpasajeros.Width = 120;
             // 
             // cantAdultos
             // 
             cantAdultos.Text = "Cant. Adultos";
-            cantAdultos.Width = 200;
+            cantAdultos.Width = 100;
             // 
             // cantMenores
             // 
             cantMenores.Text = "Cant. Menores";
-            cantMenores.Width = 200;
+            cantMenores.Width = 100;
+            // 
+            // cantInfantes
+            // 
+            cantInfantes.Text = "Cant. Infantes";
+            cantInfantes.Width = 100;
             // 
             // precio
             // 
@@ -299,6 +269,11 @@
             // 
             fecha.Text = "Fecha";
             fecha.Width = 180;
+            // 
+            // prereserva
+            // 
+            prereserva.Text = "Prereserva";
+            prereserva.TextAlign = HorizontalAlignment.Right;
             // 
             // txbDocumento
             // 
@@ -384,11 +359,6 @@
             btn_Cancelar.UseVisualStyleBackColor = false;
             btn_Cancelar.Click += btnCancelar_Click;
             // 
-            // prereserva
-            // 
-            prereserva.Text = "Prereserva";
-            prereserva.TextAlign = HorizontalAlignment.Right;
-            // 
             // GenerarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -397,26 +367,26 @@
             ClientSize = new Size(1105, 612);
             Controls.Add(btn_Cancelar);
             Controls.Add(btn_GenerarReserva);
-            Controls.Add(gpProsupuesto);
+            Controls.Add(gbxPresupuesto);
             Controls.Add(gbxPasajeros);
             Margin = new Padding(1);
             Name = "GenerarReserva";
             Text = "Generar Reserva";
             Load += GenerarReserva_Load;
             Controls.SetChildIndex(gbxPasajeros, 0);
-            Controls.SetChildIndex(gpProsupuesto, 0);
+            Controls.SetChildIndex(gbxPresupuesto, 0);
             Controls.SetChildIndex(btn_GenerarReserva, 0);
             Controls.SetChildIndex(btn_Cancelar, 0);
             gbxPasajeros.ResumeLayout(false);
             gbxPasajeros.PerformLayout();
-            gpProsupuesto.ResumeLayout(false);
-            gpProsupuesto.PerformLayout();
+            gbxPresupuesto.ResumeLayout(false);
+            gbxPresupuesto.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
         private GroupBox gbxPasajeros;
-        private GroupBox gpProsupuesto;
+        private GroupBox gbxPresupuesto;
         private TextBox txbDocumento;
         private TextBox nroPresupuestotxt;
         private Label label3;
@@ -425,13 +395,6 @@
         private ColumnHeader nombre;
         private ColumnHeader apellido;
         private ColumnHeader fechadenac;
-        private ColumnHeader tipodoc;
-        private ColumnHeader documento;
-        private ColumnHeader paisemisor;
-        private ColumnHeader fechavencimiento;
-        private ColumnHeader nacionalidad;
-        private ColumnHeader email;
-        private ColumnHeader telcontacto;
         private ListView listPresupuestos;
         private ColumnHeader nropresup;
         private ColumnHeader doccliente;
@@ -448,9 +411,11 @@
         private Common.Components.BotonEstilizado btn_Quitar;
         private Common.Components.BotonEstilizado btn_Buscar;
         private ColumnHeader edad;
-        private ColumnHeader tipopasajero;
         private ColumnHeader cantAdultos;
         private ColumnHeader cantMenores;
         private ColumnHeader prereserva;
+        private ColumnHeader idproducto;
+        private ColumnHeader nombreproducto;
+        private ColumnHeader cantInfantes;
     }
 }

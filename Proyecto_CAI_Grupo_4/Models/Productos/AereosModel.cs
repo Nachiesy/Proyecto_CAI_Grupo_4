@@ -1,4 +1,4 @@
-﻿using Proyecto_CAI_Grupo_4.Entities;
+using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Filters;
 
 namespace Proyecto_CAI_Grupo_4.Models.Productos
@@ -7,7 +7,6 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
     {
         private static List<Aereos> aereos = new List<Aereos>()
         {
-            // A113
             new Aereos()
             {
                 Id = 1,
@@ -212,7 +211,6 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
                 Itinerario = AereosItinerarioEnum.oneWay,
                 TipoDePasajero = TipoDePasajeroEnum.infante,
             },
-            // C369
             new Aereos()
             {
                 Id = 13,
@@ -510,6 +508,11 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             return aereos;
         }
 
+        public static IEnumerable<Aereos> GetAereosByIds(IEnumerable<int> ids)
+        {
+            return aereos.Where(x => ids.Contains(x.Id));
+        }
+
         public static IEnumerable<Aereos> GetAereos(AereosFilter filter)
         {
             return aereos
@@ -527,12 +530,17 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
 
         public static Aereos? GetAereoByID(int id)
         {
-            return aereos.Where(x => x.Id == id).SingleOrDefault();
+            return aereos.SingleOrDefault(x => x.Id == id);
         }
 
         public static IEnumerable<Aereos> GetAereosElegidos()
         {
             return aereosElegidos;
+        }
+
+        public static IEnumerable<int> GetIdsAereosElegidos()
+        {
+            return aereosElegidos.Select(x => x.Id);
         }
 
         public static void ClearAereosElegidos()
