@@ -508,7 +508,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             return aereos;
         }
 
-        public static IEnumerable<Aereos> GetAereosByIds(IEnumerable<Guid> ids)
+        public static IEnumerable<Aereos> GetAereosByIds(IEnumerable<int> ids)
         {
             return aereos.Where(x => ids.Contains(x.Id));
         }
@@ -538,7 +538,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             return aereosElegidos;
         }
 
-        public static IEnumerable<Guid> GetIdsAereosElegidos()
+        public static IEnumerable<int> GetIdsAereosElegidos()
         {
             return aereosElegidos.Select(x => x.Id);
         }

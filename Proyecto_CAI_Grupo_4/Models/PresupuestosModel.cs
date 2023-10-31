@@ -7,10 +7,10 @@ namespace Proyecto_CAI_Grupo_4.Models
         private static List<Itinerario> Presupuestos { get; set; } = new List<Itinerario>()
         {
             new Itinerario(1, 
-                new List<Guid>() {
-                    Guid.Parse("b3bac23e-b28c-4db8-bfd8-107776ef929d")
-                }, new List<Guid> () {
-                    Guid.Parse("55be2c9a-987a-4bfe-a7de-23025f7dc2fe")
+                new List<int>() {
+                    1
+                }, new List<int> () {
+                    1
                 },
                 new Cliente("53944876", "Lionel", "Messi"),
                 20000)

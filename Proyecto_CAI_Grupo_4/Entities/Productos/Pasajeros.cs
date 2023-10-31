@@ -8,8 +8,8 @@ public class Pasajeros
     public DateTime FechaNacimiento { get; set; }
     public int IdReserva { get; set; }
 
-    public List<Guid> IdsAereosAsignados { get; set; } = new List<Guid>();
-    public List<Guid> IdsHotelesAsignados { get; set; } = new List<Guid>();
+    public List<int> IdsAereosAsignados { get; set; } = new List<int>();
+    public List<int> IdsHotelesAsignados { get; set; } = new List<int>();
 
     public Pasajeros(int idReserva, string nombre, string apellido, int dni, DateTime fechaNacimiento)
     {
@@ -47,13 +47,13 @@ public class Pasajeros
         return IdsAereosAsignados.Count + IdsHotelesAsignados.Count;
     }
 
-    public Pasajeros AsignarAereo(Guid idProducto)
+    public Pasajeros AsignarAereo(int idProducto)
     {
         IdsAereosAsignados.Add(idProducto);
         return this;
     }
 
-    public Pasajeros AsignarHotel(Guid idProducto)
+    public Pasajeros AsignarHotel(int idProducto)
     {
         IdsHotelesAsignados.Add(idProducto);
         return this;

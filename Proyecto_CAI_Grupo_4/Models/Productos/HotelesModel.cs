@@ -160,7 +160,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             return hoteles;
         }
 
-        public static IEnumerable<Hoteles> GetHotelesByIds(IEnumerable<Guid> ids)
+        public static IEnumerable<Hoteles> GetHotelesByIds(IEnumerable<int> ids)
         {
             return hoteles.Where(x => ids.Contains(x.Id));
         }
@@ -189,7 +189,7 @@ namespace Proyecto_CAI_Grupo_4.Models.Productos
             return hotelesElegidos;
         }
 
-        public static IEnumerable<Guid> GetIdsHotelesElegidos()
+        public static IEnumerable<int> GetIdsHotelesElegidos()
         {
             return hotelesElegidos.Select(x => x.Id);
         }

@@ -28,7 +28,7 @@ namespace Proyecto_CAI_Grupo_4
         private class ListBoxItem
         {
             public string Display { get; set; }
-            public Guid Id { get; set; }
+            public int Id { get; set; }
             public string TipoServicio { get; set; }
         }
 

@@ -386,11 +386,11 @@ namespace Proyecto_CAI_Grupo_4
 
                     Pasajeros
                         .Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text)
-                        .IdsAereosAsignados.Remove(Guid.Parse(item.SubItems[6].Text));
+                        .IdsAereosAsignados.Remove(int.Parse(item.SubItems[6].Text));
 
                     Pasajeros
                         .Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text)
-                        .IdsHotelesAsignados.Remove(Guid.Parse(item.SubItems[6].Text));
+                        .IdsHotelesAsignados.Remove(int.Parse(item.SubItems[6].Text));
                 }
 
                 ActualizarCantidadDisponiblePasajeros(CantidadMaximaPasajeros - GetCantidadProductosAsigadosAPasajeros());
