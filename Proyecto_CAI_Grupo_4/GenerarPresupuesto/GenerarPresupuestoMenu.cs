@@ -252,7 +252,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         foreach (ListViewItem item in productosElegidos.SelectedItems)
         {
-            var id = Guid.Parse(item.Text);
+            var id = int.Parse(item.Text);
 
             AereosModel.RemoveAereoElegido(id);
 
