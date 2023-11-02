@@ -272,6 +272,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         PresupuestosModel.AddPresupuesto(itinerario);
 
+        LimpiarSeleccionDeProductos();
         GoToMenuPrincipal();
     }
 
