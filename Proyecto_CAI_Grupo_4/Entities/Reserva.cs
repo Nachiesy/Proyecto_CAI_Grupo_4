@@ -8,7 +8,7 @@ namespace Proyecto_CAI_Grupo_4.Entities
         public int IdItinerario { get; set; }
         public Cliente Cliente { get; set; }
         public ReservaEstadoEnum Estado { get; set; }
-        public DateTime FechaReserva { get; set; }
+        public DateTime FechaEstado { get; set; }
 
         public Reserva(int codigo, int idItinerario, ReservaEstadoEnum estado, Cliente cliente)
         {
@@ -16,9 +16,13 @@ namespace Proyecto_CAI_Grupo_4.Entities
             IdItinerario = idItinerario;
             Cliente = cliente;
             Estado = estado;
-            FechaReserva = DateTime.Now;
+            FechaEstado = DateTime.Now;
         }
 
-        public Reserva() { }
+        public void ConfirmarReserva()
+        {
+            Estado = ReservaEstadoEnum.Confirmada;
+            FechaEstado = DateTime.Now;
+        }
     }
 }

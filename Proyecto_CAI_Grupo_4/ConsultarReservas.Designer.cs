@@ -38,12 +38,11 @@
             grp_Filtros = new GroupBox();
             btn_Limpiar = new Common.Components.BotonEstilizado();
             reservasListView = new ListView();
-            Codigo = new ColumnHeader();
+            IdReserva = new ColumnHeader();
             Estado = new ColumnHeader();
             DNI = new ColumnHeader();
             Precio = new ColumnHeader();
-            CantidadPasajeros = new ColumnHeader();
-            Fecha = new ColumnHeader();
+            FechaEstado = new ColumnHeader();
             grp_Filtros.SuspendLayout();
             SuspendLayout();
             // 
@@ -92,7 +91,6 @@
             // 
             filtroEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             filtroEstado.FormattingEnabled = true;
-            filtroEstado.Items.AddRange(new object[] { "Pendiente de Confirmación", "Confirmada" });
             filtroEstado.Location = new Point(112, 86);
             filtroEstado.Name = "filtroEstado";
             filtroEstado.Size = new Size(179, 23);
@@ -145,7 +143,7 @@
             // 
             // reservasListView
             // 
-            reservasListView.Columns.AddRange(new ColumnHeader[] { Codigo, Estado, DNI, Precio, CantidadPasajeros, Fecha });
+            reservasListView.Columns.AddRange(new ColumnHeader[] { IdReserva, Estado, DNI, Precio, FechaEstado });
             reservasListView.Location = new Point(27, 239);
             reservasListView.Name = "reservasListView";
             reservasListView.Size = new Size(804, 226);
@@ -153,10 +151,10 @@
             reservasListView.UseCompatibleStateImageBehavior = false;
             reservasListView.View = View.Details;
             // 
-            // Codigo
+            // IdReserva
             // 
-            Codigo.Text = "Código";
-            Codigo.Width = 100;
+            IdReserva.Text = "Id Reserva";
+            IdReserva.Width = 100;
             // 
             // Estado
             // 
@@ -165,7 +163,7 @@
             // 
             // DNI
             // 
-            DNI.Text = "DNI";
+            DNI.Text = "DNI Cliente";
             DNI.Width = 200;
             // 
             // Precio
@@ -173,15 +171,10 @@
             Precio.Text = "Precio";
             Precio.Width = 100;
             // 
-            // CantidadPasajeros
+            // FechaEstado
             // 
-            CantidadPasajeros.Text = "Cantidad de Pasajeros";
-            CantidadPasajeros.Width = 150;
-            // 
-            // Fecha
-            // 
-            Fecha.Text = "Fecha de Reserva";
-            Fecha.Width = 150;
+            FechaEstado.Text = "Fecha de Estado";
+            FechaEstado.Width = 150;
             // 
             // ConsultarReservas
             // 
@@ -217,11 +210,10 @@
         private GroupBox grp_Filtros;
         private Common.Components.BotonEstilizado btn_Limpiar;
         private ListView reservasListView;
-        private ColumnHeader Codigo;
+        private ColumnHeader IdReserva;
         private ColumnHeader Estado;
         private ColumnHeader DNI;
-        private ColumnHeader CantidadPasajeros;
         private ColumnHeader Precio;
-        private ColumnHeader Fecha;
+        private ColumnHeader FechaEstado;
     }
 }

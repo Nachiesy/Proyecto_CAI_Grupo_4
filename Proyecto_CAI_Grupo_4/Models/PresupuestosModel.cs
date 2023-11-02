@@ -1,4 +1,5 @@
 using Proyecto_CAI_Grupo_4.Entities;
+using Proyecto_CAI_Grupo_4.Enums;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
@@ -6,35 +7,22 @@ namespace Proyecto_CAI_Grupo_4.Models
     {
         private static List<Itinerario> Presupuestos { get; set; } = new List<Itinerario>()
         {
-            new Itinerario(1, 
-                new List<int>() {
-                    1
-                }, new List<int> () {
-                    1
-                },
-                new Cliente("53944876", "Lionel", "Messi"),
-                20000)
+            new Itinerario(
+                id: 1, 
+                idAereosSeleccionados: new List<AereoSeleccionado>() { new ("V1001", 1) },
+                idHotelesSeleccionados: new List<HotelSeleccionado> () { new ("H1002", 25) },
+                cliente: new Cliente("53944876", "Lionel", "Messi"),
+                estado: PresupuestoEstadoEnum.Presupuesto_Pendiente_De_Pago,
+                precioTotal: 20000)
         };
 
-        public static List<Itinerario> GetPresupuestos()
-        {
-            return Presupuestos;
-        }
+        public static List<Itinerario> GetPresupuestos() => Presupuestos;
 
-        public static List<Itinerario> GetPresupuestosByDNI(string dni)
-        {
-            return Presupuestos.FindAll(x => x.Cliente.DNI == dni);
-        }
+        public static List<Itinerario> GetPresupuestosByDNI(string dni) => Presupuestos.FindAll(x => x.Cliente.DNI == dni);
 
-        public static List<Itinerario> GetPresupuestosById(int id)
-        {
-            return Presupuestos.FindAll(x => x.IdItinerario == id);
-        }
+        public static Itinerario? GetPresupuestoById(int id) => Presupuestos.FirstOrDefault(x => x.IdItinerario == id);
 
-        public static void AddPresupuesto(Itinerario itinerario)
-        {
-            Presupuestos.Add(itinerario);
-        }
+        public static void AddPresupuesto(Itinerario itinerario) => Presupuestos.Add(itinerario);
 
         public static void UpdatePresupuesto(Itinerario itinerarioActualizado)
         {
@@ -46,14 +34,6 @@ namespace Proyecto_CAI_Grupo_4.Models
             }
         }
 
-        public static Itinerario? GetPresupuesto(int id)
-        {
-            return Presupuestos.FirstOrDefault(x => x.IdItinerario == id);
-        }
-
-        public static int GenerarId()
-        {
-            return Presupuestos.Count + 1;
-        }
+        public static int GenerarId() => Presupuestos.Count + 1;
     }
 }

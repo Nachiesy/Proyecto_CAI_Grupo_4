@@ -9,8 +9,6 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class ConsultarReservas : VistaBase
     {
-        private List<Reserva> reservas = ReservaModel.GetReservas();
-
         public ConsultarReservas() : base(tituloModulo: "Consulta de Reservas")
         {
             InitializeComponent();
@@ -18,29 +16,65 @@ namespace Proyecto_CAI_Grupo_4
 
         private void ConsultarReservas_Load(object sender, EventArgs e)
         {
-            AddReservasToListView(reservas);
+            AddReservasToListView(ReservaModel.GetReservas());
+            
+            var estados = new List<string>()
+            {
+                "Todas"
+            };
+
+            estados.AddRange(
+                Enum.GetValues(typeof(ReservaEstadoEnum))
+                .Cast<ReservaEstadoEnum>()
+                .Select(v => v.GetDescription())
+                .Skip(1));
+
+            filtroEstado.DataSource = estados;
         }
 
         private void buscarReserva_Click(object sender, EventArgs e)
         {
-            var codigoInput = filtroCodigo.Text.Trim();
 
-            int.TryParse(codigoInput, out int codigo);
+            var reservas = ReservaModel
+                .GetReservas()
+                .AsQueryable();
+
+            var codigoInput = filtroCodigo.Text.Trim();
 
             var estado = filtroEstado.SelectedIndex;
 
             var dni = filtroNroDeDoc.Text.Trim();
 
-            var filteredReservas = reservas
-                .Where(x => (string.IsNullOrEmpty(codigoInput) || x.Codigo == codigo)
-                            && (estado == -1 || (int)x.Estado == estado)
-                            && (string.IsNullOrEmpty(dni) || x.Cliente.DNI == dni));
-
-            reservasListView.Items.Clear();
-
-            if (filteredReservas.Any())
+            if (!string.IsNullOrEmpty(codigoInput))
             {
-                AddReservasToListView(filteredReservas);
+                if (!int.TryParse(codigoInput, out int reservaId))
+                {
+                    MessageBox.Show("El codigo de reserva debe ser numérico.");
+                    return;
+                }
+
+                reservas = reservas.Where(x => x.Codigo == reservaId);
+            }
+
+            if (!string.IsNullOrEmpty(dni) && dni.EsDNI())
+            {
+                if (!dni.EsDNI())
+                {
+                    MessageBox.Show("Ingrese un DNI valido por favor.");
+                    return;
+                }
+
+                reservas = reservas.Where(x => x.Cliente.DNI == dni);
+            }
+
+            if (filtroEstado.SelectedIndex != 0)
+            {
+                reservas = reservas.Where(x => x.Estado == (ReservaEstadoEnum)estado);
+            }
+
+            if (reservas.Any())
+            {
+                AddReservasToListView(reservas);
             }
             else
             {
@@ -50,20 +84,20 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-    private void AddReservasToListView(IEnumerable<Reserva> list)
-    {
-            foreach (var item in list)
+        private void AddReservasToListView(IEnumerable<Reserva> list)
+        {
+            reservasListView.Items.Clear();
+
+            reservasListView.Items.AddRange(list.Select(item => new ListViewItem(item.Codigo.ToString())
             {
-                var row = new ListViewItem(item.Codigo.ToString());
-
-                row.SubItems.Add(item.Estado.GetDescription());
-                row.SubItems.Add(item.Cliente.DNI);
-                row.SubItems.Add(PresupuestosModel.GetPresupuesto(item.IdItinerario)!.PrecioTotal.ToFormDecimal());
-                row.SubItems.Add(PasajerosModel.GetTotalPasajerosByIdReserva(item.Codigo).ToString());
-                row.SubItems.Add(item.FechaReserva.ToFormDate());
-
-                reservasListView.Items.Add(row);
-            }
+                SubItems =
+                {
+                    item.Estado.GetDescription(),
+                    item.Cliente.DNI,
+                    PresupuestosModel.GetPresupuestoById(item.IdItinerario).PrecioTotal.ToString("C2") ?? "-",
+                    item.FechaEstado.ToFormDate()
+                }
+            }).ToArray());
         }
 
         private void limpiarConsulta_Click(object sender, EventArgs e)
@@ -71,10 +105,10 @@ namespace Proyecto_CAI_Grupo_4
             reservasListView.Items.Clear();
 
             filtroCodigo.Clear();
-            filtroEstado.SelectedIndex = -1;
+            filtroEstado.SelectedIndex = 0;
             filtroNroDeDoc.Clear();
 
-            AddReservasToListView(reservas);
+            AddReservasToListView(ReservaModel.GetReservas());
         }
     }
 }

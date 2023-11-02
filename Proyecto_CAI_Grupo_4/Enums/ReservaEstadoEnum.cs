@@ -4,15 +4,10 @@ namespace Proyecto_CAI_Grupo_4.Enums;
 
 public enum ReservaEstadoEnum
 {
+    [Description("Estado Invalido")]
+    Invalida = 0,
     [Description("Pendiente de Confirmación")]
-    pendienteDeConfirmacion,
-
+    PendienteDeConfirmacion = 1,
     [Description("Confirmada")]
-    confirmada,
-
-    [Description("Pendiente de Pago")]
-    pendienteDePago,
-
-    [Description("Abonada")]
-    pagada,
+    Confirmada = 2
 }

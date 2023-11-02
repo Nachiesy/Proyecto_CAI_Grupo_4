@@ -41,7 +41,7 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             return Pasajeros
                 .Where(x => x.IdReserva == idReserva)
-                .Select(x => x.IdsAereosAsignados.Count + x.IdsHotelesAsignados.Count)
+                .Select(x => x.AereosAsignados.Count + x.HotelesAsignados.Count)
                 .DefaultIfEmpty(0)
                 .Sum();
         }

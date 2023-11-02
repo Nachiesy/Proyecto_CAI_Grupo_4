@@ -7,24 +7,26 @@ namespace Proyecto_CAI_Grupo_4.Modelos
     {
         private static List<Reserva> reservas = new List<Reserva>()
         {
-            new Reserva()
-            {
-                Codigo = 1,
-                Estado = ReservaEstadoEnum.pagada,
-                Cliente = new Cliente()
-                {
-                    DNI = "43422654",
-                    Nombre = "Juan",
-                    Apellido = "Perez",
-                },
-                IdItinerario = 1,
-                FechaReserva = DateTime.Now,
-            },
+            new Reserva(
+                codigo: 1,
+                estado: ReservaEstadoEnum.PendienteDeConfirmacion,
+                cliente: new Cliente("43422654", "Juan", "Perez"),
+                idItinerario: 1),
         };
 
         public static List<Reserva> GetReservas()
         {
             return reservas;
+        }
+
+        public static List<Reserva> GetReservasPendientesDeConfirmacion()
+        {
+            return reservas.FindAll(x => x.Estado == ReservaEstadoEnum.PendienteDeConfirmacion);
+        }
+
+        public static List<Reserva> GetReservasByItinerario(string dni)
+        {
+            return reservas.FindAll(x => x.Cliente.DNI == dni);
         }
 
         public static Reserva GetLastReserva()
@@ -47,6 +49,13 @@ namespace Proyecto_CAI_Grupo_4.Modelos
         public static void AddReserva(Reserva reserva)
         {
             reservas.Add(reserva);
+        }
+
+        public static void ConfirmarReserva(int idReserva)
+        {
+            reservas
+                .Find(x => x.Codigo == idReserva)
+                .ConfirmarReserva();
         }
     }
 }

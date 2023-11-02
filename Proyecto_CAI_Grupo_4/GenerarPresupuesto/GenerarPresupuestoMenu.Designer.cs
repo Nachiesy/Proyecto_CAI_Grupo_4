@@ -39,7 +39,6 @@ namespace Proyecto_CAI_Grupo_4
             btnFinalizarPresupuesto = new Common.Components.BotonEstilizado();
             grp_Estimacion = new GroupBox();
             productosElegidos = new ListView();
-            ID = new ColumnHeader();
             Codigo = new ColumnHeader();
             Nombre = new ColumnHeader();
             TipoServicio = new ColumnHeader();
@@ -172,7 +171,7 @@ namespace Proyecto_CAI_Grupo_4
             // 
             // productosElegidos
             // 
-            productosElegidos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Nombre, TipoServicio, Precios });
+            productosElegidos.Columns.AddRange(new ColumnHeader[] { Codigo, Nombre, TipoServicio, Precios });
             productosElegidos.FullRowSelect = true;
             productosElegidos.Location = new Point(8, 22);
             productosElegidos.Name = "productosElegidos";
@@ -181,11 +180,6 @@ namespace Proyecto_CAI_Grupo_4
             productosElegidos.UseCompatibleStateImageBehavior = false;
             productosElegidos.View = View.Details;
             productosElegidos.SelectedIndexChanged += productosElegidos_SelectedIndexChanged;
-            // 
-            // ID
-            // 
-            ID.Text = "ID";
-            ID.Width = 100;
             // 
             // Codigo
             // 
@@ -384,7 +378,6 @@ namespace Proyecto_CAI_Grupo_4
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private ListView productosElegidos;
-        private ColumnHeader ID;
         private ColumnHeader Codigo;
         private ColumnHeader Nombre;
         private ColumnHeader TipoServicio;

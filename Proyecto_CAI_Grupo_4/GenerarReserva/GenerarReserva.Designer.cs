@@ -31,7 +31,6 @@
             gbxPasajeros = new GroupBox();
             lblcodigp = new Label();
             btn_Quitar = new Common.Components.BotonEstilizado();
-            lblcantpasajeros = new Label();
             btn_Agregar = new Common.Components.BotonEstilizado();
             listPasajeros = new ListView();
             idproducto = new ColumnHeader();
@@ -45,14 +44,9 @@
             listPresupuestos = new ListView();
             nropresup = new ColumnHeader();
             doccliente = new ColumnHeader();
-            cantpasajeros = new ColumnHeader();
-            cantAdultos = new ColumnHeader();
-            cantMenores = new ColumnHeader();
-            cantInfantes = new ColumnHeader();
-            precio = new ColumnHeader();
             estado = new ColumnHeader();
-            fecha = new ColumnHeader();
-            prereserva = new ColumnHeader();
+            fechaestado = new ColumnHeader();
+            precio = new ColumnHeader();
             txbDocumento = new TextBox();
             nroPresupuestotxt = new TextBox();
             btn_SeleccionarPresupuesto = new Common.Components.BotonEstilizado();
@@ -68,7 +62,6 @@
             // 
             gbxPasajeros.Controls.Add(lblcodigp);
             gbxPasajeros.Controls.Add(btn_Quitar);
-            gbxPasajeros.Controls.Add(lblcantpasajeros);
             gbxPasajeros.Controls.Add(btn_Agregar);
             gbxPasajeros.Controls.Add(listPasajeros);
             gbxPasajeros.Enabled = false;
@@ -85,7 +78,7 @@
             // 
             lblcodigp.AutoSize = true;
             lblcodigp.Font = new Font("Microsoft JhengHei UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblcodigp.Location = new Point(282, 30);
+            lblcodigp.Location = new Point(17, 32);
             lblcodigp.Margin = new Padding(2, 0, 2, 0);
             lblcodigp.Name = "lblcodigp";
             lblcodigp.Size = new Size(169, 24);
@@ -106,17 +99,6 @@
             btn_Quitar.Text = "Quitar";
             btn_Quitar.UseVisualStyleBackColor = false;
             btn_Quitar.Click += btn_Quitar_Click;
-            // 
-            // lblcantpasajeros
-            // 
-            lblcantpasajeros.AutoSize = true;
-            lblcantpasajeros.Font = new Font("Microsoft JhengHei UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblcantpasajeros.Location = new Point(17, 30);
-            lblcantpasajeros.Margin = new Padding(2, 0, 2, 0);
-            lblcantpasajeros.Name = "lblcantpasajeros";
-            lblcantpasajeros.Size = new Size(227, 24);
-            lblcantpasajeros.TabIndex = 4;
-            lblcantpasajeros.Text = "Pasajeros Disponibles:  -";
             // 
             // btn_Agregar
             // 
@@ -212,7 +194,7 @@
             // 
             // listPresupuestos
             // 
-            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, cantAdultos, cantMenores, cantInfantes, precio, estado, fecha, prereserva });
+            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, estado, fechaestado, precio });
             listPresupuestos.FullRowSelect = true;
             listPresupuestos.Location = new Point(10, 59);
             listPresupuestos.Margin = new Padding(2, 1, 2, 1);
@@ -232,48 +214,23 @@
             // 
             // doccliente
             // 
-            doccliente.Text = "Documento";
+            doccliente.Text = "DNI Cliente";
             doccliente.Width = 160;
-            // 
-            // cantpasajeros
-            // 
-            cantpasajeros.Text = "Cant. de Pasajeros";
-            cantpasajeros.Width = 120;
-            // 
-            // cantAdultos
-            // 
-            cantAdultos.Text = "Cant. Adultos";
-            cantAdultos.Width = 100;
-            // 
-            // cantMenores
-            // 
-            cantMenores.Text = "Cant. Menores";
-            cantMenores.Width = 100;
-            // 
-            // cantInfantes
-            // 
-            cantInfantes.Text = "Cant. Infantes";
-            cantInfantes.Width = 100;
-            // 
-            // precio
-            // 
-            precio.Text = "Precio";
-            precio.Width = 180;
             // 
             // estado
             // 
             estado.Text = "Estado";
             estado.Width = 180;
             // 
-            // fecha
+            // fechaestado
             // 
-            fecha.Text = "Fecha";
-            fecha.Width = 180;
+            fechaestado.Text = "Fecha de Estado";
+            fechaestado.Width = 180;
             // 
-            // prereserva
+            // precio
             // 
-            prereserva.Text = "Prereserva";
-            prereserva.TextAlign = HorizontalAlignment.Right;
+            precio.Text = "Precio";
+            precio.Width = 180;
             // 
             // txbDocumento
             // 
@@ -398,11 +355,9 @@
         private ListView listPresupuestos;
         private ColumnHeader nropresup;
         private ColumnHeader doccliente;
-        private ColumnHeader cantpasajeros;
         private ColumnHeader precio;
         private ColumnHeader estado;
-        private ColumnHeader fecha;
-        private Label lblcantpasajeros;
+        private ColumnHeader fechaestado;
         private Label lblcodigp;
         private Common.Components.BotonEstilizado btn_GenerarReserva;
         private Common.Components.BotonEstilizado btn_Cancelar;
@@ -411,11 +366,7 @@
         private Common.Components.BotonEstilizado btn_Quitar;
         private Common.Components.BotonEstilizado btn_Buscar;
         private ColumnHeader edad;
-        private ColumnHeader cantAdultos;
-        private ColumnHeader cantMenores;
-        private ColumnHeader prereserva;
         private ColumnHeader idproducto;
         private ColumnHeader nombreproducto;
-        private ColumnHeader cantInfantes;
     }
 }

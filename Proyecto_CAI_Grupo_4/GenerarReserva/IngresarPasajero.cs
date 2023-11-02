@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Models.Productos;
+using System.Net;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -24,22 +25,28 @@ namespace Proyecto_CAI_Grupo_4
         private List<Aereos> aereosAsignables { get; set; }
         private List<Hoteles> hotelesAsignables { get; set; }
         private int IdItinerario { get; set; }
+        private Itinerario Itinerario { get; set; }
 
-        private class ListBoxItem
+        private class ItinerarioItemTag
         {
-            public string Display { get; set; }
-            public int Id { get; set; }
+            public string Id { get; set; }
+            public int IdProducto { get; set; }
             public string TipoServicio { get; set; }
         }
 
         public IngresarPasajero(int presupuestoId) : base(tituloModulo: "Ingresar Pasajero", deshabilitarBotones: true)
         {
+            Itinerario = PresupuestosModel.GetPresupuestoById(presupuestoId);
 
-            var itinerario = PresupuestosModel.GetPresupuesto(presupuestoId);
+            aereosAsignables = AereosModel
+                .GetAereosByIds(Itinerario.IdAereosSeleccionados
+                    .Select(x => x.IdAereo))
+                .ToList();
 
-            aereosAsignables = AereosModel.GetAereosByIds(itinerario.IdAereosSeleccionados).ToList();
-
-            hotelesAsignables = HotelesModel.GetHotelesByIds(itinerario.IdHotelesSeleccionados).ToList();
+            hotelesAsignables = HotelesModel
+                .GetHotelesByIds(Itinerario.IdHotelesSeleccionados
+                    .Select(x => x.IdHotel))
+                .ToList();
 
             IdItinerario = presupuestoId;
 
@@ -63,15 +70,17 @@ namespace Proyecto_CAI_Grupo_4
                 int.Parse(dnipasajerotxt.Text),
                 DateTime.Parse(dtnacmiento.Text));
 
-            foreach (ListBoxItem productoParaAsignar in listaProductosPorAsignar.SelectedItems)
+            foreach (ListViewItem productoParaAsignar in lv_ListadoProductos.SelectedItems)
             {
-                if (productoParaAsignar.TipoServicio == TipoDeServicioEnum.aereo.ToString())
+                var tag = (ItinerarioItemTag)productoParaAsignar.Tag;
+
+                if (tag.TipoServicio == TipoDeServicioEnum.aereo.ToString())
                 {
-                    Pasajero.AsignarAereo(productoParaAsignar.Id);
+                    Pasajero.AsignarAereo(new AereoSeleccionado(tag.Id, tag.IdProducto));
                 }
-                else if (productoParaAsignar.TipoServicio == TipoDeServicioEnum.hotel.ToString())
+                else if (tag.TipoServicio == TipoDeServicioEnum.hotel.ToString())
                 {
-                    Pasajero.AsignarHotel(productoParaAsignar.Id);
+                    Pasajero.AsignarHotel(new HotelSeleccionado(tag.Id, tag.IdProducto));
                 }
             }
 
@@ -81,22 +90,47 @@ namespace Proyecto_CAI_Grupo_4
 
         private void IngresarPasajero_Load(object sender, EventArgs e)
         {
-            listaProductosPorAsignar.Items.Clear();
-            listaProductosPorAsignar.DisplayMember = "Display";
+            lv_ListadoProductos.Items.Clear();
 
-            listaProductosPorAsignar.Items.AddRange(aereosAsignables.Select(x => new ListBoxItem
-            {
-                Display = $"{x.Id} - {x.Nombre} - {x.TipoDePasajero.ToString().ToUpper()}",
-                Id = x.Id,
-                TipoServicio = x.TipoDeServicio.ToString()
-            }).ToArray());
+            lv_ListadoProductos.Items
+                .AddRange(Itinerario.IdAereosSeleccionados
+                .Join(
+                    aereosAsignables,
+                    aereoSeleccionadoEnItinerario => aereoSeleccionadoEnItinerario.IdAereo,
+                    aereo => aereo.Id,
+                    (aereoSeleccionadoEnItinerario, aereo) => new ListViewItem(aereoSeleccionadoEnItinerario.Id)
+                    {
+                        SubItems =
+                        {
+                             $"{aereo.Nombre} - {aereo.TipoDePasajero.ToString().ToUpper()}"
+                        },
+                        Tag = new ItinerarioItemTag()
+                        {
+                            Id = aereoSeleccionadoEnItinerario.Id,
+                            IdProducto = aereo.Id,
+                            TipoServicio = TipoDeServicioEnum.aereo.ToString()
+                        }
+                    }).ToArray());
 
-            listaProductosPorAsignar.Items.AddRange(hotelesAsignables.Select(x => new ListBoxItem
-            {
-                Display = $"{x.Id} - {x.Nombre} - {GetTextoPermitidosHoteles(x.CantidadMaximaDeMenores, x.CantidadMaximaDeInfantes)}",
-                Id = x.Id,
-                TipoServicio = x.TipoDeServicio.ToString()
-            }).ToArray());
+            lv_ListadoProductos.Items
+                .AddRange(Itinerario.IdHotelesSeleccionados
+                .Join(
+                    hotelesAsignables,
+                    hotelSeleccionadoEnItinerario => hotelSeleccionadoEnItinerario.IdHotel,
+                    hotel => hotel.Id,
+                    (hotelSeleccionadoEnItinerario, hotel) => new ListViewItem(hotelSeleccionadoEnItinerario.Id)
+                    {
+                        SubItems =
+                        {
+                             $"{hotel.Nombre} - {GetTextoPermitidosHoteles(hotel.CantidadMaximaDeMenores, hotel.CantidadMaximaDeInfantes)}"
+                        },
+                        Tag = new ItinerarioItemTag()
+                        {
+                            Id = hotelSeleccionadoEnItinerario.Id,
+                            IdProducto = hotel.Id,
+                            TipoServicio = TipoDeServicioEnum.hotel.ToString()
+                        }
+                    }).ToArray());
         }
 
         private string GetTextoPermitidosHoteles(int cantidadMaximaMenores, int cantidadMaximaInfantes)
@@ -142,13 +176,19 @@ namespace Proyecto_CAI_Grupo_4
                 return false;
             }
 
+            if (!dnipasajerotxt.Text.EsDNI())
+            {
+                MessageBox.Show("Debe ingresar un DNI valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             if (DateTime.Parse(dtnacmiento.Text) > DateTime.Now)
             {
                 MessageBox.Show("La fecha de nacimiento no puede ser mayor a la fecha actual", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (listaProductosPorAsignar.SelectedItems.Count < 1)
+            if (lv_ListadoProductos.SelectedItems.Count < 1)
             {
                 MessageBox.Show("Debe seleccionar al menos un producto para asignar al pasajero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;

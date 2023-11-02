@@ -1,4 +1,5 @@
 ﻿using Proyecto_CAI_Grupo_4.Common.Views;
+using Proyecto_CAI_Grupo_4.Enums;
 using Proyecto_CAI_Grupo_4.Models;
 using Proyecto_CAI_Grupo_4.Utils;
 
@@ -28,11 +29,24 @@ public partial class BuscarPresupuesto : VistaBase
             return;
         }
 
-        var presupuesto = PresupuestosModel.GetPresupuesto(nroPresupuesto);
+        var presupuesto = PresupuestosModel.GetPresupuestoById(nroPresupuesto);
 
         if (presupuesto is null)
         {
             MessageBox.Show("El número de presupuesto ingresado no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        if (presupuesto.Estado == PresupuestoEstadoEnum.Presupuesto_Abonado)
+        {
+            MessageBox.Show("El número de presupuesto ingresado ya fue abonado y no se puede editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        if (presupuesto.Estado == PresupuestoEstadoEnum.Prereserva_Pendiente_de_Pago ||
+            presupuesto.Estado == PresupuestoEstadoEnum.Prereserva_Abonada)
+        {
+            MessageBox.Show("El número de presupuesto corresponde a una pre reserva y no se puede editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 

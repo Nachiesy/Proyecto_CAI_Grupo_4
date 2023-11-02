@@ -12,18 +12,16 @@ using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Enums;
 using Proyecto_CAI_Grupo_4.Modelos;
+using Proyecto_CAI_Grupo_4.Models;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class ConfirmarReserva : VistaBase
     {
-        Reserva reservaselct = new Reserva();
         public ConfirmarReserva()
         {
             InitializeComponent();
         }
-
-        private List<Reserva> reservas = ReservaModel.GetReservas();
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
@@ -38,90 +36,79 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            //var codigo = nroPresupuestotxt.Text.Trim();
-            //var dni = txbDocumento.Text.Trim();
+            var codigo = nroPresupuestotxt.Text.Trim();
+            var dni = txbDocumento.Text.Trim();
 
-            //if (dni == "")
-            //{
+            var reservas = ReservaModel
+                .GetReservasPendientesDeConfirmacion()
+                .AsQueryable();
 
-            //    var filteredReservas = reservas
-            //    .Where(x => (string.IsNullOrEmpty(codigo) || (int)x.Codigo == int.Parse(codigo))
-            //     && (string.IsNullOrEmpty(dni) || x.DNI == dni));
-            //    if (filteredReservas.Any())
-            //    {
-            //        listPresupuestos.Items.Clear();
+            if (!string.IsNullOrEmpty(codigo))
+            {
+                if (!int.TryParse(codigo, out int reservaId))
+                {
+                    MessageBox.Show("El codigo de reserva debe ser numérico.");
+                    return;
+                }
 
-            //        AddReservasToListView(filteredReservas);
-            //    }
-            //    else
-            //    {
-            //        listPresupuestos.Items.Clear();
-            //    }
-            //}
-            //else if (!dni.EsDNI())
-            //{
-            //    MessageBox.Show("Ingrese un DNI valido por favor.");
-            //}
-            //else
-            //{
-            //    var filteredReservas = reservas
-            //    .Where(x => (string.IsNullOrEmpty(codigo) || (int)x.Codigo == int.Parse(codigo))
-            //     && (string.IsNullOrEmpty(dni) || x.DNI == dni));
-            //    if (filteredReservas.Any())
-            //    {
-            //        listPresupuestos.Items.Clear();
+                reservas = reservas.Where(x => x.Codigo == reservaId);
+            }
 
-            //        AddReservasToListView(filteredReservas);
-            //    }
-            //    else
-            //    {
-            //        listPresupuestos.Items.Clear();
-            //    }
-            //};
+            if (!string.IsNullOrEmpty(dni) && dni.EsDNI())
+            {
+                if (!dni.EsDNI())
+                {
+                    MessageBox.Show("Ingrese un DNI valido por favor.");
+                    return;
+                }
+
+                reservas = reservas.Where(x => x.Cliente.DNI == dni);
+            }
+
+            AddReservasToListView(reservas.ToList());
         }
         private void AddReservasToListView(IEnumerable<Reserva> list)
         {
-            //foreach (var item in list)
-            //{
-            //    var row = new ListViewItem(item.Codigo.ToString());
-            //    row.SubItems.Add(item.DNI);
-            //    row.SubItems.Add(item.CantPasajeros.ToString());
-            //    row.SubItems.Add(item.Precio.ToString());
-            //    row.SubItems.Add(item.Estado.GetDescription());
-            //    row.SubItems.Add(item.Fecha.ToFormDate());
+            lv_Reservas.Items.Clear();
 
-            //    listPresupuestos.Items.Add(row);
-            //}
+            lv_Reservas.Items.AddRange(list.Select(item => new ListViewItem(item.Codigo.ToString())
+            {
+                SubItems =
+                {
+                    item.Estado.GetDescription(),
+                    item.Cliente.DNI,
+                    PresupuestosModel.GetPresupuestoById(item.IdItinerario).PrecioTotal.ToString("C2") ?? "-",
+                    item.FechaEstado.ToFormDate()
+                }
+            }).ToArray());
         }
 
         private void btn_LimpiarFiltros_Click(object sender, EventArgs e)
         {
             nroPresupuestotxt.Text = string.Empty;
             txbDocumento.Text = string.Empty;
-            listPresupuestos.Items.Clear();
+            lv_Reservas.Items.Clear();
         }
 
         private void btn_ConfirmarReserva_Click(object sender, EventArgs e)
         {
+            if (lv_Reservas.SelectedItems.Count > 0)
+            {
+                MessageBox.Show("Seleccione una reserva para confirmarla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            ListViewItem item = lv_Reservas.SelectedItems[0];
+            DialogResult resultado = MessageBox.Show("¿Desea confirmar la reserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            //if (listPresupuestos.SelectedItems.Count > 0)
-            //{
-            //    ListViewItem item = listPresupuestos.SelectedItems[0];
-            //    DialogResult resultado = MessageBox.Show("¿Desea confirmar la reserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                MessageBox.Show("Reserva Confirmada");
 
-            //    if (resultado == DialogResult.Yes)
-            //    {
-            //        MessageBox.Show("Reserva Confirmada");
-            //        listPresupuestos.Items.Remove(item);
+                ReservaModel.ConfirmarReserva(int.Parse(item.Text));
 
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Seleccione una reserva");
-            //}
-
+                lv_Reservas.Items.Remove(item);
+            }
         }
 
         private void btn_Volver_Click(object sender, EventArgs e)

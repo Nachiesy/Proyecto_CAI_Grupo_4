@@ -72,7 +72,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_ConfirmarReserva.FlatStyle = FlatStyle.Flat;
             btn_ConfirmarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_ConfirmarReserva.ForeColor = Color.Black;
-            btn_ConfirmarReserva.Location = new Point(320, 295);
+            btn_ConfirmarReserva.Location = new Point(168, 292);
             btn_ConfirmarReserva.Name = "btn_ConfirmarReserva";
             btn_ConfirmarReserva.Size = new Size(226, 67);
             btn_ConfirmarReserva.TabIndex = 4;
@@ -87,7 +87,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_EstadoDeReservas.FlatStyle = FlatStyle.Flat;
             btn_EstadoDeReservas.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_EstadoDeReservas.ForeColor = Color.Black;
-            btn_EstadoDeReservas.Location = new Point(27, 295);
+            btn_EstadoDeReservas.Location = new Point(27, 212);
             btn_EstadoDeReservas.Name = "btn_EstadoDeReservas";
             btn_EstadoDeReservas.Size = new Size(227, 67);
             btn_EstadoDeReservas.TabIndex = 8;
@@ -115,7 +115,7 @@ namespace Proyecto_CAI_Grupo_4
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(557, 378);
+            ClientSize = new Size(557, 371);
             Controls.Add(btn_BuscarPresupuesto);
             Controls.Add(btn_EstadoDeReservas);
             Controls.Add(btn_ConfirmarReserva);

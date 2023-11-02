@@ -32,10 +32,9 @@
             label3 = new Label();
             nroPresupuestotxt = new TextBox();
             txbDocumento = new TextBox();
-            listPresupuestos = new ListView();
+            lv_Reservas = new ListView();
             nropresup = new ColumnHeader();
             doccliente = new ColumnHeader();
-            cantpasajeros = new ColumnHeader();
             precio = new ColumnHeader();
             estado = new ColumnHeader();
             fecha = new ColumnHeader();
@@ -87,19 +86,19 @@
             txbDocumento.Size = new Size(124, 23);
             txbDocumento.TabIndex = 7;
             // 
-            // listPresupuestos
+            // lv_Reservas
             // 
-            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, cantpasajeros, precio, estado, fecha });
-            listPresupuestos.FullRowSelect = true;
-            listPresupuestos.Location = new Point(9, 18);
-            listPresupuestos.Margin = new Padding(2, 1, 2, 1);
-            listPresupuestos.MultiSelect = false;
-            listPresupuestos.Name = "listPresupuestos";
-            listPresupuestos.ShowItemToolTips = true;
-            listPresupuestos.Size = new Size(1060, 276);
-            listPresupuestos.TabIndex = 9;
-            listPresupuestos.UseCompatibleStateImageBehavior = false;
-            listPresupuestos.View = View.Details;
+            lv_Reservas.Columns.AddRange(new ColumnHeader[] { nropresup, estado, doccliente, precio, fecha });
+            lv_Reservas.FullRowSelect = true;
+            lv_Reservas.Location = new Point(9, 18);
+            lv_Reservas.Margin = new Padding(2, 1, 2, 1);
+            lv_Reservas.MultiSelect = false;
+            lv_Reservas.Name = "lv_Reservas";
+            lv_Reservas.ShowItemToolTips = true;
+            lv_Reservas.Size = new Size(1060, 276);
+            lv_Reservas.TabIndex = 9;
+            lv_Reservas.UseCompatibleStateImageBehavior = false;
+            lv_Reservas.View = View.Details;
             // 
             // nropresup
             // 
@@ -108,13 +107,8 @@
             // 
             // doccliente
             // 
-            doccliente.Text = "Documento";
+            doccliente.Text = "DNI Cliente";
             doccliente.Width = 160;
-            // 
-            // cantpasajeros
-            // 
-            cantpasajeros.Text = "Cant. de Pasajeros";
-            cantpasajeros.Width = 220;
             // 
             // precio
             // 
@@ -128,14 +122,14 @@
             // 
             // fecha
             // 
-            fecha.Text = "Fecha de Reserva";
+            fecha.Text = "Fecha de Estado";
             fecha.Width = 180;
             // 
             // gpProsupuesto
             // 
             gpProsupuesto.Controls.Add(btn_Volver);
             gpProsupuesto.Controls.Add(btn_ConfirmarReserva);
-            gpProsupuesto.Controls.Add(listPresupuestos);
+            gpProsupuesto.Controls.Add(lv_Reservas);
             gpProsupuesto.Location = new Point(12, 190);
             gpProsupuesto.Margin = new Padding(2, 1, 2, 1);
             gpProsupuesto.Name = "gpProsupuesto";
@@ -225,7 +219,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(1109, 564);
+            ClientSize = new Size(1098, 564);
             Controls.Add(grupoFiltros);
             Controls.Add(gpProsupuesto);
             Margin = new Padding(2, 1, 2, 1);
@@ -245,10 +239,9 @@
         private Label label3;
         private TextBox nroPresupuestotxt;
         private TextBox txbDocumento;
-        private ListView listPresupuestos;
+        private ListView lv_Reservas;
         private ColumnHeader nropresup;
         private ColumnHeader doccliente;
-        private ColumnHeader cantpasajeros;
         private ColumnHeader precio;
         private ColumnHeader estado;
         private ColumnHeader fecha;

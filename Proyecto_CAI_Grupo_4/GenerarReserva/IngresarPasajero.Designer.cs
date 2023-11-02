@@ -41,7 +41,9 @@
             btn_Confirmar = new Common.Components.BotonEstilizado();
             btn_Cancelar = new Common.Components.BotonEstilizado();
             grp_DatosContato = new GroupBox();
-            listaProductosPorAsignar = new ListBox();
+            lv_ListadoProductos = new ListView();
+            idproductoseleccionado = new ColumnHeader();
+            descripcionproducto = new ColumnHeader();
             grp_DatosPersonales.SuspendLayout();
             grp_DatosContato.SuspendLayout();
             SuspendLayout();
@@ -175,7 +177,7 @@
             // 
             // grp_DatosContato
             // 
-            grp_DatosContato.Controls.Add(listaProductosPorAsignar);
+            grp_DatosContato.Controls.Add(lv_ListadoProductos);
             grp_DatosContato.Location = new Point(311, 151);
             grp_DatosContato.Name = "grp_DatosContato";
             grp_DatosContato.Size = new Size(391, 231);
@@ -183,15 +185,27 @@
             grp_DatosContato.TabStop = false;
             grp_DatosContato.Text = "Asignar a...";
             // 
-            // listaProductosPorAsignar
+            // lv_ListadoProductos
             // 
-            listaProductosPorAsignar.FormattingEnabled = true;
-            listaProductosPorAsignar.ItemHeight = 15;
-            listaProductosPorAsignar.Location = new Point(6, 22);
-            listaProductosPorAsignar.Name = "listaProductosPorAsignar";
-            listaProductosPorAsignar.SelectionMode = SelectionMode.MultiSimple;
-            listaProductosPorAsignar.Size = new Size(377, 199);
-            listaProductosPorAsignar.TabIndex = 0;
+            lv_ListadoProductos.Columns.AddRange(new ColumnHeader[] { idproductoseleccionado, descripcionproducto });
+            lv_ListadoProductos.FullRowSelect = true;
+            lv_ListadoProductos.Location = new Point(5, 21);
+            lv_ListadoProductos.Margin = new Padding(2, 1, 2, 1);
+            lv_ListadoProductos.Name = "lv_ListadoProductos";
+            lv_ListadoProductos.Size = new Size(381, 206);
+            lv_ListadoProductos.TabIndex = 4;
+            lv_ListadoProductos.UseCompatibleStateImageBehavior = false;
+            lv_ListadoProductos.View = View.Details;
+            // 
+            // idproductoseleccionado
+            // 
+            idproductoseleccionado.Text = "Id";
+            idproductoseleccionado.Width = 180;
+            // 
+            // descripcionproducto
+            // 
+            descripcionproducto.Text = "Descripcion del Producto";
+            descripcionproducto.Width = 200;
             // 
             // IngresarPasajero
             // 
@@ -235,6 +249,8 @@
         private Common.Components.BotonEstilizado btn_Confirmar;
         private Common.Components.BotonEstilizado btn_Cancelar;
         private GroupBox grp_DatosContato;
-        private ListBox listaProductosPorAsignar;
+        private ListView lv_ListadoProductos;
+        private ColumnHeader idproductoseleccionado;
+        private ColumnHeader descripcionproducto;
     }
 }

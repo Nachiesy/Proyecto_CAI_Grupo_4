@@ -16,10 +16,6 @@ namespace Proyecto_CAI_Grupo_4
     {
         private Reserva Reserva = null;
         private List<Pasajeros> Pasajeros = new List<Pasajeros>();
-        private int CantidadMaximaPasajeros = 0;
-        private int CantidadMaximaPasajerosAdultos = 0;
-        private int CantidadMaximaPasajerosMenores = 0;
-        private int CantidadMaximaPasajerosInfantes = 0;
 
         public GenerarReserva() : base(tituloModulo: "Generar Reserva")
         {
@@ -43,37 +39,39 @@ namespace Proyecto_CAI_Grupo_4
 
         public void RecibirDatosPasajero(Pasajeros SumarPasajero)
         {
-            foreach (var i in SumarPasajero.IdsAereosAsignados)
+            foreach (var i in SumarPasajero.AereosAsignados)
             {
-                ListViewItem item = new ListViewItem(AereosModel.GetAereoByID(i).Id.ToString())
+                ListViewItem item = new ListViewItem(i.Id)
                 {
                     SubItems =
                     {
-                        AereosModel.GetAereoByID(i).Nombre,
+                        AereosModel.GetAereoByID(i.IdAereo).Nombre,
                         SumarPasajero.Nombre,
                         SumarPasajero.Apellido,
                         SumarPasajero.FechaNacimiento.ToShortDateString(),
                         SumarPasajero.GetEdad().ToString(),
                         i.ToString()
-                    }
+                    },
+                    Tag = new AereoSeleccionado(i.Id, i.IdAereo)
                 };
 
                 listPasajeros.Items.Add(item);
             }
 
-            foreach (var i in SumarPasajero.IdsHotelesAsignados)
+            foreach (var i in SumarPasajero.HotelesAsignados)
             {
-                ListViewItem item = new ListViewItem(HotelesModel.GetHotelByID(i).Id.ToString())
+                ListViewItem item = new ListViewItem(i.Id)
                 {
                     SubItems =
                     {
-                        HotelesModel.GetHotelByID(i).Nombre,
+                        HotelesModel.GetHotelByID(i.IdHotel).Nombre,
                         SumarPasajero.Nombre,
                         SumarPasajero.Apellido,
                         SumarPasajero.FechaNacimiento.ToShortDateString(),
                         SumarPasajero.GetEdad().ToString(),
                         i.ToString()
-                    }
+                    },
+                    Tag = new HotelSeleccionado(i.Id, i.IdHotel)
                 };
 
                 listPasajeros.Items.Add(item);
@@ -83,11 +81,9 @@ namespace Proyecto_CAI_Grupo_4
         }
         private void btnAddpasajero_Click(object sender, EventArgs e)
         {
-            if (GetCantidadProductosAsigadosAPasajeros() >= CantidadMaximaPasajeros)
-            {
-                MessageBox.Show("Limite de Pasajeros alcanzado");
-                return;
-            }
+            //var idsNoAsignables = listPasajeros.Items.Cast<ListViewItem>()
+            //    .Select(x => x.Text)
+            //    .ToList();
 
             IngresarPasajero Agregar = new IngresarPasajero(Reserva.IdItinerario);
 
@@ -97,15 +93,13 @@ namespace Proyecto_CAI_Grupo_4
             {
                 RecibirDatosPasajero(Agregar.Pasajero);
                 MessageBox.Show("Se Agregó el pasajero");
-
-                ActualizarCantidadDisponiblePasajeros(CantidadMaximaPasajeros - GetCantidadProductosAsigadosAPasajeros());
             }
         }
 
         private int GetCantidadProductosAsigadosAPasajeros()
         {
             return Pasajeros
-                .Select(x => x.IdsAereosAsignados.Count + x.IdsHotelesAsignados.Count)
+                .Select(x => x.AereosAsignados.Count + x.HotelesAsignados.Count)
                 .DefaultIfEmpty(0).Sum();
         }
 
@@ -122,32 +116,29 @@ namespace Proyecto_CAI_Grupo_4
                 SubItems =
                 {
                     item.Cliente.DNI,
-                    (AereosModel.GetAereosByIds(item.IdAereosSeleccionados).Count()
-                        + HotelesModel.GetHotelesByIds(item.IdHotelesSeleccionados).Count()).ToString(),
-                    (AereosModel.GetAereosByIds(item.IdAereosSeleccionados)
-                         .Where(x => x.TipoDePasajero == TipoDePasajeroEnum.adulto).Count()
-                        + HotelesModel.GetHotelesByIds(item.IdHotelesSeleccionados)
-                            .Where(x => x.CantidadMaximaDeAdultos > 0)
-                            .Count()).ToString(),
-                    (AereosModel.GetAereosByIds(item.IdAereosSeleccionados)
-                         .Where(x => x.TipoDePasajero == TipoDePasajeroEnum.menor).Count()
-                     + HotelesModel.GetHotelesByIds(item.IdHotelesSeleccionados)
-                         .Where(x => x.CantidadMaximaDeMenores > 0)
-                         .Count()).ToString(),
-                    (AereosModel.GetAereosByIds(item.IdAereosSeleccionados)
-                         .Where(x => x.TipoDePasajero == TipoDePasajeroEnum.infante).Count()
-                     + HotelesModel.GetHotelesByIds(item.IdHotelesSeleccionados)
-                         .Where(x => x.CantidadMaximaDeInfantes > 0)
-                         .Count()).ToString(),
-                    item.PrecioTotal.ToString("C2"),
-                    item.Estado,
+                    ObtenerEstadoFormateado(item.Estado),
                     item.FechaEstado.ToFormDate(),
-                    item.Estado == "Pre-Reserva" ? "Si" : "No"
+                    item.PrecioTotal.ToString("C2"),
                 }
             }).ToArray();
 
 
             listPresupuestos.Items.AddRange(itinerarios);
+        }
+
+        private string ObtenerEstadoFormateado(PresupuestoEstadoEnum estado)
+        {
+            if (estado == PresupuestoEstadoEnum.Presupuesto_Pendiente_De_Pago)
+            {
+                return PresupuestoEstadoEnum.Presupuesto_Abonado.GetDescription();
+            }
+
+            if (estado == PresupuestoEstadoEnum.Prereserva_Pendiente_de_Pago)
+            {
+                return PresupuestoEstadoEnum.Prereserva_Abonada.GetDescription();
+            }
+
+            return PresupuestoEstadoEnum.EstadoInvalido.GetDescription();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -180,12 +171,12 @@ namespace Proyecto_CAI_Grupo_4
 
             if (!string.IsNullOrEmpty(codigo))
             {
-                var presupuestos = PresupuestosModel
-                    .GetPresupuestosById(int.Parse(codigo));
+                var presupuesto = PresupuestosModel
+                    .GetPresupuestoById(int.Parse(codigo));
 
                 listPresupuestos.Items.Clear();
 
-                AddPresupuestosToListView(presupuestos);
+                AddPresupuestosToListView(new List<Itinerario>() { presupuesto });
                 return;
             }
 
@@ -202,15 +193,10 @@ namespace Proyecto_CAI_Grupo_4
 
                 int idItinerario = int.Parse(presupuesto.SubItems[0].Text);
 
-                Reserva = ReservaModel.GenerarNuevaReserva(idItinerario, ReservaEstadoEnum.pendienteDeConfirmacion, PresupuestosModel.GetPresupuesto(idItinerario).Cliente);
+                Reserva = ReservaModel.GenerarNuevaReserva(idItinerario, ReservaEstadoEnum.PendienteDeConfirmacion, PresupuestosModel.GetPresupuestoById(idItinerario).Cliente);
 
                 gbxPasajeros.Enabled = true;
                 gbxPresupuesto.Enabled = false;
-
-                ConfigurarMaximoDePasajerosPorTipo(presupuesto.SubItems[2].Text,
-                    presupuesto.SubItems[3].Text,
-                    presupuesto.SubItems[4].Text,
-                    presupuesto.SubItems[5].Text);
 
                 ActualizarInformacionPresupuesto(int.Parse(presupuesto.Text));
             }
@@ -220,29 +206,9 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void ConfigurarMaximoDePasajerosPorTipo(string totalPasajeros, string maximoPasajerosAdultos, string maximoPasajerosMenores, string maximoPasajerosInfantes)
-        {
-            CantidadMaximaPasajeros = int.Parse(totalPasajeros);
-            CantidadMaximaPasajerosAdultos = int.Parse(maximoPasajerosAdultos);
-            CantidadMaximaPasajerosMenores = int.Parse(maximoPasajerosMenores);
-            CantidadMaximaPasajerosInfantes = int.Parse(maximoPasajerosInfantes);
-
-            ActualizarCantidadDisponiblePasajeros(int.Parse(totalPasajeros));
-        }
-
         private void ActualizarInformacionPresupuesto(int idPresupuesto)
         {
             lblcodigp.Text = "ID Presupuesto: " + idPresupuesto;
-        }
-
-        private void ActualizarCantidadDisponiblePasajeros(int nuevaCantidad)
-        {
-            lblcantpasajeros.Text = "Pasajeros Disponibles: " + nuevaCantidad;
-        }
-
-        private void DisminuirCantidadDisponiblePasajeros()
-        {
-            lblcantpasajeros.Text = "Pasajeros Disponibles: " + (int.Parse(lblcantpasajeros.Text.Split(':')[1].Trim()) - 1);
         }
 
         private void GenerarReserva_Load(object sender, EventArgs e)
@@ -258,19 +224,21 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            if (GetCantidadProductosAsigadosAPasajeros() == CantidadMaximaPasajeros)
+            if (GetCantidadProductosAsigadosAPasajeros() == 0)
             {
+                MessageBox.Show("Debe asignar al menos un pasajero");
+                return;
+            }
 
-                if (!ValidarEdadesPasajerosAsignados())
-                {
-                    return;
-                }
+            var esValido = ValidarReserva();
 
+            if (esValido)
+            {
                 ReservaModel.AddReserva(Reserva);
 
                 var pasajerosConAsignaciones =
                     Pasajeros
-                        .Where(x => x.IdsHotelesAsignados.Any() || x.IdsHotelesAsignados.Any()).ToList();
+                        .Where(x => x.HotelesAsignados.Any() || x.HotelesAsignados.Any()).ToList();
 
                 PasajerosModel.AgregarPasajeros(pasajerosConAsignaciones);
 
@@ -281,87 +249,132 @@ namespace Proyecto_CAI_Grupo_4
                 thread.SetApartmentState(ApartmentState.STA);
                 thread.Start();
             }
-            else
-            {
-                MessageBox.Show("Debe Completar todos los pasajeros");
-            }
         }
 
-        private bool ValidarEdadesPasajerosAsignados()
+        private bool ValidarReserva()
         {
-            var cantidadAdultos = Pasajeros
-                .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.adulto && (x.IdsHotelesAsignados.Any() || x.IdsAereosAsignados.Any()))
-                .Count();
+            //var cantidadAdultos = Pasajeros
+            //    .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.adulto && (x.HotelesAsignados.Any() || x.AereosAsignados.Any()))
+            //    .Count();
 
-            var cantidadMenores = Pasajeros
-                .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.menor && (x.IdsHotelesAsignados.Any() || x.IdsAereosAsignados.Any()))
-                .Count();
+            //var cantidadMenores = Pasajeros
+            //    .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.menor && (x.HotelesAsignados.Any() || x.AereosAsignados.Any()))
+            //    .Count();
 
-            var cantidadInfantes = Pasajeros
-                .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.infante && (x.IdsHotelesAsignados.Any() || x.IdsAereosAsignados.Any()))
-                .Count();
+            //var cantidadInfantes = Pasajeros
+            //    .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.infante && (x.HotelesAsignados.Any() || x.AereosAsignados.Any()))
+            //    .Count();
+
+            //! Nunca voy a tener problemas con las cantidades de ID's unicos, ya que se limita a la hora del agregado en el presupuesto
 
 
-            if (cantidadAdultos > CantidadMaximaPasajerosAdultos)
+            //cantidad Agrupada PorTipo De Pasajero Y IdHotel y COUNT por cada grupo
+            var agrupacionCantidadesHotelesSeleccionados = Pasajeros
+                .SelectMany(x => 
+                    x.HotelesAsignados.Select(y => 
+                        new { TipoPasajero = x.GetTipoDePasajero(), IdHotel = y.IdHotel }))
+                .GroupBy(x => new { x.IdHotel, x.TipoPasajero })
+                .Select(x => new { x.Key.IdHotel, x.Key.TipoPasajero, Cantidad = x.Count() })
+                .ToList();
+
+
+            foreach(var pasajero in Pasajeros)
             {
-                MessageBox.Show("La cantidad de adultos asignados supera el maximo permitido");
+                foreach (var aereoSeleccionado in pasajero.AereosAsignados)
+                {
+                    var aereo = AereosModel.GetAereoByID(aereoSeleccionado.IdAereo);
+
+                    if (aereo.TipoDePasajero != pasajero.GetTipoDePasajero())
+                    {
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede viajar en el aereo {aereo.Nombre} porque no es de su tipo de pasajero");
+                        return false;
+                    }
+                }
+
+                foreach (var hotelSeleccionado in pasajero.HotelesAsignados)
+                {
+                    var hotel = HotelesModel.GetHotelByID(hotelSeleccionado.IdHotel);
+                    var tipoPasajero = pasajero.GetTipoDePasajero();
+
+                    if (hotel.CantidadMaximaDeAdultos == 0 && tipoPasajero == TipoDePasajeroEnum.adulto)
+                    {
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque no permite adultos");
+                        return false;
+                    }
+
+                    if (hotel.CantidadMaximaDeMenores == 0 && tipoPasajero == TipoDePasajeroEnum.menor)
+                    {
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque no permite menores");
+                        return false;
+                    }
+
+                    if(hotel.CantidadMaximaDeInfantes == 0 && tipoPasajero == TipoDePasajeroEnum.infante)
+                    {
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque no permite infantes");
+                        return false;
+                    }
+
+                    var cantidadActualDelMismoHotelParaTipoPasajeroConcreto = agrupacionCantidadesHotelesSeleccionados
+                        .SingleOrDefault(x => x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == tipoPasajero)
+                        .Cantidad;
+
+                    if (tipoPasajero == TipoDePasajeroEnum.adulto &&
+                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.CantidadMaximaDeAdultos)
+                    {
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} adultos hospedados y el maximo es {hotel.CantidadMaximaDeAdultos}.", "Error de Validacion", MessageBoxButtons.OK);
+                        return false;
+                    }
+
+                    if (tipoPasajero == TipoDePasajeroEnum.menor &&
+                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.CantidadMaximaDeMenores)
+                    {
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} menores hospedados y el maximo es {hotel.CantidadMaximaDeMenores}.", "Error de Validacion", MessageBoxButtons.OK);
+                        return false;
+                    }
+
+                    if (tipoPasajero == TipoDePasajeroEnum.infante &&
+                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.CantidadMaximaDeInfantes)
+                    {
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} infantes hospedados y el maximo es {hotel.CantidadMaximaDeInfantes}.", "Error de Validacion", MessageBoxButtons.OK);
+                        return false;
+                    }
+
+                }
+            }
+
+            //Para el caso de los hoteles esta bien a priori, ver el ejemplo de una habitacion cuadruple que permite 2 adultos y 2 menores...
+            //if (Pasajeros.Any(x => x.HotelesAsignados.Any(y =>
+            //        Pasajeros.Any(z => z.HotelesAsignados.Any(w => w.Id == y.Id && z != x)))))
+            //{
+            //    MessageBox.Show("Algun pasajero tiene asignado un mismo producto de hotel mas de una vez");
+            //    return false;
+            //}
+
+            var agrupacionCantidadesVuelosSeleccionados = Pasajeros
+                .SelectMany(x =>
+                    x.AereosAsignados.Select(y =>
+                        new { y.Id }))
+                .GroupBy(x => new { x.Id })
+                .Select(x => new { x.Key, Cantidad = x.Count() })
+                .ToList();
+
+            if (agrupacionCantidadesVuelosSeleccionados.Any(x => x.Cantidad > 1))
+            {
+                MessageBox.Show("Algun pasajero tiene asignado un mismo vuelo mas de una vez");
                 return false;
             }
 
-            if (cantidadMenores > CantidadMaximaPasajerosMenores)
-            {
-                MessageBox.Show("La cantidad de menores asignados supera el maximo permitido");
-                return false;
-            }
+            //var agrupacionClientes = Pasajeros
+            //    .GroupBy(x => x.DNI)
+            //    .Select(x => new { x.Key, Cantidad = x.Count() })
+            //    .ToList();
 
-            if (cantidadInfantes > CantidadMaximaPasajerosInfantes)
-            {
-                MessageBox.Show("La cantidad de infantes asignados supera el maximo permitido");
-                return false;
-            }
+            //if (agrupacionClientes.Count > 1)
+            //{
+            //    MessageBox.Show("Algun pasajero se repite");
+            //    return false;
+            //}
 
-            if (Pasajeros.Any(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.adulto
-                                   && HotelesModel.GetHotelesByIds(x.IdsHotelesAsignados)
-                                       .Any(y => y.CantidadMaximaDeAdultos == 0)))
-            {
-                MessageBox.Show("Algun pasajero de tipo adulto fue asignado a un hotel que no permite adultos");
-                return false;
-            }
-
-            if (Pasajeros.Any(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.menor
-                                   && HotelesModel.GetHotelesByIds(x.IdsHotelesAsignados)
-                                       .Any(y => y.CantidadMaximaDeMenores == 0)))
-            {
-                MessageBox.Show("Algun pasajero de tipo menor fue asignado a un hotel que no permite menores");
-                return false;
-            }
-
-            if (Pasajeros.Any(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.infante
-                                   && HotelesModel.GetHotelesByIds(x.IdsHotelesAsignados)
-                                       .Any(y => y.CantidadMaximaDeInfantes == 0)))
-            {
-                MessageBox.Show("Algun pasajero de tipo infante fue asignado a un hotel que no permite infantes");
-                return false;
-            }
-
-            if (Pasajeros.Any(x => AereosModel.GetAereosByIds(x.IdsAereosAsignados)
-                    .Any(y => y.TipoDePasajero != x.GetTipoDePasajero())))
-            {
-                MessageBox.Show("Algun pasajero fue asignado a un aereo que no permite ese tipo de pasajero");
-                return false;
-            }
-
-            if (Pasajeros.Any(x => x.IdsAereosAsignados.GroupBy(y => y).Any(z => z.Count() > 1)))
-            {
-                MessageBox.Show("Algun pasajero tiene asignado un mismo aereo mas de una vez");
-                return false;
-            }
-
-            if (Pasajeros.Any(x => x.IdsHotelesAsignados.GroupBy(y => y).Any(z => z.Count() > 1)))
-            {
-                MessageBox.Show("Algun pasajero tiene asignado un mismo hotel mas de una vez");
-                return false;
-            }
 
             return true;
         }
@@ -384,16 +397,26 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     listPasajeros.Items.Remove(item);
 
-                    Pasajeros
+                    var indiceAereo = Pasajeros
                         .Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text)
-                        .IdsAereosAsignados.Remove(int.Parse(item.SubItems[6].Text));
+                        .AereosAsignados
+                        .FindIndex(x => x.Id == ((AereoSeleccionado)item.Tag).Id);
 
-                    Pasajeros
+                    var indiceHotel = Pasajeros
                         .Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text)
-                        .IdsHotelesAsignados.Remove(int.Parse(item.SubItems[6].Text));
+                        .HotelesAsignados
+                        .FindIndex(x => x.Id == ((HotelSeleccionado)item.Tag).Id);
+
+                    if (indiceAereo != -1)
+                    {
+                        Pasajeros.Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text).AereosAsignados.RemoveAt(indiceAereo);
+                    }
+
+                    if (indiceHotel != -1)
+                    {
+                        Pasajeros.Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text).HotelesAsignados.RemoveAt(indiceHotel);
+                    }
                 }
-
-                ActualizarCantidadDisponiblePasajeros(CantidadMaximaPasajeros - GetCantidadProductosAsigadosAPasajeros());
             }
             else
             {

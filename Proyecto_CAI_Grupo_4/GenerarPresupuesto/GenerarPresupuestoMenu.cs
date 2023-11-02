@@ -3,7 +3,6 @@ using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Enums;
 using Proyecto_CAI_Grupo_4.Models.Productos;
-using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Models;
 
 namespace Proyecto_CAI_Grupo_4;
@@ -13,6 +12,17 @@ public partial class GenerarPresupuestoMenu : VistaBase
     private decimal Total = 0;
     private int PresupuestoId = 0;
     private bool EsNuevo = true;
+
+    private readonly string PrefijoCodigoPresupuesto = "P";
+    private readonly string PrefijoCodigoAereo = "V";
+    private readonly string PrefijoCodigoHotel = "H";
+    private readonly int PrefijoCodigoItinerario = 1000;
+
+    protected class ItinearioItemTag
+    {
+        public int IdProducto { get; set; }
+        public TipoDeServicioEnum TipoDeServicio { get; set; }
+    }
 
     public GenerarPresupuestoMenu() : base(tituloModulo: $"Generar Presupuesto")
     {
@@ -28,7 +38,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
         PresupuestoId = parametros.PresupuestoId;
         EsNuevo = parametros.EsNuevo;
 
-        var presupuesto = PresupuestosModel.GetPresupuesto(PresupuestoId)!;
+        var presupuesto = PresupuestosModel.GetPresupuestoById(PresupuestoId)!;
 
         textBoxClienteDNI.Text = presupuesto.Cliente.DNI;
         textBoxClienteNombre.Text = presupuesto.Cliente.Nombre;
@@ -36,8 +46,8 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         if (parametros.InitBuscarPresupuesto)
         {
-            presupuesto.IdAereosSeleccionados.ForEach(id => AereosModel.AddAereoElegido(id));
-            presupuesto.IdHotelesSeleccionados.ForEach(id => HotelesModel.AddHotelElegido(id));
+            presupuesto.IdAereosSeleccionados.ForEach(i => AereosModel.AddAereoElegido(i.IdAereo));
+            presupuesto.IdHotelesSeleccionados.ForEach(i => HotelesModel.AddHotelElegido(i.IdHotel));
         }
     }
 
@@ -70,9 +80,9 @@ public partial class GenerarPresupuestoMenu : VistaBase
         ActualizarEstadoBotones();
     }
 
-    private void AddProductosToListView(IEnumerable<Productos> listToAdd)
+    private void AddProductosToListView(IEnumerable<Productos> productos)
     {
-        var productosAListar = listToAdd.Select(item => new ListViewItem(item.Id.ToString())
+        var filasProducto = productos.Select(item => new ListViewItem(item.Codigo)
         {
             SubItems =
             {
@@ -80,10 +90,15 @@ public partial class GenerarPresupuestoMenu : VistaBase
                 item.Nombre,
                 item.TipoDeServicio.GetDescription(),
                 item.Precio.ToFormDecimal()
+            },
+            Tag = new ItinearioItemTag
+            {
+                IdProducto = item.Id,
+                TipoDeServicio = item.TipoDeServicio
             }
         }).ToArray();
 
-        productosElegidos.Items.AddRange(productosAListar);
+        productosElegidos.Items.AddRange(filasProducto);
     }
 
     private void btnMenuAereos_Click(object sender, EventArgs e)
@@ -116,42 +131,12 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
     private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
     {
-        var dni = textBoxClienteDNI.Text.Trim();
-
-        var nombre = textBoxClienteNombre.Text.Trim();
-
-        var apellido = textBoxClienteApellido.Text.Trim();
-
-        var validacionProductos = productosElegidos.Items.Count > 0;
-
-        var validacionDNI = dni.EsDNI();
-
-        if (!validacionDNI)
-        {
-            MessageBox.Show($"Debes ingresar un DNI correcto.", "Error", MessageBoxButtons.OK);
+        if (!EsPresupuestoValido(out var dni, out var nombre, out var apellido))
             return;
-        }
-
-        if (string.IsNullOrEmpty(nombre))
-        {
-            MessageBox.Show($"Debes ingresar un Nombre.", "Error", MessageBoxButtons.OK);
-            return;
-        }
-
-        if (string.IsNullOrEmpty(apellido))
-        {
-            MessageBox.Show($"Debes ingresar un Apellido.", "Error", MessageBoxButtons.OK);
-            return;
-        }
-
-        if (!validacionProductos)
-        {
-            MessageBox.Show($"Debes elegir productos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
-            return;
-        }
 
         var cliente = new Cliente(dni, nombre, apellido);
-        var itinerario = new Itinerario(PresupuestoId, AereosModel.GetIdsAereosElegidos(), HotelesModel.GetIdsHotelesElegidos(), cliente, Total);
+
+        var itinerario = GenerarItinerario(cliente, PresupuestoEstadoEnum.Presupuesto_Pendiente_De_Pago);
 
         if (EsNuevo)
         {
@@ -166,12 +151,75 @@ public partial class GenerarPresupuestoMenu : VistaBase
             MessageBox.Show($"Presupuesto con Código: [{PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
 
-        //TODO: ActualizarCantidadesDeProductos
-        //Mepa que esto ta mal, no deberia actualizar el stock el presupuesto, solamente cuando se confirma la pre-reserva se baja el stock
-        //ActualizarCantidadesDeProductos();
-
         LimpiarSeleccionDeProductos();
         GoToMenuPrincipal();
+    }
+
+    private Itinerario GenerarItinerario(Cliente cliente, PresupuestoEstadoEnum estado)
+    {
+
+        var itinerario = new Itinerario(PresupuestoId, cliente, Total, estado);
+
+        for (var i = 0; i < productosElegidos.Items.Count; i++)
+        {
+            var tag = (ItinearioItemTag)productosElegidos.Items[i].Tag;
+
+            var idUnico = PrefijoCodigoPresupuesto + PresupuestoId;
+
+            if (tag.TipoDeServicio == TipoDeServicioEnum.aereo)
+            {
+                idUnico += PrefijoCodigoAereo + (PrefijoCodigoItinerario + i);
+
+                itinerario.AddAereo(idUnico, tag.IdProducto);
+            }
+            else
+            {
+                idUnico += PrefijoCodigoHotel + (PrefijoCodigoItinerario + i);
+
+                itinerario.AddHotel(idUnico, tag.IdProducto);
+            }
+        }
+
+        return itinerario;
+    }
+
+    private bool EsPresupuestoValido(out string dni, out string nombre, out string apellido)
+    {
+        dni = textBoxClienteDNI.Text.Trim();
+
+        nombre = textBoxClienteNombre.Text.Trim();
+
+        apellido = textBoxClienteApellido.Text.Trim();
+
+        var validacionProductos = productosElegidos.Items.Count > 0;
+
+        var validacionDNI = dni.EsDNI();
+
+        if (!validacionDNI)
+        {
+            MessageBox.Show($"Debes ingresar un DNI correcto.", "Error", MessageBoxButtons.OK);
+            return false;
+        }
+
+        if (string.IsNullOrEmpty(nombre))
+        {
+            MessageBox.Show($"Debes ingresar un Nombre.", "Error", MessageBoxButtons.OK);
+            return false;
+        }
+
+        if (string.IsNullOrEmpty(apellido))
+        {
+            MessageBox.Show($"Debes ingresar un Apellido.", "Error", MessageBoxButtons.OK);
+            return false;
+        }
+
+        if (!validacionProductos)
+        {
+            MessageBox.Show($"Debes elegir productos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
+            return false;
+        }
+
+        return true;
     }
 
     public void LimpiarSeleccionDeProductos()
@@ -213,49 +261,16 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
     private void btnPreReservar_Click(object sender, EventArgs e)
     {
-        var dni = textBoxClienteDNI.Text.Trim();
-
-        var nombre = textBoxClienteNombre.Text.Trim();
-
-        var apellido = textBoxClienteApellido.Text.Trim();
-
-        var validacionProductos = productosElegidos.Items.Count > 0;
-
-        var validacionDNI = dni.EsDNI();
-
-        if (!validacionDNI)
-        {
-            MessageBox.Show($"Debes ingresar un DNI correcto.", "Error", MessageBoxButtons.OK);
+        if (!EsPresupuestoValido(out var dni, out var nombre, out var apellido))
             return;
-        }
-
-        if (!validacionProductos)
-        {
-            MessageBox.Show($"Debes elegir productos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
-            return;
-        }
 
         var cliente = new Cliente(dni, nombre, apellido);
-        var itinerario = new Itinerario(PresupuestoId, AereosModel.GetIdsAereosElegidos(), HotelesModel.GetIdsHotelesElegidos(), cliente, Total);
 
-        if (EsNuevo)
-        {
-            PresupuestosModel.AddPresupuesto(itinerario);
+        var itinerario = GenerarItinerario(cliente, PresupuestoEstadoEnum.Prereserva_Pendiente_de_Pago);
 
-            MessageBox.Show($"Presupuesto con Código: [{PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
-        }
-        else
-        {
-            PresupuestosModel.UpdatePresupuesto(itinerario);
+        MessageBox.Show($"Pre-Reserva generada correctamente para el cliente con DNI {dni} con código [{PresupuestoId}]", "Exito", MessageBoxButtons.OK);
 
-            MessageBox.Show($"Presupuesto con Código: [{PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
-        }
-
-        var reserva = ReservaModel.GenerarNuevaReserva(itinerario.IdItinerario, ReservaEstadoEnum.pendienteDePago, cliente);
-
-        MessageBox.Show($"Pre-Reserva generada correctamente para el cliente con DNI {dni} con código [{reserva.Codigo}]", "Exito", MessageBoxButtons.OK);
-
-        ReservaModel.AddReserva(reserva);
+        PresupuestosModel.AddPresupuesto(itinerario);
 
         GoToMenuPrincipal();
     }
@@ -264,11 +279,11 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         foreach (ListViewItem item in productosElegidos.SelectedItems)
         {
-            var id = int.Parse(item.Text);
+            var tag = (ItinearioItemTag)item.Tag;
 
-            AereosModel.RemoveAereoElegido(id);
+            AereosModel.RemoveAereoElegido(tag!.IdProducto);
 
-            HotelesModel.RemoveHotelElegido(id);
+            HotelesModel.RemoveHotelElegido(tag!.IdProducto);
 
             productosElegidos.Items.Remove(item);
         }
