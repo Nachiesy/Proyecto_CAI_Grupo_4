@@ -1,0 +1,458 @@
+[
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 0,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 0,
+    "Paradas": [],
+    "Id": 1,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 30000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 1,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 0,
+    "Paradas": [],
+    "Id": 2,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 25000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 2,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 0,
+    "Paradas": [],
+    "Id": 3,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 15000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 0,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 2,
+    "Paradas": [],
+    "Id": 4,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 35000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 0,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 1,
+    "Paradas": [],
+    "Id": 5,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 40000.0,
+    "Cantidad": 2,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 0,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 3,
+    "Paradas": [],
+    "Id": 6,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 45000.0,
+    "Cantidad": 3,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 1,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 2,
+    "Paradas": [],
+    "Id": 7,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 30000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 1,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 1,
+    "Paradas": [],
+    "Id": 8,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 35000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 1,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 3,
+    "Paradas": [],
+    "Id": 9,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 40000.0,
+    "Cantidad": 2,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 2,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 2,
+    "Paradas": [],
+    "Id": 10,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 20000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 2,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 1,
+    "Paradas": [],
+    "Id": 11,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 25000.0,
+    "Cantidad": 2,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 0,
+    "TipoDePasajero": 2,
+    "Origen": 0,
+    "Destino": 3,
+    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
+    "Aerolinea": 0,
+    "Clase": 3,
+    "Paradas": [],
+    "Id": 12,
+    "Codigo": "A113",
+    "Nombre": "Vuelo 113",
+    "Precio": 30000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 0,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 0,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 13,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 120000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 1,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 0,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 14,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 110000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 2,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 0,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 15,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 90000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 0,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 2,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 16,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 130000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 0,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 1,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 17,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 140000.0,
+    "Cantidad": 2,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 0,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 3,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 18,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 150000.0,
+    "Cantidad": 3,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 1,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 2,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 19,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 120000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 1,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 1,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 20,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 130000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 1,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 3,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 21,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 140000.0,
+    "Cantidad": 2,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 2,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 2,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 22,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 100000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 2,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 1,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 23,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 110000.0,
+    "Cantidad": 2,
+    "TipoDeServicio": 0
+  },
+  {
+    "Itinerario": 1,
+    "TipoDePasajero": 2,
+    "Origen": 2,
+    "Destino": 5,
+    "FechaDeSalida": "2023-11-14T00:00:00-03:00",
+    "FechaDeLlegada": "2023-11-15T00:00:00-03:00",
+    "Aerolinea": 1,
+    "Clase": 3,
+    "Paradas": [
+      {
+        "Nombre": "Nueva York"
+      }
+    ],
+    "Id": 24,
+    "Codigo": "C369",
+    "Nombre": "Vuelo 369",
+    "Precio": 120000.0,
+    "Cantidad": 1,
+    "TipoDeServicio": 0
+  }
+]

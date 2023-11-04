@@ -1,3 +1,5 @@
+using Proyecto_CAI_Grupo_4.Almacenes;
+
 namespace Proyecto_CAI_Grupo_4
 {
     internal static class Program
@@ -12,6 +14,9 @@ namespace Proyecto_CAI_Grupo_4
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new MenuPrincipal());
+
+            AlmacenAereos.Guardar();
+            AlmacenHoteles.Guardar();
         }
     }
 }

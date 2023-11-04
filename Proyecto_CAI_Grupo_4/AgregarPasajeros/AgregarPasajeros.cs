@@ -1,13 +1,9 @@
 ﻿using Proyecto_CAI_Grupo_4.Models;
 using Proyecto_CAI_Grupo_4.Utils;
 using System.Data;
-using System.Linq.Expressions;
 using Proyecto_CAI_Grupo_4.Common.Views;
-using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Entities;
-using Proyecto_CAI_Grupo_4.Models.Productos;
-using Proyecto_CAI_Grupo_4.Enums;
-using System.Linq;
+using Proyecto_CAI_Grupo_4.Modules;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -46,7 +42,7 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     SubItems =
                     {
-                        AereosModel.GetAereoByID(i.IdAereo).Nombre,
+                        AereosModule.GetAereoByID(i.IdAereo).Nombre,
                         SumarPasajero.Nombre,
                         SumarPasajero.Apellido,
                         SumarPasajero.FechaNacimiento.ToShortDateString(),
@@ -65,7 +61,7 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     SubItems =
                     {
-                        HotelesModel.GetHotelByID(i.IdHotel).Nombre,
+                        HotelesModule.GetHotelByID(i.IdHotel).Nombre,
                         SumarPasajero.Nombre,
                         SumarPasajero.Apellido,
                         SumarPasajero.FechaNacimiento.ToShortDateString(),
@@ -258,7 +254,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 foreach (var aereoSeleccionado in pasajero.AereosAsignados)
                 {
-                    var aereo = AereosModel.GetAereoByID(aereoSeleccionado.IdAereo);
+                    var aereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
 
                     if (aereo.TipoDePasajero != pasajero.GetTipoDePasajero())
                     {
@@ -269,7 +265,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 foreach (var hotelSeleccionado in pasajero.HotelesAsignados)
                 {
-                    var hotel = HotelesModel.GetHotelByID(hotelSeleccionado.IdHotel);
+                    var hotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
                     var tipoPasajero = pasajero.GetTipoDePasajero();
 
                     if (hotel.CantidadMaximaDeAdultos == 0 && tipoPasajero == TipoDePasajeroEnum.adulto)

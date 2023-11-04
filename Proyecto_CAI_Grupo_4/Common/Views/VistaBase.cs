@@ -1,14 +1,5 @@
-﻿using Proyecto_CAI_Grupo_4.Models.Productos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using Proyecto_CAI_Grupo_4.Modules;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Proyecto_CAI_Grupo_4.Common.Views;
 
@@ -63,9 +54,9 @@ public partial class VistaBase : Form
     {
         Close();
 
-        AereosModel.ClearAereosElegidos();
+        AereosModule.ClearAereosElegidos();
 
-        HotelesModel.ClearHotelesElegidos();
+        HotelesModule.ClearHotelesElegidos();
 
         var thread = new Thread(OpenMenuPrincipal);
         thread.SetApartmentState(ApartmentState.STA);

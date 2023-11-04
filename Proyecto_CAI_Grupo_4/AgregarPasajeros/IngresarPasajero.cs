@@ -1,21 +1,9 @@
 ﻿using Proyecto_CAI_Grupo_4.Models;
 using Proyecto_CAI_Grupo_4.Utils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
-using Proyecto_CAI_Grupo_4.Models.Productos;
-using System.Net;
+using Proyecto_CAI_Grupo_4.Modules;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -38,12 +26,12 @@ namespace Proyecto_CAI_Grupo_4
         {
             Itinerario = PresupuestosModel.GetPresupuestoById(presupuestoId);
 
-            aereosAsignables = AereosModel
+            aereosAsignables = AereosModule
                 .GetAereosByIds(Itinerario.IdAereosSeleccionados
                     .Select(x => x.IdAereo))
                 .ToList();
 
-            hotelesAsignables = HotelesModel
+            hotelesAsignables = HotelesModule
                 .GetHotelesByIds(Itinerario.IdHotelesSeleccionados
                     .Select(x => x.IdHotel))
                 .ToList();
