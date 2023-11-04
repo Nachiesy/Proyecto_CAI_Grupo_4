@@ -21,6 +21,26 @@ namespace Proyecto_CAI_Grupo_4.Models
         public readonly string PrefijoCodigoHotel = "H";
         public readonly int PrefijoCodigoItinerario = 1000;
 
+        public int GenerarPresupuestoId()
+        {
+            return PresupuestosModule.GenerarId();
+        }
+
+        public Itinerario GetPresupuestoById()
+        {
+            return PresupuestosModule.GetPresupuestoById(PresupuestoId);
+        }
+
+        public void AddPresupuesto(Itinerario itinerario)
+        {
+            PresupuestosModule.AddPresupuesto(itinerario);
+        }
+
+        public void UpdatePresupuesto(Itinerario itinerarioActualizado)
+        {
+            PresupuestosModule.UpdatePresupuesto(itinerarioActualizado);
+        }
+
         public void AddProductosToListView(ListView listView, IEnumerable<Productos> productosToAdd)
         {
             var filasProducto = productosToAdd.Select(item => new ListViewItem(item.Codigo)

@@ -15,6 +15,8 @@ namespace Proyecto_CAI_Grupo_4
         private int IdItinerario { get; set; }
         private Itinerario Itinerario { get; set; }
 
+        private IngresarPasajeroModel Model = new IngresarPasajeroModel();
+
         private class ItinerarioItemTag
         {
             public string Id { get; set; }
@@ -24,7 +26,7 @@ namespace Proyecto_CAI_Grupo_4
 
         public IngresarPasajero(int presupuestoId) : base(tituloModulo: "Ingresar Pasajero", deshabilitarBotones: true)
         {
-            Itinerario = PresupuestosModel.GetPresupuestoById(presupuestoId);
+            Itinerario = Model.GetPresupuestoById(presupuestoId);
 
             aereosAsignables = AereosModule
                 .GetAereosByIds(Itinerario.IdAereosSeleccionados

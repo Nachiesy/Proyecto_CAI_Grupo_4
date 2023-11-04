@@ -2,7 +2,7 @@ using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
-    public static class PresupuestosModel
+    public static class PresupuestosModule
     {
         private static List<Itinerario> Presupuestos { get; set; } = new List<Itinerario>()
         {

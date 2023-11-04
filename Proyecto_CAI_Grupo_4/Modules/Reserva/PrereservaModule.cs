@@ -1,9 +1,8 @@
 ﻿using Proyecto_CAI_Grupo_4.Entities;
-using Proyecto_CAI_Grupo_4.Models;
 
 namespace Proyecto_CAI_Grupo_4.Modelos
 {
-    public static class PrereservaModel
+    public static class PrereservaModule
     {
         private static List<Prereserva> prereserva = new List<Prereserva>()
         {

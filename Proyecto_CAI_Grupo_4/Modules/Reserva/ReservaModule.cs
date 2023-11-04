@@ -2,7 +2,7 @@
 
 namespace Proyecto_CAI_Grupo_4.Modelos
 {
-    public static class ReservaModel
+    public static class ReservaModule
     {
         private static List<Reserva> reservas = new List<Reserva>()
         {

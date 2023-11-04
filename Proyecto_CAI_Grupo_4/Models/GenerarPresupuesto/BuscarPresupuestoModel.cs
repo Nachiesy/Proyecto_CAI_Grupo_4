@@ -1,4 +1,5 @@
-﻿using Proyecto_CAI_Grupo_4.Modelos;
+﻿using Proyecto_CAI_Grupo_4.GenerarPresupuesto;
+using Proyecto_CAI_Grupo_4.Modelos;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
@@ -17,7 +18,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 return false;
             }
 
-            var presupuesto = PresupuestosModel.GetPresupuestoById(nroPresupuesto);
+            var presupuesto = PresupuestosModule.GetPresupuestoById(nroPresupuesto);
 
             if (presupuesto is null)
             {
@@ -26,7 +27,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 return false;
             }
 
-            var preReserva = PrereservaModel.GetPrereservaByItinerario(presupuesto.IdItinerario);
+            var preReserva = PrereservaModule.GetPrereservaByItinerario(presupuesto.IdItinerario);
 
             if (preReserva.Count > 0)
             {
@@ -56,6 +57,11 @@ namespace Proyecto_CAI_Grupo_4.Models
             Thread thread = new Thread(MenuPrincipalModel.OpenMenuPrincipal);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
+        }
+
+        public static void OpenBuscarPresupuesto()
+        {
+            Application.Run(new BuscarPresupuesto());
         }
     }
 }

@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Proyecto_CAI_Grupo_4.Entities;
-using Proyecto_CAI_Grupo_4.Utils;
+﻿using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
-    public static class PasajerosModel
+    public static class PasajerosModule
     {
         public static List<Pasajeros> Pasajeros { get; set; } = new List<Pasajeros>();
 

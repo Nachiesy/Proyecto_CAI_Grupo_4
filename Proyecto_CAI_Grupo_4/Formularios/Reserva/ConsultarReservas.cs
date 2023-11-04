@@ -1,6 +1,5 @@
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
-using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Models;
 using Proyecto_CAI_Grupo_4.Utils;
 
@@ -8,6 +7,8 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class ConsultarReservas : VistaBase
     {
+        ConsultarReservasModel Model = new ConsultarReservasModel();
+
         public ConsultarReservas() : base(tituloModulo: "Consulta de Reservas")
         {
             InitializeComponent();
@@ -15,7 +16,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void ConsultarReservas_Load(object sender, EventArgs e)
         {
-            AddReservasToListView(ReservaModel.GetReservas());
+            AddReservasToListView(Model.GetReservas());
             
             var estados = new List<string>()
             {
@@ -33,9 +34,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void buscarReserva_Click(object sender, EventArgs e)
         {
-
-            var reservas = ReservaModel
-                .GetReservas()
+            var reservas = Model.GetReservas()
                 .AsQueryable();
 
             var codigoInput = filtroCodigo.Text.Trim();
@@ -93,7 +92,7 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     item.Estado.GetDescription(),
                     item.Cliente.DNI,
-                    PresupuestosModel.GetPresupuestoById(item.IdItinerario).PrecioTotal.ToString("C2") ?? "-",
+                    Model.GetPresupuestoById(item.IdItinerario).PrecioTotal.ToString("C2") ?? "-",
                     item.FechaEstado.ToFormDate()
                 }
             }).ToArray());
@@ -107,7 +106,7 @@ namespace Proyecto_CAI_Grupo_4
             filtroEstado.SelectedIndex = 0;
             filtroNroDeDoc.Clear();
 
-            AddReservasToListView(ReservaModel.GetReservas());
+            AddReservasToListView(Model.GetReservas());
         }
     }
 }

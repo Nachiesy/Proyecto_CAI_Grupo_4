@@ -124,7 +124,6 @@
             listPasajeros.TabIndex = 3;
             listPasajeros.UseCompatibleStateImageBehavior = false;
             listPasajeros.View = View.Details;
-            listPasajeros.SelectedIndexChanged += listPasajeros_SelectedIndexChanged;
             // 
             // idproducto
             // 
@@ -173,7 +172,6 @@
             gbxPresupuesto.TabIndex = 7;
             gbxPresupuesto.TabStop = false;
             gbxPresupuesto.Text = "Presupuestos";
-            gbxPresupuesto.Enter += gpProsupuesto_Enter;
             // 
             // btn_Buscar
             // 
@@ -203,7 +201,6 @@
             listPresupuestos.TabIndex = 9;
             listPresupuestos.UseCompatibleStateImageBehavior = false;
             listPresupuestos.View = View.Details;
-            listPresupuestos.SelectedIndexChanged += listPresupuestos_SelectedIndexChanged;
             // 
             // nropresup
             // 

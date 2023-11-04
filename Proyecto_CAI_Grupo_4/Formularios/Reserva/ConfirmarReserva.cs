@@ -1,35 +1,22 @@
 ﻿using Proyecto_CAI_Grupo_4.Utils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
-using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Models;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class ConfirmarReserva : VistaBase
     {
+        ConfirmarReservaModel Model = new ConfirmarReservaModel();
+
         public ConfirmarReserva()
         {
             InitializeComponent();
         }
 
-        private void btnSelect_Click(object sender, EventArgs e)
+        private void ConfirmarReserva_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void OpenMenuPrincipal()
-        {
-            Application.Run(new MenuPrincipal());
 
         }
 
@@ -38,9 +25,7 @@ namespace Proyecto_CAI_Grupo_4
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
-            var reservas = ReservaModel
-                .GetReservasPendientesDeConfirmacion()
-                .AsQueryable();
+            var reservas = Model.GetReservasPendientesDeConfirmacion();
 
             if (!string.IsNullOrEmpty(codigo))
             {
@@ -66,6 +51,7 @@ namespace Proyecto_CAI_Grupo_4
 
             AddReservasToListView(reservas.ToList());
         }
+
         private void AddReservasToListView(IEnumerable<Reserva> list)
         {
             lv_Reservas.Items.Clear();
@@ -76,7 +62,7 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     item.Estado.GetDescription(),
                     item.Cliente.DNI,
-                    PresupuestosModel.GetPresupuestoById(item.IdItinerario).PrecioTotal.ToString("C2") ?? "-",
+                    Model.GetPresupuestoById(item.IdItinerario).PrecioTotal.ToString("C2") ?? "-",
                     item.FechaEstado.ToFormDate()
                 }
             }).ToArray());
@@ -94,6 +80,7 @@ namespace Proyecto_CAI_Grupo_4
             if (lv_Reservas.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Seleccione una reserva para confirmarla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return;
             }
 
@@ -104,7 +91,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 MessageBox.Show("Reserva Confirmada");
 
-                ReservaModel.ConfirmarReserva(int.Parse(item.Text));
+                Model.ConfirmarReserva(int.Parse(item.Text));
 
                 lv_Reservas.Items.Remove(item);
             }
@@ -114,19 +101,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             this.Close();
 
-            Thread thread = new Thread(OpenMenuPrincipal);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ConfirmarReserva_Load(object sender, EventArgs e)
-        {
-
+            Model.GoToMenuPrincipal();
         }
     }
 }

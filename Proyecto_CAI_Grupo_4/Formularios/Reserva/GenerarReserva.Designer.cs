@@ -56,7 +56,6 @@
             label1.Size = new Size(78, 15);
             label1.TabIndex = 2;
             label1.Text = "ID Prereserva:";
-            label1.Click += label1_Click;
             // 
             // label3
             // 

@@ -14,14 +14,14 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         InitializeComponent();
 
-        GenerarPresupuestoMenuModel.PresupuestoId = PresupuestosModel.GenerarId();
+        GenerarPresupuestoMenuModel.PresupuestoId = Model.GenerarPresupuestoId();
     }
 
     public GenerarPresupuestoMenu(GenerarPresupuestoMenuParams parametros) : base(tituloModulo: $"Modificar Presupuesto #{parametros.PresupuestoId}")
     {
         InitializeComponent();
 
-        var presupuesto = PresupuestosModel.GetPresupuestoById(GenerarPresupuestoMenuModel.PresupuestoId)!;
+        var presupuesto = Model.GetPresupuestoById();
 
         textBoxClienteDNI.Text = presupuesto.Cliente.DNI;
         textBoxClienteNombre.Text = presupuesto.Cliente.Nombre;
@@ -85,13 +85,13 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         if (GenerarPresupuestoMenuModel.EsNuevo)
         {
-            PresupuestosModel.AddPresupuesto(itinerario);
+            Model.AddPresupuesto(itinerario);
 
             MessageBox.Show($"Presupuesto con Código: [{GenerarPresupuestoMenuModel.PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
         else
         {
-            PresupuestosModel.UpdatePresupuesto(itinerario);
+            Model.UpdatePresupuesto(itinerario);
 
             MessageBox.Show($"Presupuesto con Código: [{GenerarPresupuestoMenuModel.PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }

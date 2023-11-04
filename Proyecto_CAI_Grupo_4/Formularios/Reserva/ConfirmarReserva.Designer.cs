@@ -57,7 +57,6 @@
             label1.Size = new Size(64, 15);
             label1.TabIndex = 2;
             label1.Text = "ID Reserva:";
-            label1.Click += label1_Click;
             // 
             // label3
             // 

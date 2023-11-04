@@ -1,35 +1,22 @@
 ﻿using Proyecto_CAI_Grupo_4.Utils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
-using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Models;
 
 namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarReserva : VistaBase
     {
+        GenerarReservaModel Model = new GenerarReservaModel();
+
         public GenerarReserva()
         {
             InitializeComponent();
         }
 
-        private void btnSelect_Click(object sender, EventArgs e)
+        private void ConfirmarReserva_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void OpenMenuPrincipal()
-        {
-            Application.Run(new MenuPrincipal());
 
         }
 
@@ -38,10 +25,7 @@ namespace Proyecto_CAI_Grupo_4
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
-            var prereservas = PrereservaModel
-                .GetPrereservaAbonadas()
-                .Where(x => ReservaModel.GetReservasByItinerario(x.IdItinerario).Count == 0)
-                .AsQueryable();
+            var prereservas = Model.GetPreReservas();
 
             if (!string.IsNullOrEmpty(codigo))
             {
@@ -67,6 +51,7 @@ namespace Proyecto_CAI_Grupo_4
 
             AddPrereservasToListView(prereservas.ToList());
         }
+
         private void AddPrereservasToListView(IEnumerable<Prereserva> list)
         {
             lv_Prereservas.Items.Clear();
@@ -75,9 +60,9 @@ namespace Proyecto_CAI_Grupo_4
             {
                 SubItems =
                 {
-                    PasajerosModel.GetTotalPasajerosByIdPresupuesto(item.IdItinerario).ToString(),
+                    Model.GetTotalDePasajeros(item.IdItinerario).ToString(),
                     item.Cliente.DNI,
-                    (PresupuestosModel.GetPresupuestoById(item.IdItinerario)?.PrecioTotal ?? 0).ToString("C2"),
+                    (Model.GetPresupuestoById(item.IdItinerario)?.PrecioTotal ?? 0).ToString("C2"),
                     item.FechaEstado.ToFormDate()
                 }
             }).ToArray());
@@ -103,12 +88,9 @@ namespace Proyecto_CAI_Grupo_4
 
             if (resultado == DialogResult.Yes)
             {
-                var prereserva = PrereservaModel.GetPrereservaById(int.Parse(item.SubItems[0].Text));
+                var prereserva = Model.GetPreReservaById(int.Parse(item.SubItems[0].Text));
 
-                var reserva = ReservaModel.GenerarNuevaReserva(
-                    idItinerario: int.Parse(item.SubItems[0].Text),
-                    estado: ReservaEstadoEnum.PendienteDeConfirmacion,
-                    cliente: prereserva.Cliente);
+                var reserva = Model.GenerarReserva(prereserva);
 
                 MessageBox.Show("Reserva generada con Id: " + reserva.Codigo);
 
@@ -118,21 +100,9 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btn_Volver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            Thread thread = new Thread(OpenMenuPrincipal);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ConfirmarReserva_Load(object sender, EventArgs e)
-        {
-
+            Model.GoToMenuPrincipal();
         }
     }
 }
