@@ -215,14 +215,9 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public void GoToMenuPrincipal()
         {
-            Thread thread = new Thread(OpenMenuPrincipal);
+            Thread thread = new Thread(MenuPrincipalModel.OpenMenuPrincipal);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
-        }
-
-        private void OpenMenuPrincipal()
-        {
-            Application.Run(new MenuPrincipal());
         }
     }
 }
