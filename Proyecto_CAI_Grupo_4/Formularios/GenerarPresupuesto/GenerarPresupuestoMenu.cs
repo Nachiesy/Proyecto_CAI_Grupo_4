@@ -6,6 +6,8 @@ namespace Proyecto_CAI_Grupo_4;
 
 public partial class GenerarPresupuestoMenu : VistaBase
 {
+    public decimal Total = 0;
+
     private GenerarPresupuestoMenuModel Model = new GenerarPresupuestoMenuModel();
 
     public GenerarPresupuestoMenu() : base(tituloModulo: $"Generar Presupuesto")
@@ -42,12 +44,12 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         Model.AddProductosToListView(productosElegidos, hoteles);
 
-        Model.Total += aereos.Sum(x => x.Precio);
-        Model.Total += hoteles.Sum(x => x.Precio);
+        Total += aereos.Sum(x => x.Precio);
+        Total += hoteles.Sum(x => x.Precio);
 
-        Model.ActualizarTextoPrecioTotal(presupuestoTotal);
+        ActualizarTextoPrecioTotal();
 
-        Model.ActualizarEstadoBotones(productosElegidos, btnEliminarTodo, btnEliminarSeleccion);
+        ActualizarEstadoBotones();
     }
 
     private void btnMenuAereos_Click(object sender, EventArgs e)
@@ -79,7 +81,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         var cliente = Model.GenerarCliente(dni, nombre, apellido);
 
-        var itinerario = Model.GenerarItinerario(productosElegidos, cliente);
+        var itinerario = Model.GenerarItinerario(productosElegidos, cliente, Total);
 
         if (GenerarPresupuestoMenuModel.EsNuevo)
         {
@@ -125,15 +127,26 @@ public partial class GenerarPresupuestoMenu : VistaBase
             productosElegidos.Items.Remove(item);
         }
 
-        Model.Total = 0;
-        Model.Total += Model.GetAereosElegidos().Sum(x => x.Precio);
-        Model.Total += Model.GetHotelesElegidos().Sum(x => x.Precio);
+        Total = 0;
+        Total += Model.GetAereosElegidos().Sum(x => x.Precio);
+        Total += Model.GetHotelesElegidos().Sum(x => x.Precio);
 
-        presupuestoTotal.Text = Model.Total > 0 ? $"Total: {Model.Total:C2}" : "Total: $-";
+        presupuestoTotal.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
     }
 
     private void productosElegidos_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Model.ActualizarEstadoBotones(productosElegidos, btnEliminarTodo, btnEliminarSeleccion);
+        ActualizarEstadoBotones();
+    }
+
+    private void ActualizarEstadoBotones()
+    {
+        btnEliminarTodo.Enabled = productosElegidos.Items.Count > 0;
+        btnEliminarSeleccion.Enabled = productosElegidos.SelectedItems.Count > 0;
+    }
+
+    private void ActualizarTextoPrecioTotal()
+    {
+        presupuestoTotal.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
     }
 }

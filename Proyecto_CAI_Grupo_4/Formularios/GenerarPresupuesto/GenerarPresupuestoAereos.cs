@@ -2,6 +2,7 @@
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -19,15 +20,30 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            Model.InitComboBoxOrigen(comboBoxOrigen);
+            foreach (AereosOrigenEnum value in Enum.GetValues(typeof(AereosOrigenEnum)))
+            {
+                comboBoxOrigen.Items.Add(value.GetDescription());
+            }
 
-            Model.InitComboBoxDestino(comboBoxDestino);
+            foreach (AereosDestinoEnum value in Enum.GetValues(typeof(AereosDestinoEnum)))
+            {
+                comboBoxDestino.Items.Add(value.GetDescription());
+            }
 
-            Model.InitComboBoxTipoDePasajero(comboBoxTipoDePasajero);
+            foreach (TipoDePasajeroEnum value in Enum.GetValues(typeof(TipoDePasajeroEnum)))
+            {
+                comboBoxTipoDePasajero.Items.Add(value.GetDescription());
+            }
 
-            Model.InitComboBoxItinerario(comboBoxItinerario);
+            foreach (AereosItinerarioEnum value in Enum.GetValues(typeof(AereosItinerarioEnum)))
+            {
+                comboBoxItinerario.Items.Add(value.GetDescription());
+            }
 
-            Model.InitComboBoxClase(comboBoxClase);
+            foreach (TipoDeClaseAereaEnum value in Enum.GetValues(typeof(TipoDeClaseAereaEnum)))
+            {
+                comboBoxClase.Items.Add(value.GetDescription());
+            }
             
             Model.AddProductosToListView(listViewProductos, Model.GetAereos(new AereosFilter() { CantidadMin = 1 }));
 
@@ -136,17 +152,17 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)
         {
-            Model.LimpiarTextBox(txtBoxFiltroPrecioDesde);
-            Model.LimpiarTextBox(txtBoxFiltroPrecioHasta);
+            LimpiarTextBox(txtBoxFiltroPrecioDesde);
+            LimpiarTextBox(txtBoxFiltroPrecioHasta);
 
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            Model.LimpiarComboBox(comboBoxOrigen);
-            Model.LimpiarComboBox(comboBoxDestino);
-            Model.LimpiarComboBox(comboBoxTipoDePasajero);
-            Model.LimpiarComboBox(comboBoxItinerario);
-            Model.LimpiarComboBox(comboBoxClase);
+            LimpiarComboBox(comboBoxOrigen);
+            LimpiarComboBox(comboBoxDestino);
+            LimpiarComboBox(comboBoxTipoDePasajero);
+            LimpiarComboBox(comboBoxItinerario);
+            LimpiarComboBox(comboBoxClase);
 
             listViewProductos.Items.Clear();
 
@@ -155,12 +171,36 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)
         {
-            Model.DisableDatePicker(datePickerFilterFechaDesde, btnDisableDatePickerFilterFechaDesde);
+            DisableDatePicker(datePickerFilterFechaDesde, btnDisableDatePickerFilterFechaDesde);
         }
 
         private void btnDisableDatePickerFilterFechaHasta_Click(object sender, EventArgs e)
         {
-            Model.DisableDatePicker(datePickerFilterFechaHasta, btnDisableDatePickerFilterFechaHasta);
+            DisableDatePicker(datePickerFilterFechaHasta, btnDisableDatePickerFilterFechaHasta);
+        }
+
+        private void LimpiarTextBox(TextBox textBox)
+        {
+            textBox.Clear();
+        }
+
+        private void LimpiarComboBox(ComboBox comboBox)
+        {
+            comboBox.SelectedIndex = -1;
+        }
+
+        private void DisableDatePicker(DateTimePicker dateTimePicker, Button btnDisable)
+        {
+            if (dateTimePicker.Enabled)
+            {
+                dateTimePicker.Enabled = false;
+                btnDisable.Text = "Habilitar";
+            }
+            else
+            {
+                dateTimePicker.Enabled = true;
+                btnDisable.Text = "Deshabilitar";
+            }
         }
     }
 }

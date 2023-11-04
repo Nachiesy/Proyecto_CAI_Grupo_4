@@ -7,30 +7,6 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class GenerarPresupuestoHotelesModel
     {
-        public void InitComboBoxCiudad(ComboBox comboBox)
-        {
-            foreach (HotelesCiudadEnum value in Enum.GetValues(typeof(HotelesCiudadEnum)))
-            {
-                comboBox.Items.Add(value.GetDescription());
-            }
-        }
-
-        public void InitComboBoxTipoDeHabitacion(ComboBox comboBox)
-        {
-            foreach (TipoDeHabitacionEnum value in Enum.GetValues(typeof(TipoDeHabitacionEnum)))
-            {
-                comboBox.Items.Add(value.GetDescription());
-            }
-        }
-
-        public void InitComboBoxCalificacion(ComboBox comboBox)
-        {
-            foreach (HotelesCalificacionEnum value in Enum.GetValues(typeof(HotelesCalificacionEnum)))
-            {
-                comboBox.Items.Add(value.GetDescription());
-            }
-        }
-
         public string ValidacionDeFiltros(HotelesFilter filter)
         {
             var messages = string.Empty;
@@ -210,30 +186,6 @@ namespace Proyecto_CAI_Grupo_4.Models
         public void AddHotelElegido(int id)
         {
             HotelesModule.AddHotelElegido(id);
-        }
-
-        public void LimpiarTextBox(TextBox textBox)
-        {
-            textBox.Clear();
-        }
-
-        public void LimpiarComboBox(ComboBox comboBox)
-        {
-            comboBox.SelectedIndex = -1;
-        }
-
-        public void DisableDatePicker(DateTimePicker dateTimePicker, Button btnDisable)
-        {
-            if (dateTimePicker.Enabled)
-            {
-                dateTimePicker.Enabled = false;
-                btnDisable.Text = "Habilitar";
-            }
-            else
-            {
-                dateTimePicker.Enabled = true;
-                btnDisable.Text = "Deshabilitar";
-            }
         }
 
         public void GoToGenerarPresupuestoMenu()

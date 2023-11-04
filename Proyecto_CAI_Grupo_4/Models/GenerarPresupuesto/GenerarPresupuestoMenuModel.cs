@@ -16,23 +16,10 @@ namespace Proyecto_CAI_Grupo_4.Models
         public static bool EsNuevo = true;
         public static bool InitBuscarPresupuesto = false;
 
-        public decimal Total = 0;
-
         public readonly string PrefijoCodigoPresupuesto = "P";
         public readonly string PrefijoCodigoAereo = "V";
         public readonly string PrefijoCodigoHotel = "H";
         public readonly int PrefijoCodigoItinerario = 1000;
-
-        public void ActualizarEstadoBotones(ListView listView, Button btnEliminarTodo, Button btnEliminarSeleccion)
-        {
-            btnEliminarTodo.Enabled = listView.Items.Count > 0;
-            btnEliminarSeleccion.Enabled = listView.SelectedItems.Count > 0;
-        }
-
-        public void ActualizarTextoPrecioTotal(Label label)
-        {
-            label.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
-        }
 
         public void AddProductosToListView(ListView listView, IEnumerable<Productos> productosToAdd)
         {
@@ -92,9 +79,9 @@ namespace Proyecto_CAI_Grupo_4.Models
             return new Cliente(dni, nombre, apellido);
         }
 
-        public Itinerario GenerarItinerario(ListView listView, Cliente cliente)
+        public Itinerario GenerarItinerario(ListView listView, Cliente cliente, decimal total)
         {
-            var itinerario = new Itinerario(PresupuestoId, cliente, Total);
+            var itinerario = new Itinerario(PresupuestoId, cliente, total);
 
             for (var i = 0; i < listView.Items.Count; i++)
             {

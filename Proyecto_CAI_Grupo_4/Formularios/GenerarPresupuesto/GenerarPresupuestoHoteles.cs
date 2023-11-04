@@ -2,6 +2,7 @@
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -19,11 +20,20 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            Model.InitComboBoxCiudad(comboBoxCiudad);
+            foreach (HotelesCiudadEnum value in Enum.GetValues(typeof(HotelesCiudadEnum)))
+            {
+                comboBoxCiudad.Items.Add(value.GetDescription());
+            }
 
-            Model.InitComboBoxTipoDeHabitacion(comboBoxTipoDeHabitacion);
+            foreach (TipoDeHabitacionEnum value in Enum.GetValues(typeof(TipoDeHabitacionEnum)))
+            {
+                comboBoxTipoDeHabitacion.Items.Add(value.GetDescription());
+            }
 
-            Model.InitComboBoxCalificacion(comboBoxCalificacion);
+            foreach (HotelesCalificacionEnum value in Enum.GetValues(typeof(HotelesCalificacionEnum)))
+            {
+                comboBoxCalificacion.Items.Add(value.GetDescription());
+            }
 
             Model.AddProductosToListView(listViewProductos, Model.GetHoteles(new HotelesFilter() { CantidadMin = 1 }));
 
@@ -130,16 +140,16 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)
         {
-            Model.LimpiarTextBox(txtBoxFiltroPrecioDesde);
-            Model.LimpiarTextBox(txtBoxFiltroPrecioHasta);
-            Model.LimpiarTextBox(textBoxNombre);
+            LimpiarTextBox(txtBoxFiltroPrecioDesde);
+            LimpiarTextBox(txtBoxFiltroPrecioHasta);
+            LimpiarTextBox(textBoxNombre);
 
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            Model.LimpiarComboBox(comboBoxCiudad);
-            Model.LimpiarComboBox(comboBoxTipoDeHabitacion);
-            Model.LimpiarComboBox(comboBoxCalificacion);
+            LimpiarComboBox(comboBoxCiudad);
+            LimpiarComboBox(comboBoxTipoDeHabitacion);
+            LimpiarComboBox(comboBoxCalificacion);
 
             listViewProductos.Items.Clear();
 
@@ -148,12 +158,36 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)
         {
-            Model.DisableDatePicker(datePickerFilterFechaDesde, btnDisableDatePickerFilterFechaDesde);
+            DisableDatePicker(datePickerFilterFechaDesde, btnDisableDatePickerFilterFechaDesde);
         }
 
         private void btnDisableDatePickerFilterFechaHasta_Click(object sender, EventArgs e)
         {
-            Model.DisableDatePicker(datePickerFilterFechaHasta, btnDisableDatePickerFilterFechaHasta);
+            DisableDatePicker(datePickerFilterFechaHasta, btnDisableDatePickerFilterFechaHasta);
+        }
+
+        private void LimpiarTextBox(TextBox textBox)
+        {
+            textBox.Clear();
+        }
+
+        private void LimpiarComboBox(ComboBox comboBox)
+        {
+            comboBox.SelectedIndex = -1;
+        }
+
+        private void DisableDatePicker(DateTimePicker dateTimePicker, Button btnDisable)
+        {
+            if (dateTimePicker.Enabled)
+            {
+                dateTimePicker.Enabled = false;
+                btnDisable.Text = "Habilitar";
+            }
+            else
+            {
+                dateTimePicker.Enabled = true;
+                btnDisable.Text = "Deshabilitar";
+            }
         }
     }
 }

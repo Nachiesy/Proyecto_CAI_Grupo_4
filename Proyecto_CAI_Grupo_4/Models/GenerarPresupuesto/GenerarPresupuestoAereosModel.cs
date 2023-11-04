@@ -7,46 +7,6 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class GenerarPresupuestoAereosModel
     {
-        public void InitComboBoxOrigen(ComboBox comboBox)
-        {
-            foreach (AereosOrigenEnum value in Enum.GetValues(typeof(AereosOrigenEnum)))
-            {
-                comboBox.Items.Add(value.GetDescription());
-            }
-        }
-
-        public void InitComboBoxDestino(ComboBox comboBox)
-        {
-            foreach (AereosDestinoEnum value in Enum.GetValues(typeof(AereosDestinoEnum)))
-            {
-                comboBox.Items.Add(value.GetDescription());
-            }
-        }
-
-        public void InitComboBoxTipoDePasajero(ComboBox comboBox)
-        {
-            foreach (TipoDePasajeroEnum value in Enum.GetValues(typeof(TipoDePasajeroEnum)))
-            {
-                comboBox.Items.Add(value.GetDescription());
-            }
-        }
-
-        public void InitComboBoxItinerario(ComboBox comboBox)
-        {
-            foreach (AereosItinerarioEnum value in Enum.GetValues(typeof(AereosItinerarioEnum)))
-            {
-                comboBox.Items.Add(value.GetDescription());
-            }
-        }
-
-        public void InitComboBoxClase(ComboBox comboBox)
-        {
-            foreach (TipoDeClaseAereaEnum value in Enum.GetValues(typeof(TipoDeClaseAereaEnum)))
-            {
-                comboBox.Items.Add(value.GetDescription());
-            }
-        }
-
         public string ValidacionDeFiltros(AereosFilter filter)
         {
             var messages = string.Empty;
@@ -216,30 +176,6 @@ namespace Proyecto_CAI_Grupo_4.Models
         public void AddAereoElegido(int id)
         {
             AereosModule.AddAereoElegido(id);
-        }
-
-        public void LimpiarTextBox(TextBox textBox)
-        {
-            textBox.Clear();
-        }
-
-        public void LimpiarComboBox(ComboBox comboBox)
-        {
-            comboBox.SelectedIndex = -1;
-        }
-
-        public void DisableDatePicker(DateTimePicker dateTimePicker, Button btnDisable)
-        {
-            if (dateTimePicker.Enabled)
-            {
-                dateTimePicker.Enabled = false;
-                btnDisable.Text = "Habilitar";
-            }
-            else
-            {
-                dateTimePicker.Enabled = true;
-                btnDisable.Text = "Deshabilitar";
-            }
         }
 
         public void GoToGenerarPresupuestoMenu()
