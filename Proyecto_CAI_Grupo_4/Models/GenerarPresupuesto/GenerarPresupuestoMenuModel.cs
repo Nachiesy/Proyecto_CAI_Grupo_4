@@ -26,12 +26,11 @@ namespace Proyecto_CAI_Grupo_4.Models
             var filasProducto = productosToAdd.Select(item => new ListViewItem(item.Codigo)
             {
                 SubItems =
-            {
-                item.Codigo,
-                item.Nombre,
-                item.TipoDeServicio.GetDescription(),
-                item.Precio.ToFormDecimal()
-            },
+                {
+                    item.Nombre,
+                    item.TipoDeServicio.GetDescription(),
+                    item.Precio.ToFormDecimal()
+                },
                 Tag = new ItinearioItemTag
                 {
                     IdProducto = item.Id,
