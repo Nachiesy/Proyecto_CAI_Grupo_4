@@ -30,17 +30,17 @@ namespace Proyecto_CAI_Grupo_4.Models
             return Pasajeros;
         }
 
-        public static List<Pasajeros> GetPasajerosByIdReserva(int idReserva)
+        public static List<Pasajeros> GetPasajerosByIdPresupuesto(int idPresupuesto)
         {
             return Pasajeros
-                .Where(x => x.IdReserva == idReserva)
+                .Where(x => x.IdPresupuesto == idPresupuesto)
                 .ToList();
         }
 
-        public static int GetTotalPasajerosByIdReserva(int idReserva)
+        public static int GetTotalPasajerosByIdPresupuesto(int idPresupuesto)
         {
             return Pasajeros
-                .Where(x => x.IdReserva == idReserva)
+                .Where(x => x.IdPresupuesto == idPresupuesto)
                 .Select(x => x.AereosAsignados.Count + x.HotelesAsignados.Count)
                 .DefaultIfEmpty(0)
                 .Sum();

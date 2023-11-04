@@ -43,13 +43,6 @@ public partial class BuscarPresupuesto : VistaBase
             return;
         }
 
-        if (presupuesto.Estado == PresupuestoEstadoEnum.Prereserva_Pendiente_de_Pago ||
-            presupuesto.Estado == PresupuestoEstadoEnum.Prereserva_Abonada)
-        {
-            MessageBox.Show("El número de presupuesto corresponde a una pre reserva y no se puede editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
-        }
-
         PresupuestoId = nroPresupuesto;
 
         GoToGenerarPresupuestoMenu();

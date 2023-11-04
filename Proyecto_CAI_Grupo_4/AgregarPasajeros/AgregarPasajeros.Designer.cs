@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4
 {
-    partial class GenerarReserva
+    partial class AgregarPasajeros
     {
         /// <summary>
         /// Required designer variable.
@@ -316,7 +316,7 @@
             btn_Cancelar.UseVisualStyleBackColor = false;
             btn_Cancelar.Click += btnCancelar_Click;
             // 
-            // GenerarReserva
+            // AgregarPasajeros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -327,7 +327,7 @@
             Controls.Add(gbxPresupuesto);
             Controls.Add(gbxPasajeros);
             Margin = new Padding(1);
-            Name = "GenerarReserva";
+            Name = "AgregarPasajeros";
             Text = "Generar Reserva";
             Load += GenerarReserva_Load;
             Controls.SetChildIndex(gbxPasajeros, 0);

@@ -50,7 +50,6 @@ namespace Proyecto_CAI_Grupo_4
             label4 = new Label();
             textBoxClienteNombre = new TextBox();
             label3 = new Label();
-            btnPreReservar = new Common.Components.BotonEstilizado();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
             btnEliminarTodo = new Common.Components.BotonEstilizado();
@@ -153,7 +152,7 @@ namespace Proyecto_CAI_Grupo_4
             btnFinalizarPresupuesto.ForeColor = Color.Black;
             btnFinalizarPresupuesto.Location = new Point(6, 22);
             btnFinalizarPresupuesto.Name = "btnFinalizarPresupuesto";
-            btnFinalizarPresupuesto.Size = new Size(380, 47);
+            btnFinalizarPresupuesto.Size = new Size(827, 47);
             btnFinalizarPresupuesto.TabIndex = 4;
             btnFinalizarPresupuesto.Text = "Guardar Presupuesto";
             btnFinalizarPresupuesto.UseVisualStyleBackColor = false;
@@ -264,21 +263,6 @@ namespace Proyecto_CAI_Grupo_4
             label3.TabIndex = 5;
             label3.Text = "Nombre";
             // 
-            // btnPreReservar
-            // 
-            btnPreReservar.BackColor = Color.Transparent;
-            btnPreReservar.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            btnPreReservar.FlatStyle = FlatStyle.Flat;
-            btnPreReservar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPreReservar.ForeColor = Color.Black;
-            btnPreReservar.Location = new Point(451, 22);
-            btnPreReservar.Name = "btnPreReservar";
-            btnPreReservar.Size = new Size(382, 47);
-            btnPreReservar.TabIndex = 42;
-            btnPreReservar.Text = "Pre-reservar";
-            btnPreReservar.UseVisualStyleBackColor = false;
-            btnPreReservar.Click += btnPreReservar_Click;
-            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(groupBox3);
@@ -294,7 +278,6 @@ namespace Proyecto_CAI_Grupo_4
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(btnPreReservar);
             groupBox3.Controls.Add(btnFinalizarPresupuesto);
             groupBox3.Location = new Point(8, 414);
             groupBox3.Name = "groupBox3";
@@ -389,7 +372,6 @@ namespace Proyecto_CAI_Grupo_4
         private Label label4;
         private TextBox textBoxClienteNombre;
         private Label label3;
-        private Common.Components.BotonEstilizado btnPreReservar;
         private GroupBox groupBox2;
         private Common.Components.BotonEstilizado btnEliminarSeleccion;
         private Common.Components.BotonEstilizado btnEliminarTodo;

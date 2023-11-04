@@ -11,8 +11,4 @@ public enum PresupuestoEstadoEnum
     Presupuesto_Pendiente_De_Pago = 1,
     [Description("Presupuesto Abonado")]
     Presupuesto_Abonado = 2,
-    [Description("Prereserva Pendiente de Pago")]
-    Prereserva_Pendiente_de_Pago = 3,
-    [Description("Prereserva Abonada")]
-    Prereserva_Abonada = 4,
 }

@@ -259,23 +259,6 @@ public partial class GenerarPresupuestoMenu : VistaBase
         presupuestoTotal.Text = "Total: $-";
     }
 
-    private void btnPreReservar_Click(object sender, EventArgs e)
-    {
-        if (!EsPresupuestoValido(out var dni, out var nombre, out var apellido))
-            return;
-
-        var cliente = new Cliente(dni, nombre, apellido);
-
-        var itinerario = GenerarItinerario(cliente, PresupuestoEstadoEnum.Prereserva_Pendiente_de_Pago);
-
-        MessageBox.Show($"Pre-Reserva generada correctamente para el cliente con DNI {dni} con código [{PresupuestoId}]", "Exito", MessageBoxButtons.OK);
-
-        PresupuestosModel.AddPresupuesto(itinerario);
-
-        LimpiarSeleccionDeProductos();
-        GoToMenuPrincipal();
-    }
-
     private void btnEliminarSeleccion_Click(object sender, EventArgs e)
     {
         foreach (ListViewItem item in productosElegidos.SelectedItems)

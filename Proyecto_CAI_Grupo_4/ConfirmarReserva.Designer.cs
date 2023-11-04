@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4
 {
-    partial class ConfirmarReserva
+    partial class GenerarPrereserva
     {
         /// <summary>
         /// Required designer variable.
@@ -223,7 +223,7 @@
             Controls.Add(grupoFiltros);
             Controls.Add(gpProsupuesto);
             Margin = new Padding(2, 1, 2, 1);
-            Name = "ConfirmarReserva";
+            Name = "GenerarPrereserva";
             Text = "ConfirmarReserva";
             Load += ConfirmarReserva_Load;
             Controls.SetChildIndex(gpProsupuesto, 0);

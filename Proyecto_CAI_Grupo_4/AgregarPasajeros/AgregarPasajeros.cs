@@ -12,12 +12,12 @@ using System.Linq;
 namespace Proyecto_CAI_Grupo_4
 {
 
-    public partial class GenerarReserva : VistaBase
+    public partial class AgregarPasajeros : VistaBase
     {
         private Reserva Reserva = null;
         private List<Pasajeros> Pasajeros = new List<Pasajeros>();
 
-        public GenerarReserva() : base(tituloModulo: "Generar Reserva")
+        public AgregarPasajeros() : base(tituloModulo: "Agregar Pasajeros")
         {
             InitializeComponent();
         }
@@ -131,11 +131,6 @@ namespace Proyecto_CAI_Grupo_4
             if (estado == PresupuestoEstadoEnum.Presupuesto_Pendiente_De_Pago)
             {
                 return PresupuestoEstadoEnum.Presupuesto_Abonado.GetDescription();
-            }
-
-            if (estado == PresupuestoEstadoEnum.Prereserva_Pendiente_de_Pago)
-            {
-                return PresupuestoEstadoEnum.Prereserva_Abonada.GetDescription();
             }
 
             return PresupuestoEstadoEnum.EstadoInvalido.GetDescription();

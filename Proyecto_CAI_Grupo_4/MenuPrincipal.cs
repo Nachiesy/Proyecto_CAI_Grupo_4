@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.GenerarPresupuesto;
+using Proyecto_CAI_Grupo_4;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -47,7 +48,7 @@ namespace Proyecto_CAI_Grupo_4
             Application.Run(new ConsultarReservas());
         }
 
-        private void btn_GenerarReserva_Click(object sender, EventArgs e)
+        private void btn_AgregarPasajeros_Click(object sender, EventArgs e)
         {
             Close();
 
@@ -58,7 +59,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void OpenGenerarReserva()
         {
-            Application.Run(new GenerarReserva());
+            Application.Run(new AgregarPasajeros());
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
@@ -76,7 +77,7 @@ namespace Proyecto_CAI_Grupo_4
         }
         private void OpenConfirmarReserva()
         {
-            Application.Run(new ConfirmarReserva());
+            Application.Run(new GenerarPrereserva());
         }
 
         private void btn_BuscarPresupuesto_Click(object sender, EventArgs e)

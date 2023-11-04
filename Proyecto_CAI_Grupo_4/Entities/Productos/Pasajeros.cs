@@ -6,14 +6,14 @@ public class Pasajeros
     public string Apellido { get; set; }
     public int DNI { get; set; }
     public DateTime FechaNacimiento { get; set; }
-    public int IdReserva { get; set; }
+    public int IdPresupuesto { get; set; }
 
     public List<AereoSeleccionado> AereosAsignados { get; set; } = new List<AereoSeleccionado>();
     public List<HotelSeleccionado> HotelesAsignados { get; set; } = new List<HotelSeleccionado>();
 
-    public Pasajeros(int idReserva, string nombre, string apellido, int dni, DateTime fechaNacimiento)
+    public Pasajeros(int idPresupuesto, string nombre, string apellido, int dni, DateTime fechaNacimiento)
     {
-        IdReserva = idReserva;
+        IdPresupuesto = idPresupuesto;
         Nombre = nombre;
         Apellido = apellido;
         DNI = dni;
