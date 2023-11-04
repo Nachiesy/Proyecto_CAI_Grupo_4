@@ -12,7 +12,6 @@ namespace Proyecto_CAI_Grupo_4.Models
                 idAereosSeleccionados: new List<AereoSeleccionado>() { new ("V1001", 1) },
                 idHotelesSeleccionados: new List<HotelSeleccionado> () { new ("H1002", 25) },
                 cliente: new Cliente("53944876", "Lionel", "Messi"),
-                estado: PresupuestoEstadoEnum.Presupuesto_Pendiente_De_Pago,
                 precioTotal: 20000)
         };
 

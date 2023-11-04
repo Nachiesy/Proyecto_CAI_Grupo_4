@@ -24,9 +24,9 @@ namespace Proyecto_CAI_Grupo_4.Modelos
             return reservas.FindAll(x => x.Estado == ReservaEstadoEnum.PendienteDeConfirmacion);
         }
 
-        public static List<Reserva> GetReservasByItinerario(string dni)
+        public static List<Reserva> GetReservasByItinerario(int id)
         {
-            return reservas.FindAll(x => x.Cliente.DNI == dni);
+            return reservas.FindAll(x => x.IdItinerario == id);
         }
 
         public static Reserva GetLastReserva()
@@ -43,7 +43,11 @@ namespace Proyecto_CAI_Grupo_4.Modelos
         {
             var codigo = GenerarCodigoDeReserva();
 
-            return new Reserva(codigo, idItinerario, estado, cliente);
+            var nuevaReserva = new Reserva(codigo, idItinerario, estado, cliente);
+
+            reservas.Add(nuevaReserva);
+
+            return nuevaReserva;
         }
 
         public static void AddReserva(Reserva reserva)

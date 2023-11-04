@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4
 {
-    partial class ConfirmarReserva
+    partial class GenerarReserva
     {
         /// <summary>
         /// Required designer variable.
@@ -32,12 +32,11 @@
             label3 = new Label();
             nroPresupuestotxt = new TextBox();
             txbDocumento = new TextBox();
-            lv_Reservas = new ListView();
+            lv_Prereservas = new ListView();
             nropresup = new ColumnHeader();
-            estado = new ColumnHeader();
+            cantidadPasajeros = new ColumnHeader();
             doccliente = new ColumnHeader();
             precio = new ColumnHeader();
-            fecha = new ColumnHeader();
             gpProsupuesto = new GroupBox();
             btn_Volver = new Common.Components.BotonEstilizado();
             btn_ConfirmarReserva = new Common.Components.BotonEstilizado();
@@ -54,15 +53,15 @@
             label1.Location = new Point(10, 26);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(64, 15);
+            label1.Size = new Size(78, 15);
             label1.TabIndex = 2;
-            label1.Text = "ID Reserva:";
+            label1.Text = "ID Prereserva:";
             label1.Click += label1_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(208, 26);
+            label3.Location = new Point(217, 26);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.RightToLeft = RightToLeft.No;
@@ -72,7 +71,7 @@
             // 
             // nroPresupuestotxt
             // 
-            nroPresupuestotxt.Location = new Point(85, 22);
+            nroPresupuestotxt.Location = new Point(103, 23);
             nroPresupuestotxt.Margin = new Padding(2, 1, 2, 1);
             nroPresupuestotxt.Name = "nroPresupuestotxt";
             nroPresupuestotxt.Size = new Size(110, 23);
@@ -80,35 +79,35 @@
             // 
             // txbDocumento
             // 
-            txbDocumento.Location = new Point(242, 23);
+            txbDocumento.Location = new Point(251, 23);
             txbDocumento.Margin = new Padding(2, 1, 2, 1);
             txbDocumento.Name = "txbDocumento";
             txbDocumento.Size = new Size(124, 23);
             txbDocumento.TabIndex = 7;
             // 
-            // lv_Reservas
+            // lv_Prereservas
             // 
-            lv_Reservas.Columns.AddRange(new ColumnHeader[] { nropresup, estado, doccliente, precio, fecha });
-            lv_Reservas.FullRowSelect = true;
-            lv_Reservas.Location = new Point(9, 18);
-            lv_Reservas.Margin = new Padding(2, 1, 2, 1);
-            lv_Reservas.MultiSelect = false;
-            lv_Reservas.Name = "lv_Reservas";
-            lv_Reservas.ShowItemToolTips = true;
-            lv_Reservas.Size = new Size(1060, 276);
-            lv_Reservas.TabIndex = 9;
-            lv_Reservas.UseCompatibleStateImageBehavior = false;
-            lv_Reservas.View = View.Details;
+            lv_Prereservas.Columns.AddRange(new ColumnHeader[] { nropresup, cantidadPasajeros, doccliente, precio });
+            lv_Prereservas.FullRowSelect = true;
+            lv_Prereservas.Location = new Point(9, 18);
+            lv_Prereservas.Margin = new Padding(2, 1, 2, 1);
+            lv_Prereservas.MultiSelect = false;
+            lv_Prereservas.Name = "lv_Prereservas";
+            lv_Prereservas.ShowItemToolTips = true;
+            lv_Prereservas.Size = new Size(1060, 276);
+            lv_Prereservas.TabIndex = 9;
+            lv_Prereservas.UseCompatibleStateImageBehavior = false;
+            lv_Prereservas.View = View.Details;
             // 
             // nropresup
             // 
-            nropresup.Text = "ID Reserva";
+            nropresup.Text = "ID Prereserva";
             nropresup.Width = 150;
             // 
-            // estado
+            // cantidadPasajeros
             // 
-            estado.Text = "Estado";
-            estado.Width = 180;
+            cantidadPasajeros.Text = "Cantidad Pasajeros";
+            cantidadPasajeros.Width = 180;
             // 
             // doccliente
             // 
@@ -120,16 +119,11 @@
             precio.Text = "Precio";
             precio.Width = 180;
             // 
-            // fecha
-            // 
-            fecha.Text = "Fecha de Estado";
-            fecha.Width = 180;
-            // 
             // gpProsupuesto
             // 
             gpProsupuesto.Controls.Add(btn_Volver);
             gpProsupuesto.Controls.Add(btn_ConfirmarReserva);
-            gpProsupuesto.Controls.Add(lv_Reservas);
+            gpProsupuesto.Controls.Add(lv_Prereservas);
             gpProsupuesto.Location = new Point(12, 190);
             gpProsupuesto.Margin = new Padding(2, 1, 2, 1);
             gpProsupuesto.Name = "gpProsupuesto";
@@ -137,7 +131,7 @@
             gpProsupuesto.Size = new Size(1073, 342);
             gpProsupuesto.TabIndex = 8;
             gpProsupuesto.TabStop = false;
-            gpProsupuesto.Text = "Reservas";
+            gpProsupuesto.Text = "Presupuestos";
             // 
             // btn_Volver
             // 
@@ -165,9 +159,9 @@
             btn_ConfirmarReserva.Name = "btn_ConfirmarReserva";
             btn_ConfirmarReserva.Size = new Size(530, 40);
             btn_ConfirmarReserva.TabIndex = 4;
-            btn_ConfirmarReserva.Text = "Confirmar Reserva";
+            btn_ConfirmarReserva.Text = "Generar Reserva";
             btn_ConfirmarReserva.UseVisualStyleBackColor = false;
-            btn_ConfirmarReserva.Click += btn_ConfirmarReserva_Click;
+            btn_ConfirmarReserva.Click += btn_GenerarReserva_Click;
             // 
             // grupoFiltros
             // 
@@ -214,7 +208,7 @@
             btn_FiltrarPresupuestos.UseVisualStyleBackColor = false;
             btn_FiltrarPresupuestos.Click += btnBuscar_Click;
             // 
-            // ConfirmarReserva
+            // GenerarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -223,7 +217,7 @@
             Controls.Add(grupoFiltros);
             Controls.Add(gpProsupuesto);
             Margin = new Padding(2, 1, 2, 1);
-            Name = "ConfirmarReserva";
+            Name = "GenerarReserva";
             Text = "ConfirmarReserva";
             Load += ConfirmarReserva_Load;
             Controls.SetChildIndex(gpProsupuesto, 0);
@@ -239,12 +233,11 @@
         private Label label3;
         private TextBox nroPresupuestotxt;
         private TextBox txbDocumento;
-        private ListView lv_Reservas;
+        private ListView lv_Prereservas;
         private ColumnHeader nropresup;
         private ColumnHeader doccliente;
         private ColumnHeader precio;
-        private ColumnHeader estado;
-        private ColumnHeader fecha;
+        private ColumnHeader cantidadPasajeros;
         private GroupBox gpProsupuesto;
         private GroupBox grupoFiltros;
         private Common.Components.BotonEstilizado btn_LimpiarFiltros;

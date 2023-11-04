@@ -14,7 +14,8 @@ namespace Proyecto_CAI_Grupo_4
 
     public partial class AgregarPasajeros : VistaBase
     {
-        private Reserva Reserva = null;
+        private int _idItinerario;
+
         private List<Pasajeros> Pasajeros = new List<Pasajeros>();
 
         public AgregarPasajeros() : base(tituloModulo: "Agregar Pasajeros")
@@ -85,7 +86,7 @@ namespace Proyecto_CAI_Grupo_4
             //    .Select(x => x.Text)
             //    .ToList();
 
-            IngresarPasajero Agregar = new IngresarPasajero(Reserva.IdItinerario);
+            IngresarPasajero Agregar = new IngresarPasajero(_idItinerario);
 
             DialogResult result = Agregar.ShowDialog();
 
@@ -116,24 +117,12 @@ namespace Proyecto_CAI_Grupo_4
                 SubItems =
                 {
                     item.Cliente.DNI,
-                    ObtenerEstadoFormateado(item.Estado),
-                    item.FechaEstado.ToFormDate(),
                     item.PrecioTotal.ToString("C2"),
                 }
             }).ToArray();
 
 
             listPresupuestos.Items.AddRange(itinerarios);
-        }
-
-        private string ObtenerEstadoFormateado(PresupuestoEstadoEnum estado)
-        {
-            if (estado == PresupuestoEstadoEnum.Presupuesto_Pendiente_De_Pago)
-            {
-                return PresupuestoEstadoEnum.Presupuesto_Abonado.GetDescription();
-            }
-
-            return PresupuestoEstadoEnum.EstadoInvalido.GetDescription();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -186,9 +175,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
 
-                int idItinerario = int.Parse(presupuesto.SubItems[0].Text);
-
-                Reserva = ReservaModel.GenerarNuevaReserva(idItinerario, ReservaEstadoEnum.PendienteDeConfirmacion, PresupuestosModel.GetPresupuestoById(idItinerario).Cliente);
+                _idItinerario = int.Parse(presupuesto.SubItems[0].Text);
 
                 gbxPasajeros.Enabled = true;
                 gbxPresupuesto.Enabled = false;
@@ -211,7 +198,7 @@ namespace Proyecto_CAI_Grupo_4
 
         }
 
-        private void btnGenreserva_Click(object sender, EventArgs e)
+        private void btnConfirmarPasajeros_Click(object sender, EventArgs e)
         {
             if (listPresupuestos.SelectedItems.Count == 0)
             {
@@ -225,19 +212,13 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            var esValido = ValidarReserva();
+            var esValido = ValidarPasajeros();
 
             if (esValido)
             {
-                ReservaModel.AddReserva(Reserva);
+                PasajerosModel.AgregarPasajeros(Pasajeros);
 
-                var pasajerosConAsignaciones =
-                    Pasajeros
-                        .Where(x => x.HotelesAsignados.Any() || x.HotelesAsignados.Any()).ToList();
-
-                PasajerosModel.AgregarPasajeros(pasajerosConAsignaciones);
-
-                MessageBox.Show("Reserva Generada Exitosamente");
+                MessageBox.Show("Pasajeros confirmados para el itinerario: " + _idItinerario);
                 this.Close();
 
                 Thread thread = new Thread(OpenMenuPrincipal);
@@ -246,7 +227,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private bool ValidarReserva()
+        private bool ValidarPasajeros()
         {
             //var cantidadAdultos = Pasajeros
             //    .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.adulto && (x.HotelesAsignados.Any() || x.AereosAsignados.Any()))
@@ -265,15 +246,15 @@ namespace Proyecto_CAI_Grupo_4
 
             //cantidad Agrupada PorTipo De Pasajero Y IdHotel y COUNT por cada grupo
             var agrupacionCantidadesHotelesSeleccionados = Pasajeros
-                .SelectMany(x => 
-                    x.HotelesAsignados.Select(y => 
+                .SelectMany(x =>
+                    x.HotelesAsignados.Select(y =>
                         new { TipoPasajero = x.GetTipoDePasajero(), IdHotel = y.IdHotel }))
                 .GroupBy(x => new { x.IdHotel, x.TipoPasajero })
                 .Select(x => new { x.Key.IdHotel, x.Key.TipoPasajero, Cantidad = x.Count() })
                 .ToList();
 
 
-            foreach(var pasajero in Pasajeros)
+            foreach (var pasajero in Pasajeros)
             {
                 foreach (var aereoSeleccionado in pasajero.AereosAsignados)
                 {
@@ -303,7 +284,7 @@ namespace Proyecto_CAI_Grupo_4
                         return false;
                     }
 
-                    if(hotel.CantidadMaximaDeInfantes == 0 && tipoPasajero == TipoDePasajeroEnum.infante)
+                    if (hotel.CantidadMaximaDeInfantes == 0 && tipoPasajero == TipoDePasajeroEnum.infante)
                     {
                         MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque no permite infantes");
                         return false;

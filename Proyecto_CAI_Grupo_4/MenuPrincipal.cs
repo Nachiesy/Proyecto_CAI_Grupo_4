@@ -52,12 +52,12 @@ namespace Proyecto_CAI_Grupo_4
         {
             Close();
 
-            Thread thread = new Thread(OpenGenerarReserva);
+            Thread thread = new Thread(OpenAgregarPasajeros);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
 
-        private void OpenGenerarReserva()
+        private void OpenAgregarPasajeros()
         {
             Application.Run(new AgregarPasajeros());
         }
@@ -77,7 +77,7 @@ namespace Proyecto_CAI_Grupo_4
         }
         private void OpenConfirmarReserva()
         {
-            Application.Run(new GenerarPrereserva());
+            Application.Run(new ConfirmarReserva());
         }
 
         private void btn_BuscarPresupuesto_Click(object sender, EventArgs e)
@@ -92,6 +92,34 @@ namespace Proyecto_CAI_Grupo_4
         private void OpenBuscarPresupuesto()
         {
             Application.Run(new BuscarPresupuesto());
+        }
+
+        private void OpenGenerarPrereserva()
+        {
+            Application.Run(new GenerarPrereserva());
+        }
+
+        private void btn_GenerarPrereserva_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            var thread = new Thread(OpenGenerarPrereserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenGenerarReserva()
+        {
+            Application.Run(new GenerarReserva());
+        }
+
+        private void btn_GenerarReserva_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            var thread = new Thread(OpenGenerarReserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
     }
 }

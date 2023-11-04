@@ -44,8 +44,6 @@
             listPresupuestos = new ListView();
             nropresup = new ColumnHeader();
             doccliente = new ColumnHeader();
-            estado = new ColumnHeader();
-            fechaestado = new ColumnHeader();
             precio = new ColumnHeader();
             txbDocumento = new TextBox();
             nroPresupuestotxt = new TextBox();
@@ -194,7 +192,7 @@
             // 
             // listPresupuestos
             // 
-            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, estado, fechaestado, precio });
+            listPresupuestos.Columns.AddRange(new ColumnHeader[] { nropresup, doccliente, precio });
             listPresupuestos.FullRowSelect = true;
             listPresupuestos.Location = new Point(10, 59);
             listPresupuestos.Margin = new Padding(2, 1, 2, 1);
@@ -216,16 +214,6 @@
             // 
             doccliente.Text = "DNI Cliente";
             doccliente.Width = 160;
-            // 
-            // estado
-            // 
-            estado.Text = "Estado";
-            estado.Width = 180;
-            // 
-            // fechaestado
-            // 
-            fechaestado.Text = "Fecha de Estado";
-            fechaestado.Width = 180;
             // 
             // precio
             // 
@@ -297,9 +285,9 @@
             btn_GenerarReserva.Name = "btn_GenerarReserva";
             btn_GenerarReserva.Size = new Size(551, 40);
             btn_GenerarReserva.TabIndex = 4;
-            btn_GenerarReserva.Text = "Generar Reserva";
+            btn_GenerarReserva.Text = "Confirmar Pasajeros";
             btn_GenerarReserva.UseVisualStyleBackColor = false;
-            btn_GenerarReserva.Click += btnGenreserva_Click;
+            btn_GenerarReserva.Click += btnConfirmarPasajeros_Click;
             // 
             // btn_Cancelar
             // 
@@ -356,8 +344,6 @@
         private ColumnHeader nropresup;
         private ColumnHeader doccliente;
         private ColumnHeader precio;
-        private ColumnHeader estado;
-        private ColumnHeader fechaestado;
         private Label lblcodigp;
         private Common.Components.BotonEstilizado btn_GenerarReserva;
         private Common.Components.BotonEstilizado btn_Cancelar;

@@ -125,6 +125,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_GenerarPrereserva.TabIndex = 10;
             btn_GenerarPrereserva.Text = "Generar Pre-reserva";
             btn_GenerarPrereserva.UseVisualStyleBackColor = false;
+            btn_GenerarPrereserva.Click += btn_GenerarPrereserva_Click;
             // 
             // botonEstilizado2
             // 
@@ -139,6 +140,7 @@ namespace Proyecto_CAI_Grupo_4
             botonEstilizado2.TabIndex = 11;
             botonEstilizado2.Text = "Generar Reserva";
             botonEstilizado2.UseVisualStyleBackColor = false;
+            botonEstilizado2.Click += btn_GenerarReserva_Click;
             // 
             // MenuPrincipal
             // 

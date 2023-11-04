@@ -136,7 +136,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         var cliente = new Cliente(dni, nombre, apellido);
 
-        var itinerario = GenerarItinerario(cliente, PresupuestoEstadoEnum.Presupuesto_Pendiente_De_Pago);
+        var itinerario = GenerarItinerario(cliente);
 
         if (EsNuevo)
         {
@@ -155,10 +155,10 @@ public partial class GenerarPresupuestoMenu : VistaBase
         GoToMenuPrincipal();
     }
 
-    private Itinerario GenerarItinerario(Cliente cliente, PresupuestoEstadoEnum estado)
+    private Itinerario GenerarItinerario(Cliente cliente)
     {
 
-        var itinerario = new Itinerario(PresupuestoId, cliente, Total, estado);
+        var itinerario = new Itinerario(PresupuestoId, cliente, Total);
 
         for (var i = 0; i < productosElegidos.Items.Count; i++)
         {

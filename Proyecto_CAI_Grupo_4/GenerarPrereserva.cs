@@ -16,9 +16,9 @@ using Proyecto_CAI_Grupo_4.Models;
 
 namespace Proyecto_CAI_Grupo_4
 {
-    public partial class ConfirmarReserva : VistaBase
+    public partial class GenerarPrereserva : VistaBase
     {
-        public ConfirmarReserva()
+        public GenerarPrereserva()
         {
             InitializeComponent();
         }
@@ -39,19 +39,20 @@ namespace Proyecto_CAI_Grupo_4
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
-            var reservas = ReservaModel
-                .GetReservasPendientesDeConfirmacion()
+            var presupuestos = PresupuestosModel
+                .GetPresupuestos()
+                .Where(x => PrereservaModel.GetPrereservaByItinerario(x.IdItinerario).Count == 0)
                 .AsQueryable();
 
             if (!string.IsNullOrEmpty(codigo))
             {
-                if (!int.TryParse(codigo, out int reservaId))
+                if (!int.TryParse(codigo, out int presupuestoId))
                 {
-                    MessageBox.Show("El codigo de reserva debe ser numérico.");
+                    MessageBox.Show("El codigo de presupuesto debe ser numérico.");
                     return;
                 }
 
-                reservas = reservas.Where(x => x.Codigo == reservaId);
+                presupuestos = presupuestos.Where(x => x.IdItinerario == presupuestoId);
             }
 
             if (!string.IsNullOrEmpty(dni) && dni.EsDNI())
@@ -62,23 +63,22 @@ namespace Proyecto_CAI_Grupo_4
                     return;
                 }
 
-                reservas = reservas.Where(x => x.Cliente.DNI == dni);
+                presupuestos = presupuestos.Where(x => x.Cliente.DNI == dni);
             }
 
-            AddReservasToListView(reservas.ToList());
+            AddReservasToListView(presupuestos.ToList());
         }
-        private void AddReservasToListView(IEnumerable<Reserva> list)
+        private void AddReservasToListView(IEnumerable<Itinerario> list)
         {
-            lv_Reservas.Items.Clear();
+            lv_Prereservas.Items.Clear();
 
-            lv_Reservas.Items.AddRange(list.Select(item => new ListViewItem(item.Codigo.ToString())
+            lv_Prereservas.Items.AddRange(list.Select(item => new ListViewItem(item.IdItinerario.ToString())
             {
                 SubItems =
                 {
-                    item.Estado.GetDescription(),
+                    PasajerosModel.GetTotalPasajerosByIdPresupuesto(item.IdItinerario).ToString(),
                     item.Cliente.DNI,
-                    PresupuestosModel.GetPresupuestoById(item.IdItinerario).PrecioTotal.ToString("C2") ?? "-",
-                    item.FechaEstado.ToFormDate()
+                    item.PrecioTotal.ToString("C2"),
                 }
             }).ToArray());
         }
@@ -87,27 +87,33 @@ namespace Proyecto_CAI_Grupo_4
         {
             nroPresupuestotxt.Text = string.Empty;
             txbDocumento.Text = string.Empty;
-            lv_Reservas.Items.Clear();
+            lv_Prereservas.Items.Clear();
         }
 
-        private void btn_ConfirmarReserva_Click(object sender, EventArgs e)
+        private void btn_GenerarPreReserva_Click(object sender, EventArgs e)
         {
-            if (lv_Reservas.SelectedItems.Count == 0)
+            if (lv_Prereservas.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Seleccione una reserva para confirmarla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione un presupuesto para pre reservar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            ListViewItem item = lv_Reservas.SelectedItems[0];
-            DialogResult resultado = MessageBox.Show("¿Desea confirmar la reserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            ListViewItem item = lv_Prereservas.SelectedItems[0];
+            DialogResult resultado = MessageBox.Show("¿Desea crear la prereserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Reserva Confirmada");
+                var itinerario = PresupuestosModel.GetPresupuestoById(int.Parse(item.SubItems[0].Text));
 
-                ReservaModel.ConfirmarReserva(int.Parse(item.Text));
+                var prereserva = PrereservaModel.GenerarNuevaPrereserva(
+                    idItinerario: int.Parse(item.SubItems[0].Text),
+                    /*ESTADO HARDCODEADO PORQUE MAGICAMENTE DE UNA U OTRA FORMA TIENEN QUE SER PAGADAS PARA PODER GENERAR RESERVA. EL LISTADO FILTRA PAGADAS.*/
+                    estado: PrereservaEstadoEnum.Pagada, /* PrereservaEstadoEnum.PendienteDePago */
+                    cliente: itinerario.Cliente);
 
-                lv_Reservas.Items.Remove(item);
+                MessageBox.Show("Prereserva generada con Id: " + prereserva.Codigo);
+
+                lv_Prereservas.Items.Remove(item);
             }
         }
 

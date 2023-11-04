@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="GenerarReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GenerarPrereserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GenerarPresupuesto\GenerarPresupuestoHoteles.cs">
       <SubType>Form</SubType>
     </Compile>

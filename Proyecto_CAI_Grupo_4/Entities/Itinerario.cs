@@ -11,22 +11,18 @@ public class Itinerario
 {
     public Itinerario(int id,
         Cliente cliente,
-        decimal precioTotal,
-        PresupuestoEstadoEnum estado) 
+        decimal precioTotal) 
     {
         IdItinerario = id;
-        FechaEstado = DateTime.Now;
         PrecioTotal = precioTotal;
         Cliente = cliente;
-        Estado = estado;
     }
 
     public Itinerario(int id,
         List<AereoSeleccionado> idAereosSeleccionados,
         List<HotelSeleccionado> idHotelesSeleccionados,
         Cliente cliente,
-        PresupuestoEstadoEnum estado,
-        decimal precioTotal) : this(id, cliente, precioTotal, estado)
+        decimal precioTotal) : this(id, cliente, precioTotal)
     {
         IdAereosSeleccionados = idAereosSeleccionados;
         IdHotelesSeleccionados = idHotelesSeleccionados;
@@ -36,10 +32,7 @@ public class Itinerario
     public List<AereoSeleccionado> IdAereosSeleccionados { get; set; } = new List<AereoSeleccionado>();
     public List<HotelSeleccionado> IdHotelesSeleccionados { get; set; } = new List<HotelSeleccionado>();
     public Cliente Cliente { get; set; }
-    public DateTime FechaEstado { get; set; }
     public decimal PrecioTotal { get; set; }
-
-    public PresupuestoEstadoEnum Estado { get; set; }
 
     public Itinerario AddAereo(string idUnico, int idAereo)
     {

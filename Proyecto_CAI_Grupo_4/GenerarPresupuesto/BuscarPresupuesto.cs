@@ -1,5 +1,6 @@
 ﻿using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Enums;
+using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Models;
 using Proyecto_CAI_Grupo_4.Utils;
 
@@ -37,9 +38,11 @@ public partial class BuscarPresupuesto : VistaBase
             return;
         }
 
-        if (presupuesto.Estado == PresupuestoEstadoEnum.Presupuesto_Abonado)
+        var prereserva = PrereservaModel.GetPrereservaByItinerario(presupuesto.IdItinerario);
+
+        if (prereserva.Count > 0)
         {
-            MessageBox.Show("El número de presupuesto ingresado ya fue abonado y no se puede editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("El número de presupuesto ingresado ya fue abonado en la pre-reserva " + prereserva.First().IdItinerario + " y no se puede editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
