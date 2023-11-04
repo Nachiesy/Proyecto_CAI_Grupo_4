@@ -1,0 +1,13 @@
+[
+  {
+    "Codigo": 1,
+    "IdItinerario": 1,
+    "Cliente": {
+      "DNI": "43422654",
+      "Nombre": "Juan",
+      "Apellido": "Perez"
+    },
+    "Estado": 1,
+    "FechaEstado": "2023-11-04T19:23:27.6565977-03:00"
+  }
+]

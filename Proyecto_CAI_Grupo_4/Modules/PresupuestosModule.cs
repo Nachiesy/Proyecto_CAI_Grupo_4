@@ -1,18 +1,16 @@
+using Proyecto_CAI_Grupo_4.Almacenes;
 using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
     public static class PresupuestosModule
     {
-        private static List<Itinerario> Presupuestos { get; set; } = new List<Itinerario>()
+        private static List<Itinerario> Presupuestos = new List<Itinerario>();
+
+        static PresupuestosModule()
         {
-            new Itinerario(
-                id: 1, 
-                idAereosSeleccionados: new List<AereoSeleccionado>() { new ("V1001", 1) },
-                idHotelesSeleccionados: new List<HotelSeleccionado> () { new ("H1002", 25) },
-                cliente: new Cliente("53944876", "Lionel", "Messi"),
-                precioTotal: 20000)
-        };
+            Presupuestos = AlmacenPresupuestos.GetPresupuestos();
+        }
 
         public static List<Itinerario> GetPresupuestos() => Presupuestos;
 

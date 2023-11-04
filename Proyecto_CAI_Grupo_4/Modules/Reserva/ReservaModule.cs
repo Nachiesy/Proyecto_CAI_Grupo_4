@@ -1,36 +1,35 @@
-﻿using Proyecto_CAI_Grupo_4.Entities;
+﻿using Proyecto_CAI_Grupo_4.Almacenes;
+using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4.Modelos
 {
     public static class ReservaModule
     {
-        private static List<Reserva> reservas = new List<Reserva>()
+        private static List<Reserva> Reservas = new List<Reserva>();
+
+        static ReservaModule()
         {
-            new Reserva(
-                codigo: 1,
-                estado: ReservaEstadoEnum.PendienteDeConfirmacion,
-                cliente: new Cliente("43422654", "Juan", "Perez"),
-                idItinerario: 1),
-        };
+            Reservas = AlmacenReservas.GetReservas();
+        }
 
         public static List<Reserva> GetReservas()
         {
-            return reservas;
+            return Reservas;
         }
 
         public static List<Reserva> GetReservasPendientesDeConfirmacion()
         {
-            return reservas.FindAll(x => x.Estado == ReservaEstadoEnum.PendienteDeConfirmacion);
+            return Reservas.FindAll(x => x.Estado == ReservaEstadoEnum.PendienteDeConfirmacion);
         }
 
         public static List<Reserva> GetReservasByItinerario(int id)
         {
-            return reservas.FindAll(x => x.IdItinerario == id);
+            return Reservas.FindAll(x => x.IdItinerario == id);
         }
 
         public static Reserva GetLastReserva()
         {
-            return reservas.Last();
+            return Reservas.Last();
         }
 
         private static int GenerarCodigoDeReserva()
@@ -44,19 +43,19 @@ namespace Proyecto_CAI_Grupo_4.Modelos
 
             var nuevaReserva = new Reserva(codigo, idItinerario, estado, cliente);
 
-            reservas.Add(nuevaReserva);
+            Reservas.Add(nuevaReserva);
 
             return nuevaReserva;
         }
 
         public static void AddReserva(Reserva reserva)
         {
-            reservas.Add(reserva);
+            Reservas.Add(reserva);
         }
 
         public static void ConfirmarReserva(int idReserva)
         {
-            reservas
+            Reservas
                 .Find(x => x.Codigo == idReserva)
                 .ConfirmarReserva();
         }

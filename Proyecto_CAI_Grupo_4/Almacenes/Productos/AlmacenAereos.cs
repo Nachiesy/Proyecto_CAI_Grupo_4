@@ -5,7 +5,7 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
 {
     public static class AlmacenAereos
     {
-        private static string AlmacenPath = @"..\..\..\Datos\Aereos.json";
+        private static string AlmacenPath = @"..\..\..\Datos\Productos\Aereos.json";
 
         private static List<Aereos> Aereos;
 

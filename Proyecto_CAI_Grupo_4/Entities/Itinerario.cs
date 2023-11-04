@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Proyecto_CAI_Grupo_4.Entities;
 
 public class Itinerario
 {
-    public Itinerario(int id,
-        Cliente cliente,
-        decimal precioTotal) 
+    public Itinerario() { }
+
+    public Itinerario(int id, Cliente cliente, decimal precioTotal) 
     {
         IdItinerario = id;
         PrecioTotal = precioTotal;
@@ -28,9 +22,13 @@ public class Itinerario
     }
 
     public int IdItinerario { get; set; }
+
     public List<AereoSeleccionado> IdAereosSeleccionados { get; set; } = new List<AereoSeleccionado>();
+
     public List<HotelSeleccionado> IdHotelesSeleccionados { get; set; } = new List<HotelSeleccionado>();
+
     public Cliente Cliente { get; set; }
+
     public decimal PrecioTotal { get; set; }
 
     public Itinerario AddAereo(string idUnico, int idAereo)

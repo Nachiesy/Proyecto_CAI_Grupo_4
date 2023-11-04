@@ -1,46 +1,45 @@
-﻿using Proyecto_CAI_Grupo_4.Entities;
+﻿using Proyecto_CAI_Grupo_4.Almacenes;
+using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4.Modelos
 {
     public static class PrereservaModule
     {
-        private static List<Prereserva> prereserva = new List<Prereserva>()
+        private static List<Prereserva> PreReservas = new List<Prereserva>();
+
+        static PrereservaModule()
         {
-            new Prereserva(
-                codigo: 1,
-                estado: PrereservaEstadoEnum.PendienteDePago,
-                cliente: new Cliente("43422654", "Juan", "Perez"),
-                idItinerario: 1),
-        };
+            PreReservas = AlmacenPreReservas.GetPreReservas();
+        }
 
         public static List<Prereserva> GetPrereservas()
         {
-            return prereserva;
+            return PreReservas;
         }
 
         public static Prereserva? GetPrereservaById(int id)
         {
-            return prereserva.Find(x => x.Codigo == id);
+            return PreReservas.Find(x => x.Codigo == id);
         }
 
         public static List<Prereserva> GetPrereservaAbonadas()
         {
-            return prereserva.FindAll(x => x.Estado == PrereservaEstadoEnum.Pagada);
+            return PreReservas.FindAll(x => x.Estado == PrereservaEstadoEnum.Pagada);
         }
 
         public static List<Prereserva> GetPrereservaPendientesDePago()
         {
-            return prereserva.FindAll(x => x.Estado == PrereservaEstadoEnum.PendienteDePago);
+            return PreReservas.FindAll(x => x.Estado == PrereservaEstadoEnum.PendienteDePago);
         }
 
         public static List<Prereserva> GetPrereservaByItinerario(int idItinerario)
         {
-            return prereserva.FindAll(x => x.IdItinerario == idItinerario);
+            return PreReservas.FindAll(x => x.IdItinerario == idItinerario);
         }
 
         public static Prereserva GetLastPrereserva()
         {
-            return prereserva.Last();
+            return PreReservas.Last();
         }
 
         private static int GenerarCodigoDePrereserva()
@@ -54,14 +53,14 @@ namespace Proyecto_CAI_Grupo_4.Modelos
 
             var nuevaPreReserva = new Prereserva(codigo, idItinerario, estado, cliente);
 
-            prereserva.Add(nuevaPreReserva);
+            PreReservas.Add(nuevaPreReserva);
 
             return nuevaPreReserva;
         }
 
         public static void ConfirmarPrereserva(int idPrereserva)
         {
-            prereserva
+            PreReservas
                 .Find(x => x.Codigo == idPrereserva)
                 .AbonarReserva();
         }
