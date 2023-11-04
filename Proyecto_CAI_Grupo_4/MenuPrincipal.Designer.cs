@@ -44,9 +44,9 @@ namespace Proyecto_CAI_Grupo_4
             btn_GenerarPresupuesto.FlatStyle = FlatStyle.Flat;
             btn_GenerarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_GenerarPresupuesto.ForeColor = Color.Black;
-            btn_GenerarPresupuesto.Location = new Point(251, 116);
+            btn_GenerarPresupuesto.Location = new Point(12, 189);
             btn_GenerarPresupuesto.Name = "btn_GenerarPresupuesto";
-            btn_GenerarPresupuesto.Size = new Size(226, 67);
+            btn_GenerarPresupuesto.Size = new Size(465, 67);
             btn_GenerarPresupuesto.TabIndex = 4;
             btn_GenerarPresupuesto.Text = "Generar Presupuesto";
             btn_GenerarPresupuesto.UseVisualStyleBackColor = false;
@@ -59,9 +59,9 @@ namespace Proyecto_CAI_Grupo_4
             btn_AgregarPasajeros.FlatStyle = FlatStyle.Flat;
             btn_AgregarPasajeros.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_AgregarPasajeros.ForeColor = Color.Black;
-            btn_AgregarPasajeros.Location = new Point(12, 199);
+            btn_AgregarPasajeros.Location = new Point(12, 262);
             btn_AgregarPasajeros.Name = "btn_AgregarPasajeros";
-            btn_AgregarPasajeros.Size = new Size(226, 67);
+            btn_AgregarPasajeros.Size = new Size(465, 67);
             btn_AgregarPasajeros.TabIndex = 4;
             btn_AgregarPasajeros.Text = "Agregar Pasajeros";
             btn_AgregarPasajeros.UseVisualStyleBackColor = false;
@@ -74,9 +74,9 @@ namespace Proyecto_CAI_Grupo_4
             btn_ConfirmarReserva.FlatStyle = FlatStyle.Flat;
             btn_ConfirmarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_ConfirmarReserva.ForeColor = Color.Black;
-            btn_ConfirmarReserva.Location = new Point(251, 287);
+            btn_ConfirmarReserva.Location = new Point(12, 481);
             btn_ConfirmarReserva.Name = "btn_ConfirmarReserva";
-            btn_ConfirmarReserva.Size = new Size(226, 67);
+            btn_ConfirmarReserva.Size = new Size(465, 67);
             btn_ConfirmarReserva.TabIndex = 4;
             btn_ConfirmarReserva.Text = "Confirmar Reserva";
             btn_ConfirmarReserva.UseVisualStyleBackColor = false;
@@ -89,7 +89,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_EstadoDeReservas.FlatStyle = FlatStyle.Flat;
             btn_EstadoDeReservas.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_EstadoDeReservas.ForeColor = Color.Black;
-            btn_EstadoDeReservas.Location = new Point(12, 373);
+            btn_EstadoDeReservas.Location = new Point(12, 554);
             btn_EstadoDeReservas.Name = "btn_EstadoDeReservas";
             btn_EstadoDeReservas.Size = new Size(465, 67);
             btn_EstadoDeReservas.TabIndex = 8;
@@ -106,7 +106,7 @@ namespace Proyecto_CAI_Grupo_4
             btn_BuscarPresupuesto.ForeColor = Color.Black;
             btn_BuscarPresupuesto.Location = new Point(12, 116);
             btn_BuscarPresupuesto.Name = "btn_BuscarPresupuesto";
-            btn_BuscarPresupuesto.Size = new Size(226, 67);
+            btn_BuscarPresupuesto.Size = new Size(465, 67);
             btn_BuscarPresupuesto.TabIndex = 9;
             btn_BuscarPresupuesto.Text = "Buscar Presupuesto";
             btn_BuscarPresupuesto.UseVisualStyleBackColor = false;
@@ -119,9 +119,9 @@ namespace Proyecto_CAI_Grupo_4
             btn_GenerarPrereserva.FlatStyle = FlatStyle.Flat;
             btn_GenerarPrereserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_GenerarPrereserva.ForeColor = Color.Black;
-            btn_GenerarPrereserva.Location = new Point(251, 199);
+            btn_GenerarPrereserva.Location = new Point(12, 335);
             btn_GenerarPrereserva.Name = "btn_GenerarPrereserva";
-            btn_GenerarPrereserva.Size = new Size(226, 67);
+            btn_GenerarPrereserva.Size = new Size(465, 67);
             btn_GenerarPrereserva.TabIndex = 10;
             btn_GenerarPrereserva.Text = "Generar Pre-reserva";
             btn_GenerarPrereserva.UseVisualStyleBackColor = false;
@@ -134,9 +134,9 @@ namespace Proyecto_CAI_Grupo_4
             botonEstilizado2.FlatStyle = FlatStyle.Flat;
             botonEstilizado2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             botonEstilizado2.ForeColor = Color.Black;
-            botonEstilizado2.Location = new Point(12, 287);
+            botonEstilizado2.Location = new Point(12, 408);
             botonEstilizado2.Name = "botonEstilizado2";
-            botonEstilizado2.Size = new Size(226, 67);
+            botonEstilizado2.Size = new Size(465, 67);
             botonEstilizado2.TabIndex = 11;
             botonEstilizado2.Text = "Generar Reserva";
             botonEstilizado2.UseVisualStyleBackColor = false;
@@ -147,7 +147,7 @@ namespace Proyecto_CAI_Grupo_4
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(489, 457);
+            ClientSize = new Size(489, 635);
             Controls.Add(botonEstilizado2);
             Controls.Add(btn_GenerarPrereserva);
             Controls.Add(btn_BuscarPresupuesto);
