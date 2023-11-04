@@ -35,16 +35,11 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxTipoDePasajero.Items.Add(value.GetDescription());
             }
 
-            foreach (AereosItinerarioEnum value in Enum.GetValues(typeof(AereosItinerarioEnum)))
-            {
-                comboBoxItinerario.Items.Add(value.GetDescription());
-            }
-
             foreach (TipoDeClaseAereaEnum value in Enum.GetValues(typeof(TipoDeClaseAereaEnum)))
             {
                 comboBoxClase.Items.Add(value.GetDescription());
             }
-            
+
             Model.AddProductosToListView(listViewProductos, Model.GetAereos(new AereosFilter() { CantidadMin = 1 }));
 
             Model.AddProductosSeleccionadosToListView(listViewProductosSeleccionados, Model.GetAereosElegidos());
@@ -62,7 +57,6 @@ namespace Proyecto_CAI_Grupo_4
                 Origen = comboBoxOrigen.SelectedIndex != -1 ? comboBoxOrigen.SelectedIndex : null,
                 Destino = comboBoxDestino.SelectedIndex != -1 ? comboBoxDestino.SelectedIndex : null,
                 TipoDePasajero = comboBoxTipoDePasajero.SelectedIndex != -1 ? comboBoxTipoDePasajero.SelectedIndex : null,
-                Itinerario = comboBoxItinerario.SelectedIndex != -1 ? comboBoxItinerario.SelectedIndex : null,
                 Clase = comboBoxClase.SelectedIndex != -1 ? comboBoxClase.SelectedIndex : null,
             };
 
@@ -94,7 +88,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 return;
             }
-            
+
             var productosToAdd = new List<Aereos>();
 
             foreach (ListViewItem item in listViewProductos.SelectedItems)
@@ -103,8 +97,8 @@ namespace Proyecto_CAI_Grupo_4
 
                 var producto = Model.GetProductoToAddToProductosSeleccionados(listViewProductosSeleccionados, id);
 
-                if (producto != null) 
-                { 
+                if (producto != null)
+                {
                     productosToAdd.Add(producto);
                 }
             }
@@ -161,7 +155,6 @@ namespace Proyecto_CAI_Grupo_4
             LimpiarComboBox(comboBoxOrigen);
             LimpiarComboBox(comboBoxDestino);
             LimpiarComboBox(comboBoxTipoDePasajero);
-            LimpiarComboBox(comboBoxItinerario);
             LimpiarComboBox(comboBoxClase);
 
             listViewProductos.Items.Clear();

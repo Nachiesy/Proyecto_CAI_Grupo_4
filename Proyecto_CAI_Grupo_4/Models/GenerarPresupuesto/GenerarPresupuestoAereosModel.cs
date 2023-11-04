@@ -101,7 +101,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 row.SubItems.Add(item.Origen.GetDescription());
                 row.SubItems.Add(item.Destino.GetDescription());
                 row.SubItems.Add(item.Clase.GetDescription());
-                row.SubItems.Add(item.Itinerario.GetDescription());
+                // row.SubItems.Add(item.Itinerario.GetDescription());
                 row.SubItems.Add(item.Cantidad.ToString());
                 row.SubItems.Add(item.TipoDePasajero.GetDescription());
                 row.SubItems.Add(item.Precio.ToFormDecimal());
@@ -124,7 +124,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 row.SubItems.Add(item.Origen.GetDescription());
                 row.SubItems.Add(item.Destino.GetDescription());
                 row.SubItems.Add(item.Clase.GetDescription());
-                row.SubItems.Add(item.Itinerario.GetDescription());
+                // row.SubItems.Add(item.Itinerario.GetDescription());
                 // row.SubItems.Add(item.Cantidad.ToString()); NO MOSTRAR CANTIDAD
                 row.SubItems.Add(item.TipoDePasajero.GetDescription());
                 row.SubItems.Add(item.Precio.ToFormDecimal());

@@ -38,7 +38,6 @@
             Origen = new ColumnHeader();
             Destino = new ColumnHeader();
             Clase = new ColumnHeader();
-            Itinerario = new ColumnHeader();
             Cantidad = new ColumnHeader();
             TipoDePasajero = new ColumnHeader();
             Precio = new ColumnHeader();
@@ -53,7 +52,6 @@
             SelectOrigen = new ColumnHeader();
             SelectDestino = new ColumnHeader();
             SelectClase = new ColumnHeader();
-            SelectItinerario = new ColumnHeader();
             SelectTipoDePasajero = new ColumnHeader();
             SelectPrecio = new ColumnHeader();
             SelectAerolinea = new ColumnHeader();
@@ -64,8 +62,6 @@
             grp_Filtros = new GroupBox();
             labelClase = new Label();
             comboBoxClase = new ComboBox();
-            labelItinerario = new Label();
-            comboBoxItinerario = new ComboBox();
             labelTipoDePasajero = new Label();
             comboBoxTipoDePasajero = new ComboBox();
             btnDisableDatePickerFilterFechaDesde = new Button();
@@ -147,7 +143,7 @@
             // 
             // listViewProductos
             // 
-            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Origen, Destino, Clase, Itinerario, Cantidad, TipoDePasajero, Precio, Aerolinea, Paradas, FechaSalida, FechaLlegada });
+            listViewProductos.Columns.AddRange(new ColumnHeader[] { ID, Codigo, Origen, Destino, Clase, Cantidad, TipoDePasajero, Precio, Aerolinea, Paradas, FechaSalida, FechaLlegada });
             listViewProductos.FullRowSelect = true;
             listViewProductos.Location = new Point(6, 22);
             listViewProductos.Name = "listViewProductos";
@@ -180,11 +176,6 @@
             // 
             Clase.Text = "Clase";
             Clase.Width = 100;
-            // 
-            // Itinerario
-            // 
-            Itinerario.Text = "Itinerario";
-            Itinerario.Width = 100;
             // 
             // Cantidad
             // 
@@ -235,7 +226,7 @@
             // 
             // listViewProductosSeleccionados
             // 
-            listViewProductosSeleccionados.Columns.AddRange(new ColumnHeader[] { SelectID, SelectCodigo, SelectOrigen, SelectDestino, SelectClase, SelectItinerario, SelectTipoDePasajero, SelectPrecio, SelectAerolinea, SelectParadas, SelectFechaSalida, SelectFechaLlegada });
+            listViewProductosSeleccionados.Columns.AddRange(new ColumnHeader[] { SelectID, SelectCodigo, SelectOrigen, SelectDestino, SelectClase, SelectTipoDePasajero, SelectPrecio, SelectAerolinea, SelectParadas, SelectFechaSalida, SelectFechaLlegada });
             listViewProductosSeleccionados.FullRowSelect = true;
             listViewProductosSeleccionados.Location = new Point(6, 22);
             listViewProductosSeleccionados.Name = "listViewProductosSeleccionados";
@@ -268,11 +259,6 @@
             // 
             SelectClase.Text = "Clase";
             SelectClase.Width = 100;
-            // 
-            // SelectItinerario
-            // 
-            SelectItinerario.Text = "Itinerario";
-            SelectItinerario.Width = 100;
             // 
             // SelectTipoDePasajero
             // 
@@ -323,8 +309,6 @@
             // 
             grp_Filtros.Controls.Add(labelClase);
             grp_Filtros.Controls.Add(comboBoxClase);
-            grp_Filtros.Controls.Add(labelItinerario);
-            grp_Filtros.Controls.Add(comboBoxItinerario);
             grp_Filtros.Controls.Add(labelTipoDePasajero);
             grp_Filtros.Controls.Add(comboBoxTipoDePasajero);
             grp_Filtros.Controls.Add(btnDisableDatePickerFilterFechaDesde);
@@ -353,7 +337,7 @@
             // labelClase
             // 
             labelClase.AutoSize = true;
-            labelClase.Location = new Point(18, 382);
+            labelClase.Location = new Point(163, 328);
             labelClase.Name = "labelClase";
             labelClase.Size = new Size(35, 15);
             labelClase.TabIndex = 31;
@@ -363,28 +347,10 @@
             // 
             comboBoxClase.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxClase.FormattingEnabled = true;
-            comboBoxClase.Location = new Point(18, 400);
+            comboBoxClase.Location = new Point(163, 346);
             comboBoxClase.Name = "comboBoxClase";
             comboBoxClase.Size = new Size(126, 23);
             comboBoxClase.TabIndex = 30;
-            // 
-            // labelItinerario
-            // 
-            labelItinerario.AutoSize = true;
-            labelItinerario.Location = new Point(163, 328);
-            labelItinerario.Name = "labelItinerario";
-            labelItinerario.Size = new Size(54, 15);
-            labelItinerario.TabIndex = 29;
-            labelItinerario.Text = "Itinerario";
-            // 
-            // comboBoxItinerario
-            // 
-            comboBoxItinerario.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxItinerario.FormattingEnabled = true;
-            comboBoxItinerario.Location = new Point(163, 346);
-            comboBoxItinerario.Name = "comboBoxItinerario";
-            comboBoxItinerario.Size = new Size(126, 23);
-            comboBoxItinerario.TabIndex = 28;
             // 
             // labelTipoDePasajero
             // 
@@ -604,8 +570,6 @@
         private TextBox txtBoxFiltroPrecioHasta;
         private Label labelFiltroPrecioHasta;
         private TextBox txtBoxFiltroPrecioDesde;
-        private Label labelItinerario;
-        private ComboBox comboBoxItinerario;
         private Label labelTipoDePasajero;
         private ComboBox comboBoxTipoDePasajero;
         private Label labelClase;
@@ -616,7 +580,6 @@
         private ColumnHeader Origen;
         private ColumnHeader Destino;
         private ColumnHeader Clase;
-        private ColumnHeader Itinerario;
         private ColumnHeader TipoDePasajero;
         private ColumnHeader Cantidad;
         private ColumnHeader Precio;
@@ -630,7 +593,6 @@
         private ColumnHeader SelectOrigen;
         private ColumnHeader SelectDestino;
         private ColumnHeader SelectClase;
-        private ColumnHeader SelectItinerario;
         private ColumnHeader SelectTipoDePasajero;
         private ColumnHeader SelectPrecio;
         private ColumnHeader SelectAerolinea;
