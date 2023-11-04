@@ -14,6 +14,7 @@ namespace Proyecto_CAI_Grupo_4.Models
     {
         public static int PresupuestoId = 0;
         public static bool EsNuevo = true;
+        public static bool InitBuscarPresupuesto = false;
 
         public decimal Total = 0;
 
@@ -177,26 +178,33 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public void GoToGenerarPresupuestoAereos()
         {
-            Thread thread = new Thread(OpenGenerarPresupuestoAereos);
+            Thread thread = new Thread(GenerarPresupuestoAereosModel.OpenGenerarPresupuestoAereos);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
 
-        private void OpenGenerarPresupuestoAereos()
+        public static void OpenGenerarPresupuestoMenu()
         {
-            Application.Run(new GenerarPresupuestoAereos());
+            if (EsNuevo)
+            {
+                Application.Run(new GenerarPresupuestoMenu());
+            }
+            else
+            {
+                Application.Run(new GenerarPresupuestoMenu(new GenerarPresupuestoMenuParams()
+                {
+                    PresupuestoId = PresupuestoId,
+                    EsNuevo = EsNuevo,
+                    InitBuscarPresupuesto = InitBuscarPresupuesto,
+                }));
+            }
         }
 
         public void GoToGenerarPresupuestoHoteles()
         {
-            Thread thread = new Thread(OpenGenerarPresupuestoHoteles);
+            Thread thread = new Thread(GenerarPresupuestoHotelesModel.OpenGenerarPresupuestoHoteles);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
-        }
-
-        private void OpenGenerarPresupuestoHoteles()
-        {
-            Application.Run(new GenerarPresupuestoHoteles());
         }
 
         public void GoToMenuPrincipal()

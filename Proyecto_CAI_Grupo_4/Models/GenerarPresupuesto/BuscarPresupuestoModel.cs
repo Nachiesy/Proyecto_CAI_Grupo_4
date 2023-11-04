@@ -1,6 +1,4 @@
-﻿using Proyecto_CAI_Grupo_4.Utils;
-
-namespace Proyecto_CAI_Grupo_4.Models
+﻿namespace Proyecto_CAI_Grupo_4.Models
 {
     public class BuscarPresupuestoModel
     {
@@ -8,19 +6,13 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public void GoToGenerarPresupuestoMenu()
         {
-            Thread thread = new Thread(OpenGenerarPresupuestoMenu);
+            GenerarPresupuestoMenuModel.PresupuestoId = PresupuestoId;
+            GenerarPresupuestoMenuModel.EsNuevo = false;
+            GenerarPresupuestoMenuModel.InitBuscarPresupuesto = true;
+
+            Thread thread = new Thread(GenerarPresupuestoMenuModel.OpenGenerarPresupuestoMenu);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
-        }
-
-        private void OpenGenerarPresupuestoMenu()
-        {
-            Application.Run(new GenerarPresupuestoMenu(new GenerarPresupuestoMenuParams()
-            {
-                PresupuestoId = PresupuestoId,
-                EsNuevo = false,
-                InitBuscarPresupuesto = true,
-            }));
         }
 
         public void GoToMenuPrincipal()

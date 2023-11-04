@@ -1,5 +1,4 @@
 ﻿using Proyecto_CAI_Grupo_4.Entities;
-using Proyecto_CAI_Grupo_4.Enums;
 
 namespace Proyecto_CAI_Grupo_4.Modelos
 {

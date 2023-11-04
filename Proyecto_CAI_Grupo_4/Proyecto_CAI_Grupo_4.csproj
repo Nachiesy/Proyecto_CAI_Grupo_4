@@ -13,13 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="GenerarReserva.cs">
+    <Compile Update="Formularios\Reserva\GenerarReserva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GenerarPrereserva.cs">
+    <Compile Update="Formularios\Reserva\GenerarPrereserva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GenerarPresupuesto\GenerarPresupuestoHoteles.cs">
+    <Compile Update="Formularios\GenerarPresupuesto\GenerarPresupuestoHoteles.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">

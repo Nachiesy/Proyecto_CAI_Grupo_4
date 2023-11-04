@@ -7,9 +7,6 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class GenerarPresupuestoHotelesModel
     {
-        public static int PresupuestoId = 0;
-        public static bool EsNuevo = true;
-
         public void InitComboBoxCiudad(ComboBox comboBox)
         {
             foreach (HotelesCiudadEnum value in Enum.GetValues(typeof(HotelesCiudadEnum)))
@@ -241,26 +238,16 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public void GoToGenerarPresupuestoMenu()
         {
-            Thread thread = new Thread(OpenGenerarPresupuestoMenu);
+            GenerarPresupuestoMenuModel.InitBuscarPresupuesto = false;
+
+            Thread thread = new Thread(GenerarPresupuestoMenuModel.OpenGenerarPresupuestoMenu);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
 
-        private void OpenGenerarPresupuestoMenu()
+        public static void OpenGenerarPresupuestoHoteles()
         {
-            if (EsNuevo)
-            {
-                Application.Run(new GenerarPresupuestoMenu());
-            }
-            else
-            {
-                Application.Run(new GenerarPresupuestoMenu(new GenerarPresupuestoMenuParams()
-                {
-                    PresupuestoId = PresupuestoId,
-                    EsNuevo = EsNuevo,
-                    InitBuscarPresupuesto = false,
-                }));
-            }
+            Application.Run(new GenerarPresupuestoHoteles());
         }
     }
 }

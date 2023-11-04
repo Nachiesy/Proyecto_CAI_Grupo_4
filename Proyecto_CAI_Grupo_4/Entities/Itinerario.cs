@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Proyecto_CAI_Grupo_4.Enums;
 
 namespace Proyecto_CAI_Grupo_4.Entities;
 

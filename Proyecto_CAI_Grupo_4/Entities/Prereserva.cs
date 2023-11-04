@@ -1,4 +1,4 @@
-﻿using Proyecto_CAI_Grupo_4.Enums;
+﻿using System.ComponentModel;
 
 namespace Proyecto_CAI_Grupo_4.Entities
 {
@@ -24,5 +24,15 @@ namespace Proyecto_CAI_Grupo_4.Entities
             Estado = PrereservaEstadoEnum.Pagada;
             FechaEstado = DateTime.Now;
         }
+    }
+
+    public enum PrereservaEstadoEnum
+    {
+        [Description("Estado Invalido")]
+        Invalida = 0,
+        [Description("Pendiente de Pago")]
+        PendienteDePago = 1,
+        [Description("Abonada")]
+        Pagada = 2
     }
 }
