@@ -8,7 +8,9 @@
     "Direccion": {
       "Calle": "Av Libertador",
       "Numero": 100,
-      "CP": 0
+      "CP": 0,
+      "Latitud": "",
+      "Longitud": ""
     },
     "Disponibilidad": {
       "NombreHabitacion": "Simple",
@@ -31,7 +33,9 @@
     "Direccion": {
       "Calle": "Av Libertador",
       "Numero": 100,
-      "CP": 0
+      "CP": 0,
+      "Latitud": "",
+      "Longitud": ""
     },
     "Disponibilidad": {
       "NombreHabitacion": "Doble",
@@ -54,7 +58,9 @@
     "Direccion": {
       "Calle": "Av Libertador",
       "Numero": 100,
-      "CP": 0
+      "CP": 0,
+      "Latitud": "",
+      "Longitud": ""
     },
     "Disponibilidad": {
       "NombreHabitacion": "Triple",
@@ -77,7 +83,9 @@
     "Direccion": {
       "Calle": "Av Libertador",
       "Numero": 100,
-      "CP": 0
+      "CP": 0,
+      "Latitud": "",
+      "Longitud": ""
     },
     "Disponibilidad": {
       "NombreHabitacion": "Cuádruple",
@@ -100,7 +108,9 @@
     "Direccion": {
       "Calle": "Av Cordoba",
       "Numero": 300,
-      "CP": 0
+      "CP": 0,
+      "Latitud": "",
+      "Longitud": ""
     },
     "Disponibilidad": {
       "NombreHabitacion": "Simple",
@@ -123,7 +133,9 @@
     "Direccion": {
       "Calle": "Av Cordoba",
       "Numero": 300,
-      "CP": 0
+      "CP": 0,
+      "Latitud": "",
+      "Longitud": ""
     },
     "Disponibilidad": {
       "NombreHabitacion": "Doble",
@@ -146,7 +158,9 @@
     "Direccion": {
       "Calle": "Av Cordoba",
       "Numero": 300,
-      "CP": 0
+      "CP": 0,
+      "Latitud": "",
+      "Longitud": ""
     },
     "Disponibilidad": {
       "NombreHabitacion": "Triple",
@@ -169,7 +183,9 @@
     "Direccion": {
       "Calle": "Av Cordoba",
       "Numero": 300,
-      "CP": 0
+      "CP": 0,
+      "Latitud": "",
+      "Longitud": ""
     },
     "Disponibilidad": {
       "NombreHabitacion": "Cuádruple",
