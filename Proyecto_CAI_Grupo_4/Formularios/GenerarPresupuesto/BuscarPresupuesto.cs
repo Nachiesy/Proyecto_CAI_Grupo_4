@@ -21,8 +21,10 @@ public partial class BuscarPresupuesto : VistaBase
     {
         var validacion = Model.ValidarBuscarPresupuesto(txt_NumeroPresupuesto.Text.Trim());
 
-        if (!validacion)
+        if (!string.IsNullOrEmpty(validacion))
         {
+            MessageBox.Show(validacion, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             return;
         }
 

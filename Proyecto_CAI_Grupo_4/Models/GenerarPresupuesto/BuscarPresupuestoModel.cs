@@ -7,38 +7,32 @@ namespace Proyecto_CAI_Grupo_4.Models
     {
         public int PresupuestoId;
 
-        public bool ValidarBuscarPresupuesto(string numeroDePresupuesto)
+        public string ValidarBuscarPresupuesto(string numeroDePresupuesto)
         {
             var nroPresupuestoValido = int.TryParse(numeroDePresupuesto, out int nroPresupuesto);
 
             if (!nroPresupuestoValido)
             {
-                MessageBox.Show("El número de presupuesto ingresado no es válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return false;
+                return "El número de presupuesto ingresado no es válido";
             }
 
             var presupuesto = PresupuestosModule.GetPresupuestoById(nroPresupuesto);
 
             if (presupuesto is null)
             {
-                MessageBox.Show("El número de presupuesto ingresado no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-                return false;
+                return "El número de presupuesto ingresado no existe";
             }
 
             var preReserva = ReservaModule.GetPrereservaAbonadaByItinerario(presupuesto.IdItinerario);
 
             if (preReserva.Count > 0)
             {
-                MessageBox.Show("El número de presupuesto ingresado ya fue abonado en la pre-reserva " + preReserva.First().IdItinerario + " y no se puede editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return false;
+                return "El número de presupuesto ingresado ya fue abonado en la pre-reserva " + preReserva.First().IdItinerario + " y no se puede editar";
             }
 
             PresupuestoId = nroPresupuesto;
 
-            return true;
+            return null;
         }
 
         public void GoToGenerarPresupuestoMenu()
