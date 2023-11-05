@@ -10,8 +10,8 @@ namespace Proyecto_CAI_Grupo_4
     public partial class IngresarPasajero : VistaBase
     {
         public Pasajeros Pasajero { get; private set; }
-        private List<Aereos> aereosAsignables { get; set; }
-        private List<Hoteles> hotelesAsignables { get; set; }
+        private List<AereosEnt> aereosAsignables { get; set; }
+        private List<HotelesEnt> hotelesAsignables { get; set; }
         private int IdItinerario { get; set; }
         private Itinerario Itinerario { get; set; }
 

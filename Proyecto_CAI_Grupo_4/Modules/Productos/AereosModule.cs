@@ -6,26 +6,26 @@ namespace Proyecto_CAI_Grupo_4.Modules
 {
     public static class AereosModule
     {
-        private static List<Aereos> aereos = new List<Aereos>();
+        private static List<AereosEnt> aereos = new List<AereosEnt>();
 
-        private static List<Aereos> aereosElegidos = new List<Aereos>();
+        private static List<AereosEnt> aereosElegidos = new List<AereosEnt>();
 
         static AereosModule()
         {
             aereos = AlmacenAereos.GetAereos();
         }
 
-        public static IEnumerable<Aereos> GetAereos()
+        public static IEnumerable<AereosEnt> GetAereos()
         {
             return aereos;
         }
 
-        public static IEnumerable<Aereos> GetAereosByIds(IEnumerable<int> ids)
+        public static IEnumerable<AereosEnt> GetAereosByIds(IEnumerable<int> ids)
         {
             return aereos.Where(x => ids.Contains(x.Id));
         }
 
-        public static IEnumerable<Aereos> GetAereos(AereosFilter filter)
+        public static IEnumerable<AereosEnt> GetAereos(AereosFilter filter)
         {
             return aereos
                     .Where(x => (!filter.CantidadMin.HasValue || x.Tarifa.Disponibilidad >= filter.CantidadMin)
@@ -39,12 +39,12 @@ namespace Proyecto_CAI_Grupo_4.Modules
                                 && (string.IsNullOrEmpty(filter.Clase) || x.Tarifa.Clase == filter.Clase));
         }
 
-        public static Aereos? GetAereoByID(int id)
+        public static AereosEnt? GetAereoByID(int id)
         {
             return aereos.SingleOrDefault(x => x.Id == id);
         }
 
-        public static IEnumerable<Aereos> GetAereosElegidos()
+        public static IEnumerable<AereosEnt> GetAereosElegidos()
         {
             return aereosElegidos;
         }
@@ -78,7 +78,7 @@ namespace Proyecto_CAI_Grupo_4.Modules
 
         public static void ActualizarCantidadesDeAereos()
         {
-            var aereosToUpdate = new List<Aereos>(aereos.Intersect(aereosElegidos));
+            var aereosToUpdate = new List<AereosEnt>(aereos.Intersect(aereosElegidos));
 
             foreach (var aereo in aereosToUpdate)
             {

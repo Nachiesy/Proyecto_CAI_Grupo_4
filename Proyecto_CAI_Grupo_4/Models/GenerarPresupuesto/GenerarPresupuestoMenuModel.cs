@@ -41,7 +41,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             PresupuestosModule.UpdatePresupuesto(itinerarioActualizado);
         }
 
-        public void AddAereosToListView(ListView listView, IEnumerable<Aereos> aereosToAdd)
+        public void AddAereosToListView(ListView listView, IEnumerable<AereosEnt> aereosToAdd)
         {
             var filasProducto = aereosToAdd.Select(item => new ListViewItem(item.Codigo)
             {
@@ -61,7 +61,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             listView.Items.AddRange(filasProducto);
         }
 
-        public void AddHotelesToListView(ListView listView, IEnumerable<Hoteles> hotelesToAdd)
+        public void AddHotelesToListView(ListView listView, IEnumerable<HotelesEnt> hotelesToAdd)
         {
             var filasProducto = hotelesToAdd.Select(item => new ListViewItem(item.Codigo)
             {
@@ -162,12 +162,12 @@ namespace Proyecto_CAI_Grupo_4.Models
             HotelesModule.AddHotelElegido(id);
         }
 
-        public IEnumerable<Aereos> GetAereosElegidos()
+        public IEnumerable<AereosEnt> GetAereosElegidos()
         {
             return AereosModule.GetAereosElegidos();
         }
 
-        public IEnumerable<Hoteles> GetHotelesElegidos()
+        public IEnumerable<HotelesEnt> GetHotelesElegidos()
         {
             return HotelesModule.GetHotelesElegidos();
         }

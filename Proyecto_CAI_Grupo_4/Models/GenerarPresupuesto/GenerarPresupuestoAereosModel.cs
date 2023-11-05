@@ -101,17 +101,17 @@ namespace Proyecto_CAI_Grupo_4.Models
             return string.Empty;
         }
 
-        public IEnumerable<Aereos> GetAereos(AereosFilter filter)
+        public IEnumerable<AereosEnt> GetAereos(AereosFilter filter)
         {
             return AereosModule.GetAereos(filter);
         }
 
-        public IEnumerable<Aereos> GetAereosElegidos()
+        public IEnumerable<AereosEnt> GetAereosElegidos()
         {
             return AereosModule.GetAereosElegidos();
         }
 
-        public void AddProductosToListView(ListView listView, IEnumerable<Aereos> listToAdd)
+        public void AddProductosToListView(ListView listView, IEnumerable<AereosEnt> listToAdd)
         {
             foreach (var item in listToAdd)
             {
@@ -133,7 +133,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             }
         }
 
-        public void AddProductosSeleccionadosToListView(ListView listView, IEnumerable<Aereos> listToAdd)
+        public void AddProductosSeleccionadosToListView(ListView listView, IEnumerable<AereosEnt> listToAdd)
         {
             foreach (var item in listToAdd)
             {
@@ -155,7 +155,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             }
         }
 
-        public Aereos? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
+        public AereosEnt? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
         {
             var producto = AereosModule.GetAereoByID(id);
 

@@ -101,17 +101,17 @@ namespace Proyecto_CAI_Grupo_4.Models
             return string.Empty;
         }
 
-        public IEnumerable<Hoteles> GetHoteles(HotelesFilter filter)
+        public IEnumerable<HotelesEnt> GetHoteles(HotelesFilter filter)
         {
             return HotelesModule.GetHoteles(filter);
         }
 
-        public IEnumerable<Hoteles> GetHotelesElegidos()
+        public IEnumerable<HotelesEnt> GetHotelesElegidos()
         {
             return HotelesModule.GetHotelesElegidos();
         }
 
-        public void AddProductosToListView(ListView listView, IEnumerable<Hoteles> listToAdd)
+        public void AddProductosToListView(ListView listView, IEnumerable<HotelesEnt> listToAdd)
         {
             foreach (var item in listToAdd)
             {
@@ -137,7 +137,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             }
         }
 
-        public void AddProductosSeleccionadosToListView(ListView listView, IEnumerable<Hoteles> listToAdd)
+        public void AddProductosSeleccionadosToListView(ListView listView, IEnumerable<HotelesEnt> listToAdd)
         {
             foreach (var item in listToAdd)
             {
@@ -162,7 +162,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             }
         }
 
-        public Hoteles? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
+        public HotelesEnt? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
         {
             var producto = HotelesModule.GetHotelByID(id);
 

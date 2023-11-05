@@ -88,7 +88,7 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            var productosToAdd = new List<Aereos>();
+            var productosToAdd = new List<AereosEnt>();
 
             foreach (ListViewItem item in listViewProductos.SelectedItems)
             {

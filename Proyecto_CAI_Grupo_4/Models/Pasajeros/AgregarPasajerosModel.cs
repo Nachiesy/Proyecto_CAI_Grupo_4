@@ -9,12 +9,12 @@ namespace Proyecto_CAI_Grupo_4.Models
     {
         public List<Pasajeros> Pasajeros = new List<Pasajeros>();
 
-        public Aereos GetAereoById(int id)
+        public AereosEnt GetAereoById(int id)
         {
             return AereosModule.GetAereoByID(id);
         }
 
-        public Hoteles GetHotelById(int id)
+        public HotelesEnt GetHotelById(int id)
         {
             return HotelesModule.GetHotelByID(id);
         }
