@@ -53,6 +53,14 @@ namespace Proyecto_CAI_Grupo_4.Models
                 .Select(x => new { x.Key, Cantidad = x.Count() })
                 .ToList();
 
+            var agrupacionHotelesSeleccionados = Pasajeros
+                .SelectMany(x =>
+                    x.AereosAsignados.Select(y =>
+                        new { y.Id }))
+                .GroupBy(x => new { x.Id })
+                .Select(x => new { x.Key, Cantidad = x.Count() })
+                .ToList();
+
             foreach (var pasajero in Pasajeros)
             {
                 foreach (var aereoSeleccionado in pasajero.AereosAsignados)
@@ -130,7 +138,11 @@ namespace Proyecto_CAI_Grupo_4.Models
             }
 
             //DEBE CARGAR TODOS LOS PASAJEROS para cada uno de los productos
-            
+            var itinerario = PresupuestosModule.GetPresupuestoById(idItinerario);
+
+            //var listaIdsUnicosProductosAsignados = 
+
+            //var productosNoAsignados = itinerario.IdAereosSeleccionados
 
             //Para el caso de los hoteles esta bien a priori, ver el ejemplo de una habitacion cuadruple que permite 2 adultos y 2 menores...
             //if (Pasajeros.Any(x => x.HotelesAsignados.Any(y =>

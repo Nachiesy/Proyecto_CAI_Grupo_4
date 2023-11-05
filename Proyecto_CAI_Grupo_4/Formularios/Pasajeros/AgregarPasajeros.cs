@@ -196,7 +196,7 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            var esValido = Model.ValidarPasajeros();
+            var esValido = Model.ValidarPasajeros(_idItinerario);
 
             if (esValido)
             {
