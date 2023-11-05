@@ -111,57 +111,6 @@ namespace Proyecto_CAI_Grupo_4.Models
             return HotelesModule.GetHotelesElegidos();
         }
 
-        public void AddProductosToListView(ListView listView, IEnumerable<HotelesEnt> listToAdd)
-        {
-            foreach (var item in listToAdd)
-            {
-
-                var row = new ListViewItem(item.Id.ToString());
-
-                row.SubItems.Add(item.Codigo);
-                row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Ciudad);
-                row.SubItems.Add($"{item.Direccion.Calle} {item.Direccion.Numero}");
-                row.SubItems.Add(item.Calificacion);
-                row.SubItems.Add(item.Disponibilidad.Disponibilidad.ToString());
-                row.SubItems.Add(item.Disponibilidad.NombreHabitacion);
-                row.SubItems.Add(item.Disponibilidad.TarifaPorDia.ToFormDecimal());
-                row.SubItems.Add(item.Disponibilidad.CapacidadTotal.ToString());
-                row.SubItems.Add(item.Disponibilidad.CantidadMaximaAdultos.ToString());
-                row.SubItems.Add(item.Disponibilidad.CantidadMaximaMenores.ToString());
-                row.SubItems.Add(item.Disponibilidad.CantidadMaximaInfantes.ToString());
-                row.SubItems.Add(item.Disponibilidad.FechaDesde.ToFormDate());
-                row.SubItems.Add(item.Disponibilidad.FechaHasta.ToFormDate());
-
-                listView.Items.Add(row);
-            }
-        }
-
-        public void AddProductosSeleccionadosToListView(ListView listView, IEnumerable<HotelesEnt> listToAdd)
-        {
-            foreach (var item in listToAdd)
-            {
-                var row = new ListViewItem(item.Id.ToString());
-
-                row.SubItems.Add(item.Codigo);
-                row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Ciudad);
-                row.SubItems.Add($"{item.Direccion.Calle} {item.Direccion.Numero}");
-                row.SubItems.Add(item.Calificacion);
-                // row.SubItems.Add(item.Disponibilidad.Disponibilidad.ToString());
-                row.SubItems.Add(item.Disponibilidad.NombreHabitacion);
-                row.SubItems.Add(item.Disponibilidad.TarifaPorDia.ToFormDecimal());
-                row.SubItems.Add(item.Disponibilidad.CapacidadTotal.ToString());
-                row.SubItems.Add(item.Disponibilidad.CantidadMaximaAdultos.ToString());
-                row.SubItems.Add(item.Disponibilidad.CantidadMaximaMenores.ToString());
-                row.SubItems.Add(item.Disponibilidad.CantidadMaximaInfantes.ToString());
-                row.SubItems.Add(item.Disponibilidad.FechaDesde.ToFormDate());
-                row.SubItems.Add(item.Disponibilidad.FechaHasta.ToFormDate());
-
-                listView.Items.Add(row);
-            }
-        }
-
         public HotelesEnt? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
         {
             var producto = HotelesModule.GetHotelByID(id);

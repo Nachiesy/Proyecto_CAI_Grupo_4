@@ -111,50 +111,6 @@ namespace Proyecto_CAI_Grupo_4.Models
             return AereosModule.GetAereosElegidos();
         }
 
-        public void AddProductosToListView(ListView listView, IEnumerable<AereosEnt> listToAdd)
-        {
-            foreach (var item in listToAdd)
-            {
-                var row = new ListViewItem(item.Id.ToString());
-
-                row.SubItems.Add(item.Codigo);
-                row.SubItems.Add(item.Origen);
-                row.SubItems.Add(item.Destino);
-                row.SubItems.Add(item.Tarifa.Clase);
-                row.SubItems.Add(item.Tarifa.Disponibilidad.ToString());
-                row.SubItems.Add(item.Tarifa.TipoDePasajero);
-                row.SubItems.Add(item.Tarifa.Precio.ToFormDecimal());
-                row.SubItems.Add(item.Aerolinea);
-                row.SubItems.Add(item.CantidadDeParadas.ToString());
-                row.SubItems.Add(item.FechaDeSalida.ToFormVueloDate());
-                row.SubItems.Add(item.FechaDeLlegada.ToFormVueloDate());
-
-                listView.Items.Add(row);
-            }
-        }
-
-        public void AddProductosSeleccionadosToListView(ListView listView, IEnumerable<AereosEnt> listToAdd)
-        {
-            foreach (var item in listToAdd)
-            {
-                var row = new ListViewItem(item.Id.ToString());
-
-                row.SubItems.Add(item.Codigo);
-                row.SubItems.Add(item.Origen);
-                row.SubItems.Add(item.Destino);
-                row.SubItems.Add(item.Tarifa.Clase);
-                // row.SubItems.Add(item.Tarifa.Disponibilidad.ToString());
-                row.SubItems.Add(item.Tarifa.TipoDePasajero);
-                row.SubItems.Add(item.Tarifa.Precio.ToFormDecimal());
-                row.SubItems.Add(item.Aerolinea);
-                row.SubItems.Add(item.CantidadDeParadas.ToString());
-                row.SubItems.Add(item.FechaDeSalida.ToFormVueloDate());
-                row.SubItems.Add(item.FechaDeLlegada.ToFormVueloDate());
-
-                listView.Items.Add(row);
-            }
-        }
-
         public AereosEnt? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
         {
             var producto = AereosModule.GetAereoByID(id);

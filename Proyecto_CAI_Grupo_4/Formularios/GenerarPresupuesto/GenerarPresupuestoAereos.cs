@@ -2,6 +2,7 @@
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -39,9 +40,53 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxClase.Items.Add(value);
             }
 
-            Model.AddProductosToListView(listViewProductos, Model.GetAereos(new AereosFilter() { CantidadMin = 1 }));
+            AddProductosToListView(Model.GetAereos(new AereosFilter() { CantidadMin = 1 }));
 
-            Model.AddProductosSeleccionadosToListView(listViewProductosSeleccionados, Model.GetAereosElegidos());
+            AddProductosSeleccionadosToListView(Model.GetAereosElegidos());
+        }
+
+        private void AddProductosToListView(IEnumerable<AereosEnt> listToAdd)
+        {
+            foreach (var item in listToAdd)
+            {
+                var row = new ListViewItem(item.Id.ToString());
+
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Origen);
+                row.SubItems.Add(item.Destino);
+                row.SubItems.Add(item.Tarifa.Clase);
+                row.SubItems.Add(item.Tarifa.Disponibilidad.ToString());
+                row.SubItems.Add(item.Tarifa.TipoDePasajero);
+                row.SubItems.Add(item.Tarifa.Precio.ToFormDecimal());
+                row.SubItems.Add(item.Aerolinea);
+                row.SubItems.Add(item.CantidadDeParadas.ToString());
+                row.SubItems.Add(item.FechaDeSalida.ToFormVueloDate());
+                row.SubItems.Add(item.FechaDeLlegada.ToFormVueloDate());
+
+                listViewProductos.Items.Add(row);
+            }
+        }
+
+        private void AddProductosSeleccionadosToListView(IEnumerable<AereosEnt> listToAdd)
+        {
+            foreach (var item in listToAdd)
+            {
+                var row = new ListViewItem(item.Id.ToString());
+
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Origen);
+                row.SubItems.Add(item.Destino);
+                row.SubItems.Add(item.Tarifa.Clase);
+                // row.SubItems.Add(item.Tarifa.Disponibilidad.ToString());
+                row.SubItems.Add(item.Tarifa.TipoDePasajero);
+                row.SubItems.Add(item.Tarifa.Precio.ToFormDecimal());
+                row.SubItems.Add(item.Aerolinea);
+                row.SubItems.Add(item.CantidadDeParadas.ToString());
+                row.SubItems.Add(item.FechaDeSalida.ToFormVueloDate());
+                row.SubItems.Add(item.FechaDeLlegada.ToFormVueloDate());
+
+                listViewProductosSeleccionados.Items.Add(row);
+            }
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -70,7 +115,7 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            Model.AddProductosToListView(listViewProductos, Model.GetAereos(filter));
+            AddProductosToListView(Model.GetAereos(filter));
 
             if (listViewProductos.Items.Count == 0)
             {
@@ -102,7 +147,7 @@ namespace Proyecto_CAI_Grupo_4
                 }
             }
 
-            Model.AddProductosSeleccionadosToListView(listViewProductosSeleccionados, productosToAdd);
+            AddProductosSeleccionadosToListView(productosToAdd);
         }
 
         private void btnRemoverProductos_Click(object sender, EventArgs e)
@@ -158,7 +203,7 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            Model.AddProductosToListView(listViewProductos, Model.GetAereos(new AereosFilter() { CantidadMin = 1 }));
+            AddProductosToListView(Model.GetAereos(new AereosFilter() { CantidadMin = 1 }));
         }
 
         private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)

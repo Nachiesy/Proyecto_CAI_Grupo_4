@@ -35,9 +35,60 @@ namespace Proyecto_CAI_Grupo_4
                 comboBoxCalificacion.Items.Add(value);
             }
 
-            Model.AddProductosToListView(listViewProductos, Model.GetHoteles(new HotelesFilter() { CantidadMin = 1 }));
+            AddProductosToListView(Model.GetHoteles(new HotelesFilter() { CantidadMin = 1 }));
 
-            Model.AddProductosSeleccionadosToListView(listViewProductosSeleccionados, Model.GetHotelesElegidos());
+            AddProductosSeleccionadosToListView(Model.GetHotelesElegidos());
+        }
+
+        private void AddProductosToListView(IEnumerable<HotelesEnt> listToAdd)
+        {
+            foreach (var item in listToAdd)
+            {
+
+                var row = new ListViewItem(item.Id.ToString());
+
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Nombre);
+                row.SubItems.Add(item.Ciudad);
+                row.SubItems.Add($"{item.Direccion.Calle} {item.Direccion.Numero}");
+                row.SubItems.Add(item.Calificacion);
+                row.SubItems.Add(item.Disponibilidad.Disponibilidad.ToString());
+                row.SubItems.Add(item.Disponibilidad.NombreHabitacion);
+                row.SubItems.Add(item.Disponibilidad.TarifaPorDia.ToFormDecimal());
+                row.SubItems.Add(item.Disponibilidad.CapacidadTotal.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaAdultos.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaMenores.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaInfantes.ToString());
+                row.SubItems.Add(item.Disponibilidad.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.Disponibilidad.FechaHasta.ToFormDate());
+
+                listViewProductos.Items.Add(row);
+            }
+        }
+
+        private void AddProductosSeleccionadosToListView(IEnumerable<HotelesEnt> listToAdd)
+        {
+            foreach (var item in listToAdd)
+            {
+                var row = new ListViewItem(item.Id.ToString());
+
+                row.SubItems.Add(item.Codigo);
+                row.SubItems.Add(item.Nombre);
+                row.SubItems.Add(item.Ciudad);
+                row.SubItems.Add($"{item.Direccion.Calle} {item.Direccion.Numero}");
+                row.SubItems.Add(item.Calificacion);
+                // row.SubItems.Add(item.Disponibilidad.Disponibilidad.ToString());
+                row.SubItems.Add(item.Disponibilidad.NombreHabitacion);
+                row.SubItems.Add(item.Disponibilidad.TarifaPorDia.ToFormDecimal());
+                row.SubItems.Add(item.Disponibilidad.CapacidadTotal.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaAdultos.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaMenores.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaInfantes.ToString());
+                row.SubItems.Add(item.Disponibilidad.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.Disponibilidad.FechaHasta.ToFormDate());
+
+                listViewProductosSeleccionados.Items.Add(row);
+            }
         }
 
         private void btnBuscarProductos_Click(object sender, EventArgs e)
@@ -66,7 +117,7 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            Model.AddProductosToListView(listViewProductos, Model.GetHoteles(filter));
+            AddProductosToListView(Model.GetHoteles(filter));
 
             if (listViewProductos.Items.Count == 0)
             {
@@ -97,7 +148,7 @@ namespace Proyecto_CAI_Grupo_4
                 }
             }
 
-            Model.AddProductosSeleccionadosToListView(listViewProductosSeleccionados, productosToAdd);
+            AddProductosSeleccionadosToListView(productosToAdd);
         }
 
         private void btnRemoverProductos_Click(object sender, EventArgs e)
@@ -153,7 +204,7 @@ namespace Proyecto_CAI_Grupo_4
 
             listViewProductos.Items.Clear();
 
-            Model.AddProductosToListView(listViewProductos, Model.GetHoteles(new HotelesFilter() { CantidadMin = 1 }));
+            AddProductosToListView(Model.GetHoteles(new HotelesFilter() { CantidadMin = 1 }));
         }
 
         private void btnDisableDatePickerFilterFechaDesde_Click(object sender, EventArgs e)
