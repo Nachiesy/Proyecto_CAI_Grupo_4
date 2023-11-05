@@ -90,6 +90,8 @@ namespace Proyecto_CAI_Grupo_4
                 MessageBox.Show(
                     $"No se puede generar una prereserva sobre un presupuesto sin pasajeros asignador. " +
                     $"Por favor agrege pasajeros al presupuesto desde la pantalla correspondiente. (Id Presupuesto: {itinerario.IdItinerario})");
+
+                return;
             }
 
             DialogResult resultado = MessageBox.Show("¿Desea crear la prereserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
