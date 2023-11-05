@@ -45,7 +45,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 .Select(x => new { x.Key.IdHotel, x.Key.TipoPasajero, Cantidad = x.Count() })
                 .ToList();
 
-            var agrupacionVuelosSeleccionados = Pasajeros
+            var agrupacionVuelosAsignados = Pasajeros
                 .SelectMany(x =>
                     x.AereosAsignados.Select(y =>
                         new { y.Id }))
@@ -53,9 +53,9 @@ namespace Proyecto_CAI_Grupo_4.Models
                 .Select(x => new { x.Key, Cantidad = x.Count() })
                 .ToList();
 
-            var agrupacionHotelesSeleccionados = Pasajeros
+            var agrupacionHotelesAsignados = Pasajeros
                 .SelectMany(x =>
-                    x.AereosAsignados.Select(y =>
+                    x.HotelesAsignados.Select(y =>
                         new { y.Id }))
                 .GroupBy(x => new { x.Id })
                 .Select(x => new { x.Key, Cantidad = x.Count() })
@@ -74,7 +74,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                         return false;
                     }
 
-                    var aereoRepetido = agrupacionVuelosSeleccionados.FirstOrDefault(x => x.Key.Id == aereoSeleccionado.Id);
+                    var aereoRepetido = agrupacionVuelosAsignados.FirstOrDefault(x => x.Key.Id == aereoSeleccionado.Id);
 
                     if (aereoRepetido is not null && aereoRepetido.Cantidad > 1)
                     {
@@ -140,29 +140,31 @@ namespace Proyecto_CAI_Grupo_4.Models
             //DEBE CARGAR TODOS LOS PASAJEROS para cada uno de los productos
             var itinerario = PresupuestosModule.GetPresupuestoById(idItinerario);
 
-            //var listaIdsUnicosProductosAsignados = 
+            foreach (var aereoSeleccionado in itinerario.IdAereosSeleccionados)
+            {
+                var fueAsignado = agrupacionVuelosAsignados.Count(x => x.Key.Id == aereoSeleccionado.Id) > 0;
 
-            //var productosNoAsignados = itinerario.IdAereosSeleccionados
+                if (!fueAsignado)
+                {
+                    var detalleAereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
 
-            //Para el caso de los hoteles esta bien a priori, ver el ejemplo de una habitacion cuadruple que permite 2 adultos y 2 menores...
-            //if (Pasajeros.Any(x => x.HotelesAsignados.Any(y =>
-            //        Pasajeros.Any(z => z.HotelesAsignados.Any(w => w.Id == y.Id && z != x)))))
-            //{
-            //    MessageBox.Show("Algun pasajero tiene asignado un mismo producto de hotel mas de una vez");
-            //    return false;
-            //}
+                    MessageBox.Show($"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar un pasajero al vuelo {detalleAereo.Nombre} con tarifa {detalleAereo.Tarifa.TipoDePasajero}. (Id del producto: {aereoSeleccionado.Id})");
+                    return false;
+                }
+            }
 
-            //var agrupacionClientes = Pasajeros
-            //    .GroupBy(x => x.DNI)
-            //    .Select(x => new { x.Key, Cantidad = x.Count() })
-            //    .ToList();
+            foreach (var hotelSeleccionado in itinerario.IdHotelesSeleccionados)
+            {
+                var fueAsignado = agrupacionHotelesAsignados.Count(x => x.Key.Id == hotelSeleccionado.Id) > 0;
 
-            //if (agrupacionClientes.Count > 1)
-            //{
-            //    MessageBox.Show("Algun pasajero se repite");
-            //    return false;
-            //}
+                if (!fueAsignado)
+                {
+                    var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
 
+                    MessageBox.Show($"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar un pasajero al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})");
+                    return false;
+                }
+            }
 
             return true;
         }
