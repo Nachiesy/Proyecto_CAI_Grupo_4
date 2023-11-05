@@ -41,46 +41,6 @@ namespace Proyecto_CAI_Grupo_4.Models
             PresupuestosModule.UpdatePresupuesto(itinerarioActualizado);
         }
 
-        public void AddAereosToListView(ListView listView, IEnumerable<AereosEnt> aereosToAdd)
-        {
-            var filasProducto = aereosToAdd.Select(item => new ListViewItem(item.Codigo)
-            {
-                SubItems =
-                {
-                    item.Nombre,
-                    "Aereo",
-                    item.Tarifa.Precio.ToFormDecimal()
-                },
-                Tag = new ItinearioItemTag
-                {
-                    IdProducto = item.Id,
-                    TipoDeServicio = "Aereo"
-                }
-            }).ToArray();
-
-            listView.Items.AddRange(filasProducto);
-        }
-
-        public void AddHotelesToListView(ListView listView, IEnumerable<HotelesEnt> hotelesToAdd)
-        {
-            var filasProducto = hotelesToAdd.Select(item => new ListViewItem(item.Codigo)
-            {
-                SubItems =
-                {
-                    item.Nombre,
-                    "Hotel",
-                    item.Disponibilidad.TarifaPorDia.ToFormDecimal()
-                },
-                Tag = new ItinearioItemTag
-                {
-                    IdProducto = item.Id,
-                    TipoDeServicio = "Hotel"
-                }
-            }).ToArray();
-
-            listView.Items.AddRange(filasProducto);
-        }
-
         public string EsPresupuestoValido(string dni, string nombre, string apellido, int productosElegidos)
         {
             if (!dni.EsDNI())

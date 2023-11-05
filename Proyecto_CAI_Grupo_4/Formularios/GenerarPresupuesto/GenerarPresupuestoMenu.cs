@@ -1,6 +1,7 @@
 using Proyecto_CAI_Grupo_4.Utils;
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4;
 
@@ -38,11 +39,11 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         var aereos = Model.GetAereosElegidos();
 
-        Model.AddAereosToListView(productosElegidos, aereos);
+        AddAereosToListView(aereos);
 
         var hoteles = Model.GetHotelesElegidos();
 
-        Model.AddHotelesToListView(productosElegidos, hoteles);
+        AddHotelesToListView(hoteles);
 
         Total += aereos.Sum(x => x.Tarifa.Precio);
         Total += hoteles.Sum(x => x.Disponibilidad.TarifaPorDia);
@@ -50,6 +51,46 @@ public partial class GenerarPresupuestoMenu : VistaBase
         ActualizarTextoPrecioTotal();
 
         ActualizarEstadoBotones();
+    }
+
+    private void AddAereosToListView(IEnumerable<AereosEnt> aereosToAdd)
+    {
+        var filasProducto = aereosToAdd.Select(item => new ListViewItem(item.Codigo)
+        {
+            SubItems =
+                {
+                    item.Nombre,
+                    "Aereo",
+                    item.Tarifa.Precio.ToFormDecimal()
+                },
+            Tag = new ItinearioItemTag
+            {
+                IdProducto = item.Id,
+                TipoDeServicio = "Aereo"
+            }
+        }).ToArray();
+
+        productosElegidos.Items.AddRange(filasProducto);
+    }
+
+    private void AddHotelesToListView(IEnumerable<HotelesEnt> hotelesToAdd)
+    {
+        var filasProducto = hotelesToAdd.Select(item => new ListViewItem(item.Codigo)
+        {
+            SubItems =
+                {
+                    item.Nombre,
+                    "Hotel",
+                    item.Disponibilidad.TarifaPorDia.ToFormDecimal()
+                },
+            Tag = new ItinearioItemTag
+            {
+                IdProducto = item.Id,
+                TipoDeServicio = "Hotel"
+            }
+        }).ToArray();
+
+        productosElegidos.Items.AddRange(filasProducto);
     }
 
     private void btnMenuAereos_Click(object sender, EventArgs e)
