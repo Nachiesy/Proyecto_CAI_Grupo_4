@@ -83,12 +83,19 @@ namespace Proyecto_CAI_Grupo_4
             }
 
             ListViewItem item = lv_Prereservas.SelectedItems[0];
+            var itinerario = Model.GetPresupuestoById(int.Parse(item.SubItems[0].Text));
+
+            if (Model.GetTotalPasajerosByIdPresupuesto(itinerario.IdItinerario) == 0)
+            {
+                MessageBox.Show(
+                    $"No se puede generar una prereserva sobre un presupuesto sin pasajeros asignador. " +
+                    $"Por favor agrege pasajeros al presupuesto desde la pantalla correspondiente. (Id Presupuesto: {itinerario.IdItinerario})");
+            }
+
             DialogResult resultado = MessageBox.Show("¿Desea crear la prereserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)
             {
-                var itinerario = Model.GetPresupuestoById(int.Parse(item.SubItems[0].Text));
-
                 var prereserva = Model.GenerarPreReserva(itinerario);
 
                 MessageBox.Show("Prereserva generada con Id: " + prereserva.Codigo);
