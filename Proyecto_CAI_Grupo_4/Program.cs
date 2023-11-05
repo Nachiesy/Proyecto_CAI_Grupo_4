@@ -20,7 +20,6 @@ namespace Proyecto_CAI_Grupo_4
             AlmacenPresupuestos.Guardar();
             AlmacenPasajeros.Guardar();
             AlmacenReservas.Guardar();
-            AlmacenPreReservas.Guardar();
         }
     }
 }

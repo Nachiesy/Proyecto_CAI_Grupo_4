@@ -9,7 +9,7 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             return PresupuestosModule
             .GetPresupuestos()
-                .Where(x => PrereservaModule.GetPrereservaByItinerario(x.IdItinerario).Count == 0)
+                .Where(x => ReservaModule.GetPrereservaByItinerario(x.IdItinerario).Count == 0)
                 .AsQueryable();
         }
 
@@ -23,12 +23,10 @@ namespace Proyecto_CAI_Grupo_4.Models
             return PresupuestosModule.GetPresupuestoById(id);
         }
 
-        public Prereserva GenerarPreReserva(Itinerario itinerario)
+        public Reserva GenerarPreReserva(Itinerario itinerario)
         {
-            return PrereservaModule.GenerarNuevaPrereserva(
+            return ReservaModule.GenerarNuevaPreReserva(
                     idItinerario: itinerario.IdItinerario,
-                    /*ESTADO HARDCODEADO PORQUE MAGICAMENTE DE UNA U OTRA FORMA TIENEN QUE SER PAGADAS PARA PODER GENERAR RESERVA. EL LISTADO FILTRA PAGADAS.*/
-                    estado: PrereservaEstadoEnum.Pagada, /* PrereservaEstadoEnum.PendienteDePago */
                     cliente: itinerario.Cliente);
         }
 

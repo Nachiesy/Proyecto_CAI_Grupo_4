@@ -19,6 +19,12 @@ namespace Proyecto_CAI_Grupo_4.Entities
             FechaEstado = DateTime.Now;
         }
 
+        public void ConfirmarPreReserva()
+        {
+            Estado = ReservaEstadoEnum.PendienteDeConfirmacion;
+            FechaEstado = DateTime.Now;
+        }
+
         public void ConfirmarReserva()
         {
             Estado = ReservaEstadoEnum.Confirmada;
@@ -30,9 +36,13 @@ namespace Proyecto_CAI_Grupo_4.Entities
     {
         [Description("Estado Invalido")]
         Invalida = 0,
-        [Description("Pendiente de Confirmación")]
-        PendienteDeConfirmacion = 1,
-        [Description("Confirmada")]
-        Confirmada = 2
+        [Description("Pre-reserva pendiente de Pago")]
+        PendienteDePago = 1,
+        [Description("Pre-reserva abonada")]
+        Pagada = 2,
+        [Description("Reserva pendiente de confirmación")]
+        PendienteDeConfirmacion = 3,
+        [Description("Reserva confirmada")]
+        Confirmada = 4,
     }
 }

@@ -25,7 +25,7 @@ namespace Proyecto_CAI_Grupo_4
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
-            var prereservas = Model.GetPreReservas();
+            var prereservas = Model.GetPreReservasAbonadas();
 
             if (!string.IsNullOrEmpty(codigo))
             {
@@ -52,7 +52,7 @@ namespace Proyecto_CAI_Grupo_4
             AddPrereservasToListView(prereservas.ToList());
         }
 
-        private void AddPrereservasToListView(IEnumerable<Prereserva> list)
+        private void AddPrereservasToListView(IEnumerable<Reserva> list)
         {
             lv_Prereservas.Items.Clear();
 
@@ -88,11 +88,11 @@ namespace Proyecto_CAI_Grupo_4
 
             if (resultado == DialogResult.Yes)
             {
-                var prereserva = Model.GetPreReservaById(int.Parse(item.SubItems[0].Text));
+                var prereserva = Model.GetPreReservasAbonadasById(int.Parse(item.SubItems[0].Text));
 
                 var reserva = Model.GenerarReserva(prereserva);
 
-                MessageBox.Show("Reserva generada con Id: " + reserva.Codigo);
+                MessageBox.Show("Reservacion exitosa con Id: " + reserva.Codigo);
 
                 lv_Prereservas.Items.Remove(item);
             }

@@ -27,7 +27,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 return false;
             }
 
-            var preReserva = PrereservaModule.GetPrereservaByItinerario(presupuesto.IdItinerario);
+            var preReserva = ReservaModule.GetPrereservaAbonadaByItinerario(presupuesto.IdItinerario);
 
             if (preReserva.Count > 0)
             {
