@@ -81,36 +81,29 @@ namespace Proyecto_CAI_Grupo_4.Models
             listView.Items.AddRange(filasProducto);
         }
 
-        public bool EsPresupuestoValido(string dni, string nombre, string apellido, int productosElegidos)
+        public string EsPresupuestoValido(string dni, string nombre, string apellido, int productosElegidos)
         {
             if (!dni.EsDNI())
             {
-                MessageBox.Show($"Debes ingresar un DNI correcto.", "Error", MessageBoxButtons.OK);
-
-                return false;
+                return $"Debes ingresar un DNI correcto.";
             }
 
             if (string.IsNullOrEmpty(nombre))
             {
-                MessageBox.Show($"Debes ingresar un Nombre.", "Error", MessageBoxButtons.OK);
-
-                return false;
+                return $"Debes ingresar un Nombre.";
             }
 
             if (string.IsNullOrEmpty(apellido))
             {
-                MessageBox.Show($"Debes ingresar un Apellido.", "Error", MessageBoxButtons.OK);
-
-                return false;
+                return $"Debes ingresar un Apellido.";
             }
 
             if (productosElegidos == 0)
             {
-                MessageBox.Show($"Debes elegir productos para poder generar un Presupuesto.", "Error", MessageBoxButtons.OK);
-
-                return false;
+                return $"Debes elegir productos para poder generar un Presupuesto.";
             }
-            return true;
+
+            return null;
         }
 
         public Cliente GenerarCliente(string dni, string nombre, string apellido)

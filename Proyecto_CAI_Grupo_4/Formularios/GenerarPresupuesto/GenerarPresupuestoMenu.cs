@@ -74,8 +74,12 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         var apellido = textBoxClienteApellido.Text.Trim();
 
-        if (!Model.EsPresupuestoValido(dni, nombre, apellido, productosElegidos.Items.Count))
+        var validacion = Model.EsPresupuestoValido(dni, nombre, apellido, productosElegidos.Items.Count);
+
+        if (!string.IsNullOrEmpty(validacion))
         {
+            MessageBox.Show(validacion, "Error", MessageBoxButtons.OK);
+
             return;
         }
 
