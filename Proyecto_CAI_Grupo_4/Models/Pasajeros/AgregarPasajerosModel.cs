@@ -1,6 +1,7 @@
 ﻿using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Modules;
 using Proyecto_CAI_Grupo_4.Utils;
+using System.Reflection;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
@@ -33,7 +34,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             return PresupuestosModule.GetPresupuestos();
         }
 
-        public bool ValidarPasajeros()
+        public bool ValidarPasajeros(int idItinerario)
         {
             //cantidad Agrupada PorTipo De Pasajero Y IdHotel y COUNT por cada grupo
             var agrupacionCantidadesHotelesSeleccionados = Pasajeros
@@ -61,7 +62,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                     if (aereo.Tarifa.TipoDePasajero != pasajero.GetTipoDePasajero())
                     {
                         MessageBox.Show($"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.IdAereo}, " +
-                                        $"dado que es una tarifa de {aereo.TipoDePasajero.GetDescription()} y el pasajero es aplicable a tarifa de {pasajero.GetTipoDePasajero().GetDescription()}");
+                                        $"dado que es una tarifa de {aereo.Tarifa.TipoDePasajero} y el pasajero es aplicable a tarifa de {pasajero.GetTipoDePasajero()}");
                         return false;
                     }
 
@@ -127,6 +128,9 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                 }
             }
+
+            //DEBE CARGAR TODOS LOS PASAJEROS para cada uno de los productos
+            
 
             //Para el caso de los hoteles esta bien a priori, ver el ejemplo de una habitacion cuadruple que permite 2 adultos y 2 menores...
             //if (Pasajeros.Any(x => x.HotelesAsignados.Any(y =>
