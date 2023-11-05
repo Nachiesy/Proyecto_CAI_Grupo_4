@@ -20,19 +20,19 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            foreach (HotelesCiudadEnum value in Enum.GetValues(typeof(HotelesCiudadEnum)))
+            foreach (var value in Model.GetCiudades())
             {
-                comboBoxCiudad.Items.Add(value.GetDescription());
+                comboBoxCiudad.Items.Add(value);
             }
 
-            foreach (TipoDeHabitacionEnum value in Enum.GetValues(typeof(TipoDeHabitacionEnum)))
+            foreach (var value in Model.GetHabitaciones())
             {
-                comboBoxTipoDeHabitacion.Items.Add(value.GetDescription());
+                comboBoxTipoDeHabitacion.Items.Add(value);
             }
 
-            foreach (HotelesCalificacionEnum value in Enum.GetValues(typeof(HotelesCalificacionEnum)))
+            foreach (var value in Model.GetCalificaciones())
             {
-                comboBoxCalificacion.Items.Add(value.GetDescription());
+                comboBoxCalificacion.Items.Add(value);
             }
 
             Model.AddProductosToListView(listViewProductos, Model.GetHoteles(new HotelesFilter() { CantidadMin = 1 }));
@@ -50,9 +50,9 @@ namespace Proyecto_CAI_Grupo_4
                 FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
                 FechaHasta = datePickerFilterFechaHasta.Enabled ? datePickerFilterFechaHasta.Value : null,
                 Nombre = textBoxNombre.Text,
-                Ciudad = comboBoxCiudad.SelectedIndex != -1 ? comboBoxCiudad.SelectedIndex : null,
-                TipoDeHabitacion = comboBoxTipoDeHabitacion.SelectedIndex != -1 ? comboBoxTipoDeHabitacion.SelectedIndex : null,
-                Calificacion = comboBoxCalificacion.SelectedIndex != -1 ? comboBoxCalificacion.SelectedIndex : null,
+                Ciudad = comboBoxCiudad.SelectedIndex != -1 ? comboBoxCiudad.Text : null,
+                TipoDeHabitacion = comboBoxTipoDeHabitacion.SelectedIndex != -1 ? comboBoxTipoDeHabitacion.Text : null,
+                Calificacion = comboBoxCalificacion.SelectedIndex != -1 ? comboBoxCalificacion.Text : null,
             };
 
             var validacion = Model.ValidacionDeFiltros(filter);

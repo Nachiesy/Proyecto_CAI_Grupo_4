@@ -7,7 +7,7 @@ namespace Proyecto_CAI_Grupo_4.Models
     public class ItinearioItemTag
     {
         public int IdProducto { get; set; }
-        public TipoDeServicioEnum TipoDeServicio { get; set; }
+        public string TipoDeServicio { get; set; }
     }
 
     public class GenerarPresupuestoMenuModel
@@ -41,20 +41,40 @@ namespace Proyecto_CAI_Grupo_4.Models
             PresupuestosModule.UpdatePresupuesto(itinerarioActualizado);
         }
 
-        public void AddProductosToListView(ListView listView, IEnumerable<Productos> productosToAdd)
+        public void AddAereosToListView(ListView listView, IEnumerable<Aereos> aereosToAdd)
         {
-            var filasProducto = productosToAdd.Select(item => new ListViewItem(item.Codigo)
+            var filasProducto = aereosToAdd.Select(item => new ListViewItem(item.Codigo)
             {
                 SubItems =
                 {
                     item.Nombre,
-                    item.TipoDeServicio.GetDescription(),
-                    item.Precio.ToFormDecimal()
+                    "Aereo",
+                    item.Tarifa.Precio.ToFormDecimal()
                 },
                 Tag = new ItinearioItemTag
                 {
                     IdProducto = item.Id,
-                    TipoDeServicio = item.TipoDeServicio
+                    TipoDeServicio = "Aereo"
+                }
+            }).ToArray();
+
+            listView.Items.AddRange(filasProducto);
+        }
+
+        public void AddHotelesToListView(ListView listView, IEnumerable<Hoteles> hotelesToAdd)
+        {
+            var filasProducto = hotelesToAdd.Select(item => new ListViewItem(item.Codigo)
+            {
+                SubItems =
+                {
+                    item.Nombre,
+                    "Hotel",
+                    item.Disponibilidad.TarifaPorDia.ToFormDecimal()
+                },
+                Tag = new ItinearioItemTag
+                {
+                    IdProducto = item.Id,
+                    TipoDeServicio = "Hotel"
                 }
             }).ToArray();
 
@@ -108,7 +128,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                 var idUnico = PrefijoCodigoPresupuesto + PresupuestoId;
 
-                if (tag.TipoDeServicio == TipoDeServicioEnum.aereo)
+                if (tag.TipoDeServicio == "Aereo")
                 {
                     idUnico += PrefijoCodigoAereo + (PrefijoCodigoItinerario + i);
 

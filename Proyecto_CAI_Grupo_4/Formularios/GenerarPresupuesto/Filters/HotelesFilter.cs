@@ -4,10 +4,10 @@
     {
         public string Nombre { get; set; }
 
-        public int? Ciudad { get; set; }
+        public string Ciudad { get; set; }
 
-        public int? TipoDeHabitacion { get; set; }
+        public string TipoDeHabitacion { get; set; }
 
-        public int? Calificacion { get; set; }
+        public string Calificacion { get; set; }
     }
 }

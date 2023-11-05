@@ -64,11 +64,11 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var tag = (ItinerarioItemTag)productoParaAsignar.Tag;
 
-                if (tag.TipoServicio == TipoDeServicioEnum.aereo.ToString())
+                if (tag.TipoServicio == "Aereo")
                 {
                     Pasajero.AsignarAereo(new AereoSeleccionado(tag.Id, tag.IdProducto));
                 }
-                else if (tag.TipoServicio == TipoDeServicioEnum.hotel.ToString())
+                else if (tag.TipoServicio == "Hotel")
                 {
                     Pasajero.AsignarHotel(new HotelSeleccionado(tag.Id, tag.IdProducto));
                 }
@@ -92,13 +92,13 @@ namespace Proyecto_CAI_Grupo_4
                     {
                         SubItems =
                         {
-                             $"{aereo.Nombre} - {aereo.TipoDePasajero.ToString().ToUpper()}"
+                             $"{aereo.Nombre} - {aereo.Tarifa.TipoDePasajero.ToUpper()}"
                         },
                         Tag = new ItinerarioItemTag()
                         {
                             Id = aereoSeleccionadoEnItinerario.Id,
                             IdProducto = aereo.Id,
-                            TipoServicio = TipoDeServicioEnum.aereo.ToString()
+                            TipoServicio = "Aereo"
                         }
                     }).ToArray());
 
@@ -112,13 +112,13 @@ namespace Proyecto_CAI_Grupo_4
                     {
                         SubItems =
                         {
-                             $"{hotel.Nombre} - {GetTextoPermitidosHoteles(hotel.CantidadMaximaDeMenores, hotel.CantidadMaximaDeInfantes)}"
+                             $"{hotel.Nombre} - {GetTextoPermitidosHoteles(hotel.Disponibilidad.CantidadMaximaMenores, hotel.Disponibilidad.CantidadMaximaInfantes)}"
                         },
                         Tag = new ItinerarioItemTag()
                         {
                             Id = hotelSeleccionadoEnItinerario.Id,
                             IdProducto = hotel.Id,
-                            TipoServicio = TipoDeServicioEnum.hotel.ToString()
+                            TipoServicio = "Hotel"
                         }
                     }).ToArray());
         }

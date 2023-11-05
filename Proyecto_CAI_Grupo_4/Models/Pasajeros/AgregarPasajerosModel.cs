@@ -65,7 +65,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 {
                     var aereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
 
-                    if (aereo.TipoDePasajero != pasajero.GetTipoDePasajero())
+                    if (aereo.Tarifa.TipoDePasajero != pasajero.GetTipoDePasajero())
                     {
                         MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede viajar en el aereo {aereo.Nombre} porque no es de su tipo de pasajero");
                         return false;
@@ -77,19 +77,19 @@ namespace Proyecto_CAI_Grupo_4.Models
                     var hotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
                     var tipoPasajero = pasajero.GetTipoDePasajero();
 
-                    if (hotel.CantidadMaximaDeAdultos == 0 && tipoPasajero == TipoDePasajeroEnum.adulto)
+                    if (hotel.Disponibilidad.CantidadMaximaAdultos == 0 && tipoPasajero == "Adulto")
                     {
                         MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque no permite adultos");
                         return false;
                     }
 
-                    if (hotel.CantidadMaximaDeMenores == 0 && tipoPasajero == TipoDePasajeroEnum.menor)
+                    if (hotel.Disponibilidad.CantidadMaximaMenores == 0 && tipoPasajero == "Menor")
                     {
                         MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque no permite menores");
                         return false;
                     }
 
-                    if (hotel.CantidadMaximaDeInfantes == 0 && tipoPasajero == TipoDePasajeroEnum.infante)
+                    if (hotel.Disponibilidad.CantidadMaximaInfantes == 0 && tipoPasajero == "Infante")
                     {
                         MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque no permite infantes");
                         return false;
@@ -99,24 +99,24 @@ namespace Proyecto_CAI_Grupo_4.Models
                         .SingleOrDefault(x => x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == tipoPasajero)
                         .Cantidad;
 
-                    if (tipoPasajero == TipoDePasajeroEnum.adulto &&
-                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.CantidadMaximaDeAdultos)
+                    if (tipoPasajero == "Adulto" &&
+                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaAdultos)
                     {
-                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} adultos hospedados y el maximo es {hotel.CantidadMaximaDeAdultos}.", "Error de Validacion", MessageBoxButtons.OK);
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} adultos hospedados y el maximo es {hotel.Disponibilidad.CantidadMaximaAdultos}.", "Error de Validacion", MessageBoxButtons.OK);
                         return false;
                     }
 
-                    if (tipoPasajero == TipoDePasajeroEnum.menor &&
-                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.CantidadMaximaDeMenores)
+                    if (tipoPasajero == "Menor" &&
+                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaMenores)
                     {
-                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} menores hospedados y el maximo es {hotel.CantidadMaximaDeMenores}.", "Error de Validacion", MessageBoxButtons.OK);
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} menores hospedados y el maximo es {hotel.Disponibilidad.CantidadMaximaMenores}.", "Error de Validacion", MessageBoxButtons.OK);
                         return false;
                     }
 
-                    if (tipoPasajero == TipoDePasajeroEnum.infante &&
-                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.CantidadMaximaDeInfantes)
+                    if (tipoPasajero == "Infante" &&
+                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaInfantes)
                     {
-                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} infantes hospedados y el maximo es {hotel.CantidadMaximaDeInfantes}.", "Error de Validacion", MessageBoxButtons.OK);
+                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} infantes hospedados y el maximo es {hotel.Disponibilidad.CantidadMaximaInfantes}.", "Error de Validacion", MessageBoxButtons.OK);
                         return false;
                     }
 

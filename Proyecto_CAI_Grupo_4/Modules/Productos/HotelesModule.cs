@@ -28,15 +28,15 @@ namespace Proyecto_CAI_Grupo_4.Modules
         public static IEnumerable<Hoteles> GetHoteles(HotelesFilter filter)
         {
             return hoteles
-                    .Where(x => (!filter.CantidadMin.HasValue || x.Cantidad >= filter.CantidadMin)
-                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.FechaDesde == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.FechaHasta == filter.FechaHasta)
+                    .Where(x => (!filter.CantidadMin.HasValue || x.Disponibilidad.Disponibilidad >= filter.CantidadMin)
+                                && (!filter.PrecioDesde.HasValue || x.Disponibilidad.TarifaPorDia >= filter.PrecioDesde)
+                                && (!filter.PrecioHasta.HasValue || x.Disponibilidad.TarifaPorDia <= filter.PrecioHasta)
+                                && (!filter.FechaDesde.HasValue || x.Disponibilidad.FechaDesde == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.Disponibilidad.FechaHasta == filter.FechaHasta)
                                 && (string.IsNullOrEmpty(filter.Nombre) || x.Nombre == filter.Nombre)
-                                && (!filter.Ciudad.HasValue || (int)x.Ciudad == filter.Ciudad)
-                                && (!filter.TipoDeHabitacion.HasValue || (int)x.TipoDeHabitacion == filter.TipoDeHabitacion)
-                                && (!filter.Calificacion.HasValue || (int)x.Calificacion == filter.Calificacion));
+                                && (string.IsNullOrEmpty(filter.Ciudad) || x.Ciudad == filter.Ciudad)
+                                && (string.IsNullOrEmpty(filter.TipoDeHabitacion) || x.Disponibilidad.NombreHabitacion == filter.TipoDeHabitacion)
+                                && (string.IsNullOrEmpty(filter.Calificacion) || x.Calificacion == filter.Calificacion));
         }
 
         public static Hoteles? GetHotelByID(int id)
@@ -86,7 +86,7 @@ namespace Proyecto_CAI_Grupo_4.Modules
 
                 var cantidadSeleccionada = hotelesElegidos.Where(x => x.Id == hotel.Id).Count();
 
-                hotel.Cantidad = hotel.Cantidad - cantidadSeleccionada;
+                hotel.Disponibilidad.Disponibilidad = hotel.Disponibilidad.Disponibilidad - cantidadSeleccionada;
 
                 if (indexHotel != -1)
                 {

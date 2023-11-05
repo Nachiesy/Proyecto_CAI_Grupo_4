@@ -2,7 +2,6 @@
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Models;
-using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -20,24 +19,24 @@ namespace Proyecto_CAI_Grupo_4
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
-            foreach (AereosOrigenEnum value in Enum.GetValues(typeof(AereosOrigenEnum)))
+            foreach (var value in Model.GetOrigenes())
             {
-                comboBoxOrigen.Items.Add(value.GetDescription());
+                comboBoxOrigen.Items.Add(value);
             }
 
-            foreach (AereosDestinoEnum value in Enum.GetValues(typeof(AereosDestinoEnum)))
+            foreach (var value in Model.GetDestinos())
             {
-                comboBoxDestino.Items.Add(value.GetDescription());
+                comboBoxDestino.Items.Add(value);
             }
 
-            foreach (TipoDePasajeroEnum value in Enum.GetValues(typeof(TipoDePasajeroEnum)))
+            foreach (var value in Model.GetTipoDePasajeros())
             {
-                comboBoxTipoDePasajero.Items.Add(value.GetDescription());
+                comboBoxTipoDePasajero.Items.Add(value);
             }
 
-            foreach (TipoDeClaseAereaEnum value in Enum.GetValues(typeof(TipoDeClaseAereaEnum)))
+            foreach (var value in Model.GetClases())
             {
-                comboBoxClase.Items.Add(value.GetDescription());
+                comboBoxClase.Items.Add(value);
             }
 
             Model.AddProductosToListView(listViewProductos, Model.GetAereos(new AereosFilter() { CantidadMin = 1 }));
@@ -54,10 +53,10 @@ namespace Proyecto_CAI_Grupo_4
                 PrecioHastaInput = txtBoxFiltroPrecioHasta.Text,
                 FechaDesde = datePickerFilterFechaDesde.Enabled ? datePickerFilterFechaDesde.Value : null,
                 FechaHasta = datePickerFilterFechaHasta.Enabled ? datePickerFilterFechaHasta.Value : null,
-                Origen = comboBoxOrigen.SelectedIndex != -1 ? comboBoxOrigen.SelectedIndex : null,
-                Destino = comboBoxDestino.SelectedIndex != -1 ? comboBoxDestino.SelectedIndex : null,
-                TipoDePasajero = comboBoxTipoDePasajero.SelectedIndex != -1 ? comboBoxTipoDePasajero.SelectedIndex : null,
-                Clase = comboBoxClase.SelectedIndex != -1 ? comboBoxClase.SelectedIndex : null,
+                Origen = comboBoxOrigen.SelectedIndex != -1 ? comboBoxOrigen.Text : null,
+                Destino = comboBoxDestino.SelectedIndex != -1 ? comboBoxDestino.Text : null,
+                TipoDePasajero = comboBoxTipoDePasajero.SelectedIndex != -1 ? comboBoxTipoDePasajero.Text : null,
+                Clase = comboBoxClase.SelectedIndex != -1 ? comboBoxClase.Text : null,
             };
 
             var validacion = Model.ValidacionDeFiltros(filter);

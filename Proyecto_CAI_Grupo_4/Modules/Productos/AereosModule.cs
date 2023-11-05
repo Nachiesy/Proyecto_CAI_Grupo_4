@@ -28,16 +28,15 @@ namespace Proyecto_CAI_Grupo_4.Modules
         public static IEnumerable<Aereos> GetAereos(AereosFilter filter)
         {
             return aereos
-                    .Where(x => (!filter.CantidadMin.HasValue || x.Cantidad >= filter.CantidadMin)
-                                && (!filter.PrecioDesde.HasValue || x.Precio >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Precio <= filter.PrecioHasta)
+                    .Where(x => (!filter.CantidadMin.HasValue || x.Tarifa.Disponibilidad >= filter.CantidadMin)
+                                && (!filter.PrecioDesde.HasValue || x.Tarifa.Precio >= filter.PrecioDesde)
+                                && (!filter.PrecioHasta.HasValue || x.Tarifa.Precio <= filter.PrecioHasta)
                                 && (!filter.FechaDesde.HasValue || x.FechaDeSalida.Date == filter.FechaDesde)
                                 && (!filter.FechaHasta.HasValue || x.FechaDeLlegada.Date == filter.FechaHasta)
-                                && (!filter.Origen.HasValue || (int)x.Origen == filter.Origen)
-                                && (!filter.Destino.HasValue || (int)x.Destino == filter.Destino)
-                                && (!filter.TipoDePasajero.HasValue || (int)x.TipoDePasajero == filter.TipoDePasajero)
-                                && (!filter.Itinerario.HasValue || (int)x.Itinerario == filter.Itinerario)
-                                && (!filter.Clase.HasValue || (int)x.Clase == filter.Clase));
+                                && (string.IsNullOrEmpty(filter.Origen) || x.Origen == filter.Origen)
+                                && (string.IsNullOrEmpty(filter.Destino) || x.Destino == filter.Destino)
+                                && (string.IsNullOrEmpty(filter.TipoDePasajero) || x.Tarifa.TipoDePasajero == filter.TipoDePasajero)
+                                && (string.IsNullOrEmpty(filter.Clase) || x.Tarifa.Clase == filter.Clase));
         }
 
         public static Aereos? GetAereoByID(int id)
@@ -87,7 +86,7 @@ namespace Proyecto_CAI_Grupo_4.Modules
 
                 var cantidadSeleccionada = aereosElegidos.Where(x => x.Id == aereo.Id).Count();
 
-                aereo.Cantidad = aereo.Cantidad - cantidadSeleccionada;
+                aereo.Tarifa.Disponibilidad = aereo.Tarifa.Disponibilidad - cantidadSeleccionada;
 
                 if (indexAereo != -1)
                 {

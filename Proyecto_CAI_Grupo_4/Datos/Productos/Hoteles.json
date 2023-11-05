@@ -1,146 +1,186 @@
 [
   {
-    "Ciudad": 0,
-    "Direccion": "Av Libertador 100",
-    "FechaDesde": "2023-11-14T00:00:00-03:00",
-    "FechaHasta": "2023-11-15T00:00:00-03:00",
-    "TipoDeHabitacion": 0,
-    "Calificacion": 4,
-    "CantidadDePersonas": 2,
-    "CantidadMaximaDeAdultos": 2,
-    "CantidadMaximaDeMenores": 0,
-    "CantidadMaximaDeInfantes": 0,
     "Id": 25,
     "Codigo": "HIL",
     "Nombre": "Hilton",
-    "Precio": 10000.0,
-    "Cantidad": 4,
-    "TipoDeServicio": 1
+    "Ciudad": "Buenos Aires",
+    "Calificacion": "4 Estrellas",
+    "Direccion": {
+      "Calle": "Av Libertador",
+      "Numero": 100,
+      "CP": 0
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Simple",
+      "TarifaPorDia": 10000.0,
+      "CapacidadTotal": 2,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 0,
+      "CantidadMaximaInfantes": 0,
+      "FechaDesde": "2023-11-14T00:00:00-03:00",
+      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "Disponibilidad": 4
+    }
   },
   {
-    "Ciudad": 0,
-    "Direccion": "Av Libertador 100",
-    "FechaDesde": "2023-11-14T00:00:00-03:00",
-    "FechaHasta": "2023-11-15T00:00:00-03:00",
-    "TipoDeHabitacion": 1,
-    "Calificacion": 4,
-    "CantidadDePersonas": 4,
-    "CantidadMaximaDeAdultos": 2,
-    "CantidadMaximaDeMenores": 2,
-    "CantidadMaximaDeInfantes": 0,
     "Id": 26,
     "Codigo": "HIL",
     "Nombre": "Hilton",
-    "Precio": 20000.0,
-    "Cantidad": 3,
-    "TipoDeServicio": 1
+    "Ciudad": "Buenos Aires",
+    "Calificacion": "4 Estrellas",
+    "Direccion": {
+      "Calle": "Av Libertador",
+      "Numero": 100,
+      "CP": 0
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Doble",
+      "TarifaPorDia": 20000.0,
+      "CapacidadTotal": 4,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 2,
+      "CantidadMaximaInfantes": 0,
+      "FechaDesde": "2023-11-14T00:00:00-03:00",
+      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "Disponibilidad": 3
+    }
   },
   {
-    "Ciudad": 0,
-    "Direccion": "Av Libertador 100",
-    "FechaDesde": "2023-11-14T00:00:00-03:00",
-    "FechaHasta": "2023-11-15T00:00:00-03:00",
-    "TipoDeHabitacion": 2,
-    "Calificacion": 4,
-    "CantidadDePersonas": 6,
-    "CantidadMaximaDeAdultos": 2,
-    "CantidadMaximaDeMenores": 3,
-    "CantidadMaximaDeInfantes": 1,
     "Id": 27,
     "Codigo": "HIL",
     "Nombre": "Hilton",
-    "Precio": 30000.0,
-    "Cantidad": 2,
-    "TipoDeServicio": 1
+    "Ciudad": "Buenos Aires",
+    "Calificacion": "4 Estrellas",
+    "Direccion": {
+      "Calle": "Av Libertador",
+      "Numero": 100,
+      "CP": 0
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Triple",
+      "TarifaPorDia": 30000.0,
+      "CapacidadTotal": 6,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 3,
+      "CantidadMaximaInfantes": 1,
+      "FechaDesde": "2023-11-14T00:00:00-03:00",
+      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "Disponibilidad": 2
+    }
   },
   {
-    "Ciudad": 0,
-    "Direccion": "Av Libertador 100",
-    "FechaDesde": "2023-11-14T00:00:00-03:00",
-    "FechaHasta": "2023-11-15T00:00:00-03:00",
-    "TipoDeHabitacion": 3,
-    "Calificacion": 4,
-    "CantidadDePersonas": 8,
-    "CantidadMaximaDeAdultos": 4,
-    "CantidadMaximaDeMenores": 2,
-    "CantidadMaximaDeInfantes": 2,
     "Id": 28,
     "Codigo": "HIL",
     "Nombre": "Hilton",
-    "Precio": 40000.0,
-    "Cantidad": 1,
-    "TipoDeServicio": 1
+    "Ciudad": "Buenos Aires",
+    "Calificacion": "4 Estrellas",
+    "Direccion": {
+      "Calle": "Av Libertador",
+      "Numero": 100,
+      "CP": 0
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Cuádruple",
+      "TarifaPorDia": 40000.0,
+      "CapacidadTotal": 8,
+      "CantidadMaximaAdultos": 4,
+      "CantidadMaximaMenores": 2,
+      "CantidadMaximaInfantes": 2,
+      "FechaDesde": "2023-11-14T00:00:00-03:00",
+      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "Disponibilidad": 1
+    }
   },
   {
-    "Ciudad": 2,
-    "Direccion": "Av Cordoba 300",
-    "FechaDesde": "2023-11-14T00:00:00-03:00",
-    "FechaHasta": "2023-11-15T00:00:00-03:00",
-    "TipoDeHabitacion": 0,
-    "Calificacion": 3,
-    "CantidadDePersonas": 2,
-    "CantidadMaximaDeAdultos": 2,
-    "CantidadMaximaDeMenores": 0,
-    "CantidadMaximaDeInfantes": 0,
     "Id": 29,
     "Codigo": "SHE",
     "Nombre": "Sheraton",
-    "Precio": 10000.0,
-    "Cantidad": 4,
-    "TipoDeServicio": 1
+    "Ciudad": "Buenos Aires",
+    "Calificacion": "3 Estrellas",
+    "Direccion": {
+      "Calle": "Av Cordoba",
+      "Numero": 300,
+      "CP": 0
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Simple",
+      "TarifaPorDia": 10000.0,
+      "CapacidadTotal": 2,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 0,
+      "CantidadMaximaInfantes": 0,
+      "FechaDesde": "2023-11-14T00:00:00-03:00",
+      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "Disponibilidad": 4
+    }
   },
   {
-    "Ciudad": 2,
-    "Direccion": "Av Cordoba 300",
-    "FechaDesde": "2023-11-14T00:00:00-03:00",
-    "FechaHasta": "2023-11-15T00:00:00-03:00",
-    "TipoDeHabitacion": 1,
-    "Calificacion": 3,
-    "CantidadDePersonas": 4,
-    "CantidadMaximaDeAdultos": 2,
-    "CantidadMaximaDeMenores": 2,
-    "CantidadMaximaDeInfantes": 0,
     "Id": 30,
     "Codigo": "SHE",
     "Nombre": "Sheraton",
-    "Precio": 20000.0,
-    "Cantidad": 3,
-    "TipoDeServicio": 1
+    "Ciudad": "Buenos Aires",
+    "Calificacion": "3 Estrellas",
+    "Direccion": {
+      "Calle": "Av Cordoba",
+      "Numero": 300,
+      "CP": 0
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Doble",
+      "TarifaPorDia": 20000.0,
+      "CapacidadTotal": 4,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 2,
+      "CantidadMaximaInfantes": 0,
+      "FechaDesde": "2023-11-14T00:00:00-03:00",
+      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "Disponibilidad": 3
+    }
   },
   {
-    "Ciudad": 2,
-    "Direccion": "Av Cordoba 300",
-    "FechaDesde": "2023-11-14T00:00:00-03:00",
-    "FechaHasta": "2023-11-15T00:00:00-03:00",
-    "TipoDeHabitacion": 2,
-    "Calificacion": 3,
-    "CantidadDePersonas": 6,
-    "CantidadMaximaDeAdultos": 2,
-    "CantidadMaximaDeMenores": 3,
-    "CantidadMaximaDeInfantes": 1,
     "Id": 31,
     "Codigo": "SHE",
     "Nombre": "Sheraton",
-    "Precio": 30000.0,
-    "Cantidad": 2,
-    "TipoDeServicio": 1
+    "Ciudad": "Buenos Aires",
+    "Calificacion": "3 Estrellas",
+    "Direccion": {
+      "Calle": "Av Cordoba",
+      "Numero": 300,
+      "CP": 0
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Triple",
+      "TarifaPorDia": 30000.0,
+      "CapacidadTotal": 6,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 3,
+      "CantidadMaximaInfantes": 1,
+      "FechaDesde": "2023-11-14T00:00:00-03:00",
+      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "Disponibilidad": 2
+    }
   },
   {
-    "Ciudad": 2,
-    "Direccion": "Av Cordoba 300",
-    "FechaDesde": "2023-11-14T00:00:00-03:00",
-    "FechaHasta": "2023-11-15T00:00:00-03:00",
-    "TipoDeHabitacion": 3,
-    "Calificacion": 3,
-    "CantidadDePersonas": 8,
-    "CantidadMaximaDeAdultos": 4,
-    "CantidadMaximaDeMenores": 2,
-    "CantidadMaximaDeInfantes": 2,
     "Id": 32,
     "Codigo": "SHE",
     "Nombre": "Sheraton",
-    "Precio": 40000.0,
-    "Cantidad": 1,
-    "TipoDeServicio": 1
+    "Ciudad": "Buenos Aires",
+    "Calificacion": "3 Estrellas",
+    "Direccion": {
+      "Calle": "Av Cordoba",
+      "Numero": 300,
+      "CP": 0
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Cuádruple",
+      "TarifaPorDia": 40000.0,
+      "CapacidadTotal": 8,
+      "CantidadMaximaAdultos": 4,
+      "CantidadMaximaMenores": 2,
+      "CantidadMaximaInfantes": 2,
+      "FechaDesde": "2023-11-14T00:00:00-03:00",
+      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "Disponibilidad": 1
+    }
   }
 ]

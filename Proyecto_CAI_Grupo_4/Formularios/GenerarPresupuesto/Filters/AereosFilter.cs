@@ -2,14 +2,14 @@
 {
     public class AereosFilter : ProductosFilter
     {
-        public int? Origen { get; set; }
+        public string Origen { get; set; }
 
-        public int? Destino { get; set; }
+        public string Destino { get; set; }
 
-        public int? TipoDePasajero { get; set; }
+        public string TipoDePasajero { get; set; }
 
-        public int? Itinerario { get; set; }
+        public string Itinerario { get; set; }
 
-        public int? Clase { get; set; }
+        public string Clase { get; set; }
     }
 }

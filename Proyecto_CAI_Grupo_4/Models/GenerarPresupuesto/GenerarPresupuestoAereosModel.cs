@@ -7,6 +7,26 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class GenerarPresupuestoAereosModel
     {
+        public IEnumerable<string> GetOrigenes()
+        {
+            return AereosModule.GetAereos().Select(p => p.Origen).Distinct();
+        }
+
+        public IEnumerable<string> GetDestinos()
+        {
+            return AereosModule.GetAereos().Select(p => p.Destino).Distinct();
+        }
+
+        public IEnumerable<string> GetTipoDePasajeros()
+        {
+            return AereosModule.GetAereos().Select(p => p.Tarifa.TipoDePasajero).Distinct();
+        }
+
+        public IEnumerable<string> GetClases()
+        {
+            return AereosModule.GetAereos().Select(p => p.Tarifa.Clase).Distinct();
+        }
+
         public string ValidacionDeFiltros(AereosFilter filter)
         {
             var messages = string.Empty;
@@ -98,15 +118,14 @@ namespace Proyecto_CAI_Grupo_4.Models
                 var row = new ListViewItem(item.Id.ToString());
 
                 row.SubItems.Add(item.Codigo);
-                row.SubItems.Add(item.Origen.GetDescription());
-                row.SubItems.Add(item.Destino.GetDescription());
-                row.SubItems.Add(item.Clase.GetDescription());
-                // row.SubItems.Add(item.Itinerario.GetDescription());
-                row.SubItems.Add(item.Cantidad.ToString());
-                row.SubItems.Add(item.TipoDePasajero.GetDescription());
-                row.SubItems.Add(item.Precio.ToFormDecimal());
-                row.SubItems.Add(item.Aerolinea.GetDescription());
-                row.SubItems.Add(item.Paradas.Count().ToString());
+                row.SubItems.Add(item.Origen);
+                row.SubItems.Add(item.Destino);
+                row.SubItems.Add(item.Tarifa.Clase);
+                row.SubItems.Add(item.Tarifa.Disponibilidad.ToString());
+                row.SubItems.Add(item.Tarifa.TipoDePasajero);
+                row.SubItems.Add(item.Tarifa.Precio.ToFormDecimal());
+                row.SubItems.Add(item.Aerolinea);
+                row.SubItems.Add(item.CantidadDeParadas.ToString());
                 row.SubItems.Add(item.FechaDeSalida.ToFormVueloDate());
                 row.SubItems.Add(item.FechaDeLlegada.ToFormVueloDate());
 
@@ -121,15 +140,14 @@ namespace Proyecto_CAI_Grupo_4.Models
                 var row = new ListViewItem(item.Id.ToString());
 
                 row.SubItems.Add(item.Codigo);
-                row.SubItems.Add(item.Origen.GetDescription());
-                row.SubItems.Add(item.Destino.GetDescription());
-                row.SubItems.Add(item.Clase.GetDescription());
-                // row.SubItems.Add(item.Itinerario.GetDescription());
-                // row.SubItems.Add(item.Cantidad.ToString()); NO MOSTRAR CANTIDAD
-                row.SubItems.Add(item.TipoDePasajero.GetDescription());
-                row.SubItems.Add(item.Precio.ToFormDecimal());
-                row.SubItems.Add(item.Aerolinea.GetDescription());
-                row.SubItems.Add(item.Paradas.Count().ToString());
+                row.SubItems.Add(item.Origen);
+                row.SubItems.Add(item.Destino);
+                row.SubItems.Add(item.Tarifa.Clase);
+                // row.SubItems.Add(item.Tarifa.Disponibilidad.ToString());
+                row.SubItems.Add(item.Tarifa.TipoDePasajero);
+                row.SubItems.Add(item.Tarifa.Precio.ToFormDecimal());
+                row.SubItems.Add(item.Aerolinea);
+                row.SubItems.Add(item.CantidadDeParadas.ToString());
                 row.SubItems.Add(item.FechaDeSalida.ToFormVueloDate());
                 row.SubItems.Add(item.FechaDeLlegada.ToFormVueloDate());
 
@@ -143,7 +161,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             var cantidad = GetCantidadSeleccionadaDelProducto(listView, producto.Id);
 
-            if (producto.Cantidad > cantidad)
+            if (producto.Tarifa.Disponibilidad > cantidad)
             {
                 return producto;
             }

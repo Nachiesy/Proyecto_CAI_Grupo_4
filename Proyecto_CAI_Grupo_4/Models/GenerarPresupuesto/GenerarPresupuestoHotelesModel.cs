@@ -7,6 +7,21 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class GenerarPresupuestoHotelesModel
     {
+        public IEnumerable<string> GetCiudades()
+        {
+            return HotelesModule.GetHoteles().Select(p => p.Ciudad).Distinct();
+        }
+
+        public IEnumerable<string> GetHabitaciones()
+        {
+            return HotelesModule.GetHoteles().Select(p => p.Disponibilidad.NombreHabitacion).Distinct();
+        }
+
+        public IEnumerable<string> GetCalificaciones()
+        {
+            return HotelesModule.GetHoteles().Select(p => p.Calificacion).Distinct();
+        }
+
         public string ValidacionDeFiltros(HotelesFilter filter)
         {
             var messages = string.Empty;
@@ -105,18 +120,18 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                 row.SubItems.Add(item.Codigo);
                 row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Ciudad.GetDescription());
-                row.SubItems.Add(item.Direccion);
-                row.SubItems.Add(item.Calificacion.GetDescription());
-                row.SubItems.Add(item.Cantidad.ToString());
-                row.SubItems.Add(item.TipoDeHabitacion.GetDescription());
-                row.SubItems.Add(item.Precio.ToFormDecimal());
-                row.SubItems.Add(item.CantidadDePersonas.ToString());
-                row.SubItems.Add(item.CantidadMaximaDeAdultos.ToString());
-                row.SubItems.Add(item.CantidadMaximaDeMenores.ToString());
-                row.SubItems.Add(item.CantidadMaximaDeInfantes.ToString());
-                row.SubItems.Add(item.FechaDesde.ToFormDate());
-                row.SubItems.Add(item.FechaHasta.ToFormDate());
+                row.SubItems.Add(item.Ciudad);
+                row.SubItems.Add($"{item.Direccion.Calle} {item.Direccion.Numero}");
+                row.SubItems.Add(item.Calificacion);
+                row.SubItems.Add(item.Disponibilidad.Disponibilidad.ToString());
+                row.SubItems.Add(item.Disponibilidad.NombreHabitacion);
+                row.SubItems.Add(item.Disponibilidad.TarifaPorDia.ToFormDecimal());
+                row.SubItems.Add(item.Disponibilidad.CapacidadTotal.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaAdultos.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaMenores.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaInfantes.ToString());
+                row.SubItems.Add(item.Disponibilidad.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.Disponibilidad.FechaHasta.ToFormDate());
 
                 listView.Items.Add(row);
             }
@@ -130,18 +145,18 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                 row.SubItems.Add(item.Codigo);
                 row.SubItems.Add(item.Nombre);
-                row.SubItems.Add(item.Ciudad.GetDescription());
-                row.SubItems.Add(item.Direccion);
-                row.SubItems.Add(item.Calificacion.GetDescription());
-                // row.SubItems.Add(item.Cantidad.ToString()); NO MOSTRAR LA CANTIDAD
-                row.SubItems.Add(item.TipoDeHabitacion.GetDescription());
-                row.SubItems.Add(item.Precio.ToFormDecimal());
-                row.SubItems.Add(item.CantidadDePersonas.ToString());
-                row.SubItems.Add(item.CantidadMaximaDeAdultos.ToString());
-                row.SubItems.Add(item.CantidadMaximaDeMenores.ToString());
-                row.SubItems.Add(item.CantidadMaximaDeInfantes.ToString());
-                row.SubItems.Add(item.FechaDesde.ToFormDate());
-                row.SubItems.Add(item.FechaHasta.ToFormDate());
+                row.SubItems.Add(item.Ciudad);
+                row.SubItems.Add($"{item.Direccion.Calle} {item.Direccion.Numero}");
+                row.SubItems.Add(item.Calificacion);
+                // row.SubItems.Add(item.Disponibilidad.Disponibilidad.ToString());
+                row.SubItems.Add(item.Disponibilidad.NombreHabitacion);
+                row.SubItems.Add(item.Disponibilidad.TarifaPorDia.ToFormDecimal());
+                row.SubItems.Add(item.Disponibilidad.CapacidadTotal.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaAdultos.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaMenores.ToString());
+                row.SubItems.Add(item.Disponibilidad.CantidadMaximaInfantes.ToString());
+                row.SubItems.Add(item.Disponibilidad.FechaDesde.ToFormDate());
+                row.SubItems.Add(item.Disponibilidad.FechaHasta.ToFormDate());
 
                 listView.Items.Add(row);
             }
@@ -153,7 +168,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             var cantidad = GetCantidadSeleccionadaDelProducto(listView, producto.Id);
 
-            if (producto.Cantidad > cantidad)
+            if (producto.Disponibilidad.Disponibilidad > cantidad)
             {
                 return producto;
             }
