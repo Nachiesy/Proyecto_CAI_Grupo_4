@@ -43,6 +43,7 @@
             grupoFiltros = new GroupBox();
             btn_LimpiarFiltros = new Common.Components.BotonEstilizado();
             btn_FiltrarPresupuestos = new Common.Components.BotonEstilizado();
+            estado = new ColumnHeader();
             gpProsupuesto.SuspendLayout();
             grupoFiltros.SuspendLayout();
             SuspendLayout();
@@ -86,7 +87,7 @@
             // 
             // lv_Prereservas
             // 
-            lv_Prereservas.Columns.AddRange(new ColumnHeader[] { nropresup, cantidadPasajeros, doccliente, precio });
+            lv_Prereservas.Columns.AddRange(new ColumnHeader[] { nropresup, estado, cantidadPasajeros, doccliente, precio });
             lv_Prereservas.FullRowSelect = true;
             lv_Prereservas.Location = new Point(9, 18);
             lv_Prereservas.Margin = new Padding(2, 1, 2, 1);
@@ -207,6 +208,11 @@
             btn_FiltrarPresupuestos.UseVisualStyleBackColor = false;
             btn_FiltrarPresupuestos.Click += btnBuscar_Click;
             // 
+            // estado
+            // 
+            estado.Text = "Estado";
+            estado.Width = 200;
+            // 
             // GenerarReserva
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -243,5 +249,6 @@
         private Common.Components.BotonEstilizado btn_FiltrarPresupuestos;
         private Common.Components.BotonEstilizado btn_Volver;
         private Common.Components.BotonEstilizado btn_ConfirmarReserva;
+        private ColumnHeader estado;
     }
 }

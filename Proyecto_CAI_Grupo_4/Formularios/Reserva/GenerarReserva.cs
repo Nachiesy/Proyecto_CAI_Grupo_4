@@ -60,6 +60,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 SubItems =
                 {
+                    item.Estado.GetDescription(),
                     Model.GetTotalDePasajeros(item.IdItinerario).ToString(),
                     item.Cliente.DNI,
                     (Model.GetPresupuestoById(item.IdItinerario)?.PrecioTotal ?? 0).ToString("C2"),
