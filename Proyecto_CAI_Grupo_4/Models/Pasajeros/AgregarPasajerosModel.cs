@@ -116,21 +116,21 @@ namespace Proyecto_CAI_Grupo_4.Models
                     if (tipoPasajero == "Adulto" &&
                         cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaAdultos)
                     {
-                        MessageBox.Show($"Se excedió la capacidad máxima para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).", "Error de Validacion", MessageBoxButtons.OK);
+                        MessageBox.Show($"Se excedió la capacidad máxima de adultos para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).", "Error de Validacion", MessageBoxButtons.OK);
                         return false;
                     }
 
                     if (tipoPasajero == "Menor" &&
                         cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaMenores)
                     {
-                        MessageBox.Show($"Se excedió la capacidad máxima para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).", "Error de Validacion", MessageBoxButtons.OK);
+                        MessageBox.Show($"Se excedió la capacidad máxima de menores para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).", "Error de Validacion", MessageBoxButtons.OK);
                         return false;
                     }
 
                     if (tipoPasajero == "Infante" &&
                         cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaInfantes)
                     {
-                        MessageBox.Show($"Se excedió la capacidad máxima para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).", "Error de Validacion", MessageBoxButtons.OK);
+                        MessageBox.Show($"Se excedió la capacidad máxima de infantes para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).", "Error de Validacion", MessageBoxButtons.OK);
                         return false;
                     }
 
