@@ -155,13 +155,19 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             foreach (var hotelSeleccionado in itinerario.IdHotelesSeleccionados)
             {
+                var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
                 var fueAsignado = agrupacionHotelesAsignados.Count(x => x.Key.Id == hotelSeleccionado.Id) > 0;
 
-                if (!fueAsignado)
+                if (!fueAsignado && agrupacionCantidadesHotelesSeleccionados.Count(x => x.IdHotel == hotelSeleccionado.IdHotel) == 0)
                 {
-                    var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
+                    MessageBox.Show($"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar al menos un pasajero al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})");
+                    return false;
+                }
 
-                    MessageBox.Show($"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar un pasajero al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})");
+                if (fueAsignado && agrupacionCantidadesHotelesSeleccionados.Count(x =>
+                        x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == "Adulto") <= 0)
+                {
+                    MessageBox.Show($"Los hoteles deben hospedar al menos un adulto. Falta asignar al menos un pasajero adulto al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})");
                     return false;
                 }
             }
