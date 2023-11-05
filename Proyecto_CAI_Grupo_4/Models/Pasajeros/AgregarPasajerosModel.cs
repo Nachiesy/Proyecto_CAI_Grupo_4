@@ -116,21 +116,21 @@ namespace Proyecto_CAI_Grupo_4.Models
                     if (tipoPasajero == "Adulto" &&
                         cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaAdultos)
                     {
-                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} adultos hospedados y el maximo es {hotel.Disponibilidad.CantidadMaximaAdultos}.", "Error de Validacion", MessageBoxButtons.OK);
+                        MessageBox.Show($"Se excedió la capacidad máxima para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).", "Error de Validacion", MessageBoxButtons.OK);
                         return false;
                     }
 
                     if (tipoPasajero == "Menor" &&
                         cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaMenores)
                     {
-                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} menores hospedados y el maximo es {hotel.Disponibilidad.CantidadMaximaMenores}.", "Error de Validacion", MessageBoxButtons.OK);
+                        MessageBox.Show($"Se excedió la capacidad máxima para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).", "Error de Validacion", MessageBoxButtons.OK);
                         return false;
                     }
 
                     if (tipoPasajero == "Infante" &&
                         cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaInfantes)
                     {
-                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque ya hay {cantidadActualDelMismoHotelParaTipoPasajeroConcreto} infantes hospedados y el maximo es {hotel.Disponibilidad.CantidadMaximaInfantes}.", "Error de Validacion", MessageBoxButtons.OK);
+                        MessageBox.Show($"Se excedió la capacidad máxima para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).", "Error de Validacion", MessageBoxButtons.OK);
                         return false;
                     }
 
