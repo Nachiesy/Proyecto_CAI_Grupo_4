@@ -1,5 +1,6 @@
 ﻿using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Modules;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
@@ -34,30 +35,22 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public bool ValidarPasajeros()
         {
-            //var cantidadAdultos = Pasajeros
-            //    .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.adulto && (x.HotelesAsignados.Any() || x.AereosAsignados.Any()))
-            //    .Count();
-
-            //var cantidadMenores = Pasajeros
-            //    .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.menor && (x.HotelesAsignados.Any() || x.AereosAsignados.Any()))
-            //    .Count();
-
-            //var cantidadInfantes = Pasajeros
-            //    .Where(x => x.GetTipoDePasajero() == TipoDePasajeroEnum.infante && (x.HotelesAsignados.Any() || x.AereosAsignados.Any()))
-            //    .Count();
-
-            //! Nunca voy a tener problemas con las cantidades de ID's unicos, ya que se limita a la hora del agregado en el presupuesto
-
-
             //cantidad Agrupada PorTipo De Pasajero Y IdHotel y COUNT por cada grupo
             var agrupacionCantidadesHotelesSeleccionados = Pasajeros
-                .SelectMany(x =>
-                    x.HotelesAsignados.Select(y =>
+                .SelectMany(x => x.HotelesAsignados
+                    .Select(y =>
                         new { TipoPasajero = x.GetTipoDePasajero(), IdHotel = y.IdHotel }))
                 .GroupBy(x => new { x.IdHotel, x.TipoPasajero })
                 .Select(x => new { x.Key.IdHotel, x.Key.TipoPasajero, Cantidad = x.Count() })
                 .ToList();
 
+            var agrupacionVuelosSeleccionados = Pasajeros
+                .SelectMany(x =>
+                    x.AereosAsignados.Select(y =>
+                        new { y.Id }))
+                .GroupBy(x => new { x.Id })
+                .Select(x => new { x.Key, Cantidad = x.Count() })
+                .ToList();
 
             foreach (var pasajero in Pasajeros)
             {
@@ -67,9 +60,21 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                     if (aereo.Tarifa.TipoDePasajero != pasajero.GetTipoDePasajero())
                     {
-                        MessageBox.Show($"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede viajar en el aereo {aereo.Nombre} porque no es de su tipo de pasajero");
+                        MessageBox.Show($"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.IdAereo}, " +
+                                        $"dado que es una tarifa de {aereo.TipoDePasajero.GetDescription()} y el pasajero es aplicable a tarifa de {pasajero.GetTipoDePasajero().GetDescription()}");
                         return false;
                     }
+
+                    var aereoRepetido = agrupacionVuelosSeleccionados.FirstOrDefault(x => x.Key.Id == aereoSeleccionado.Id);
+
+                    if (aereoRepetido is not null && aereoRepetido.Cantidad > 1)
+                    {
+                        MessageBox.Show($"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.IdAereo}, " +
+                                        $"dado que el asiento no puede ser asignado más de una vez.");
+
+                        return false;
+                    }
+                    
                 }
 
                 foreach (var hotelSeleccionado in pasajero.HotelesAsignados)
@@ -130,20 +135,6 @@ namespace Proyecto_CAI_Grupo_4.Models
             //    MessageBox.Show("Algun pasajero tiene asignado un mismo producto de hotel mas de una vez");
             //    return false;
             //}
-
-            var agrupacionCantidadesVuelosSeleccionados = Pasajeros
-                .SelectMany(x =>
-                    x.AereosAsignados.Select(y =>
-                        new { y.Id }))
-                .GroupBy(x => new { x.Id })
-                .Select(x => new { x.Key, Cantidad = x.Count() })
-                .ToList();
-
-            if (agrupacionCantidadesVuelosSeleccionados.Any(x => x.Cantidad > 1))
-            {
-                MessageBox.Show("Algun pasajero tiene asignado un mismo vuelo mas de una vez");
-                return false;
-            }
 
             //var agrupacionClientes = Pasajeros
             //    .GroupBy(x => x.DNI)
