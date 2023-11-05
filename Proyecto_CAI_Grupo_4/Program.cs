@@ -14,7 +14,11 @@ namespace Proyecto_CAI_Grupo_4
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new MenuPrincipal());
+            Application.ApplicationExit += new EventHandler(OnApplicationExit);
+        }
 
+        private static void OnApplicationExit(object? sender, EventArgs e)
+        {
             AlmacenAereos.Guardar();
             AlmacenHoteles.Guardar();
             AlmacenPresupuestos.Guardar();
