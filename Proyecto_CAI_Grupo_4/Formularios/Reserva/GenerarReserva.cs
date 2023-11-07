@@ -52,7 +52,7 @@ namespace Proyecto_CAI_Grupo_4
             AddPrereservasToListView(prereservas.ToList());
         }
 
-        private void AddPrereservasToListView(IEnumerable<Reserva> list)
+        private void AddPrereservasToListView(IEnumerable<Itinerario> list)
         {
             lv_Prereservas.Items.Clear();
 
@@ -60,7 +60,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 SubItems =
                 {
-                    item.Estado.GetDescription(),
+                    item.Estado,
                     Model.GetTotalDePasajeros(item.IdItinerario).ToString(),
                     item.Cliente.DNI,
                     (Model.GetPresupuestoById(item.IdItinerario)?.PrecioTotal ?? 0).ToString("C2"),

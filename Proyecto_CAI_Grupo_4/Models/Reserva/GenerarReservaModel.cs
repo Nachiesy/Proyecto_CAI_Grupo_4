@@ -5,10 +5,10 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class GenerarReservaModel
     {
-        public IEnumerable<Reserva> GetPreReservasAbonadas()
+        public IEnumerable<Itinerario> GetPreReservasAbonadas()
         {
-            return ReservaModule
-                .GetPreReservasAbonadas()
+            return PresupuestosModule
+                .GetPresupuestosPrereservadosAbonados()
                 .AsQueryable();
         }
 
@@ -22,14 +22,14 @@ namespace Proyecto_CAI_Grupo_4.Models
             return PresupuestosModule.GetPresupuestoById(idItinerario);
         }
 
-        public Reserva GetPreReservasAbonadasById(int id)
+        public Itinerario GetPreReservasAbonadasById(int id)
         {
             return ReservaModule.GetPreReservasAbonadasById(id);
         }
 
-        public Reserva GenerarReserva(Reserva preReserva)
+        public Reserva GenerarReserva(Itinerario preReserva)
         {
-            return ReservaModule.ConvertirPreReservaEnReserva(preReserva.Codigo);
+            return ReservaModule.GenerarNuevaReserva(preReserva.IdItinerario, preReserva.Cliente);
         }
 
         public void GoToMenuPrincipal()

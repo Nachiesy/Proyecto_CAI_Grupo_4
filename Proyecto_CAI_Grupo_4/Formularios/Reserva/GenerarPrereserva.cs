@@ -25,7 +25,7 @@ namespace Proyecto_CAI_Grupo_4
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
-            var presupuestos = Model.GetPreReservas();
+            var presupuestos = Model.GetPreReservables();
 
             if (!string.IsNullOrEmpty(codigo))
             {
@@ -100,7 +100,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var prereserva = Model.GenerarPreReserva(itinerario);
 
-                MessageBox.Show("Prereserva generada con Id: " + prereserva.Codigo);
+                MessageBox.Show($"El itinerario #{prereserva.IdItinerario} ha sido pre-reservado.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 lv_Prereservas.Items.Remove(item);
             }

@@ -18,6 +18,17 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public static Itinerario? GetPresupuestoById(int id) => Presupuestos.FirstOrDefault(x => x.IdItinerario == id);
 
+        public static List<Itinerario> GetPresupuestosPrereservables() => Presupuestos.FindAll(x => x.EsPrereservable());
+
+        public static List<Itinerario> GetPresupuestosPrereservadosAbonados() => Presupuestos.FindAll(x => x.EsPrereservaAbonada());
+
+        public static List<Itinerario> GetPresupuestosPrereservadosNoAbonados() => Presupuestos.FindAll(x => x.EsPrereservaNoAbonada());
+
+        public static List<Itinerario> GetPresupuestosPrereservados() => Presupuestos.FindAll(x => x.EsPrereserva());
+
+        public static bool EsPresupuestoModificable(int itinerarioId) => 
+            Presupuestos.Any(x => x.IdItinerario == itinerarioId && x.EsModificable());
+
         public static void AddPresupuesto(Itinerario itinerario) => Presupuestos.Add(itinerario);
 
         public static void UpdatePresupuesto(Itinerario itinerarioActualizado)

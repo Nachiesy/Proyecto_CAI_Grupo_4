@@ -2,26 +2,20 @@ namespace Proyecto_CAI_Grupo_4.Entities;
 
 public class Itinerario
 {
-    public Itinerario() { }
-
     public Itinerario(int id, Cliente cliente, decimal precioTotal) 
     {
         IdItinerario = id;
         PrecioTotal = precioTotal;
         Cliente = cliente;
-    }
-
-    public Itinerario(int id,
-        List<AereoSeleccionado> idAereosSeleccionados,
-        List<HotelSeleccionado> idHotelesSeleccionados,
-        Cliente cliente,
-        decimal precioTotal) : this(id, cliente, precioTotal)
-    {
-        IdAereosSeleccionados = idAereosSeleccionados;
-        IdHotelesSeleccionados = idHotelesSeleccionados;
+        Estado = "Presupuestado";
+        FechaEstado = DateTime.Now;
     }
 
     public int IdItinerario { get; set; }
+
+    public string Estado { get; set; }
+
+    public DateTime FechaEstado { get; set; }
 
     public List<AereoSeleccionado> IdAereosSeleccionados { get; set; } = new List<AereoSeleccionado>();
 
@@ -30,6 +24,58 @@ public class Itinerario
     public Cliente Cliente { get; set; }
 
     public decimal PrecioTotal { get; set; }
+
+    public Itinerario ActualizarEstadoAPendienteDeConfirmacion()
+    {
+        Estado = "Pendiente de confirmación";
+        FechaEstado = DateTime.Now;
+
+        return this;
+    }
+
+    public Itinerario ActualizarEstadoAPrereservado()
+    {
+        Estado = "Prereservado";
+        FechaEstado = DateTime.Now;
+
+        return this;
+    }
+
+    public Itinerario ActualizarEstadoAReservado()
+    {
+        Estado = "Reservado";
+        FechaEstado = DateTime.Now;
+
+        return this;
+    }
+
+    public bool EsPrereservable()
+    {
+        return Estado == "Presupuestado";
+    }
+
+    public bool EsPrereserva()
+    {
+        return Estado == "Prereservado" 
+                || Estado == "Prereservado Abonado";
+    }
+
+    public bool EsPrereservaNoAbonada()
+    {
+        return Estado == "Prereservado";
+    }
+
+    public bool EsPrereservaAbonada()
+    {
+        return Estado == "Prereservado Abonado";
+    }
+
+    public bool EsModificable()
+    {
+        return Estado != "Prereservado"
+               || Estado != "Prereservado Abonado"
+               || Estado != "Reservado";
+    }
 
     public Itinerario AddAereo(string idUnico, int idAereo)
     {

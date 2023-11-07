@@ -23,16 +23,17 @@ namespace Proyecto_CAI_Grupo_4.Models
                 return "El número de presupuesto ingresado no existe";
             }
 
-            var preReserva = ReservaModule.GetPrereservaAbonadaByItinerario(presupuesto.IdItinerario);
+            var esModificable = PresupuestosModule.EsPresupuestoModificable(presupuesto.IdItinerario);
 
-            if (preReserva.Count > 0)
+            if (!esModificable)
             {
-                return "El número de presupuesto ingresado ya fue abonado en la pre-reserva " + preReserva.First().IdItinerario + " y no se puede editar";
+                return $"El número de presupuesto #{presupuesto.IdItinerario} coincide con un presupuesto que" +
+                       $" no puede ser modificado ya que esta en estado {presupuesto.Estado}";
             }
 
             PresupuestoId = nroPresupuesto;
 
-            return null;
+            return string.Empty;
         }
 
         public void GoToGenerarPresupuestoMenu()
