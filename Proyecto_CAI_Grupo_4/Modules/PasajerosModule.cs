@@ -1,10 +1,16 @@
-﻿using Proyecto_CAI_Grupo_4.Entities;
+﻿using Proyecto_CAI_Grupo_4.Almacenes;
+using Proyecto_CAI_Grupo_4.Entities;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
     public static class PasajerosModule
     {
         public static List<Pasajeros> Pasajeros { get; set; } = new List<Pasajeros>();
+
+        static PasajerosModule()
+        {
+            Pasajeros = AlmacenPasajeros.GetPasajeros();
+        }
 
         public static void AgregarPasajero(Pasajeros pasajero)
         {
