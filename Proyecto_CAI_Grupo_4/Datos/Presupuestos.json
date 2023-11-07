@@ -1,0 +1,20 @@
+[
+  {
+    "IdItinerario": 1,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-07T20:42:07.2560572-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P1V1000",
+        "IdAereo": 1
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "43988765",
+      "Nombre": "Lionel",
+      "Apellido": "Messi"
+    },
+    "PrecioTotal": 30000.0
+  }
+]
