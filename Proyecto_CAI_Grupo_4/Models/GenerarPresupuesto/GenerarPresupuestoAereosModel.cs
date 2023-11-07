@@ -101,17 +101,17 @@ namespace Proyecto_CAI_Grupo_4.Models
             return string.Empty;
         }
 
-        public IEnumerable<AereosEnt> GetAereos(AereosFilter filter)
+        public IEnumerable<AereoEnt> GetAereos(AereosFilter filter)
         {
             return AereosModule.GetAereos(filter);
         }
 
-        public IEnumerable<AereosEnt> GetAereosElegidos()
+        public IEnumerable<AereoEnt> GetAereosElegidos()
         {
             return AereosModule.GetAereosElegidos();
         }
 
-        public AereosEnt? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
+        public AereoEnt? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
         {
             var producto = AereosModule.GetAereoByID(id);
 

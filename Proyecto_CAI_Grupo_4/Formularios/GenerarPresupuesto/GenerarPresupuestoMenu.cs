@@ -53,7 +53,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
         ActualizarEstadoBotones();
     }
 
-    private void AddAereosToListView(IEnumerable<AereosEnt> aereosToAdd)
+    private void AddAereosToListView(IEnumerable<AereoEnt> aereosToAdd)
     {
         var filasProducto = aereosToAdd.Select(item => new ListViewItem(item.Codigo)
         {
@@ -73,7 +73,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
         productosElegidos.Items.AddRange(filasProducto);
     }
 
-    private void AddHotelesToListView(IEnumerable<HotelesEnt> hotelesToAdd)
+    private void AddHotelesToListView(IEnumerable<HotelEnt> hotelesToAdd)
     {
         var filasProducto = hotelesToAdd.Select(item => new ListViewItem(item.Codigo)
         {

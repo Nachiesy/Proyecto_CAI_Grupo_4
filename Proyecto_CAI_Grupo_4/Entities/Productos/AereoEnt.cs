@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4.Entities;
 
-public class AereosEnt
+public class AereoEnt
 {
     public int Id { get; set; }
 

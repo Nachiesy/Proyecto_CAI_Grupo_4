@@ -7,7 +7,7 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
     {
         private static string AlmacenPath = @"..\..\..\Datos\Productos\Aereos.json";
 
-        private static List<AereosEnt> Aereos;
+        private static List<AereoEnt> Aereos;
 
         static AlmacenAereos()
         {
@@ -15,20 +15,20 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
             {
                 var aereosInDb = File.ReadAllText(AlmacenPath);
 
-                Aereos = JsonConvert.DeserializeObject<List<AereosEnt>>(aereosInDb);
+                Aereos = JsonConvert.DeserializeObject<List<AereoEnt>>(aereosInDb);
             }
             else
             {
-                Aereos = new List<AereosEnt>();
+                Aereos = new List<AereoEnt>();
             }
         }
 
-        public static List<AereosEnt> GetAereos()
+        public static List<AereoEnt> GetAereos()
         {
             return Aereos;
         }
 
-        public static void UpdateAereos(List<AereosEnt> updatedAereos)
+        public static void UpdateAereos(List<AereoEnt> updatedAereos)
         {
             Aereos.Clear();
 

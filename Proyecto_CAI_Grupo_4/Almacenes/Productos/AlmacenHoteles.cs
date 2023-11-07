@@ -7,7 +7,7 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
     {
         private static string AlmacenPath = @"..\..\..\Datos\Productos\Hoteles.json";
 
-        private static List<HotelesEnt> Hoteles;
+        private static List<HotelEnt> Hoteles;
 
         static AlmacenHoteles()
         {
@@ -15,20 +15,20 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
             {
                 var hotelesInDb = File.ReadAllText(AlmacenPath);
 
-                Hoteles = JsonConvert.DeserializeObject<List<HotelesEnt>>(hotelesInDb);
+                Hoteles = JsonConvert.DeserializeObject<List<HotelEnt>>(hotelesInDb);
             }
             else
             {
-                Hoteles = new List<HotelesEnt>();
+                Hoteles = new List<HotelEnt>();
             }
         }
 
-        public static List<HotelesEnt> GetHoteles()
+        public static List<HotelEnt> GetHoteles()
         {
             return Hoteles;
         }
 
-        public static void UpdateHoteles(List<HotelesEnt> updatedHoteles)
+        public static void UpdateHoteles(List<HotelEnt> updatedHoteles)
         {
             Hoteles.Clear();
 

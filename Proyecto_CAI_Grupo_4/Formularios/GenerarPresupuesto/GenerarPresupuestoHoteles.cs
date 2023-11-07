@@ -40,7 +40,7 @@ namespace Proyecto_CAI_Grupo_4
             AddProductosSeleccionadosToListView(Model.GetHotelesElegidos());
         }
 
-        private void AddProductosToListView(IEnumerable<HotelesEnt> listToAdd)
+        private void AddProductosToListView(IEnumerable<HotelEnt> listToAdd)
         {
             foreach (var item in listToAdd)
             {
@@ -66,7 +66,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void AddProductosSeleccionadosToListView(IEnumerable<HotelesEnt> listToAdd)
+        private void AddProductosSeleccionadosToListView(IEnumerable<HotelEnt> listToAdd)
         {
             foreach (var item in listToAdd)
             {
@@ -134,7 +134,7 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            var productosToAdd = new List<HotelesEnt>();
+            var productosToAdd = new List<HotelEnt>();
 
             foreach (ListViewItem item in listViewProductos.SelectedItems)
             {

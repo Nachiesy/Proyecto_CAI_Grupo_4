@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4.Entities
 {
-    public class HotelesEnt
+    public class HotelEnt
     {
         public int Id { get; set; }
 

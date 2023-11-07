@@ -6,26 +6,26 @@ namespace Proyecto_CAI_Grupo_4.Modules
 {
     public static class HotelesModule
     {
-        private static List<HotelesEnt> hoteles = new List<HotelesEnt>();
+        private static List<HotelEnt> hoteles = new List<HotelEnt>();
 
-        private static List<HotelesEnt> hotelesElegidos = new List<HotelesEnt>();
+        private static List<HotelEnt> hotelesElegidos = new List<HotelEnt>();
 
         static HotelesModule()
         {
             hoteles = AlmacenHoteles.GetHoteles();
         }
 
-        public static IEnumerable<HotelesEnt> GetHoteles()
+        public static IEnumerable<HotelEnt> GetHoteles()
         {
             return hoteles;
         }
 
-        public static IEnumerable<HotelesEnt> GetHotelesByIds(IEnumerable<int> ids)
+        public static IEnumerable<HotelEnt> GetHotelesByIds(IEnumerable<int> ids)
         {
             return hoteles.Where(x => ids.Contains(x.Id));
         }
 
-        public static IEnumerable<HotelesEnt> GetHoteles(HotelesFilter filter)
+        public static IEnumerable<HotelEnt> GetHoteles(HotelesFilter filter)
         {
             return hoteles
                     .Where(x => (!filter.CantidadMin.HasValue || x.Disponibilidad.Disponibilidad >= filter.CantidadMin)
@@ -39,12 +39,12 @@ namespace Proyecto_CAI_Grupo_4.Modules
                                 && (string.IsNullOrEmpty(filter.Calificacion) || x.Calificacion == filter.Calificacion));
         }
 
-        public static HotelesEnt? GetHotelByID(int id)
+        public static HotelEnt? GetHotelByID(int id)
         {
             return hoteles.Where(x => x.Id == id).SingleOrDefault();
         }
 
-        public static IEnumerable<HotelesEnt> GetHotelesElegidos()
+        public static IEnumerable<HotelEnt> GetHotelesElegidos()
         {
             return hotelesElegidos;
         }
@@ -78,7 +78,7 @@ namespace Proyecto_CAI_Grupo_4.Modules
 
         public static void ActualizarCantidadesDeHoteles()
         {
-            var hotelesToUpdate = new List<HotelesEnt>(hoteles.Intersect(hotelesElegidos));
+            var hotelesToUpdate = new List<HotelEnt>(hoteles.Intersect(hotelesElegidos));
 
             foreach (var hotel in hotelesToUpdate)
             {

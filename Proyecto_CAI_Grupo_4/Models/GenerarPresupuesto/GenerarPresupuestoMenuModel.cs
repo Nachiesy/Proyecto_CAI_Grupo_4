@@ -115,12 +115,12 @@ namespace Proyecto_CAI_Grupo_4.Models
             HotelesModule.AddHotelElegido(id);
         }
 
-        public IEnumerable<AereosEnt> GetAereosElegidos()
+        public IEnumerable<AereoEnt> GetAereosElegidos()
         {
             return AereosModule.GetAereosElegidos();
         }
 
-        public IEnumerable<HotelesEnt> GetHotelesElegidos()
+        public IEnumerable<HotelEnt> GetHotelesElegidos()
         {
             return HotelesModule.GetHotelesElegidos();
         }

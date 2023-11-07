@@ -45,7 +45,7 @@ namespace Proyecto_CAI_Grupo_4
             AddProductosSeleccionadosToListView(Model.GetAereosElegidos());
         }
 
-        private void AddProductosToListView(IEnumerable<AereosEnt> listToAdd)
+        private void AddProductosToListView(IEnumerable<AereoEnt> listToAdd)
         {
             foreach (var item in listToAdd)
             {
@@ -67,7 +67,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void AddProductosSeleccionadosToListView(IEnumerable<AereosEnt> listToAdd)
+        private void AddProductosSeleccionadosToListView(IEnumerable<AereoEnt> listToAdd)
         {
             foreach (var item in listToAdd)
             {
@@ -133,7 +133,7 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            var productosToAdd = new List<AereosEnt>();
+            var productosToAdd = new List<AereoEnt>();
 
             foreach (ListViewItem item in listViewProductos.SelectedItems)
             {

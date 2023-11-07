@@ -101,17 +101,17 @@ namespace Proyecto_CAI_Grupo_4.Models
             return string.Empty;
         }
 
-        public IEnumerable<HotelesEnt> GetHoteles(HotelesFilter filter)
+        public IEnumerable<HotelEnt> GetHoteles(HotelesFilter filter)
         {
             return HotelesModule.GetHoteles(filter);
         }
 
-        public IEnumerable<HotelesEnt> GetHotelesElegidos()
+        public IEnumerable<HotelEnt> GetHotelesElegidos()
         {
             return HotelesModule.GetHotelesElegidos();
         }
 
-        public HotelesEnt? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
+        public HotelEnt? GetProductoToAddToProductosSeleccionados(ListView listView, int id)
         {
             var producto = HotelesModule.GetHotelByID(id);
 
