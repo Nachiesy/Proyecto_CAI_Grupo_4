@@ -29,6 +29,8 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public Reserva GenerarReserva(Itinerario preReserva)
         {
+            PresupuestosModule.ActualizarEstadoAReservado(preReserva.IdItinerario);
+
             return ReservaModule.GenerarNuevaReserva(preReserva.IdItinerario, preReserva.Cliente);
         }
 

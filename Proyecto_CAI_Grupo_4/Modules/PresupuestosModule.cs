@@ -29,6 +29,16 @@ namespace Proyecto_CAI_Grupo_4.Models
         public static bool EsPresupuestoModificable(int itinerarioId) => 
             Presupuestos.Any(x => x.IdItinerario == itinerarioId && x.EsModificable());
 
+        public static void ActualizarEstadoAReservado(int idItinerario)
+        {
+            var presupuesto = Presupuestos.Find(x => x.IdItinerario == idItinerario);
+
+            if (presupuesto != null)
+            {
+                presupuesto.ActualizarEstadoAReservado();
+            }
+        }
+
         public static void AddPresupuesto(Itinerario itinerario) => Presupuestos.Add(itinerario);
 
         public static void UpdatePresupuesto(Itinerario itinerarioActualizado)
