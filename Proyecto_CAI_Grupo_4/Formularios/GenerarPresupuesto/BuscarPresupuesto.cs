@@ -37,6 +37,6 @@ public partial class BuscarPresupuesto : VistaBase
     {
         Close();
 
-        Model.GoToMenuPrincipal();
+        GoToMenuPrincipal();
     }
 }

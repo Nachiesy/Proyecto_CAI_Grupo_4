@@ -155,13 +155,6 @@ namespace Proyecto_CAI_Grupo_4.Models
             HotelesModule.ActualizarCantidadesDeHoteles();
         }
 
-        public void GoToGenerarPresupuestoAereos()
-        {
-            Thread thread = new Thread(GenerarPresupuestoAereosModel.OpenGenerarPresupuestoAereos);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
         public static void OpenGenerarPresupuestoMenu()
         {
             if (EsNuevo)
@@ -177,20 +170,6 @@ namespace Proyecto_CAI_Grupo_4.Models
                     InitBuscarPresupuesto = InitBuscarPresupuesto,
                 }));
             }
-        }
-
-        public void GoToGenerarPresupuestoHoteles()
-        {
-            Thread thread = new Thread(GenerarPresupuestoHotelesModel.OpenGenerarPresupuestoHoteles);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        public void GoToMenuPrincipal()
-        {
-            Thread thread = new Thread(MenuPrincipalModel.OpenMenuPrincipal);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
         }
     }
 }

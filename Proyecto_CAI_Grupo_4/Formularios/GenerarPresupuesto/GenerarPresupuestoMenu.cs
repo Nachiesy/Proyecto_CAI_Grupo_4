@@ -97,14 +97,38 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         this.Close();
 
-        Model.GoToGenerarPresupuestoAereos();
+        GoToGenerarPresupuestoAereos();
+    }
+
+    private void GoToGenerarPresupuestoAereos()
+    {
+        var thread = new Thread(OpenGenerarPresupuestoAereos);
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+    }
+
+    private void OpenGenerarPresupuestoAereos()
+    {
+        Application.Run(new GenerarPresupuestoAereos());
     }
 
     private void btnMenuHoteles_Click(object sender, EventArgs e)
     {
         this.Close();
 
-        Model.GoToGenerarPresupuestoHoteles();
+        GoToGenerarPresupuestoHoteles();
+    }
+
+    private void GoToGenerarPresupuestoHoteles()
+    {
+        var thread = new Thread(OpenGenerarPresupuestoHoteles);
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+    }
+
+    private void OpenGenerarPresupuestoHoteles()
+    {
+        Application.Run(new GenerarPresupuestoHoteles());
     }
 
     private void btnFinalizarPresupuesto_Click(object sender, EventArgs e)
@@ -146,7 +170,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         Close();
 
-        Model.GoToMenuPrincipal();
+        GoToMenuPrincipal();
     }
 
     private void btnEliminarTodo_Click(object sender, EventArgs e)

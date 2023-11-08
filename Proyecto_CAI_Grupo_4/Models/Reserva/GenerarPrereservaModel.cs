@@ -30,17 +30,5 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             return itinerario;
         }
-
-        public void GoToMenuPrincipal()
-        {
-            Thread thread = new Thread(MenuPrincipalModel.OpenMenuPrincipal);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        public static void OpenGenerarPrereserva()
-        {
-            Application.Run(new GenerarPrereserva());
-        }
     }
 }

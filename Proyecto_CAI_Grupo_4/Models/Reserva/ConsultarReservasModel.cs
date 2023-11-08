@@ -14,10 +14,5 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             return PresupuestosModule.GetPresupuestoById(id);
         }
-
-        public static void OpenConsultarReservas()
-        {
-            Application.Run(new ConsultarReservas());
-        }
     }
 }

@@ -26,7 +26,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             Close();
 
-            Model.GoToMenuPrinicipal();
+            GoToMenuPrincipal();
         }
 
         public void RecibirDatosPasajero(Pasajeros SumarPasajero)
@@ -206,7 +206,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 Close();
 
-                Model.GoToMenuPrinicipal();
+                GoToMenuPrincipal();
             }
         }
 

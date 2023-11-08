@@ -108,6 +108,7 @@
             Name = "VistaBase";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VistaBase";
+            Load += VistaBase_Load;
             pnl_BarraFijaSuperior.ResumeLayout(false);
             pnl_BarraFijaSuperior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logo).EndInit();

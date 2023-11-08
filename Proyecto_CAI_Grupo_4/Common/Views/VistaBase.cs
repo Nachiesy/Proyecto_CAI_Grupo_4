@@ -1,4 +1,5 @@
 ﻿using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Modules;
 using System.Runtime.InteropServices;
 
 namespace Proyecto_CAI_Grupo_4.Common.Views;
@@ -51,6 +52,26 @@ public partial class VistaBase : Form
     {
         Close();
 
-        Model.GoToMenuPrincipal();
+        GoToMenuPrincipal();
+    }
+
+    private void VistaBase_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void GoToMenuPrincipal()
+    {
+        AereosModule.ClearAereosElegidos();
+        HotelesModule.ClearHotelesElegidos();
+
+        var thread = new Thread(OpenMenuPrincipal);
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+    }
+
+    private void OpenMenuPrincipal()
+    {
+        Application.Run(new MenuPrincipal());
     }
 }

@@ -46,17 +46,5 @@ namespace Proyecto_CAI_Grupo_4.Models
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
-
-        public void GoToMenuPrincipal()
-        {
-            Thread thread = new Thread(MenuPrincipalModel.OpenMenuPrincipal);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        public static void OpenBuscarPresupuesto()
-        {
-            Application.Run(new BuscarPresupuesto());
-        }
     }
 }

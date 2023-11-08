@@ -160,10 +160,5 @@ namespace Proyecto_CAI_Grupo_4.Models
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
-
-        public static void OpenGenerarPresupuestoHoteles()
-        {
-            Application.Run(new GenerarPresupuestoHoteles());
-        }
     }
 }

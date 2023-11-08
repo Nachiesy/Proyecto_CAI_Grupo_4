@@ -101,7 +101,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             this.Close();
 
-            Model.GoToMenuPrincipal();
+            GoToMenuPrincipal();
         }
     }
 }

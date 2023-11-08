@@ -179,17 +179,5 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             PasajerosModule.AgregarPasajeros(Pasajeros);
         }
-
-        public void GoToMenuPrinicipal()
-        {
-            Thread thread = new Thread(MenuPrincipalModel.OpenMenuPrincipal);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        public static void OpenAgregarPasajeros()
-        {
-            Application.Run(new AgregarPasajeros());
-        }
     }
 }

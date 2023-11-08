@@ -33,17 +33,5 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             return ReservaModule.GenerarNuevaReserva(preReserva.IdItinerario, preReserva.Cliente);
         }
-
-        public void GoToMenuPrincipal()
-        {
-            Thread thread = new Thread(MenuPrincipalModel.OpenMenuPrincipal);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-        
-        public static void OpenGenerarReserva()
-        {
-            Application.Run(new GenerarReserva());
-        }
     }
 }

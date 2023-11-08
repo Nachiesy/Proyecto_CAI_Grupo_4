@@ -21,17 +21,5 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             ReservaModule.ConfirmarReserva(id);
         }
-
-        public void GoToMenuPrincipal()
-        {
-            Thread thread = new Thread(MenuPrincipalModel.OpenMenuPrincipal);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        public static void OpenConfirmarReserva()
-        {
-            Application.Run(new ConfirmarReserva());
-        }
     }
 }
