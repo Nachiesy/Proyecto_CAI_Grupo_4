@@ -1,5 +1,6 @@
 ﻿using Proyecto_CAI_Grupo_4.GenerarPresupuesto;
 using Proyecto_CAI_Grupo_4.Modelos;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
@@ -36,15 +37,14 @@ namespace Proyecto_CAI_Grupo_4.Models
             return string.Empty;
         }
 
-        public void GoToGenerarPresupuestoMenu()
+        public void SetGenerarPresupuestoParams()
         {
-            GenerarPresupuestoMenuModel.PresupuestoId = PresupuestoId;
-            GenerarPresupuestoMenuModel.EsNuevo = false;
-            GenerarPresupuestoMenuModel.InitBuscarPresupuesto = true;
-
-            Thread thread = new Thread(GenerarPresupuestoMenuModel.OpenGenerarPresupuestoMenu);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            PresupuestosModule.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
+            {
+                PresupuestoId = PresupuestoId,
+                EsNuevo = false,
+                InitBuscarPresupuesto = true,
+            });
         }
     }
 }

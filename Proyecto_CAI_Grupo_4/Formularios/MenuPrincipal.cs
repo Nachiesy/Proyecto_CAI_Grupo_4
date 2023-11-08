@@ -81,9 +81,16 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GoToGenerarPresupuestoMenu()
         {
-            var thread = new Thread(GenerarPresupuestoMenuModel.OpenGenerarPresupuestoMenu);
+            Model.SetGenerarPresupuestoParams();
+
+            var thread = new Thread(OpenGenerarPresupuestoMenu);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
+        }
+        
+        private void OpenGenerarPresupuestoMenu()
+        {
+            Application.Run(new GenerarPresupuestoMenu());
         }
 
         private void GoToAgregarPasajeros()

@@ -8,7 +8,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoAereos : VistaBase
     {
-        private GenerarPresupuestoAereosModel Model = new GenerarPresupuestoAereosModel();
+        private GenerarPresupuestoAereosModel Model;
 
         public GenerarPresupuestoAereos() : base(tituloModulo: "Generar Presupuesto > Aéreos")
         {
@@ -17,6 +17,8 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuestoAereos_Load(object sender, EventArgs e)
         {
+            Model = new GenerarPresupuestoAereosModel();
+
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
@@ -178,14 +180,28 @@ namespace Proyecto_CAI_Grupo_4
 
             this.Close();
 
-            Model.GoToGenerarPresupuestoMenu();
+            GoToGenerarPresupuestoMenu();
+        }
+
+        private void GoToGenerarPresupuestoMenu()
+        {
+            Model.SetGenerarPresupuestoParams();
+
+            var thread = new Thread(OpenGenerarPresupuestoMenu);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenGenerarPresupuestoMenu()
+        {
+            Application.Run(new GenerarPresupuestoMenu());
         }
 
         private void btnVolverAlMenuGenerarPresupuestos_Click(object sender, EventArgs e)
         {
             this.Close();
 
-            Model.GoToGenerarPresupuestoMenu();
+            GoToGenerarPresupuestoMenu();
         }
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)

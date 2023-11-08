@@ -1,10 +1,13 @@
 using Proyecto_CAI_Grupo_4.Almacenes;
 using Proyecto_CAI_Grupo_4.Entities;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
     public static class PresupuestosModule
     {
+        private static GenerarPresupuestoParams GenerarPresupuestoParams;
+
         private static List<Itinerario> Presupuestos = new List<Itinerario>();
 
         static PresupuestosModule()
@@ -52,5 +55,14 @@ namespace Proyecto_CAI_Grupo_4.Models
         }
 
         public static int GenerarId() => Presupuestos.Count + 1;
+
+        public static GenerarPresupuestoParams GetGenerarPresupuestoParams()
+        {
+            return GenerarPresupuestoParams;
+        }
+        public static void SetGenerarPresupuestoParams(GenerarPresupuestoParams generarPresupuestoParams)
+        {
+            GenerarPresupuestoParams = generarPresupuestoParams;
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace Proyecto_CAI_Grupo_4.GenerarPresupuesto;
 
 public partial class BuscarPresupuesto : VistaBase
 {
-    private BuscarPresupuestoModel Model = new BuscarPresupuestoModel();
+    private BuscarPresupuestoModel Model;
 
     public BuscarPresupuesto()
     {
@@ -14,7 +14,7 @@ public partial class BuscarPresupuesto : VistaBase
 
     private void BuscarPresupuesto_Load(object sender, EventArgs e)
     {
-
+        Model = new BuscarPresupuestoModel();
     }
 
     private void btn_BuscarPresupuesto_Click(object sender, EventArgs e)
@@ -30,7 +30,21 @@ public partial class BuscarPresupuesto : VistaBase
 
         Close();
 
-        Model.GoToGenerarPresupuestoMenu();
+        GoToGenerarPresupuestoMenu();
+    }
+
+    private void GoToGenerarPresupuestoMenu()
+    {
+        Model.SetGenerarPresupuestoParams();
+
+        var thread = new Thread(OpenGenerarPresupuestoMenu);
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
+    }
+
+    private void OpenGenerarPresupuestoMenu()
+    {
+        Application.Run(new GenerarPresupuestoMenu());
     }
 
     private void btn_Volver_Click(object sender, EventArgs e)

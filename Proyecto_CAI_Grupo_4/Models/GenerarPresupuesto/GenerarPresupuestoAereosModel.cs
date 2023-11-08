@@ -163,13 +163,14 @@ namespace Proyecto_CAI_Grupo_4.Models
             AereosModule.AddAereoElegido(id);
         }
 
-        public void GoToGenerarPresupuestoMenu()
+        public void SetGenerarPresupuestoParams()
         {
-            GenerarPresupuestoMenuModel.InitBuscarPresupuesto = false;
-
-            Thread thread = new Thread(GenerarPresupuestoMenuModel.OpenGenerarPresupuestoMenu);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            PresupuestosModule.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
+            {
+                PresupuestoId = PresupuestosModule.GetGenerarPresupuestoParams().PresupuestoId,
+                EsNuevo = PresupuestosModule.GetGenerarPresupuestoParams().EsNuevo,
+                InitBuscarPresupuesto = false,
+            });
         }
     }
 }

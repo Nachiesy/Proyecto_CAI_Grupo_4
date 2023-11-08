@@ -9,34 +9,37 @@ public partial class GenerarPresupuestoMenu : VistaBase
 {
     public decimal Total = 0;
 
-    private GenerarPresupuestoMenuModel Model = new GenerarPresupuestoMenuModel();
+    private GenerarPresupuestoMenuModel Model;
 
-    public GenerarPresupuestoMenu() : base(tituloModulo: $"Generar Presupuesto")
+    public GenerarPresupuestoMenu() : base(tituloModulo: SetBaseTitle()) 
     {
         InitializeComponent();
-
-        GenerarPresupuestoMenuModel.PresupuestoId = Model.GenerarPresupuestoId();
-    }
-
-    public GenerarPresupuestoMenu(GenerarPresupuestoMenuParams parametros) : base(tituloModulo: $"Modificar Presupuesto #{parametros.PresupuestoId}")
-    {
-        InitializeComponent();
-
-        var presupuesto = Model.GetPresupuestoById();
-
-        textBoxClienteDNI.Text = presupuesto.Cliente.DNI;
-        textBoxClienteNombre.Text = presupuesto.Cliente.Nombre;
-        textBoxClienteApellido.Text = presupuesto.Cliente.Apellido;
-
-        if (parametros.InitBuscarPresupuesto)
-        {
-            presupuesto.IdAereosSeleccionados.ForEach(i => Model.AddAereoElegido(i.IdAereo));
-            presupuesto.IdHotelesSeleccionados.ForEach(i => Model.AddHotelElegido(i.IdHotel));
-        }
     }
 
     private void GenerarPresupuestoMenu_Load(object sender, EventArgs e)
     {
+        Model = new GenerarPresupuestoMenuModel();
+
+        if (GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo)
+        {
+            Model.SetGenerarPresupuestoParams();
+        }
+
+        var presupuesto = Model.GetPresupuestoById();
+
+        if (!GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo)
+        {
+            textBoxClienteDNI.Text = presupuesto.Cliente.DNI;
+            textBoxClienteNombre.Text = presupuesto.Cliente.Nombre;
+            textBoxClienteApellido.Text = presupuesto.Cliente.Apellido;
+        }
+
+        if (GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().InitBuscarPresupuesto)
+        {
+            presupuesto.IdAereosSeleccionados.ForEach(i => Model.AddAereoElegido(i.IdAereo));
+            presupuesto.IdHotelesSeleccionados.ForEach(i => Model.AddHotelElegido(i.IdHotel));
+        }
+
         var aereos = Model.GetAereosElegidos();
 
         AddAereosToListView(aereos);
@@ -51,6 +54,12 @@ public partial class GenerarPresupuestoMenu : VistaBase
         ActualizarTextoPrecioTotal();
 
         ActualizarEstadoBotones();
+    }
+
+    private static string SetBaseTitle()
+    {
+        return GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo 
+            ? $"Generar Presupuesto" : $"Modificar Presupuesto #{GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().PresupuestoId}";
     }
 
     private void AddAereosToListView(IEnumerable<AereoEnt> aereosToAdd)
@@ -152,17 +161,17 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         var itinerario = Model.GenerarItinerario(productosElegidos, cliente, Total);
 
-        if (GenerarPresupuestoMenuModel.EsNuevo)
+        if (GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo)
         {
             Model.AddPresupuesto(itinerario);
 
-            MessageBox.Show($"Presupuesto con Código: [{GenerarPresupuestoMenuModel.PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+            MessageBox.Show($"Presupuesto con Código: [{GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
         else
         {
             Model.UpdatePresupuesto(itinerario);
 
-            MessageBox.Show($"Presupuesto con Código: [{GenerarPresupuestoMenuModel.PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+            MessageBox.Show($"Presupuesto con Código: [{GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
 
         Model.ClearAereosElegidos();

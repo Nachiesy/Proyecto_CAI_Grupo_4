@@ -8,7 +8,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPresupuestoHoteles : VistaBase
     {
-        private GenerarPresupuestoHotelesModel Model = new GenerarPresupuestoHotelesModel();
+        private GenerarPresupuestoHotelesModel Model;
 
         public GenerarPresupuestoHoteles() : base(tituloModulo: "Generar Presupuesto > Hoteles")
         {
@@ -17,6 +17,8 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GenerarPresupuestoHoteles_Load(object sender, EventArgs e)
         {
+            Model = new GenerarPresupuestoHotelesModel();
+
             datePickerFilterFechaDesde.Value = DateTime.Now.Date;
             datePickerFilterFechaHasta.Value = DateTime.Now.AddDays(1).Date;
 
@@ -179,14 +181,28 @@ namespace Proyecto_CAI_Grupo_4
 
             this.Close();
 
-            Model.GoToGenerarPresupuestoMenu();
+            GoToGenerarPresupuestoMenu();
+        }
+
+        private void GoToGenerarPresupuestoMenu()
+        {
+            Model.SetGenerarPresupuestoParams();
+
+            var thread = new Thread(OpenGenerarPresupuestoMenu);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenGenerarPresupuestoMenu()
+        {
+            Application.Run(new GenerarPresupuestoMenu());
         }
 
         private void btnVolverAlMenuGenerarPresupuestos_Click(object sender, EventArgs e)
         {
             this.Close();
 
-            Model.GoToGenerarPresupuestoMenu();
+            GoToGenerarPresupuestoMenu();
         }
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)
