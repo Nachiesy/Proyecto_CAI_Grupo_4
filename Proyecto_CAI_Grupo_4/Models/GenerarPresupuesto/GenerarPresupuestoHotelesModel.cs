@@ -103,7 +103,16 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public IEnumerable<HotelEnt> GetHoteles(HotelesFilter filter)
         {
-            return HotelesModule.GetHoteles(filter);
+            return HotelesModule.GetHoteles()
+                .Where(x => (!filter.CantidadMin.HasValue || x.Disponibilidad.Disponibilidad >= filter.CantidadMin)
+                                && (!filter.PrecioDesde.HasValue || x.Disponibilidad.TarifaPorDia >= filter.PrecioDesde)
+                                && (!filter.PrecioHasta.HasValue || x.Disponibilidad.TarifaPorDia <= filter.PrecioHasta)
+                                && (!filter.FechaDesde.HasValue || x.Disponibilidad.FechaDesde == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.Disponibilidad.FechaHasta == filter.FechaHasta)
+                                && (string.IsNullOrEmpty(filter.Nombre) || x.Nombre == filter.Nombre)
+                                && (string.IsNullOrEmpty(filter.Ciudad) || x.Ciudad == filter.Ciudad)
+                                && (string.IsNullOrEmpty(filter.TipoDeHabitacion) || x.Disponibilidad.NombreHabitacion == filter.TipoDeHabitacion)
+                                && (string.IsNullOrEmpty(filter.Calificacion) || x.Calificacion == filter.Calificacion));
         }
 
         public IEnumerable<HotelEnt> GetHotelesElegidos()

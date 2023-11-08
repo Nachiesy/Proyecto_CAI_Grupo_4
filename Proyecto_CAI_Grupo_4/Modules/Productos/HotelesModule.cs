@@ -25,20 +25,6 @@ namespace Proyecto_CAI_Grupo_4.Modules
             return hoteles.Where(x => ids.Contains(x.Id));
         }
 
-        public static IEnumerable<HotelEnt> GetHoteles(HotelesFilter filter)
-        {
-            return hoteles
-                    .Where(x => (!filter.CantidadMin.HasValue || x.Disponibilidad.Disponibilidad >= filter.CantidadMin)
-                                && (!filter.PrecioDesde.HasValue || x.Disponibilidad.TarifaPorDia >= filter.PrecioDesde)
-                                && (!filter.PrecioHasta.HasValue || x.Disponibilidad.TarifaPorDia <= filter.PrecioHasta)
-                                && (!filter.FechaDesde.HasValue || x.Disponibilidad.FechaDesde == filter.FechaDesde)
-                                && (!filter.FechaHasta.HasValue || x.Disponibilidad.FechaHasta == filter.FechaHasta)
-                                && (string.IsNullOrEmpty(filter.Nombre) || x.Nombre == filter.Nombre)
-                                && (string.IsNullOrEmpty(filter.Ciudad) || x.Ciudad == filter.Ciudad)
-                                && (string.IsNullOrEmpty(filter.TipoDeHabitacion) || x.Disponibilidad.NombreHabitacion == filter.TipoDeHabitacion)
-                                && (string.IsNullOrEmpty(filter.Calificacion) || x.Calificacion == filter.Calificacion));
-        }
-
         public static HotelEnt? GetHotelByID(int id)
         {
             return hoteles.Where(x => x.Id == id).SingleOrDefault();

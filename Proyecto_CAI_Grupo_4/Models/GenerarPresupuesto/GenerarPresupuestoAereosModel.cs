@@ -103,7 +103,16 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public IEnumerable<AereoEnt> GetAereos(AereosFilter filter)
         {
-            return AereosModule.GetAereos(filter);
+            return AereosModule.GetAereos()
+                .Where(x => (!filter.CantidadMin.HasValue || x.Tarifa.Disponibilidad >= filter.CantidadMin)
+                                && (!filter.PrecioDesde.HasValue || x.Tarifa.Precio >= filter.PrecioDesde)
+                                && (!filter.PrecioHasta.HasValue || x.Tarifa.Precio <= filter.PrecioHasta)
+                                && (!filter.FechaDesde.HasValue || x.FechaDeSalida.Date == filter.FechaDesde)
+                                && (!filter.FechaHasta.HasValue || x.FechaDeLlegada.Date == filter.FechaHasta)
+                                && (string.IsNullOrEmpty(filter.Origen) || x.Origen == filter.Origen)
+                                && (string.IsNullOrEmpty(filter.Destino) || x.Destino == filter.Destino)
+                                && (string.IsNullOrEmpty(filter.TipoDePasajero) || x.Tarifa.TipoDePasajero == filter.TipoDePasajero)
+                                && (string.IsNullOrEmpty(filter.Clase) || x.Tarifa.Clase == filter.Clase));
         }
 
         public IEnumerable<AereoEnt> GetAereosElegidos()
