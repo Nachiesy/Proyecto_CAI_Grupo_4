@@ -61,26 +61,5 @@ namespace Proyecto_CAI_Grupo_4.Modules
                 aereosElegidos.RemoveAt(index);
             }
         }
-
-        public static void ActualizarCantidadesDeAereos()
-        {
-            var aereosToUpdate = new List<AereoEnt>(aereos.Intersect(aereosElegidos));
-
-            foreach (var aereo in aereosToUpdate)
-            {
-                var indexAereo = aereos.FindIndex(x => x.Id == aereo.Id);
-
-                var cantidadSeleccionada = aereosElegidos.Where(x => x.Id == aereo.Id).Count();
-
-                aereo.Tarifa.Disponibilidad = aereo.Tarifa.Disponibilidad - cantidadSeleccionada;
-
-                if (indexAereo != -1)
-                {
-                    aereos[indexAereo] = aereo;
-                }
-            }
-
-            aereosElegidos.Clear();
-        }
     }
 }

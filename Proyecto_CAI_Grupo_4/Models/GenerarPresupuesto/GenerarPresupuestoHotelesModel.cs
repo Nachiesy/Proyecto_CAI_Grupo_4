@@ -124,14 +124,16 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             var producto = HotelesModule.GetHotelByID(id);
 
-            var cantidad = GetCantidadSeleccionadaDelProducto(listView, producto.Id);
+            return producto;
 
-            if (producto.Disponibilidad.Disponibilidad > cantidad)
-            {
-                return producto;
-            }
+            //var cantidad = GetCantidadSeleccionadaDelProducto(listView, producto.Id);
 
-            return null;
+            // if (producto.Tarifa.Disponibilidad > cantidad)
+            // {
+            // return producto;
+            // }
+
+            // return null;
         }
 
         private int GetCantidadSeleccionadaDelProducto(ListView listView, int id)

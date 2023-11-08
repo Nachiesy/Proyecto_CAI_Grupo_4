@@ -124,17 +124,19 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             var producto = AereosModule.GetAereoByID(id);
 
-            var cantidad = GetCantidadSeleccionadaDelProducto(listView, producto.Id);
+            return producto;
 
-            if (producto.Tarifa.Disponibilidad > cantidad)
-            {
-                return producto;
-            }
+            //var cantidad = GetCantidadSeleccionadaDelProducto(listView, producto.Id);
 
-            return null;
+            // if (producto.Tarifa.Disponibilidad > cantidad)
+            // {
+            // return producto;
+            // }
+
+            // return null;
         }
 
-        private int GetCantidadSeleccionadaDelProducto(ListView listView, int id)
+            private int GetCantidadSeleccionadaDelProducto(ListView listView, int id)
         {
             var selectedIDs = new List<int>();
 

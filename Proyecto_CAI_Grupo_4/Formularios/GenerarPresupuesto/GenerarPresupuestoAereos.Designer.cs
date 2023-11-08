@@ -209,7 +209,7 @@
             // 
             // FechaLlegada
             // 
-            FechaLlegada.Text = "Fecha de Llegada";
+            FechaLlegada.Text = "Fecha de Arribo";
             FechaLlegada.Width = 150;
             // 
             // grp_VuelosSeleccionados
@@ -287,7 +287,7 @@
             // 
             // SelectFechaLlegada
             // 
-            SelectFechaLlegada.Text = "Fecha de Llegada";
+            SelectFechaLlegada.Text = "Fecha de Arribo";
             SelectFechaLlegada.Width = 150;
             // 
             // btnVolverAlMenuGenerarPresupuestos
@@ -478,9 +478,9 @@
             labelFiltroFechaDesde.AutoSize = true;
             labelFiltroFechaDesde.Location = new Point(18, 98);
             labelFiltroFechaDesde.Name = "labelFiltroFechaDesde";
-            labelFiltroFechaDesde.Size = new Size(73, 15);
+            labelFiltroFechaDesde.Size = new Size(88, 15);
             labelFiltroFechaDesde.TabIndex = 13;
-            labelFiltroFechaDesde.Text = "Fecha Desde";
+            labelFiltroFechaDesde.Text = "Fecha de Salida";
             // 
             // datePickerFilterFechaHasta
             // 
@@ -495,9 +495,9 @@
             labelFiltroFechaHasta.AutoSize = true;
             labelFiltroFechaHasta.Location = new Point(18, 188);
             labelFiltroFechaHasta.Name = "labelFiltroFechaHasta";
-            labelFiltroFechaHasta.Size = new Size(71, 15);
+            labelFiltroFechaHasta.Size = new Size(90, 15);
             labelFiltroFechaHasta.TabIndex = 15;
-            labelFiltroFechaHasta.Text = "Fecha Hasta";
+            labelFiltroFechaHasta.Text = "Fecha de Arribo";
             // 
             // txtBoxFiltroPrecioHasta
             // 

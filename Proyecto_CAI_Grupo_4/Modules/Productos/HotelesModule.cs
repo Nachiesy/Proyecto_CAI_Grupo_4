@@ -61,26 +61,5 @@ namespace Proyecto_CAI_Grupo_4.Modules
                 hotelesElegidos.RemoveAt(index);
             }
         }
-
-        public static void ActualizarCantidadesDeHoteles()
-        {
-            var hotelesToUpdate = new List<HotelEnt>(hoteles.Intersect(hotelesElegidos));
-
-            foreach (var hotel in hotelesToUpdate)
-            {
-                var indexHotel = hoteles.FindIndex(x => x.Id == hotel.Id);
-
-                var cantidadSeleccionada = hotelesElegidos.Where(x => x.Id == hotel.Id).Count();
-
-                hotel.Disponibilidad.Disponibilidad = hotel.Disponibilidad.Disponibilidad - cantidadSeleccionada;
-
-                if (indexHotel != -1)
-                {
-                    hoteles[indexHotel] = hotel;
-                }
-            }
-
-            hotelesElegidos.Clear();
-        }
     }
 }

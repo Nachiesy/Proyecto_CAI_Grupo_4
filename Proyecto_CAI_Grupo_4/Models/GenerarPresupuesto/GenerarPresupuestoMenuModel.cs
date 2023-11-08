@@ -98,13 +98,6 @@ namespace Proyecto_CAI_Grupo_4.Models
             return itinerario;
         }
 
-        public void ActualizarCantidadesDeProductos()
-        {
-            AereosModule.ActualizarCantidadesDeAereos();
-
-            HotelesModule.ActualizarCantidadesDeHoteles();
-        }
-
         public void AddAereoElegido(int id)
         {
             AereosModule.AddAereoElegido(id);
@@ -143,16 +136,6 @@ namespace Proyecto_CAI_Grupo_4.Models
         public void RemoveHotelElegido(int id)
         {
             HotelesModule.RemoveHotelElegido(id);
-        }
-
-        public void ActualizarCantidadesDeAereos()
-        {
-            AereosModule.ActualizarCantidadesDeAereos();
-        }
-
-        public void ActualizarCantidadesDeHoteles()
-        {
-            HotelesModule.ActualizarCantidadesDeHoteles();
         }
 
         public static void OpenGenerarPresupuestoMenu()
