@@ -61,7 +61,7 @@ namespace Proyecto_CAI_Grupo_4.Modelos
 
         private static int GenerarCodigoDeReserva()
         {
-            return Reservas.Last().Codigo + 1;
+            return 10000 + Reservas.Count + 1;
         }
 
         public static Reserva GenerarNuevaReserva(int idItinerario, Cliente cliente)
@@ -71,16 +71,6 @@ namespace Proyecto_CAI_Grupo_4.Modelos
             var reserva = new Reserva(codigo, idItinerario, cliente);
             
             Reservas.Add(reserva);
-
-            return reserva;
-        }
-
-        public static Reserva ConvertirPreReservaEnReserva(int idReserva)
-        {
-            var reserva = Reservas
-                .Find(x => x.Codigo == idReserva);
-
-            reserva.ConfirmarPreReserva();
 
             return reserva;
         }
