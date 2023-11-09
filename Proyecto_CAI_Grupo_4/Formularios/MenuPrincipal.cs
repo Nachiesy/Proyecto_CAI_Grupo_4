@@ -6,7 +6,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class MenuPrincipal : VistaBase
     {
-        private MenuPrincipalModel Model = new MenuPrincipalModel();
+        private MenuPrincipalModel Model;
 
         public MenuPrincipal() : base(tituloModulo: "Menu Principal")
         {
@@ -15,61 +15,70 @@ namespace Proyecto_CAI_Grupo_4
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-
+            Model = new MenuPrincipalModel();
         }
 
         private void btn_BuscarPresupuesto_Click(object sender, EventArgs e)
         {
             Close();
 
-            GoToBuscarPresupuesto();
+            var thread = new Thread(OpenBuscarPresupuesto);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void btnMenuGenerarPresupuesto_Click(object sender, EventArgs e)
         {
             Close();
 
-            GoToGenerarPresupuestoMenu();
+            Model.SetGenerarPresupuestoParams();
+
+            var thread = new Thread(OpenGenerarPresupuestoMenu);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void btn_AgregarPasajeros_Click(object sender, EventArgs e)
         {
             Close();
 
-            GoToAgregarPasajeros();
+            Thread thread = new Thread(OpenAgregarPasajeros);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void btn_GenerarPrereserva_Click(object sender, EventArgs e)
         {
             Close();
 
-            GoToGenerarPrereserva();
+            var thread = new Thread(OpenGenerarPrereserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void btn_GenerarReserva_Click(object sender, EventArgs e)
         {
             Close();
 
-            GoToGenerarReserva();
+            var thread = new Thread(OpenGenerarReserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void btn_ConfirmarReserva_Click(object sender, EventArgs e)
         {
             Close();
 
-            GoToConfirmarReserva();
+            Thread thread = new Thread(OpenConfirmarReserva);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void btnConsultarReservas_Click(object sender, EventArgs e)
         {
             Close();
 
-            GoToConsultarReservas();
-        }
-
-        private void GoToBuscarPresupuesto()
-        {
-            var thread = new Thread(OpenBuscarPresupuesto);
+            Thread thread = new Thread(OpenConsultarReservas);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
@@ -78,26 +87,10 @@ namespace Proyecto_CAI_Grupo_4
         {
             Application.Run(new BuscarPresupuesto());
         }
-
-        private void GoToGenerarPresupuestoMenu()
-        {
-            Model.SetGenerarPresupuestoParams();
-
-            var thread = new Thread(OpenGenerarPresupuestoMenu);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
         
         private void OpenGenerarPresupuestoMenu()
         {
             Application.Run(new GenerarPresupuestoMenu());
-        }
-
-        private void GoToAgregarPasajeros()
-        {
-            Thread thread = new Thread(OpenAgregarPasajeros);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
         }
 
         private void OpenAgregarPasajeros()
@@ -105,23 +98,9 @@ namespace Proyecto_CAI_Grupo_4
             Application.Run(new AgregarPasajeros());
         }
 
-        private void GoToGenerarPrereserva()
-        {
-            var thread = new Thread(OpenGenerarPrereserva);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
         private void OpenGenerarPrereserva()
         {
             Application.Run(new GenerarPrereserva());
-        }
-
-        private void GoToGenerarReserva()
-        {
-            var thread = new Thread(OpenGenerarReserva);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
         }
 
         private void OpenGenerarReserva()
@@ -129,23 +108,9 @@ namespace Proyecto_CAI_Grupo_4
             Application.Run(new GenerarReserva());
         }
 
-        private void GoToConfirmarReserva()
-        {
-            Thread thread = new Thread(OpenConfirmarReserva);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
         private void OpenConfirmarReserva()
         {
             Application.Run(new ConfirmarReserva());
-        }
-
-        private void GoToConsultarReservas()
-        {
-            Thread thread = new Thread(OpenConsultarReservas);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
         }
 
         private void OpenConsultarReservas()
