@@ -163,14 +163,14 @@ namespace Proyecto_CAI_Grupo_4.Models
             AereosModule.AddAereoElegido(id);
         }
 
-        public void SetGenerarPresupuestoParams()
+        public GenerarPresupuestoParams GetGenerarPresupuestoParams()
         {
-            PresupuestosModule.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
-            {
-                PresupuestoId = PresupuestosModule.GetGenerarPresupuestoParams().PresupuestoId,
-                EsNuevo = PresupuestosModule.GetGenerarPresupuestoParams().EsNuevo,
-                InitBuscarPresupuesto = false,
-            });
+            return PresupuestosModule.GetGenerarPresupuestoParams();
+        }
+
+        public void SetGenerarPresupuestoParams(GenerarPresupuestoParams generarPresupuestoParams)
+        {
+            PresupuestosModule.SetGenerarPresupuestoParams(generarPresupuestoParams);
         }
     }
 }

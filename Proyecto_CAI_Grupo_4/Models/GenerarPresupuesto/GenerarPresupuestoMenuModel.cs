@@ -17,24 +17,24 @@ namespace Proyecto_CAI_Grupo_4.Models
         public readonly string PrefijoCodigoHotel = "H";
         public readonly int PrefijoCodigoItinerario = 1000;
 
-        public static GenerarPresupuestoParams GetGenerarPresupuestoParams()
+        public static GenerarPresupuestoParams GetGenerarPresupuestoParamsStatic()
         {
             return PresupuestosModule.GetGenerarPresupuestoParams();
         }
 
-        public void SetGenerarPresupuestoParams()
+        public GenerarPresupuestoParams GetGenerarPresupuestoParams()
         {
-            PresupuestosModule.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
-            {
-                PresupuestoId = PresupuestosModule.GenerarId(),
-                EsNuevo = GetGenerarPresupuestoParams().EsNuevo,
-                InitBuscarPresupuesto = GetGenerarPresupuestoParams().InitBuscarPresupuesto,
-            });
+            return PresupuestosModule.GetGenerarPresupuestoParams();
+        }
+
+        public void SetGenerarPresupuestoParams(GenerarPresupuestoParams generarPresupuestoParams)
+        {
+            PresupuestosModule.SetGenerarPresupuestoParams(generarPresupuestoParams);
         }
 
         public Itinerario GetPresupuestoById()
         {
-            return PresupuestosModule.GetPresupuestoById(PresupuestosModule.GetGenerarPresupuestoParams().PresupuestoId);
+            return PresupuestosModule.GetPresupuestoById(GetGenerarPresupuestoParams().PresupuestoId);
         }
 
         public void AddPresupuesto(Itinerario itinerario)
@@ -72,20 +72,15 @@ namespace Proyecto_CAI_Grupo_4.Models
             return null;
         }
 
-        public Cliente GenerarCliente(string dni, string nombre, string apellido)
-        {
-            return new Cliente(dni, nombre, apellido);
-        }
-
         public Itinerario GenerarItinerario(ListView listView, Cliente cliente, decimal total)
         {
-            var itinerario = new Itinerario(PresupuestosModule.GetGenerarPresupuestoParams().PresupuestoId, cliente, total);
+            var itinerario = new Itinerario(GetGenerarPresupuestoParams().PresupuestoId, cliente, total);
 
             for (var i = 0; i < listView.Items.Count; i++)
             {
                 var tag = (ItinearioItemTag)listView.Items[i].Tag;
 
-                var idUnico = PrefijoCodigoPresupuesto + PresupuestosModule.GetGenerarPresupuestoParams().PresupuestoId;
+                var idUnico = PrefijoCodigoPresupuesto + GetGenerarPresupuestoParams().PresupuestoId;
 
                 if (tag.TipoDeServicio == "Aereo")
                 {
@@ -142,11 +137,6 @@ namespace Proyecto_CAI_Grupo_4.Models
         public void RemoveHotelElegido(int id)
         {
             HotelesModule.RemoveHotelElegido(id);
-        }
-
-        public bool EsNuevoElPresupuesto()
-        {
-            return PresupuestosModule.GetGenerarPresupuestoParams().EsNuevo;
         }
     }
 }

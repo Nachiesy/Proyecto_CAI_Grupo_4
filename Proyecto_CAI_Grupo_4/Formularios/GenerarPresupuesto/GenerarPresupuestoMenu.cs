@@ -20,21 +20,26 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         Model = new GenerarPresupuestoMenuModel();
 
-        if (GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo)
+        if (Model.GetGenerarPresupuestoParams().EsNuevo)
         {
-            Model.SetGenerarPresupuestoParams();
+            Model.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
+            {
+                PresupuestoId = PresupuestosModule.GenerarId(),
+                EsNuevo = Model.GetGenerarPresupuestoParams().EsNuevo,
+                InitBuscarPresupuesto = Model.GetGenerarPresupuestoParams().InitBuscarPresupuesto,
+            });
         }
 
         var presupuesto = Model.GetPresupuestoById();
 
-        if (!GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo)
+        if (!Model.GetGenerarPresupuestoParams().EsNuevo)
         {
             textBoxClienteDNI.Text = presupuesto.Cliente.DNI;
             textBoxClienteNombre.Text = presupuesto.Cliente.Nombre;
             textBoxClienteApellido.Text = presupuesto.Cliente.Apellido;
         }
 
-        if (GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().InitBuscarPresupuesto)
+        if (Model.GetGenerarPresupuestoParams().InitBuscarPresupuesto)
         {
             presupuesto.IdAereosSeleccionados.ForEach(i => Model.AddAereoElegido(i.IdAereo));
             presupuesto.IdHotelesSeleccionados.ForEach(i => Model.AddHotelElegido(i.IdHotel));
@@ -58,8 +63,8 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
     private static string SetBaseTitle()
     {
-        return GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo
-            ? $"Generar Presupuesto" : $"Modificar Presupuesto #{GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().PresupuestoId}";
+        return GenerarPresupuestoMenuModel.GetGenerarPresupuestoParamsStatic().EsNuevo
+            ? $"Generar Presupuesto" : $"Modificar Presupuesto #{GenerarPresupuestoMenuModel.GetGenerarPresupuestoParamsStatic().PresupuestoId}";
     }
 
     private void AddAereosToListView(IEnumerable<AereoEnt> aereosToAdd)
@@ -106,11 +111,6 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         this.Close();
 
-        GoToGenerarPresupuestoAereos();
-    }
-
-    private void GoToGenerarPresupuestoAereos()
-    {
         var thread = new Thread(OpenGenerarPresupuestoAereos);
         thread.SetApartmentState(ApartmentState.STA);
         thread.Start();
@@ -125,11 +125,6 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         this.Close();
 
-        GoToGenerarPresupuestoHoteles();
-    }
-
-    private void GoToGenerarPresupuestoHoteles()
-    {
         var thread = new Thread(OpenGenerarPresupuestoHoteles);
         thread.SetApartmentState(ApartmentState.STA);
         thread.Start();
@@ -157,21 +152,21 @@ public partial class GenerarPresupuestoMenu : VistaBase
             return;
         }
 
-        var cliente = Model.GenerarCliente(dni, nombre, apellido);
+        var cliente = new Cliente(dni, nombre, apellido);
 
         var itinerario = Model.GenerarItinerario(productosElegidos, cliente, Total);
 
-        if (GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo)
+        if (Model.GetGenerarPresupuestoParams().EsNuevo)
         {
             Model.AddPresupuesto(itinerario);
 
-            MessageBox.Show($"Presupuesto con Código: [{GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+            MessageBox.Show($"Presupuesto con Código: [{Model.GetGenerarPresupuestoParams().PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
         else
         {
             Model.UpdatePresupuesto(itinerario);
 
-            MessageBox.Show($"Presupuesto con Código: [{GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+            MessageBox.Show($"Presupuesto con Código: [{Model.GetGenerarPresupuestoParams().PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
 
         Model.ClearAereosElegidos();

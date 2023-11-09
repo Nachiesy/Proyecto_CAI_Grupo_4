@@ -37,14 +37,9 @@ namespace Proyecto_CAI_Grupo_4.Models
             return string.Empty;
         }
 
-        public void SetGenerarPresupuestoParams()
+        public void SetGenerarPresupuestoParams(GenerarPresupuestoParams generarPresupuestoParams)
         {
-            PresupuestosModule.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
-            {
-                PresupuestoId = PresupuestoId,
-                EsNuevo = false,
-                InitBuscarPresupuesto = true,
-            });
+            PresupuestosModule.SetGenerarPresupuestoParams(generarPresupuestoParams);
         }
     }
 }

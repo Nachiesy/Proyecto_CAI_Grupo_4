@@ -1,5 +1,6 @@
 ﻿using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4.GenerarPresupuesto;
 
@@ -30,7 +31,12 @@ public partial class BuscarPresupuesto : VistaBase
 
         Close();
 
-        Model.SetGenerarPresupuestoParams();
+        Model.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
+        {
+            PresupuestoId = Model.PresupuestoId,
+            EsNuevo = false,
+            InitBuscarPresupuesto = true,
+        });
 
         var thread = new Thread(OpenGenerarPresupuestoMenu);
         thread.SetApartmentState(ApartmentState.STA);

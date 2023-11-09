@@ -1,6 +1,7 @@
 using Proyecto_CAI_Grupo_4.Common.Views;
 using Proyecto_CAI_Grupo_4.GenerarPresupuesto;
 using Proyecto_CAI_Grupo_4.Models;
+using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -31,7 +32,11 @@ namespace Proyecto_CAI_Grupo_4
         {
             Close();
 
-            Model.SetGenerarPresupuestoParams();
+            Model.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
+            {
+                EsNuevo = true,
+                InitBuscarPresupuesto = false,
+            });
 
             var thread = new Thread(OpenGenerarPresupuestoMenu);
             thread.SetApartmentState(ApartmentState.STA);

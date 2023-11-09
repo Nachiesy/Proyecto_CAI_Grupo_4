@@ -185,7 +185,12 @@ namespace Proyecto_CAI_Grupo_4
 
         private void GoToGenerarPresupuestoMenu()
         {
-            Model.SetGenerarPresupuestoParams();
+            Model.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
+            {
+                PresupuestoId = Model.GetGenerarPresupuestoParams().PresupuestoId,
+                EsNuevo = Model.GetGenerarPresupuestoParams().EsNuevo,
+                InitBuscarPresupuesto = false,
+            });
 
             var thread = new Thread(OpenGenerarPresupuestoMenu);
             thread.SetApartmentState(ApartmentState.STA);
