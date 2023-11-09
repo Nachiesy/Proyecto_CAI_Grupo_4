@@ -1,201 +1,401 @@
 [
   {
-    "Id": 25,
+    "Id": 1001,
     "Codigo": "HIL",
     "Nombre": "Hilton",
-    "Ciudad": "Buenos Aires",
-    "Calificacion": "4 Estrellas",
+    "Ciudad": "BUE",
+    "Calificacion": "5 Estrellas",
     "Direccion": {
       "Calle": "Av Libertador",
       "Numero": 100,
-      "CP": 0,
-      "Latitud": "",
-      "Longitud": ""
+      "CP": 1439,
+      "Latitud": "32.845.362.706.221.900",
+      "Longitud": "-4.011.993.195.337.350"
     },
     "Disponibilidad": {
       "NombreHabitacion": "Simple",
-      "TarifaPorDia": 10000.0,
+      "TarifaPorDia": 200000.0,
       "CapacidadTotal": 2,
       "CantidadMaximaAdultos": 2,
       "CantidadMaximaMenores": 0,
       "CantidadMaximaInfantes": 0,
-      "FechaDesde": "2023-11-14T00:00:00-03:00",
-      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "FechaDesde": "2024-01-12T00:00:00-03:00",
+      "FechaHasta": "2024-01-15T00:00:00-03:00",
       "Disponibilidad": 4
     }
   },
   {
-    "Id": 26,
+    "Id": 1002,
     "Codigo": "HIL",
     "Nombre": "Hilton",
-    "Ciudad": "Buenos Aires",
-    "Calificacion": "4 Estrellas",
+    "Ciudad": "BUE",
+    "Calificacion": "5 Estrellas",
     "Direccion": {
       "Calle": "Av Libertador",
       "Numero": 100,
-      "CP": 0,
-      "Latitud": "",
-      "Longitud": ""
+      "CP": 1439,
+      "Latitud": "32.845.362.706.221.900",
+      "Longitud": "-4.011.993.195.337.350"
     },
     "Disponibilidad": {
       "NombreHabitacion": "Doble",
-      "TarifaPorDia": 20000.0,
+      "TarifaPorDia": 300000.0,
       "CapacidadTotal": 4,
       "CantidadMaximaAdultos": 2,
       "CantidadMaximaMenores": 2,
       "CantidadMaximaInfantes": 0,
-      "FechaDesde": "2023-11-14T00:00:00-03:00",
-      "FechaHasta": "2023-11-15T00:00:00-03:00",
-      "Disponibilidad": 3
+      "FechaDesde": "2024-01-12T00:00:00-03:00",
+      "FechaHasta": "2024-01-15T00:00:00-03:00",
+      "Disponibilidad": 5
     }
   },
   {
-    "Id": 27,
+    "Id": 1003,
     "Codigo": "HIL",
     "Nombre": "Hilton",
-    "Ciudad": "Buenos Aires",
-    "Calificacion": "4 Estrellas",
+    "Ciudad": "BUE",
+    "Calificacion": "5 Estrellas",
     "Direccion": {
       "Calle": "Av Libertador",
       "Numero": 100,
-      "CP": 0,
-      "Latitud": "",
-      "Longitud": ""
+      "CP": 1439,
+      "Latitud": "32.845.362.706.221.900",
+      "Longitud": "-4.011.993.195.337.350"
     },
     "Disponibilidad": {
       "NombreHabitacion": "Triple",
-      "TarifaPorDia": 30000.0,
+      "TarifaPorDia": 400000.0,
       "CapacidadTotal": 6,
-      "CantidadMaximaAdultos": 2,
-      "CantidadMaximaMenores": 3,
+      "CantidadMaximaAdultos": 4,
+      "CantidadMaximaMenores": 1,
       "CantidadMaximaInfantes": 1,
-      "FechaDesde": "2023-11-14T00:00:00-03:00",
-      "FechaHasta": "2023-11-15T00:00:00-03:00",
-      "Disponibilidad": 2
+      "FechaDesde": "2024-01-12T00:00:00-03:00",
+      "FechaHasta": "2024-01-15T00:00:00-03:00",
+      "Disponibilidad": 5
     }
   },
   {
-    "Id": 28,
+    "Id": 1004,
     "Codigo": "HIL",
     "Nombre": "Hilton",
-    "Ciudad": "Buenos Aires",
-    "Calificacion": "4 Estrellas",
+    "Ciudad": "BUE",
+    "Calificacion": "5 Estrellas",
     "Direccion": {
       "Calle": "Av Libertador",
       "Numero": 100,
-      "CP": 0,
-      "Latitud": "",
-      "Longitud": ""
+      "CP": 1439,
+      "Latitud": "32.845.362.706.221.900",
+      "Longitud": "-4.011.993.195.337.350"
     },
     "Disponibilidad": {
       "NombreHabitacion": "Cuádruple",
-      "TarifaPorDia": 40000.0,
+      "TarifaPorDia": 500000.0,
       "CapacidadTotal": 8,
       "CantidadMaximaAdultos": 4,
       "CantidadMaximaMenores": 2,
       "CantidadMaximaInfantes": 2,
-      "FechaDesde": "2023-11-14T00:00:00-03:00",
-      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "FechaDesde": "2024-01-12T00:00:00-03:00",
+      "FechaHasta": "2024-01-15T00:00:00-03:00",
       "Disponibilidad": 1
     }
   },
   {
-    "Id": 29,
+    "Id": 1005,
     "Codigo": "SHE",
     "Nombre": "Sheraton",
-    "Ciudad": "Buenos Aires",
-    "Calificacion": "3 Estrellas",
+    "Ciudad": "MAD",
+    "Calificacion": "4 Estrellas",
     "Direccion": {
-      "Calle": "Av Cordoba",
-      "Numero": 300,
-      "CP": 0,
-      "Latitud": "",
-      "Longitud": ""
+      "Calle": "C. de Segovia",
+      "Numero": 442,
+      "CP": 1020,
+      "Latitud": "39.845.362.706.221.900",
+      "Longitud": "-4.911.993.195.337.350"
     },
     "Disponibilidad": {
       "NombreHabitacion": "Simple",
-      "TarifaPorDia": 10000.0,
+      "TarifaPorDia": 300000.0,
       "CapacidadTotal": 2,
       "CantidadMaximaAdultos": 2,
       "CantidadMaximaMenores": 0,
       "CantidadMaximaInfantes": 0,
-      "FechaDesde": "2023-11-14T00:00:00-03:00",
-      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "FechaDesde": "2024-01-10T00:00:00-03:00",
+      "FechaHasta": "2024-01-13T00:00:00-03:00",
       "Disponibilidad": 4
     }
   },
   {
-    "Id": 30,
+    "Id": 1006,
     "Codigo": "SHE",
     "Nombre": "Sheraton",
-    "Ciudad": "Buenos Aires",
-    "Calificacion": "3 Estrellas",
+    "Ciudad": "MAD",
+    "Calificacion": "4 Estrellas",
     "Direccion": {
-      "Calle": "Av Cordoba",
-      "Numero": 300,
-      "CP": 0,
-      "Latitud": "",
-      "Longitud": ""
+      "Calle": "C. de Segovia",
+      "Numero": 442,
+      "CP": 1020,
+      "Latitud": "39.845.362.706.221.900",
+      "Longitud": "-4.911.993.195.337.350"
     },
     "Disponibilidad": {
       "NombreHabitacion": "Doble",
-      "TarifaPorDia": 20000.0,
+      "TarifaPorDia": 400000.0,
       "CapacidadTotal": 4,
       "CantidadMaximaAdultos": 2,
       "CantidadMaximaMenores": 2,
       "CantidadMaximaInfantes": 0,
-      "FechaDesde": "2023-11-14T00:00:00-03:00",
-      "FechaHasta": "2023-11-15T00:00:00-03:00",
-      "Disponibilidad": 3
+      "FechaDesde": "2024-01-10T00:00:00-03:00",
+      "FechaHasta": "2024-01-13T00:00:00-03:00",
+      "Disponibilidad": 4
     }
   },
   {
-    "Id": 31,
+    "Id": 1007,
     "Codigo": "SHE",
     "Nombre": "Sheraton",
-    "Ciudad": "Buenos Aires",
-    "Calificacion": "3 Estrellas",
+    "Ciudad": "MAD",
+    "Calificacion": "4 Estrellas",
     "Direccion": {
-      "Calle": "Av Cordoba",
-      "Numero": 300,
-      "CP": 0,
-      "Latitud": "",
-      "Longitud": ""
+      "Calle": "C. de Segovia",
+      "Numero": 442,
+      "CP": 1020,
+      "Latitud": "39.845.362.706.221.900",
+      "Longitud": "-4.911.993.195.337.350"
     },
     "Disponibilidad": {
       "NombreHabitacion": "Triple",
-      "TarifaPorDia": 30000.0,
+      "TarifaPorDia": 500000.0,
       "CapacidadTotal": 6,
-      "CantidadMaximaAdultos": 2,
-      "CantidadMaximaMenores": 3,
+      "CantidadMaximaAdultos": 4,
+      "CantidadMaximaMenores": 1,
       "CantidadMaximaInfantes": 1,
-      "FechaDesde": "2023-11-14T00:00:00-03:00",
-      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "FechaDesde": "2024-01-10T00:00:00-03:00",
+      "FechaHasta": "2024-01-13T00:00:00-03:00",
       "Disponibilidad": 2
     }
   },
   {
-    "Id": 32,
+    "Id": 1008,
     "Codigo": "SHE",
     "Nombre": "Sheraton",
-    "Ciudad": "Buenos Aires",
-    "Calificacion": "3 Estrellas",
+    "Ciudad": "MAD",
+    "Calificacion": "4 Estrellas",
     "Direccion": {
-      "Calle": "Av Cordoba",
-      "Numero": 300,
-      "CP": 0,
-      "Latitud": "",
-      "Longitud": ""
+      "Calle": "C. de Segovia",
+      "Numero": 442,
+      "CP": 1020,
+      "Latitud": "39.845.362.706.221.900",
+      "Longitud": "-4.911.993.195.337.350"
     },
     "Disponibilidad": {
       "NombreHabitacion": "Cuádruple",
-      "TarifaPorDia": 40000.0,
+      "TarifaPorDia": 600000.0,
       "CapacidadTotal": 8,
       "CantidadMaximaAdultos": 4,
       "CantidadMaximaMenores": 2,
       "CantidadMaximaInfantes": 2,
-      "FechaDesde": "2023-11-14T00:00:00-03:00",
-      "FechaHasta": "2023-11-15T00:00:00-03:00",
+      "FechaDesde": "2024-01-10T00:00:00-03:00",
+      "FechaHasta": "2024-01-13T00:00:00-03:00",
+      "Disponibilidad": 4
+    }
+  },
+  {
+    "Id": 1009,
+    "Codigo": "BER",
+    "Nombre": "Bernina",
+    "Ciudad": "MIL",
+    "Calificacion": "3 Estrellas",
+    "Direccion": {
+      "Calle": "Via Napo Torriani",
+      "Numero": 47,
+      "CP": 300,
+      "Latitud": "20.845.362.706.221.900",
+      "Longitud": "-7.911.993.195.337.350"
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Simple",
+      "TarifaPorDia": 250000.0,
+      "CapacidadTotal": 2,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 0,
+      "CantidadMaximaInfantes": 0,
+      "FechaDesde": "2024-01-19T00:00:00-03:00",
+      "FechaHasta": "2024-01-22T00:00:00-03:00",
+      "Disponibilidad": 4
+    }
+  },
+  {
+    "Id": 1010,
+    "Codigo": "BER",
+    "Nombre": "Bernina",
+    "Ciudad": "MIL",
+    "Calificacion": "3 Estrellas",
+    "Direccion": {
+      "Calle": "Via Napo Torriani",
+      "Numero": 47,
+      "CP": 300,
+      "Latitud": "20.845.362.706.221.900",
+      "Longitud": "-7.911.993.195.337.350"
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Doble",
+      "TarifaPorDia": 350000.0,
+      "CapacidadTotal": 4,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 2,
+      "CantidadMaximaInfantes": 0,
+      "FechaDesde": "2024-01-19T00:00:00-03:00",
+      "FechaHasta": "2024-01-22T00:00:00-03:00",
+      "Disponibilidad": 4
+    }
+  },
+  {
+    "Id": 1011,
+    "Codigo": "BER",
+    "Nombre": "Bernina",
+    "Ciudad": "MIL",
+    "Calificacion": "3 Estrellas",
+    "Direccion": {
+      "Calle": "Via Napo Torriani",
+      "Numero": 47,
+      "CP": 300,
+      "Latitud": "20.845.362.706.221.900",
+      "Longitud": "-7.911.993.195.337.350"
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Triple",
+      "TarifaPorDia": 450000.0,
+      "CapacidadTotal": 6,
+      "CantidadMaximaAdultos": 4,
+      "CantidadMaximaMenores": 1,
+      "CantidadMaximaInfantes": 1,
+      "FechaDesde": "2024-01-19T00:00:00-03:00",
+      "FechaHasta": "2024-01-22T00:00:00-03:00",
+      "Disponibilidad": 2
+    }
+  },
+  {
+    "Id": 1012,
+    "Codigo": "BER",
+    "Nombre": "Bernina",
+    "Ciudad": "MIL",
+    "Calificacion": "3 Estrellas",
+    "Direccion": {
+      "Calle": "Via Napo Torriani",
+      "Numero": 47,
+      "CP": 300,
+      "Latitud": "20.845.362.706.221.900",
+      "Longitud": "-7.911.993.195.337.350"
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Cuádruple",
+      "TarifaPorDia": 550000.0,
+      "CapacidadTotal": 8,
+      "CantidadMaximaAdultos": 4,
+      "CantidadMaximaMenores": 2,
+      "CantidadMaximaInfantes": 2,
+      "FechaDesde": "2024-01-19T00:00:00-03:00",
+      "FechaHasta": "2024-01-22T00:00:00-03:00",
+      "Disponibilidad": 4
+    }
+  },
+  {
+    "Id": 1013,
+    "Codigo": "MMY",
+    "Nombre": "MayanMonkey",
+    "Ciudad": "CUN",
+    "Calificacion": "4 Estrellas",
+    "Direccion": {
+      "Calle": "Blvd. Kukulcan",
+      "Numero": 6448,
+      "CP": 102,
+      "Latitud": "10.845.362.706.221.900",
+      "Longitud": "-5.911.993.195.337.350"
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Simple",
+      "TarifaPorDia": 255000.0,
+      "CapacidadTotal": 2,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 0,
+      "CantidadMaximaInfantes": 0,
+      "FechaDesde": "2024-01-22T00:00:00-03:00",
+      "FechaHasta": "2024-01-26T00:00:00-03:00",
+      "Disponibilidad": 4
+    }
+  },
+  {
+    "Id": 1014,
+    "Codigo": "MMY",
+    "Nombre": "MayanMonkey",
+    "Ciudad": "CUN",
+    "Calificacion": "4 Estrellas",
+    "Direccion": {
+      "Calle": "Blvd. Kukulcan",
+      "Numero": 6448,
+      "CP": 102,
+      "Latitud": "10.845.362.706.221.900",
+      "Longitud": "-5.911.993.195.337.350"
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Doble",
+      "TarifaPorDia": 355000.0,
+      "CapacidadTotal": 4,
+      "CantidadMaximaAdultos": 2,
+      "CantidadMaximaMenores": 2,
+      "CantidadMaximaInfantes": 0,
+      "FechaDesde": "2024-01-22T00:00:00-03:00",
+      "FechaHasta": "2024-01-26T00:00:00-03:00",
+      "Disponibilidad": 5
+    }
+  },
+  {
+    "Id": 1015,
+    "Codigo": "MMY",
+    "Nombre": "MayanMonkey",
+    "Ciudad": "CUN",
+    "Calificacion": "4 Estrellas",
+    "Direccion": {
+      "Calle": "Blvd. Kukulcan",
+      "Numero": 6448,
+      "CP": 102,
+      "Latitud": "10.845.362.706.221.900",
+      "Longitud": "-5.911.993.195.337.350"
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Triple",
+      "TarifaPorDia": 455000.0,
+      "CapacidadTotal": 6,
+      "CantidadMaximaAdultos": 4,
+      "CantidadMaximaMenores": 1,
+      "CantidadMaximaInfantes": 1,
+      "FechaDesde": "2024-01-22T00:00:00-03:00",
+      "FechaHasta": "2024-01-26T00:00:00-03:00",
+      "Disponibilidad": 5
+    }
+  },
+  {
+    "Id": 1016,
+    "Codigo": "MMY",
+    "Nombre": "MayanMonkey",
+    "Ciudad": "CUN",
+    "Calificacion": "4 Estrellas",
+    "Direccion": {
+      "Calle": "Blvd. Kukulcan",
+      "Numero": 6448,
+      "CP": 102,
+      "Latitud": "10.845.362.706.221.900",
+      "Longitud": "-5.911.993.195.337.350"
+    },
+    "Disponibilidad": {
+      "NombreHabitacion": "Cuádruple",
+      "TarifaPorDia": 555000.0,
+      "CapacidadTotal": 8,
+      "CantidadMaximaAdultos": 4,
+      "CantidadMaximaMenores": 2,
+      "CantidadMaximaInfantes": 2,
+      "FechaDesde": "2024-01-22T00:00:00-03:00",
+      "FechaHasta": "2024-01-26T00:00:00-03:00",
       "Disponibilidad": 1
     }
   }

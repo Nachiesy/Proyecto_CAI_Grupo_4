@@ -1,13 +1,13 @@
 [
   {
     "Id": 1,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "Economy",
       "TipoDePasajero": "Adulto",
@@ -18,13 +18,13 @@
   },
   {
     "Id": 2,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "Economy",
       "TipoDePasajero": "Menor",
@@ -35,13 +35,13 @@
   },
   {
     "Id": 3,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "Economy",
       "TipoDePasajero": "Infante",
@@ -52,13 +52,13 @@
   },
   {
     "Id": 4,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "Business",
       "TipoDePasajero": "Adulto",
@@ -69,13 +69,13 @@
   },
   {
     "Id": 5,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "Premium",
       "TipoDePasajero": "Adulto",
@@ -86,13 +86,13 @@
   },
   {
     "Id": 6,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "First",
       "TipoDePasajero": "Adulto",
@@ -103,15 +103,15 @@
   },
   {
     "Id": 7,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "Economy",
+      "Clase": "Business",
       "TipoDePasajero": "Menor",
       "Precio": 30000.0,
       "Disponibilidad": 1
@@ -120,15 +120,15 @@
   },
   {
     "Id": 8,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "Economy",
+      "Clase": "Premium",
       "TipoDePasajero": "Menor",
       "Precio": 35000.0,
       "Disponibilidad": 1
@@ -137,16 +137,16 @@
   },
   {
     "Id": 9,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "Business",
-      "TipoDePasajero": "Adulto",
+      "Clase": "First",
+      "TipoDePasajero": "Menor",
       "Precio": 40000.0,
       "Disponibilidad": 2
     },
@@ -154,15 +154,15 @@
   },
   {
     "Id": 10,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "Premium",
+      "Clase": "Business",
       "TipoDePasajero": "Infante",
       "Precio": 20000.0,
       "Disponibilidad": 1
@@ -171,32 +171,32 @@
   },
   {
     "Id": 11,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "Economy",
+      "Clase": "Premium",
       "TipoDePasajero": "Infante",
       "Precio": 25000.0,
-      "Disponibilidad": 1
+      "Disponibilidad": 2
     },
     "CantidadDeParadas": 0
   },
   {
     "Id": 12,
-    "Codigo": "A113",
-    "Nombre": "Vuelo 113",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "AREZEMVD103",
+    "Nombre": "Vuelo AREZEMVD103",
+    "Origen": "EZE",
+    "Destino": "MVD",
+    "FechaDeSalida": "2024-01-03T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-03T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "Premium",
+      "Clase": "First",
       "TipoDePasajero": "Infante",
       "Precio": 30000.0,
       "Disponibilidad": 1
@@ -205,84 +205,84 @@
   },
   {
     "Id": 13,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-05T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "Economy",
       "TipoDePasajero": "Adulto",
       "Precio": 30000.0,
-      "Disponibilidad": 1
+      "Disponibilidad": 5
     },
     "CantidadDeParadas": 0
   },
   {
     "Id": 14,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "Economy",
       "TipoDePasajero": "Menor",
       "Precio": 25000.0,
-      "Disponibilidad": 1
+      "Disponibilidad": 5
     },
     "CantidadDeParadas": 0
   },
   {
     "Id": 15,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "Economy",
       "TipoDePasajero": "Infante",
-      "Precio": 20000.0,
-      "Disponibilidad": 1
+      "Precio": 15000.0,
+      "Disponibilidad": 2
     },
     "CantidadDeParadas": 0
   },
   {
     "Id": 16,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
       "Clase": "Business",
       "TipoDePasajero": "Adulto",
-      "Precio": 45000.0,
-      "Disponibilidad": 3
+      "Precio": 35000.0,
+      "Disponibilidad": 2
     },
     "CantidadDeParadas": 0
   },
   {
     "Id": 17,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "Business",
-      "TipoDePasajero": "Menor",
+      "Clase": "Premium",
+      "TipoDePasajero": "Adulto",
       "Precio": 40000.0,
       "Disponibilidad": 2
     },
@@ -290,121 +290,529 @@
   },
   {
     "Id": 18,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "Business",
-      "TipoDePasajero": "Infante",
-      "Precio": 50000.0,
-      "Disponibilidad": 1
+      "Clase": "First",
+      "TipoDePasajero": "Adulto",
+      "Precio": 45000.0,
+      "Disponibilidad": 3
     },
     "CantidadDeParadas": 0
   },
   {
     "Id": 19,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "First",
-      "TipoDePasajero": "Adulto",
-      "Precio": 60000.0,
-      "Disponibilidad": 2
+      "Clase": "Business",
+      "TipoDePasajero": "Menor",
+      "Precio": 30000.0,
+      "Disponibilidad": 3
     },
-    "CantidadDeParadas": 1
+    "CantidadDeParadas": 0
   },
   {
     "Id": 20,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "Aerolíneas Argentinas",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "First",
+      "Clase": "Premium",
       "TipoDePasajero": "Menor",
-      "Precio": 55000.0,
-      "Disponibilidad": 1
+      "Precio": 35000.0,
+      "Disponibilidad": 4
     },
-    "CantidadDeParadas": 1
+    "CantidadDeParadas": 0
   },
   {
     "Id": 21,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "LATAM",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
     "Tarifa": {
-      "Clase": "Economy",
-      "TipoDePasajero": "Adulto",
-      "Precio": 30000.0,
+      "Clase": "First",
+      "TipoDePasajero": "Menor",
+      "Precio": 40000.0,
       "Disponibilidad": 1
     },
-    "CantidadDeParadas": 1
+    "CantidadDeParadas": 0
   },
   {
     "Id": 22,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "LATAM",
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
+    "Tarifa": {
+      "Clase": "Business",
+      "TipoDePasajero": "Infante",
+      "Precio": 20000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 23,
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
+    "Tarifa": {
+      "Clase": "Premium",
+      "TipoDePasajero": "Infante",
+      "Precio": 25000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 24,
+    "Codigo": "ARMVDEZE104",
+    "Nombre": "Vuelo ARMVDEZE104",
+    "Origen": "MVD",
+    "Destino": "EZE",
+    "FechaDeSalida": "2024-01-05T05:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T07:00:00-03:00",
+    "Aerolinea": "AR",
+    "Tarifa": {
+      "Clase": "First",
+      "TipoDePasajero": "Infante",
+      "Precio": 30000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 25,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
     "Tarifa": {
       "Clase": "Economy",
-      "TipoDePasajero": "Menor",
-      "Precio": 25000.0,
+      "TipoDePasajero": "Adulto",
+      "Precio": 900000.0,
       "Disponibilidad": 2
     },
     "CantidadDeParadas": 1
   },
   {
-    "Id": 23,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "LATAM",
+    "Id": 26,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "Economy",
+      "TipoDePasajero": "Menor",
+      "Precio": 895000.0,
+      "Disponibilidad": 2
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 27,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "Economy",
+      "TipoDePasajero": "Infante",
+      "Precio": 890000.0,
+      "Disponibilidad": 2
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 28,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
     "Tarifa": {
       "Clase": "Business",
       "TipoDePasajero": "Adulto",
-      "Precio": 40000.0,
+      "Precio": 905000.0,
+      "Disponibilidad": 2
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 29,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "Premium",
+      "TipoDePasajero": "Adulto",
+      "Precio": 910000.0,
+      "Disponibilidad": 3
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 30,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "First",
+      "TipoDePasajero": "Adulto",
+      "Precio": 915000.0,
+      "Disponibilidad": 3
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 31,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "Business",
+      "TipoDePasajero": "Menor",
+      "Precio": 900000.0,
+      "Disponibilidad": 3
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 32,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "Premium",
+      "TipoDePasajero": "Menor",
+      "Precio": 905000.0,
+      "Disponibilidad": 3
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 33,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "First",
+      "TipoDePasajero": "Menor",
+      "Precio": 910000.0,
       "Disponibilidad": 1
     },
     "CantidadDeParadas": 1
   },
   {
-    "Id": 24,
-    "Codigo": "C369",
-    "Nombre": "Vuelo 369",
-    "Origen": "Buenos Aires",
-    "Destino": "Montevideo",
-    "FechaDeSalida": "2023-11-11T00:00:00-03:00",
-    "FechaDeLlegada": "2023-11-11T02:00:00-03:00",
-    "Aerolinea": "LATAM",
+    "Id": 34,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "Business",
+      "TipoDePasajero": "Infante",
+      "Precio": 895000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 35,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "Premium",
+      "TipoDePasajero": "Infante",
+      "Precio": 900000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 36,
+    "Codigo": "AASCLBCN111",
+    "Nombre": "Vuelo AASCLBCN111",
+    "Origen": "SCL",
+    "Destino": "BCN",
+    "FechaDeSalida": "2024-01-12T03:00:00-03:00",
+    "FechaDeLlegada": "2024-01-13T10:00:00-03:00",
+    "Aerolinea": "AA",
+    "Tarifa": {
+      "Clase": "First",
+      "TipoDePasajero": "Infante",
+      "Precio": 905000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 1
+  },
+  {
+    "Id": 37,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "Economy",
+      "TipoDePasajero": "Adulto",
+      "Precio": 700000.0,
+      "Disponibilidad": 6
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 38,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "Economy",
+      "TipoDePasajero": "Menor",
+      "Precio": 695000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 39,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "Economy",
+      "TipoDePasajero": "Infante",
+      "Precio": 690000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 40,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "Business",
+      "TipoDePasajero": "Adulto",
+      "Precio": 705500.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 41,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "Premium",
+      "TipoDePasajero": "Adulto",
+      "Precio": 711000.0,
+      "Disponibilidad": 2
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 42,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "First",
+      "TipoDePasajero": "Adulto",
+      "Precio": 716500.0,
+      "Disponibilidad": 3
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 43,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
     "Tarifa": {
       "Clase": "Business",
       "TipoDePasajero": "Menor",
-      "Precio": 35000.0,
-      "Disponibilidad": 3
+      "Precio": 700000.0,
+      "Disponibilidad": 1
     },
-    "CantidadDeParadas": 1
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 44,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "Premium",
+      "TipoDePasajero": "Menor",
+      "Precio": 705000.0,
+      "Disponibilidad": 5
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 45,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "First",
+      "TipoDePasajero": "Menor",
+      "Precio": 710000.0,
+      "Disponibilidad": 2
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 46,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "Business",
+      "TipoDePasajero": "Infante",
+      "Precio": 695000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 47,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "Premium",
+      "TipoDePasajero": "Infante",
+      "Precio": 700000.0,
+      "Disponibilidad": 2
+    },
+    "CantidadDeParadas": 0
+  },
+  {
+    "Id": 48,
+    "Codigo": "AVGRUCUN119",
+    "Nombre": "Vuelo AVGRUCUN119",
+    "Origen": "GRU",
+    "Destino": "CUN",
+    "FechaDeSalida": "2024-01-25T12:00:00-03:00",
+    "FechaDeLlegada": "2024-01-26T00:00:00-03:00",
+    "Aerolinea": "AV",
+    "Tarifa": {
+      "Clase": "First",
+      "TipoDePasajero": "Infante",
+      "Precio": 705000.0,
+      "Disponibilidad": 1
+    },
+    "CantidadDeParadas": 0
   }
 ]
