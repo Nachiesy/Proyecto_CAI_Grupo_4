@@ -30,11 +30,6 @@ public partial class BuscarPresupuesto : VistaBase
 
         Close();
 
-        GoToGenerarPresupuestoMenu();
-    }
-
-    private void GoToGenerarPresupuestoMenu()
-    {
         Model.SetGenerarPresupuestoParams();
 
         var thread = new Thread(OpenGenerarPresupuestoMenu);
@@ -51,6 +46,8 @@ public partial class BuscarPresupuesto : VistaBase
     {
         Close();
 
-        GoToMenuPrincipal();
+        var thread = new Thread(OpenMenuPrincipal);
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
     }
 }

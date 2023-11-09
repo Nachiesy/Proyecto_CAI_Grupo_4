@@ -11,7 +11,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
     private GenerarPresupuestoMenuModel Model;
 
-    public GenerarPresupuestoMenu() : base(tituloModulo: SetBaseTitle()) 
+    public GenerarPresupuestoMenu() : base(tituloModulo: SetBaseTitle())
     {
         InitializeComponent();
     }
@@ -58,7 +58,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
     private static string SetBaseTitle()
     {
-        return GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo 
+        return GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().EsNuevo
             ? $"Generar Presupuesto" : $"Modificar Presupuesto #{GenerarPresupuestoMenuModel.GetGenerarPresupuestoParams().PresupuestoId}";
     }
 
@@ -179,7 +179,9 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         Close();
 
-        GoToMenuPrincipal();
+        var thread = new Thread(OpenMenuPrincipal);
+        thread.SetApartmentState(ApartmentState.STA);
+        thread.Start();
     }
 
     private void btnEliminarTodo_Click(object sender, EventArgs e)

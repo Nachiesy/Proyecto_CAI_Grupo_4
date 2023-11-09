@@ -26,7 +26,9 @@ namespace Proyecto_CAI_Grupo_4
         {
             Close();
 
-            GoToMenuPrincipal();
+            var thread = new Thread(OpenMenuPrincipal);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         public void RecibirDatosPasajero(Pasajeros SumarPasajero)
@@ -206,7 +208,9 @@ namespace Proyecto_CAI_Grupo_4
 
                 Close();
 
-                GoToMenuPrincipal();
+                var thread = new Thread(OpenMenuPrincipal);
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
             }
         }
 

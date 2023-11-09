@@ -101,7 +101,9 @@ namespace Proyecto_CAI_Grupo_4
         {
             this.Close();
 
-            GoToMenuPrincipal();
+            var thread = new Thread(OpenMenuPrincipal);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
     }
 }
