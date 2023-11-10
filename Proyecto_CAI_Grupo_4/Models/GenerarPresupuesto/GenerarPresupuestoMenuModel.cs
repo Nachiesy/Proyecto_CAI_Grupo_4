@@ -4,18 +4,17 @@ using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
-    public class ItinearioItemTag
-    {
-        public int IdProducto { get; set; }
-        public string TipoDeServicio { get; set; }
-    }
-
     public class GenerarPresupuestoMenuModel
     {
         public readonly string PrefijoCodigoPresupuesto = "P";
         public readonly string PrefijoCodigoAereo = "V";
         public readonly string PrefijoCodigoHotel = "H";
         public readonly int PrefijoCodigoItinerario = 1000;
+
+        public int GenerarIdPresupuesto()
+        {
+            return PresupuestosModule.GenerarId();
+        }
 
         public static GenerarPresupuestoParams GetGenerarPresupuestoParamsStatic()
         {
@@ -117,6 +116,16 @@ namespace Proyecto_CAI_Grupo_4.Models
         public IEnumerable<HotelEnt> GetHotelesElegidos()
         {
             return HotelesModule.GetHotelesElegidos();
+        }
+
+        public decimal GetTotalDeAereosElegidos()
+        {
+            return AereosModule.GetAereosElegidos().Sum(x => x.Tarifa.Precio);
+        }
+
+        public decimal GetTotalDeHotelesElegidos()
+        {
+            return HotelesModule.GetHotelesElegidos().Sum(x => x.Disponibilidad.TarifaPorDia);
         }
 
         public void ClearAereosElegidos()

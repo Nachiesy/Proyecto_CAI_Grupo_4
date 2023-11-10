@@ -24,7 +24,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
         {
             Model.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
             {
-                PresupuestoId = PresupuestosModule.GenerarId(),
+                PresupuestoId = Model.GenerarIdPresupuesto(),
                 EsNuevo = Model.GetGenerarPresupuestoParams().EsNuevo,
                 InitBuscarPresupuesto = Model.GetGenerarPresupuestoParams().InitBuscarPresupuesto,
             });
@@ -53,8 +53,8 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         AddHotelesToListView(hoteles);
 
-        Total += aereos.Sum(x => x.Tarifa.Precio);
-        Total += hoteles.Sum(x => x.Disponibilidad.TarifaPorDia);
+        Total += Model.GetTotalDeAereosElegidos();
+        Total += Model.GetTotalDeHotelesElegidos();
 
         ActualizarTextoPrecioTotal();
 
@@ -203,8 +203,8 @@ public partial class GenerarPresupuestoMenu : VistaBase
         }
 
         Total = 0;
-        Total += Model.GetAereosElegidos().Sum(x => x.Tarifa.Precio);
-        Total += Model.GetHotelesElegidos().Sum(x => x.Disponibilidad.TarifaPorDia);
+        Total += Model.GetTotalDeAereosElegidos();
+        Total += Model.GetTotalDeHotelesElegidos();
 
         presupuestoTotal.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
     }
