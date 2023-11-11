@@ -54,8 +54,6 @@ namespace Proyecto_CAI_Grupo_4.Models
             }
         }
 
-        public static int GenerarId() => Presupuestos.Count + 1;
-
         public static GenerarPresupuestoParams GetGenerarPresupuestoParams()
         {
             return GenerarPresupuestoParams;
