@@ -1,16 +1,3 @@
 [
-  {
-    "Nombre": "Test",
-    "Apellido": "Pasajero1",
-    "DNI": 43122765,
-    "FechaNacimiento": "2000-11-07T20:42:13",
-    "IdPresupuesto": 1,
-    "AereosAsignados": [
-      {
-        "Id": "P1V1000",
-        "IdAereo": 1
-      }
-    ],
-    "HotelesAsignados": []
-  }
+  
 ]
