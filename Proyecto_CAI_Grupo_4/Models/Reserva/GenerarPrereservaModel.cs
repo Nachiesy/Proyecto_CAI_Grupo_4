@@ -59,31 +59,28 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public string? ValidarStock(int idItinerario)
         {
-            var pasajerosAsignados = PasajerosModule.GetPasajerosByIdPresupuesto(idItinerario);
+            var pasajerosAereosAsignados = PasajerosModule.GetAgrupacionVuelosAsignados(idItinerario);
 
-            foreach (var pasajero in pasajerosAsignados)
+            var pasajerosHotelesAsignados = PasajerosModule.GetAgrupacionHotelesAsignados(idItinerario);
+
+            foreach (var aereoSeleccionado in pasajerosAereosAsignados)
             {
+                var aereo = AereosModule.GetAereoByID(aereoSeleccionado.IdProducto);
 
-                foreach(var aereoSeleccionado in pasajero.AereosAsignados)
+                if (aereo.Tarifa.Disponibilidad < aereoSeleccionado.Cantidad)
                 {
-                    var aereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
-
-                    if (aereo.Tarifa.Disponibilidad <= 0)
-                    {
-                        return $"No hay disponibilidad para el vuelo {aereo.Nombre} (Id del producto: {aereoSeleccionado.Id}).";
-                    }
+                    return $"No hay suficiente disponibilidad para el vuelo {aereo.Nombre} (Id del producto: {aereoSeleccionado.Id}).";
                 }
+            }
 
-                foreach (var hotelSeleccionado in pasajero.HotelesAsignados)
+            foreach (var hotelSeleccionado in pasajerosHotelesAsignados)
+            {
+                var hotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdProducto);
+
+                if (hotel.Disponibilidad.Disponibilidad < hotelSeleccionado.Cantidad)
                 {
-                    var hotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
-
-                    if (hotel.Disponibilidad.Disponibilidad <= 0)
-                    {
-                        return $"No hay disponibilidad para el hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).";
-                    }
+                    return $"No hay suficiente disponibilidad para el hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).";
                 }
-
             }
 
             return null;

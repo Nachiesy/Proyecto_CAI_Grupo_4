@@ -81,9 +81,9 @@ namespace Proyecto_CAI_Grupo_4.Models
                 .Where(x => x.IdPresupuesto == idItinerario)
                 .SelectMany(x =>
                     x.AereosAsignados.Select(y =>
-                        new { y.Id }))
+                        new { y.Id, y.IdAereo }))
                 .GroupBy(x => new { x.Id })
-                .Select(x => new AgrupacionCantidadesProductosAsignados { Id = x.Key.Id, Cantidad = x.Count() })
+                .Select(x => new AgrupacionCantidadesProductosAsignados { Id = x.Key.Id, IdProducto = x.First().IdAereo, Cantidad = x.Count() })
                 .ToList();
 
             return agrupacionVuelosAsignados;
@@ -95,9 +95,9 @@ namespace Proyecto_CAI_Grupo_4.Models
                 .Where(x => x.IdPresupuesto == idItinerario)
                 .SelectMany(x =>
                     x.HotelesAsignados.Select(y =>
-                        new { y.Id }))
+                        new { y.Id, y.IdHotel }))
                 .GroupBy(x => new { x.Id })
-                .Select(x => new AgrupacionCantidadesProductosAsignados { Id = x.Key.Id, Cantidad = x.Count() })
+                .Select(x => new AgrupacionCantidadesProductosAsignados { Id = x.Key.Id, IdProducto = x.First().IdHotel, Cantidad = x.Count() })
                 .ToList();
 
             return agrupacionHotelesAsignados;
@@ -109,9 +109,9 @@ namespace Proyecto_CAI_Grupo_4.Models
                 .Where(x => x.IdPresupuesto == presupuestoId && x.AereosAsignados
                 .Any(c => c.IdAereo == id));
 
-            foreach (var match in existencias)
+            for (int i = 0; i < existencias.Count(); i++)
             {
-                var indice = Pasajeros.FindIndex(x => x == match);
+                var indice = Pasajeros.FindIndex(x => x == existencias.ElementAt(i));
                 var indiceAsignacion = Pasajeros[indice].AereosAsignados.FindIndex(x => x.IdAereo == id);
 
                 Pasajeros[indice].AereosAsignados.RemoveAt(indiceAsignacion);
@@ -129,9 +129,9 @@ namespace Proyecto_CAI_Grupo_4.Models
                 .Where(x => x.IdPresupuesto == presupuestoId && x.HotelesAsignados
                 .Any(c => c.IdHotel == id));
 
-            foreach (var match in existencias)
+            for (int i = 0; i < existencias.Count(); i++)
             {
-                var indice = Pasajeros.FindIndex(x => x == match);
+                var indice = Pasajeros.FindIndex(x => x == existencias.ElementAt(i));
                 var indiceAsignacion = Pasajeros[indice].HotelesAsignados.FindIndex(x => x.IdHotel == id);
 
                 Pasajeros[indice].HotelesAsignados.RemoveAt(indiceAsignacion);
@@ -140,7 +140,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 {
                     Pasajeros.RemoveAt(indice);
                 }
-            }   
+            }
         }
     }
 }
