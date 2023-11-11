@@ -77,7 +77,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
                     "Aereo",
                     item.Tarifa.Precio.ToFormDecimal()
                 },
-            Tag = new ItinearioItemTag
+            Tag = new ItinerarioItemTag
             {
                 IdProducto = item.Id,
                 TipoDeServicio = "Aereo"
@@ -97,7 +97,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
                     "Hotel",
                     item.Disponibilidad.TarifaPorDia.ToFormDecimal()
                 },
-            Tag = new ItinearioItemTag
+            Tag = new ItinerarioItemTag
             {
                 IdProducto = item.Id,
                 TipoDeServicio = "Hotel"
@@ -196,7 +196,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
     {
         foreach (ListViewItem item in productosElegidos.SelectedItems)
         {
-            var tag = (ItinearioItemTag)item.Tag;
+            var tag = (ItinerarioItemTag)item.Tag;
 
             Model.RemoveAereoElegido(tag!.IdProducto);
 

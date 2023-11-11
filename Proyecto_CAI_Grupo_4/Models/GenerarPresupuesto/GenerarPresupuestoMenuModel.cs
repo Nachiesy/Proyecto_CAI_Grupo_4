@@ -77,7 +77,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             for (var i = 0; i < listView.Items.Count; i++)
             {
-                var tag = (ItinearioItemTag)listView.Items[i].Tag;
+                var tag = (ItinerarioItemTag)listView.Items[i].Tag;
 
                 var idUnico = PrefijoCodigoPresupuesto + GetGenerarPresupuestoParams().PresupuestoId;
 
