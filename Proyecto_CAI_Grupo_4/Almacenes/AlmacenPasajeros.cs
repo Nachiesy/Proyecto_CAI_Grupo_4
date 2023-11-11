@@ -58,5 +58,10 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
                 File.WriteAllText(AlmacenPath, JsonConvert.SerializeObject(Pasajeros, Formatting.Indented));
             }
         }
+
+        public static void EliminarPasajerosPorIdPresupuesto(int presupuestoId)
+        {
+            Pasajeros.RemoveAll(x => x.IdPresupuesto == presupuestoId);
+        }
     }
 }
