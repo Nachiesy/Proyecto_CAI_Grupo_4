@@ -59,13 +59,15 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public string? ValidarStock(int idItinerario)
         {
-            var pasajerosAereosAsignados = PasajerosModule.GetAgrupacionVuelosAsignados(idItinerario);
+            var pasajerosAereosAsignados = 
+                PasajerosModule.GetAgrupacionVuelosAsignados(idItinerario)
+                .GroupBy(x => x.IdProducto).Select(x => new { Id = x.Key, Cantidad = x.Count() });
 
             var pasajerosHotelesAsignados = PasajerosModule.GetAgrupacionHotelesAsignados(idItinerario);
 
             foreach (var aereoSeleccionado in pasajerosAereosAsignados)
             {
-                var aereo = AereosModule.GetAereoByID(aereoSeleccionado.IdProducto);
+                var aereo = AereosModule.GetAereoByID(aereoSeleccionado.Id);
 
                 if (aereo.Tarifa.Disponibilidad < aereoSeleccionado.Cantidad)
                 {
