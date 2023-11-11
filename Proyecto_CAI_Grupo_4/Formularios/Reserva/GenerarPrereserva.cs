@@ -85,6 +85,8 @@ namespace Proyecto_CAI_Grupo_4
             ListViewItem item = lv_Prereservas.SelectedItems[0];
             var itinerario = Model.GetPresupuestoById(int.Parse(item.SubItems[0].Text));
 
+            //var esValido = Model.ValidarPasajeros(_idItinerario); //AgregarPasajerosModel --> Pasar a modulo?
+
             if (Model.GetTotalPasajerosByIdPresupuesto(itinerario.IdItinerario) == 0)
             {
                 MessageBox.Show(

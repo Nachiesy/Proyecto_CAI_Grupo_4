@@ -4,9 +4,18 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class MenuPrincipalModel
     {
-        public void SetGenerarPresupuestoParams(GenerarPresupuestoParams generarPresupuestoParams)
+        public void SetGenerarPresupuestoParamsPorDefecto()
         {
-            PresupuestosModule.SetGenerarPresupuestoParams(generarPresupuestoParams);
+            PresupuestosModule.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
+            {
+                EsNuevo = true,
+                InitBuscarPresupuesto = false,
+            });
+        }
+
+        public void SetAgregarPasajerosParamsPorDefecto()
+        {
+            PasajerosModule.SetAgregarPasajerosParams(new AgregarPasajerosParams());
         }
     }
 }

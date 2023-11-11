@@ -1,13 +1,27 @@
 ﻿using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Modules;
 using Proyecto_CAI_Grupo_4.Utils;
-using System.Reflection;
 
 namespace Proyecto_CAI_Grupo_4.Models
 {
     public class AgregarPasajerosModel
     {
         public List<Pasajeros> Pasajeros = new List<Pasajeros>();
+
+        public static AgregarPasajerosParams GetAgregarPasajerosParamsStatic()
+        {
+            return PasajerosModule.GetAgregarPasajerosParams();
+        }
+
+        public AgregarPasajerosParams GetAgregarPasajerosParams()
+        {
+            return PasajerosModule.GetAgregarPasajerosParams();
+        }
+
+        public void SetAgregarPasajerosParams(AgregarPasajerosParams agregarPasajerosParams)
+        {
+            PasajerosModule.SetAgregarPasajerosParams(agregarPasajerosParams);
+        }
 
         public AereoEnt GetAereoById(int id)
         {
@@ -17,6 +31,18 @@ namespace Proyecto_CAI_Grupo_4.Models
         public HotelEnt GetHotelById(int id)
         {
             return HotelesModule.GetHotelByID(id);
+        }
+
+        public IEnumerable<Pasajeros> GetPasajerosByIdPresupuesto(int idPresupuesto)
+        {
+            var listaPasajeros = new List<Pasajeros>();
+            //Pasajeros persistidos en almacen
+            listaPasajeros.AddRange(PasajerosModule.GetPasajerosByIdPresupuesto(idPresupuesto));
+
+            //Pasajeros ingresados por confirmar
+            listaPasajeros.AddRange(PasajerosModule.GetPasajerosPorConfirmar());
+
+            return listaPasajeros;
         }
 
         public IEnumerable<Itinerario> GetPresupuestosByDNI(string dni) 
@@ -175,8 +201,48 @@ namespace Proyecto_CAI_Grupo_4.Models
             return true;
         }
 
-        public void AgregarPasajeros()
+        public void AgregarPasajero(Pasajeros pasajero)
         {
+            Pasajeros.Add(pasajero);
+        }
+
+        public void AgregarPasajeroPorConfirmar(Pasajeros pasajero)
+        {
+            PasajerosModule.AgregarPasajeroPorConfirmar(pasajero);
+        }
+
+        public void LimpiarPasajerosPorConfirmar()
+        {
+            PasajerosModule.LimpiarPasajerosPorConfirmar();
+        }
+
+        public void EliminarPasajero(string idProducto)
+        {
+            for (int i = Pasajeros.Count - 1; i >= 0; i--)
+            {
+                var pasajero = Pasajeros[i];
+
+                if (pasajero.AereosAsignados.Any(x => x.Id == idProducto))
+                {
+                    pasajero.AereosAsignados.RemoveAll(x => x.Id == idProducto);
+                }
+
+                if (pasajero.HotelesAsignados.Any(x => x.Id == idProducto))
+                {
+                    pasajero.HotelesAsignados.RemoveAll(x => x.Id == idProducto);
+                }
+
+                if (pasajero.AereosAsignados.Count == 0 && pasajero.HotelesAsignados.Count == 0)
+                {
+                    Pasajeros.RemoveAt(i);
+                }
+            }
+        }
+
+        public void GuardarPasajeros(int idPresupuesto)
+        {
+            PasajerosModule.LimpiarPasajerosPorIdPresupuesto(idPresupuesto);
+            PasajerosModule.LimpiarPasajerosPorConfirmar();
             PasajerosModule.AgregarPasajeros(Pasajeros);
         }
     }

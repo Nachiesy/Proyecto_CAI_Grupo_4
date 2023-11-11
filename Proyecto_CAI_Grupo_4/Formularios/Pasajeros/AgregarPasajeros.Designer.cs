@@ -111,7 +111,7 @@
             btn_Agregar.TabIndex = 12;
             btn_Agregar.Text = "Agregar";
             btn_Agregar.UseVisualStyleBackColor = false;
-            btn_Agregar.Click += btnAddpasajero_Click;
+            btn_Agregar.Click += btnAddPasajero_Click;
             // 
             // listPasajeros
             // 
@@ -314,7 +314,7 @@
             Margin = new Padding(1);
             Name = "AgregarPasajeros";
             Text = "Generar Reserva";
-            Load += GenerarReserva_Load;
+            Load += AgregarPasajeros_Load;
             Controls.SetChildIndex(gbxPasajeros, 0);
             Controls.SetChildIndex(gbxPresupuesto, 0);
             Controls.SetChildIndex(btn_GenerarReserva, 0);

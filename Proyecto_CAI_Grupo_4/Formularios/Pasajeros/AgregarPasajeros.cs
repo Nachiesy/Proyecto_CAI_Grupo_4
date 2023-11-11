@@ -8,18 +8,63 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class AgregarPasajeros : VistaBase
     {
-        private int _idItinerario;
+        private AgregarPasajerosModel Model;
 
-        AgregarPasajerosModel Model = new AgregarPasajerosModel();
-
-        public AgregarPasajeros() : base(tituloModulo: "Agregar Pasajeros")
+        public AgregarPasajeros() : base(tituloModulo: SetBaseTitle())
         {
             InitializeComponent();
         }
 
-        private void GenerarReserva_Load(object sender, EventArgs e)
+        private void AgregarPasajeros_Load(object sender, EventArgs e)
         {
+            Model = new AgregarPasajerosModel();
 
+            gbxPasajeros.Enabled = false;
+            gbxPresupuesto.Enabled = true;
+
+            if (Model.GetAgregarPasajerosParams().InitBuscarPasajeros)
+            {
+                //Traer el itinerario
+                var presupuestoId = Model.GetAgregarPasajerosParams().PresupuestoId;
+
+                var presupuesto = Model.GetPresupuestoById(presupuestoId);
+
+                //Mostrarlo en la lista y deshabilitar el boton de buscar
+
+                AddPresupuestoToListView(presupuesto);
+
+                //Marcarlo como seleccionado en la listview
+                listPresupuestos.Items[0].Selected = true;
+
+                //Traer los pasajeros del itinerario existentes y los que estan x confirmar y listarlos en la lista de pasajeros
+
+                var pasajeros = Model.GetPasajerosByIdPresupuesto(presupuestoId);
+
+                foreach (var pasajero in pasajeros)
+                {
+                    AgregarPasajerosAereosAlListado(pasajero);
+
+                    AgregarPasajerosHotelesAlListado(pasajero);
+
+                    Model.AgregarPasajero(pasajero);
+                }
+
+                ActualizarInformacionPresupuesto(presupuestoId);
+
+                gbxPasajeros.Enabled = true;
+                gbxPresupuesto.Enabled = false;
+            }
+
+            if (!Model.GetAgregarPasajerosParams().InitBuscarPasajeros)
+            {
+                Model.LimpiarPasajerosPorConfirmar();
+            }
+        }
+
+        private static string SetBaseTitle()
+        {
+            return AgregarPasajerosModel.GetAgregarPasajerosParamsStatic().InitBuscarPasajeros
+                ? $"Agregar Pasajeros - Presupuesto #{AgregarPasajerosModel.GetAgregarPasajerosParamsStatic().PresupuestoId}" : $"Agregar Pasajeros";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -31,71 +76,16 @@ namespace Proyecto_CAI_Grupo_4
             thread.Start();
         }
 
-        public void RecibirDatosPasajero(Pasajeros SumarPasajero)
+        private void AddPresupuestoToListView(Itinerario itinerario)
         {
-            foreach (var i in SumarPasajero.AereosAsignados)
+            listPresupuestos.Items.Add(new ListViewItem(itinerario.IdItinerario.ToString())
             {
-                ListViewItem item = new ListViewItem(i.Id)
+                SubItems =
                 {
-                    SubItems =
-                    {
-                        Model.GetAereoById(i.IdAereo).Nombre,
-                        SumarPasajero.Nombre,
-                        SumarPasajero.Apellido,
-                        SumarPasajero.FechaNacimiento.ToShortDateString(),
-                        SumarPasajero.GetEdad().ToString(),
-                        i.ToString()
-                    },
-                    Tag = new AereoSeleccionado(i.Id, i.IdAereo)
-                };
-
-                listPasajeros.Items.Add(item);
-            }
-
-            foreach (var i in SumarPasajero.HotelesAsignados)
-            {
-                ListViewItem item = new ListViewItem(i.Id)
-                {
-                    SubItems =
-                    {
-                        Model.GetHotelById(i.IdHotel).Nombre,
-                        SumarPasajero.Nombre,
-                        SumarPasajero.Apellido,
-                        SumarPasajero.FechaNacimiento.ToShortDateString(),
-                        SumarPasajero.GetEdad().ToString(),
-                        i.ToString()
-                    },
-                    Tag = new HotelSeleccionado(i.Id, i.IdHotel)
-                };
-
-                listPasajeros.Items.Add(item);
-            }
-
-            Model.Pasajeros.Add(SumarPasajero);
-        }
-
-        private void btnAddpasajero_Click(object sender, EventArgs e)
-        {
-            //var idsNoAsignables = listPasajeros.Items.Cast<ListViewItem>()
-            //    .Select(x => x.Text)
-            //    .ToList();
-
-            IngresarPasajero Agregar = new IngresarPasajero(_idItinerario);
-
-            DialogResult result = Agregar.ShowDialog();
-
-            if (result == DialogResult.OK && Agregar.Pasajero != null)
-            {
-                RecibirDatosPasajero(Agregar.Pasajero);
-                MessageBox.Show("Se Agregó el pasajero");
-            }
-        }
-
-        private int GetCantidadProductosAsigadosAPasajeros()
-        {
-            return Model.Pasajeros
-                .Select(x => x.AereosAsignados.Count + x.HotelesAsignados.Count)
-                .DefaultIfEmpty(0).Sum();
+                    itinerario.Cliente.DNI,
+                    itinerario.PrecioTotal.ToString("C2"),
+                }
+            });
         }
 
         private void AddPresupuestosToListView(IEnumerable<Itinerario> listaItinerarios)
@@ -112,6 +102,74 @@ namespace Proyecto_CAI_Grupo_4
 
             listPresupuestos.Items.AddRange(itinerarios);
         }
+
+        private void AgregarPasajerosHotelesAlListado(Pasajeros pasajero)
+        {
+            foreach (var i in pasajero.AereosAsignados)
+            {
+                listPasajeros.Items.Add(new ListViewItem(i.Id)
+                {
+                    SubItems =
+                    {
+                        Model.GetAereoById(i.IdAereo).Nombre,
+                        pasajero.Nombre,
+                        pasajero.Apellido,
+                        pasajero.FechaNacimiento.ToShortDateString(),
+                        pasajero.GetEdad().ToString(),
+                        i.ToString()
+                    },
+                    Tag = new AereoSeleccionado(i.Id, i.IdAereo)
+                });
+            }
+        }
+
+        private void AgregarPasajerosAereosAlListado(Pasajeros pasajero)
+        {
+            foreach (var i in pasajero.HotelesAsignados)
+            {
+                listPasajeros.Items.Add(new ListViewItem(i.Id)
+                {
+                    SubItems =
+                    {
+                        Model.GetHotelById(i.IdHotel).Nombre,
+                        pasajero.Nombre,
+                        pasajero.Apellido,
+                        pasajero.FechaNacimiento.ToShortDateString(),
+                        pasajero.GetEdad().ToString(),
+                        i.ToString()
+                    },
+                    Tag = new HotelSeleccionado(i.Id, i.IdHotel)
+                });
+            }
+        }
+
+        private void OpenIngresarPasajeros()
+        {
+            Application.Run(new IngresarPasajero());
+        }
+
+        private void btnAddPasajero_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            //Model eliminar los pasajeros ingresados
+            Model.SetAgregarPasajerosParams(new AgregarPasajerosParams()
+            {
+                InitBuscarPasajeros = true,
+                PresupuestoId = Model.GetAgregarPasajerosParams().PresupuestoId,
+            });
+
+            var thread = new Thread(OpenIngresarPasajeros);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        //private int GetCantidadProductosAsigadosAPasajeros()
+        //{
+        //    return Model.Pasajeros
+        //        .Select(x => x.AereosAsignados.Count + x.HotelesAsignados.Count)
+        //        .DefaultIfEmpty(0).Sum();
+        //}
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -169,12 +227,33 @@ namespace Proyecto_CAI_Grupo_4
 
             ListViewItem presupuesto = listPresupuestos.SelectedItems[0];
 
-            _idItinerario = int.Parse(presupuesto.SubItems[0].Text);
+            var idItinerarioSeleccionado = int.Parse(presupuesto.SubItems[0].Text);
 
             gbxPasajeros.Enabled = true;
             gbxPresupuesto.Enabled = false;
 
             ActualizarInformacionPresupuesto(int.Parse(presupuesto.Text));
+            ActualizarPasajeros(idItinerarioSeleccionado);
+        }
+
+        private void ActualizarPasajeros(int presupuestoId)
+        {
+            var pasajeros = Model.GetPasajerosByIdPresupuesto(presupuestoId);
+
+            foreach(var pasajero in pasajeros)
+            {
+                AgregarPasajerosAereosAlListado(pasajero);
+
+                AgregarPasajerosHotelesAlListado(pasajero);
+
+                Model.AgregarPasajero(pasajero);
+            }
+
+            Model.SetAgregarPasajerosParams(new AgregarPasajerosParams()
+            {
+                InitBuscarPasajeros = true,
+                PresupuestoId = presupuestoId,
+            });
         }
 
         private void ActualizarInformacionPresupuesto(int idPresupuesto)
@@ -191,27 +270,24 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            if (GetCantidadProductosAsigadosAPasajeros() == 0)
-            {
-                MessageBox.Show("Debe asignar al menos un pasajero");
+            var idPresupuesto = int.Parse(listPresupuestos.SelectedItems[0].Text);
 
-                return;
-            }
+            //if (GetCantidadProductosAsigadosAPasajeros() == 0)
+            //{
+            //    MessageBox.Show("Debe asignar al menos un pasajero");
 
-            var esValido = Model.ValidarPasajeros(_idItinerario);
+            //    return;
+            //}
 
-            if (esValido)
-            {
-                Model.AgregarPasajeros();
+            Model.GuardarPasajeros(idPresupuesto);
 
-                MessageBox.Show("Pasajeros confirmados para el itinerario: " + _idItinerario);
+            MessageBox.Show("Pasajeros agregados al itinerario. ");
 
-                Close();
+            Close();
 
-                var thread = new Thread(OpenMenuPrincipal);
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.Start();
-            }
+            var thread = new Thread(OpenMenuPrincipal);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void btn_Quitar_Click(object sender, EventArgs e)
@@ -223,30 +299,9 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            foreach (ListViewItem item in listPasajeros.SelectedItems)
-            {
-                listPasajeros.Items.Remove(item);
+            var idProducto = listPasajeros.SelectedItems[0].Text;
 
-                var indiceAereo = Model.Pasajeros
-                    .Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text)
-                    .AereosAsignados
-                    .FindIndex(x => x.Id == ((AereoSeleccionado)item.Tag).Id);
-
-                var indiceHotel = Model.Pasajeros
-                    .Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text)
-                    .HotelesAsignados
-                    .FindIndex(x => x.Id == ((HotelSeleccionado)item.Tag).Id);
-
-                if (indiceAereo != -1)
-                {
-                    Model.Pasajeros.Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text).AereosAsignados.RemoveAt(indiceAereo);
-                }
-
-                if (indiceHotel != -1)
-                {
-                    Model.Pasajeros.Find(x => x.Nombre == item.SubItems[2].Text && x.Apellido == item.SubItems[3].Text).HotelesAsignados.RemoveAt(indiceHotel);
-                }
-            }
+            Model.EliminarPasajero(idProducto);
         }
     }
 }

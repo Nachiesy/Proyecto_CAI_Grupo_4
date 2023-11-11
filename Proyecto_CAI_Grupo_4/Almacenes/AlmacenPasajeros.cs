@@ -36,6 +36,13 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
             Pasajeros = updatedPasajeros;
         }
 
+        public static void ReemplazarPasajerosPorIdItinerario(List<Pasajeros> pasajeros, int idItinerario)
+        {
+            Pasajeros.RemoveAll(x => x.IdPresupuesto == idItinerario);
+
+            Pasajeros.AddRange(pasajeros);
+        }
+
         public static void Guardar()
         {
             if (Pasajeros.Count > 0)

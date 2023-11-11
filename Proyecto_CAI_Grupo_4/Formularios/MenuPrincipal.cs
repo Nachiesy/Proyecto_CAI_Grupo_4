@@ -17,6 +17,10 @@ namespace Proyecto_CAI_Grupo_4
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
             Model = new MenuPrincipalModel();
+
+            Model.SetGenerarPresupuestoParamsPorDefecto();
+
+            Model.SetAgregarPasajerosParamsPorDefecto();
         }
 
         private void btn_BuscarPresupuesto_Click(object sender, EventArgs e)
@@ -31,12 +35,6 @@ namespace Proyecto_CAI_Grupo_4
         private void btnMenuGenerarPresupuesto_Click(object sender, EventArgs e)
         {
             Close();
-
-            Model.SetGenerarPresupuestoParams(new GenerarPresupuestoParams()
-            {
-                EsNuevo = true,
-                InitBuscarPresupuesto = false,
-            });
 
             var thread = new Thread(OpenGenerarPresupuestoMenu);
             thread.SetApartmentState(ApartmentState.STA);

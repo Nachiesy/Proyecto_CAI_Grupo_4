@@ -9,13 +9,9 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class IngresarPasajero : VistaBase
     {
-        public Pasajeros Pasajero { get; private set; }
-        private List<AereoEnt> aereosAsignables { get; set; }
-        private List<HotelEnt> hotelesAsignables { get; set; }
         private int IdItinerario { get; set; }
         private Itinerario Itinerario { get; set; }
-
-        private IngresarPasajeroModel Model = new IngresarPasajeroModel();
+        private IngresarPasajeroModel Model;
 
         private class ItinerarioItemTag
         {
@@ -24,37 +20,23 @@ namespace Proyecto_CAI_Grupo_4
             public string TipoServicio { get; set; }
         }
 
-        public IngresarPasajero(int presupuestoId) : base(tituloModulo: "Ingresar Pasajero", deshabilitarBotones: true)
+        public IngresarPasajero() : base(tituloModulo: "Ingresar Pasajero", deshabilitarBotones: true)
         {
-            Itinerario = Model.GetPresupuestoById(presupuestoId);
-
-            aereosAsignables = AereosModule
-                .GetAereosByIds(Itinerario.IdAereosSeleccionados
-                    .Select(x => x.IdAereo))
-                .ToList();
-
-            hotelesAsignables = HotelesModule
-                .GetHotelesByIds(Itinerario.IdHotelesSeleccionados
-                    .Select(x => x.IdHotel))
-                .ToList();
-
-            IdItinerario = presupuestoId;
-
             InitializeComponent();
         }
 
-        private void cancelpasajbtn_Click(object sender, EventArgs e)
+        private void btnCancelarIngresoPasajeros_Click(object sender, EventArgs e)
         {
-            Pasajero = null;
-            DialogResult = DialogResult.OK;
+            GoToAgregarPasajeros();
+
             Close();
         }
 
-        private void confirmpasajerobtn_Click(object sender, EventArgs e)
+        private void btnConfirmarPasajerosIngresados_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos()) return;
 
-            Pasajero = new Pasajeros(IdItinerario,
+            var pasajero = new Pasajeros(IdItinerario,
                 nombrepasajerotxt.Text,
                 apellidopasajerotxt.Text,
                 int.Parse(dnipasajerotxt.Text),
@@ -66,20 +48,59 @@ namespace Proyecto_CAI_Grupo_4
 
                 if (tag.TipoServicio == "Aereo")
                 {
-                    Pasajero.AsignarAereo(new AereoSeleccionado(tag.Id, tag.IdProducto));
+                    pasajero.AsignarAereo(new AereoSeleccionado(tag.Id, tag.IdProducto));
                 }
                 else if (tag.TipoServicio == "Hotel")
                 {
-                    Pasajero.AsignarHotel(new HotelSeleccionado(tag.Id, tag.IdProducto));
+                    pasajero.AsignarHotel(new HotelSeleccionado(tag.Id, tag.IdProducto));
                 }
             }
+
+            Model.AgregarPasajeroPorConfirmar(pasajero);
+
+            GoToAgregarPasajeros();
 
             DialogResult = DialogResult.OK;
             Close();
         }
 
+        private void GoToAgregarPasajeros()
+        {
+            Model.SetAgregarPasajerosParams(new AgregarPasajerosParams()
+            {
+                InitBuscarPasajeros = true,
+                PresupuestoId = IdItinerario,
+            });
+
+            var thread = new Thread(OpenAgregarPasajeros);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenAgregarPasajeros()
+        {
+            Application.Run(new AgregarPasajeros());
+        }
+
         private void IngresarPasajero_Load(object sender, EventArgs e)
         {
+            Model = new IngresarPasajeroModel();
+
+            var presupuestoId = Model.GetAgregarPasajerosParams().PresupuestoId;
+
+            Itinerario = Model.GetPresupuestoById(presupuestoId);
+            IdItinerario = presupuestoId;
+
+            var aereosAsignables = AereosModule
+                .GetAereosByIds(Itinerario.IdAereosSeleccionados
+                    .Select(x => x.IdAereo))
+                .ToList();
+
+            var hotelesAsignables = HotelesModule
+                .GetHotelesByIds(Itinerario.IdHotelesSeleccionados
+                    .Select(x => x.IdHotel))
+                .ToList();
+
             lv_ListadoProductos.Items.Clear();
 
             lv_ListadoProductos.Items

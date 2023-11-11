@@ -158,7 +158,7 @@
             btn_Confirmar.TabIndex = 4;
             btn_Confirmar.Text = "Confirmar";
             btn_Confirmar.UseVisualStyleBackColor = false;
-            btn_Confirmar.Click += confirmpasajerobtn_Click;
+            btn_Confirmar.Click += btnConfirmarPasajerosIngresados_Click;
             // 
             // btn_Cancelar
             // 
@@ -173,7 +173,7 @@
             btn_Cancelar.TabIndex = 28;
             btn_Cancelar.Text = "Cancelar";
             btn_Cancelar.UseVisualStyleBackColor = false;
-            btn_Cancelar.Click += cancelpasajbtn_Click;
+            btn_Cancelar.Click += btnCancelarIngresoPasajeros_Click;
             // 
             // grp_DatosContato
             // 

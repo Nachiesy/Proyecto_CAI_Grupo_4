@@ -16,5 +16,28 @@
       "Apellido": "Messi"
     },
     "PrecioTotal": 30000.0
+  },
+  {
+    "IdItinerario": 2,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-10T20:35:36.534873-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P2V1000",
+        "IdAereo": 1
+      }
+    ],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P2H1001",
+        "IdHotel": 1001
+      }
+    ],
+    "Cliente": {
+      "DNI": "43822765",
+      "Nombre": "Luis",
+      "Apellido": "Test"
+    },
+    "PrecioTotal": 230000.0
   }
 ]
