@@ -79,9 +79,9 @@ namespace Proyecto_CAI_Grupo_4.Models
             var huespedesAgrupadosPorHotel = pasajerosHotelesAsignados
                 .GroupBy(x => x.IdProducto)
                 .Select(group => new {
-                    Key = group,
                     IdHotel = group.Key,
-                    CantidadHuespedes = group.Sum(item => HotelesModule.GetHotelByID(item.IdProducto)?.Disponibilidad.Disponibilidad ?? 0)
+                    CantidadHuespedes = group.Sum(item => HotelesModule.GetHotelByID(item.IdProducto)?.Disponibilidad.Disponibilidad ?? 0),
+                    Pasajeros = group.ToList()
                 });
 
             foreach (var hotelSeleccionado in huespedesAgrupadosPorHotel)
@@ -90,7 +90,9 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                 if (hotelSeleccionado.CantidadHuespedes > hotel.Disponibilidad.Disponibilidad)
                 {
-                    return $"No hay suficiente disponibilidad para el hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Key.First().Id}).";
+                    var firstPasajero = hotelSeleccionado.Pasajeros.FirstOrDefault();
+                    var mensaje = $"No hay suficiente disponibilidad para el hotel {hotel.Nombre} (Id del producto: {firstPasajero?.Id}).";
+                    return mensaje;
                 }
             }
 
