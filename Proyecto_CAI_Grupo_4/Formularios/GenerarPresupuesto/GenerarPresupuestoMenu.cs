@@ -166,9 +166,10 @@ public partial class GenerarPresupuestoMenu : VistaBase
         {
             Model.UpdatePresupuesto(itinerario);
 
-            Model.DesasignarPasajerosAsignadosInvalidos(itinerario);
+            Model.LimpiarAsignacionesPasajerosExistentes(itinerario);
 
-            MessageBox.Show($"Presupuesto con Código: [{Model.GetGenerarPresupuestoParams().PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+            MessageBox.Show($"Presupuesto con Código: [{Model.GetGenerarPresupuestoParams().PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.\r\n" +
+                $"Los pasajeros deberán cargarse nuevamente.", "Exito", MessageBoxButtons.OK);
         }
 
         Model.ClearAereosElegidos();

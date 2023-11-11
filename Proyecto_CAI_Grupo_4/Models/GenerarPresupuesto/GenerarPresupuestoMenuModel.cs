@@ -148,32 +148,9 @@ namespace Proyecto_CAI_Grupo_4.Models
             HotelesModule.RemoveHotelElegido(id);
         }
 
-        public void DesasignarPasajerosAsignadosInvalidos(Itinerario itinerario)
+        public void LimpiarAsignacionesPasajerosExistentes(Itinerario itinerario)
         {
-            var pasajerosActuales = PasajerosModule.GetPasajerosByIdPresupuesto(itinerario.IdItinerario);
-           
-            foreach(var pasajero in pasajerosActuales)
-            {
-                for(var i = 0; i < pasajero.AereosAsignados.Count; i++)
-                {
-                    var aereo = pasajero.AereosAsignados[i];
-
-                    if (!itinerario.IdAereosSeleccionados.Any(x => x.IdAereo == aereo.IdAereo))
-                    {
-                        PasajerosModule.EliminarAsignacionesAereosExistentes(aereo.IdAereo, GetGenerarPresupuestoParamsStatic().PresupuestoId);
-                    }
-                }   
-
-                for(var i = 0; i < pasajero.HotelesAsignados.Count; i++)
-                {
-                    var hotel = pasajero.HotelesAsignados[i];
-
-                    if (!itinerario.IdHotelesSeleccionados.Any(x => x.IdHotel == hotel.IdHotel))
-                    {
-                        PasajerosModule.EliminarAsignacionesHotelesExistentes(hotel.IdHotel, GetGenerarPresupuestoParamsStatic().PresupuestoId);
-                    }
-                }   
-            }
+            PasajerosModule.LimpiarAsignacionesPasajerosPorIdPresupuesto(GetGenerarPresupuestoParamsStatic().PresupuestoId);
         }
     }
 }

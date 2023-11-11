@@ -103,44 +103,9 @@ namespace Proyecto_CAI_Grupo_4.Models
             return agrupacionHotelesAsignados;
         }
 
-        public static void EliminarAsignacionesAereosExistentes(int id, int presupuestoId)
+        public static void LimpiarAsignacionesPasajerosPorIdPresupuesto(int presupuestoId)
         {
-            var existencias = Pasajeros
-                .Where(x => x.IdPresupuesto == presupuestoId && x.AereosAsignados
-                .Any(c => c.IdAereo == id));
-
-            for (int i = 0; i < existencias.Count(); i++)
-            {
-                var indice = Pasajeros.FindIndex(x => x == existencias.ElementAt(i));
-                var indiceAsignacion = Pasajeros[indice].AereosAsignados.FindIndex(x => x.IdAereo == id);
-
-                Pasajeros[indice].AereosAsignados.RemoveAt(indiceAsignacion);
-
-                if (Pasajeros[indice].HotelesAsignados.Count == 0 && Pasajeros[indice].AereosAsignados.Count == 0)
-                {
-                    Pasajeros.RemoveAt(indice);
-                }
-            }
-        }
-
-        public static void EliminarAsignacionesHotelesExistentes(int id, int presupuestoId)
-        {
-            var existencias = Pasajeros
-                .Where(x => x.IdPresupuesto == presupuestoId && x.HotelesAsignados
-                .Any(c => c.IdHotel == id));
-
-            for (int i = 0; i < existencias.Count(); i++)
-            {
-                var indice = Pasajeros.FindIndex(x => x == existencias.ElementAt(i));
-                var indiceAsignacion = Pasajeros[indice].HotelesAsignados.FindIndex(x => x.IdHotel == id);
-
-                Pasajeros[indice].HotelesAsignados.RemoveAt(indiceAsignacion);
-
-                if (Pasajeros[indice].HotelesAsignados.Count == 0 && Pasajeros[indice].AereosAsignados.Count == 0)
-                {
-                    Pasajeros.RemoveAt(indice);
-                }
-            }
+            Pasajeros.RemoveAll(x => x.IdPresupuesto ==  presupuestoId);
         }
     }
 }
