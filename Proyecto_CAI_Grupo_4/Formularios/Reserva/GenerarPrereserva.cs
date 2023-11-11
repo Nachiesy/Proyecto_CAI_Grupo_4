@@ -8,7 +8,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarPrereserva : VistaBase
     {
-        GenerarPrereservaModel Model = new GenerarPrereservaModel();
+        GenerarPrereservaModel Model;
 
         public GenerarPrereserva()
         {
@@ -17,7 +17,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void ConfirmarReserva_Load(object sender, EventArgs e)
         {
-
+            Model = new GenerarPrereservaModel();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -83,16 +83,16 @@ namespace Proyecto_CAI_Grupo_4
             }
 
             ListViewItem item = lv_Prereservas.SelectedItems[0];
-            var itinerario = Model.GetPresupuestoById(int.Parse(item.SubItems[0].Text));
 
-            //var esValido = Model.ValidarPasajeros(_idItinerario); //AgregarPasajerosModel --> Pasar a modulo?
+            var idItinerario = int.Parse(item.SubItems[0].Text);
 
-            if (Model.GetTotalPasajerosByIdPresupuesto(itinerario.IdItinerario) == 0)
+            var itinerario = Model.GetPresupuestoById(idItinerario);
+
+            var msgError = Model.ValidarPasajeros(idItinerario);
+
+            if(!string.IsNullOrEmpty(msgError))
             {
-                MessageBox.Show(
-                    $"No se puede generar una prereserva sobre un presupuesto sin pasajeros asignador. " +
-                    $"Por favor agrege pasajeros al presupuesto desde la pantalla correspondiente. (Id Presupuesto: {itinerario.IdItinerario})");
-
+                MessageBox.Show(msgError, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

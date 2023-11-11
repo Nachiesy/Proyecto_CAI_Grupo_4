@@ -61,5 +61,15 @@ namespace Proyecto_CAI_Grupo_4.Modules
                 aereosElegidos.RemoveAt(index);
             }
         }
+
+        public static void BajarDisponibilidad(int id)
+        {
+            var index = aereos.FindIndex(x => x.Id == id);
+
+            if (index != -1)
+            {
+                aereos[index].Tarifa.Disponibilidad--;
+            }
+        }
     }
 }

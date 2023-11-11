@@ -61,5 +61,15 @@ namespace Proyecto_CAI_Grupo_4.Modules
                 hotelesElegidos.RemoveAt(index);
             }
         }
+
+        internal static void BajarDisponibilidad(int idHotel)
+        {
+            var index = hoteles.FindIndex(x => x.Id == idHotel);
+
+            if (index != -1)
+            {
+                hoteles[index].Disponibilidad.Disponibilidad--;
+            }
+        }
     }
 }

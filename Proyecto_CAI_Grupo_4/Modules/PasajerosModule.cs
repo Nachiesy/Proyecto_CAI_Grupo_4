@@ -60,5 +60,47 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             AgregarPasajerosParams = agregarPasajerosParams;
         }
+
+        public static List<AgrupacionCantidadesHotelesSeleccionados> GetAgrupacionCantidadesHotelesSeleccionadosPorIdItinerario(int idItinerario)
+        {
+            var agrupacionCantidadesHotelesSeleccionados = Pasajeros
+                .Where(x => x.IdPresupuesto == idItinerario)
+                .SelectMany(x => x.HotelesAsignados
+                    .Select(y =>
+                        new { TipoPasajero = x.GetTipoDePasajero(), IdHotel = y.IdHotel }))
+                .GroupBy(x => new { x.IdHotel, x.TipoPasajero })
+                .Select(x => new AgrupacionCantidadesHotelesSeleccionados { IdHotel = x.Key.IdHotel, TipoPasajero = x.Key.TipoPasajero, Cantidad = x.Count() })
+                .ToList();
+
+            return agrupacionCantidadesHotelesSeleccionados;
+        }
+
+        public static List<AgrupacionCantidadesProductosAsignados> GetAgrupacionVuelosAsignados(int idItinerario)
+        {
+            var agrupacionVuelosAsignados = Pasajeros
+                .Where(x => x.IdPresupuesto == idItinerario)
+                .SelectMany(x =>
+                    x.AereosAsignados.Select(y =>
+                        new { y.Id }))
+                .GroupBy(x => new { x.Id })
+                .Select(x => new AgrupacionCantidadesProductosAsignados { Id = x.Key.Id, Cantidad = x.Count() })
+                .ToList();
+
+            return agrupacionVuelosAsignados;
+        }
+
+        public static List<AgrupacionCantidadesProductosAsignados> GetAgrupacionHotelesAsignados(int idItinerario)
+        {
+            var agrupacionHotelesAsignados = Pasajeros
+                .Where(x => x.IdPresupuesto == idItinerario)
+                .SelectMany(x =>
+                    x.HotelesAsignados.Select(y =>
+                        new { y.Id }))
+                .GroupBy(x => new { x.Id })
+                .Select(x => new AgrupacionCantidadesProductosAsignados { Id = x.Key.Id, Cantidad = x.Count() })
+                .ToList();
+
+            return agrupacionHotelesAsignados;
+        }
     }
 }
