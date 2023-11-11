@@ -56,11 +56,10 @@ namespace Proyecto_CAI_Grupo_4
                 }
             }
 
-            Model.AgregarPasajeroPorConfirmar(pasajero);
+            Model.AgregarPasajero(pasajero);
 
             GoToAgregarPasajeros();
 
-            DialogResult = DialogResult.OK;
             Close();
         }
 

@@ -25,9 +25,9 @@ namespace Proyecto_CAI_Grupo_4.Models
             PasajerosModule.SetAgregarPasajerosParams(agregarPasajerosParams);
         }
 
-        public void AgregarPasajeroPorConfirmar(Pasajeros pasajero)
+        public void AgregarPasajero(Pasajeros pasajero)
         {
-            PasajerosModule.AgregarPasajeroPorConfirmar(pasajero);
+            PasajerosModule.AgregarPasajero(pasajero);
         }
     }
 }

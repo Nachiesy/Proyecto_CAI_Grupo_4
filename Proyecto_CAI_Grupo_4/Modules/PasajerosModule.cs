@@ -10,36 +10,24 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public static List<Pasajeros> Pasajeros { get; set; } = new List<Pasajeros>();
 
-        public static List<Pasajeros> PasajerosPorConfirmar { get; set; } = new List<Pasajeros>();
-
         static PasajerosModule()
         {
             Pasajeros = AlmacenPasajeros.GetPasajeros();
         }
 
-        public static List<Pasajeros> GetPasajerosPorConfirmar()
-        {
-            return PasajerosPorConfirmar;
-        }
-
-        public static void LimpiarPasajerosPorConfirmar()
-        {
-            PasajerosPorConfirmar = new List<Pasajeros>();
-        }
-
-        public static void AgregarPasajeroPorConfirmar(Pasajeros pasajero)
-        {
-            PasajerosPorConfirmar.Add(pasajero);
-        }
-
         public static void AgregarPasajero(Pasajeros pasajero)
         {
-            Pasajeros.Add(pasajero);
+            AlmacenPasajeros.AgregarPasajero(pasajero);
         }
 
         public static void AgregarPasajeros(List<Pasajeros> pasajeros)
         {
-            AlmacenPasajeros.ReemplazarPasajerosPorIdItinerario(pasajeros, AgregarPasajerosParams.PresupuestoId);
+            AlmacenPasajeros.AgregarPasajeros(pasajeros);
+        }
+
+        public static void EliminarPasajero(Pasajeros pasajero)
+        {
+            AlmacenPasajeros.EliminarPasajero(pasajero);
         }
 
         public static List<Pasajeros> GetPasajeros()
@@ -71,13 +59,6 @@ namespace Proyecto_CAI_Grupo_4.Models
         public static void SetAgregarPasajerosParams(AgregarPasajerosParams agregarPasajerosParams)
         {
             AgregarPasajerosParams = agregarPasajerosParams;
-        }
-
-        public static void LimpiarPasajerosPorIdPresupuesto(int idPresupuesto)
-        {
-            Pasajeros = Pasajeros
-                .Where(x => x.IdPresupuesto != idPresupuesto)
-                .ToList();
         }
     }
 }

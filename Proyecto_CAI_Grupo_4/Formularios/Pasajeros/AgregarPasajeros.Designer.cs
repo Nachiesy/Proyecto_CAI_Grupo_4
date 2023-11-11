@@ -50,7 +50,6 @@
             btn_SeleccionarPresupuesto = new Common.Components.BotonEstilizado();
             label3 = new Label();
             label1 = new Label();
-            btn_GenerarReserva = new Common.Components.BotonEstilizado();
             btn_Cancelar = new Common.Components.BotonEstilizado();
             gbxPasajeros.SuspendLayout();
             gbxPresupuesto.SuspendLayout();
@@ -271,21 +270,6 @@
             label1.TabIndex = 2;
             label1.Text = "ID Presupuesto:";
             // 
-            // btn_GenerarReserva
-            // 
-            btn_GenerarReserva.BackColor = Color.Transparent;
-            btn_GenerarReserva.FlatAppearance.MouseOverBackColor = Color.LightGray;
-            btn_GenerarReserva.FlatStyle = FlatStyle.Flat;
-            btn_GenerarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_GenerarReserva.ForeColor = Color.Black;
-            btn_GenerarReserva.Location = new Point(542, 557);
-            btn_GenerarReserva.Name = "btn_GenerarReserva";
-            btn_GenerarReserva.Size = new Size(551, 40);
-            btn_GenerarReserva.TabIndex = 4;
-            btn_GenerarReserva.Text = "Confirmar Pasajeros";
-            btn_GenerarReserva.UseVisualStyleBackColor = false;
-            btn_GenerarReserva.Click += btnConfirmarPasajeros_Click;
-            // 
             // btn_Cancelar
             // 
             btn_Cancelar.BackColor = Color.Transparent;
@@ -294,12 +278,12 @@
             btn_Cancelar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Cancelar.ForeColor = Color.Black;
             btn_Cancelar.Location = new Point(12, 557);
-            btn_Cancelar.Name = "btn_Cancelar";
-            btn_Cancelar.Size = new Size(524, 40);
+            btn_Cancelar.Name = "btn_Volver";
+            btn_Cancelar.Size = new Size(1082, 40);
             btn_Cancelar.TabIndex = 10;
-            btn_Cancelar.Text = "Cancelar";
+            btn_Cancelar.Text = "Volver";
             btn_Cancelar.UseVisualStyleBackColor = false;
-            btn_Cancelar.Click += btnCancelar_Click;
+            btn_Cancelar.Click += btnVolver_Click;
             // 
             // AgregarPasajeros
             // 
@@ -308,7 +292,6 @@
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(1105, 612);
             Controls.Add(btn_Cancelar);
-            Controls.Add(btn_GenerarReserva);
             Controls.Add(gbxPresupuesto);
             Controls.Add(gbxPasajeros);
             Margin = new Padding(1);
@@ -317,7 +300,6 @@
             Load += AgregarPasajeros_Load;
             Controls.SetChildIndex(gbxPasajeros, 0);
             Controls.SetChildIndex(gbxPresupuesto, 0);
-            Controls.SetChildIndex(btn_GenerarReserva, 0);
             Controls.SetChildIndex(btn_Cancelar, 0);
             gbxPasajeros.ResumeLayout(false);
             gbxPasajeros.PerformLayout();
@@ -342,7 +324,6 @@
         private ColumnHeader doccliente;
         private ColumnHeader precio;
         private Label lblcodigp;
-        private Common.Components.BotonEstilizado btn_GenerarReserva;
         private Common.Components.BotonEstilizado btn_Cancelar;
         private Common.Components.BotonEstilizado btn_SeleccionarPresupuesto;
         private Common.Components.BotonEstilizado btn_Agregar;

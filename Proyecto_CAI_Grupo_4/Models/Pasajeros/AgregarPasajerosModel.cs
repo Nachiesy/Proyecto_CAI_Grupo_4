@@ -35,14 +35,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public IEnumerable<Pasajeros> GetPasajerosByIdPresupuesto(int idPresupuesto)
         {
-            var listaPasajeros = new List<Pasajeros>();
-            //Pasajeros persistidos en almacen
-            listaPasajeros.AddRange(PasajerosModule.GetPasajerosByIdPresupuesto(idPresupuesto));
-
-            //Pasajeros ingresados por confirmar
-            listaPasajeros.AddRange(PasajerosModule.GetPasajerosPorConfirmar());
-
-            return listaPasajeros;
+            return PasajerosModule.GetPasajerosByIdPresupuesto(idPresupuesto);
         }
 
         public IEnumerable<Itinerario> GetPresupuestosByDNI(string dni) 
@@ -206,44 +199,9 @@ namespace Proyecto_CAI_Grupo_4.Models
             Pasajeros.Add(pasajero);
         }
 
-        public void AgregarPasajeroPorConfirmar(Pasajeros pasajero)
+        public void EliminarPasajero(Pasajeros pasajeroParaEliminar)
         {
-            PasajerosModule.AgregarPasajeroPorConfirmar(pasajero);
-        }
-
-        public void LimpiarPasajerosPorConfirmar()
-        {
-            PasajerosModule.LimpiarPasajerosPorConfirmar();
-        }
-
-        public void EliminarPasajero(string idProducto)
-        {
-            for (int i = Pasajeros.Count - 1; i >= 0; i--)
-            {
-                var pasajero = Pasajeros[i];
-
-                if (pasajero.AereosAsignados.Any(x => x.Id == idProducto))
-                {
-                    pasajero.AereosAsignados.RemoveAll(x => x.Id == idProducto);
-                }
-
-                if (pasajero.HotelesAsignados.Any(x => x.Id == idProducto))
-                {
-                    pasajero.HotelesAsignados.RemoveAll(x => x.Id == idProducto);
-                }
-
-                if (pasajero.AereosAsignados.Count == 0 && pasajero.HotelesAsignados.Count == 0)
-                {
-                    Pasajeros.RemoveAt(i);
-                }
-            }
-        }
-
-        public void GuardarPasajeros(int idPresupuesto)
-        {
-            PasajerosModule.LimpiarPasajerosPorIdPresupuesto(idPresupuesto);
-            PasajerosModule.LimpiarPasajerosPorConfirmar();
-            PasajerosModule.AgregarPasajeros(Pasajeros);
+            PasajerosModule.EliminarPasajero(pasajeroParaEliminar);
         }
     }
 }

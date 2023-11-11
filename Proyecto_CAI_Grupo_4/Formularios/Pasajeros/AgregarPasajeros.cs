@@ -54,11 +54,6 @@ namespace Proyecto_CAI_Grupo_4
                 gbxPasajeros.Enabled = true;
                 gbxPresupuesto.Enabled = false;
             }
-
-            if (!Model.GetAgregarPasajerosParams().InitBuscarPasajeros)
-            {
-                Model.LimpiarPasajerosPorConfirmar();
-            }
         }
 
         private static string SetBaseTitle()
@@ -67,7 +62,7 @@ namespace Proyecto_CAI_Grupo_4
                 ? $"Agregar Pasajeros - Presupuesto #{AgregarPasajerosModel.GetAgregarPasajerosParamsStatic().PresupuestoId}" : $"Agregar Pasajeros";
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnVolver_Click(object sender, EventArgs e)
         {
             Close();
 
@@ -118,7 +113,7 @@ namespace Proyecto_CAI_Grupo_4
                         pasajero.GetEdad().ToString(),
                         i.ToString()
                     },
-                    Tag = new AereoSeleccionado(i.Id, i.IdAereo)
+                    Tag = pasajero
                 });
             }
         }
@@ -138,7 +133,7 @@ namespace Proyecto_CAI_Grupo_4
                         pasajero.GetEdad().ToString(),
                         i.ToString()
                     },
-                    Tag = new HotelSeleccionado(i.Id, i.IdHotel)
+                    Tag = pasajero
                 });
             }
         }
@@ -279,8 +274,6 @@ namespace Proyecto_CAI_Grupo_4
             //    return;
             //}
 
-            Model.GuardarPasajeros(idPresupuesto);
-
             MessageBox.Show("Pasajeros agregados al itinerario. ");
 
             Close();
@@ -300,8 +293,12 @@ namespace Proyecto_CAI_Grupo_4
             }
 
             var idProducto = listPasajeros.SelectedItems[0].Text;
+           
+            var pasajero = (Pasajeros)listPasajeros.SelectedItems[0].Tag;
 
-            Model.EliminarPasajero(idProducto);
+            listPasajeros.SelectedItems[0].Remove();
+
+            Model.EliminarPasajero(pasajero);
         }
     }
 }
