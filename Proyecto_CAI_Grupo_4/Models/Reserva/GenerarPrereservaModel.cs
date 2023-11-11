@@ -1,6 +1,7 @@
 ﻿using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Modules;
+using System.Linq;
 using System.Reflection;
 
 namespace Proyecto_CAI_Grupo_4.Models
@@ -75,13 +76,21 @@ namespace Proyecto_CAI_Grupo_4.Models
                 }
             }
 
-            foreach (var hotelSeleccionado in pasajerosHotelesAsignados)
-            {
-                var hotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdProducto);
+            var huespedesAgrupadosPorHotel = pasajerosHotelesAsignados
+                .GroupBy(x => x.IdProducto)
+                .Select(group => new {
+                    Key = group,
+                    IdHotel = group.Key,
+                    CantidadHuespedes = group.Sum(item => HotelesModule.GetHotelByID(item.IdProducto)?.Disponibilidad.Disponibilidad ?? 0)
+                });
 
-                if (hotel.Disponibilidad.Disponibilidad < hotelSeleccionado.Cantidad)
+            foreach (var hotelSeleccionado in huespedesAgrupadosPorHotel)
+            {
+                var hotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
+
+                if (hotelSeleccionado.CantidadHuespedes > hotel.Disponibilidad.Disponibilidad)
                 {
-                    return $"No hay suficiente disponibilidad para el hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).";
+                    return $"No hay suficiente disponibilidad para el hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Key.First().Id}).";
                 }
             }
 
@@ -188,6 +197,17 @@ namespace Proyecto_CAI_Grupo_4.Models
                 }
             }
 
+            foreach (var hotelSeleccionado in itinerario.IdHotelesSeleccionados)
+            {
+                //Reviso que exista al menos algun adulto
+                if (!agrupacionCantidadesHotelesSeleccionados.Any(x => x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == "Adulto"))
+                {
+                    var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
+
+                    return $"Los hoteles deben hospedar al menos un adulto. Falta asignar al menos un pasajero adulto al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})";
+                }
+            }
+
             //Si alguno de los productos dentro de itinerario.IdHotelesSeleccionados no fue asignado en agrupacionHotelesAsignados
             //entonces no se cargaron todos los pasajeros a cada uno de los productos
             var hotelesSinAsignar = itinerario.IdHotelesSeleccionados.Where(x => !agrupacionHotelesAsignados.Any(y => y.Id == x.Id));
@@ -197,18 +217,6 @@ namespace Proyecto_CAI_Grupo_4.Models
                 var detalleHotel = HotelesModule.GetHotelByID(hotelSinAsignar.IdHotel);
 
                 return $"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar al menos un pasajero al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSinAsignar.Id})";
-            }
-
-            foreach (var hotelSeleccionado in itinerario.IdHotelesSeleccionados)
-            {
-                //Reviso que exista al menos algun adulto
-                if (!agrupacionCantidadesHotelesSeleccionados.Any(x =>
-                        x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == "Adulto"))
-                {
-                    var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
-
-                    return $"Los hoteles deben hospedar al menos un adulto. Falta asignar al menos un pasajero adulto al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})";
-                }
             }
 
             return null;
