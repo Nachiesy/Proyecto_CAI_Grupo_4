@@ -80,7 +80,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 .GroupBy(x => x.IdProducto)
                 .Select(group => new {
                     IdHotel = group.Key,
-                    CantidadHuespedes = group.Sum(item => HotelesModule.GetHotelByID(item.IdProducto)?.Disponibilidad.Disponibilidad ?? 0),
+                    CantidadHuespedes = group.Count(),
                     Pasajeros = group.ToList()
                 });
 
