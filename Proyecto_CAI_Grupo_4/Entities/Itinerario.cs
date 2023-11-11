@@ -72,9 +72,7 @@ public class Itinerario
 
     public bool EsModificable()
     {
-        return Estado != "Prereservado"
-               || Estado != "Prereservado Abonado"
-               || Estado != "Reservado";
+        return !(Estado == "Prereservado" || Estado == "Prereservado Abonado" || Estado == "Reservado");
     }
 
     public Itinerario AddAereo(string idUnico, int idAereo)

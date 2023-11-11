@@ -88,7 +88,7 @@ namespace Proyecto_CAI_Grupo_4
 
             var itinerario = Model.GetPresupuestoById(idItinerario);
 
-            var msgError = Model.ValidarPasajeros(idItinerario);
+            var msgError = Model.ValidarRequisitosPreReserva(idItinerario);
 
             if(!string.IsNullOrEmpty(msgError))
             {

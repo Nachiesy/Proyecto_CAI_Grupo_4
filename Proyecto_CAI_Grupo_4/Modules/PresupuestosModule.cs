@@ -15,7 +15,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             Presupuestos = AlmacenPresupuestos.GetPresupuestos();
         }
 
-        public static List<Itinerario> GetPresupuestos() => Presupuestos;
+        public static List<Itinerario> GetPresupuestos() => Presupuestos.Where(x => x.EsModificable()).ToList();
 
         public static List<Itinerario> GetPresupuestosByDNI(string dni) => Presupuestos.FindAll(x => x.Cliente.DNI == dni);
 

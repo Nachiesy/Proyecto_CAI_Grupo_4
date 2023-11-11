@@ -102,5 +102,45 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             return agrupacionHotelesAsignados;
         }
+
+        public static void EliminarAsignacionesAereosExistentes(int id, int presupuestoId)
+        {
+            var existencias = Pasajeros
+                .Where(x => x.IdPresupuesto == presupuestoId && x.AereosAsignados
+                .Any(c => c.IdAereo == id));
+
+            foreach (var match in existencias)
+            {
+                var indice = Pasajeros.FindIndex(x => x == match);
+                var indiceAsignacion = Pasajeros[indice].AereosAsignados.FindIndex(x => x.IdAereo == id);
+
+                Pasajeros[indice].AereosAsignados.RemoveAt(indiceAsignacion);
+
+                if (Pasajeros[indice].HotelesAsignados.Count == 0 && Pasajeros[indice].AereosAsignados.Count == 0)
+                {
+                    Pasajeros.RemoveAt(indice);
+                }
+            }
+        }
+
+        public static void EliminarAsignacionesHotelesExistentes(int id, int presupuestoId)
+        {
+            var existencias = Pasajeros
+                .Where(x => x.IdPresupuesto == presupuestoId && x.HotelesAsignados
+                .Any(c => c.IdHotel == id));
+
+            foreach (var match in existencias)
+            {
+                var indice = Pasajeros.FindIndex(x => x == match);
+                var indiceAsignacion = Pasajeros[indice].HotelesAsignados.FindIndex(x => x.IdHotel == id);
+
+                Pasajeros[indice].HotelesAsignados.RemoveAt(indiceAsignacion);
+
+                if (Pasajeros[indice].HotelesAsignados.Count == 0 && Pasajeros[indice].AereosAsignados.Count == 0)
+                {
+                    Pasajeros.RemoveAt(indice);
+                }
+            }   
+        }
     }
 }

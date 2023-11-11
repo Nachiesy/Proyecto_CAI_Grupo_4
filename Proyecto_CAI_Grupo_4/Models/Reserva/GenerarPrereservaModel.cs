@@ -44,6 +44,51 @@ namespace Proyecto_CAI_Grupo_4.Models
             return itinerario;
         }
 
+        public string? ValidarRequisitosPreReserva(int idItinerario)
+        {
+            var msg = ValidarStock(idItinerario);
+
+            if (!string.IsNullOrEmpty(msg)) return msg;
+
+            msg = ValidarPasajeros(idItinerario);
+
+            if (!string.IsNullOrEmpty(msg)) return msg;
+
+            return null;
+        }
+
+        public string? ValidarStock(int idItinerario)
+        {
+            var pasajerosAsignados = PasajerosModule.GetPasajerosByIdPresupuesto(idItinerario);
+
+            foreach (var pasajero in pasajerosAsignados)
+            {
+
+                foreach(var aereoSeleccionado in pasajero.AereosAsignados)
+                {
+                    var aereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
+
+                    if (aereo.Tarifa.Disponibilidad <= 0)
+                    {
+                        return $"No hay disponibilidad para el vuelo {aereo.Nombre} (Id del producto: {aereoSeleccionado.Id}).";
+                    }
+                }
+
+                foreach (var hotelSeleccionado in pasajero.HotelesAsignados)
+                {
+                    var hotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
+
+                    if (hotel.Disponibilidad.Disponibilidad <= 0)
+                    {
+                        return $"No hay disponibilidad para el hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).";
+                    }
+                }
+
+            }
+
+            return null;
+        }
+
         public string? ValidarPasajeros(int idItinerario)
         {
             if (GetTotalPasajerosByIdPresupuesto(idItinerario) == 0)

@@ -141,11 +141,21 @@ namespace Proyecto_CAI_Grupo_4.Models
         public void RemoveAereoElegido(int id)
         {
             AereosModule.RemoveAereoElegido(id);
+
+            if (!GetGenerarPresupuestoParamsStatic().EsNuevo)
+            {
+                PasajerosModule.EliminarAsignacionesAereosExistentes(id, GetGenerarPresupuestoParamsStatic().PresupuestoId);
+            }
         }
 
         public void RemoveHotelElegido(int id)
         {
             HotelesModule.RemoveHotelElegido(id);
+
+            if (!GetGenerarPresupuestoParamsStatic().EsNuevo)
+            {
+                PasajerosModule.EliminarAsignacionesHotelesExistentes(id, GetGenerarPresupuestoParamsStatic().PresupuestoId);
+            }
         }
     }
 }
