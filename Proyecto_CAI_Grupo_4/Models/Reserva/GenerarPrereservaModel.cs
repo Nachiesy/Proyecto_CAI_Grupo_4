@@ -188,19 +188,25 @@ namespace Proyecto_CAI_Grupo_4.Models
                 }
             }
 
+            //Si alguno de los productos dentro de itinerario.IdHotelesSeleccionados no fue asignado en agrupacionHotelesAsignados
+            //entonces no se cargaron todos los pasajeros a cada uno de los productos
+            var hotelesSinAsignar = itinerario.IdHotelesSeleccionados.Where(x => !agrupacionHotelesAsignados.Any(y => y.Id == x.Id));
+
+            foreach(var hotelSinAsignar in hotelesSinAsignar)
+            {
+                var detalleHotel = HotelesModule.GetHotelByID(hotelSinAsignar.IdHotel);
+
+                return $"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar al menos un pasajero al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSinAsignar.Id})";
+            }
+
             foreach (var hotelSeleccionado in itinerario.IdHotelesSeleccionados)
             {
-                var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
-                var fueAsignado = agrupacionHotelesAsignados.Count(x => x.Id == hotelSeleccionado.Id) > 0;
-
-                if (!fueAsignado && agrupacionCantidadesHotelesSeleccionados.Count(x => x.IdHotel == hotelSeleccionado.IdHotel) == 0)
+                //Reviso que exista al menos algun adulto
+                if (!agrupacionCantidadesHotelesSeleccionados.Any(x =>
+                        x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == "Adulto"))
                 {
-                    return $"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar al menos un pasajero al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})";
-                }
+                    var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
 
-                if (fueAsignado && agrupacionCantidadesHotelesSeleccionados.Count(x =>
-                        x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == "Adulto") <= 0)
-                {
                     return $"Los hoteles deben hospedar al menos un adulto. Falta asignar al menos un pasajero adulto al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})";
                 }
             }
