@@ -22,34 +22,31 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
-            var prereservas = Model.GetPreReservasAbonadas();
+            var msgError = Model.ValidarFiltros(codigo, dni);
+
+            if (!string.IsNullOrEmpty(msgError))
+            {
+                MessageBox.Show(msgError, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(dni))
+            {
+                AddPrereservasToListView(Model.GetPreReservasAbonadasByDNI(dni));
+                return;
+            }
 
             if (!string.IsNullOrEmpty(codigo))
             {
-                if (!int.TryParse(codigo, out int prereservaId))
-                {
-                    MessageBox.Show("El codigo de prereserva debe ser numérico.");
-                    return;
-                }
-
-                prereservas = prereservas.Where(x => x.IdItinerario == prereservaId);
+                AddPrereservasToListView(Model.GetPreReservasAbonadasById(codigo));
+                return;
             }
 
-            if (!string.IsNullOrEmpty(dni) && dni.EsDNI())
-            {
-                if (!dni.EsDNI())
-                {
-                    MessageBox.Show("Ingrese un DNI valido por favor.");
-                    return;
-                }
-
-                prereservas = prereservas.Where(x => x.Cliente.DNI == dni);
-            }
-
-            AddPrereservasToListView(prereservas.ToList());
+            AddPrereservasToListView(Model.GetPreReservasAbonadas());
         }
 
         private void AddPrereservasToListView(IEnumerable<Itinerario> list)
@@ -89,7 +86,7 @@ namespace Proyecto_CAI_Grupo_4
 
             if (resultado == DialogResult.Yes)
             {
-                var prereserva = Model.GetPreReservasAbonadasById(int.Parse(item.SubItems[0].Text));
+                var prereserva = Model.GetPreReservaAbonadaById(int.Parse(item.SubItems[0].Text));
 
                 var reserva = Model.GenerarReserva(prereserva);
 

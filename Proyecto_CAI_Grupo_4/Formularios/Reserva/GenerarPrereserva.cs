@@ -35,20 +35,20 @@ namespace Proyecto_CAI_Grupo_4
 
             if (!string.IsNullOrEmpty(dni))
             {
-                AddReservasToListView(Model.GetPreReservablesByDNI(dni));
+                AddPrereservablesToListView(Model.GetPreReservablesByDNI(dni));
                 return;
             }
 
             if (!string.IsNullOrEmpty(codigo))
             {
-                AddReservasToListView(Model.GetPreReservablesById(codigo));
+                AddPrereservablesToListView(Model.GetPreReservablesById(codigo));
                 return;
             }
 
-            AddReservasToListView(Model.GetPreReservables());
+            AddPrereservablesToListView(Model.GetPreReservables());
         }
 
-        private void AddReservasToListView(IEnumerable<Itinerario> list)
+        private void AddPrereservablesToListView(IEnumerable<Itinerario> list)
         {
             lv_Prereservas.Items.Clear();
 
