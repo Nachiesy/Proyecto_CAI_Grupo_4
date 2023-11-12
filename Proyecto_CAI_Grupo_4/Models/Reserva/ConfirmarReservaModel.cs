@@ -46,7 +46,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             {
                 var codigoInt = int.Parse(codigo);
 
-                reservas = reservas.Where(x => x.IdItinerario == codigoInt);
+                reservas = reservas.Where(x => x.Codigo == codigoInt);
             }
 
             if (!string.IsNullOrEmpty(dni))
