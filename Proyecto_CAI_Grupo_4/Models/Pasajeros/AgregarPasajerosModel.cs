@@ -62,5 +62,20 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             PasajerosModule.EliminarPasajero(pasajeroParaEliminar);
         }
+
+        public string? ValidarCamposBusqueda(string codigo, string dni)
+        {
+            if (!string.IsNullOrEmpty(dni) && !dni.EsDNI())
+            {
+                return "Ingrese un DNI valido por favor.";
+            }
+
+            if (!string.IsNullOrEmpty(codigo) && !int.TryParse(codigo, out _))
+            {
+                return "Ingrese un codigo valido por favor.";
+            }
+
+            return null;
+        }
     }
 }

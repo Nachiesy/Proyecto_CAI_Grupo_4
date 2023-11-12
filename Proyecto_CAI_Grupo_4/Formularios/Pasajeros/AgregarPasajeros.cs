@@ -30,14 +30,12 @@ namespace Proyecto_CAI_Grupo_4
                 var presupuesto = Model.GetPresupuestoById(presupuestoId);
 
                 //Mostrarlo en la lista y deshabilitar el boton de buscar
-
                 AddPresupuestoToListView(presupuesto);
 
                 //Marcarlo como seleccionado en la listview
                 listPresupuestos.Items[0].Selected = true;
 
                 //Traer los pasajeros del itinerario existentes y los que estan x confirmar y listarlos en la lista de pasajeros
-
                 var pasajeros = Model.GetPasajerosByIdPresupuesto(presupuestoId);
 
                 foreach (var pasajero in pasajeros)
@@ -147,7 +145,6 @@ namespace Proyecto_CAI_Grupo_4
         {
             this.Close();
 
-            //Model eliminar los pasajeros ingresados
             Model.SetAgregarPasajerosParams(new AgregarPasajerosParams()
             {
                 InitBuscarPasajeros = true,
@@ -159,30 +156,16 @@ namespace Proyecto_CAI_Grupo_4
             thread.Start();
         }
 
-        //private int GetCantidadProductosAsigadosAPasajeros()
-        //{
-        //    return Model.Pasajeros
-        //        .Select(x => x.AereosAsignados.Count + x.HotelesAsignados.Count)
-        //        .DefaultIfEmpty(0).Sum();
-        //}
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
-            if (!string.IsNullOrEmpty(dni) && !dni.EsDNI())
+            var msg = Model.ValidarCamposBusqueda(codigo, dni);
+
+            if (!string.IsNullOrEmpty(msg))
             {
-                MessageBox.Show("Ingrese un DNI valido por favor.");
-
-                return;
-            }
-
-            if (!string.IsNullOrEmpty(codigo) && !int.TryParse(codigo, out _))
-            {
-                MessageBox.Show("Ingrese un codigo valido por favor.");
-
-                return;
+                MessageBox.Show(Text, msg, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (!string.IsNullOrEmpty(dni))
@@ -266,13 +249,6 @@ namespace Proyecto_CAI_Grupo_4
             }
 
             var idPresupuesto = int.Parse(listPresupuestos.SelectedItems[0].Text);
-
-            //if (GetCantidadProductosAsigadosAPasajeros() == 0)
-            //{
-            //    MessageBox.Show("Debe asignar al menos un pasajero");
-
-            //    return;
-            //}
 
             MessageBox.Show("Pasajeros agregados al itinerario. ");
 
