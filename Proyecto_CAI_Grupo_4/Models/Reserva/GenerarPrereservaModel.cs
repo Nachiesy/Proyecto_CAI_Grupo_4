@@ -127,7 +127,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                     if (aereo.Tarifa.TipoDePasajero != pasajero.GetTipoDePasajero())
                     {
                         return $"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.Id}, "
-                            + $"dado que es una tarifa de {aereo.Tarifa.TipoDePasajero} y el pasajero es aplicable a tarifa de {pasajero.GetTipoDePasajero()}";
+                            + $"dado que es una tarifa de {aereo.Tarifa.TipoDePasajero} y el pasajero es aplicable a tarifas de {pasajero.GetTipoDePasajero()}";
                     }
 
                     var aereoRepetido = agrupacionVuelosAsignados.FirstOrDefault(x => x.Id == aereoSeleccionado.Id);
