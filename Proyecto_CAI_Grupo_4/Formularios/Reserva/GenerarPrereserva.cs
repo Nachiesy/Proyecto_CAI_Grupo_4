@@ -25,31 +25,25 @@ namespace Proyecto_CAI_Grupo_4
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
-            var presupuestos = Model.GetPreReservables();
+            var msgError = Model.ValidarFiltros(codigo, dni);
+
+            if(!string.IsNullOrEmpty(msgError))
+            {
+                MessageBox.Show(msgError, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(dni))
+            {
+                AddReservasToListView(Model.GetPreReservablesByDNI(dni));
+            }
 
             if (!string.IsNullOrEmpty(codigo))
             {
-                if (!int.TryParse(codigo, out int presupuestoId))
-                {
-                    MessageBox.Show("El codigo de presupuesto debe ser numérico.");
-                    return;
-                }
-
-                presupuestos = presupuestos.Where(x => x.IdItinerario == presupuestoId);
+                AddReservasToListView(Model.GetPreReservablesById(codigo));
             }
 
-            if (!string.IsNullOrEmpty(dni) && dni.EsDNI())
-            {
-                if (!dni.EsDNI())
-                {
-                    MessageBox.Show("Ingrese un DNI valido por favor.");
-                    return;
-                }
-
-                presupuestos = presupuestos.Where(x => x.Cliente.DNI == dni);
-            }
-
-            AddReservasToListView(presupuestos.ToList());
+            AddReservasToListView(Model.GetPreReservables());
         }
 
         private void AddReservasToListView(IEnumerable<Itinerario> list)

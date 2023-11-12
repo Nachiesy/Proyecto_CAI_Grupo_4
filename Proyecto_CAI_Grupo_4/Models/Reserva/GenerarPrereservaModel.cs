@@ -1,6 +1,7 @@
 ﻿using Proyecto_CAI_Grupo_4.Entities;
 using Proyecto_CAI_Grupo_4.Modelos;
 using Proyecto_CAI_Grupo_4.Modules;
+using Proyecto_CAI_Grupo_4.Utils;
 using System.Linq;
 using System.Reflection;
 
@@ -222,6 +223,31 @@ namespace Proyecto_CAI_Grupo_4.Models
             }
 
             return null;
+        }
+
+        public string? ValidarFiltros(string codigo, string dni)
+        {
+            if (!string.IsNullOrEmpty(codigo) && !int.TryParse(codigo, out int presupuestoId))
+            {
+                return "El codigo de presupuesto debe ser numérico.";
+            }
+
+            if (!string.IsNullOrEmpty(dni) && !dni.EsDNI())
+            {
+                return "Ingrese un DNI valido por favor.";
+            }
+
+            return null;
+        }
+
+        public IEnumerable<Itinerario> GetPreReservablesByDNI(string dni)
+        {
+            return GetPreReservables().Where(x => x.Cliente.DNI == dni);
+        }
+
+        public IEnumerable<Itinerario> GetPreReservablesById(object presupuestoId)
+        {
+            return GetPreReservables().Where(x => x.IdItinerario == (int)presupuestoId);
         }
     }
 }
