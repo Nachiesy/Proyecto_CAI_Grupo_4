@@ -168,30 +168,9 @@ namespace Proyecto_CAI_Grupo_4
                 MessageBox.Show(Text, msg, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (!string.IsNullOrEmpty(dni))
-            {
-                var presupuestos = Model.GetPresupuestosByDNI(dni);
-
-                listPresupuestos.Items.Clear();
-
-                AddPresupuestosToListView(presupuestos);
-
-                return;
-            }
-
-            if (!string.IsNullOrEmpty(codigo))
-            {
-                var presupuesto = Model.GetPresupuestoById(int.Parse(codigo));
-
-                listPresupuestos.Items.Clear();
-
-                AddPresupuestosToListView(new List<Itinerario>() { presupuesto });
-                return;
-            }
-
             listPresupuestos.Items.Clear();
 
-            AddPresupuestosToListView(Model.GetPresupuestos());
+            AddPresupuestosToListView(Model.GetPresupuestosModificables(codigo, dni));
         }
 
         private void btnSelect_Click(object sender, EventArgs e)

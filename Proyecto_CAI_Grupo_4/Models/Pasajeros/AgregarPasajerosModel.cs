@@ -77,5 +77,26 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             return null;
         }
+
+        public IEnumerable<Itinerario> GetPresupuestosModificables(string inputCodigo, string inputDni)
+        {
+            var presupuestos = GetPresupuestos();
+
+            if(!string.IsNullOrEmpty(inputCodigo))
+            {
+                var codigo = int.Parse(inputCodigo);
+
+                presupuestos = presupuestos.Where(x => x.IdItinerario == codigo);
+            }
+
+            if(!string.IsNullOrEmpty(inputDni))
+            {
+                var dni = int.Parse(inputDni);
+
+                presupuestos = presupuestos.Where(x => x.Cliente.DNI == dni.ToString());
+            }
+
+            return presupuestos;
+        }
     }
 }
