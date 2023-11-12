@@ -41,7 +41,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if (!string.IsNullOrEmpty(codigo) && !int.TryParse(codigo, out _))
             {
-                return "Ingrese un codigo valido por favor.";
+                return "Ingrese un numero de reserva valido por favor.";
             }
 
             return null;
@@ -55,7 +55,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             {
                 var codigo = int.Parse(inputCodigo);
 
-                reservas = reservas.Where(x => x.IdItinerario == codigo);
+                reservas = reservas.Where(x => x.Codigo == codigo);
             }
 
             if (!string.IsNullOrEmpty(inputDni))
@@ -65,7 +65,17 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if(!string.IsNullOrEmpty(estado) && estado != "Todas")
             {
-                Enum.TryParse<ReservaEstadoEnum>(estado, out var estadoEnum);
+                var estadoEnum = ReservaEstadoEnum.Invalida;
+
+                switch (estado)
+                {
+                    case "Reserva pendiente de confirmación":
+                        estadoEnum = ReservaEstadoEnum.PendienteDeConfirmacion;
+                        break;
+                    case "Reserva confirmada":
+                        estadoEnum = ReservaEstadoEnum.Confirmada;
+                        break;
+                }
 
                 reservas = reservas.Where(x => x.Estado == estadoEnum);
             }

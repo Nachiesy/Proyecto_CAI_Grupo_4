@@ -25,7 +25,6 @@ namespace Proyecto_CAI_Grupo_4
 
         private void buscarReserva_Click(object sender, EventArgs e)
         {
-
             var codigo = filtroCodigo.Text.Trim();
             var dni = filtroNroDeDoc.Text.Trim();
             var estado = filtroEstado.Text.Trim();
