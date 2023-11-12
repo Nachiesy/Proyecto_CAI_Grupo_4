@@ -139,7 +139,7 @@
             grp_VuelosDisponibles.Size = new Size(976, 278);
             grp_VuelosDisponibles.TabIndex = 36;
             grp_VuelosDisponibles.TabStop = false;
-            grp_VuelosDisponibles.Text = "Vuelos Disponibles";
+            grp_VuelosDisponibles.Text = "Aéreos Disponibles";
             // 
             // listViewProductos
             // 
@@ -154,13 +154,13 @@
             // 
             // ID
             // 
-            ID.Text = "ID";
+            ID.Text = "ID Tarifa";
             ID.Width = 100;
             // 
             // Codigo
             // 
-            Codigo.Text = "Código";
-            Codigo.Width = 100;
+            Codigo.Text = "Código de Aéreo";
+            Codigo.Width = 150;
             // 
             // Origen
             // 
@@ -184,7 +184,7 @@
             // 
             // TipoDePasajero
             // 
-            TipoDePasajero.Text = "Tarifa";
+            TipoDePasajero.Text = "Tipo de Pasajero";
             TipoDePasajero.Width = 100;
             // 
             // Precio
@@ -194,7 +194,7 @@
             // 
             // Aerolinea
             // 
-            Aerolinea.Text = "Aerolinea";
+            Aerolinea.Text = "Aerolínea";
             Aerolinea.Width = 150;
             // 
             // Paradas
@@ -222,7 +222,7 @@
             grp_VuelosSeleccionados.Size = new Size(976, 269);
             grp_VuelosSeleccionados.TabIndex = 37;
             grp_VuelosSeleccionados.TabStop = false;
-            grp_VuelosSeleccionados.Text = "Vuelos Seleccionados";
+            grp_VuelosSeleccionados.Text = "Aéreos Seleccionados";
             // 
             // listViewProductosSeleccionados
             // 
@@ -237,13 +237,13 @@
             // 
             // SelectID
             // 
-            SelectID.Text = "ID";
+            SelectID.Text = "ID Tarifa";
             SelectID.Width = 100;
             // 
             // SelectCodigo
             // 
-            SelectCodigo.Text = "Código";
-            SelectCodigo.Width = 100;
+            SelectCodigo.Text = "Código de Aéreo";
+            SelectCodigo.Width = 150;
             // 
             // SelectOrigen
             // 
@@ -262,7 +262,7 @@
             // 
             // SelectTipoDePasajero
             // 
-            SelectTipoDePasajero.Text = "Tarifa";
+            SelectTipoDePasajero.Text = "Tipo de Pasajero";
             SelectTipoDePasajero.Width = 100;
             // 
             // SelectPrecio
@@ -272,7 +272,7 @@
             // 
             // SelectAerolinea
             // 
-            SelectAerolinea.Text = "Aerolinea";
+            SelectAerolinea.Text = "Aerolínea";
             SelectAerolinea.Width = 150;
             // 
             // SelectParadas

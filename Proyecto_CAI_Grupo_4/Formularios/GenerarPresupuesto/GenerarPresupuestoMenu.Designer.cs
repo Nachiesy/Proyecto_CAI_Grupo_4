@@ -51,7 +51,6 @@ namespace Proyecto_CAI_Grupo_4
             textBoxClienteNombre = new TextBox();
             label3 = new Label();
             groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
             btnEliminarTodo = new Common.Components.BotonEstilizado();
             btnEliminarSeleccion = new Common.Components.BotonEstilizado();
             groupBox1.SuspendLayout();
@@ -60,7 +59,6 @@ namespace Proyecto_CAI_Grupo_4
             grp_Estimacion.SuspendLayout();
             grp_Filtros.SuspendLayout();
             groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -150,7 +148,7 @@ namespace Proyecto_CAI_Grupo_4
             btnFinalizarPresupuesto.FlatStyle = FlatStyle.Flat;
             btnFinalizarPresupuesto.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnFinalizarPresupuesto.ForeColor = Color.Black;
-            btnFinalizarPresupuesto.Location = new Point(6, 22);
+            btnFinalizarPresupuesto.Location = new Point(14, 428);
             btnFinalizarPresupuesto.Name = "btnFinalizarPresupuesto";
             btnFinalizarPresupuesto.Size = new Size(770, 47);
             btnFinalizarPresupuesto.TabIndex = 4;
@@ -265,7 +263,7 @@ namespace Proyecto_CAI_Grupo_4
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(groupBox3);
+            groupBox2.Controls.Add(btnFinalizarPresupuesto);
             groupBox2.Controls.Add(btnEliminarTodo);
             groupBox2.Controls.Add(btnEliminarSeleccion);
             groupBox2.Controls.Add(productosElegidos);
@@ -275,16 +273,6 @@ namespace Proyecto_CAI_Grupo_4
             groupBox2.TabIndex = 43;
             groupBox2.TabStop = false;
             groupBox2.Text = "Productos Asignados";
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(btnFinalizarPresupuesto);
-            groupBox3.Location = new Point(8, 414);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(782, 84);
-            groupBox3.TabIndex = 44;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Acciones";
             // 
             // btnEliminarTodo
             // 
@@ -344,7 +332,6 @@ namespace Proyecto_CAI_Grupo_4
             grp_Filtros.ResumeLayout(false);
             grp_Filtros.PerformLayout();
             groupBox2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -375,6 +362,5 @@ namespace Proyecto_CAI_Grupo_4
         private GroupBox groupBox2;
         private Common.Components.BotonEstilizado btnEliminarSeleccion;
         private Common.Components.BotonEstilizado btnEliminarTodo;
-        private GroupBox groupBox3;
     }
 }

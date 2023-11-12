@@ -64,9 +64,9 @@
             label2.Font = new Font("Microsoft JhengHei UI", 15.15F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(30, 122);
             label2.Name = "label2";
-            label2.Size = new Size(336, 26);
+            label2.Size = new Size(276, 26);
             label2.TabIndex = 7;
-            label2.Text = "Ingrese número de presupuesto";
+            label2.Text = "Ingrese Id de presupuesto";
             // 
             // btn_Volver
             // 

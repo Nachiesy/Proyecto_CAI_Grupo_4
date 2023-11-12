@@ -48,12 +48,12 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if (!precioDesdeEmpty && !isPrecioDesdeDecimal)
             {
-                return $"Precio Desde debe ser un numero decimal" + Environment.NewLine;
+                return $"El Precio Desde debe ser un número decimal" + Environment.NewLine;
             }
 
             if (!precioHastaEmpty && !isPrecioHastaDecimal)
             {
-                return $"Precio Hasta debe ser un numero decimal" + Environment.NewLine;
+                return $"El Precio Hasta debe ser un número decimal" + Environment.NewLine;
             }
 
             if (!precioDesdeEmpty)
@@ -90,12 +90,12 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if (fechaDesdeHasValue && filter.FechaDesde.Value.Date < DateTime.Now.Date)
             {
-                return "La Fecha Desde debe ser mayor a hoy" + Environment.NewLine;
+                return "La Fecha de Salida debe ser mayor a hoy" + Environment.NewLine;
             }
 
             if (fechaHastaHasValue && filter.FechaHasta.Value.Date < DateTime.Now.Date)
             {
-                return "La Fecha Hasta debe ser mayor a hoy" + Environment.NewLine;
+                return "La Fecha de Arribo debe ser mayor a hoy" + Environment.NewLine;
             }
 
             return string.Empty;

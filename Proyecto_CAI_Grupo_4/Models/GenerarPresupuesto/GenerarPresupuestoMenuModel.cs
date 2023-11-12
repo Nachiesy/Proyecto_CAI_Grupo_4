@@ -50,7 +50,7 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             if (!dni.EsDNI())
             {
-                return $"Debes ingresar un DNI correcto.";
+                return $"Debes ingresar un DNI correcto. El mismo debe ser númerico y tener entre 7 y 8 cifras.";
             }
 
             if (string.IsNullOrEmpty(nombre))

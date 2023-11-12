@@ -14,21 +14,21 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if (!nroPresupuestoValido)
             {
-                return "El número de presupuesto ingresado no es válido";
+                return "El Id de presupuesto ingresado no es válido";
             }
 
             var presupuesto = PresupuestosModule.GetPresupuestoById(nroPresupuesto);
 
             if (presupuesto is null)
             {
-                return "El número de presupuesto ingresado no existe";
+                return "El Id de presupuesto ingresado no existe";
             }
 
             var esModificable = PresupuestosModule.EsPresupuestoModificable(presupuesto.IdItinerario);
 
             if (!esModificable)
             {
-                return $"El número de presupuesto #{presupuesto.IdItinerario} coincide con un presupuesto que" +
+                return $"El Id de presupuesto #{presupuesto.IdItinerario} coincide con un presupuesto que" +
                        $" no puede ser modificado ya que esta en estado {presupuesto.Estado}";
             }
 

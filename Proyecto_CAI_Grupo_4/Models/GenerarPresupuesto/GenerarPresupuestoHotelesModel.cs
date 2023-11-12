@@ -43,12 +43,12 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if (!precioDesdeEmpty && !isPrecioDesdeDecimal)
             {
-                return $"Precio Desde debe ser un numero decimal" + Environment.NewLine;
+                return $"El Precio Desde debe ser un número decimal" + Environment.NewLine;
             }
 
             if (!precioHastaEmpty && !isPrecioHastaDecimal)
             {
-                return $"Precio Hasta debe ser un numero decimal" + Environment.NewLine;
+                return $"El Precio Hasta debe ser un número decimal" + Environment.NewLine;
             }
 
             if (!precioDesdeEmpty)

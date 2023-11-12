@@ -115,13 +115,13 @@
             // 
             // ID
             // 
-            ID.Text = "ID";
+            ID.Text = "ID Tarifa";
             ID.Width = 100;
             // 
             // Codigo
             // 
-            Codigo.Text = "Código";
-            Codigo.Width = 100;
+            Codigo.Text = "Código de Hotel";
+            Codigo.Width = 150;
             // 
             // Nombre
             // 
@@ -443,13 +443,13 @@
             // 
             // SelectID
             // 
-            SelectID.Text = "ID";
+            SelectID.Text = "ID Tarifa";
             SelectID.Width = 100;
             // 
             // SelectCodigo
             // 
-            SelectCodigo.Text = "Código";
-            SelectCodigo.Width = 100;
+            SelectCodigo.Text = "Código de Hotel";
+            SelectCodigo.Width = 150;
             // 
             // SelectNombre
             // 

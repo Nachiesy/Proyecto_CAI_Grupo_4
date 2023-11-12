@@ -130,7 +130,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             if (listViewProductos.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Ningun vuelo seleccionado para agregar al presupuesto.");
+                MessageBox.Show("No hay ningún vuelo seleccionado para agregar al presupuesto.");
 
                 return;
             }
@@ -156,7 +156,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             if (listViewProductosSeleccionados.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Ningun vuelo seleccionado para remover del presupuesto.");
+                MessageBox.Show("No hay ningún vuelo seleccionado para remover del presupuesto");
 
                 return;
             }

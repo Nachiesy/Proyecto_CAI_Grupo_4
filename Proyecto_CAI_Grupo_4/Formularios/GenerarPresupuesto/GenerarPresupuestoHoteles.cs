@@ -131,7 +131,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             if (listViewProductos.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Ningun hotel seleccionado para agregar al presupuesto.");
+                MessageBox.Show("No hay ningún hotel seleccionado para agregar al presupuesto.");
 
                 return;
             }
@@ -157,7 +157,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             if (listViewProductosSeleccionados.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Ningun hotel seleccionado para remover del presupuesto.");
+                MessageBox.Show("No hay ningún hotel seleccionado para remover del presupuesto.");
 
                 return;
             }

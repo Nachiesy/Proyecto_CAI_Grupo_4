@@ -160,7 +160,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
         {
             Model.AddPresupuesto(itinerario);
 
-            MessageBox.Show($"Presupuesto con Código: [{Model.GetGenerarPresupuestoParams().PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
+            MessageBox.Show($"Presupuesto con Id: [{Model.GetGenerarPresupuestoParams().PresupuestoId}] generado correctamente para el cliente con DNI {dni}.", "Exito", MessageBoxButtons.OK);
         }
         else
         {
@@ -168,8 +168,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
             Model.LimpiarAsignacionesPasajerosExistentes(itinerario);
 
-            MessageBox.Show($"Presupuesto con Código: [{Model.GetGenerarPresupuestoParams().PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.\r\n" +
-                $"Los pasajeros deberán cargarse nuevamente.", "Exito", MessageBoxButtons.OK);
+            MessageBox.Show($"Presupuesto con Id: [{Model.GetGenerarPresupuestoParams().PresupuestoId}] actualizado correctamente para el cliente con DNI {dni}.\r\n" + $"En caso de haber cargado pasajeros, los mismos deberán cargarse nuevamente.", "Exito", MessageBoxButtons.OK);
         }
 
         Model.ClearAereosElegidos();
