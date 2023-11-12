@@ -8,7 +8,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class GenerarReserva : VistaBase
     {
-        GenerarReservaModel Model = new GenerarReservaModel();
+        GenerarReservaModel Model;
 
         public GenerarReserva()
         {
@@ -17,7 +17,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void ConfirmarReserva_Load(object sender, EventArgs e)
         {
-
+            Model = new GenerarReservaModel();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
