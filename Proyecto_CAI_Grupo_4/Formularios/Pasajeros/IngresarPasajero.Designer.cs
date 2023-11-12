@@ -154,7 +154,7 @@
             btn_Confirmar.ForeColor = Color.Black;
             btn_Confirmar.Location = new Point(311, 388);
             btn_Confirmar.Name = "btn_Confirmar";
-            btn_Confirmar.Size = new Size(391, 40);
+            btn_Confirmar.Size = new Size(619, 40);
             btn_Confirmar.TabIndex = 4;
             btn_Confirmar.Text = "Confirmar";
             btn_Confirmar.UseVisualStyleBackColor = false;
@@ -180,7 +180,7 @@
             grp_DatosContato.Controls.Add(lv_ListadoProductos);
             grp_DatosContato.Location = new Point(311, 151);
             grp_DatosContato.Name = "grp_DatosContato";
-            grp_DatosContato.Size = new Size(391, 231);
+            grp_DatosContato.Size = new Size(624, 231);
             grp_DatosContato.TabIndex = 27;
             grp_DatosContato.TabStop = false;
             grp_DatosContato.Text = "Asignar a...";
@@ -192,27 +192,27 @@
             lv_ListadoProductos.Location = new Point(5, 21);
             lv_ListadoProductos.Margin = new Padding(2, 1, 2, 1);
             lv_ListadoProductos.Name = "lv_ListadoProductos";
-            lv_ListadoProductos.Size = new Size(381, 206);
+            lv_ListadoProductos.Size = new Size(614, 206);
             lv_ListadoProductos.TabIndex = 4;
             lv_ListadoProductos.UseCompatibleStateImageBehavior = false;
             lv_ListadoProductos.View = View.Details;
             // 
             // idproductoseleccionado
             // 
-            idproductoseleccionado.Text = "Id";
+            idproductoseleccionado.Text = "ID Producto";
             idproductoseleccionado.Width = 180;
             // 
             // descripcionproducto
             // 
             descripcionproducto.Text = "Descripcion del Producto";
-            descripcionproducto.Width = 200;
+            descripcionproducto.Width = 400;
             // 
             // IngresarPasajero
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(710, 439);
+            ClientSize = new Size(947, 439);
             Controls.Add(btn_Cancelar);
             Controls.Add(btn_Confirmar);
             Controls.Add(grp_DatosContato);

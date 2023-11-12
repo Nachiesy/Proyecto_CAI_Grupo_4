@@ -87,7 +87,7 @@ namespace Proyecto_CAI_Grupo_4
             lv_ListadoProductos.Items.Clear();
 
 
-            foreach(var aereoAsignable in aereosAsignables)
+            foreach (var aereoAsignable in aereosAsignables)
             {
                 lv_ListadoProductos.Items.Add(new ListViewItem(aereoAsignable.Id)
                 {
@@ -104,7 +104,7 @@ namespace Proyecto_CAI_Grupo_4
                 });
             }
 
-            foreach(var hotelAsignable in hotelesAsignables)
+            foreach (var hotelAsignable in hotelesAsignables)
             {
                 lv_ListadoProductos.Items.Add(new ListViewItem(hotelAsignable.Id)
                 {

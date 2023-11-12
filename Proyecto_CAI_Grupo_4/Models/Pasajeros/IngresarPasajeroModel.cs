@@ -57,12 +57,12 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if (string.IsNullOrWhiteSpace(dni))
             {
-                return "Debe ingresar un DNI";
+                return "Debes ingresar un DNI correcto. El mismo debe ser númerico y tener entre 7 y 8 cifras.";
             }
 
             if (!dni.EsDNI())
             {
-                return "Debe ingresar un DNI valido";
+                return "Debes ingresar un DNI correcto. El mismo debe ser númerico y tener entre 7 y 8 cifras.";
             }
 
             if (DateTime.Parse(fchNacimiento) > DateTime.Now)

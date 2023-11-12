@@ -67,12 +67,12 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             if (!string.IsNullOrEmpty(dni) && !dni.EsDNI())
             {
-                return "Ingrese un DNI valido por favor.";
+                return "Debes ingresar un DNI correcto. El mismo debe ser númerico y tener entre 7 y 8 cifras.";
             }
 
             if (!string.IsNullOrEmpty(codigo) && !int.TryParse(codigo, out _))
             {
-                return "Ingrese un codigo valido por favor.";
+                return "Debes ingresar un Id correcto. El mismo tiene que ser un número entero.";
             }
 
             return null;
