@@ -35,6 +35,7 @@ namespace Proyecto_CAI_Grupo_4
             if (!string.IsNullOrEmpty(msg))
             {
                 MessageBox.Show(msg, "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             reservasListView.Items.Clear();

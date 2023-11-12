@@ -73,7 +73,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                 if (aereo.Tarifa.Disponibilidad < aereoSeleccionado.Cantidad)
                 {
-                    return $"No hay suficiente disponibilidad para el vuelo {aereo.Nombre} (Id del producto: {aereoSeleccionado.Id}).";
+                    return $"No hay suficiente disponibilidad para el {aereo.Nombre}.";
                 }
             }
 
@@ -98,6 +98,10 @@ namespace Proyecto_CAI_Grupo_4.Models
             }
 
             return null;
+        }
+
+        private string GetTipoPasajeroAereo(int idProducto) { 
+            return AereosModule.GetAereoByID(idProducto)!.Tarifa.TipoDePasajero;
         }
 
         public string? ValidarPasajeros(int idItinerario)
@@ -198,6 +202,17 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                     return $"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar un pasajero al vuelo {detalleAereo.Nombre} con tarifa {detalleAereo.Tarifa.TipoDePasajero}. (Id del producto: {aereoSeleccionado.Id})";
                 }
+
+                //La cantidad de menores no puede ser mayor a la de adultos
+                var cantidadMenoresEInfantes = agrupacionVuelosAsignados.Count(x => GetTipoPasajeroAereo(x.IdProducto) == "Menor" || GetTipoPasajeroAereo(x.IdProducto) == "Infante");
+                var cantidadAdultos = agrupacionVuelosAsignados.Count(x => GetTipoPasajeroAereo(x.IdProducto) == "Adulto");
+
+                if (cantidadMenoresEInfantes > cantidadAdultos)
+                {
+                    var detalleAereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
+
+                    return $"La cantidad de menores e infantes no puede ser mayor a la de adultos. Falta asignar al menos un pasajero adulto más al vuelo {detalleAereo.Nombre}. (Id del producto: {aereoSeleccionado.Id})";
+                }
             }
 
             foreach (var hotelSeleccionado in itinerario.IdHotelesSeleccionados)
@@ -209,6 +224,19 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                     return $"Los hoteles deben hospedar al menos un adulto. Falta asignar al menos un pasajero adulto al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})";
                 }
+
+                //La cantidad de menores no puede ser mayor a la de adultos
+                var cantidadMenoresEInfantes = agrupacionCantidadesHotelesSeleccionados.Count(x => x.IdHotel == hotelSeleccionado.IdHotel && (x.TipoPasajero == "Menor" || x.TipoPasajero == "Infante"));
+                var cantidadAdultos = agrupacionCantidadesHotelesSeleccionados.Count(x => x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == "Adulto");
+
+                if (cantidadMenoresEInfantes > cantidadAdultos)
+                {
+                    var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
+
+                    return $"La cantidad de menores e infantes no puede ser mayor a la de adultos. Falta asignar al menos un pasajero adulto más al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})";
+                }
+
+
             }
 
             //Si alguno de los productos dentro de itinerario.IdHotelesSeleccionados no fue asignado en agrupacionHotelesAsignados
