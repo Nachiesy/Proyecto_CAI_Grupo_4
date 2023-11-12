@@ -126,7 +126,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                     if (aereo.Tarifa.TipoDePasajero != pasajero.GetTipoDePasajero())
                     {
-                        return $"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.IdAereo}, "
+                        return $"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.Id}, "
                             + $"dado que es una tarifa de {aereo.Tarifa.TipoDePasajero} y el pasajero es aplicable a tarifa de {pasajero.GetTipoDePasajero()}";
                     }
 
@@ -134,7 +134,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                     if (aereoRepetido is not null && aereoRepetido.Cantidad > 1)
                     {
-                        return $"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.IdAereo}, "
+                        return $"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.Id}, "
                             + $"dado que el asiento no puede ser asignado más de una vez.";
                     }
 
