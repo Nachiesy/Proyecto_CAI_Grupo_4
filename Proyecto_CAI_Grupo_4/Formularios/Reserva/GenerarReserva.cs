@@ -22,7 +22,6 @@ namespace Proyecto_CAI_Grupo_4
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
@@ -34,19 +33,7 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            if (!string.IsNullOrEmpty(dni))
-            {
-                AddPrereservasToListView(Model.GetPreReservasAbonadasByDNI(dni));
-                return;
-            }
-
-            if (!string.IsNullOrEmpty(codigo))
-            {
-                AddPrereservasToListView(Model.GetPreReservasAbonadasById(codigo));
-                return;
-            }
-
-            AddPrereservasToListView(Model.GetPreReservasAbonadas());
+            AddPrereservasToListView(Model.GetPreReservasAbonadasFiltradas(codigo, dni));
         }
 
         private void AddPrereservasToListView(IEnumerable<Itinerario> list)
