@@ -36,11 +36,13 @@ namespace Proyecto_CAI_Grupo_4
             if (!string.IsNullOrEmpty(dni))
             {
                 AddReservasToListView(Model.GetPreReservablesByDNI(dni));
+                return;
             }
 
             if (!string.IsNullOrEmpty(codigo))
             {
                 AddReservasToListView(Model.GetPreReservablesById(codigo));
+                return;
             }
 
             AddReservasToListView(Model.GetPreReservables());
