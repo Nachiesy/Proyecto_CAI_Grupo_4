@@ -60,7 +60,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             return null;
         }
 
-        public IEnumerable<Itinerario> GetPreReservasAbonadasFiltradas(string inputCodigo, string inputDni)
+        public IEnumerable<Itinerario> GetPreReservasAbonadasFiltradas(string inputCodigo, string dni)
         {
             var prereservas = GetPreReservasAbonadas();
 
@@ -71,11 +71,9 @@ namespace Proyecto_CAI_Grupo_4.Models
                 prereservas = prereservas.Where(x => x.IdItinerario == codigo);
             }
 
-            if (!string.IsNullOrEmpty(inputDni))
+            if (!string.IsNullOrEmpty(dni))
             {
-                var dni = int.Parse(inputDni);
-
-                prereservas = prereservas.Where(x => x.Cliente.DNI == dni.ToString());
+                prereservas = prereservas.Where(x => x.Cliente.DNI == dni);
             }
 
             return prereservas;

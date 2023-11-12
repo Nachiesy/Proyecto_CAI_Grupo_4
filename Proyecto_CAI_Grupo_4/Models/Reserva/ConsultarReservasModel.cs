@@ -60,9 +60,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if (!string.IsNullOrEmpty(inputDni))
             {
-                var dni = int.Parse(inputDni);
-
-                reservas = reservas.Where(x => x.Cliente.DNI == dni.ToString());
+                reservas = reservas.Where(x => x.Cliente.DNI == inputDni);
             }
 
             if(!string.IsNullOrEmpty(estado) && estado != "Todas")

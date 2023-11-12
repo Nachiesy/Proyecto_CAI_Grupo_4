@@ -8,7 +8,7 @@ namespace Proyecto_CAI_Grupo_4
 {
     public partial class ConfirmarReserva : VistaBase
     {
-        ConfirmarReservaModel Model = new ConfirmarReservaModel();
+        private ConfirmarReservaModel Model;
 
         public ConfirmarReserva()
         {
@@ -17,7 +17,7 @@ namespace Proyecto_CAI_Grupo_4
 
         private void ConfirmarReserva_Load(object sender, EventArgs e)
         {
-
+            Model = new ConfirmarReservaModel();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -25,31 +25,16 @@ namespace Proyecto_CAI_Grupo_4
             var codigo = nroPresupuestotxt.Text.Trim();
             var dni = txbDocumento.Text.Trim();
 
-            var reservas = Model.GetReservasPendientesDeConfirmacion();
+            var msg = Model.ValidarCamposBusqueda(codigo, dni);
 
-            if (!string.IsNullOrEmpty(codigo))
+            if (!string.IsNullOrEmpty(msg))
             {
-                if (!int.TryParse(codigo, out int reservaId))
-                {
-                    MessageBox.Show("El codigo de reserva debe ser numérico.");
-                    return;
-                }
-
-                reservas = reservas.Where(x => x.Codigo == reservaId);
+                MessageBox.Show(msg, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (!string.IsNullOrEmpty(dni) && dni.EsDNI())
-            {
-                if (!dni.EsDNI())
-                {
-                    MessageBox.Show("Ingrese un DNI valido por favor.");
-                    return;
-                }
+            lv_Reservas.Items.Clear();
 
-                reservas = reservas.Where(x => x.Cliente.DNI == dni);
-            }
-
-            AddReservasToListView(reservas.ToList());
+            AddReservasToListView(Model.GetReservasPendientesDeConfirmacionFiltradas(codigo, dni));
         }
 
         private void AddReservasToListView(IEnumerable<Reserva> list)

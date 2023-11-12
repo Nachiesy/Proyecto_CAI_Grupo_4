@@ -263,9 +263,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if (!string.IsNullOrEmpty(inputDni))
             {
-                var dni = int.Parse(inputDni);
-
-                presupuestos = presupuestos.Where(x => x.Cliente.DNI == dni.ToString());
+                presupuestos = presupuestos.Where(x => x.Cliente.DNI == inputDni);
             }
 
             return presupuestos;
