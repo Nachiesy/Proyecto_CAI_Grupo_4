@@ -165,7 +165,7 @@ namespace Proyecto_CAI_Grupo_4
 
             if (!string.IsNullOrEmpty(msg))
             {
-                MessageBox.Show(Text, msg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(msg, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             listPresupuestos.Items.Clear();
