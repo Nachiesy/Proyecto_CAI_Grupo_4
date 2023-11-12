@@ -249,5 +249,26 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             return GetPreReservables().Where(x => x.IdItinerario == (int)presupuestoId);
         }
+
+        public IEnumerable<Itinerario> GetPreReservablesFiltrados(string inputCodigo, string inputDni)
+        {
+            var presupuestos = GetPreReservables();
+
+            if (!string.IsNullOrEmpty(inputCodigo))
+            {
+                var codigo = int.Parse(inputCodigo);
+
+                presupuestos = presupuestos.Where(x => x.IdItinerario == codigo);
+            }
+
+            if (!string.IsNullOrEmpty(inputDni))
+            {
+                var dni = int.Parse(inputDni);
+
+                presupuestos = presupuestos.Where(x => x.Cliente.DNI == dni.ToString());
+            }
+
+            return presupuestos;
+        }
     }
 }

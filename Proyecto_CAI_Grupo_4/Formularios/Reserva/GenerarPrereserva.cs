@@ -33,19 +33,7 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            if (!string.IsNullOrEmpty(dni))
-            {
-                AddPrereservablesToListView(Model.GetPreReservablesByDNI(dni));
-                return;
-            }
-
-            if (!string.IsNullOrEmpty(codigo))
-            {
-                AddPrereservablesToListView(Model.GetPreReservablesById(codigo));
-                return;
-            }
-
-            AddPrereservablesToListView(Model.GetPreReservables());
+            AddPrereservablesToListView(Model.GetPreReservablesFiltrados(codigo, dni));
         }
 
         private void AddPrereservablesToListView(IEnumerable<Itinerario> list)
