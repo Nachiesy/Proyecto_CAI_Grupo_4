@@ -224,19 +224,6 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                     return $"Los hoteles deben hospedar al menos un adulto. Falta asignar al menos un pasajero adulto al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})";
                 }
-
-                //La cantidad de menores no puede ser mayor a la de adultos
-                var cantidadMenoresEInfantes = agrupacionCantidadesHotelesSeleccionados.Count(x => x.IdHotel == hotelSeleccionado.IdHotel && (x.TipoPasajero == "Menor" || x.TipoPasajero == "Infante"));
-                var cantidadAdultos = agrupacionCantidadesHotelesSeleccionados.Count(x => x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == "Adulto");
-
-                if (cantidadMenoresEInfantes > cantidadAdultos)
-                {
-                    var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
-
-                    return $"La cantidad de menores e infantes no puede ser mayor a la de adultos. Falta asignar al menos un pasajero adulto más al hotel {detalleHotel.Nombre}. (Id del producto: {hotelSeleccionado.Id})";
-                }
-
-
             }
 
             //Si alguno de los productos dentro de itinerario.IdHotelesSeleccionados no fue asignado en agrupacionHotelesAsignados
