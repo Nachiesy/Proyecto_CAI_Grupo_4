@@ -53,8 +53,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
 
         AddHotelesToListView(hoteles);
 
-        Total += Model.GetTotalDeAereosElegidos();
-        Total += Model.GetTotalDeHotelesElegidos();
+        Total = Model.GetTotalDeProductosElegidos();
 
         ActualizarTextoPrecioTotal();
 
@@ -204,9 +203,7 @@ public partial class GenerarPresupuestoMenu : VistaBase
             productosElegidos.Items.Remove(item);
         }
 
-        Total = 0;
-        Total += Model.GetTotalDeAereosElegidos();
-        Total += Model.GetTotalDeHotelesElegidos();
+        Total = Model.GetTotalDeProductosElegidos();
 
         presupuestoTotal.Text = Total > 0 ? $"Total: {Total:C2}" : "Total: $-";
     }

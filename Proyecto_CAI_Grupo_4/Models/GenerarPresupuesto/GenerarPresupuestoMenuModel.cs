@@ -118,14 +118,14 @@ namespace Proyecto_CAI_Grupo_4.Models
             return HotelesModule.GetHotelesElegidos();
         }
 
-        public decimal GetTotalDeAereosElegidos()
+        public decimal GetTotalDeProductosElegidos()
         {
-            return AereosModule.GetAereosElegidos().Sum(x => x.Tarifa.Precio);
-        }
+            decimal total = 0;
 
-        public decimal GetTotalDeHotelesElegidos()
-        {
-            return HotelesModule.GetHotelesElegidos().Sum(x => x.Disponibilidad.TarifaPorDia);
+            total += AereosModule.GetAereosElegidos().Sum(x => x.Tarifa.Precio);
+            total += HotelesModule.GetHotelesElegidos().Sum(x => x.Disponibilidad.TarifaPorDia);
+
+            return total;
         }
 
         public void ClearAereosElegidos()
