@@ -26,8 +26,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             estados.AddRange(
                 Enum.GetValues(typeof(ReservaEstadoEnum))
                 .Cast<ReservaEstadoEnum>()
-                .Select(v => v.GetDescription())
-                .Skip(1));
+                .Select(v => v.GetDescription()));
 
             return estados;
         }
