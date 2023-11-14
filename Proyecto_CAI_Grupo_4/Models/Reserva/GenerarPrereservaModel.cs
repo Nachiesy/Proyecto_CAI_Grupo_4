@@ -211,7 +211,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 {
                     var detalleAereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
 
-                    return $"La cantidad de menores e infantes no puede ser mayor a la de adultos. Falta asignar al menos un pasajero adulto más al vuelo {detalleAereo.Nombre}. (Id del producto: {aereoSeleccionado.Id})";
+                    return $"La cantidad de menores e infantes no puede ser mayor a la de adultos. Por favor modifique su presupuesto.";
                 }
             }
 
