@@ -49,12 +49,12 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             if (!string.IsNullOrEmpty(codigo) && !int.TryParse(codigo, out int presupuestoId))
             {
-                return "El codigo de presupuesto debe ser numérico.";
+                return "Debes ingresar un Id de Pre-reserva correcto. El mismo tiene que ser un número entero. Recordar que el id de Pre-reserva es el mismo id del presupuesto.";
             }
 
             if (!string.IsNullOrEmpty(dni) && !dni.EsDNI())
             {
-                return "Ingrese un DNI valido por favor.";
+                return "Debes ingresar un DNI correcto. El mismo debe ser numérico y tener entre 7 y 8 cifras.";
             }
 
             return null;

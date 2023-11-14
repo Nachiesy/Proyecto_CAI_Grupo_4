@@ -34,6 +34,7 @@
             txbDocumento = new TextBox();
             lv_Prereservas = new ListView();
             nropresup = new ColumnHeader();
+            estado = new ColumnHeader();
             cantidadPasajeros = new ColumnHeader();
             doccliente = new ColumnHeader();
             precio = new ColumnHeader();
@@ -43,7 +44,6 @@
             grupoFiltros = new GroupBox();
             btn_LimpiarFiltros = new Common.Components.BotonEstilizado();
             btn_FiltrarPresupuestos = new Common.Components.BotonEstilizado();
-            estado = new ColumnHeader();
             gpProsupuesto.SuspendLayout();
             grupoFiltros.SuspendLayout();
             SuspendLayout();
@@ -54,9 +54,9 @@
             label1.Location = new Point(10, 26);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(78, 15);
+            label1.Size = new Size(83, 15);
             label1.TabIndex = 2;
-            label1.Text = "ID Prereserva:";
+            label1.Text = "ID Pre-reserva:";
             // 
             // label3
             // 
@@ -101,8 +101,13 @@
             // 
             // nropresup
             // 
-            nropresup.Text = "ID Prereserva";
+            nropresup.Text = "ID Pre-reserva";
             nropresup.Width = 150;
+            // 
+            // estado
+            // 
+            estado.Text = "Estado";
+            estado.Width = 200;
             // 
             // cantidadPasajeros
             // 
@@ -207,11 +212,6 @@
             btn_FiltrarPresupuestos.Text = "Buscar";
             btn_FiltrarPresupuestos.UseVisualStyleBackColor = false;
             btn_FiltrarPresupuestos.Click += btnBuscar_Click;
-            // 
-            // estado
-            // 
-            estado.Text = "Estado";
-            estado.Width = 200;
             // 
             // GenerarReserva
             // 

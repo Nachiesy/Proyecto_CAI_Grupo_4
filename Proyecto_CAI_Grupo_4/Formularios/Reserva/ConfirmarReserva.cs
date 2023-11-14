@@ -75,7 +75,7 @@ namespace Proyecto_CAI_Grupo_4
 
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Reserva Confirmada");
+                MessageBox.Show("La reserva ha sido confirmada");
 
                 Model.ConfirmarReserva(int.Parse(item.Text));
 

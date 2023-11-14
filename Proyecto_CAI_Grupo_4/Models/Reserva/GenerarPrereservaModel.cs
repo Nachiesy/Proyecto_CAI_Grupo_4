@@ -73,7 +73,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                 if (aereo.Tarifa.Disponibilidad < aereoSeleccionado.Cantidad)
                 {
-                    return $"No hay suficiente disponibilidad para el {aereo.Nombre}.";
+                    return $"No hay suficiente disponibilidad para la tarifa con id {aereo.Id} perteneciente al {aereo.Nombre}. Por favor, modifique el presupuesto.";
                 }
             }
 
@@ -92,7 +92,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 if (hotelSeleccionado.CantidadHuespedes > hotel.Disponibilidad.Disponibilidad)
                 {
                     var firstPasajero = hotelSeleccionado.Pasajeros.FirstOrDefault();
-                    var mensaje = $"No hay suficiente disponibilidad para el hotel {hotel.Nombre} (Id del producto: {firstPasajero?.Id}).";
+                    var mensaje = $"No hay suficiente disponibilidad para la tarifa con id (poner id de tarifa de hotel) perteneciente al  hotel {hotel.Nombre} .Por favor, modifique el presupuesto.";
                     return mensaje;
                 }
             }
@@ -108,8 +108,8 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             if (GetTotalPasajerosByIdPresupuesto(idItinerario) == 0)
             {
-                return $"No se puede generar una prereserva sobre un presupuesto sin pasajeros asignador. " +
-                    $"Por favor agrege pasajeros al presupuesto desde la pantalla correspondiente. (Id Presupuesto: {idItinerario})";
+                return $"No se puede generar una Pre-reserva sobre un presupuesto sin pasajeros asignados.\r\n" +
+                    $"Por favor agregue pasajeros al presupuesto desde la pantalla correspondiente. (Id Presupuesto: {idItinerario})";
             }
 
             //Cantidad Agrupada PorTipo De Pasajero Y IdHotel y COUNT por cada grupo
@@ -138,8 +138,8 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                     if (aereoRepetido is not null && aereoRepetido.Cantidad > 1)
                     {
-                        return $"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.Id}, "
-                            + $"dado que el asiento no puede ser asignado más de una vez.";
+                        return $"El producto con id {aereoSeleccionado.Id} que corresponde a un asiento de un aéreo, fue asignado a más de un pasajero.\r\n" +
+                            $"Por favor, modifique los pasajeros asignados en la pantalla correspondiente."; ;
                     }
 
                 }
@@ -211,7 +211,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 {
                     var detalleAereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
 
-                    return $"La cantidad de menores e infantes no puede ser mayor a la de adultos. Por favor modifique su presupuesto.";
+                    return $"La cantidad de menores e infantes de un vuelo no puede ser mayor a la de adultos. Por favor modifique su presupuesto.";
                 }
             }
 
@@ -244,12 +244,12 @@ namespace Proyecto_CAI_Grupo_4.Models
         {
             if (!string.IsNullOrEmpty(codigo) && !int.TryParse(codigo, out int presupuestoId))
             {
-                return "El codigo de presupuesto debe ser numérico.";
+                return "Debes ingresar un Id de presupuesto correcto. El mismo tiene que ser un número entero.";
             }
 
             if (!string.IsNullOrEmpty(dni) && !dni.EsDNI())
             {
-                return "Ingrese un DNI valido por favor.";
+                return "Debes ingresar un DNI correcto. El mismo debe ser numérico y tener entre 7 y 8 cifras.";
             }
 
             return null;

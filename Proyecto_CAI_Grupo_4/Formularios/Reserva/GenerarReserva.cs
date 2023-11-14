@@ -64,12 +64,12 @@ namespace Proyecto_CAI_Grupo_4
         {
             if (lv_Prereservas.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Seleccione una prereserva para reservar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Deber seleccionar una Pre-reserva para poder generar la reserva.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             ListViewItem item = lv_Prereservas.SelectedItems[0];
-            DialogResult resultado = MessageBox.Show("¿Desea crear la reserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("¿Desea generar la reserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)
             {
@@ -77,7 +77,7 @@ namespace Proyecto_CAI_Grupo_4
 
                 var reserva = Model.GenerarReserva(prereserva);
 
-                MessageBox.Show("Reservacion exitosa con Id: " + reserva.Codigo);
+                MessageBox.Show("La reserva ha sigo generada exitosamente. El código de la misma es: " + reserva.Codigo);
 
                 lv_Prereservas.Items.Remove(item);
             }

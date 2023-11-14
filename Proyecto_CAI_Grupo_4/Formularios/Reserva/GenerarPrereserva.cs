@@ -62,7 +62,7 @@ namespace Proyecto_CAI_Grupo_4
         {
             if (lv_Prereservas.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Seleccione un presupuesto para pre reservar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar un presupuesto para Pre-reservar.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -80,13 +80,13 @@ namespace Proyecto_CAI_Grupo_4
                 return;
             }
 
-            DialogResult resultado = MessageBox.Show("¿Desea crear la prereserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("¿Desea crear la Pre-reserva?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)
             {
                 var prereserva = Model.GenerarPreReserva(itinerario);
 
-                MessageBox.Show($"El itinerario #{prereserva.IdItinerario} ha sido pre-reservado.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"El presupuesto con id {prereserva.IdItinerario} ha sido Pre-reservado.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 lv_Prereservas.Items.Remove(item);
             }

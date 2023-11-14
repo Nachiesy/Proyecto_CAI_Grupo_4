@@ -50,7 +50,7 @@
             // 
             filtroCodigo.Location = new Point(112, 22);
             filtroCodigo.Name = "filtroCodigo";
-            filtroCodigo.Size = new Size(179, 23);
+            filtroCodigo.Size = new Size(305, 23);
             filtroCodigo.TabIndex = 2;
             // 
             // label1
@@ -60,7 +60,7 @@
             label1.Name = "label1";
             label1.Size = new Size(46, 15);
             label1.TabIndex = 3;
-            label1.Text = "Codigo";
+            label1.Text = "Código";
             // 
             // label2
             // 
@@ -75,7 +75,7 @@
             // 
             filtroNroDeDoc.Location = new Point(112, 55);
             filtroNroDeDoc.Name = "filtroNroDeDoc";
-            filtroNroDeDoc.Size = new Size(179, 23);
+            filtroNroDeDoc.Size = new Size(305, 23);
             filtroNroDeDoc.TabIndex = 4;
             // 
             // label3
@@ -93,7 +93,7 @@
             filtroEstado.FormattingEnabled = true;
             filtroEstado.Location = new Point(112, 86);
             filtroEstado.Name = "filtroEstado";
-            filtroEstado.Size = new Size(179, 23);
+            filtroEstado.Size = new Size(305, 23);
             filtroEstado.TabIndex = 9;
             // 
             // btn_BuscarReserva
@@ -103,9 +103,9 @@
             btn_BuscarReserva.FlatStyle = FlatStyle.Flat;
             btn_BuscarReserva.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_BuscarReserva.ForeColor = Color.Black;
-            btn_BuscarReserva.Location = new Point(627, 114);
+            btn_BuscarReserva.Location = new Point(456, 114);
             btn_BuscarReserva.Name = "btn_BuscarReserva";
-            btn_BuscarReserva.Size = new Size(204, 40);
+            btn_BuscarReserva.Size = new Size(375, 40);
             btn_BuscarReserva.TabIndex = 4;
             btn_BuscarReserva.Text = "Buscar";
             btn_BuscarReserva.UseVisualStyleBackColor = false;
@@ -121,7 +121,7 @@
             grp_Filtros.Controls.Add(filtroEstado);
             grp_Filtros.Location = new Point(27, 106);
             grp_Filtros.Name = "grp_Filtros";
-            grp_Filtros.Size = new Size(297, 115);
+            grp_Filtros.Size = new Size(423, 115);
             grp_Filtros.TabIndex = 10;
             grp_Filtros.TabStop = false;
             grp_Filtros.Text = "Filtros";
@@ -133,9 +133,9 @@
             btn_Limpiar.FlatStyle = FlatStyle.Flat;
             btn_Limpiar.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btn_Limpiar.ForeColor = Color.Black;
-            btn_Limpiar.Location = new Point(628, 175);
+            btn_Limpiar.Location = new Point(456, 175);
             btn_Limpiar.Name = "btn_Limpiar";
-            btn_Limpiar.Size = new Size(203, 40);
+            btn_Limpiar.Size = new Size(375, 40);
             btn_Limpiar.TabIndex = 4;
             btn_Limpiar.Text = "Limpiar";
             btn_Limpiar.UseVisualStyleBackColor = false;
@@ -159,7 +159,7 @@
             // Estado
             // 
             Estado.Text = "Estado";
-            Estado.Width = 200;
+            Estado.Width = 250;
             // 
             // DNI
             // 
