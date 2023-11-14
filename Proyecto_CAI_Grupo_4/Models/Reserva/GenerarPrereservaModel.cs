@@ -130,8 +130,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
                     if (aereo.Tarifa.TipoDePasajero != pasajero.GetTipoDePasajero())
                     {
-                        return $"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para el vuelo con Id del producto {aereoSeleccionado.Id}, "
-                            + $"dado que es una tarifa de {aereo.Tarifa.TipoDePasajero} y el pasajero es aplicable a tarifas de {pasajero.GetTipoDePasajero()}";
+                        return $"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para Id del producto {aereoSeleccionado.Id}, " + $"dado que es una tarifa de aéreos de {aereo.Tarifa.TipoDePasajero} y el pasajero es aplicable a tarifas de {pasajero.GetTipoDePasajero()}";
                     }
 
                     var aereoRepetido = agrupacionVuelosAsignados.FirstOrDefault(x => x.Id == aereoSeleccionado.Id);
@@ -200,7 +199,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 {
                     var detalleAereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
 
-                    return $"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar un pasajero al vuelo {detalleAereo.Nombre} con tarifa {detalleAereo.Tarifa.TipoDePasajero}. (Id del producto: {aereoSeleccionado.Id})";
+                    return $"Debe cargar todos los pasajeros a cada uno de los productos. Falta asignar un pasajero al {detalleAereo.Nombre} con tarifa {detalleAereo.Tarifa.TipoDePasajero}. (Id del producto: {aereoSeleccionado.Id})";
                 }
 
                 //La cantidad de menores no puede ser mayor a la de adultos
