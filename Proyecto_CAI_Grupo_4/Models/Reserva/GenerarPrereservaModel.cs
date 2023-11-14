@@ -92,7 +92,7 @@ namespace Proyecto_CAI_Grupo_4.Models
                 if (hotelSeleccionado.CantidadHuespedes > hotel.Disponibilidad.Disponibilidad)
                 {
                     var firstPasajero = hotelSeleccionado.Pasajeros.FirstOrDefault();
-                    var mensaje = $"No hay suficiente disponibilidad para la tarifa con id (poner id de tarifa de hotel) perteneciente al  hotel {hotel.Nombre} .Por favor, modifique el presupuesto.";
+                    var mensaje = $"No hay suficiente disponibilidad para la tarifa con id ${hotelSeleccionado.IdHotel} perteneciente al hotel {hotel.Nombre}. Por favor, modifique el presupuesto.";
                     return mensaje;
                 }
             }
