@@ -24,11 +24,11 @@ namespace Proyecto_CAI_Grupo_4.Models
                 return "El Id de presupuesto ingresado no existe";
             }
 
-            var esModificable = PresupuestosModule.EsPresupuestoModificable(presupuesto.IdItinerario);
+            var esModificable = PresupuestosModule.EsPresupuestoModificable(presupuesto.IdPresupuesto);
 
             if (!esModificable)
             {
-                return $"El Id de presupuesto #{presupuesto.IdItinerario} coincide con un presupuesto que" +
+                return $"El Id de presupuesto #{presupuesto.IdPresupuesto} coincide con un presupuesto que" +
                        $" no puede ser modificado ya que esta en estado {presupuesto.Estado}";
             }
 

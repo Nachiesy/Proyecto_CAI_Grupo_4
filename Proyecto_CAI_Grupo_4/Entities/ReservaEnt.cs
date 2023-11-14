@@ -2,25 +2,19 @@
 
 namespace Proyecto_CAI_Grupo_4.Entities
 {
-    public class Reserva
+    public class ReservaEnt
     {
         public int Codigo { get; set; }
-        public int IdItinerario { get; set; }
+        public int IdPresupuesto { get; set; }
         public Cliente Cliente { get; set; }
         public ReservaEstadoEnum Estado { get; set; }
         public DateTime FechaEstado { get; set; }
 
-        public Reserva(int codigo, int idItinerario, Cliente cliente)
+        public ReservaEnt(int codigo, int idItinerario, Cliente cliente)
         {
             Codigo = codigo;
-            IdItinerario = idItinerario;
+            IdPresupuesto = idItinerario;
             Cliente = cliente;
-            Estado = ReservaEstadoEnum.PendienteDeConfirmacion;
-            FechaEstado = DateTime.Now;
-        }
-
-        public void ConfirmarPreReserva()
-        {
             Estado = ReservaEstadoEnum.PendienteDeConfirmacion;
             FechaEstado = DateTime.Now;
         }
@@ -34,8 +28,6 @@ namespace Proyecto_CAI_Grupo_4.Entities
 
     public enum ReservaEstadoEnum
     {
-        [Description("Estado Invalido")]
-        Invalida = 0,
         [Description("Reserva pendiente de confirmación")]
         PendienteDeConfirmacion = 1,
         [Description("Reserva confirmada")]

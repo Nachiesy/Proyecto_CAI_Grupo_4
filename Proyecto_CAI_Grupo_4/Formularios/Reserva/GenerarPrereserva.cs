@@ -36,15 +36,15 @@ namespace Proyecto_CAI_Grupo_4
             AddPrereservablesToListView(Model.GetPreReservablesFiltrados(codigo, dni));
         }
 
-        private void AddPrereservablesToListView(IEnumerable<Itinerario> list)
+        private void AddPrereservablesToListView(IEnumerable<PresupuestoEnt> list)
         {
             lv_Prereservas.Items.Clear();
 
-            lv_Prereservas.Items.AddRange(list.Select(item => new ListViewItem(item.IdItinerario.ToString())
+            lv_Prereservas.Items.AddRange(list.Select(item => new ListViewItem(item.IdPresupuesto.ToString())
             {
                 SubItems =
                 {
-                    Model.GetTotalPasajerosByIdPresupuesto(item.IdItinerario).ToString(),
+                    Model.GetTotalPasajerosByIdPresupuesto(item.IdPresupuesto).ToString(),
                     item.Cliente.DNI,
                     item.PrecioTotal.ToString("C2"),
                 }
@@ -86,7 +86,7 @@ namespace Proyecto_CAI_Grupo_4
             {
                 var prereserva = Model.GenerarPreReserva(itinerario);
 
-                MessageBox.Show($"El presupuesto con id {prereserva.IdItinerario} ha sido Pre-reservado.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"El presupuesto con id {prereserva.IdPresupuesto} ha sido Pre-reservado.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 lv_Prereservas.Items.Remove(item);
             }

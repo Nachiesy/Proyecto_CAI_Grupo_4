@@ -7,7 +7,7 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
     {
         private static string AlmacenPath = @"..\..\..\Datos\Reservas\Reservas.json";
 
-        private static List<Reserva> Reservas;
+        private static List<ReservaEnt> Reservas;
 
         static AlmacenReservas()
         {
@@ -15,20 +15,20 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
             {
                 var reservasInDb = File.ReadAllText(AlmacenPath);
 
-                Reservas = JsonConvert.DeserializeObject<List<Reserva>>(reservasInDb);
+                Reservas = JsonConvert.DeserializeObject<List<ReservaEnt>>(reservasInDb);
             }
             else
             {
-                Reservas = new List<Reserva>();
+                Reservas = new List<ReservaEnt>();
             }
         }
 
-        public static List<Reserva> GetReservas()
+        public static List<ReservaEnt> GetReservas()
         {
             return Reservas;
         }
 
-        public static void UpdateReservas(List<Reserva> updatedReservas)
+        public static void UpdateReservas(List<ReservaEnt> updatedReservas)
         {
             Reservas.Clear();
 

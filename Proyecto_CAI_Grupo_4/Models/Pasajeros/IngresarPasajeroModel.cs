@@ -7,9 +7,9 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class IngresarPasajeroModel
     {
-        private Pasajeros Pasajero;
+        private PasajerosEnt Pasajero;
 
-        public Itinerario GetPresupuestoById(int id)
+        public PresupuestoEnt GetPresupuestoById(int id)
         {
             return PresupuestosModule.GetPresupuestoById(id);
         }
@@ -38,7 +38,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             PasajerosModule.SetAgregarPasajerosParams(agregarPasajerosParams);
         }
 
-        private void AgregarPasajero(Pasajeros pasajero)
+        private void AgregarPasajero(PasajerosEnt pasajero)
         {
             PasajerosModule.AgregarPasajero(pasajero);
         }
@@ -80,7 +80,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public void CrearPasajero(string nombre, string apellido, string dni, string fchNacimiento)
         {
-            Pasajero = new Pasajeros(GetAgregarPasajerosParams().PresupuestoId, nombre, apellido, int.Parse(dni), DateTime.Parse(fchNacimiento));
+            Pasajero = new PasajerosEnt(GetAgregarPasajerosParams().PresupuestoId, nombre, apellido, int.Parse(dni), DateTime.Parse(fchNacimiento));
         }
 
         public void AsignarAereoSeleccionadoAPasajero(string id, int idProducto)

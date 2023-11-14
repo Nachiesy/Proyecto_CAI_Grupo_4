@@ -6,7 +6,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class AgregarPasajerosModel
     {
-        public List<Pasajeros> Pasajeros = new List<Pasajeros>();
+        public List<PasajerosEnt> Pasajeros = new List<PasajerosEnt>();
 
         public static AgregarPasajerosParams GetAgregarPasajerosParamsStatic()
         {
@@ -33,32 +33,32 @@ namespace Proyecto_CAI_Grupo_4.Models
             return HotelesModule.GetHotelByID(id);
         }
 
-        public IEnumerable<Pasajeros> GetPasajerosByIdPresupuesto(int idPresupuesto)
+        public IEnumerable<PasajerosEnt> GetPasajerosByIdPresupuesto(int idPresupuesto)
         {
             return PasajerosModule.GetPasajerosByIdPresupuesto(idPresupuesto);
         }
 
-        public IEnumerable<Itinerario> GetPresupuestosByDNI(string dni) 
+        public IEnumerable<PresupuestoEnt> GetPresupuestosByDNI(string dni) 
         {
             return PresupuestosModule.GetPresupuestosByDNI(dni);
         }
 
-        public Itinerario GetPresupuestoById(int id)
+        public PresupuestoEnt GetPresupuestoById(int id)
         {
             return PresupuestosModule.GetPresupuestoById(id);
         }
 
-        public IEnumerable<Itinerario> GetPresupuestos()
+        public IEnumerable<PresupuestoEnt> GetPresupuestos()
         {
             return PresupuestosModule.GetPresupuestos();
         }
 
-        public void AgregarPasajero(Pasajeros pasajero)
+        public void AgregarPasajero(PasajerosEnt pasajero)
         {
             Pasajeros.Add(pasajero);
         }
 
-        public void EliminarPasajero(Pasajeros pasajeroParaEliminar)
+        public void EliminarPasajero(PasajerosEnt pasajeroParaEliminar)
         {
             PasajerosModule.EliminarPasajero(pasajeroParaEliminar);
         }
@@ -78,7 +78,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             return null;
         }
 
-        public IEnumerable<Itinerario> GetPresupuestosModificables(string inputCodigo, string inputDni)
+        public IEnumerable<PresupuestoEnt> GetPresupuestosModificables(string inputCodigo, string inputDni)
         {
             var presupuestos = GetPresupuestos();
 
@@ -86,7 +86,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             {
                 var codigo = int.Parse(inputCodigo);
 
-                presupuestos = presupuestos.Where(x => x.IdItinerario == codigo);
+                presupuestos = presupuestos.Where(x => x.IdPresupuesto == codigo);
             }
 
             if(!string.IsNullOrEmpty(inputDni))

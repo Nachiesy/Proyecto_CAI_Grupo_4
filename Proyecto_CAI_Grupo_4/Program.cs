@@ -1,4 +1,6 @@
 using Proyecto_CAI_Grupo_4.Almacenes;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace Proyecto_CAI_Grupo_4
 {
@@ -13,6 +15,7 @@ namespace Proyecto_CAI_Grupo_4
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            ConfigureJsonSerialization();
             Application.Run(new MenuPrincipal());
             Application.ApplicationExit += new EventHandler(GuardarAlmacenes);
         }
@@ -24,6 +27,16 @@ namespace Proyecto_CAI_Grupo_4
             AlmacenPresupuestos.Guardar();
             AlmacenPasajeros.Guardar();
             AlmacenReservas.Guardar();
+        }
+
+        private static void ConfigureJsonSerialization()
+        {
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                Converters = { new JsonStringEnumConverter() }
+            };
+
+            options.Converters.Add(new JsonStringEnumConverter());
         }
     }
 }

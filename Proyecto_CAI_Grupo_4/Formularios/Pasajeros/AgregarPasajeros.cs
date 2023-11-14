@@ -69,9 +69,9 @@ namespace Proyecto_CAI_Grupo_4
             thread.Start();
         }
 
-        private void AddPresupuestoToListView(Itinerario itinerario)
+        private void AddPresupuestoToListView(PresupuestoEnt itinerario)
         {
-            listPresupuestos.Items.Add(new ListViewItem(itinerario.IdItinerario.ToString())
+            listPresupuestos.Items.Add(new ListViewItem(itinerario.IdPresupuesto.ToString())
             {
                 SubItems =
                 {
@@ -81,9 +81,9 @@ namespace Proyecto_CAI_Grupo_4
             });
         }
 
-        private void AddPresupuestosToListView(IEnumerable<Itinerario> listaItinerarios)
+        private void AddPresupuestosToListView(IEnumerable<PresupuestoEnt> listaItinerarios)
         {
-            var itinerarios = listaItinerarios.Select(item => new ListViewItem(item.IdItinerario.ToString())
+            var itinerarios = listaItinerarios.Select(item => new ListViewItem(item.IdPresupuesto.ToString())
             {
                 SubItems =
                 {
@@ -96,7 +96,7 @@ namespace Proyecto_CAI_Grupo_4
             listPresupuestos.Items.AddRange(itinerarios);
         }
 
-        private void AgregarPasajerosHotelesAlListado(Pasajeros pasajero)
+        private void AgregarPasajerosHotelesAlListado(PasajerosEnt pasajero)
         {
             foreach (var i in pasajero.AereosAsignados)
             {
@@ -116,7 +116,7 @@ namespace Proyecto_CAI_Grupo_4
             }
         }
 
-        private void AgregarPasajerosAereosAlListado(Pasajeros pasajero)
+        private void AgregarPasajerosAereosAlListado(PasajerosEnt pasajero)
         {
             foreach (var i in pasajero.HotelesAsignados)
             {
@@ -250,7 +250,7 @@ namespace Proyecto_CAI_Grupo_4
 
             var idProducto = listPasajeros.SelectedItems[0].Text;
            
-            var pasajero = (Pasajeros)listPasajeros.SelectedItems[0].Tag;
+            var pasajero = (PasajerosEnt)listPasajeros.SelectedItems[0].Tag;
 
             listPasajeros.SelectedItems[0].Remove();
 

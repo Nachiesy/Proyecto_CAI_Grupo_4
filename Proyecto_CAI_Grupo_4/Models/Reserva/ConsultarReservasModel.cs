@@ -6,12 +6,12 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class ConsultarReservasModel
     {
-        public IEnumerable<Reserva> GetReservas()
+        public IEnumerable<ReservaEnt> GetReservas()
         {
             return ReservaModule.GetReservas();
         }
 
-        public Itinerario GetPresupuestoById(int id)
+        public PresupuestoEnt GetPresupuestoById(int id)
         {
             return PresupuestosModule.GetPresupuestoById(id);
         }
@@ -47,7 +47,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             return null;
         }
 
-        public IEnumerable<Reserva> GetReservasFiltradas(string inputCodigo, string inputDni, string estado)
+        public IEnumerable<ReservaEnt> GetReservasFiltradas(string inputCodigo, string inputDni, string estado)
         {
             var reservas = GetReservas();
 
@@ -65,19 +65,14 @@ namespace Proyecto_CAI_Grupo_4.Models
 
             if(!string.IsNullOrEmpty(estado) && estado != "Todas")
             {
-                var estadoEnum = ReservaEstadoEnum.Invalida;
-
-                switch (estado)
+                if(estado == "Reserva pendiente de confirmación")
                 {
-                    case "Reserva pendiente de confirmación":
-                        estadoEnum = ReservaEstadoEnum.PendienteDeConfirmacion;
-                        break;
-                    case "Reserva confirmada":
-                        estadoEnum = ReservaEstadoEnum.Confirmada;
-                        break;
+                    reservas = reservas.Where(x => x.Estado == ReservaEstadoEnum.PendienteDeConfirmacion);
                 }
-
-                reservas = reservas.Where(x => x.Estado == estadoEnum);
+                else if(estado == "Reserva confirmada")
+                {
+                    reservas = reservas.Where(x => x.Estado == ReservaEstadoEnum.Confirmada);
+                }
             }
 
             return reservas;

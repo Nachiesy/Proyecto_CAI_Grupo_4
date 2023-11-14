@@ -6,14 +6,14 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class ConfirmarReservaModel
     {
-        public IEnumerable<Reserva> GetReservasPendientesDeConfirmacion()
+        public IEnumerable<ReservaEnt> GetReservasPendientesDeConfirmacion()
         {
             return ReservaModule
                 .GetReservasPendientesDeConfirmacion()
                 .AsQueryable();
         }
 
-        public Itinerario GetPresupuestoById(int id) 
+        public PresupuestoEnt GetPresupuestoById(int id) 
         {
             return PresupuestosModule.GetPresupuestoById(id);
         }
@@ -38,7 +38,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             return null;
         }
 
-        public IEnumerable<Reserva> GetReservasPendientesDeConfirmacionFiltradas(string codigo, string dni)
+        public IEnumerable<ReservaEnt> GetReservasPendientesDeConfirmacionFiltradas(string codigo, string dni)
         {
             var reservas = GetReservasPendientesDeConfirmacion();
 

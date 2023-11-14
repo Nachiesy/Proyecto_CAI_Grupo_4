@@ -8,34 +8,34 @@ namespace Proyecto_CAI_Grupo_4.Models
     {
         private static AgregarPasajerosParams AgregarPasajerosParams;
 
-        public static List<Pasajeros> Pasajeros { get; set; } = new List<Pasajeros>();
+        public static List<PasajerosEnt> Pasajeros { get; set; } = new List<PasajerosEnt>();
 
         static PasajerosModule()
         {
             Pasajeros = AlmacenPasajeros.GetPasajeros();
         }
 
-        public static void AgregarPasajero(Pasajeros pasajero)
+        public static void AgregarPasajero(PasajerosEnt pasajero)
         {
             AlmacenPasajeros.AgregarPasajero(pasajero);
         }
 
-        public static void AgregarPasajeros(List<Pasajeros> pasajeros)
+        public static void AgregarPasajeros(List<PasajerosEnt> pasajeros)
         {
             AlmacenPasajeros.AgregarPasajeros(pasajeros);
         }
 
-        public static void EliminarPasajero(Pasajeros pasajero)
+        public static void EliminarPasajero(PasajerosEnt pasajero)
         {
             AlmacenPasajeros.EliminarPasajero(pasajero);
         }
 
-        public static List<Pasajeros> GetPasajeros()
+        public static List<PasajerosEnt> GetPasajeros()
         {
             return Pasajeros;
         }
 
-        public static List<Pasajeros> GetPasajerosByIdPresupuesto(int idPresupuesto)
+        public static List<PasajerosEnt> GetPasajerosByIdPresupuesto(int idPresupuesto)
         {
             return Pasajeros
                 .Where(x => x.IdPresupuesto == idPresupuesto)
@@ -106,6 +106,20 @@ namespace Proyecto_CAI_Grupo_4.Models
         public static void LimpiarAsignacionesPasajerosPorIdPresupuesto(int presupuestoId)
         {
             AlmacenPasajeros.EliminarPasajerosPorIdPresupuesto(presupuestoId);
+        }
+
+        public static List<AgrupacionCantidadesProductosAsignados> GetAgrupacionVuelosAsignadosPorTarifa(int idItinerario)
+        {
+            var agrupacionVuelosAsignados = Pasajeros
+                .Where(x => x.IdPresupuesto == idItinerario)
+                .SelectMany(x =>
+                    x.AereosAsignados.Select(y =>
+                        new { y.Id, y.IdAereo }))
+                .GroupBy(x => new { x.IdAereo })
+                .Select(x => new AgrupacionCantidadesProductosAsignados { IdProducto = x.Key.IdAereo, Cantidad = x.Count() })
+                .ToList();
+
+            return agrupacionVuelosAsignados;
         }
     }
 }

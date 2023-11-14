@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_CAI_Grupo_4.Entities;
 
-public class Pasajeros
+public class PasajerosEnt
 {
     public string Nombre { get; set; }
     public string Apellido { get; set; }
@@ -11,7 +11,7 @@ public class Pasajeros
     public List<AereoSeleccionado> AereosAsignados { get; set; } = new List<AereoSeleccionado>();
     public List<HotelSeleccionado> HotelesAsignados { get; set; } = new List<HotelSeleccionado>();
 
-    public Pasajeros(int idPresupuesto, string nombre, string apellido, int dni, DateTime fechaNacimiento)
+    public PasajerosEnt(int idPresupuesto, string nombre, string apellido, int dni, DateTime fechaNacimiento)
     {
         IdPresupuesto = idPresupuesto;
         Nombre = nombre;
@@ -47,13 +47,13 @@ public class Pasajeros
         return AereosAsignados.Count + HotelesAsignados.Count;
     }
 
-    public Pasajeros AsignarAereo(AereoSeleccionado productoSeleccionado)
+    public PasajerosEnt AsignarAereo(AereoSeleccionado productoSeleccionado)
     {
         AereosAsignados.Add(productoSeleccionado);
         return this;
     }
 
-    public Pasajeros AsignarHotel(HotelSeleccionado productoSeleccionado)
+    public PasajerosEnt AsignarHotel(HotelSeleccionado productoSeleccionado)
     {
         HotelesAsignados.Add(productoSeleccionado);
         return this;

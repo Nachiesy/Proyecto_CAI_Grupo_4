@@ -36,18 +36,18 @@ namespace Proyecto_CAI_Grupo_4
             AddPrereservasToListView(Model.GetPreReservasAbonadasFiltradas(codigo, dni));
         }
 
-        private void AddPrereservasToListView(IEnumerable<Itinerario> list)
+        private void AddPrereservasToListView(IEnumerable<PresupuestoEnt> list)
         {
             lv_Prereservas.Items.Clear();
 
-            lv_Prereservas.Items.AddRange(list.Select(item => new ListViewItem(item.IdItinerario.ToString())
+            lv_Prereservas.Items.AddRange(list.Select(item => new ListViewItem(item.IdPresupuesto.ToString())
             {
                 SubItems =
                 {
                     item.Estado,
-                    Model.GetTotalDePasajeros(item.IdItinerario).ToString(),
+                    Model.GetTotalDePasajeros(item.IdPresupuesto).ToString(),
                     item.Cliente.DNI,
-                    (Model.GetPresupuestoById(item.IdItinerario)?.PrecioTotal ?? 0).ToString("C2"),
+                    (Model.GetPresupuestoById(item.IdPresupuesto)?.PrecioTotal ?? 0).ToString("C2"),
                     item.FechaEstado.ToFormDate()
                 }
             }).ToArray());

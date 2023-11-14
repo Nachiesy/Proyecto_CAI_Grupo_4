@@ -7,7 +7,7 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
     {
         private static string AlmacenPath = @"..\..\..\Datos\Pasajeros.json";
 
-        private static List<Pasajeros> Pasajeros = new List<Pasajeros>();
+        private static List<PasajerosEnt> Pasajeros = new List<PasajerosEnt>();
 
         static AlmacenPasajeros()
         {
@@ -15,7 +15,7 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
             {
                 var pasajerosInDb = File.ReadAllText(AlmacenPath);
 
-                var pasajeros = JsonConvert.DeserializeObject<List<Pasajeros>>(pasajerosInDb);
+                var pasajeros = JsonConvert.DeserializeObject<List<PasajerosEnt>>(pasajerosInDb);
 
                 if (pasajeros != null)
                 {
@@ -24,29 +24,29 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
             }
         }
 
-        public static List<Pasajeros> GetPasajeros()
+        public static List<PasajerosEnt> GetPasajeros()
         {
             return Pasajeros;
         }
 
-        public static void UpdatePasajeros(List<Pasajeros> updatedPasajeros)
+        public static void UpdatePasajeros(List<PasajerosEnt> updatedPasajeros)
         {
             Pasajeros.Clear();
 
             Pasajeros = updatedPasajeros;
         }
 
-        public static void AgregarPasajero(Pasajeros pasajero)
+        public static void AgregarPasajero(PasajerosEnt pasajero)
         {
             Pasajeros.Add(pasajero);
         }
 
-        public static void AgregarPasajeros(List<Pasajeros> pasajeros)
+        public static void AgregarPasajeros(List<PasajerosEnt> pasajeros)
         {
             Pasajeros.AddRange(pasajeros);
         }
 
-        public static void EliminarPasajero(Pasajeros pasajero)
+        public static void EliminarPasajero(PasajerosEnt pasajero)
         {
             Pasajeros.Remove(pasajero);
         }

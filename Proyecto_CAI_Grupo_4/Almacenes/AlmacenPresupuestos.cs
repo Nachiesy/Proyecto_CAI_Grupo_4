@@ -7,7 +7,7 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
     {
         private static string AlmacenPath = @"..\..\..\Datos\Presupuestos.json";
 
-        private static List<Itinerario> Itinerarios;
+        private static List<PresupuestoEnt> Itinerarios;
 
         static AlmacenPresupuestos()
         {
@@ -15,20 +15,20 @@ namespace Proyecto_CAI_Grupo_4.Almacenes
             {
                 var itinerariosInDb = File.ReadAllText(AlmacenPath);
 
-                Itinerarios = JsonConvert.DeserializeObject<List<Itinerario>>(itinerariosInDb);
+                Itinerarios = JsonConvert.DeserializeObject<List<PresupuestoEnt>>(itinerariosInDb);
             }
             else
             {
-                Itinerarios = new List<Itinerario>();
+                Itinerarios = new List<PresupuestoEnt>();
             }
         }
 
-        public static List<Itinerario> GetPresupuestos()
+        public static List<PresupuestoEnt> GetPresupuestos()
         {
             return Itinerarios;
         }
 
-        public static void UpdatePresupuestos(List<Itinerario> updatedItinerarios)
+        public static void UpdatePresupuestos(List<PresupuestoEnt> updatedItinerarios)
         {
             Itinerarios.Clear();
 

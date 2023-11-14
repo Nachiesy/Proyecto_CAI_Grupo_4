@@ -31,17 +31,17 @@ namespace Proyecto_CAI_Grupo_4.Models
             PresupuestosModule.SetGenerarPresupuestoParams(generarPresupuestoParams);
         }
 
-        public Itinerario GetPresupuestoById()
+        public PresupuestoEnt GetPresupuestoById()
         {
             return PresupuestosModule.GetPresupuestoById(GetGenerarPresupuestoParams().PresupuestoId);
         }
 
-        public void AddPresupuesto(Itinerario itinerario)
+        public void AddPresupuesto(PresupuestoEnt itinerario)
         {
             PresupuestosModule.AddPresupuesto(itinerario);
         }
 
-        public void UpdatePresupuesto(Itinerario itinerarioActualizado)
+        public void UpdatePresupuesto(PresupuestoEnt itinerarioActualizado)
         {
             PresupuestosModule.UpdatePresupuesto(itinerarioActualizado);
         }
@@ -71,9 +71,9 @@ namespace Proyecto_CAI_Grupo_4.Models
             return null;
         }
 
-        public Itinerario GenerarItinerario(ListView listView, Cliente cliente, decimal total)
+        public PresupuestoEnt GenerarItinerario(ListView listView, Cliente cliente, decimal total)
         {
-            var itinerario = new Itinerario(GetGenerarPresupuestoParams().PresupuestoId, cliente, total);
+            var itinerario = new PresupuestoEnt(GetGenerarPresupuestoParams().PresupuestoId, cliente, total);
 
             for (var i = 0; i < listView.Items.Count; i++)
             {
@@ -148,7 +148,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             HotelesModule.RemoveHotelElegido(id);
         }
 
-        public void LimpiarAsignacionesPasajerosExistentes(Itinerario itinerario)
+        public void LimpiarAsignacionesPasajerosExistentes(PresupuestoEnt itinerario)
         {
             PasajerosModule.LimpiarAsignacionesPasajerosPorIdPresupuesto(GetGenerarPresupuestoParamsStatic().PresupuestoId);
         }

@@ -38,7 +38,7 @@ namespace Proyecto_CAI_Grupo_4
             AddReservasToListView(Model.GetReservasPendientesDeConfirmacionFiltradas(codigo, dni));
         }
 
-        private void AddReservasToListView(IEnumerable<Reserva> list)
+        private void AddReservasToListView(IEnumerable<ReservaEnt> list)
         {
             lv_Reservas.Items.Clear();
 
@@ -48,7 +48,7 @@ namespace Proyecto_CAI_Grupo_4
                 {
                     item.Estado.GetDescription(),
                     item.Cliente.DNI,
-                    Model.GetPresupuestoById(item.IdItinerario).PrecioTotal.ToString("C2") ?? "-",
+                    Model.GetPresupuestoById(item.IdPresupuesto).PrecioTotal.ToString("C2") ?? "-",
                     item.FechaEstado.ToFormDate()
                 }
             }).ToArray());

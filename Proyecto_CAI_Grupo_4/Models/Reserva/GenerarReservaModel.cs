@@ -6,7 +6,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 {
     public class GenerarReservaModel
     {
-        public IEnumerable<Itinerario> GetPreReservasAbonadas()
+        public IEnumerable<PresupuestoEnt> GetPreReservasAbonadas()
         {
             return PresupuestosModule
                 .GetPresupuestosPrereservadosAbonados()
@@ -18,31 +18,31 @@ namespace Proyecto_CAI_Grupo_4.Models
             return PasajerosModule.GetTotalPasajerosByIdPresupuesto(idItinerario);
         }
 
-        public Itinerario? GetPresupuestoById(int idItinerario)
+        public PresupuestoEnt? GetPresupuestoById(int idItinerario)
         {
             return PresupuestosModule.GetPresupuestoById(idItinerario);
         }
 
-        public Itinerario GetPreReservaAbonadaById(int id)
+        public PresupuestoEnt GetPreReservaAbonadaById(int id)
         {
             return ReservaModule.GetPreReservasAbonadasById(id);
         }
 
-        public Reserva GenerarReserva(Itinerario preReserva)
+        public ReservaEnt GenerarReserva(PresupuestoEnt preReserva)
         {
-            PresupuestosModule.ActualizarEstadoAReservado(preReserva.IdItinerario);
+            PresupuestosModule.ActualizarEstadoAReservado(preReserva.IdPresupuesto);
 
-            return ReservaModule.GenerarNuevaReserva(preReserva.IdItinerario, preReserva.Cliente);
+            return ReservaModule.GenerarNuevaReserva(preReserva.IdPresupuesto, preReserva.Cliente);
         }
 
-        public IEnumerable<Itinerario> GetPreReservasAbonadasByDNI(string dni)
+        public IEnumerable<PresupuestoEnt> GetPreReservasAbonadasByDNI(string dni)
         {
             return GetPreReservasAbonadas().Where(x => x.Cliente.DNI == dni);
         }
 
-        public IEnumerable<Itinerario> GetPreReservasAbonadasById(string codigo)
+        public IEnumerable<PresupuestoEnt> GetPreReservasAbonadasById(string codigo)
         {
-            return GetPreReservasAbonadas().Where(x => x.IdItinerario == int.Parse(codigo));
+            return GetPreReservasAbonadas().Where(x => x.IdPresupuesto == int.Parse(codigo));
         }
 
         public string? ValidarFiltros(string codigo, string dni)
@@ -60,7 +60,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             return null;
         }
 
-        public IEnumerable<Itinerario> GetPreReservasAbonadasFiltradas(string inputCodigo, string dni)
+        public IEnumerable<PresupuestoEnt> GetPreReservasAbonadasFiltradas(string inputCodigo, string dni)
         {
             var prereservas = GetPreReservasAbonadas();
 
@@ -68,7 +68,7 @@ namespace Proyecto_CAI_Grupo_4.Models
             {
                 var codigo = int.Parse(inputCodigo);
 
-                prereservas = prereservas.Where(x => x.IdItinerario == codigo);
+                prereservas = prereservas.Where(x => x.IdPresupuesto == codigo);
             }
 
             if (!string.IsNullOrEmpty(dni))

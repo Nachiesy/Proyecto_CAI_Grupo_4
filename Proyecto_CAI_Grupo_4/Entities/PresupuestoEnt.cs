@@ -1,17 +1,17 @@
 namespace Proyecto_CAI_Grupo_4.Entities;
 
-public class Itinerario
+public class PresupuestoEnt
 {
-    public Itinerario(int id, Cliente cliente, decimal precioTotal) 
+    public PresupuestoEnt(int id, Cliente cliente, decimal precioTotal) 
     {
-        IdItinerario = id;
+        IdPresupuesto = id;
         PrecioTotal = precioTotal;
         Cliente = cliente;
         Estado = "Presupuestado";
         FechaEstado = DateTime.Now;
     }
 
-    public int IdItinerario { get; set; }
+    public int IdPresupuesto { get; set; }
 
     public string Estado { get; set; }
 
@@ -25,15 +25,7 @@ public class Itinerario
 
     public decimal PrecioTotal { get; set; }
 
-    public Itinerario ActualizarEstadoAPendienteDeConfirmacion()
-    {
-        Estado = "Pendiente de confirmación";
-        FechaEstado = DateTime.Now;
-
-        return this;
-    }
-
-    public Itinerario ActualizarEstadoAPrereservado()
+    public PresupuestoEnt ActualizarEstadoAPrereservado()
     {
         Estado = "Prereservado";
         FechaEstado = DateTime.Now;
@@ -41,7 +33,7 @@ public class Itinerario
         return this;
     }
 
-    public Itinerario ActualizarEstadoAReservado()
+    public PresupuestoEnt ActualizarEstadoAReservado()
     {
         Estado = "Reservado";
         FechaEstado = DateTime.Now;
@@ -75,14 +67,14 @@ public class Itinerario
         return !(Estado == "Prereservado" || Estado == "Prereservado Abonado" || Estado == "Reservado");
     }
 
-    public Itinerario AddAereo(string idUnico, int idAereo)
+    public PresupuestoEnt AddAereo(string idUnico, int idAereo)
     {
         IdAereosSeleccionados.Add(new AereoSeleccionado(idUnico, idAereo));
 
         return this;
     }
 
-    public Itinerario AddHotel(string idUnico, int idHotel)
+    public PresupuestoEnt AddHotel(string idUnico, int idHotel)
     {
         IdHotelesSeleccionados.Add(new HotelSeleccionado(idUnico, idHotel));
 

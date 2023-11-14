@@ -6,14 +6,14 @@ namespace Proyecto_CAI_Grupo_4.Modelos
 {
     public static class ReservaModule
     {
-        private static List<Reserva> Reservas = new List<Reserva>();
+        private static List<ReservaEnt> Reservas = new List<ReservaEnt>();
 
         static ReservaModule()
         {
             Reservas = AlmacenReservas.GetReservas();
         }
 
-        public static List<Reserva> GetReservas()
+        public static List<ReservaEnt> GetReservas()
         {
             return Reservas
                 .Where(x => x.Estado == ReservaEstadoEnum.PendienteDeConfirmacion
@@ -21,38 +21,38 @@ namespace Proyecto_CAI_Grupo_4.Modelos
                 .ToList();
         }
 
-        public static List<Itinerario> GetPreservas()
+        public static List<PresupuestoEnt> GetPreservas()
         {
             return PresupuestosModule.GetPresupuestosPrereservados()
                 .ToList();
         }
 
-        public static List<Itinerario> GetPrereservaByItinerario(int idItinerario)
+        public static List<PresupuestoEnt> GetPrereservaByItinerario(int idItinerario)
         {
             return GetPreservas()
-                .FindAll(x => idItinerario == x.IdItinerario)
+                .FindAll(x => idItinerario == x.IdPresupuesto)
                 .ToList();
         }
 
-        public static List<Itinerario> GetPrereservaAbonadaByItinerario(int idItinerario)
+        public static List<PresupuestoEnt> GetPrereservaAbonadaByItinerario(int idItinerario)
         {
             return GetPreReservasAbonadas()
-                .FindAll(x => idItinerario == x.IdItinerario)
+                .FindAll(x => idItinerario == x.IdPresupuesto)
                 .ToList();
         }
 
-        public static Itinerario GetPreReservasAbonadasById(int id)
+        public static PresupuestoEnt GetPreReservasAbonadasById(int id)
         {
             return GetPreReservasAbonadas()
-                .Find(x => x.IdItinerario == id);
+                .Find(x => x.IdPresupuesto == id);
         }
 
-        public static List<Reserva> GetReservasPendientesDeConfirmacion()
+        public static List<ReservaEnt> GetReservasPendientesDeConfirmacion()
         {
             return Reservas.FindAll(x => x.Estado == ReservaEstadoEnum.PendienteDeConfirmacion);
         }
 
-        public static List<Itinerario> GetPreReservasAbonadas()
+        public static List<PresupuestoEnt> GetPreReservasAbonadas()
         {
             return PresupuestosModule
                 .GetPresupuestosPrereservadosAbonados()
@@ -64,11 +64,11 @@ namespace Proyecto_CAI_Grupo_4.Modelos
             return 10000 + Reservas.Count + 1;
         }
 
-        public static Reserva GenerarNuevaReserva(int idItinerario, Cliente cliente)
+        public static ReservaEnt GenerarNuevaReserva(int idItinerario, Cliente cliente)
         {
             var codigo = GenerarCodigoDeReserva();
 
-            var reserva = new Reserva(codigo, idItinerario, cliente);
+            var reserva = new ReservaEnt(codigo, idItinerario, cliente);
             
             Reservas.Add(reserva);
 
