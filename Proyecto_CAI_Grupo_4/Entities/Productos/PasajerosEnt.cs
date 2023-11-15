@@ -29,17 +29,20 @@ public class PasajerosEnt
     {
         var edad = GetEdad();
 
-        if (edad <= 2)
+        if (edad >= 2 && edad <= 17)
         {
             return "Infante";
         }
-        
-        if (edad < 18)
+        else if (edad >= 18)
+        {
+            return "Adulto";
+        }
+        else if (edad >= 0 && edad < 2)
         {
             return "Menor";
         }
 
-        return "Adulto";
+        return "Error";
     }
 
     public int TotalAsignados()
