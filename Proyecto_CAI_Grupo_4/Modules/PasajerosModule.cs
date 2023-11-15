@@ -1,5 +1,6 @@
 ﻿using Proyecto_CAI_Grupo_4.Almacenes;
 using Proyecto_CAI_Grupo_4.Entities;
+using Proyecto_CAI_Grupo_4.Modules;
 using Proyecto_CAI_Grupo_4.Utils;
 
 namespace Proyecto_CAI_Grupo_4.Models
@@ -67,9 +68,9 @@ namespace Proyecto_CAI_Grupo_4.Models
                 .Where(x => x.IdPresupuesto == idItinerario)
                 .SelectMany(x => x.HotelesAsignados
                     .Select(y =>
-                        new { TipoPasajero = x.GetTipoDePasajero(), IdHotel = y.IdHotel }))
-                .GroupBy(x => new { x.IdHotel, x.TipoPasajero })
-                .Select(x => new AgrupacionCantidadesHotelesSeleccionados { IdHotel = x.Key.IdHotel, TipoPasajero = x.Key.TipoPasajero, Cantidad = x.Count() })
+                        new { TipoPasajero = x.GetTipoDePasajero(), IdHotel = y.IdHotel, Id = y.Id }))
+                .GroupBy(x => new { x.IdHotel, x.Id, x.TipoPasajero })
+                .Select(x => new AgrupacionCantidadesHotelesSeleccionados { Id = x.Key.Id, IdHotel = x.Key.IdHotel, TipoPasajero = x.Key.TipoPasajero, Cantidad = x.Count() })
                 .ToList();
 
             return agrupacionCantidadesHotelesSeleccionados;
@@ -113,10 +114,14 @@ namespace Proyecto_CAI_Grupo_4.Models
             var agrupacionVuelosAsignados = Pasajeros
                 .Where(x => x.IdPresupuesto == idItinerario)
                 .SelectMany(x =>
-                    x.AereosAsignados.Select(y =>
-                        new { y.Id, y.IdAereo }))
-                .GroupBy(x => new { x.IdAereo })
-                .Select(x => new AgrupacionCantidadesProductosAsignados { IdProducto = x.Key.IdAereo, Cantidad = x.Count() })
+                    x.AereosAsignados.Select(y => new {
+                        Id = y.Id,
+                        IdAereo = y.IdAereo,
+                        CodigoAereo = AereosModule.GetAereoByID(y.IdAereo)!.Codigo,
+                        TipoPasajero = AereosModule.GetAereoByID(y.IdAereo)!.Tarifa.TipoDePasajero
+                    }))
+                .GroupBy(x => new { x.TipoPasajero, x.CodigoAereo })
+                .Select(x => new AgrupacionCantidadesProductosAsignados { CodigoProducto = x.Key.CodigoAereo, TipoPasajero = x.Key.TipoPasajero, Cantidad = x.Count() })
                 .ToList();
 
             return agrupacionVuelosAsignados;

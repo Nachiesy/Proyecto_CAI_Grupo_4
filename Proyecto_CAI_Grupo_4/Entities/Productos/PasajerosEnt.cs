@@ -31,7 +31,7 @@ public class PasajerosEnt
 
         if (edad >= 2 && edad <= 17)
         {
-            return "Infante";
+            return "Menor";
         }
         else if (edad >= 18)
         {
@@ -39,7 +39,7 @@ public class PasajerosEnt
         }
         else if (edad >= 0 && edad < 2)
         {
-            return "Menor";
+            return "Infante";
         }
 
         return "Error";

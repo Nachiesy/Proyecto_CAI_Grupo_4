@@ -61,47 +61,44 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public string? ValidarStock(int idItinerario)
         {
-            //var pasajerosAereosAsignados = 
-            //    PasajerosModule.GetAgrupacionVuelosAsignados(idItinerario)
-            //    .GroupBy(x => x.IdProducto).Select(x => new { Id = x.Key, Cantidad = x.Count() });
+            var pasajerosAereosAsignados =
+                PasajerosModule.GetAgrupacionVuelosAsignados(idItinerario)
+                .GroupBy(x => x.IdProducto).Select(x => new { Id = x.Key, Cantidad = x.Count() });
 
-            //var pasajerosHotelesAsignados = PasajerosModule.GetAgrupacionHotelesAsignados(idItinerario);
+            var pasajerosHotelesAsignados = PasajerosModule.GetAgrupacionHotelesAsignados(idItinerario);
 
-            //foreach (var aereoSeleccionado in pasajerosAereosAsignados)
-            //{
-            //    var aereo = AereosModule.GetAereoByID(aereoSeleccionado.Id);
+            foreach (var aereoSeleccionado in pasajerosAereosAsignados)
+            {
+                var aereo = AereosModule.GetAereoByID(aereoSeleccionado.Id);
 
-            //    if (aereo.Tarifa.Disponibilidad < aereoSeleccionado.Cantidad)
-            //    {
-            //        return $"No hay suficiente disponibilidad para la tarifa con id {aereo.Id} perteneciente al {aereo.Nombre}. Por favor, modifique el presupuesto.";
-            //    }
-            //}
+                if (aereo.Tarifa.Disponibilidad < aereoSeleccionado.Cantidad)
+                {
+                    return $"No hay suficiente disponibilidad para la tarifa con id {aereo.Id} perteneciente al {aereo.Nombre}. Por favor, modifique el presupuesto.";
+                }
+            }
 
-            //var huespedesAgrupadosPorHotel = pasajerosHotelesAsignados
-            //    .GroupBy(x => x.IdProducto)
-            //    .Select(group => new {
-            //        IdHotel = group.Key,
-            //        CantidadHuespedes = group.Count(),
-            //        Pasajeros = group.ToList()
-            //    });
+            var huespedesAgrupadosPorHotel = pasajerosHotelesAsignados
+                .GroupBy(x => x.IdProducto)
+                .Select(group => new
+                {
+                    IdHotel = group.Key,
+                    CantidadHuespedes = group.Count(),
+                    Pasajeros = group.ToList()
+                });
 
-            //foreach (var hotelSeleccionado in huespedesAgrupadosPorHotel)
-            //{
-            //    var hotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
+            foreach (var hotelSeleccionado in huespedesAgrupadosPorHotel)
+            {
+                var hotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
 
-            //    if (hotelSeleccionado.CantidadHuespedes > hotel.Disponibilidad.Disponibilidad)
-            //    {
-            //        var firstPasajero = hotelSeleccionado.Pasajeros.FirstOrDefault();
-            //        var mensaje = $"No hay suficiente disponibilidad para la tarifa con id ${hotelSeleccionado.IdHotel} perteneciente al hotel {hotel.Nombre}. Por favor, modifique el presupuesto.";
-            //        return mensaje;
-            //    }
-            //}
+                if (hotelSeleccionado.CantidadHuespedes > hotel.Disponibilidad.Disponibilidad)
+                {
+                    var firstPasajero = hotelSeleccionado.Pasajeros.FirstOrDefault();
+                    var mensaje = $"No hay suficiente disponibilidad para la tarifa con id {hotelSeleccionado.IdHotel} perteneciente al hotel {hotel.Nombre}. Por favor, modifique el presupuesto.";
+                    return mensaje;
+                }
+            }
 
             return null;
-        }
-
-        private string GetTipoPasajeroAereo(int idProducto) { 
-            return AereosModule.GetAereoByID(idProducto)!.Tarifa.TipoDePasajero;
         }
 
         public string? ValidarPasajeros(int idItinerario)
@@ -129,8 +126,9 @@ namespace Proyecto_CAI_Grupo_4.Models
                 foreach (var aereoSeleccionado in pasajero.AereosAsignados)
                 {
                     var aereo = AereosModule.GetAereoByID(aereoSeleccionado.IdAereo);
+                    var tipoPasajero = pasajero.GetTipoDePasajero();
 
-                    if (aereo.Tarifa.TipoDePasajero != pasajero.GetTipoDePasajero())
+                    if (aereo.Tarifa.TipoDePasajero != tipoPasajero)
                     {
                         return $"Debe ingresar bien los datos del pasajero {pasajero.Nombre} {pasajero.Apellido} para Id del producto {aereoSeleccionado.Id}, " + $"dado que es una tarifa de aéreos de {aereo.Tarifa.TipoDePasajero} y el pasajero es aplicable a tarifas de {pasajero.GetTipoDePasajero()}";
                     }
@@ -166,8 +164,10 @@ namespace Proyecto_CAI_Grupo_4.Models
                     }
 
                     var cantidadActualDelMismoHotelParaTipoPasajeroConcreto = agrupacionCantidadesHotelesSeleccionados
-                        .SingleOrDefault(x => x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == tipoPasajero)
-                        .Cantidad;
+                        .Where(x => x.IdHotel == hotelSeleccionado.IdHotel)
+                        .Select(x => x.Cantidad)
+                        .DefaultIfEmpty(0)
+                        .Sum();
 
                     if (tipoPasajero == "Adulto" &&
                         cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaAdultos)
@@ -210,21 +210,31 @@ namespace Proyecto_CAI_Grupo_4.Models
             foreach (var aereoSeleccionado in agrupacionVuelosAsignadosPorTarifa)
             {
                 //La cantidad de menores no puede ser mayor a la de adultos
-                var cantidadMenoresEInfantes = agrupacionVuelosAsignadosPorTarifa.Count(x => aereoSeleccionado.IdProducto == x.IdProducto && GetTipoPasajeroAereo(x.IdProducto) == "Menor" || GetTipoPasajeroAereo(x.IdProducto) == "Infante");
-                var cantidadAdultos = agrupacionVuelosAsignadosPorTarifa.Count(x => aereoSeleccionado.IdProducto == x.IdProducto && GetTipoPasajeroAereo(x.IdProducto) == "Adulto");
+                var cantidadMenoresEInfantes = agrupacionVuelosAsignadosPorTarifa
+                    .Where(x => x.TipoPasajero != "Adulto" && x.CodigoProducto == aereoSeleccionado.CodigoProducto)
+                    .Select(x => x.Cantidad)
+                    .DefaultIfEmpty(0)
+                    .Sum();
+
+                var cantidadAdultos = agrupacionVuelosAsignadosPorTarifa
+                    .Where(x => x.TipoPasajero == "Adulto" && x.CodigoProducto == aereoSeleccionado.CodigoProducto)
+                    .Select(x => x.Cantidad)
+                    .DefaultIfEmpty(0)
+                    .Sum();
+
+                //var cantidadAdultos = agrupacionVuelosAsignadosPorTarifa.Count(x => aereoSeleccionado.IdProducto == x.IdProducto && GetTipoPasajeroAereo(x.IdProducto) == "Adulto");
 
                 if (cantidadMenoresEInfantes > cantidadAdultos)
                 {
-                    var detalleAereo = AereosModule.GetAereoByID(aereoSeleccionado.IdProducto);
-
-                    return $"La cantidad de menores e infantes del vuelo {detalleAereo.Codigo} no puede ser mayor a la de adultos. Por favor modifique su presupuesto.";
+                    return $"La cantidad de menores e infantes del vuelo {aereoSeleccionado.CodigoProducto} no puede ser mayor a la de adultos. Por favor modifique su presupuesto.";
                 }
             }
 
             foreach (var hotelSeleccionado in itinerario.IdHotelesSeleccionados)
             {
                 //Reviso que exista al menos algun adulto
-                if (!agrupacionCantidadesHotelesSeleccionados.Any(x => x.IdHotel == hotelSeleccionado.IdHotel && x.TipoPasajero == "Adulto"))
+                var agrupacionPorTipoPasajeroYProductoId = !agrupacionCantidadesHotelesSeleccionados.Any(x => x.IdHotel == hotelSeleccionado.IdHotel && x.Id == hotelSeleccionado.Id && x.TipoPasajero == "Adulto");
+                if (agrupacionPorTipoPasajeroYProductoId)
                 {
                     var detalleHotel = HotelesModule.GetHotelByID(hotelSeleccionado.IdHotel);
 
