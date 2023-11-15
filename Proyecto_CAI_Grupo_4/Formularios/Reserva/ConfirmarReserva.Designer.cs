@@ -107,7 +107,7 @@
             // estado
             // 
             estado.Text = "Estado";
-            estado.Width = 180;
+            estado.Width = 300;
             // 
             // doccliente
             // 
