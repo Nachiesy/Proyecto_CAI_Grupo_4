@@ -1,1 +1,587 @@
-[]
+[
+  {
+    "IdPresupuesto": 1,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-15T11:44:34.1941115-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P1V1000",
+        "IdAereo": 1
+      },
+      {
+        "Id": "P1V1001",
+        "IdAereo": 1
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "11111111",
+      "Nombre": "julian",
+      "Apellido": "fff"
+    },
+    "PrecioTotal": 60000.0
+  },
+  {
+    "IdPresupuesto": 2,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-15T11:44:37.981932-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P2H1000",
+        "IdHotel": 1016
+      },
+      {
+        "Id": "P2H1001",
+        "IdHotel": 1016
+      }
+    ],
+    "Cliente": {
+      "DNI": "22222222",
+      "Nombre": "g",
+      "Apellido": "g"
+    },
+    "PrecioTotal": 1110000.0
+  },
+  {
+    "IdPresupuesto": 3,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:12:44.9262642-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P3V1000",
+        "IdAereo": 1
+      },
+      {
+        "Id": "P3V1001",
+        "IdAereo": 2
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "33333333",
+      "Nombre": "gg",
+      "Apellido": "gg"
+    },
+    "PrecioTotal": 55000.0
+  },
+  {
+    "IdPresupuesto": 4,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:14:54.4184717-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P4V1000",
+        "IdAereo": 48
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "44444444",
+      "Nombre": "d",
+      "Apellido": "d"
+    },
+    "PrecioTotal": 705000.0
+  },
+  {
+    "IdPresupuesto": 5,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:16:20.5586678-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P5V1000",
+        "IdAereo": 1
+      },
+      {
+        "Id": "P5V1001",
+        "IdAereo": 26
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "55555555",
+      "Nombre": "gggg",
+      "Apellido": "gg"
+    },
+    "PrecioTotal": 925000.0
+  },
+  {
+    "IdPresupuesto": 6,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:19:18.4522959-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P6V1000",
+        "IdAereo": 37
+      }
+    ],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P6H1001",
+        "IdHotel": 1016
+      }
+    ],
+    "Cliente": {
+      "DNI": "66666666",
+      "Nombre": "f",
+      "Apellido": "f"
+    },
+    "PrecioTotal": 1255000.0
+  },
+  {
+    "IdPresupuesto": 7,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:20:56.7442409-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P7V1000",
+        "IdAereo": 25
+      }
+    ],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P7H1001",
+        "IdHotel": 1016
+      }
+    ],
+    "Cliente": {
+      "DNI": "77777777",
+      "Nombre": "7",
+      "Apellido": "7"
+    },
+    "PrecioTotal": 1455000.0
+  },
+  {
+    "IdPresupuesto": 8,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:22:43.2362764-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P8V1000",
+        "IdAereo": 1
+      },
+      {
+        "Id": "P8V1001",
+        "IdAereo": 4
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "88888888",
+      "Nombre": "8",
+      "Apellido": "8"
+    },
+    "PrecioTotal": 65000.0
+  },
+  {
+    "IdPresupuesto": 9,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:25:31.0582749-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P9V1000",
+        "IdAereo": 13
+      },
+      {
+        "Id": "P9V1001",
+        "IdAereo": 14
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "9999999",
+      "Nombre": "9",
+      "Apellido": "9"
+    },
+    "PrecioTotal": 55000.0
+  },
+  {
+    "IdPresupuesto": 10,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:26:27.3902373-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P10V1000",
+        "IdAereo": 1
+      },
+      {
+        "Id": "P10V1001",
+        "IdAereo": 11
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "1010110",
+      "Nombre": "j",
+      "Apellido": "j"
+    },
+    "PrecioTotal": 55000.0
+  },
+  {
+    "IdPresupuesto": 11,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:27:49.1901912-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P11V1000",
+        "IdAereo": 13
+      },
+      {
+        "Id": "P11V1001",
+        "IdAereo": 13
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "21111111",
+      "Nombre": "onfce",
+      "Apellido": "once"
+    },
+    "PrecioTotal": 60000.0
+  },
+  {
+    "IdPresupuesto": 12,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:29:02.0625192-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P12V1000",
+        "IdAereo": 1
+      },
+      {
+        "Id": "P12V1001",
+        "IdAereo": 4
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "12121122",
+      "Nombre": "12",
+      "Apellido": "1212"
+    },
+    "PrecioTotal": 65000.0
+  },
+  {
+    "IdPresupuesto": 13,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:34:01.8403471-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P13H1000",
+        "IdHotel": 1001
+      }
+    ],
+    "Cliente": {
+      "DNI": "1311313",
+      "Nombre": "1131131",
+      "Apellido": "131313"
+    },
+    "PrecioTotal": 200000.0
+  },
+  {
+    "IdPresupuesto": 14,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:35:09.8761694-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P14H1000",
+        "IdHotel": 1001
+      }
+    ],
+    "Cliente": {
+      "DNI": "14144141",
+      "Nombre": "141",
+      "Apellido": "14"
+    },
+    "PrecioTotal": 200000.0
+  },
+  {
+    "IdPresupuesto": 15,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:36:16.8845453-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P15V1000",
+        "IdAereo": 1
+      }
+    ],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P15H1001",
+        "IdHotel": 1001
+      }
+    ],
+    "Cliente": {
+      "DNI": "15151515",
+      "Nombre": "g",
+      "Apellido": "15"
+    },
+    "PrecioTotal": 230000.0
+  },
+  {
+    "IdPresupuesto": 16,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:38:03.2162259-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P16H1000",
+        "IdHotel": 1007
+      },
+      {
+        "Id": "P16H1001",
+        "IdHotel": 1001
+      }
+    ],
+    "Cliente": {
+      "DNI": "1661161",
+      "Nombre": "d",
+      "Apellido": "d"
+    },
+    "PrecioTotal": 700000.0
+  },
+  {
+    "IdPresupuesto": 17,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:39:50.0682114-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P17H1000",
+        "IdHotel": 1016
+      },
+      {
+        "Id": "P17H1001",
+        "IdHotel": 1016
+      }
+    ],
+    "Cliente": {
+      "DNI": "7177171",
+      "Nombre": "1477",
+      "Apellido": "17"
+    },
+    "PrecioTotal": 1110000.0
+  },
+  {
+    "IdPresupuesto": 18,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:44:41.8803888-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P18H1000",
+        "IdHotel": 1002
+      }
+    ],
+    "Cliente": {
+      "DNI": "1818188",
+      "Nombre": "j",
+      "Apellido": "j"
+    },
+    "PrecioTotal": 300000.0
+  },
+  {
+    "IdPresupuesto": 19,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:46:36.892345-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P19H1000",
+        "IdHotel": 1003
+      }
+    ],
+    "Cliente": {
+      "DNI": "1991919",
+      "Nombre": "19",
+      "Apellido": "919"
+    },
+    "PrecioTotal": 400000.0
+  },
+  {
+    "IdPresupuesto": 20,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:51:17.218297-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P20V1000",
+        "IdAereo": 6
+      },
+      {
+        "Id": "P20V1001",
+        "IdAereo": 7
+      },
+      {
+        "Id": "P20V1002",
+        "IdAereo": 3
+      }
+    ],
+    "IdHotelesSeleccionados": [],
+    "Cliente": {
+      "DNI": "2020202",
+      "Nombre": "20",
+      "Apellido": "20"
+    },
+    "PrecioTotal": 90000.0
+  },
+  {
+    "IdPresupuesto": 21,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:53:33.9185165-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P21V1000",
+        "IdAereo": 1
+      }
+    ],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P21H1001",
+        "IdHotel": 1004
+      }
+    ],
+    "Cliente": {
+      "DNI": "12121212",
+      "Nombre": "221",
+      "Apellido": "21"
+    },
+    "PrecioTotal": 530000.0
+  },
+  {
+    "IdPresupuesto": 22,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T18:55:22.1704682-03:00",
+    "IdAereosSeleccionados": [
+      {
+        "Id": "P22V1000",
+        "IdAereo": 4
+      }
+    ],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P22H1001",
+        "IdHotel": 1007
+      }
+    ],
+    "Cliente": {
+      "DNI": "7878778",
+      "Nombre": "gg",
+      "Apellido": "ggg"
+    },
+    "PrecioTotal": 535000.0
+  },
+  {
+    "IdPresupuesto": 23,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T19:02:16.4342919-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P23H1000",
+        "IdHotel": 1002
+      }
+    ],
+    "Cliente": {
+      "DNI": "2323232",
+      "Nombre": "23",
+      "Apellido": "23"
+    },
+    "PrecioTotal": 300000.0
+  },
+  {
+    "IdPresupuesto": 24,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-14T19:12:25.9024905-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P24H1000",
+        "IdHotel": 1001
+      }
+    ],
+    "Cliente": {
+      "DNI": "24242424",
+      "Nombre": "24",
+      "Apellido": "24"
+    },
+    "PrecioTotal": 200000.0
+  },
+  {
+    "IdPresupuesto": 25,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-15T11:24:15.9447267-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P25H1000",
+        "IdHotel": 1015
+      }
+    ],
+    "Cliente": {
+      "DNI": "9999999",
+      "Nombre": "18bis",
+      "Apellido": "18bis"
+    },
+    "PrecioTotal": 455000.0
+  },
+  {
+    "IdPresupuesto": 26,
+    "Estado": "Presupuestado",
+    "FechaEstado": "2023-11-15T11:30:25.9219716-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P26H1000",
+        "IdHotel": 1001
+      },
+      {
+        "Id": "P26H1001",
+        "IdHotel": 1011
+      }
+    ],
+    "Cliente": {
+      "DNI": "2626262",
+      "Nombre": "26",
+      "Apellido": "26"
+    },
+    "PrecioTotal": 650000.0
+  },
+  {
+    "IdPresupuesto": 27,
+    "Estado": "Prereservado Abonado",
+    "FechaEstado": "2023-11-15T22:59:42.1125996-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P27H1000",
+        "IdHotel": 1014
+      }
+    ],
+    "Cliente": {
+      "DNI": "93111234",
+      "Nombre": "prereservado abonado",
+      "Apellido": "test 27"
+    },
+    "PrecioTotal": 355000.0
+  },
+  {
+    "IdPresupuesto": 28,
+    "Estado": "Reservado",
+    "FechaEstado": "2023-11-15T23:01:09.5705816-03:00",
+    "IdAereosSeleccionados": [],
+    "IdHotelesSeleccionados": [
+      {
+        "Id": "P28H1000",
+        "IdHotel": 1014
+      }
+    ],
+    "Cliente": {
+      "DNI": "93111234",
+      "Nombre": "reservadoo abonado ",
+      "Apellido": "test 28"
+    },
+    "PrecioTotal": 355000.0
+  }
+]

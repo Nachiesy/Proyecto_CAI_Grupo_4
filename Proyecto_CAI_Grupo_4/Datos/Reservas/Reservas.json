@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "Codigo": 10001,
+    "IdPresupuesto": 28,
+    "Cliente": {
+      "DNI": "93111234",
+      "Nombre": "reservadoo abonado ",
+      "Apellido": "test 28"
+    },
+    "Estado": 1,
+    "FechaEstado": "2023-11-15T23:01:09.5708986-03:00"
+  }
+]
