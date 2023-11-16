@@ -1,13 +1,13 @@
 [
   {
     "Codigo": 10001,
-    "IdPresupuesto": 28,
+    "IdPresupuesto": 1,
     "Cliente": {
-      "DNI": "93111234",
-      "Nombre": "reservadoo abonado ",
-      "Apellido": "test 28"
+      "DNI": "43922765",
+      "Nombre": "Jose Manuel",
+      "Apellido": "Hernandez"
     },
     "Estado": 1,
-    "FechaEstado": "2023-11-15T23:01:09.5708986-03:00"
+    "FechaEstado": "2023-11-16T19:07:55.8171861-03:00"
   }
 ]

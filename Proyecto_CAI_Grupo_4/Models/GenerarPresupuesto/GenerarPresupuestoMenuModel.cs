@@ -13,7 +13,7 @@ namespace Proyecto_CAI_Grupo_4.Models
 
         public int GenerarIdPresupuesto()
         {
-            return PresupuestosModule.GetPresupuestos().Count + 1;
+            return PresupuestosModule.GetPresupuestoParaId().Count + 1;
         }
 
         public static GenerarPresupuestoParams GetGenerarPresupuestoParamsStatic()

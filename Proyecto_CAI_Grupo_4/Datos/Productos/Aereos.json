@@ -216,7 +216,7 @@
       "Clase": "Economy",
       "TipoDePasajero": "Adulto",
       "Precio": 30000.0,
-      "Disponibilidad": 5
+      "Disponibilidad": 4
     },
     "CantidadDeParadas": 0
   },
@@ -301,7 +301,7 @@
       "Clase": "First",
       "TipoDePasajero": "Adulto",
       "Precio": 45000.0,
-      "Disponibilidad": 3
+      "Disponibilidad": 2
     },
     "CantidadDeParadas": 0
   },
