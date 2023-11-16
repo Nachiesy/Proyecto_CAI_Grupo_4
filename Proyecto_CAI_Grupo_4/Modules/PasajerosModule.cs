@@ -62,6 +62,26 @@ namespace Proyecto_CAI_Grupo_4.Models
             AgregarPasajerosParams = agregarPasajerosParams;
         }
 
+        private static int GetCantidadMaximaDePasajerosPorTipoDePasajero(int idHotel, string tipoDePasajero)
+        {
+            if(tipoDePasajero == "Adulto")
+            {
+                return HotelesModule.GetHotelByID(idHotel).Disponibilidad.CantidadMaximaAdultos;
+            }
+            else if(tipoDePasajero == "Menor")
+            {
+                return HotelesModule.GetHotelByID(idHotel).Disponibilidad.CantidadMaximaMenores;
+            }
+            else if(tipoDePasajero == "Infante")
+            {
+                return HotelesModule.GetHotelByID(idHotel).Disponibilidad.CantidadMaximaInfantes;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         public static List<AgrupacionCantidadesHotelesSeleccionados> GetAgrupacionCantidadesHotelesSeleccionadosPorIdItinerario(int idItinerario)
         {
             var agrupacionCantidadesHotelesSeleccionados = Pasajeros
@@ -70,7 +90,12 @@ namespace Proyecto_CAI_Grupo_4.Models
                     .Select(y =>
                         new { TipoPasajero = x.GetTipoDePasajero(), IdHotel = y.IdHotel, Id = y.Id }))
                 .GroupBy(x => new { x.IdHotel, x.Id, x.TipoPasajero })
-                .Select(x => new AgrupacionCantidadesHotelesSeleccionados { Id = x.Key.Id, IdHotel = x.Key.IdHotel, TipoPasajero = x.Key.TipoPasajero, Cantidad = x.Count() })
+                .Select(x => new AgrupacionCantidadesHotelesSeleccionados {
+                    Id = x.Key.Id,
+                    IdHotel = x.Key.IdHotel,
+                    TipoPasajero = x.Key.TipoPasajero,
+                    CantidadMaximaPorTipoPasajero = GetCantidadMaximaDePasajerosPorTipoDePasajero(x.Key.IdHotel, x.Key.TipoPasajero),
+                    Cantidad = x.Count() })
                 .ToList();
 
             return agrupacionCantidadesHotelesSeleccionados;

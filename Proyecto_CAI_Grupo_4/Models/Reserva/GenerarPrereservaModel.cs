@@ -162,33 +162,16 @@ namespace Proyecto_CAI_Grupo_4.Models
                     {
                         return $"El pasajero {pasajero.Nombre} {pasajero.Apellido} no puede hospedarse en el hotel {hotel.Nombre} porque no permite infantes (Id del producto: {hotelSeleccionado.Id}).";
                     }
-
-                    var cantidadActualDelMismoHotelParaTipoPasajeroConcreto = agrupacionCantidadesHotelesSeleccionados
-                        .Where(x => x.IdHotel == hotelSeleccionado.IdHotel)
-                        .Select(x => x.Cantidad)
-                        .DefaultIfEmpty(0)
-                        .Sum();
-
-                    if (tipoPasajero == "Adulto" &&
-                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaAdultos)
-                    {
-                        return $"Se excedió la capacidad máxima de adultos para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).";
-                    }
-
-                    if (tipoPasajero == "Menor" &&
-                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaMenores)
-                    {
-                        return $"Se excedió la capacidad máxima de menores para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).";
-                    }
-
-                    if (tipoPasajero == "Infante" &&
-                        cantidadActualDelMismoHotelParaTipoPasajeroConcreto > hotel.Disponibilidad.CantidadMaximaInfantes)
-                    {
-                        return $"Se excedió la capacidad máxima de infantes para la habitación del hotel {hotel.Nombre} (Id del producto: {hotelSeleccionado.Id}).";
-                    }
-
                 }
             }
+
+            if(agrupacionCantidadesHotelesSeleccionados.Any(x => x.Cantidad > x.CantidadMaximaPorTipoPasajero))
+            {
+                var match = agrupacionCantidadesHotelesSeleccionados.FirstOrDefault(x => x.Cantidad > x.CantidadMaximaPorTipoPasajero);
+
+                return $"Se excedió la capacidad máxima de tipo de pasajero {match.TipoPasajero.ToLower()} para la habitación del hotel {HotelesModule.GetHotelByID(match.IdHotel).Nombre} (Id del producto: {match.Id}).";
+            }
+
 
             //DEBE CARGAR TODOS LOS PASAJEROS para cada uno de los productos
             var itinerario = PresupuestosModule.GetPresupuestoById(idItinerario);

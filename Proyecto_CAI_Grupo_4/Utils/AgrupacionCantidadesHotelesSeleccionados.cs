@@ -12,5 +12,6 @@ namespace Proyecto_CAI_Grupo_4.Utils
         public int IdHotel { get; set; }
         public string TipoPasajero { get; set; }
         public int Cantidad { get; set; }
+        public int CantidadMaximaPorTipoPasajero { get; set; }
     }
 }
